@@ -1,0 +1,15 @@
+# Enter your first and last name
+init.author.name=null
+
+# Enter your IU email address in both fields
+init.author.email=null
+email=null
+
+# Generate a base64 _auth token of your IU username and passphrase:
+# echo -n 'username:passphrase' | openssl base64
+_auth=null
+
+#### DO NOT EDIT BELOW ####
+save-exact=true
+registry=https://npmjs.iu.edu/registry
+always-auth=true
