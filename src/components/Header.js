@@ -34,7 +34,7 @@ export class Header extends Component {
 
             var logout
             if (props.logout) {
-                logout = <a onClick={props.logout} className='rvt-header-id__log-out'>Log out</a>
+                logout = <a href="javascript:void(0)" onClick={props.logout} className='rvt-header-id__log-out'>Log out</a>
             } else {
                 logout = ''
             }
@@ -65,7 +65,7 @@ export class Header extends Component {
             var logout, liClass
             if (props.logout) {
                 logout = <ul id='subnav-id' aria-hidden='true'>
-                    <li><a onClick={props.logout}>Log out</a></li>
+                    <li><a href="javascript:void(0)" onClick={props.logout}>Log out</a></li>
                 </ul>
                 liClass = 'has-children'
             } else {
@@ -168,22 +168,31 @@ export class Header extends Component {
             title = document.querySelector('head>title').innerText
         }
 
+        var url
+        if(props.url) {
+            url = props.url
+        } else {
+            url = "/"
+        }
+
         return <header className='rvt-header' role='banner'>
             <a className='rvt-skip-link' href='#main-content'>Skip to content</a>
             <div className='rvt-header__trident'>
-                <svg role="img" className="rvt-header__trident-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 48" aria-describedby="iu-logo">
+                <svg role="img" alt="" className="rvt-header__trident-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 48" aria-describedby="iu-logo">
                     <title id="iu-logo">Indiana University Logo</title>
                     <rect width="41" height="48" fill="#900"/>
                     <polygon points="24.59 12.64 24.59 14.98 26.34 14.98 26.34 27.78 22.84 27.78 22.84 10.9 24.59 10.9 24.59 8.57 16.41 8.57 16.41 10.9 18.16 10.9 18.16 27.78 14.66 27.78 14.66 14.98 16.41 14.98 16.41 12.64 8.22 12.64 8.22 14.98 9.97 14.98 9.97 30.03 12.77 33.02 18.16 33.02 18.16 36.52 16.41 36.52 16.41 39.43 24.59 39.43 24.59 36.52 22.84 36.52 22.84 33.02 28 33.02 31.01 30.03 31.01 14.98 32.78 14.98 32.78 12.64 24.59 12.64" fill="#fff"/>
                 </svg>
             </div>
-            <h1 className='rvt-header__title'>{title}</h1>
+            <span class="rvt-header__title">
+                <a href={url}>{title}</a>
+            </span>
             <div className='rvt-header__controls'>
                 <NavSection nav={props.nav} />
                 {user}
             </div>
 
-            <button className='rvt-drawer-button rvt-drawer-button--persistent' aria-haspopup='true' aria-expanded='false' data-drawer-toggle='mobile-drawer'>
+            <button className={`rvt-drawer-button ${props.persistent ? 'rvt-drawer-button--persistent' : ''}`} aria-haspopup='true' aria-expanded='false' data-drawer-toggle='mobile-drawer'>
                 <span className='sr-only'>Toggle menu</span>
                 <svg role="img" alt="" className="rvt-drawer-button-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                     <g fill="currentColor">

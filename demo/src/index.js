@@ -20,7 +20,7 @@ import {
 class Demo extends Component {
     render() {
         return [
-            <Header />
+            <Header avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
             ,<div className="rvt-container rvt-container--freshman m-top-md">
                 <h1>Rivet 1.0.0 React Components Demo</h1>
 
@@ -49,13 +49,13 @@ class Demo extends Component {
                     <SegmentedButtons label="Numbers" fit>
                         <Button onClick={function () {
                             console.log("one")
-                        }} className="button button--secondary">One</Button>
+                        }} secondary>One</Button>
                         <Button onClick={function () {
                             console.log("two")
-                        }} className="button button--secondary">Two</Button>
+                        }} secondary>Two</Button>
                         <Button onClick={function () {
                             console.log("three")
-                        }} className="button button--secondary">Three</Button>
+                        }} secondary>Three</Button>
                     </SegmentedButtons>
                 </div>
 
