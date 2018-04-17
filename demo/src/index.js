@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 
-import {Alert, Button, SegmentedButtons} from '../../src/components'
+import {
+    Alert,
+    Button,
+    Checkbox,
+    SegmentedButtons
+} from '../../src/components'
 
 class Demo extends Component {
     render() {
@@ -42,6 +47,20 @@ class Demo extends Component {
                     }} className="button button--secondary">Three</Button>
                 </SegmentedButtons>
             </div>
+
+            <form class="m-top-sm">
+                <fieldset>
+                    <legend class="sr-only">Checkboxes inline</legend>
+                    <ul class="rvt-inline-list">
+                        <li>
+                            <Checkbox name="number" label="One" />
+                        </li>
+                        <li>
+                            <Checkbox name="number" label="Two" />
+                        </li>
+                    </ul>
+                </fieldset>
+            </form>
 
 
         </div>
