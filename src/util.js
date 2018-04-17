@@ -74,19 +74,6 @@ export function getRivetClasses(props, c = []) {
         delete props.padding
     }
 
-    // replace booleans with strings to prevent console errors about <element prop=true />
-    if (props.ordered) {
-        props.ordered = "true"
-    }
-
-    if (props.plain) {
-        props.plain = "true"
-    }
-
-    if (props.stripes) {
-        props.stripes = "true"
-    }
-
 
     if (typeof props.ts === 'number' || props.ts === 'base') {
         c.push('rvt-ts-' + props.ts)
