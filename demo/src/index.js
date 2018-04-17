@@ -15,7 +15,7 @@ import {
     SegmentedButtons,
     Table,
     TableRow
-} from '../../src/components'
+} from '../../src'
 
 class Demo extends Component {
     render() {
