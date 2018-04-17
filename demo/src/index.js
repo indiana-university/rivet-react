@@ -13,8 +13,8 @@ class Demo extends Component {
       <Alert info className="m-top-md" clickDismiss={function(){console.log('dismissed alert')}}>Info</Alert>
       <Alert success className="m-top-md" clickDismiss={function(){console.log('dismissed alert')}}>Success</Alert>
 
-      <Button className="button m-top-md">Hello</Button>
-      <Button className="button m-left-md button--secondary m-top-lg">World</Button>
+      <Button onClick={function(){console.log("hello")}} className="button m-top-md">Hello</Button>
+      <Button onClick={function(){console.log("world")}} className="button m-left-md button--secondary m-top-lg">World</Button>
 
 
     </div>
