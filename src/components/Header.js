@@ -175,6 +175,13 @@ export class Header extends Component {
             url = "/"
         }
 
+        var drawer
+        if(props.persistent) {
+            drawer = 'rvt-drawer-button rvt-drawer-button--persistent'
+        } else {
+            drawer = 'rvt-drawer-button'
+        }
+
         return <header className='rvt-header' role='banner'>
             <a className='rvt-skip-link' href='#main-content'>Skip to content</a>
             <div className='rvt-header__trident'>
@@ -192,7 +199,7 @@ export class Header extends Component {
                 {user}
             </div>
 
-            <button className={`rvt-drawer-button ${props.persistent ? 'rvt-drawer-button--persistent' : ''}`} aria-haspopup='true' aria-expanded='false' data-drawer-toggle='mobile-drawer'>
+            <button className={drawer} aria-haspopup='true' aria-expanded='false' data-drawer-toggle='mobile-drawer'>
                 <span className='sr-only'>Toggle menu</span>
                 <svg role="img" alt="" className="rvt-drawer-button-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                     <g fill="currentColor">
