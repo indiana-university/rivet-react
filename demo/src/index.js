@@ -5,6 +5,7 @@ import {
     Alert,
     Button,
     Checkbox,
+    File,
     SegmentedButtons
 } from '../../src/components'
 
@@ -48,10 +49,10 @@ class Demo extends Component {
                 </SegmentedButtons>
             </div>
 
-            <form class="m-top-sm">
+            <form className="m-top-sm">
                 <fieldset>
-                    <legend class="sr-only">Checkboxes inline</legend>
-                    <ul class="rvt-inline-list">
+                    <legend className="sr-only">Checkboxes inline</legend>
+                    <ul className="rvt-inline-list">
                         <li>
                             <Checkbox name="number" label="One" />
                         </li>
@@ -62,6 +63,9 @@ class Demo extends Component {
                 </fieldset>
             </form>
 
+            <div className="m-top-md">
+                <File name="profile" />
+            </div>
 
         </div>
     }
