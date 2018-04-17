@@ -17,8 +17,8 @@ export class TableRow extends Component {
                     items.push(ch)
                 } else {
                     const cellClick = (e) => {
-                        if (p.cellClick) {
-                            p.cellClick(ch, e)
+                        if (props.cellClick) {
+                            props.cellClick(ch, e)
                         }
                     }
                     if (header) {

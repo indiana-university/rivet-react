@@ -6,6 +6,7 @@ import {
     Button,
     Checkbox,
     File,
+    Footer,
     Header,
     Input,
     List,
@@ -105,7 +106,7 @@ class Demo extends Component {
                     </fieldset>
                 </form>
 
-                <label for="select-demo">Select input:</label>
+                <label htmlFor="select-demo">Select input:</label>
                 <select id="select-demo">
                     <option>Choose an option...</option>
                     <option value="Option One">Option One</option>
@@ -216,7 +217,8 @@ class Demo extends Component {
                     </tbody>
                 </Table>
 
-            </Section>
+            </Section>,
+            <Footer />
         ]
     }
 }
