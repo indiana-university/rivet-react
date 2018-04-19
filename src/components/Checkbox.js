@@ -15,9 +15,9 @@ export class Checkbox extends Component {
 
         var c = classNames(getRivetClasses(props))
 
-        return <nobr>
+        return <React.Fragment>
             <input type="checkbox" key='i' {...props} />
             <label key='l' className={c} htmlFor={props.id}>{label}</label>
-        </nobr>
+        </React.Fragment>
     }
 }

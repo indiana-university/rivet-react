@@ -22,31 +22,31 @@ class Demo extends Component {
     render() {
         return [
             <Header avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
-            ,<div className="rvt-container rvt-container--freshman m-top-md">
+            ,<div className="rvt-container rvt-container--freshman rvt-m-top-md">
                 <h1>Rivet 1.0.0 React Components Demo</h1>
 
-                <Alert className="m-top-md" clickDismiss={function () {
+                <Alert className="rvt-m-top-md" clickDismiss={function () {
                     console.log('dismissed alert')
                 }}>Base</Alert>
-                <Alert error className="m-top-md" clickDismiss={function () {
+                <Alert error className="rvt-m-top-md" clickDismiss={function () {
                     console.log('dismissed alert')
                 }}>Error</Alert>
-                <Alert info className="m-top-md" clickDismiss={function () {
+                <Alert info className="rvt-m-top-md" clickDismiss={function () {
                     console.log('dismissed alert')
                 }}>Info</Alert>
-                <Alert success className="m-top-md" clickDismiss={function () {
+                <Alert success className="rvt-m-top-md" clickDismiss={function () {
                     console.log('dismissed alert')
                 }}>Success</Alert>
 
                 <Button onClick={function () {
                     console.log("hello")
-                }} className="button m-top-md">Hello</Button>
+                }} className="rvt-m-top-md">Hello</Button>
                 <Button onClick={function () {
                     console.log("world")
-                }} className="button m-left-md button--secondary m-top-lg">World</Button>
+                }} className="rvt-m-left-md rvt-button--secondary rvt-m-top-lg">World</Button>
 
 
-                <div className="m-top-md">
+                <div className="rvt-m-top-md">
                     <SegmentedButtons label="Numbers" fit>
                         <Button onClick={function () {
                             console.log("one")
@@ -60,7 +60,7 @@ class Demo extends Component {
                     </SegmentedButtons>
                 </div>
 
-                <form className="m-top-sm">
+                <form className="rvt-m-top-sm">
                     <fieldset>
                         <legend className="sr-only">Checkboxes inline</legend>
                         <ul className="rvt-inline-list">
@@ -75,9 +75,9 @@ class Demo extends Component {
                 </form>
 
 
-                <form className="m-top-sm">
+                <form className="rvt-m-top-sm">
                     <fieldset>
-                        <legend className="sr-only">Radio buttons inline</legend>
+                        <legend className="rvt-sr-only">Radio buttons inline</legend>
                         <ul className="rvt-inline-list">
                             <li>
                                 <RadioButton name="number" label="One" />
@@ -92,9 +92,9 @@ class Demo extends Component {
 
 
 
-                <form className="m-top-sm">
+                <form className="rvt-m-top-sm">
                     <fieldset>
-                        <legend className="sr-only">Mixed inputs inline</legend>
+                        <legend className="rvt-sr-only">Mixed inputs inline</legend>
                         <ul className="rvt-inline-list">
                             <li>
                                 <Input name="number" label="One" />
@@ -117,7 +117,7 @@ class Demo extends Component {
 
 
 
-                <div className="m-top-md">
+                <div className="rvt-m-top-md">
                     <File name="profile" />
                 </div>
 
