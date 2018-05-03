@@ -15,6 +15,12 @@ export class List extends Component {
             delete props.plain
         }
 
+        var ordered = false
+        if(props.ordered) {
+            ordered = true;
+            delete props.ordered;
+        }
+
         if (Array.isArray(props.children)) {
             var items = []
             for (var i = 0; i < props.children.length; i++) {
@@ -29,7 +35,7 @@ export class List extends Component {
         }
 
         var className = classNames(getRivetClasses(props, c))
-        if (props.ordered) {
+        if (ordered) {
             return <ol className={className} {...props} />
         } else {
             return <ul className={className} {...props} />

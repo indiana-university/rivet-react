@@ -9,8 +9,10 @@ export class Table extends Component {
         var c = []
         if (props.plain) {
             c.push('rvt-table-plain')
+            delete props.plain
         } else if (props.stripes) {
             c.push('rvt-table-stripes')
+            delete props.stripes
         }
         getRivetClasses(props, c)
 

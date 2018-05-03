@@ -21,8 +21,8 @@ import {
 class Demo extends Component {
     render() {
         return [
-            <Header avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
-            ,<div className="rvt-container rvt-container--freshman rvt-m-top-md">
+            <Header key={1} avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
+            ,<div key={2} className="rvt-container rvt-container--freshman rvt-m-top-md">
                 <h1>Rivet 1.0.0 React Components Demo</h1>
 
                 <Alert className="rvt-m-top-md" clickDismiss={function () {
@@ -123,7 +123,7 @@ class Demo extends Component {
 
             </div>,
 
-            <Section margin='sm'>
+            <Section key={3} margin='sm'>
 
 
                 <h1>Spacing and Type Scale</h1>
@@ -156,6 +156,12 @@ class Demo extends Component {
                         <Button small secondary success onClick={() => { window.alert('Small Secondary Success Button Click') }}>Success</Button>
                         <Button small secondary danger onClick={() => { window.alert('Small Secondary Danger Button Click') }}>Danger</Button>
                     </SegmentedButtons>
+
+                    <Button data-modal-trigger="modal-example" onClick={() => {}}>Modal</Button>
+                    <Modal id="modal-example" title="Transfer group account(s)" clickClose={()=>{}}>
+                        <p>Your are requesting the transfer of groups:<br /><strong>ITDJHNWEB, JTDJHNWEB, DSOIUFNWEB, DOSIFUSDOIF</strong></p>
+                    </Modal>
+
                 </Section>
 
                 <h1>Alerts</h1>
@@ -218,7 +224,7 @@ class Demo extends Component {
                 </Table>
 
             </Section>,
-            <Footer />
+            <Footer key={4} />
         ]
     }
 }
