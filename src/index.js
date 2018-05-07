@@ -1,4 +1,3 @@
-import React, {Component} from 'react'
 import { Alert } from './components/Alert'
 import { Button } from './components/Button'
 import { Checkbox } from './components/Checkbox'
