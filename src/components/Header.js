@@ -116,19 +116,9 @@ export class Header extends Component {
                             subnav.push(<a href="javascript:void(0)" key={snk} onClick={sn.click}>{sn.label}</a>)
                         }
                         nav.push(<li key={nk}>
-                            <div className='dropdown'>
-                                <button className='rvt-dropdown__toggle' data-dropdown-toggle={nk}>
-                                    <span className="rvt-dropdown__toggle-text">{n.label}</span>
-                                    <svg role="img" alt="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                        <title>Dropdown icon</title>
-                                        <path fill="currentColor" d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z"/>
-                                    </svg>
-
-                                </button>
-                                <div className='rvt-dropdown__menu' id={nk} aria-hidden='true'>
-                                    {subnav}
-                                </div>
-                            </div>
+                            <Dropdown id={nk} title={n.label}>
+                                {subnav}
+                            </Dropdown>
                         </li>)
                     }
                 }
@@ -138,7 +128,7 @@ export class Header extends Component {
 
         const DrawerNavSection = props => {
             var nav = []
-            if (props.user) nav.push(props.user)
+            //todo: if (props.user) nav.push(props.user)
             if (props.nav) {
                 for (var i = 0; i < props.nav.length; i++) {
                     var nk = 'dsubnav-' + i
@@ -273,13 +263,11 @@ class Drawer extends Component {
     }
 
     componentDidMount(){
-        console.log("mounting")
         document.addEventListener("keydown", this.escFunction, false);
         document.addEventListener('mousedown', this.clickOutside);
     }
 
     componentWillUnmount() {
-        console.log("unmounting")
         document.removeEventListener("keydown", this.escFunction, false);
         document.removeEventListener('mousedown', this.clickOutside);
     }
