@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 
+import 'rivet-uits/css/rivet.min.css'
+
 import {
     Alert,
     Button,
