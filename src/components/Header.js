@@ -3,6 +3,24 @@ import {copy, shortuid, getRivetClasses} from '../util'
 import classNames from 'classnames'
 
 export class Header extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: false
+        };
+
+        this.toggleDrawer = this.toggleDrawer.bind(this)
+    }
+
+    toggleDrawer() {
+        console.log("toggle")
+        this.setState({
+            visible: !this.state.visible
+        })
+    }
+
+
     render() {
         var props = this.props
 
@@ -146,7 +164,7 @@ export class Header extends Component {
             }
             return <nav className='rvt-drawer__nav' role='navigation'>
                 <ul>{nav}</ul>
-                <button className='rvt-drawer__bottom-close'>Close nav</button>
+                <button onClick={this.toggleDrawer} className='rvt-drawer__bottom-close'>Close nav</button>
             </nav>
         }
 
@@ -206,7 +224,7 @@ export class Header extends Component {
                 {user}
             </div>
 
-            <button className={drawer} aria-haspopup='true' aria-expanded='false' data-drawer-toggle='mobile-drawer'>
+            <button className={drawer} aria-haspopup='true' aria-expanded={this.state.visible} data-drawer-toggle='mobile-drawer' onClick={this.toggleDrawer}>
                 <span className='sr-only'>Toggle menu</span>
                 <svg role="img" alt="" className="rvt-drawer-button-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                     <g fill="currentColor">
@@ -219,9 +237,58 @@ export class Header extends Component {
                     <path fill="currentColor" d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z"/>
                 </svg>
             </button>
-            <div className='rvt-drawer' aria-hidden='true' id='mobile-drawer'>
-                <DrawerNavSection user={drawerUser} nav={props.nav} />
-            </div>
+            { this.state.visible &&
+                <Drawer toggleDrawer={this.toggleDrawer}>
+                    <DrawerNavSection user={drawerUser} nav={props.nav}/>
+                </Drawer>
+            }
         </header>
+    }
+}
+
+class Drawer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: false
+        };
+
+        this.escFunction = this.escFunction.bind(this)
+        this.clickOutside = this.clickOutside.bind(this)
+    }
+
+    escFunction(event){
+        if(event.keyCode === 27) {
+            this.props.toggleDrawer()
+        }
+    }
+
+    clickOutside(event){
+        var drawerTrigger = document.querySelector('[data-drawer-toggle]');
+        var drawerId = drawerTrigger ? drawerTrigger.getAttribute('data-drawer-toggle') : null;
+        var drawerEl = document.querySelector('#' + drawerId);
+        if(event.target != drawerEl && !drawerEl.contains(event.target) && !drawerTrigger.contains(event.target)) {
+            this.props.toggleDrawer()
+        }
+    }
+
+    componentDidMount(){
+        console.log("mounting")
+        document.addEventListener("keydown", this.escFunction, false);
+        document.addEventListener('mousedown', this.clickOutside);
+    }
+
+    componentWillUnmount() {
+        console.log("unmounting")
+        document.removeEventListener("keydown", this.escFunction, false);
+        document.removeEventListener('mousedown', this.clickOutside);
+    }
+
+    render() {
+        return (
+            <div className='rvt-drawer' id='mobile-drawer'>
+                { this.props.children }
+            </div>
+        )
     }
 }
