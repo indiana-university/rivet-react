@@ -108,7 +108,7 @@ export class Header extends Component {
                 for (var i = 0; i < props.nav.length; i++) {
                     var nk = 'nav-' + i
                     var n = props.nav[i]
-                    if (!n.subnav) { nav.push(<li key={nk}><a onClick={n.click}>{n.label}</a></li>) } else {
+                    if (!n.subnav) { nav.push(<li key={nk}><a href="javascript:void(0)" onClick={n.click}>{n.label}</a></li>) } else {
                         var subnav = []
                         for (var j = 0; j < n.subnav.length; j++) {
                             const sn = n.subnav[j]
