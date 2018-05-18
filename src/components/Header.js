@@ -32,19 +32,11 @@ export class Header extends Component {
                 avatar = ''
             }
 
-            var backdoor
-            if (props.backdoor) {
-                backdoor = <span className='rvt-header__backdoor'>backdoor</span>
-            } else {
-                backdoor = ''
-            }
-
             var profile
             if (props.user) {
                 profile = <div className='rvt-header-id__profile'>
                     {avatar}
                     <span className='rvt-header-id__user'>{props.user}</span>
-                    {backdoor}
                 </div>
             } else {
                 profile = ''
@@ -73,13 +65,6 @@ export class Header extends Component {
 
             var user = <span className='rvt-header-id__user rvt-header-id__user--has-dropdown'>{props.user}</span>
 
-            var backdoor
-            if (props.backdoor) {
-                backdoor = <span className='rvt-header__backdoor'>backdoor</span>
-            } else {
-                backdoor = ''
-            }
-
             var logout, liClass
             if (props.logout) {
                 logout = <ul id='subnav-id' aria-hidden='true'>
@@ -96,7 +81,6 @@ export class Header extends Component {
                         data-subnav-toggle='subnav-id' aria-haspopup='true' aria-expanded='false'>
                     {avatar}
                     {user}
-                    {backdoor}
                 </button>
                 {logout}
             </li>
@@ -160,9 +144,9 @@ export class Header extends Component {
 
         var user, drawerUser
         if (props.user) {
-            user = <IdSection user={props.user} backdoor={props.backdoor}
+            user = <IdSection user={props.user}
                               avatar={props.avatar} logout={props.logout} />
-            drawerUser = <DrawerIdSection key='id' user={props.user} backdoor={props.backdoor}
+            drawerUser = <DrawerIdSection key='id' user={props.user}
                                           avatar={props.avatar} logout={props.logout} />
         } else {
             user = ''
