@@ -113,12 +113,23 @@ export class Header extends Component {
         </button>
     }
 
+    /**
+     * An HREF element
+     * @param {*} nav The navigation element for which to create the HREF
+     * @param {*} key The element key, if any
+     */
     href(nav, key){
         return key
             ? <a href="javascript:void(0)" key={key} onClick={nav.click}>{nav.label}</a>
             : <a href="javascript:void(0)" onClick={nav.click}>{nav.label}</a>
     }
 
+    /**
+     * A dropdown for a Rivet header drawer
+     * @param {*} title The display name for the drawer element
+     * @param {*} key The drawer element key
+     * @param {*} items The drawer contents (as list items)
+     */
     dropdownDrawer(title, key, items){
         return <li key={key} className='has-children'>
             <button data-subnav-toggle={"dropdown-drawer-"+key} aria-haspopup='true'
@@ -159,10 +170,9 @@ export class Header extends Component {
         });
     }
 
-    identityNavFull() {
-        return this.props.userNav.map(this.href)
-    }
-
+    /**
+     * An identity menu with the username, avatar, and user task navigation elements
+     */
     identityMenuWithNav() {
         return <div className="rvt-dropdown">
                 <button className="rvt-header-id__profile rvt-header-id__profile--has-dropdown rvt-dropdown__toggle" data-dropdown-toggle="id-dropdown" aria-haspopup="true" aria-expanded="false">
@@ -174,7 +184,7 @@ export class Header extends Component {
                 </button>
                 {this.userNavFull()}
                 <div className="rvt-dropdown__menu rvt-header-id__menu" id="id-dropdown" aria-hidden="true">
-                    {this.identityNavFull()};
+                    {this.props.userNav.map(this.href)};
                     <div role="group" aria-label="User actions">
                         {this.logout()}
                     </div>
@@ -182,6 +192,9 @@ export class Header extends Component {
             </div> 
     }
 
+    /**
+     * An identity menu with the username and avatar only
+     */
     identityMenuWithoutNav() {
         return [
             <div key="0" href="#0" className="rvt-header-id__profile">
@@ -194,9 +207,8 @@ export class Header extends Component {
         ];
     }
 
-
     /**
-     * An identity menu for the standard view. Identity navigation elements will be included if present.
+     * A Rivet identity menu for the standard view. Identity navigation elements will be included if present.
      */
     identityMenu() {
         if (!this.props.user) return ''
@@ -210,7 +222,9 @@ export class Header extends Component {
             </div>
     }
 
-    
+    /**
+     * A drawer identity menu with the username, avatar, and user task navigation elements
+     */
     identityMenuDrawerWithNav() {
         return <li className="has-children">
             <button className="rvt-header-id__profile rvt-header-id__profile--drawer" data-subnav-toggle="subnav-id" aria-haspopup="true" aria-expanded="false">
@@ -226,6 +240,9 @@ export class Header extends Component {
         </li>
     }
 
+    /**
+     * A drawer identity menu with the username and avatar only
+     */
     identityMenuDrawerWithoutNav() {
         return <div className="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm">
             {this.avatar()}
@@ -235,7 +252,7 @@ export class Header extends Component {
     }
 
     /**
-     * An identity menu for the drawer view. Identity navigation elements will be included if present.
+     * An Rivet identity menu for the drawer view. Identity navigation elements will be included if present.
      */
     identityMenuDrawer() {
         if (!this.props.user) return ''
@@ -285,6 +302,9 @@ export class Header extends Component {
         ]
     };
 
+    /**
+     * The header user and navigation elements. The appropriate markup will be selected based on the presence of the 'user' and 'nav' elements.
+     */
     headerContent() {
         if (this.props.nav) return this.headerWithIdentityAndNavigation();
         if (this.props.user) return this.headerWithIdentity();
