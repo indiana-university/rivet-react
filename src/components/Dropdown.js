@@ -52,10 +52,10 @@ class DropdownMenu extends Component {
     }
 
     clickOutside(event){
-        var drawerTrigger = document.querySelector('[data-dropdown-toggle]');
-        var drawerId = drawerTrigger ? drawerTrigger.getAttribute('data-dropdown-toggle') : null;
-        var drawerEl = document.querySelector('#' + drawerId);
-        if(event.target != drawerEl && !drawerEl.contains(event.target) && !drawerTrigger.contains(event.target)) {
+        var dropdownTrigger = document.querySelector('[data-dropdown-toggle]');
+        var dropdownId = dropdownTrigger ? dropdownTrigger.getAttribute('data-dropdown-toggle') : null;
+        var dropdownEl = document.querySelector('#' + dropdownId);
+        if(event.target != dropdownEl && !dropdownEl.contains(event.target) && !dropdownTrigger.contains(event.target)) {
             this.props.toggleDropdown()
         }
     }
