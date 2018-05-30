@@ -30,10 +30,16 @@ const applicationNav = [
     ]}
 ]
 
+const userNav = [
+    { label: "Task 1", click: ()=>console.log("Task 1 clicked") },
+    { label: "Task 2", click: ()=>console.log("Task 2 clicked") },    
+    { label: "Task 3", click: ()=>console.log("Task 3 clicked") },    
+]
+
 class Demo extends Component {
     render() {
         return [
-            <Header key={1} avatar="JL" user="jolamar" nav={applicationNav} logout={()=>console.log('logged out')} />
+            <Header key={1} avatar="JL" user="jolamar" nav={applicationNav} userNav={userNav} logout={()=>console.log('logged out')} />
             ,<div key={2} className="rvt-container rvt-container--freshman rvt-m-top-md">
                 <h1>Rivet 1.0.0 React Components Demo</h1>
 
