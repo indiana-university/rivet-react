@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import {copy, shortuid, getRivetClasses} from '../util'
-import classNames from 'classnames'
 import { Dropdown } from "./Dropdown"
 
 class Drawer extends Component {
@@ -94,7 +92,7 @@ export class Header extends Component {
      * The drawer button ("hamburger")
      */
     drawerButton(){
-        return <button className="rvt-drawer-button" aria-haspopup="true" aria-expanded={this.state.drawerOpen} onClick={this.toggleDrawer} data-drawer-toggle="mobile-drawer">
+        return <button className={`rvt-drawer-button ${this.state.drawerOpen ? 'is-open' : ''}`} aria-haspopup="true" aria-expanded={this.state.drawerOpen} onClick={this.toggleDrawer} data-drawer-toggle="mobile-drawer">
             <span className="sr-only">Toggle menu</span>
             <svg role="img" alt="" className="rvt-drawer-button-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <g fill="currentColor">
