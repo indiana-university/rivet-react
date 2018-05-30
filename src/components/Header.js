@@ -48,10 +48,12 @@ export class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            drawerOpen: false
+            drawerOpen: false,
+            identityDropdownOpen: false
         };
 
         this.toggleDrawer = this.toggleDrawer.bind(this)
+        this.toggleIdentityDropdown = this.toggleIdentityDropdown.bind(this)
     }
 
     /**
@@ -88,6 +90,12 @@ export class Header extends Component {
         })
     }
 
+    toggleIdentityDropdown() {
+        this.setState({
+            identityDropdownOpen: !this.state.identityDropdownOpen
+        })
+    }
+
     /**
      * The drawer button ("hamburger")
      */
@@ -115,7 +123,7 @@ export class Header extends Component {
     href(nav, key){
         return key
             ? <a href="javascript:void(0)" key={key} onClick={nav.click}>{nav.label}</a>
-            : <a href="javascript:void(0)" onClick={nav.click}>{nav.label}</a>
+            : <a href="javascript:void(0)" key={nav.label} onClick={nav.click}>{nav.label}</a>
     }
 
     /**
@@ -169,19 +177,22 @@ export class Header extends Component {
      */
     identityMenuWithNav() {
         return <div className="rvt-dropdown">
-                <button className="rvt-header-id__profile rvt-header-id__profile--has-dropdown rvt-dropdown__toggle" data-dropdown-toggle="id-dropdown" aria-haspopup="true" aria-expanded="false">
+                <button onClick={this.toggleIdentityDropdown} className="rvt-header-id__profile rvt-header-id__profile--has-dropdown rvt-dropdown__toggle" data-dropdown-toggle="id-dropdown" aria-haspopup="true" aria-expanded={this.state.identityDropdownOpen}>
                     {this.avatar()}
                     {this.username()}
                     <svg role="img" alt="" className="rvt-m-left-xs" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                         <path fill="currentColor" d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z"/>
                     </svg>
                 </button>
-                <div className="rvt-dropdown__menu rvt-header-id__menu" id="id-dropdown">
-                    {this.props.userNav.map(this.href)}
-                    <div role="group" aria-label="User actions">
-                        {this.logout()}
+                { this.state.identityDropdownOpen && 
+                    <div className="rvt-dropdown__menu rvt-header-id__menu" id="id-dropdown">
+                        {this.props.userNav.map(this.href)}
+                        <div role="group" aria-label="User actions">
+                            {this.logout()}
+                        </div>
                     </div>
-                </div>
+                }
+                
             </div> 
     }
 
@@ -226,7 +237,7 @@ export class Header extends Component {
             </button>
             <div id="subnav-id" role="menu">
                 <ul>
-                    {this.props.userNav.map((n,i)=><li>{this.href(n, i)}</li>)}
+                    {this.props.userNav.map((n,i)=><li key={n}>{this.href(n, i)}</li>)}
                     <li>{this.logout()}</li>
                 </ul>
             </div>
