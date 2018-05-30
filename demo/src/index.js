@@ -27,6 +27,11 @@ const applicationNav = [
         { label: "Item 1", click: ()=>console.log("Item 1 clicked") },
         { label: "Item 2", click: ()=>console.log("Item 2 clicked") },
         { label: "Item 3", click: ()=>console.log("Item 3 clicked") }
+    ]},
+    { label: "Nav 3", click: ()=>console.log("Nav 3 clicked"), subnav: [
+        { label: "Item 1", click: ()=>console.log("Item 1 clicked") },
+        { label: "Item 2", click: ()=>console.log("Item 2 clicked") },
+        { label: "Item 3", click: ()=>console.log("Item 3 clicked") }
     ]}
 ]
 

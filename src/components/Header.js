@@ -49,10 +49,12 @@ export class Header extends Component {
         super(props);
         this.state = {
             drawerOpen: false,
-            identityDropdownOpen: false
+            identityDropdownOpen: false,
+            activeDropdown: null
         };
 
         this.toggleDrawer = this.toggleDrawer.bind(this)
+        this.toggleDrawerDropdown = this.toggleDrawerDropdown.bind(this)
         this.toggleIdentityDropdown = this.toggleIdentityDropdown.bind(this)
     }
 
@@ -87,6 +89,12 @@ export class Header extends Component {
     toggleDrawer() {
         this.setState({
             drawerOpen: !this.state.drawerOpen
+        })
+    }
+
+    toggleDrawerDropdown(key) {
+        this.setState({
+            activeDropdown: key
         })
     }
 
@@ -134,13 +142,15 @@ export class Header extends Component {
      */
     dropdownDrawer(title, key, items){
         return <li key={key} className='has-children'>
-            <button data-subnav-toggle={"dropdown-drawer-"+key} aria-haspopup='true'
+            <button onClick={() => { this.toggleDrawerDropdown(key) }} data-subnav-toggle={"dropdown-drawer-"+key} aria-haspopup='true'
                     aria-expanded='false'>
                 {title}
             </button>
-            <ul id={"dropdown-drawer-"+key}>
-                {items}
-            </ul>
+            { this.state.activeDropdown === key && 
+                <ul id={"dropdown-drawer-"+key}>
+                    {items}
+                </ul>
+            }
         </li>        
     }
 
@@ -186,13 +196,12 @@ export class Header extends Component {
                 </button>
                 { this.state.identityDropdownOpen && 
                     <div className="rvt-dropdown__menu rvt-header-id__menu" id="id-dropdown">
-                        {this.props.userNav.map(this.href)}
+                        {this.props.userNav.map((n,i)=>this.href(n,i))}
                         <div role="group" aria-label="User actions">
                             {this.logout()}
                         </div>
                     </div>
-                }
-                
+                }  
             </div> 
     }
 
@@ -200,15 +209,16 @@ export class Header extends Component {
      * An identity menu with the username and avatar only
      */
     identityMenuWithoutNav() {
-        return [
-            <div key="0" href="#0" className="rvt-header-id__profile">
+        return 
+        <React.Fragment>
+            <div href="#0" className="rvt-header-id__profile">
                 {this.avatar()}
                 {this.username()}
-            </div>,
-            <div key="1">
+            </div>
+            <div>
                 {this.logout('rvt-header-id__log-out')}
             </div>
-        ];
+        </React.Fragment>
     }
 
     /**
@@ -231,16 +241,18 @@ export class Header extends Component {
      */
     identityMenuDrawerWithNav() {
         return <li className="has-children">
-            <button className="rvt-header-id__profile rvt-header-id__profile--drawer" data-subnav-toggle="subnav-id" aria-haspopup="true" aria-expanded="false">
+            <button onClick={this.toggleIdentityDropdown} className="rvt-header-id__profile rvt-header-id__profile--drawer" data-subnav-toggle="subnav-id" aria-haspopup="true" aria-expanded="false">
                 {this.avatar()}
                 {this.username()}
             </button>
-            <div id="subnav-id" role="menu">
-                <ul>
-                    {this.props.userNav.map((n,i)=><li key={n}>{this.href(n, i)}</li>)}
-                    <li>{this.logout()}</li>
-                </ul>
-            </div>
+            { this.state.identityDropdownOpen && 
+                <div id="subnav-id" role="menu">
+                    <ul>
+                        {this.props.userNav.map((n,i)=><li key={i}>{this.href(n, i)}</li>)}
+                        <li>{this.logout()}</li>
+                    </ul>
+                </div>
+            }
         </li>
     }
 
@@ -279,7 +291,7 @@ export class Header extends Component {
             </div>,
             <div key={2}>
                 { this.state.drawerOpen && 
-                  <Drawer toggleDrawer={this.toggleDrawer} >
+                  <Drawer identityDropdownOpen={this.state.identityDropdownOpen} toggleIdentityDropdown={this.toggleIdentityDropdown} toggleDrawer={this.toggleDrawer} >
                     <nav className='rvt-drawer__nav' role='navigation'>
                         <ul>
                             {this.identityMenuDrawer()}
