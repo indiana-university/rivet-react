@@ -6,24 +6,13 @@ import { Dropdown } from "./Dropdown"
 class Drawer extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            visible: false
-        };
-
         this.escFunction = this.escFunction.bind(this)
         this.clickOutside = this.clickOutside.bind(this)
-        this.toggleDrawer = this.toggleDrawer.bind(this)
-    }
-
-    toggleDrawer() {
-        this.setState({
-            visible: !this.state.visible
-        })
     }
 
     escFunction(event){
         if(event.keyCode === 27) {
-            this.toggleDrawer()
+            this.props.toggleDrawer();
         }
     }
 
@@ -32,7 +21,7 @@ class Drawer extends Component {
         var drawerId = drawerTrigger ? drawerTrigger.getAttribute('data-drawer-toggle') : null;
         var drawerEl = document.querySelector('#' + drawerId);
         if(event.target != drawerEl && !drawerEl.contains(event.target) && !drawerTrigger.contains(event.target)) {
-            this.toggleDrawer()
+            this.props.toggleDrawer();
         }
     }
 
@@ -50,7 +39,7 @@ class Drawer extends Component {
         return (
             <div className="rvt-drawer" id="mobile-drawer">
                 { this.props.children }
-                <button onClick={this.toggleDrawer} className='rvt-drawer__bottom-close'>Close nav</button>
+                <button onClick={this.props.toggleDrawer} className='rvt-drawer__bottom-close'>Close nav</button>
             </div>
         )
     }
@@ -61,7 +50,7 @@ export class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            visible: false
+            drawerOpen: false
         };
 
     }
@@ -94,11 +83,17 @@ export class Header extends Component {
             : ''        
     }
 
+    toggleDrawer(t) {
+        t.setState({
+            drawerOpen: !t.state.drawerOpen
+        })
+    }
+
     /**
      * The drawer button ("hamburger")
      */
     drawerButton(){
-        return <button className="rvt-drawer-button" aria-haspopup="true" aria-expanded="false" data-drawer-toggle="mobile-drawer">
+        return <button className="rvt-drawer-button" aria-haspopup="true" aria-expanded={this.state.drawerOpen} onClick={() => this.toggleDrawer(this)} data-drawer-toggle="mobile-drawer">
             <span className="sr-only">Toggle menu</span>
             <svg role="img" alt="" className="rvt-drawer-button-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
                 <g fill="currentColor">
@@ -273,14 +268,17 @@ export class Header extends Component {
                 {this.identityMenu()}
                 {this.drawerButton()}
             </div>,
-            <Drawer key={2} >
-                <nav className='rvt-drawer__nav' role='navigation'>
-                    <ul>
-                        {this.identityMenuDrawer()}
-                        {this.applicationNavDrawer()}
-                    </ul>
-                </nav>
-            </Drawer>
+            <div key={2}>
+                { this.state.drawerOpen && 
+                  <Drawer toggleDrawer={() => this.toggleDrawer(this)} >
+                    <nav className='rvt-drawer__nav' role='navigation'>
+                        <ul>
+                            {this.identityMenuDrawer()}
+                            {this.applicationNavDrawer()}
+                        </ul>
+                    </nav>
+                  </Drawer> }
+            </div>
         ]
     } 
 
@@ -294,11 +292,14 @@ export class Header extends Component {
                 {this.identityMenu()}
                 {this.drawerButton()}
             </div>,
-            <Drawer key={2}>
-                <div className="rvt-header-id rvt-header-id--drawer">
-                    {this.identityMenuDrawer()}
-                </div>
-            </Drawer>
+            <div key={2}>
+                { this.state.drawerOpen && 
+                  <Drawer toggleDrawer={() => this.toggleDrawer(this)} >
+                    <div className="rvt-header-id rvt-header-id--drawer">
+                        {this.identityMenuDrawer()}
+                    </div>
+                  </Drawer> }
+            </div>
         ]
     };
 
