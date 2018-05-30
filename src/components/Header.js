@@ -176,9 +176,8 @@ export class Header extends Component {
                         <path fill="currentColor" d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z"/>
                     </svg>
                 </button>
-                {this.userNavFull()}
                 <div className="rvt-dropdown__menu rvt-header-id__menu" id="id-dropdown">
-                    {this.props.userNav.map(this.href)};
+                    {this.props.userNav.map(this.href)}
                     <div role="group" aria-label="User actions">
                         {this.logout()}
                     </div>
