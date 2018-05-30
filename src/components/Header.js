@@ -48,7 +48,7 @@ class Drawer extends Component {
 
     render() {
         return (
-            <div className="rvt-drawer" aria-hidden="true" id="mobile-drawer">
+            <div className="rvt-drawer" id="mobile-drawer">
                 { this.props.children }
                 <button onClick={this.toggleDrawer} className='rvt-drawer__bottom-close'>Close nav</button>
             </div>
@@ -81,7 +81,7 @@ export class Header extends Component {
      */
     avatar() {
         return this.props.avatar 
-            ? <span className="rvt-header-id__avatar" aria-hidden="true">{this.props.avatar}</span>
+            ? <span className="rvt-header-id__avatar">{this.props.avatar}</span>
             : ''
     }
 
@@ -136,7 +136,7 @@ export class Header extends Component {
                     aria-expanded='false'>
                 {title}
             </button>
-            <ul id={"dropdown-drawer-"+key} aria-hidden='true'>
+            <ul id={"dropdown-drawer-"+key}>
                 {items}
             </ul>
         </li>        
@@ -183,7 +183,7 @@ export class Header extends Component {
                     </svg>
                 </button>
                 {this.userNavFull()}
-                <div className="rvt-dropdown__menu rvt-header-id__menu" id="id-dropdown" aria-hidden="true">
+                <div className="rvt-dropdown__menu rvt-header-id__menu" id="id-dropdown">
                     {this.props.userNav.map(this.href)};
                     <div role="group" aria-label="User actions">
                         {this.logout()}
@@ -231,7 +231,7 @@ export class Header extends Component {
                 {this.avatar()}
                 {this.username()}
             </button>
-            <div id="subnav-id" role="menu" aria-hidden="true">
+            <div id="subnav-id" role="menu">
                 <ul>
                     {this.props.userNav.map((n,i)=><li>{this.href(n, i)}</li>)}
                     <li>{this.logout()}</li>
