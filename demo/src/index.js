@@ -20,10 +20,20 @@ import {
     TableRow
 } from '../../src'
 
+
+const applicationNav = [
+    { label: "Nav 1", click: ()=>console.log("Nav 1 clicked") },
+    { label: "Nav 2", click: ()=>console.log("Nav 2 clicked"), subnav: [
+        { label: "Item 1", click: ()=>console.log("Item 1 clicked") },
+        { label: "Item 2", click: ()=>console.log("Item 2 clicked") },
+        { label: "Item 3", click: ()=>console.log("Item 3 clicked") }
+    ]}
+]
+
 class Demo extends Component {
     render() {
         return [
-            <Header key={1} avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
+            <Header key={1} avatar="JL" user="jolamar" nav={applicationNav} logout={()=>console.log('logged out')} />
             ,<div key={2} className="rvt-container rvt-container--freshman rvt-m-top-md">
                 <h1>Rivet 1.0.0 React Components Demo</h1>
 

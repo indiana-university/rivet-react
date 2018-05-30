@@ -12,12 +12,10 @@ export class Dropdown extends Component {
     }
 
     toggleDropdown() {
-        console.log("toggle")
         this.setState({
             visible: !this.state.visible
         })
     }
-
 
     render() {
         return(
@@ -49,16 +47,16 @@ class DropdownMenu extends Component {
 
     escFunction(event){
         if(event.keyCode === 27) {
-            this.props.toggleDrawer()
+            this.props.toggleDropdown()
         }
     }
 
     clickOutside(event){
-        var drawerTrigger = document.querySelector('[data-drawer-toggle]');
-        var drawerId = drawerTrigger ? drawerTrigger.getAttribute('data-drawer-toggle') : null;
+        var drawerTrigger = document.querySelector('[data-dropdown-toggle]');
+        var drawerId = drawerTrigger ? drawerTrigger.getAttribute('data-dropdown-toggle') : null;
         var drawerEl = document.querySelector('#' + drawerId);
         if(event.target != drawerEl && !drawerEl.contains(event.target) && !drawerTrigger.contains(event.target)) {
-            this.props.toggleDrawer()
+            this.props.toggleDropdown()
         }
     }
 
