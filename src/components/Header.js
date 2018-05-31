@@ -106,6 +106,10 @@ export class Header extends Component {
         })
     }
 
+    hasItems(a) {
+        return a && a.length > 0;
+    }
+
     /**
      * The drawer button ("hamburger")
      */
@@ -165,7 +169,7 @@ export class Header extends Component {
      * Application navigation elements for the standard view.
      */
     applicationNav() {
-        if (!this.props.nav) return '';
+        if (!this.hasItems(this.props.nav)) return null;
         var nav = this.props.nav.map((n, i) => {
             var nk = 'nav-'+i
             var item = n.subnav 
@@ -180,7 +184,7 @@ export class Header extends Component {
      * Application navigation elements for the drawer view.
      */
     applicationNavDrawer() {
-        if (!this.props.nav) return '';
+        if (!this.hasItems(this.props.nav)) return null;
         return this.props.nav.map((n,i) => {
             var nk = 'dnav-'+i
             return n.subnav
@@ -212,25 +216,25 @@ export class Header extends Component {
      * An identity menu with the username and avatar only
      */
     identityMenuDesktopWithoutNav() {
-        return 
-        <React.Fragment>
-            <div href="#0" className="rvt-header-id__profile">
+        return [
+            <div key={1} href="#0" className="rvt-header-id__profile">
                 {this.avatar()}
                 {this.username("rvt-header-id__user")}
-            </div>
-            <div>
+            </div>,
+            <div key={2}>
                 {this.logout('rvt-header-id__log-out')}
             </div>
-        </React.Fragment>
+        ];
+        
     }
 
     /**
      * A Rivet identity menu for the standard view. Identity navigation elements will be included if present.
      */
     identityMenu() {
-        if (!this.props.user) return ''
+        if (!this.props.user) return null
 
-        var identityMenuElements = this.props.userNav 
+        var identityMenuElements = this.hasItems(this.props.userNav)
             ? this.identityMenuDesktopWithNav()
             : this.identityMenuDesktopWithoutNav();
 
@@ -253,7 +257,6 @@ export class Header extends Component {
                             <li>{this.logout()}</li>
                         </React.Fragment>
         const className="rvt-header-id__profile rvt-header-id__profile--drawer" 
-
         return this.dropdownDrawer(anchorHtml, key, items, className);
     }
 
@@ -261,10 +264,12 @@ export class Header extends Component {
      * A drawer identity menu with the username and avatar only
      */
     identityMenuDrawerWithoutNav() {
-        return <div className="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm">
+        /* HACK: ensure that there is a bottom border on the identity section for the scenario in which there is app navigation but no user navigation. */
+        const style = {borderBottom: '2px solid #eee'};
+        return <div className="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm" style={style} >
             {this.avatar()}
             {this.username("rvt-header-id__user")}
-            {this.logout()}
+            {this.logout('rvt-header-id__log-out')}
         </div>
     }
 
@@ -272,18 +277,29 @@ export class Header extends Component {
      * An Rivet identity menu for the drawer view. Identity navigation elements will be included if present.
      */
     identityMenuDrawer() {
-        if (!this.props.user) return ''
+        if (!this.props.user) return null
 
-        return this.props.userNav
+        return this.hasItems(this.props.userNav)
             ? this.identityMenuDrawerWithNav()
             : this.identityMenuDrawerWithoutNav()
     }
 
     /**
-     * Header with Navigation
-     * https://rivet.uits.iu.edu/components/navigation/header/#header-with-main-navigation
+     * The header user and navigation elements. The appropriate markup will be selected based on the presence of the 'user' and 'nav' elements.
      */
-    headerWithIdentityAndNavigation() {
+    headerContent() {
+        if (!this.props.user && !this.hasItems(this.props.nav)) return null;
+
+        const drawerContents = 
+            this.hasItems(this.props.nav) || this.hasItems(this.props.userNav)
+            ? <nav className='rvt-drawer__nav' role='navigation'>
+                <ul>
+                    {this.identityMenuDrawer()}
+                    {this.applicationNavDrawer()}
+                </ul>
+              </nav>
+            : this.identityMenuDrawer()
+            
         return [
             <div key={1} className="rvt-header__controls">
                 {this.applicationNav()}
@@ -292,46 +308,13 @@ export class Header extends Component {
             </div>,
             <div key={2}>
                 { this.state.drawerOpen && 
-                  <Drawer identityDropdownOpen={this.state.identityDropdownOpen} toggleIdentityDropdown={this.toggleIdentityDropdown} toggleDrawer={this.toggleDrawer} >
-                    <nav className='rvt-drawer__nav' role='navigation'>
-                        <ul>
-                            {this.identityMenuDrawer()}
-                            {this.applicationNavDrawer()}
-                        </ul>
-                    </nav>
+                  <Drawer identityDropdownOpen={this.state.identityDropdownOpen} 
+                          toggleIdentityDropdown={this.toggleIdentityDropdown} 
+                          toggleDrawer={this.toggleDrawer} >
+                    { drawerContents }
                   </Drawer> }
             </div>
         ]
-    } 
-
-    /**
-     * Header with Identity
-     * https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
-     */
-    headerWithIdentity() {
-        return [
-            <div key={1} className="rvt-header__controls">
-                {this.identityMenu()}
-                {this.drawerButton()}
-            </div>,
-            <div key={2}>
-                { this.state.drawerOpen && 
-                  <Drawer toggleDrawer={this.toggleDrawer} >
-                    <div className="rvt-header-id rvt-header-id--drawer">
-                        {this.identityMenuDrawer()}
-                    </div>
-                  </Drawer> }
-            </div>
-        ]
-    };
-
-    /**
-     * The header user and navigation elements. The appropriate markup will be selected based on the presence of the 'user' and 'nav' elements.
-     */
-    headerContent() {
-        if (this.props.nav) return this.headerWithIdentityAndNavigation();
-        if (this.props.user) return this.headerWithIdentity();
-        return ''
     }
 
     render() {
