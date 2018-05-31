@@ -56,9 +56,8 @@ class DropdownMenu extends Component {
     }
 
     clickOutside(event){
-        var dropdownTrigger = document.querySelector('[data-dropdown-toggle]');
-        var dropdownId = dropdownTrigger ? dropdownTrigger.getAttribute('data-dropdown-toggle') : null;
-        var dropdownEl = document.querySelector('#' + dropdownId);
+        var dropdownTrigger = document.querySelector('[data-dropdown-toggle='+this.props.id+']');
+        var dropdownEl = document.querySelector('#' + this.props.id);
         if(event.target != dropdownEl && !dropdownEl.contains(event.target) && !dropdownTrigger.contains(event.target)) {
             this.props.toggleDropdown()
         }
