@@ -20,10 +20,47 @@ import {
     TableRow
 } from '../../src'
 
+
+/**
+ * The Rivet Header supports several different configurations depending on the structure of the application.
+ * Below are a series of test Headers that variously include/exclude: 
+ *    a logged-in user
+ *    app navigation elements, 
+ *    user task elements (only with logged-in user). 
+ * See also: https://rivet.uits.iu.edu/components/navigation/header/
+ */
+
+const appNav = [
+    { label: "Nav 1", click: ()=>console.log("Nav 1 clicked") },
+    { label: "Nav 2", click: ()=>console.log("Nav 2 clicked"), subnav: [
+        { label: "Item 1", click: ()=>console.log("Item 1 clicked") },
+        { label: "Item 2", click: ()=>console.log("Item 2 clicked") },
+        { label: "Item 3", click: ()=>console.log("Item 3 clicked") }
+    ]},
+    { label: "Nav 3", click: ()=>console.log("Nav 3 clicked"), subnav: [
+        { label: "Item 1", click: ()=>console.log("Item 1 clicked") },
+        { label: "Item 2", click: ()=>console.log("Item 2 clicked") },
+        { label: "Item 3", click: ()=>console.log("Item 3 clicked") }
+    ]}
+]
+
+const userNav = [
+    { label: "Task 1", click: ()=>console.log("Task 1 clicked") },
+    { label: "Task 2", click: ()=>console.log("Task 2 clicked") },    
+    { label: "Task 3", click: ()=>console.log("Task 3 clicked") },    
+]
+
+//const header = <Header key={1} />
+//const header = <Header key={1} nav={appNav} />
+//const header = <Header key={1} avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
+//const header = <Header key={1} avatar="JL" user="jolamar" nav={appNav} logout={()=>console.log('logged out')} />
+//const header = <Header key={1} avatar="JL" user="jolamar" userNav={userNav} logout={()=>console.log('logged out')} />
+const header = <Header key={1} avatar="JL" user="jolamar" nav={appNav} userNav={userNav} logout={()=>console.log('logged out')} />
+
 class Demo extends Component {
     render() {
         return [
-            <Header key={1} avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
+            header
             ,<div key={2} className="rvt-container rvt-container--freshman rvt-m-top-md">
                 <h1>Rivet 1.0.0 React Components Demo</h1>
 
