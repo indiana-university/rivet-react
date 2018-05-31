@@ -264,9 +264,7 @@ export class Header extends Component {
      * A drawer identity menu with the username and avatar only
      */
     identityMenuDrawerWithoutNav() {
-        /* HACK: ensure that there is a bottom border on the identity section for the scenario in which there is app navigation but no user navigation. */
-        const style = {borderBottom: '2px solid #eee'};
-        return <div className="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm" style={style} >
+        return <div className="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm rvt-m-bottom-sm">
             {this.avatar()}
             {this.username("rvt-header-id__user")}
             {this.logout('rvt-header-id__log-out')}
@@ -293,8 +291,9 @@ export class Header extends Component {
         const drawerContents = 
             this.hasItems(this.props.nav) || this.hasItems(this.props.userNav)
             ? <nav className='rvt-drawer__nav' role='navigation'>
+                {!this.hasItems(this.props.userNav) && this.identityMenuDrawerWithoutNav()}
                 <ul>
-                    {this.identityMenuDrawer()}
+                    {this.hasItems(this.props.userNav) && this.identityMenuDrawerWithNav()}
                     {this.applicationNavDrawer()}
                 </ul>
               </nav>
