@@ -49,21 +49,21 @@ export class Header extends Component {
         super(props);
         this.state = {
             drawerOpen: false,
-            identityDropdownOpen: false,
-            activeDropdown: null
+            drawerDropdownVisibility: {},
+            desktopActiveDropdown: null
         };
 
         this.toggleDrawer = this.toggleDrawer.bind(this)
         this.toggleDrawerDropdown = this.toggleDrawerDropdown.bind(this)
-        this.toggleIdentityDropdown = this.toggleIdentityDropdown.bind(this)
+        this.toggleDesktopDropdown = this.toggleDesktopDropdown.bind(this)
     }
 
     /**
      * The username, if provided
      */
-    username() {
+    username(className) {
         return this.props.user
-            ? <span className="rvt-header-id__user">{this.props.user}</span>
+            ? <span className={className}>{this.props.user}</span>
             : ''
 
     }
@@ -82,7 +82,7 @@ export class Header extends Component {
      */
     logout(className) {
         return this.props.logout
-            ? <a href="javascript:void(0)" onClick={this.props.logout} className={className || ''}>Log out</a>
+            ? <a href="javascript:void(0)" onClick={this.props.logout} className={className}>Log out</a>
             : ''        
     }
 
@@ -92,15 +92,17 @@ export class Header extends Component {
         })
     }
 
-    toggleDrawerDropdown(key) {
+    toggleDesktopDropdown(key) {
         this.setState({
-            activeDropdown: key
+            desktopActiveDropdown: key == this.state.desktopActiveDropdown ? null : key
         })
     }
 
-    toggleIdentityDropdown() {
+    toggleDrawerDropdown(key) {
+        let drawerDropdownVisibility = Object.assign({}, this.state.drawerDropdownVisibility);
+        drawerDropdownVisibility[key] = !drawerDropdownVisibility[key];
         this.setState({
-            identityDropdownOpen: !this.state.identityDropdownOpen
+            drawerDropdownVisibility: drawerDropdownVisibility
         })
     }
 
@@ -136,17 +138,22 @@ export class Header extends Component {
 
     /**
      * A dropdown for a Rivet header drawer
-     * @param {*} title The display name for the drawer element
+     * @param {*} anchorHtml The content (inner html) of the drawer anchor
      * @param {*} key The drawer element key
      * @param {*} items The drawer contents (as list items)
+     * @param {*} className The anchor class (optional)
      */
-    dropdownDrawer(title, key, items){
+    dropdownDrawer(anchorHtml, key, items, className){
         return <li key={key} className='has-children'>
-            <button onClick={() => { this.toggleDrawerDropdown(key) }} data-subnav-toggle={"dropdown-drawer-"+key} aria-haspopup='true'
-                    aria-expanded='false'>
-                {title}
-            </button>
-            { this.state.activeDropdown === key && 
+            <a href="javascript:void(0)" 
+               className={className}
+               onClick={ () => { this.toggleDrawerDropdown(key) }}
+               data-subnav-toggle={"dropdown-drawer-"+key} 
+               aria-haspopup='true'
+               aria-expanded={this.state.drawerDropdownVisibility[key]}>
+                {anchorHtml}
+            </a>
+            { this.state.drawerDropdownVisibility[key] && 
                 <ul id={"dropdown-drawer-"+key}>
                     {items}
                 </ul>
@@ -162,7 +169,7 @@ export class Header extends Component {
         var nav = this.props.nav.map((n, i) => {
             var nk = 'nav-'+i
             var item = n.subnav 
-                ? <Dropdown id={"dropdown"+nk} title={n.label}>{n.subnav.map((sn,j) => this.href(sn, nk+"-"+j))}</Dropdown>
+                ? <Dropdown id={"dropdown"+nk} title={n.label}> {n.subnav.map((sn,j) => this.href(sn, nk+"-"+j))} </Dropdown>
                 : this.href(n);
             return <li key={nk}>{item}</li>
         });
@@ -185,35 +192,31 @@ export class Header extends Component {
     /**
      * An identity menu with the username, avatar, and user task navigation elements
      */
-    identityMenuWithNav() {
-        return <div className="rvt-dropdown">
-                <button onClick={this.toggleIdentityDropdown} className="rvt-header-id__profile rvt-header-id__profile--has-dropdown rvt-dropdown__toggle" data-dropdown-toggle="id-dropdown" aria-haspopup="true" aria-expanded={this.state.identityDropdownOpen}>
-                    {this.avatar()}
-                    {this.username()}
-                    <svg role="img" alt="" className="rvt-m-left-xs" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                        <path fill="currentColor" d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z"/>
-                    </svg>
-                </button>
-                { this.state.identityDropdownOpen && 
-                    <div className="rvt-dropdown__menu rvt-header-id__menu" id="id-dropdown">
-                        {this.props.userNav.map((n,i)=>this.href(n,i))}
-                        <div role="group" aria-label="User actions">
-                            {this.logout()}
-                        </div>
+    identityMenuDesktopWithNav() {
+        const key = "id-desktop-nav"
+        const anchorHtml =  <React.Fragment>
+                                {this.avatar()}
+                                {this.username()}
+                            </React.Fragment>
+        const className = "rvt-header-id__profile rvt-header-id__profile--has-dropdown"
+
+        return <Dropdown id={key} title={anchorHtml} className={className} isIdentityMenu={true}>
+                    {this.props.userNav.map((n,i)=>this.href(n,i))}
+                    <div role="group" aria-label="User actions">
+                        {this.logout()}
                     </div>
-                }  
-            </div> 
+            </Dropdown>
     }
 
     /**
      * An identity menu with the username and avatar only
      */
-    identityMenuWithoutNav() {
+    identityMenuDesktopWithoutNav() {
         return 
         <React.Fragment>
             <div href="#0" className="rvt-header-id__profile">
                 {this.avatar()}
-                {this.username()}
+                {this.username("rvt-header-id__user")}
             </div>
             <div>
                 {this.logout('rvt-header-id__log-out')}
@@ -228,8 +231,8 @@ export class Header extends Component {
         if (!this.props.user) return ''
 
         var identityMenuElements = this.props.userNav 
-            ? this.identityMenuWithNav()
-            : this.identityMenuWithoutNav();
+            ? this.identityMenuDesktopWithNav()
+            : this.identityMenuDesktopWithoutNav();
 
             return <div className="rvt-header-id">
                 {identityMenuElements}
@@ -240,20 +243,18 @@ export class Header extends Component {
      * A drawer identity menu with the username, avatar, and user task navigation elements
      */
     identityMenuDrawerWithNav() {
-        return <li className="has-children">
-            <button onClick={this.toggleIdentityDropdown} className="rvt-header-id__profile rvt-header-id__profile--drawer" data-subnav-toggle="subnav-id" aria-haspopup="true" aria-expanded="false">
-                {this.avatar()}
-                {this.username()}
-            </button>
-            { this.state.identityDropdownOpen && 
-                <div id="subnav-id" role="menu">
-                    <ul>
-                        {this.props.userNav.map((n,i)=><li key={i}>{this.href(n, i)}</li>)}
-                        <li>{this.logout()}</li>
-                    </ul>
-                </div>
-            }
-        </li>
+        const key = "id-drawer-nav";
+        const anchorHtml =  <React.Fragment>
+                                {this.avatar()}
+                                {this.username()}
+                            </React.Fragment>
+        const items =   <React.Fragment>
+                            {this.props.userNav.map((n,i)=><li key={i}>{this.href(n, i)}</li>)}
+                            <li>{this.logout()}</li>
+                        </React.Fragment>
+        const className="rvt-header-id__profile rvt-header-id__profile--drawer" 
+
+        return this.dropdownDrawer(anchorHtml, key, items, className);
     }
 
     /**
@@ -262,7 +263,7 @@ export class Header extends Component {
     identityMenuDrawerWithoutNav() {
         return <div className="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm">
             {this.avatar()}
-            {this.username()}
+            {this.username("rvt-header-id__user")}
             {this.logout()}
         </div>
     }

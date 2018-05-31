@@ -20,7 +20,11 @@ export class Dropdown extends Component {
     render() {
         return(
             <div className='dropdown'>
-                <button className='rvt-dropdown__toggle' data-dropdown-toggle={this.props.id} onClick={this.toggleDropdown}>
+                <button className={`rvt-dropdown__toggle ${this.props.className}`} 
+                        data-dropdown-toggle={this.props.id} 
+                        onClick={this.toggleDropdown}
+                        aria-haspopup="true"
+                        aria-expanded={this.state.visible}>
                     <span className="rvt-dropdown__toggle-text">{this.props.title}</span>
                     <svg role="img" alt="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                         <title>Dropdown icon</title>
@@ -29,7 +33,7 @@ export class Dropdown extends Component {
 
                 </button>
                 { this.state.visible &&
-                <DropdownMenu id={this.props.id} toggleDropdown={this.toggleDropdown}>
+                <DropdownMenu id={this.props.id} isIdentityMenu={this.props.isIdentityMenu} toggleDropdown={this.toggleDropdown}>
                     { this.props.children }
                 </DropdownMenu>
                 }
@@ -61,7 +65,6 @@ class DropdownMenu extends Component {
     }
 
     componentDidMount(){
-        console.log("shown")
         document.addEventListener("keydown", this.escFunction, false);
         document.addEventListener('mousedown', this.clickOutside);
     }
@@ -73,7 +76,7 @@ class DropdownMenu extends Component {
 
     render() {
         return(
-            <div className='rvt-dropdown__menu' id={this.props.id}>
+            <div className={`rvt-dropdown__menu ${ this.props.isIdentityMenu ? 'rvt-header-id__menu' : '' }`} id={this.props.id}>
                 { this.props.children }
             </div>
         )
