@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
+import {BrowserRouter} from 'react-router-dom'
 
 import 'rivet-uits/css/rivet.min.css'
 
@@ -31,23 +32,23 @@ import {
  */
 
 const appNav = [
-    { label: "Nav 1", onClick: ()=>console.log("Nav 1 clicked") },
+    { label: "Nav 1", href: "#nav1" },
     { label: "Nav 2", href: "#nav2", subnav: [
         { label: "Item 1", href: "#item1" },
         { label: "Item 2", href: "#item2" },
         { label: "Item 3", href: "#item3" }
     ]},
     { label: "Nav 3", onClick: ()=>console.log("Nav 3 clicked"), subnav: [
-        { label: "Item 1", onClick: ()=>console.log("Item 1 clicked") },
-        { label: "Item 2", onClick: ()=>console.log("Item 2 clicked") },
-        { label: "Item 3", onClick: ()=>console.log("Item 3 clicked") }
+        { label: "Item 1", href: "#item1" },
+        { label: "Item 2", href: "#item2" },
+        { label: "Item 3", href: "#item3" }
     ]}
 ]
 
 const userNav = [
-    {label: "Task 1", onClick: () => console.log("Task 1 clicked")},
-    {label: "Task 2", onClick: () => console.log("Task 2 clicked")},
-    {label: "Task 3", onClick: () => console.log("Task 3 clicked")},
+    {label: "Task 1", to: '/profile'},
+    {label: "Task 2", to: '/settings'},
+    {label: "Task 3", to: '/logout'},
 ]
 
 //const header = <Header key={1} />
@@ -294,4 +295,7 @@ class Demo extends Component {
     }
 }
 
-render(<Demo/>, document.querySelector('#demo'))
+const demo = <BrowserRouter>
+                <Demo/>
+            </BrowserRouter>
+render(demo, document.querySelector('#demo'))
