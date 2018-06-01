@@ -1,6 +1,6 @@
 {
   "name": "rivet-react",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "rivet-react-nwb React component",
   "main": "lib/index.js",
   "module": "es/index.js",
