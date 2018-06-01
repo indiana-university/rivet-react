@@ -169,7 +169,7 @@ export class Header extends Component {
      * Application navigation elements for the standard view.
      */
     applicationNav() {
-        if (!this.hasItems(this.props.nav)) return null;
+        if (!this.hasItems(this.props.nav)) return <nav className='rvt-header__main-nav' role='navigation'>{this.props.nav}</nav>;
         var nav = this.props.nav.map((n, i) => {
             var nk = 'nav-'+i
             var item = n.subnav 
