@@ -136,11 +136,11 @@ export class Header extends Component {
      * @param {*} key The element key, if any
      */
     href(nav, key){
-        if(!nav.href && !nav.click && !nav.link) return
+        if(!nav.href && !nav.onClick && !nav.to) return
 
-        if(nav.link) return <Link to={nav.link}>{nav.label}</Link>
+        if(nav.to) return <Link to={nav.to}>{nav.label}</Link>
 
-        return nav.click ? <button className="rvt-dropdown__toggle" key={key || nav.label} onClick={nav.click}>{nav.label}</button> : <a href={nav.href} key={key || nav.label}>{nav.label}</a>
+        return nav.onClick ? <button className="rvt-dropdown__toggle" key={key || nav.label} onClick={nav.onClick}>{nav.label}</button> : <a href={nav.href} key={key || nav.label}>{nav.label}</a>
     }
 
     /**
