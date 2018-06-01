@@ -136,8 +136,8 @@ export class Header extends Component {
      */
     href(nav, key){
         return key
-            ? <a href="javascript:void(0)" key={key} onClick={nav.click}>{nav.label}</a>
-            : <a href="javascript:void(0)" key={nav.label} onClick={nav.click}>{nav.label}</a>
+            ? <a href={nav.href || "javascript:void(0)"} key={key} onClick={nav.click}>{nav.label}</a>
+            : <a href={nav.href || "javascript:void(0)"} key={nav.label} onClick={nav.click}>{nav.label}</a>
     }
 
     /**

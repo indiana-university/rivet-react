@@ -32,10 +32,10 @@ import {
 
 const appNav = [
     { label: "Nav 1", click: ()=>console.log("Nav 1 clicked") },
-    { label: "Nav 2", click: ()=>console.log("Nav 2 clicked"), subnav: [
-        { label: "Item 1", click: ()=>console.log("Item 1 clicked") },
-        { label: "Item 2", click: ()=>console.log("Item 2 clicked") },
-        { label: "Item 3", click: ()=>console.log("Item 3 clicked") }
+    { label: "Nav 2", href: "#nav2", subnav: [
+        { label: "Item 1", href: "#item1" },
+        { label: "Item 2", href: "#item2" },
+        { label: "Item 3", href: "#item3" }
     ]},
     { label: "Nav 3", click: ()=>console.log("Nav 3 clicked"), subnav: [
         { label: "Item 1", click: ()=>console.log("Item 1 clicked") },
