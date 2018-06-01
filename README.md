@@ -2,7 +2,38 @@
 Published to [https://apps.iu.edu/nxs-prd/content/repositories/IUPublic-NPM/rivet-react/](https://apps.iu.edu/nxs-prd/content/repositories/IUPublic-NPM/rivet-react/)
 
 ## Demo component usage
-            <Header avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
+            
+            // Each item in the navigation can either include an 'href' property or a 'to' property.
+            // Adding an href property will make the navigation item an <a> element
+            // Adding a to property will make the navigation item a React Router <Link> component
+            const appNav = [
+                { label: "Nav 1", href: "#nav1" },
+                { label: "Nav 2", href: "#nav2", subnav: [
+                    { label: "Item 1", href: "#item1" },
+                    { label: "Item 2", href: "#item2" },
+                    { label: "Item 3", href: "#item3" }
+                ]},
+                { label: "Nav 3", onClick: ()=>console.log("Nav 3 clicked"), subnav: [
+                    { label: "Item 1", href: "#item1" },
+                    { label: "Item 2", href: "#item2" },
+                    { label: "Item 3", href: "#item3" }
+                ]}
+            ]
+
+            const userNav = [
+                {label: "Task 1", to: '/profile'},
+                {label: "Task 2", to: '/settings'},
+                {label: "Task 3", to: '/logout'},
+            ]
+
+            //const header = <Header key={1} />
+            //const header = <Header key={1} nav={appNav} />
+            //const header = <Header key={1} avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
+            //const header = <Header key={1} avatar="JL" user="jolamar" nav={appNav} logout={()=>console.log('logged out')} />
+            //const header = <Header key={1} avatar="JL" user="jolamar" userNav={userNav} logout={()=>console.log('logged out')} />
+            const header = <Header key={1} avatar="JL" user="jolamar" nav={appNav} userNav={userNav}
+                       logout={() => console.log('logged out')}/>
+                                   
             <div className="rvt-container rvt-container--freshman rvt-m-top-md">
                 <h1>Rivet 1.0.0 React Components Demo</h1>
 

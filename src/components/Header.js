@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Dropdown } from "./Dropdown"
+import { Link } from 'react-router-dom'
 
 class Drawer extends Component {
     constructor(props) {
@@ -135,9 +136,17 @@ export class Header extends Component {
      * @param {*} key The element key, if any
      */
     href(nav, key){
-        return key
-            ? <a href="javascript:void(0)" key={key} onClick={nav.click}>{nav.label}</a>
-            : <a href="javascript:void(0)" key={nav.label} onClick={nav.click}>{nav.label}</a>
+        if (!nav.label) {
+            throw new Error("Rivet Header navigation elements must have a 'label'.")
+        }
+
+        if(nav.to) {
+            return <Link to={nav.to} key={key || nav.label}>{nav.label}</Link>
+        } else if (nav.href) {
+            return <a href={nav.href} key={key || nav.label}>{nav.label}</a>
+        } else {
+            throw new Error("Rivet Header navigation elements must have a 'to' (for internal routes) or an 'href' (for external URLs).");
+        }
     }
 
     /**
@@ -169,7 +178,7 @@ export class Header extends Component {
      * Application navigation elements for the standard view.
      */
     applicationNav() {
-        if (!this.hasItems(this.props.nav)) return null;
+        if (!this.hasItems(this.props.nav)) return <nav className='rvt-header__main-nav' role='navigation'>{this.props.nav}</nav>;
         var nav = this.props.nav.map((n, i) => {
             var nk = 'nav-'+i
             var item = n.subnav 

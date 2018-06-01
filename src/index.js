@@ -1,6 +1,7 @@
 import { Alert } from './components/Alert'
 import { Button } from './components/Button'
 import { Checkbox } from './components/Checkbox'
+import { Dropdown } from './components/Dropdown'
 import { File } from './components/File'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
@@ -17,6 +18,7 @@ export {
     Alert,
     Button,
     Checkbox,
+    Dropdown,
     File,
     Footer,
     Header,
