@@ -78,24 +78,6 @@ class Demo extends Component {
     render() {
         return [
             <Header key={1} avatar="JL" user="jolamar" nav={
-                <ul>
-                    <li><a href="javascript:void(0)">Nav 1</a></li>
-                    <li>
-                        <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id={"dropdown-item1"} title={"Nav 2"}>
-                            <a href="#item1">Item 1</a>
-                            <a href="#item2">Item 2</a>
-                            <a href="#item3">Item 3</a>
-                        </Dropdown>
-                    </li>
-                    <li>
-                        <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id={"dropdown-item2"} title={"Nav 3"}>
-                            <a href="#item1">Item 1</a>
-                            <a href="#item2">Item 2</a>
-                            <a href="#item3">Item 3</a>
-                        </Dropdown>
-                    </li>
-                </ul>
-                /*
                     [
                         { label: "Nav 1", click: ()=>console.log("Nav 1 clicked") },
                         { label: "Nav 2", href: "#nav2", subnav: [
@@ -109,7 +91,6 @@ class Demo extends Component {
                             { label: "Item 3", click: ()=>console.log("Item 3 clicked") }
                         ]}
                     ]
-                */
                 } userNav={userNav} logout={() => console.log('logged out')}/>
             , <div key={2} className="rvt-container rvt-container--freshman rvt-m-top-md">
                 <h1>Rivet 1.0.0 React Components Demo</h1>
