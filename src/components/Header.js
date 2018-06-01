@@ -137,17 +137,15 @@ export class Header extends Component {
      */
     href(nav, key){
         if (!nav.label) {
-            throw new Error("Header navigation elements must have a label.")
+            throw new Error("Rivet Header navigation elements must have a 'label'.")
         }
 
         if(nav.to) {
-            return <Link to={nav.to}>{nav.label}</Link>
-        } else if (nav.onClick) {
-            return <button className="rvt-dropdown__toggle" key={key || nav.label} onClick={nav.onClick}>{nav.label}</button> 
+            return <Link to={nav.to} key={key || nav.label}>{nav.label}</Link>
         } else if (nav.href) {
             return <a href={nav.href} key={key || nav.label}>{nav.label}</a>
         } else {
-            throw new Error("Header navigation elements must have exactly one of {to, onClick, href}");
+            throw new Error("Rivet Header navigation elements must have a 'to' (for internal routes) or an 'href' (for external URLs).");
         }
     }
 
