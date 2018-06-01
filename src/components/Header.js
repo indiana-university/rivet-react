@@ -136,11 +136,19 @@ export class Header extends Component {
      * @param {*} key The element key, if any
      */
     href(nav, key){
-        if(!nav.href && !nav.onClick && !nav.to) return
+        if (!nav.label) {
+            throw new Error("Header navigation elements must have a label.")
+        }
 
-        if(nav.to) return <Link to={nav.to}>{nav.label}</Link>
-
-        return nav.onClick ? <button className="rvt-dropdown__toggle" key={key || nav.label} onClick={nav.onClick}>{nav.label}</button> : <a href={nav.href} key={key || nav.label}>{nav.label}</a>
+        if(nav.to) {
+            return <Link to={nav.to}>{nav.label}</Link>
+        } else if (nav.onClick) {
+            return <button className="rvt-dropdown__toggle" key={key || nav.label} onClick={nav.onClick}>{nav.label}</button> 
+        } else if (nav.href) {
+            return <a href={nav.href} key={key || nav.label}>{nav.label}</a>
+        } else {
+            throw new Error("Header navigation elements must have exactly one of {to, onClick, href}");
+        }
     }
 
     /**
