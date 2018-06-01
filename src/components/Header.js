@@ -137,9 +137,7 @@ export class Header extends Component {
     href(nav, key){
         if(!nav.href && !nav.click) return
 
-        return key
-            ? <a href={nav.href || "javascript:void(0)"} key={key} onClick={nav.click}>{nav.label}</a>
-            : <a href={nav.href || "javascript:void(0)"} key={nav.label} onClick={nav.click}>{nav.label}</a>
+        return nav.click ? <button className="rvt-dropdown__toggle" key={key || nav.label} onClick={nav.click}>{nav.label}</button> : <a href={nav.href} key={key || nav.label}>{nav.label}</a>
     }
 
     /**
