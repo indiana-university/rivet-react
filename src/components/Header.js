@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
 import { Dropdown } from "./Dropdown"
+import { Link } from 'react-router-dom'
 
 class Drawer extends Component {
     constructor(props) {
