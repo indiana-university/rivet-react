@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom'
 import { Dropdown } from "./Dropdown"
 
 class Drawer extends Component {
@@ -135,7 +136,9 @@ export class Header extends Component {
      * @param {*} key The element key, if any
      */
     href(nav, key){
-        if(!nav.href && !nav.click) return
+        if(!nav.href && !nav.click && !nav.link) return
+
+        if(nav.link) return <Link to={nav.link}>{nav.label}</Link>
 
         return nav.click ? <button className="rvt-dropdown__toggle" key={key || nav.label} onClick={nav.click}>{nav.label}</button> : <a href={nav.href} key={key || nav.label}>{nav.label}</a>
     }
