@@ -19,15 +19,15 @@ export class Tabs extends Component {
 
     renderTabs(props) {
         return <React.Fragment>
-            <div class="rvt-tabs__tablist" role="tablist" aria-label={props.title || 'Tabs'}>
+            <div className="rvt-tabs__tablist" role="tablist" aria-label={props.title || 'Tabs'}>
                 { props.tabs.map((tab,index) =>
-                    <button onClick={(event)=>this.switchTabs(index)} className="rvt-tabs__tab" role="tab" aria-selected={index === this.state.activeTab} aria-controls={`tab-${index}`} id={`t-${index}`} key={index}>
+                    <button onClick={(event)=>this.switchTabs(index)} className="rvt-tabs__tab" role="tab" aria-selected={index === this.state.activeTab} tabIndex={index !== this.state.activeTab ? -1 : null} aria-controls={`tab-${index}`} id={`t-${index}`} key={index}>
                         {tab.label}
                     </button>
                 )}
             </div>
             { props.tabs.map((tab,index) =>
-                <div class="rvt-tabs__panel" tabindex="0" role="tabpanel" id={`tab-${index}`} aria-labelledby={`t-${index}`} hidden={index !== this.state.activeTab}>
+                <div key={index} className="rvt-tabs__panel" tabIndex="0" role="tabpanel" id={`tab-${index}`} aria-labelledby={`t-${index}`} hidden={index !== this.state.activeTab}>
                     {tab.content}
                 </div>
             )}
