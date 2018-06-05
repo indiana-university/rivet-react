@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {copy, shortuid, getRivetClasses} from '../util'
+import {copy, getRivetClasses} from '../util'
 import classNames from 'classnames'
 
 export class Table extends Component {

@@ -13,6 +13,7 @@ import { Section } from './components/Section'
 import { SegmentedButtons } from './components/SegmentedButtons'
 import { Table } from './components/Table'
 import { TableRow } from './components/TableRow'
+import { Tabs } from './components/Tabs'
 
 export {
     Alert,
@@ -29,5 +30,6 @@ export {
     Section,
     SegmentedButtons,
     Table,
-    TableRow
+    TableRow,
+    Tabs
 }
