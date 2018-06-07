@@ -108,7 +108,7 @@ class Demo extends Component {
                 <div className="rvt-container rvt-container--freshman rvt-m-top-md">
                     <h1>Rivet 1.0.0 React Components Demo</h1>
 
-                    <Tabs fitted tabs={tabs} />
+                    <Tabs vertical  tabs={tabs} />
 
                     <Alert className="rvt-m-top-md" clickDismiss={function () {
                         console.log('dismissed alert')
