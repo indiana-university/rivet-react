@@ -95,20 +95,6 @@ export class Tabs extends Component {
                 }
                 break;
         }
-
-
-
-        if(event.keyCode === 27) {
-        }
-    }
-
-    clickOutside(event){
-        var drawerTrigger = document.querySelector('[data-drawer-toggle]');
-        var drawerId = drawerTrigger ? drawerTrigger.getAttribute('data-drawer-toggle') : null;
-        var drawerEl = document.querySelector('#' + drawerId);
-        if(event.target != drawerEl && !drawerEl.contains(event.target) && !drawerTrigger.contains(event.target)) {
-            this.props.toggleDrawer();
-        }
     }
 
     tabFocused(index) {
