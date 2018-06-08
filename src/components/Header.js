@@ -182,7 +182,7 @@ export class Header extends Component {
         var nav = this.props.nav.map((n, i) => {
             var nk = 'nav-'+i
             var item = n.subnav 
-                ? <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id={"dropdown"+nk} title={n.label}> {n.subnav.map((sn,j) => this.href(sn, nk+"-"+j))} </Dropdown>
+                ? <Dropdown nav toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id={"dropdown"+nk} title={n.label}> {n.subnav.map((sn,j) => this.href(sn, nk+"-"+j))} </Dropdown>
                 : this.href(n);
             return <li key={nk}>{item}</li>
         });
@@ -213,7 +213,7 @@ export class Header extends Component {
                             </React.Fragment>
         const className = "rvt-header-id__profile rvt-header-id__profile--has-dropdown"
 
-        return <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id={key} title={anchorHtml} className={className} isIdentityMenu={true}>
+        return <Dropdown nav toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id={key} title={anchorHtml} className={className} isIdentityMenu={true}>
                     {this.props.userNav.map((n,i)=>this.href(n,i))}
                     <div role="group" aria-label="User actions">
                         {this.logout()}

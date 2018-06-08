@@ -8,6 +8,7 @@ import {
     Alert,
     Button,
     Checkbox,
+    Dropdown,
     File,
     Footer,
     Header,
@@ -101,6 +102,32 @@ const header = <Header avatar="JL" user="jolamar" nav={appNav} userNav={userNav}
                        logout={() => console.log('logged out')}/>
 
 class Demo extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            drawerDropdownVisibility: {},
+            desktopActiveDropdown: null
+        };
+
+        this.toggleDrawerDropdown = this.toggleDrawerDropdown.bind(this)
+        this.toggleDesktopDropdown = this.toggleDesktopDropdown.bind(this)
+    }
+
+    toggleDesktopDropdown(key) {
+        this.setState({
+            desktopActiveDropdown: key == this.state.desktopActiveDropdown ? null : key
+        })
+    }
+
+    toggleDrawerDropdown(key) {
+        let drawerDropdownVisibility = Object.assign({}, this.state.drawerDropdownVisibility);
+        drawerDropdownVisibility[key] = !drawerDropdownVisibility[key];
+        this.setState({
+            drawerDropdownVisibility: drawerDropdownVisibility
+        })
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -108,7 +135,12 @@ class Demo extends Component {
                 <div className="rvt-container rvt-container--freshman rvt-m-top-md">
                     <h1>Rivet 1.0.0 React Components Demo</h1>
 
-                    <Tabs vertical  tabs={tabs} />
+                    <Tabs vertical className="rvt-m-bottom-md" tabs={tabs} />
+
+                    <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id="request-group-ownership-dropdown" title="Request Group Ownership">
+                        <button>For an existing group</button>
+                        <button>For all of a users's group</button>
+                    </Dropdown>
 
                     <Alert className="rvt-m-top-md" clickDismiss={function () {
                         console.log('dismissed alert')

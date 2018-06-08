@@ -8,7 +8,7 @@ export class Dropdown extends Component {
     render() {
         return(
             <div className='dropdown'>
-                <button className={`rvt-dropdown__toggle ${this.props.className}`} 
+                <button className={`${this.props.nav ? 'rvt-dropdown__toggle' : 'rvt-button'} ${this.props.className || ''}`}
                         data-dropdown-toggle={this.props.id} 
                         onClick={() => {this.props.toggleDesktopDropdown(this.props.id)}}
                         aria-haspopup="true"
