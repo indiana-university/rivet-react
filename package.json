@@ -32,9 +32,6 @@
     "react-router-dom": "4.2.2",
     "rivet-uits": "1.0.0"
   },
-  "publishConfig": {
-    "registry": "https://apps.iu.edu/nxs-prd/content/repositories/IUPublic-NPM"
-  },
   "author": "",
   "homepage": "",
   "license": "MIT",

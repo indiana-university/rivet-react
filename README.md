@@ -1,5 +1,5 @@
 # rivet-react npm package
-Published to [https://apps.iu.edu/nxs-prd/content/repositories/IUPublic-NPM/rivet-react/](https://apps.iu.edu/nxs-prd/content/repositories/IUPublic-NPM/rivet-react/)
+Published to [https://www.npmjs.com/package/rivet-react](https://www.npmjs.com/package/rivet-react)
 
 ## Demo component usage
             
