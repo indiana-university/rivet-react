@@ -107,11 +107,13 @@ class Demo extends Component {
         super(props);
         this.state = {
             drawerDropdownVisibility: {},
-            desktopActiveDropdown: null
+            desktopActiveDropdown: null,
+            activeModal: null
         };
 
         this.toggleDrawerDropdown = this.toggleDrawerDropdown.bind(this)
         this.toggleDesktopDropdown = this.toggleDesktopDropdown.bind(this)
+        this.toggleModal = this.toggleModal.bind(this)
     }
 
     toggleDesktopDropdown(key) {
@@ -125,6 +127,12 @@ class Demo extends Component {
         drawerDropdownVisibility[key] = !drawerDropdownVisibility[key];
         this.setState({
             drawerDropdownVisibility: drawerDropdownVisibility
+        })
+    }
+
+    toggleModal(key) {
+        this.setState({
+            activeModal: key
         })
     }
 
@@ -295,12 +303,16 @@ class Demo extends Component {
                             }}>Danger</Button>
                         </SegmentedButtons>
 
-                        <Button data-modal-trigger="modal-example" onClick={() => {
-                        }}>Modal</Button>
-                        <Modal id="modal-example" title="Transfer group account(s)" clickClose={() => {
-                        }}>
+                        <Button onClick={() => {this.toggleModal("modal-example")}}>Modal</Button>
+                        <Button onClick={() => {this.toggleModal("modal-example-2")}}>Modal 2</Button>
+
+                        <Modal toggleModal={this.toggleModal} activeModal={this.state.activeModal} id="modal-example" title="Transfer group account(s)">
                             <p>Your are requesting the transfer of groups:<br/><strong>ITDJHNWEB, JTDJHNWEB, DSOIUFNWEB,
                                 DOSIFUSDOIF</strong></p>
+                        </Modal>
+
+                        <Modal toggleModal={this.toggleModal} activeModal={this.state.activeModal} id="modal-example-2" title="Transfer group account(s)">
+                            <p>ANOTHER MODAL</p>
                         </Modal>
 
                     </Section>
