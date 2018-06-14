@@ -2,6 +2,12 @@ import React, {Component} from 'react'
 import {render} from 'react-dom'
 import {BrowserRouter} from 'react-router-dom'
 
+if (process.env.NODE_ENV !== 'production') {
+    var axe = require('react-axe');
+    var ReactDOM = require('react-dom');
+    axe(React, ReactDOM, 1000);
+}
+
 import 'rivet-uits/css/rivet.min.css'
 
 import {
@@ -140,7 +146,7 @@ class Demo extends Component {
         return (
             <React.Fragment>
                 {header}
-                <div className="rvt-container rvt-container--freshman rvt-m-top-md">
+                <main id="main-content" className="rvt-container rvt-container--freshman rvt-m-top-md">
                     <h1>Rivet 1.0.0 React Components Demo</h1>
 
                     <Tabs vertical className="rvt-m-bottom-md" tabs={tabs} />
@@ -243,7 +249,7 @@ class Demo extends Component {
                         <File name="profile"/>
                     </div>
 
-                </div>
+                </main>
 
                 <Section margin='sm'>
 
