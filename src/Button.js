@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import classNames from 'classnames'
-import {copy, getRivetClasses} from '../util'
+import {copy, getRivetClasses} from './util'
 
 export class Button extends Component {
     render() {

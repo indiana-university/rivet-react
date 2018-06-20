@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import classNames from 'classnames'
-import {copy, getRivetClasses, shortuid} from '../util'
+import {copy, getRivetClasses, shortuid} from './util'
 
 export class File extends Component {
     render() {

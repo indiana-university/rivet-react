@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import {copy, shortuid, getRivetClasses} from '../util'
+import {copy, shortuid, getRivetClasses} from './util'
 import classNames from 'classnames'
 
-export class Checkbox extends Component {
+export class RadioButton extends Component {
     render() {
         var props = copy(this.props)
 
@@ -15,9 +15,9 @@ export class Checkbox extends Component {
 
         var c = classNames(getRivetClasses(props))
 
-        return <React.Fragment>
-            <input type="checkbox" key='i' {...props} />
+        return <nobr>
+            <input type="radio" key='i' {...props} />
             <label key='l' className={c} htmlFor={props.id}>{label}</label>
-        </React.Fragment>
+        </nobr>
     }
 }
