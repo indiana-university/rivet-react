@@ -12,8 +12,8 @@ describe('<Checkbox />', () => {
   });
 
   it('should apply the id to the input', () => {
-    const cut = shallow(<Checkbox id="the_id" />);
-    expect(cut.find('input').key()).toEqual("the_id");
+    const cut = shallow(<Checkbox id="the_id" aria-required="true" />);
+    expect(cut.find('input').prop('id')).toEqual("the_id");
   });
 
   it('should apply the label text', () => {

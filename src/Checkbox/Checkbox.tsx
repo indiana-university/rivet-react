@@ -1,4 +1,3 @@
-import * as classNames  from 'classnames'
 import * as React from 'react'
 import * as Rivet from '../common'
 import * as util from '../util'
@@ -7,14 +6,14 @@ export interface Props extends Rivet.Props { }
 
 class Checkbox extends React.Component<Props> {
     public render() {
-        
-        const id = this.props.id || util.shortuid();
-        const c =  classNames(util.getRivetClasses(this.props))
+        const { id, label, children, name, className, ref, ...rest } = this.props;
+        const resolvedId = id || util.shortuid();
+        const classNames = className || "";
 
         return (
             <React.Fragment>
-                <input type="checkbox" key={id} {...this.props} />
-                <label key='l' className={c} htmlFor={id}>{this.props.label}</label>
+                <input id={resolvedId} type="checkbox" {...rest} />
+                <label className={classNames} htmlFor={resolvedId}>{label}</label>
             </React.Fragment>
         );
     }
