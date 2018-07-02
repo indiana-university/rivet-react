@@ -10,14 +10,9 @@ export class Dictionary<T> {
     [key: string]: T;
 }
 
-export interface Labeled {
-    label?: string,
-}
-
 export interface Props extends React.Props<Props> {
-    id?: string,
-    name?: string,
-    label?: string,
+    ref?: any,
     className?: ClassName
+    children?: any[]
 }
 
