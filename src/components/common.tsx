@@ -15,5 +15,12 @@ export interface Props extends React.Props<Props> {
     ref?: any,
     className?: ClassName
     children?: any[]
+    //
+    ts?: number
+    hide?: boolean,
+    border?: string | string[],
+    margin?: string | string[],
+    padding?: string | string[],
+    display?: string,
 }
 
