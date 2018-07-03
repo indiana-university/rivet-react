@@ -67,7 +67,8 @@ export const hash = (s: string) => {
 export const shortuid = () => {
     const m = Date.now() % 4194304
     const r = Math.floor(Math.random() * 12582911) + 4194304
-    return (m + r).toString(16)
+    const id = (m + r).toString(16);
+    return `id_${id}`;
 }
 
 export const getRivetClasses = (props: any, c: string[] = [])  => {

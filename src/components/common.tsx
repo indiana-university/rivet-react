@@ -11,6 +11,7 @@ export class Dictionary<T> {
 }
 
 export interface Props extends React.Props<Props> {
+    id?: string,
     ref?: any,
     className?: ClassName
     children?: any[]

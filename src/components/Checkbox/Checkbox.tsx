@@ -3,19 +3,20 @@ import * as Rivet from '../common'
 import * as util from '../util'
 
 export interface CheckboxProps extends Rivet.Props {
-    label: string
+    label: string,
+    hideLabel?: boolean,
 }
 
 class Checkbox extends React.Component<CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>> {
     public render() {
 
-        const {  label, className, ref, ...attrs } = this.props;
-        const id = util.shortuid();
-
+        const { id, label, hideLabel, className, ...attrs } = this.props;
+        const resolvedId = id || util.shortuid();
+        const resolvedLabel = hideLabel ? <span className="rvt-sr-only">{label}</span> : label
         return (
             <React.Fragment>
-                <input id={id} type="checkbox" {...attrs} />
-                <label className={className} htmlFor={id}>{label}</label>
+                <input id={resolvedId} type="checkbox" {...attrs} />
+                <label className={className} htmlFor={resolvedId}>{resolvedLabel}</label>
             </React.Fragment>
         );
     }
