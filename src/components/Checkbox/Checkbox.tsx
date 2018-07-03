@@ -10,14 +10,14 @@ export interface CheckboxProps extends Rivet.Props {
 class Checkbox extends React.Component<CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>> {
     public render() {
 
-        const { id, label, hideLabel, className, children, ...attrs } = this.props;
+        const { id, label, hideLabel, children, ...attrs } = this.props;
         const resolvedId = id || util.shortuid();
         const resolvedLabel = hideLabel ? <span className="rvt-sr-only">{label}</span> : label
         return (
             <React.Fragment>
                 <input id={resolvedId} type="checkbox" {...attrs} />
                 { children }
-                <label className={className} htmlFor={resolvedId}>{resolvedLabel}</label>
+                <label className={util.rivetize(attrs)} htmlFor={resolvedId}>{resolvedLabel}</label>
             </React.Fragment>
         );
     }

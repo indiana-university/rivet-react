@@ -12,7 +12,14 @@ export enum Notification {
 export interface Props extends React.Props<Props> {
     id?: string,
     ref?: any,
-    className?: string,
+    className?: string
     children?: any
+    //
+    ts?: number
+    hide?: boolean,
+    border?: string | string[],
+    margin?: string | string[],
+    padding?: string | string[],
+    display?: string,
 }
 

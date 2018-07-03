@@ -38,9 +38,14 @@ describe('<Checkbox />', () => {
     expect(cut.find('label').text()).toEqual("the_label");
   });
 
-  it('should apply the class name', () => {
+  it('should apply the custom class name', () => {
     const cut = shallow(<Checkbox label="the_label" className="foo" />);
     expect(cut.find('label').hasClass("foo")).toBe(true);
+  });
+
+  it('should apply the Rivet class name', () => {
+    const cut = shallow(<Checkbox label="the_label" margin="xs" />);
+    expect(cut.find('label').hasClass("rvt-m-all-xs")).toBe(true);
   });
 
   it('should gracefully ignore the lack of class name', () => {
