@@ -2,25 +2,25 @@ import * as React from 'react'
 
 import 'rivet-uits/css/rivet.min.css'
 
-import {
-    Alert,
-    Button,
-    Checkbox,
-    Dropdown,
-    File,
-    Footer,
-    Header,
-    Input,
-    List,
-    Modal,
-    RadioButton,
-    Section,
-    SegmentedButtons,
-    Table,
-    TableRow,
-    Tabs
-} from '../src'
+import Alert from './components/Alert';
+import Button from './components/Button';
+import Dropdown from './components/Dropdown';
+import File from './components/File';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Input from './components/Input';
+import List from './components/List';
+import Modal from './components/Modal';
+import RadioButton from './components/RadioButton';
+import Section from './components/Section';
+import SegmentedButtons from './components/SegmentedButtons';
+import Table from './components/Table';
+import TableRow from './components/TableRow';
+import Tabs from './components/Tabs';
 
+import {
+    Checkbox
+} from './components'
 
 /**
  * The Rivet Header supports several different configurations depending on the structure of the application.

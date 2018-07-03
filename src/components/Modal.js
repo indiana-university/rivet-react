@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {copy, shortuid} from './util'
-import {Button} from './Button'
+import Button from './Button'
 
-export class Modal extends Component {
+export default class Modal extends Component {
 
     constructor(props) {
         super(props);

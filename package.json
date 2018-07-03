@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "build-lib": "rm -rf ./lib && tsc",
+    "build-dist": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
@@ -40,6 +40,6 @@
     "typescript": "^2.9.2"
   },
   "files": [
-    "lib"
+    "build/dist/components"
   ]
 }

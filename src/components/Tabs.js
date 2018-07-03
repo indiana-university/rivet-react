@@ -22,7 +22,7 @@ var direction = {
     40: 1
 }
 
-export class Tabs extends Component {
+export default class Tabs extends Component {
 
     constructor(props) {
         super(props);

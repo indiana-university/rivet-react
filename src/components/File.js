@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import classNames from 'classnames'
 import {copy, getRivetClasses, shortuid} from './util'
 
-export class File extends Component {
+export default class File extends Component {
     render() {
 
         var props = copy(this.props)

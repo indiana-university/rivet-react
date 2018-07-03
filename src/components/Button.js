@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import classNames from 'classnames'
 import {copy, getRivetClasses} from './util'
 
-export class Button extends Component {
+export default class Button extends Component {
     render() {
 
         var props = copy(this.props)
@@ -49,6 +49,5 @@ export class Button extends Component {
         return (
             <button className={classNames(c)}  {...props} />
         )
-
     }
 }

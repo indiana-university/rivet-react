@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {copy, shortuid, getRivetClasses} from './util'
 import classNames from 'classnames'
 
-export class Footer extends Component {
+export default class Footer extends Component {
     render() {
         var date = new Date().getFullYear();
 
