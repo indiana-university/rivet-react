@@ -3,13 +3,11 @@ import * as React from 'react'
 import * as Rivet from '../common'
 import * as util from '../util'
 
-export type info = boolean;
-
 export interface AlertProps extends Rivet.Props {
     type: Rivet.Notification,
     title?: string,
     dismissible?: boolean, 
-    clickDismiss?: () => void,
+    clickDismiss?: Rivet.Action,
 }
 
 export interface AlertState {
@@ -17,18 +15,24 @@ export interface AlertState {
 }
 
 class Alert extends React.Component<AlertProps, AlertState> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: true
+        };
+    }
 
     public render() {
         const { id, title, type, dismissible, clickDismiss, className, children } = this.props;
         const componentId = id || util.shortuid();
         const titleId = util.shortuid();
-        const classNames = classnames(className, this.alertClass(type));
+        const classNames = classnames("rvt-alert", className, this.alertClass(type));
 
         return (
             this.state.visible &&
             <div className={classNames} id={componentId} role='alertdialog' aria-labelledby={titleId}>
                 {title && this.headerFragment(titleId, title)}
-                <div className='rvt-alert__message'>{children}</div>
+                <p className='rvt-alert__message'>{children}</p>
                 {dismissible && this.dismissFragment(clickDismiss)}
             </div>
         );
@@ -36,14 +40,14 @@ class Alert extends React.Component<AlertProps, AlertState> {
 
     private alertClass = (type: Rivet.Notification) => {
         switch(type){
-            case Rivet.Notification.Info: return "rvt-alert--info";
+            case Rivet.Notification.Message: return "rvt-alert--message";
             case Rivet.Notification.Error: return "rvt-alert--error";
             case Rivet.Notification.Success: return "rvt-alert--success";
-            default: return "rvt-alert--message";
+            default: return "rvt-alert--info";
         }
     }
 
-    private dismissFragment = (onDismissed: Rivet.Action = () => {;}) =>
+    private dismissFragment = (onDismissed = () => {;}) =>
         <button className="rvt-alert__dismiss" onClick={()=>{ onDismissed(); this.hideAlert(); }}>
             <span className="rvt-sr-only">Dismiss this alert</span>
             <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">

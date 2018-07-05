@@ -161,6 +161,6 @@ export const parseRivetClasses = (margin, padding, ts, border, display, hide) =>
     ];
 
 export const rivetize = (props: Rivet.Props) => {
-    const { className, border=[], margin=[], padding=[], display="", hide=false, ts, ...attrs } = props;
+    const { className, border=[], margin=[], padding=[], display="", hide=false, ts } = props;
     return classnames(...parseRivetClasses(margin, padding, ts, border, display, hide), className);
 }

@@ -13,7 +13,7 @@ export interface Props extends React.Props<Props> {
     id?: string,
     ref?: any,
     className?: string
-    children?: any
+    children?: React.ReactNode
     //
     ts?: number
     hide?: boolean,

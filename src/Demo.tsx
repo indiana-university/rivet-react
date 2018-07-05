@@ -140,11 +140,6 @@ class Demo extends React.Component<DemoProps, DemoState> {
                         <button>For all of a users's group</button>
                     </Dropdown>
 
-                    <Alert type={Notification.Message} className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Base</Alert>
-                    <Alert type={Notification.Error} className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Error</Alert>
-                    <Alert type={Notification.Info} className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Info</Alert>
-                    <Alert type={Notification.Success} className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Success</Alert>
-
                     <Button onClick={() => console.log("hello") } className="rvt-m-top-md">Hello</Button>
                     <Button onClick={() => console.log("world") } className="rvt-m-left-md rvt-button--secondary rvt-m-top-lg">World</Button>
 
@@ -290,12 +285,13 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Alerts</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <Alert margin={{bottom: 'xs'}} type={Notification.Message}>This warning has no title!</Alert>
-                        <Alert margin={{bottom: 'xs'}} type={Notification.Info} title='Info'>A nice message for you!</Alert>
-                        <Alert margin={{bottom: 'xs'}} type={Notification.Success} title='Success!'>A great success for you!</Alert>
-                        <Alert margin={{bottom: 'xs'}} type={Notification.Error} dismissible title='Error'
-                               clickDismiss={() => window.alert('You click dismiss error?!?')}>A friendly error for
-                            you!</Alert>
+                        <Alert className="rvt-m-top-md" type={Notification.Message}>This warning has no title!</Alert>
+                        <Alert className="rvt-m-top-md" type={Notification.Info} title='Info'>A nice message for you!</Alert>
+                        <Alert className="rvt-m-top-md" type={Notification.Success} title='Success!'>A great success for you!</Alert>
+                        <Alert className="rvt-m-top-md" type={Notification.Error} dismissible title='Error'
+                               clickDismiss={() => window.alert('You click dismiss error?!?')}>
+                               A friendly error for you that can be dismissed!
+                        </Alert>
                     </Section>
 
                     <h1>Lists</h1>
