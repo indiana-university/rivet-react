@@ -8,7 +8,7 @@ import * as util from '../util'
  * 
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
-interface RivetButtonRoleAttribute {
+interface RivetButtonRoleHTMLAttributes {
     /** Optional style: a secondary button. */
     secondary?: boolean;
 }
@@ -23,7 +23,7 @@ interface RivetButtonRoleAttribute {
  * @property danger: a danger-style button.
  * @property plain: a success-style button.
  */
-interface RivetButtonStyleAttribute {
+interface RivetButtonStyleHTMLAttributes {
     /** Optional Rivet style: a success button. Exclusive to 'danger' and 'plain' styles. */
     success?: boolean;
     /** Optional Rivet style: a danger button. Exclusive to 'success' and 'plain' styles. */
@@ -38,7 +38,7 @@ interface RivetButtonStyleAttribute {
  * 
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
-interface RivetButtonSizeAttribute {
+interface RivetButtonSizeHTMLAttributes {
     /** Optional Rivet style: a small button. */
     small?: boolean;
 }
@@ -90,9 +90,9 @@ const buttonDecorators = [ buttonRoleAndStyle, buttonSize]
  */
 export type ButtonProps = 
     ComponentProps & 
-    RivetButtonRoleAttribute &
-    RivetButtonStyleAttribute & 
-    RivetButtonSizeAttribute &
+    RivetButtonRoleHTMLAttributes &
+    RivetButtonStyleHTMLAttributes & 
+    RivetButtonSizeHTMLAttributes &
     React.ButtonHTMLAttributes<HTMLButtonElement>; 
 
 class Button extends React.Component<ButtonProps> {
