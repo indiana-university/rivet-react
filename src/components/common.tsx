@@ -20,6 +20,6 @@ export interface Props extends React.Props<Props> {
     border?: string | string[],
     margin?: string | string[],
     padding?: string | string[],
-    display?: string,
+    display?: string
 }
 
