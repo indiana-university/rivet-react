@@ -1,3 +1,5 @@
+// use strict
+
 /**
  * Functions migrated from utils.js
  */
@@ -94,9 +96,17 @@ export const getRivetClasses = (props: any, c: string[] = [])  => {
     return c
 }
 
-const parseRivetSpacing = (type, definition: string|string[]) => {
+export const parseRivetSpacing = (type, definition: string | Rivet.BoxStyling) => {
+    if (!definition) {
+        return [];
+    }
+
     const classes = Array<string>();
-    if (Array.isArray(definition)){
+    if (typeof definition === "string"){
+        if (SIZES.indexOf(definition) !== -1) {
+            classes.push(`rvt-${type}-all-${definition}`)
+        }
+    } else {
         DIRECTIONS.forEach(direction => {
             if (definition.hasOwnProperty(direction)) {
                 const size = definition[direction]
@@ -104,25 +114,21 @@ const parseRivetSpacing = (type, definition: string|string[]) => {
                     classes.push(`rvt-${type}-${direction}-${size}`)
                 }
             }
-        })
+        });
         SIZES.forEach(size => {
             if (definition.hasOwnProperty(size)) {
                 const directions = definition[size]
                 if (Array.isArray(directions)) {
                     directions.forEach(direction => {
-                        if (DIRECTIONS.indexOf(direction) !== 0) {
+                        if (DIRECTIONS.indexOf(direction) !== -1) {
                             classes.push(`rvt-${type}-${direction}-${size}`)
                         }
                     })
-                } else if (DIRECTIONS.indexOf(directions) !== 0) {
+                } else if (DIRECTIONS.indexOf(directions) !== -1) {
                     classes.push(`rvt-${type}-${directions}-${size}`)
                 }
             }
         })
-    } else {
-        if (SIZES.indexOf(definition) !== -1) {
-            classes.push(`rvt-${type}-all-${definition}`)
-        }
     }
 
     return classes
@@ -138,17 +144,23 @@ export const parseRivetTypescale = (ts?: number) =>
     ts ? [ `rvt-ts-${ts}` ] : [];
 
 export const parseRivetBorder = (border) => 
-    Array.isArray(border)
+    border
+    ? Array.isArray(border)
         ? border.map((value) => `rvt-border-${value}`)
-        : [ `rvt-border-${border}` ];
+        : [ `rvt-border-${border}` ]
+    : [];
 
 export const parseRivetDisplay = (display) =>
-    (display === 'sr-only')
+    display 
+    ? display === 'sr-only'
         ? [ `rvt-sr-only` ]
-        : [ `rvt-display-${display}` ];
+        : [ `rvt-display-${display}` ]
+    : [];
 
-export const parseRivetHidden = (hide:boolean = false) =>
-    [ `rvt-hide-${hide}` ];
+export const parseRivetHidden = (hide: string) =>
+    hide
+    ? [ `rvt-hide-${hide}` ]
+    : [];
 
 export const parseRivetClasses = (margin, padding, ts, border, display, hide) =>
     [
@@ -161,6 +173,6 @@ export const parseRivetClasses = (margin, padding, ts, border, display, hide) =>
     ];
 
 export const rivetize = (props: Rivet.Props) => {
-    const { className, border=[], margin=[], padding=[], display="", hide=false, ts } = props;
+    const { className, border, margin, padding, display="", hide=false, ts } = props;
     return classnames(...parseRivetClasses(margin, padding, ts, border, display, hide), className);
 }
