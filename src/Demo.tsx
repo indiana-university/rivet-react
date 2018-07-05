@@ -1,8 +1,6 @@
 import * as React from 'react'
-
 import 'rivet-uits/css/rivet.min.css'
 
-import Alert from './components/Alert';
 import Button from './components/Button';
 import Dropdown from './components/Dropdown';
 import File from './components/File';
@@ -19,7 +17,10 @@ import TableRow from './components/TableRow';
 import Tabs from './components/Tabs';
 
 import {
-    Checkbox
+    Alert,
+    Checkbox,
+    //
+    Notification
 } from './components'
 
 /**
@@ -138,11 +139,6 @@ class Demo extends React.Component<DemoProps, DemoState> {
                         <button>For an existing group</button>
                         <button>For all of a users's group</button>
                     </Dropdown>
-
-                    <Alert className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Base</Alert>
-                    <Alert error className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Error</Alert>
-                    <Alert info className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Info</Alert>
-                    <Alert success className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Success</Alert>
 
                     <Button onClick={() => console.log("hello") } className="rvt-m-top-md">Hello</Button>
                     <Button onClick={() => console.log("world") } className="rvt-m-left-md rvt-button--secondary rvt-m-top-lg">World</Button>
@@ -289,12 +285,13 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Alerts</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <Alert margin={{bottom: 'xs'}}>This warning has no title!</Alert>
-                        <Alert margin={{bottom: 'xs'}} info title='Info'>A nice message for you!</Alert>
-                        <Alert margin={{bottom: 'xs'}} success title='Success!'>A great success for you!</Alert>
-                        <Alert margin={{bottom: 'xs'}} error title='Error'
-                               clickDismiss={() => window.alert('You click dismiss error?!?')}>A friendly error for
-                            you!</Alert>
+                        <Alert className="rvt-m-top-md" type={Notification.Message}>This warning has no title!</Alert>
+                        <Alert className="rvt-m-top-md" type={Notification.Info} title='Info'>A nice message for you!</Alert>
+                        <Alert className="rvt-m-top-md" type={Notification.Success} title='Success!'>A great success for you!</Alert>
+                        <Alert className="rvt-m-top-md" type={Notification.Error} dismissible title='Error'
+                               clickDismiss={() => window.alert('You click dismiss error?!?')}>
+                               A friendly error for you that can be dismissed!
+                        </Alert>
                     </Section>
 
                     <h1>Lists</h1>

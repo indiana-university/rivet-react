@@ -12,7 +12,6 @@ const SIZES = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl']
 const dirs = ['top', 'right', 'bottom', 'left']
 const DIRECTIONS = [ 'top', 'right', 'bottom', 'left' ]
 
-
 export const addRivetSpacing = (c: string[], type: string, def: any) => {
     if (typeof def === 'string') {
         if (rvtSpacing.indexOf(def) !== -1) {
@@ -174,6 +173,6 @@ export const parseRivetClasses = (margin, padding, ts, border, display, hide) =>
     ];
 
 export const rivetize = (props: Rivet.Props) => {
-    const { className, border, margin, padding=[], display="", hide=false, ts, ...rest } = props;
+    const { className, border, margin, padding, display="", hide=false, ts } = props;
     return classnames(...parseRivetClasses(margin, padding, ts, border, display, hide), className);
 }
