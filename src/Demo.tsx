@@ -1,7 +1,6 @@
 import * as React from 'react'
 import 'rivet-uits/css/rivet.min.css'
 
-import Button from './components/Button';
 import Dropdown from './components/Dropdown';
 import File from './components/File';
 import Footer from './components/Footer';
@@ -18,6 +17,7 @@ import Tabs from './components/Tabs';
 
 import {
     Alert,
+    Button,
     Checkbox,
     //
     Notification
