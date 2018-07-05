@@ -77,3 +77,19 @@ describe('parseRivetHidden', () => {
         expect(util.parseRivetHidden("foo-bar")).toEqual(["rvt-hide-foo-bar"]);
     });
 });
+
+describe('generated class names', () => {
+    it('observes component class', () => {
+        expect(util.rivetize({}, "rvt-foo")).toEqual("rvt-foo");
+    });
+
+    it('gracefully ingores component class', () => {
+        expect(util.rivetize({})).toEqual("");
+    });
+
+    it('uses external class generators', () => {
+        const fooDecorator = (props) => "rvt-foo";
+        const barDecorator = (props) => "rvt-bar";
+        expect(util.rivetize({}, "", [fooDecorator, barDecorator])).toEqual("rvt-foo rvt-bar");
+    });
+});

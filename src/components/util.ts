@@ -172,7 +172,10 @@ export const parseRivetClasses = (margin, padding, ts, border, display, hide) =>
         ...parseRivetHidden(hide)
     ];
 
-export const rivetize = (props: Rivet.Props) => {
+export type ComponentClassDecorator = ( props: Rivet.Props ) => string;
+
+export const rivetize = (props: Rivet.Props, componentClass: string = "", componentDecorators: ComponentClassDecorator[] = []) => {
     const { className, border, margin, padding, display="", hide=false, ts } = props;
-    return classnames(...parseRivetClasses(margin, padding, ts, border, display, hide), className);
+    const decorations = componentDecorators.map(cg => cg(props));
+    return classnames(...parseRivetClasses(margin, padding, ts, border, display, hide), componentClass, className, decorations);
 }
