@@ -1,34 +1,26 @@
-import React, {Component} from 'react'
-import {render} from 'react-dom'
-import {BrowserRouter} from 'react-router-dom'
-
-if (process.env.NODE_ENV !== 'production') {
-    var axe = require('react-axe');
-    var ReactDOM = require('react-dom');
-    axe(React, ReactDOM, 1000);
-}
+import * as React from 'react'
 
 import 'rivet-uits/css/rivet.min.css'
 
-import {
-    Alert,
-    Button,
-    Checkbox,
-    Dropdown,
-    File,
-    Footer,
-    Header,
-    Input,
-    List,
-    Modal,
-    RadioButton,
-    Section,
-    SegmentedButtons,
-    Table,
-    TableRow,
-    Tabs
-} from '../../src'
+import Alert from './components/Alert';
+import Button from './components/Button';
+import Dropdown from './components/Dropdown';
+import File from './components/File';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Input from './components/Input';
+import List from './components/List';
+import Modal from './components/Modal';
+import RadioButton from './components/RadioButton';
+import Section from './components/Section';
+import SegmentedButtons from './components/SegmentedButtons';
+import Table from './components/Table';
+import TableRow from './components/TableRow';
+import Tabs from './components/Tabs';
 
+import {
+    Checkbox
+} from './components'
 
 /**
  * The Rivet Header supports several different configurations depending on the structure of the application.
@@ -40,16 +32,16 @@ import {
  */
 
 const appNav = [
-    { label: "Nav 1", href: "#nav1" },
-    { label: "Nav 2", href: "#nav2", subnav: [
-        { label: "Item 1", href: "#item1" },
-        { label: "Item 2", href: "#item2" },
-        { label: "Item 3", href: "#item3" }
+    { href: "#nav1", label: "Nav 1",  },
+    { href: "#nav2", label: "Nav 2", subnav: [
+        { href: "#item1", label: "Item 1" },
+        { href: "#item2", label: "Item 2" },
+        { href: "#item3", label: "Item 3" }
     ]},
     { label: "Nav 3", onClick: ()=>console.log("Nav 3 clicked"), subnav: [
-        { label: "Item 1", href: "#item1" },
-        { label: "Item 2", href: "#item2" },
-        { label: "Item 3", href: "#item3" }
+        { href: "#item1", label: "Item 1"  },
+        { href: "#item2", label: "Item 2"  },
+        { href: "#item3", label: "Item 3"  }
     ]}
 ]
 
@@ -99,22 +91,32 @@ const tabs = [
     { label: "Tab three", content: tab3 }
 ]
 
-//const header = <Header key={1} />
-//const header = <Header key={1} nav={appNav} />
-//const header = <Header key={1} avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
-//const header = <Header key={1} avatar="JL" user="jolamar" nav={appNav} logout={()=>console.log('logged out')} />
-//const header = <Header key={1} avatar="JL" user="jolamar" userNav={userNav} logout={()=>console.log('logged out')} />
+// const header = <Header key={1} />
+// const header = <Header key={1} nav={appNav} />
+// const header = <Header key={1} avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
+// const header = <Header key={1} avatar="JL" user="jolamar" nav={appNav} logout={()=>console.log('logged out')} />
+// const header = <Header key={1} avatar="JL" user="jolamar" userNav={userNav} logout={()=>console.log('logged out')} />
 const header = <Header avatar="JL" user="jolamar" nav={appNav} userNav={userNav}
                        logout={() => console.log('logged out')}/>
 
-class Demo extends Component {
+interface Dictionary<T> {
+    [key: string]: T;
+}
+interface DemoProps { }
+interface DemoState {
+    activeModal?: string;
+    desktopActiveDropdown?: string;
+    drawerDropdownVisibility: Dictionary<boolean>;
+};
 
-    constructor(props) {
+class Demo extends React.Component<DemoProps, DemoState> {
+
+    constructor(props: DemoProps) {
         super(props);
         this.state = {
             drawerDropdownVisibility: {},
-            desktopActiveDropdown: null,
-            activeModal: null
+            desktopActiveDropdown: undefined,
+            activeModal: undefined,
         };
 
         this.toggleDrawerDropdown = this.toggleDrawerDropdown.bind(this)
@@ -122,27 +124,8 @@ class Demo extends Component {
         this.toggleModal = this.toggleModal.bind(this)
     }
 
-    toggleDesktopDropdown(key) {
-        this.setState({
-            desktopActiveDropdown: key == this.state.desktopActiveDropdown ? null : key
-        })
-    }
 
-    toggleDrawerDropdown(key) {
-        let drawerDropdownVisibility = Object.assign({}, this.state.drawerDropdownVisibility);
-        drawerDropdownVisibility[key] = !drawerDropdownVisibility[key];
-        this.setState({
-            drawerDropdownVisibility: drawerDropdownVisibility
-        })
-    }
-
-    toggleModal(key) {
-        this.setState({
-            activeModal: key
-        })
-    }
-
-    render() {
+    public render() {
         return (
             <React.Fragment>
                 {header}
@@ -156,38 +139,19 @@ class Demo extends Component {
                         <button>For all of a users's group</button>
                     </Dropdown>
 
-                    <Alert className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Base</Alert>
-                    <Alert error className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Error</Alert>
-                    <Alert info className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Info</Alert>
-                    <Alert success className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Success</Alert>
+                    <Alert className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Base</Alert>
+                    <Alert error className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Error</Alert>
+                    <Alert info className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Info</Alert>
+                    <Alert success className="rvt-m-top-md" clickDismiss={ () => console.log('dismissed alert') }>Success</Alert>
 
-                    <Button onClick={function () {
-                        console.log("hello")
-                    }} className="rvt-m-top-md">Hello</Button>
-                    <Button onClick={function () {
-                        console.log("world")
-                    }} className="rvt-m-left-md rvt-button--secondary rvt-m-top-lg">World</Button>
-
+                    <Button onClick={() => console.log("hello") } className="rvt-m-top-md">Hello</Button>
+                    <Button onClick={() => console.log("world") } className="rvt-m-left-md rvt-button--secondary rvt-m-top-lg">World</Button>
 
                     <div className="rvt-m-top-md">
                         <SegmentedButtons label="Numbers" fit>
-                            <Button onClick={function () {
-                                console.log("one")
-                            }} secondary>One</Button>
-                            <Button onClick={function () {
-                                console.log("two")
-                            }} secondary>Two</Button>
-                            <Button onClick={function () {
-                                console.log("three")
-                            }} secondary>Three</Button>
+                            <Button onClick={ () => console.log("one")} secondary >One</Button>
+                            <Button onClick={ () => console.log("two")} secondary >Two</Button>
+                            <Button onClick={ () => console.log("three")} secondary >Three</Button>
                         </SegmentedButtons>
                     </div>
 
@@ -388,9 +352,27 @@ class Demo extends Component {
             </React.Fragment>
         )
     }
+
+    private toggleDesktopDropdown(key: string) {
+        const nextState = key === this.state.desktopActiveDropdown ? undefined : key;
+        this.setState({
+            desktopActiveDropdown: nextState
+        })
+    }
+
+    private toggleDrawerDropdown(key: string) {
+        const nextState = Object.assign({}, this.state.drawerDropdownVisibility);
+        nextState[key] = !nextState[key];
+        this.setState({
+            drawerDropdownVisibility: nextState
+        })
+    }
+
+    private toggleModal(key: string) {
+        this.setState({
+            activeModal: key
+        })
+    }
 }
 
-const demo = <BrowserRouter>
-                <Demo/>
-            </BrowserRouter>
-render(demo, document.querySelector('#demo'))
+export default Demo

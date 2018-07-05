@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {copy, getRivetClasses} from '../util'
+import {copy, getRivetClasses} from './util'
 import classNames from 'classnames'
 
 // For easy reference
@@ -22,7 +22,7 @@ var direction = {
     40: 1
 }
 
-export class Tabs extends Component {
+export default class Tabs extends Component {
 
     constructor(props) {
         super(props);

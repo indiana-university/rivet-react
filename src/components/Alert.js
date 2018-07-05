@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import {copy, shortuid, getRivetClasses} from '../util'
+import {copy, shortuid, getRivetClasses} from './util'
 import classNames from 'classnames'
 
 // Longhand
-export class Alert extends Component {
+export default class Alert extends Component {
 
     constructor(props) {
         super(props);

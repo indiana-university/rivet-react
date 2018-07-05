@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import {copy, shortuid, getRivetClasses} from '../util'
+import {copy, shortuid, getRivetClasses} from './util'
 import classNames from 'classnames'
 
-export class Input extends Component {
+export default class Input extends Component {
     render() {
         var rv = []
         var props = copy(this.props)
