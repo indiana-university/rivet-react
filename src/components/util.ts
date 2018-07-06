@@ -7,8 +7,6 @@
 import * as classnames from 'classnames'
 import * as Rivet from './common'
 
-const SIZES = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl']
-const DIRECTIONS = [ 'top', 'right', 'bottom', 'left' ]
 
 export const shortuid = () => {
     const m = Date.now() % 4194304
@@ -17,43 +15,30 @@ export const shortuid = () => {
     return `id_${id}`;
 }
 
-export const parseRivetSpacing = (type, definition: Rivet.Size | Rivet.BoxStyle) => {
-    if (!definition) {
-        return [];
-    }
+const inflate = (x) => Array.isArray(x) ? x : [x];
+const flatten = (a,b) => a.concat(b);
+const rivetSpacing = (type,edge,size) => `rvt-${type}-${edge}-${size}`
 
-    const classes = Array<string>();
-    if (typeof definition === "string"){
-        if (SIZES.indexOf(definition) !== -1) {
-            classes.push(`rvt-${type}-all-${definition}`)
-        }
-    } else {
-        DIRECTIONS.forEach(direction => {
-            if (definition.hasOwnProperty(direction)) {
-                const size = definition[direction]
-                if (SIZES.indexOf(size) !== -1) {
-                    classes.push(`rvt-${type}-${direction}-${size}`)
-                }
-            }
-        });
-        SIZES.forEach(size => {
-            if (definition.hasOwnProperty(size)) {
-                const directions = definition[size]
-                if (Array.isArray(directions)) {
-                    directions.forEach(direction => {
-                        if (DIRECTIONS.indexOf(direction) !== -1) {
-                            classes.push(`rvt-${type}-${direction}-${size}`)
-                        }
-                    })
-                } else if (DIRECTIONS.indexOf(directions) !== -1) {
-                    classes.push(`rvt-${type}-${directions}-${size}`)
-                }
-            }
-        })
-    }
+// determine spacing based on edge- or size-based styling
+const edgeSpecificSpacing = (t, style) =>
+    Rivet.Edges
+        .filter(e => style.hasOwnProperty(e))
+        // edges can only have one specified size
+        .map(e => rivetSpacing(t,e,style[e]))
+        .concat(
+    Rivet.Sizes
+        .filter(s => style.hasOwnProperty(s))
+        // sizes can be applied to one or more edges.
+        .map(s => inflate(style[s]) 
+            .map(e => rivetSpacing(t,e,s)))
+        .reduce(flatten, []))
 
-    return classes
-}
+export const parseRivetSpacing = (type, style: Rivet.Size | Rivet.BoxStyle) =>
+    style !== undefined
+    ? typeof style === "string"
+        ? [rivetSpacing(type, "all", style)]
+        : edgeSpecificSpacing(type, style)
+    : [];
 
 export const parseRivetMargin = (margin) => 
     parseRivetSpacing('m', margin);

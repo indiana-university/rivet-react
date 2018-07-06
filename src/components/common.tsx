@@ -1,5 +1,3 @@
-
-
 import * as React from 'react';
 
 export type Action = () => void;
@@ -26,7 +24,9 @@ export interface Props extends React.Props<Props> {
 }
 
 export type Size = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+export const Sizes = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' ];
 export type Edge = 'top' | 'right' | 'bottom' | 'left';
+export const Edges = [ 'top', 'right', 'bottom', 'left' ];
 
 /**
  * An interface for describing the styling of box edges. 
