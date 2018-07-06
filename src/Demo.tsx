@@ -18,8 +18,10 @@ import {
     Alert,
     Button,
     Checkbox,
-    Footer
+    Footer,
+    Nav
 } from './components'
+
 
 /**
  * The Rivet Header supports several different configurations depending on the structure of the application.
@@ -343,7 +345,7 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     </Table>
 
                 </Section>
-                <Footer />
+                <Footer nav={[ new Nav("Privacy Policy", "/privacy") ]}/>
             </React.Fragment>
         )
     }

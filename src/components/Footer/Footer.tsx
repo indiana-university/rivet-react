@@ -1,6 +1,5 @@
 import * as React from 'react'
-import * as Rivet from '../common'
-import * as util from '../util'
+import * as Rivet from '../Rivet'
 
 export interface FooterProps extends Rivet.Props {
     nav?: Rivet.Nav[]
@@ -24,8 +23,8 @@ const footerNav = (nav: Rivet.Nav[] = []) =>
 class Footer extends React.Component<FooterProps> {
     public render() {
         return (
-        <footer id={this.props.id || util.shortuid()} 
-                className={util.rivetize(this.props, componentClass)} 
+        <footer id={this.props.id || Rivet.shortuid()} 
+                className={Rivet.rivetize(this.props, componentClass)} 
                 role="contentinfo">
             <div className="rvt-footer__copyright-lockup">
                 <div className="rvt-footer__trident">

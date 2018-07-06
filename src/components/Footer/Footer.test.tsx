@@ -1,7 +1,7 @@
 
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import * as Rivet from '../common';
+import * as Rivet from '../Rivet';
 import Footer from './Footer';
 
 describe('<Footer />', () => {

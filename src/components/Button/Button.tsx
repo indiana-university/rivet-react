@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as Rivet from '../common'
+import * as Rivet from '../Rivet'
 import * as util from '../util'
 
 /**  
@@ -76,7 +76,7 @@ class Button extends React.Component<ButtonProps> {
         const { id, onClick, children, ...attrs } = this.props;
         return (
             <button id={id || util.shortuid()} 
-                    className={ util.rivetize<ButtonProps>(attrs, buttonClass, buttonDecorators) } 
+                    className={ Rivet.rivetize<ButtonProps>(attrs, buttonClass, buttonDecorators) } 
                     onClick={ onClick } 
                     disabled={ onClick === undefined }
                     { ...attrs } >
