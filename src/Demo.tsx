@@ -4,7 +4,6 @@ import 'rivet-uits/css/rivet.min.css'
 import Dropdown from './components/Dropdown';
 import File from './components/File';
 import Header from './components/Header';
-import Input from './components/Input';
 import List from './components/List';
 import Modal from './components/Modal';
 import RadioButton from './components/RadioButton';
@@ -19,6 +18,7 @@ import {
     Button,
     Checkbox,
     Footer,
+    Input,
     Nav
 } from './components'
 
@@ -140,8 +140,8 @@ class Demo extends React.Component<DemoProps, DemoState> {
                         <button>For all of a users's group</button>
                     </Dropdown>
 
-                    <Button onClick={() => console.log("hello") } className="rvt-m-top-md">Hello</Button>
-                    <Button onClick={() => console.log("world") } className="rvt-m-left-md rvt-button--secondary rvt-m-top-lg">World</Button>
+                    <Button onClick={() => console.log("hello") } margin="xs">Hello</Button>
+                    <Button onClick={() => console.log("world") } margin="xs" secondary>World</Button>
 
                     <div className="rvt-m-top-md">
                         <SegmentedButtons label="Numbers" fit>
@@ -151,6 +151,8 @@ class Demo extends React.Component<DemoProps, DemoState> {
                         </SegmentedButtons>
                     </div>
 
+                    <h1>Forms</h1>
+                    
                     <form className="rvt-m-top-sm">
                         <fieldset>
                             <legend className="sr-only">Checkboxes inline</legend>
@@ -189,11 +191,12 @@ class Demo extends React.Component<DemoProps, DemoState> {
                                     <Input name="number" label="One"/>
                                 </li>
                                 <li>
-                                    <Input name="numbers" label="Two"/>
+                                    <Input name="numbers" label="Two" />
                                 </li>
                             </ul>
                         </fieldset>
                     </form>
+
 
                     <label htmlFor="select-demo">Select input:</label>
                     <select id="select-demo">
@@ -211,8 +214,16 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                 </main>
 
-                <Section margin='sm'>
+                <Section margin="sm">
+                    <h1> Text Inputs </h1>
+                    <Input name="inputWithNote" label="Input with Note" note="Here's the note!" margin={{top: "md"}} />
+                    <Input info name="inputWithInfo" label="Input with Info" note="Password must have at least 1 emoji" margin={{top: "md"}} />
+                    <Input valid name="inputWithValid" label="Valid Input" note="Password is strong" margin={{top: "md"}} />
+                    <Input warning name="inputWithWarning" label="Warning Input" note="Password is too weak"  margin={{top: "md"}} />
+                    <Input invalid name="inputWithInvalid" label="Invalid Input" note="Password is required" margin={{top: "md", bottom: "md"}} />
+                </Section>
 
+                <Section margin='sm'>
 
                     <h1>Spacing and Type Scale</h1>
                     <Section margin={{bottom: 'lg'}}>
