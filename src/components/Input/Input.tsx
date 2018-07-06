@@ -44,15 +44,16 @@ const alertIcon = (props: InputProps) =>
     props.info ? infoIcon
     : props.valid ? validIcon
     : props.warning ? warningIcon
-    : props.invalid ? invalidIcon
-    : "";
+    : invalidIcon;
 
 const alertClass = (props: InputProps) =>
     props.info ? infoClass
     : props.valid ? validClass
     : props.warning ? warningClass
-    : props.invalid ? invalidClass
-    : "";
+    : invalidClass;
+
+const isInlineAlert = (props: InputProps) => 
+    props.info || props.valid || props.warning || props.invalid;
 
 const inlineAlert = (props: InputProps) =>
     <div className={`rvt-inline-alert rvt-inline-alert--${alertClass(props)}`}>
@@ -77,14 +78,13 @@ const labelFragment = (inputId: string, props: InputProps) =>
 
 const inputFragment = (inputId: string, props: InputProps) =>
 {
-    const alert = alertClass(props);
-    const className = alert ? `rvt-${alert}` : "";
+    const className = isInlineAlert(props) ? `rvt-${alertClass(props)}` : "";
     const describedBy = props.note ? noteId(inputId) : ""
     return <input type="text" id={inputId} className={className} aria-describedby={describedBy} aria-invalid={props.invalid}/>
 }
 
 const noteFragment = (inputId: string, props: InputProps) =>
-    alertClass(props)
+    isInlineAlert(props)
         ? inlineAlert(props)
         : standardNote(inputId, props);
 
