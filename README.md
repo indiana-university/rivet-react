@@ -1,4 +1,8 @@
 # rivet-react npm package
+
+[![Build Status](https://travis-ci.org/indiana-university/rivet-react.svg?branch=master)](https://travis-ci.org/indiana-university/rivet-react)
+
+
 Published to [https://www.npmjs.com/package/rivet-react](https://www.npmjs.com/package/rivet-react)
 
 ## Installing
