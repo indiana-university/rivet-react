@@ -3,7 +3,6 @@ import 'rivet-uits/css/rivet.min.css'
 
 import Dropdown from './components/Dropdown';
 import File from './components/File';
-import Footer from './components/Footer';
 import Header from './components/Header';
 import Input from './components/Input';
 import List from './components/List';
@@ -19,7 +18,10 @@ import {
     Alert,
     Button,
     Checkbox,
+    Footer,
+    Nav
 } from './components'
+
 
 /**
  * The Rivet Header supports several different configurations depending on the structure of the application.
@@ -343,7 +345,7 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     </Table>
 
                 </Section>
-                <Footer />
+                <Footer nav={[ new Nav("Rivet Documentation", "https://rivet.uits.iu.edu") ]}/>
             </React.Fragment>
         )
     }

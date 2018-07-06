@@ -1,6 +1,5 @@
 import * as React from 'react'
-import * as Rivet from '../common'
-import * as util from '../util'
+import * as Rivet from '../Rivet'
 
 export interface CheckboxProps extends Rivet.Props {
     label: string,
@@ -11,13 +10,13 @@ class Checkbox extends React.Component<CheckboxProps & React.InputHTMLAttributes
     public render() {
 
         const { id, label, hideLabel, children, ...attrs } = this.props;
-        const resolvedId = id || util.shortuid();
+        const resolvedId = id || Rivet.shortuid();
         const resolvedLabel = hideLabel ? <span className="rvt-sr-only">{label}</span> : label
         return (
             <React.Fragment>
                 <input id={resolvedId} type="checkbox" {...attrs} />
                 { children }
-                <label className={util.rivetize(attrs)} htmlFor={resolvedId}>{resolvedLabel}</label>
+                <label className={Rivet.classify(attrs)} htmlFor={resolvedId}>{resolvedLabel}</label>
             </React.Fragment>
         );
     }

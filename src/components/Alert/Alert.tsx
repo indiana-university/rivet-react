@@ -1,6 +1,5 @@
 import * as React from 'react'
-import * as Rivet from '../common'
-import * as util from '../util'
+import * as Rivet from '../Rivet'
 
 /**
  * Optional Rivet alert stylings. 
@@ -59,9 +58,9 @@ class Alert extends React.Component<AlertProps, AlertState> {
 
     public render() {
         const { id, title, dismissible, clickDismiss, children, ...attrs } = this.props;
-        const componentId = id || util.shortuid();
-        const titleId = util.shortuid();
-        const classNames = util.rivetize<AlertProps>(attrs, alertClass, alertDecorators);
+        const componentId = id || Rivet.shortuid();
+        const titleId = Rivet.shortuid();
+        const classNames = Rivet.classify<AlertProps>(attrs, alertClass, alertDecorators);
 
         return (
             this.state.visible &&

@@ -1,4 +1,5 @@
 export { default as Alert } from './Alert';
 export { default as Button } from './Button';
 export { default as Checkbox } from './Checkbox';
-export { Action } from './common';
+export { default as Footer } from './Footer';
+export { Action, Nav } from './Rivet';
