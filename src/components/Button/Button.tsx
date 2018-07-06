@@ -76,7 +76,7 @@ class Button extends React.Component<ButtonProps> {
         const { id, onClick, children, ...attrs } = this.props;
         return (
             <button id={id || util.shortuid()} 
-                    className={ Rivet.rivetize<ButtonProps>(attrs, buttonClass, buttonDecorators) } 
+                    className={ Rivet.classify<ButtonProps>(attrs, buttonClass, buttonDecorators) } 
                     onClick={ onClick } 
                     disabled={ onClick === undefined }
                     { ...attrs } >

@@ -92,17 +92,17 @@ describe('parseRivetSpacing', () => {
   
   describe('generated class names', () => {
       it('observes component class', () => {
-          expect(Rivet.rivetize({}, "rvt-foo")).toEqual("rvt-foo");
+          expect(Rivet.classify({}, "rvt-foo")).toEqual("rvt-foo");
       });
   
       it('gracefully ingores component class', () => {
-          expect(Rivet.rivetize({})).toEqual("");
+          expect(Rivet.classify({})).toEqual("");
       });
   
       it('uses external class generators', () => {
           const fooDecorator = (props) => "rvt-foo";
           const barDecorator = (props) => "rvt-bar";
-          expect(Rivet.rivetize({}, "", [fooDecorator, barDecorator])).toEqual("rvt-foo rvt-bar");
+          expect(Rivet.classify({}, "", [fooDecorator, barDecorator])).toEqual("rvt-foo rvt-bar");
       });
   });
   

@@ -141,7 +141,7 @@ export const parseRivetClasses = (margin, padding, ts, border, display, hide) =>
 
 export type ComponentClassDecorator<T extends Props> = ( props: T ) => string;
 
-export const rivetize = <T extends Props> (props: T, componentClass: string = "", componentDecorators: Array<ComponentClassDecorator<T>> = []) => {
+export const classify = <T extends Props> (props: T, componentClass: string = "", componentDecorators: Array<ComponentClassDecorator<T>> = []) => {
     const { className, border, margin, padding, display="", hide=false, ts } = props;
     const decorations = componentDecorators.map(cg => cg(props));
     return classnames(...parseRivetClasses(margin, padding, ts, border, display, hide), componentClass, className, decorations);

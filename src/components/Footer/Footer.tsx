@@ -24,7 +24,7 @@ class Footer extends React.Component<FooterProps> {
     public render() {
         return (
         <footer id={this.props.id || Rivet.shortuid()} 
-                className={Rivet.rivetize(this.props, componentClass)} 
+                className={Rivet.classify(this.props, componentClass)} 
                 role="contentinfo">
             <div className="rvt-footer__copyright-lockup">
                 <div className="rvt-footer__trident">

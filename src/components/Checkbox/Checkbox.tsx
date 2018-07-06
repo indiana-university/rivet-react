@@ -16,7 +16,7 @@ class Checkbox extends React.Component<CheckboxProps & React.InputHTMLAttributes
             <React.Fragment>
                 <input id={resolvedId} type="checkbox" {...attrs} />
                 { children }
-                <label className={Rivet.rivetize(attrs)} htmlFor={resolvedId}>{resolvedLabel}</label>
+                <label className={Rivet.classify(attrs)} htmlFor={resolvedId}>{resolvedLabel}</label>
             </React.Fragment>
         );
     }

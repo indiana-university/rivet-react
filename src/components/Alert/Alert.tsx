@@ -60,7 +60,7 @@ class Alert extends React.Component<AlertProps, AlertState> {
         const { id, title, dismissible, clickDismiss, children, ...attrs } = this.props;
         const componentId = id || Rivet.shortuid();
         const titleId = Rivet.shortuid();
-        const classNames = Rivet.rivetize<AlertProps>(attrs, alertClass, alertDecorators);
+        const classNames = Rivet.classify<AlertProps>(attrs, alertClass, alertDecorators);
 
         return (
             this.state.visible &&
