@@ -19,8 +19,6 @@ import {
     Alert,
     Button,
     Checkbox,
-    //
-    Notification
 } from './components'
 
 /**
@@ -285,10 +283,10 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Alerts</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <Alert className="rvt-m-top-md" type={Notification.Message}>This warning has no title!</Alert>
-                        <Alert className="rvt-m-top-md" type={Notification.Info} title='Info'>A nice message for you!</Alert>
-                        <Alert className="rvt-m-top-md" type={Notification.Success} title='Success!'>A great success for you!</Alert>
-                        <Alert className="rvt-m-top-md" type={Notification.Error} dismissible title='Error'
+                        <Alert className="rvt-m-top-md" message>This warning has no title!</Alert>
+                        <Alert className="rvt-m-top-md" info title='Info'>A nice message for you!</Alert>
+                        <Alert className="rvt-m-top-md" success title='Success!'>A great success for you!</Alert>
+                        <Alert className="rvt-m-top-md" error dismissible title='Error'
                                clickDismiss={() => window.alert('You click dismiss error?!?')}>
                                A friendly error for you that can be dismissed!
                         </Alert>
