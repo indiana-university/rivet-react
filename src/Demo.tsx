@@ -345,7 +345,7 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     </Table>
 
                 </Section>
-                <Footer nav={[ new Nav("Privacy Policy", "/privacy") ]}/>
+                <Footer nav={[ new Nav("Rivet Documentation", "https://rivet.uits.iu.edu") ]}/>
             </React.Fragment>
         )
     }
