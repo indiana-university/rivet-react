@@ -41,18 +41,13 @@ interface ComponentProps extends Rivet.Props {
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
 const buttonRoleAndStyle = (attrs: RivetButtonHTMLAttributes) => {
-    const { 
-        secondary, 
-        success, danger, plain
-    } = attrs;
-    
     const classParts = Array<string>();
     // check style
-    if (success) { classParts.push("success"); }
-    else if (danger) { classParts.push("danger"); }
-    else if (plain) { classParts.push("plain"); };
+    if (attrs.success) { classParts.push("success"); }
+    else if (attrs.danger) { classParts.push("danger"); }
+    else if (attrs.plain) { classParts.push("plain"); };
     // check variation
-    if (secondary) { classParts.push("secondary"); };
+    if (attrs.secondary) { classParts.push("secondary"); };
     // combine variation and style, if any.
     return classParts.length === 0 ? "" : `rvt-button--${classParts.join("-")}`;
 }
@@ -62,10 +57,8 @@ const buttonRoleAndStyle = (attrs: RivetButtonHTMLAttributes) => {
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
-const buttonSize = (attrs: RivetButtonHTMLAttributes) => {
-    const { small } = attrs;
-    return small ? "rvt-button--small" : ""
-}
+const buttonSize = (attrs: RivetButtonHTMLAttributes) =>
+    attrs.small ? "rvt-button--small" : "";
 
 const buttonClass = "rvt-button";
 const buttonDecorators = [ buttonRoleAndStyle, buttonSize]
