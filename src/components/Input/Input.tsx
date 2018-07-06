@@ -79,8 +79,9 @@ const labelFragment = (inputId: string, props: InputProps) =>
 const inputFragment = (inputId: string, props: InputProps) =>
 {
     const className = isInlineAlert(props) ? `rvt-${alertClass(props)}` : "";
-    const describedBy = props.note ? noteId(inputId) : ""
-    return <input type="text" id={inputId} className={className} aria-describedby={describedBy} aria-invalid={props.invalid}/>
+    const ariaDescribedBy = props.note ? noteId(inputId) : ""
+    const ariaInvalid = props.invalid;
+    return <input type="text" id={inputId} className={className} aria-describedby={ariaDescribedBy} aria-invalid={ariaInvalid}/>
 }
 
 const noteFragment = (inputId: string, props: InputProps) =>
