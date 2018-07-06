@@ -7,69 +7,8 @@
 import * as classnames from 'classnames'
 import * as Rivet from './common'
 
-const rvtSpacing = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' ]
 const SIZES = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl']
-const dirs = ['top', 'right', 'bottom', 'left']
 const DIRECTIONS = [ 'top', 'right', 'bottom', 'left' ]
-
-export const addRivetSpacing = (c: string[], type: string, def: any) => {
-    if (typeof def === 'string') {
-        if (rvtSpacing.indexOf(def) !== -1) {
-            c.push('rvt-' + type + '-all-' + def)
-        }
-    } else if (typeof def === 'object') {
-        dirs.forEach(dir => {
-            if (def.hasOwnProperty(dir)) {
-                const size = def[dir]
-                if (rvtSpacing.indexOf(size) !== -1) {
-                    c.push('rvt-' + type + '-' + dir + '-' + size)
-                }
-            }
-        })
-        rvtSpacing.forEach(size => {
-            if (def.hasOwnProperty(size)) {
-                const dir = def[size]
-                if (Array.isArray(dir)) {
-                    dir.forEach(d => {
-                        if (dirs.indexOf(d) !== 0) {
-                            c.push('rvt-' + type + '-' + d + '-' + size)
-                        }
-                    })
-                } else if (dirs.indexOf(dir) !== 0) {
-                    c.push('rvt-' + type + '-' + dir + '-' + size)
-                }
-            }
-        })
-    }
-}
-
-export const copy = (o: any) => {
-    if (typeof o !== 'object') {
-        return o
-    }
-
-    const c = {}
-    for (const p in o) {
-        if (o.hasOwnProperty(p)) {
-            c[p] = o[p]
-        }
-    }
-
-    return c
-}
-
-export const hash = (s: string) => {
-    let h = 0
-    if (s.length === 0) {
-        return s
-    } 
-    for (let i = 0; i < s.length; i++) {
-        const c = s.charCodeAt(i)
-        h = ((i << 5) - i) + c
-        h &= h
-    }
-    return h
-}
 
 export const shortuid = () => {
     const m = Date.now() % 4194304
@@ -78,25 +17,7 @@ export const shortuid = () => {
     return `id_${id}`;
 }
 
-export const getRivetClasses = (props: any, c: string[] = [])  => {
-    if (props.margin) {
-        addRivetSpacing(c, 'm', props.margin)
-        delete props.margin
-    }
-    if (props.padding) {
-        addRivetSpacing(c, 'p', props.padding)
-        delete props.padding
-    }
-
-
-    if (typeof props.ts === 'number' || props.ts === 'base') {
-        c.push('rvt-ts-' + props.ts)
-        delete props.ts
-    }
-    return c
-}
-
-export const parseRivetSpacing = (type, definition: string | Rivet.BoxStyling) => {
+export const parseRivetSpacing = (type, definition: Rivet.Size | Rivet.BoxStyle) => {
     if (!definition) {
         return [];
     }
@@ -172,9 +93,9 @@ export const parseRivetClasses = (margin, padding, ts, border, display, hide) =>
         ...parseRivetHidden(hide)
     ];
 
-export type ComponentClassDecorator = ( props: Rivet.Props ) => string;
+export type ComponentClassDecorator<T extends Rivet.Props> = ( props: T ) => string;
 
-export const rivetize = (props: Rivet.Props, componentClass: string = "", componentDecorators: ComponentClassDecorator[] = []) => {
+export const rivetize = <T extends Rivet.Props> (props: T, componentClass: string = "", componentDecorators: Array<ComponentClassDecorator<T>> = []) => {
     const { className, border, margin, padding, display="", hide=false, ts } = props;
     const decorations = componentDecorators.map(cg => cg(props));
     return classnames(...parseRivetClasses(margin, padding, ts, border, display, hide), componentClass, className, decorations);

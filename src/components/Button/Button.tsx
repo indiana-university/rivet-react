@@ -3,42 +3,27 @@ import * as Rivet from '../common'
 import * as util from '../util'
 
 /**  
- * The button role. Optional.
- * If no role is specified, the component will apply the primary button style.
- * 
- * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
- */
-interface RivetButtonRoleHTMLAttributes {
-    /** Optional style: a secondary button. */
-    secondary?: boolean;
-}
-
-/**  
- * The button style. Optional. 
+ * Optional Rivet button stylings. 
  * If no style is specified, the component will apply the default button style.
- * These styles are mutually exclusive: only one will be honored.
+ * These 'success', 'danger', and 'plain' styles are mutually exclusive: only one will be honored.
  * 
- * @see https://rivet.uits.iu.edu/components/forms/buttons/#button-examples
+ * @see https://rivet.uits.iu.edu/components/forms/buttons/
+ * 
+ * @property secondary: a secondary-style button.
  * @property success: a success-style button.
  * @property danger: a danger-style button.
  * @property plain: a success-style button.
+ * @property small: a small button.
  */
-interface RivetButtonStyleHTMLAttributes {
+interface RivetButtonHTMLAttributes {
+    /** Optional style: a secondary button. */
+    secondary?: boolean;
     /** Optional Rivet style: a success button. Exclusive to 'danger' and 'plain' styles. */
     success?: boolean;
     /** Optional Rivet style: a danger button. Exclusive to 'success' and 'plain' styles. */
     danger?: boolean;
     /** Optional Rivet style: a plain button. Exclusive to 'success' and 'danger' styles. */
     plain?: boolean;
-}
-
-/**  
- * The button size. Optional.
- * If no role is specified, the component will apply the regular button sizing.
- * 
- * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
- */
-interface RivetButtonSizeHTMLAttributes {
     /** Optional Rivet style: a small button. */
     small?: boolean;
 }
@@ -52,14 +37,14 @@ interface ComponentProps extends Rivet.Props {
 
 /**
  * Generate the combined role and variation class for this button, if applicable.
- * @param props This button's properties
+ * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
-const buttonRoleAndStyle = (props: ButtonProps) => {
+const buttonRoleAndStyle = (attrs: RivetButtonHTMLAttributes) => {
     const { 
         secondary, 
         success, danger, plain
-    } = props;
+    } = attrs;
     
     const classParts = Array<string>();
     // check style
@@ -74,11 +59,11 @@ const buttonRoleAndStyle = (props: ButtonProps) => {
 
 /**
  * Generate the size class for this button, if applicable.
- * @param props This button's properties
+ * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
-const buttonSize = (props: ButtonProps) => {
-    const { small } = props;
+const buttonSize = (attrs: RivetButtonHTMLAttributes) => {
+    const { small } = attrs;
     return small ? "rvt-button--small" : ""
 }
 
@@ -90,9 +75,7 @@ const buttonDecorators = [ buttonRoleAndStyle, buttonSize]
  */
 export type ButtonProps = 
     ComponentProps & 
-    RivetButtonRoleHTMLAttributes &
-    RivetButtonStyleHTMLAttributes & 
-    RivetButtonSizeHTMLAttributes &
+    RivetButtonHTMLAttributes &
     React.ButtonHTMLAttributes<HTMLButtonElement>; 
 
 class Button extends React.Component<ButtonProps> {
@@ -100,7 +83,7 @@ class Button extends React.Component<ButtonProps> {
         const { id, onClick, children, ...attrs } = this.props;
         return (
             <button id={id || util.shortuid()} 
-                    className={ util.rivetize(attrs, buttonClass, buttonDecorators) } 
+                    className={ util.rivetize<ButtonProps>(attrs, buttonClass, buttonDecorators) } 
                     onClick={ onClick } 
                     disabled={ onClick === undefined }
                     { ...attrs } >
