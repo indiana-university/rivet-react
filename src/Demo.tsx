@@ -3,7 +3,6 @@ import 'rivet-uits/css/rivet.min.css'
 
 import Dropdown from './components/Dropdown';
 import File from './components/File';
-import Footer from './components/Footer';
 import Header from './components/Header';
 import Input from './components/Input';
 import List from './components/List';
@@ -19,6 +18,7 @@ import {
     Alert,
     Button,
     Checkbox,
+    Footer
 } from './components'
 
 /**
