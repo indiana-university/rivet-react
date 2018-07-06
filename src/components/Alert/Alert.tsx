@@ -1,18 +1,53 @@
-import * as classnames from 'classnames'
 import * as React from 'react'
 import * as Rivet from '../common'
 import * as util from '../util'
 
-export interface AlertProps extends Rivet.Props {
-    type: Rivet.Notification,
+/**
+ * Optional Rivet alert stylings. 
+ * If no style is specified, the component will apply the 'info' alert style.
+ * These styles are mutually exclusive: only one will be honored.
+ * 
+ * @see https://rivet.uits.iu.edu/components/overlays/alerts
+ * 
+ * @property info: an informational alert
+ * @property error: an error alert
+ * @property success: a success alert
+ * @property message: a message/warning alert
+ */
+interface RivetAlertHTMLAttributes {
+    info?: boolean
+    message?: boolean
+    error?: boolean
+    success?: boolean
+}
+
+interface ComponentProps extends Rivet.Props {
     title?: string,
     dismissible?: boolean, 
     clickDismiss?: Rivet.Action,
 }
 
+export type AlertProps = 
+    ComponentProps 
+    & RivetAlertHTMLAttributes
+
 export interface AlertState {
     visible: boolean
 }
+
+/**
+ * Generate the style for this alert.
+ * @param attrs This alert's properties
+ */
+const alertStyle = (attrs: RivetAlertHTMLAttributes) =>
+    attrs.info ? "rvt-alert--info"
+    : attrs.error ? "rvt-alert--error"
+    : attrs.success ? "rvt-alert--success"
+    : attrs.message ?  "rvt-alert--message"
+    : "rvt-alert--info";
+
+const alertClass = "rvt-alert";
+const alertDecorators = [alertStyle];
 
 class Alert extends React.Component<AlertProps, AlertState> {
     constructor(props) {
@@ -23,10 +58,10 @@ class Alert extends React.Component<AlertProps, AlertState> {
     }
 
     public render() {
-        const { id, title, type, dismissible, clickDismiss, className, children } = this.props;
+        const { id, title, dismissible, clickDismiss, children, ...attrs } = this.props;
         const componentId = id || util.shortuid();
         const titleId = util.shortuid();
-        const classNames = classnames("rvt-alert", className, this.alertClass(type));
+        const classNames = util.rivetize<AlertProps>(attrs, alertClass, alertDecorators);
 
         return (
             this.state.visible &&
@@ -38,14 +73,8 @@ class Alert extends React.Component<AlertProps, AlertState> {
         );
     }
 
-    private alertClass = (type: Rivet.Notification) => {
-        switch(type){
-            case Rivet.Notification.Message: return "rvt-alert--message";
-            case Rivet.Notification.Error: return "rvt-alert--error";
-            case Rivet.Notification.Success: return "rvt-alert--success";
-            default: return "rvt-alert--info";
-        }
-    }
+    private headerFragment = (titleId: string, title?: string) => 
+        <h1 className='rvt-alert__title' id={titleId}>{title}</h1>
 
     private dismissFragment = (onDismissed = () => {;}) =>
         <button className="rvt-alert__dismiss" onClick={()=>{ onDismissed(); this.hideAlert(); }}>
@@ -54,9 +83,6 @@ class Alert extends React.Component<AlertProps, AlertState> {
                 <path fill="currentColor" d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z"/>
             </svg>
         </button>
-
-    private headerFragment = (titleId: string, title?: string) => 
-        <h1 className='rvt-alert__title' id={titleId}>{title}</h1>
 
     private hideAlert = () => {
         this.setState({ visible: false });

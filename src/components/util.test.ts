@@ -16,15 +16,13 @@ describe('parseRivetSpacing', () => {
   });
 
   it('discriminates bounds', () => {
-    const bounds = { top: "xs", right:"sm", bottom: "md", left: "lg" };
-    const expected = ["rvt-m-top-xs", "rvt-m-right-sm", "rvt-m-bottom-md", "rvt-m-left-lg"];
-    expect(util.parseRivetSpacing("m", bounds)).toEqual(expected);
+    expect(util.parseRivetSpacing("m", { top: "xs", right:"sm", bottom: "md", left: "lg" }))
+        .toEqual(["rvt-m-top-xs", "rvt-m-right-sm", "rvt-m-bottom-md", "rvt-m-left-lg"]);
   });
 
   it('discriminates sizings', () => {
-    const sizings = { xs: ["top", "bottom"], md: "left", lg: "right" };
-    const expected = ["rvt-m-top-xs", "rvt-m-bottom-xs", "rvt-m-left-md", "rvt-m-right-lg"];
-    expect(util.parseRivetSpacing("m", sizings)).toEqual(expected);
+    expect(util.parseRivetSpacing("m", { xs: ['top', "bottom"], md: "left", lg: "right" }))
+        .toEqual(["rvt-m-top-xs", "rvt-m-bottom-xs", "rvt-m-left-md", "rvt-m-right-lg"]);
   });
 
 }); 
@@ -37,7 +35,6 @@ describe('parseRivetTypescale', () => {
     it('accepts number', () => {
         expect(util.parseRivetTypescale(123)).toEqual(["rvt-ts-123"]);
     });
-
 });
 
 describe('parseRivetBorder', () => {
@@ -75,5 +72,21 @@ describe('parseRivetHidden', () => {
 
     it('accepts single string', () => {
         expect(util.parseRivetHidden("foo-bar")).toEqual(["rvt-hide-foo-bar"]);
+    });
+});
+
+describe('generated class names', () => {
+    it('observes component class', () => {
+        expect(util.rivetize({}, "rvt-foo")).toEqual("rvt-foo");
+    });
+
+    it('gracefully ingores component class', () => {
+        expect(util.rivetize({})).toEqual("");
+    });
+
+    it('uses external class generators', () => {
+        const fooDecorator = (props) => "rvt-foo";
+        const barDecorator = (props) => "rvt-bar";
+        expect(util.rivetize({}, "", [fooDecorator, barDecorator])).toEqual("rvt-foo rvt-bar");
     });
 });

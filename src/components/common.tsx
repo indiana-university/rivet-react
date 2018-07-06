@@ -1,17 +1,6 @@
-
-
 import * as React from 'react';
 
 export type Action = () => void;
-
-export enum Notification {
-    Message = 1,
-    Success,
-    Info,
-    Error
-}
-
-export type BoxStyling = string | BoxEdges | BoxSizings;
 
 export interface Props extends React.Props<Props> {
     id?: string,
@@ -21,35 +10,32 @@ export interface Props extends React.Props<Props> {
     //
     ts?: number
     hide?: boolean,
-    border?: string | string[],
-    margin?: BoxStyling,
-    padding?: BoxStyling,
+    border?: Edge | Edge[],
+    margin?: Size | BoxStyle,
+    padding?: Size | BoxStyle,
     display?: string,
 }
 
+export type Size = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+export const Sizes = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' ];
+export type Edge = 'top' | 'right' | 'bottom' | 'left';
+export const Edges = [ 'top', 'right', 'bottom', 'left' ];
+
 /**
  * An interface for describing the styling of box edges. 
- * Values can be any of: xxs, xs, sm, md, lg, xl, xxl.
  */
-export interface BoxEdges {
-    top?: string,
-    right?: string,
-    bottom?: string,
-    left?: string,
+export interface BoxStyle {
+    top?: Size,
+    right?: Size,
+    bottom?: Size,
+    left?: Size,
+    // 
+    xxs?: Edge | Edge[],
+    xs?:  Edge | Edge[],
+    sm?: Edge | Edge[],
+    md?: Edge | Edge[],
+    lg?: Edge | Edge[],
+    xl?: Edge | Edge[],
+    xxl?: Edge | Edge[],
 }
-
-/**
- * An interface for describing the box edges to which stylings should be applied. 
- * Values can be one or more of: top, right, bottom, left. 
- */
-export interface BoxSizings {
-    xxs?: string | string[],
-    xs?:  string | string[],
-    sm?: string | string[],
-    md?: string | string[],
-    lg?: string | string[],
-    xl?: string | string[],
-    xxl?: string | string[],
-}
-
 
