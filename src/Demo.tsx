@@ -19,7 +19,8 @@ import {
     Footer,
     Input,
     List,
-    Nav
+    Nav,
+    Textarea,
 } from './components'
 
 
@@ -188,10 +189,10 @@ class Demo extends React.Component<DemoProps, DemoState> {
                             <legend className="rvt-sr-only">Mixed inputs inline</legend>
                             <List inline>
                                 <li>
-                                    <Input name="number" label="One"/>
+                                    <Input type="number" name="number" label="One"/>
                                 </li>
                                 <li>
-                                    <Input name="numbers" label="Two" />
+                                    <Input type="number" name="numbers" label="Two" />
                                 </li>
                             </List>
                         </fieldset>
@@ -216,11 +217,23 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                 <Section margin="sm">
                     <h1> Text Inputs </h1>
-                    <Input name="inputWithNote" label="Input with Note" note="Here's the note!" margin={{top: "md"}} />
-                    <Input info name="inputWithInfo" label="Input with Info" note="Password must have at least 1 emoji" margin={{top: "md"}} />
-                    <Input valid name="inputWithValid" label="Valid Input" note="Password is strong" margin={{top: "md"}} />
-                    <Input warning name="inputWithWarning" label="Warning Input" note="Password is too weak"  margin={{top: "md"}} />
-                    <Input invalid name="inputWithInvalid" label="Invalid Input" note="Password is required" margin={{top: "md", bottom: "md"}} />
+                    <Input type="text" name="input" label="Text Input" margin={{top: "md"}} />
+                    <Input type="text" name="inputWithNote" label="Input with Note" note="Here's the note!" margin={{top: "md"}} />
+                    <Input type="number" name="input" label="Numeric Input" note="I have a spinner and only accept numbers." margin={{top: "md"}} />
+                    <Input type="text" info name="inputWithInfo" label="Input with Info" note="Password must have at least 1 emoji" margin={{top: "md"}} />
+                    <Input type="text" valid name="inputWithValid" label="Valid Input" note="Password is strong" margin={{top: "md"}} />
+                    <Input type="text" warning name="inputWithWarning" label="Warning Input" note="Password is too weak"  margin={{top: "md"}} />
+                    <Input type="text" invalid name="inputWithInvalid" label="Invalid Input" note="Password is required" margin={{top: "md", bottom: "md"}} />
+                </Section>
+
+                <Section margin="sm">
+                    <h1> Text Areas </h1>
+                    <Textarea name="textarea" label="Text Area" margin={{top: "md"}} />
+                    <Textarea name="textareaWithNote" label="Text Area with Note" note="Here's the note!" margin={{top: "md"}} />
+                    <Textarea info name="textareaWithInfo" label="Text Area with Info" note="Submissions must have at least 1 emoji" margin={{top: "md"}} />
+                    <Textarea valid name="textareaWithValid" label="Valid Text Area" note="Submission is strong" margin={{top: "md"}} />
+                    <Textarea warning name="textareaWithWarning" label="Warning Text Area" note="Submission is too weak"  margin={{top: "md"}} />
+                    <Textarea cols={3} invalid name="textareaWithInvalid" label="Invalid Text Area" note="Submission is required" margin={{top: "md", bottom: "md"}} />
                 </Section>
 
                 <Section margin='sm'>
