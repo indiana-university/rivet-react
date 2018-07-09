@@ -144,5 +144,8 @@ export type ComponentClassDecorator<T extends Props> = ( props: T ) => string;
 export const classify = <T extends Props> (props: T, componentClass: string = "", componentDecorators: Array<ComponentClassDecorator<T>> = []) => {
     const { className, border, margin, padding, display="", hide=false, ts } = props;
     const decorations = componentDecorators.map(cg => cg(props));
-    return classnames(...parseRivetClasses(margin, padding, ts, border, display, hide), componentClass, className, decorations);
+    return classnames(componentClass, className, decorations, ...parseRivetClasses(margin, padding, ts, border, display, hide));
 }
+
+export const maybe = (option: boolean = false, className: string) => 
+    option ? className : "";

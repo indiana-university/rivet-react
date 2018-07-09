@@ -6,7 +6,6 @@ import File from './components/File';
 import Header from './components/Header';
 import List from './components/List';
 import Modal from './components/Modal';
-import RadioButton from './components/RadioButton';
 import Section from './components/Section';
 import SegmentedButtons from './components/SegmentedButtons';
 import Table from './components/Table';
@@ -18,8 +17,10 @@ import {
     Button,
     Checkbox,
     Footer,
+    Form,
     Input,
     Nav,
+    RadioButton, 
     Textarea,
 } from './components'
 
@@ -154,50 +155,22 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Forms</h1>
                     
-                    <form className="rvt-m-top-sm">
-                        <fieldset>
-                            <legend className="sr-only">Checkboxes inline</legend>
-                            <ul className="rvt-inline-list">
-                                <li>
-                                    <Checkbox name="numbers" label="One"/>
-                                </li>
-                                <li>
-                                    <Checkbox name="numbers" label="Two"/>
-                                </li>
-                            </ul>
-                        </fieldset>
-                    </form>
+                    <Form inline label="Checkboxes inline">
+                        <Checkbox name="numbers" label="One"/>
+                        <Checkbox name="numbers" label="Two"/>
+                    </Form>
 
+                    <Form inline label="Radio buttons inline">
+                        <RadioButton name="number" label="One"/>
+                        <RadioButton name="number" label="Two"/> 
+                    </Form>
 
-                    <form className="rvt-m-top-sm">
-                        <fieldset>
-                            <legend className="rvt-sr-only">Radio buttons inline</legend>
-                            <ul className="rvt-inline-list">
-                                <li>
-                                    <RadioButton name="number" label="One"/>
-                                </li>
-                                <li>
-                                    <RadioButton name="number" label="Two"/>
-                                </li>
-                            </ul>
-                        </fieldset>
-                    </form>
-
-
-                    <form className="rvt-m-top-sm">
-                        <fieldset>
-                            <legend className="rvt-sr-only">Mixed inputs inline</legend>
-                            <ul className="rvt-inline-list">
-                                <li>
-                                    <Input type="number" name="number" label="One"/>
-                                </li>
-                                <li>
-                                    <Input type="number" name="numbers" label="Two" />
-                                </li>
-                            </ul>
-                        </fieldset>
-                    </form>
-
+                    <Form label="Mixed inputs">
+                        <Input type="number" name="number" label="One Fish"/>
+                        <Input type="number" name="numbers" label="Two Fish" />
+                        <RadioButton name="either" label="Red Fish"/>
+                        <RadioButton name="either" label="Blue Fish"/> 
+                    </Form>
 
                     <label htmlFor="select-demo">Select input:</label>
                     <select id="select-demo">
@@ -317,6 +290,7 @@ class Demo extends React.Component<DemoProps, DemoState> {
                                A friendly error for you that can be dismissed!
                         </Alert>
                     </Section>
+
 
                     <h1>Lists</h1>
                     <Section margin={{bottom: 'lg'}}>
