@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as Rivet from '../Rivet'
 
-export interface InputProps extends Rivet.Props {
+export interface TextProps extends Rivet.Props {
     label: string
     note?: string
     // validation style
@@ -40,22 +40,22 @@ const invalidIcon =
         <path d="M10.83,5.17a1,1,0,0,0-1.41,0L8,6.59,6.59,5.17A1,1,0,0,0,5.17,6.59L6.59,8,5.17,9.41a1,1,0,1,0,1.41,1.41L8,9.41l1.41,1.41a1,1,0,0,0,1.41-1.41L9.41,8l1.41-1.41A1,1,0,0,0,10.83,5.17Z"/>
     </g>    
 
-const alertIcon = (props: InputProps) =>
+const alertIcon = (props: TextProps) =>
     props.info ? infoIcon
     : props.valid ? validIcon
     : props.warning ? warningIcon
     : invalidIcon;
 
-const alertClass = (props: InputProps) =>
+const alertClass = (props: TextProps) =>
     props.info ? infoClass
     : props.valid ? validClass
     : props.warning ? warningClass
     : invalidClass;
 
-const isInlineAlert = (props: InputProps) => 
+const isInlineAlert = (props: TextProps) => 
     props.info || props.valid || props.warning || props.invalid;
 
-const inlineAlert = (props: InputProps) =>
+const inlineAlert = (props: TextProps) =>
     <div className={`rvt-inline-alert rvt-inline-alert--${alertClass(props)}`}>
         <span className="rvt-inline-alert__icon">
             <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -67,39 +67,38 @@ const inlineAlert = (props: InputProps) =>
         </span>
     </div>
 
-const standardNote = (inputId: string, props: InputProps) =>
+const standardNote = (inputId: string, props: TextProps) =>
     <small id={noteId(inputId)} className="rvt-display-block rvt-m-bottom-md">{props.note}</small>
 
 const noteId = (inputId: string) => 
     `${inputId}_note`;
 
-const labelFragment = (inputId: string, props: InputProps) =>
+const inputClassName = (props: TextProps) =>
+    isInlineAlert(props) ? `rvt-${alertClass(props)}` : "";
+
+const labelFragment = (inputId: string, props: TextProps) =>
     <label htmlFor={inputId}>{props.label}</label>
 
-const inputFragment = (inputId: string, props: InputProps) =>
-{
-    const className = isInlineAlert(props) ? `rvt-${alertClass(props)}` : "";
-    const ariaDescribedBy = props.note ? noteId(inputId) : ""
-    const ariaInvalid = props.invalid;
-    return <input type="text" id={inputId} className={className} aria-describedby={ariaDescribedBy} aria-invalid={ariaInvalid}/>
-}
-
-const noteFragment = (inputId: string, props: InputProps) =>
+const noteFragment = (inputId: string, props: TextProps) =>
     isInlineAlert(props)
         ? inlineAlert(props)
         : standardNote(inputId, props);
 
-class Input extends React.Component<InputProps & React.InputHTMLAttributes<HTMLInputElement>> {
-    public render() {
-        const inputId = this.props.id || Rivet.shortuid();
+type TextComponentGenerator = (id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean) => JSX.Element; 
+
+export const renderTextComponent = (
+    props: TextProps & React.InputHTMLAttributes<HTMLInputElement>, 
+    inputGenerator: TextComponentGenerator ) => {
+        const inputId = props.id || Rivet.shortuid();
+        const className = inputClassName(props);
+        const ariaDescribedBy = props.note ? noteId(inputId) : ""
+        const ariaInvalid = props.invalid || false;
         return (
-            <div className={Rivet.classify(this.props, "rvt-input")} >
-                {labelFragment(inputId, this.props)}
-                {inputFragment(inputId, this.props)}
-                {this.props.note && noteFragment(inputId, this.props)}
+            <div className={Rivet.classify(props, "rvt-input")} >
+                {labelFragment(inputId, props)}
+                {inputGenerator(inputId, className, ariaDescribedBy, ariaInvalid)}
+                {props.note && noteFragment(inputId, props)}
             </div>
         );
-    }
 }
-
-export default Input
+        

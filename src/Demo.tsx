@@ -18,8 +18,9 @@ import {
     Button,
     Checkbox,
     Footer,
-    Input,
-    Nav
+    Nav,
+    TextArea,
+    TextInput,
 } from './components'
 
 
@@ -188,10 +189,10 @@ class Demo extends React.Component<DemoProps, DemoState> {
                             <legend className="rvt-sr-only">Mixed inputs inline</legend>
                             <ul className="rvt-inline-list">
                                 <li>
-                                    <Input name="number" label="One"/>
+                                    <TextInput name="number" label="One"/>
                                 </li>
                                 <li>
-                                    <Input name="numbers" label="Two" />
+                                    <TextInput name="numbers" label="Two" />
                                 </li>
                             </ul>
                         </fieldset>
@@ -216,11 +217,22 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                 <Section margin="sm">
                     <h1> Text Inputs </h1>
-                    <Input name="inputWithNote" label="Input with Note" note="Here's the note!" margin={{top: "md"}} />
-                    <Input info name="inputWithInfo" label="Input with Info" note="Password must have at least 1 emoji" margin={{top: "md"}} />
-                    <Input valid name="inputWithValid" label="Valid Input" note="Password is strong" margin={{top: "md"}} />
-                    <Input warning name="inputWithWarning" label="Warning Input" note="Password is too weak"  margin={{top: "md"}} />
-                    <Input invalid name="inputWithInvalid" label="Invalid Input" note="Password is required" margin={{top: "md", bottom: "md"}} />
+                    <TextInput name="input" label="Text Input" note="Here's the note!" margin={{top: "md"}} />
+                    <TextInput name="inputWithNote" label="Input with Note" note="Here's the note!" margin={{top: "md"}} />
+                    <TextInput info name="inputWithInfo" label="Input with Info" note="Password must have at least 1 emoji" margin={{top: "md"}} />
+                    <TextInput valid name="inputWithValid" label="Valid Input" note="Password is strong" margin={{top: "md"}} />
+                    <TextInput warning name="inputWithWarning" label="Warning Input" note="Password is too weak"  margin={{top: "md"}} />
+                    <TextInput invalid name="inputWithInvalid" label="Invalid Input" note="Password is required" margin={{top: "md", bottom: "md"}} />
+                </Section>
+
+                <Section margin="sm">
+                    <h1> Text Areas </h1>
+                    <TextArea name="textarea" label="Text Area" margin={{top: "md"}} />
+                    <TextArea name="textareaWithNote" label="Text Area with Note" note="Here's the note!" margin={{top: "md"}} />
+                    <TextArea info name="textareaWithInfo" label="Text Area with Info" note="Submissions must have at least 1 emoji" margin={{top: "md"}} />
+                    <TextArea valid name="textareaWithValid" label="Valid Text Area" note="Submission is strong" margin={{top: "md"}} />
+                    <TextArea warning name="textareaWithWarning" label="Warning Text Area" note="Submission is too weak"  margin={{top: "md"}} />
+                    <TextArea invalid name="textareaWithInvalid" label="Invalid Text Area" note="Submission is required" margin={{top: "md", bottom: "md"}} />
                 </Section>
 
                 <Section margin='sm'>
