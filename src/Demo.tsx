@@ -145,7 +145,7 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     <Button onClick={() => console.log("hello") } margin="xs">Hello</Button>
                     <Button onClick={() => console.log("world") } margin="xs" secondary>World</Button>
 
-                    <div className="rvt-m-top-md">
+                    <div className="rvt-m-top-md" >
                         <SegmentedButtons label="Numbers" fit>
                             <Button onClick={ () => console.log("one")} secondary >One</Button>
                             <Button onClick={ () => console.log("two")} secondary >Two</Button>
@@ -155,21 +155,27 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Forms</h1>
                     
-                    <Form inline label="Checkboxes inline">
-                        <Checkbox name="numbers" label="One"/>
-                        <Checkbox name="numbers" label="Two"/>
+                    <Form label="Checkboxes inline" margin={{top:"md"}}>
+                        <ul className= "rvt-inline-list">
+                        <li><Checkbox name="numbers" label="One"/></li>
+                        <li><Checkbox name="numbers" label="Two"/></li>
+                        </ul>
                     </Form>
 
-                    <Form inline label="Radio buttons inline">
-                        <RadioButton name="number" label="One"/>
-                        <RadioButton name="number" label="Two"/> 
+                    <Form label="Radio buttons inline" margin={{top:"md"}}>
+                        <ul className= "rvt-inline-list">
+                        <li><RadioButton name="number" label="One"/></li>
+                        <li><RadioButton name="number" label="Two"/></li>
+                        </ul>
                     </Form>
 
-                    <Form label="Mixed inputs">
-                        <Input type="number" name="number" label="One Fish"/>
-                        <Input type="number" name="numbers" label="Two Fish" />
-                        <RadioButton name="either" label="Red Fish"/>
-                        <RadioButton name="either" label="Blue Fish"/> 
+                    <Form label="Mixed inputs" margin={{top:"md"}}>
+                        <ul className= "rvt-plain-list">
+                        <li><Input type="number" name="number" label="One Fish"/></li>
+                        <li><Input type="number" name="numbers" label="Two Fish"/></li>
+                        <li><RadioButton name="either" label="Red Fish"/></li>
+                        <li><RadioButton name="either" label="Blue Fish"/></li>
+                        </ul>
                     </Form>
 
                     <label htmlFor="select-demo">Select input:</label>

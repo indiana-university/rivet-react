@@ -6,23 +6,19 @@ interface FormProps extends Rivet.Props {
     label: string,
     /** Include the group label only for screen readers. */
     srOnly?: boolean,
-    /** Render this group of radio buttons inline. */
-    inline?: boolean,
 }
 
 const componentClass = "rvt-form";
 
 class Form extends React.PureComponent<FormProps & React.FormHTMLAttributes<HTMLFormElement>> {
     public render() {
-        const { id, label, name, srOnly, inline, children, ...attrs} = this.props;
+        const { id, label, name, srOnly, children, ...attrs} = this.props;
         const formId = id || Rivet.shortuid();
         return (
             <form className={Rivet.classify(this.props, componentClass)} id={formId} {...attrs}>
                 <fieldset>
                     <legend className={Rivet.maybe(srOnly, "sr-only")}>{label}</legend>
-                    <ul className={inline ? "rvt-inline-list" : "rvt-plain-list"}>
                         {children}
-                    </ul>
                 </fieldset>
             </form>
         );

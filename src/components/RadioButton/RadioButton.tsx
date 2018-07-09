@@ -6,26 +6,19 @@ interface RadioButtonProps extends Rivet.Props {
     label: string,
     /** The name of this radio button */
     name: string,
-    /** Render the radio button with an additional hidden input, as required by some frameworks.  */
-    withHiddenInput?: boolean
 }
 
-const hiddenWrapper = (props: RadioButtonProps) =>
-    props.withHiddenInput ? "rvt-radio-wrapper" : "";
-
 const componentClass = "rvt-radio";
-const componentDecorators = [ hiddenWrapper ]
 
 export class RadioButton extends React.PureComponent<RadioButtonProps & React.InputHTMLAttributes<HTMLInputElement>> {
     public render() {
-        const { id, label, withHiddenInput, ...attrs} = this.props;
+        const { id, label, name, ...attrs} = this.props;
         const inputId = id || Rivet.shortuid();
         return (
-            <li className={Rivet.classify(this.props, componentClass, componentDecorators)}>
-                <input id={inputId} type="radio" {...attrs} />
-                {withHiddenInput && <input type="hidden"/>}
+            <React.Fragment>
+                <input id={inputId} type="radio" name={name} className={Rivet.classify(this.props, componentClass)} {...attrs} />
                 <label htmlFor={inputId}>{label}</label>
-            </li>
+            </React.Fragment>
         );
     }
 }

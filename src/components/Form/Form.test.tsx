@@ -43,12 +43,5 @@ describe('<RadioButton />', () => {
             </Form>);
             expect(cut.find('RadioButton')).toHaveLength(2);
         });
-        it('should optionally create an inline list', () => {
-            const cut = shallow(
-            <Form inline label="Foo" >
-                <RadioButton name="radio" label="foo"/>
-            </Form>);
-            expect(cut.find('ul').hasClass("rvt-inline-list")).toEqual(true);
-        });
     });
 });
