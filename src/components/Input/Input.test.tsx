@@ -11,7 +11,7 @@ describe('<Input />', () => {
             expect(cut.find('input')).toHaveLength(1);
         });
         it('should have the correct type', () => {
-            const cut = shallow(<Input label="Label" />);
+            const cut = shallow(<Input type="text" label="Label" />);
             expect(cut.find('input').prop('type')).toEqual("text");
         });
         it('should render the label', () => {
