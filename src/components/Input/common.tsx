@@ -84,10 +84,10 @@ const noteFragment = (inputId: string, props: TextProps) =>
         ? inlineAlert(props)
         : standardNote(inputId, props);
 
-type TextComponentGenerator = (id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean) => JSX.Element; 
+type TextComponentGenerator = <T>(id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean, attrs: T) => JSX.Element; 
 
-export const renderTextComponent = (
-    props: TextProps & React.InputHTMLAttributes<HTMLInputElement>, 
+export const renderInput = <T extends React.HTMLAttributes<HTMLElement>>(
+    props: TextProps & T, 
     inputGenerator: TextComponentGenerator ) => {
         const inputId = props.id || Rivet.shortuid();
         const className = inputClassName(props);
@@ -96,7 +96,7 @@ export const renderTextComponent = (
         return (
             <div className={Rivet.classify(props, "rvt-input")} >
                 {labelFragment(inputId, props)}
-                {inputGenerator(inputId, className, ariaDescribedBy, ariaInvalid)}
+                {inputGenerator<T>(inputId, className, ariaDescribedBy, ariaInvalid, props)}
                 {props.note && noteFragment(inputId, props)}
             </div>
         );
