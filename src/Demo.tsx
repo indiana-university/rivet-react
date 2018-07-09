@@ -4,7 +4,6 @@ import 'rivet-uits/css/rivet.min.css'
 import Dropdown from './components/Dropdown';
 import File from './components/File';
 import Header from './components/Header';
-import List from './components/List';
 import Modal from './components/Modal';
 import RadioButton from './components/RadioButton';
 import Section from './components/Section';
@@ -19,6 +18,7 @@ import {
     Checkbox,
     Footer,
     Input,
+    List,
     Nav
 } from './components'
 
@@ -156,14 +156,14 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     <form className="rvt-m-top-sm">
                         <fieldset>
                             <legend className="sr-only">Checkboxes inline</legend>
-                            <ul className="rvt-inline-list">
+                            <List inline>
                                 <li>
                                     <Checkbox name="numbers" label="One"/>
                                 </li>
                                 <li>
                                     <Checkbox name="numbers" label="Two"/>
                                 </li>
-                            </ul>
+                            </List>
                         </fieldset>
                     </form>
 
@@ -171,14 +171,14 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     <form className="rvt-m-top-sm">
                         <fieldset>
                             <legend className="rvt-sr-only">Radio buttons inline</legend>
-                            <ul className="rvt-inline-list">
+                            <List inline>
                                 <li>
                                     <RadioButton name="number" label="One"/>
                                 </li>
                                 <li>
                                     <RadioButton name="number" label="Two"/>
                                 </li>
-                            </ul>
+                            </List>
                         </fieldset>
                     </form>
 
@@ -186,14 +186,14 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     <form className="rvt-m-top-sm">
                         <fieldset>
                             <legend className="rvt-sr-only">Mixed inputs inline</legend>
-                            <ul className="rvt-inline-list">
+                            <List inline>
                                 <li>
                                     <Input name="number" label="One"/>
                                 </li>
                                 <li>
                                     <Input name="numbers" label="Two" />
                                 </li>
-                            </ul>
+                            </List>
                         </fieldset>
                     </form>
 
@@ -307,11 +307,23 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Lists</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <List children={['some', 'unordered', 'stuff']}/>
-                        <List ordered children={['some', 'ordered', 'stuff']}/>
-                        <List plain children={['this', 'list', 'is', 'plain']}/>
-                        <List inline children={['this', 'list', 'is', 'inline']}/>
-                        <List inline>
+                        <List border="bottom">
+                            <li>An</li>
+                            <li>unordered</li>
+                            <li>list</li>
+                        </List>
+                        <List ordered border="bottom">
+                            <li>An</li>
+                            <li>ordered</li>
+                            <li>list</li>
+                        </List>
+                        <List plain border="bottom">
+                            <li>A</li>
+                            <li>plain (undecorated)</li>
+                            <li>list</li>
+                        </List>
+                        <List inline children={['this', 'list', 'is', 'inline']} border="bottom"/>
+                        <List inline >
                             <Button>This</Button>
                             <Button>is</Button>
                             <Button>inline</Button>
