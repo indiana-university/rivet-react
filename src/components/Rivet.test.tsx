@@ -94,7 +94,11 @@ describe('parseRivetSpacing', () => {
       it('observes component class', () => {
           expect(Rivet.classify({}, "rvt-foo")).toEqual("rvt-foo");
       });
-  
+
+      it('observes component class', () => {
+        expect(Rivet.classify({className:"external-class"}, "rvt-foo", [])).toEqual("rvt-foo external-class");
+    });
+
       it('gracefully ingores component class', () => {
           expect(Rivet.classify({})).toEqual("");
       });
