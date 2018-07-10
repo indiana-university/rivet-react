@@ -13,10 +13,6 @@ describe('<RadioButton />', () => {
             const cut = shallow(<RadioButton label="Foo" name="name"/>);
             expect(cut.find('input').prop('type')).toEqual("radio");
         });
-        it('should apply the input name', () => {
-            const cut = shallow(<RadioButton label="Foo" name="Name" />);
-            expect(cut.find('input').prop('name')).toEqual("Name");
-        });
         it('should apply component class to input', () => {
             const cut = shallow(<RadioButton label="Foo" name="name" />);
             expect(cut.find('input').hasClass("rvt-radio")).toEqual(true);

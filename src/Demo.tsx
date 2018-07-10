@@ -4,7 +4,6 @@ import 'rivet-uits/css/rivet.min.css'
 import Dropdown from './components/Dropdown';
 import File from './components/File';
 import Header from './components/Header';
-import List from './components/List';
 import Modal from './components/Modal';
 import Section from './components/Section';
 import SegmentedButtons from './components/SegmentedButtons';
@@ -19,6 +18,7 @@ import {
     Footer,
     Form,
     Input,
+    List,
     Nav,
     RadioButton, 
     Textarea,
@@ -156,26 +156,26 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     <h1>Forms</h1>
                     
                     <Form label="Checkboxes inline" margin={{top:"md"}}>
-                        <ul className= "rvt-inline-list">
+                        <List inline>
                         <li><Checkbox name="numbers" label="One"/></li>
                         <li><Checkbox name="numbers" label="Two"/></li>
-                        </ul>
+                        </List>
                     </Form>
 
                     <Form label="Radio buttons inline" margin={{top:"md"}}>
-                        <ul className= "rvt-inline-list">
+                        <List inline>
                         <li><RadioButton name="number" label="One"/></li>
                         <li><RadioButton name="number" label="Two"/></li>
-                        </ul>
+                        </List>
                     </Form>
 
                     <Form label="Mixed inputs" margin={{top:"md"}}>
-                        <ul className= "rvt-plain-list">
+                        <List plain>
                         <li><Input type="number" name="number" label="One Fish"/></li>
                         <li><Input type="number" name="numbers" label="Two Fish"/></li>
                         <li><RadioButton name="either" label="Red Fish"/></li>
                         <li><RadioButton name="either" label="Blue Fish"/></li>
-                        </ul>
+                        </List>
                     </Form>
 
                     <label htmlFor="select-demo">Select input:</label>
@@ -300,11 +300,23 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Lists</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <List children={['some', 'unordered', 'stuff']}/>
-                        <List ordered children={['some', 'ordered', 'stuff']}/>
-                        <List plain children={['this', 'list', 'is', 'plain']}/>
-                        <List inline children={['this', 'list', 'is', 'inline']}/>
-                        <List inline>
+                        <List border="bottom">
+                            <li>An</li>
+                            <li>unordered</li>
+                            <li>list</li>
+                        </List>
+                        <List ordered border="bottom">
+                            <li>An</li>
+                            <li>ordered</li>
+                            <li>list</li>
+                        </List>
+                        <List plain border="bottom">
+                            <li>A</li>
+                            <li>plain (undecorated)</li>
+                            <li>list</li>
+                        </List>
+                        <List inline children={['this', 'list', 'is', 'inline']} border="bottom"/>
+                        <List inline >
                             <Button>This</Button>
                             <Button>is</Button>
                             <Button>inline</Button>
