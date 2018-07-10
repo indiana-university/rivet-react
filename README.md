@@ -1,7 +1,9 @@
 # rivet-react npm package
 
-[![Build Status](https://travis-ci.org/indiana-university/rivet-react.svg?branch=feature/ts)](https://travis-ci.org/indiana-university/rivet-react)
-[![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/feature/ts/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react)
+| Branch | Build | Code Coverage |
+| ------ | ----- | ------------- |
+| master | [![Build Status](https://travis-ci.org/indiana-university/rivet-react.svg?branch=master)](https://travis-ci.org/indiana-university/rivet-react) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/master/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/master) |
+| develop | [![Build Status](https://travis-ci.org/indiana-university/rivet-react.svg?branch=develop)](https://travis-ci.org/indiana-university/rivet-react) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/develop/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/develop) |
 
 
 Published to [https://www.npmjs.com/package/rivet-react](https://www.npmjs.com/package/rivet-react)
