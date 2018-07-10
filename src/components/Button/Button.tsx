@@ -22,8 +22,8 @@ interface ComponentProps extends Rivet.Props {
  */
 const buttonRoleAndStyle = (props: ComponentProps) => {
     const classParts = [
-        props.rvtStyle !== "default" ? props.rvtStyle : undefined,
-        props.rvtRole !== "default" ? props.rvtRole : undefined
+        props.rvtStyle && props.rvtStyle !== "default" ? props.rvtStyle : undefined,
+        props.rvtRole && props.rvtRole !== "default" ? props.rvtRole : undefined
     ].filter(x => x !== undefined);
     // combine variation and style, if any.
     return classParts.length === 0 ? "" : `${buttonClass}--${classParts.join("-")}`;
@@ -52,7 +52,7 @@ class Button extends React.Component<ButtonProps> {
         const { id, onClick, children, ...attrs } = this.props;
         return (
             <button id={id || util.shortuid()} 
-                    className={ Rivet.classify<ButtonProps>(attrs, buttonClass, buttonDecorators) } 
+                    className={ Rivet.classify(this.props, buttonClass, buttonDecorators) } 
                     onClick={ onClick } 
                     disabled={ onClick === undefined }
                     { ...attrs } >
