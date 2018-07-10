@@ -27,56 +27,48 @@ describe('<Button />', () => {
     describe('Styling', ()=>{
         // Primary variations
         it('should have success style', () => {
-            const cut = shallow(<Button success />);
+            const cut = shallow(<Button rvtStyle="success" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--success")).toEqual(true);
         });
         it('should have danger style', () => {
-            const cut = shallow(<Button danger />);
+            const cut = shallow(<Button rvtStyle="danger" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--danger")).toEqual(true);
         });
         it('should have plain style', () => {
-            const cut = shallow(<Button plain />);
+            const cut = shallow(<Button rvtStyle="plain" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--plain")).toEqual(true);
         });
 
         // Secondary variations
         it('should have secondary role', () => {
-            const cut = shallow(<Button secondary />);
+            const cut = shallow(<Button rvtRole="secondary" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--secondary")).toEqual(true);
         });
         it('should have secondary success style', () => {
-            const cut = shallow(<Button secondary success />);
+            const cut = shallow(<Button rvtRole="secondary" rvtStyle="success" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--success-secondary")).toEqual(true);
         });
         it('should have secondary danger style', () => {
-            const cut = shallow(<Button secondary danger />);
+            const cut = shallow(<Button rvtRole="secondary" rvtStyle="danger" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--danger-secondary")).toEqual(true);
         });
         it('should have secondary plain style', () => {
-            const cut = shallow(<Button secondary plain />);
+            const cut = shallow(<Button rvtRole="secondary" rvtStyle="plain" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--plain-secondary")).toEqual(true);
         });
         
         // Size variations
         it('should have small size', () => {
-            const cut = shallow(<Button small  />);
+            const cut = shallow(<Button rvtSize="small"  />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--small")).toEqual(true);
-        });
-
-        it('should ignore extra style attributes', () => {
-            const cut = shallow(<Button success danger plain />);
-            expect(cut.find('button.rvt-button').hasClass("rvt-button--success")).toEqual(true);
-            expect(cut.find('button.rvt-button').hasClass("rvt-button--danger")).toEqual(false);
-            expect(cut.find('button.rvt-button').hasClass("rvt-button--plain")).toEqual(false);
         });
 
         // All together now!
         it('should have a secondary small size', () => {
-            const cut = shallow(<Button secondary plain small />);
+            const cut = shallow(<Button rvtSize="small" rvtRole="secondary" rvtStyle="plain" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--plain-secondary")).toEqual(true);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--small")).toEqual(true);
         });
-
     });
 
     describe("Events", ()=>{
