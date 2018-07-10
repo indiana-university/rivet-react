@@ -40,22 +40,22 @@ describe('<Checkbox />', () => {
 
   it('should apply the custom class name', () => {
     const cut = shallow(<Checkbox label="the_label" className="foo" />);
-    expect(cut.find('label').hasClass("foo")).toBe(true);
+    expect(cut.find('input').hasClass("foo")).toBe(true);
   });
 
   it('should apply the Rivet class name', () => {
     const cut = shallow(<Checkbox label="the_label" margin="xs" />);
-    expect(cut.find('label').hasClass("rvt-m-all-xs")).toBe(true);
+    expect(cut.find('input').hasClass("rvt-m-all-xs")).toBe(true);
   });
 
   it('should gracefully ignore the lack of class name', () => {
     const cut = shallow(<Checkbox label="the_label" />);
-    expect(cut.find('label').hasClass("foo")).toBe(false);
+    expect(cut.find('input').hasClass("foo")).toBe(false);
   });
 
   it('should hide the label for sighted displays', () => {
-    const cut = shallow(<Checkbox label="the_label" hideLabel />);
-    expect(cut.find('label > span').hasClass("rvt-sr-only")).toBe(true);
+    const cut = shallow(<Checkbox label="the_label" rvtLabelVisibility="screen-reader-only" />);
+    expect(cut.find('label').hasClass("rvt-sr-only")).toBe(true);
   });
 
 });

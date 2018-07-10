@@ -3,20 +3,23 @@ import * as Rivet from '../Rivet'
 
 export interface CheckboxProps extends Rivet.Props {
     label: string,
-    hideLabel?: boolean,
+    /**
+     * Optional Rivet style: Make the label visible only to screen readers.
+     * See: https://rivet.uits.iu.edu/components/utilities/display/#visually-hidden-labels-example
+     */
+    rvtLabelVisibility?: "screen-reader-only" | "default"
 }
 
 class Checkbox extends React.Component<CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>> {
     public render() {
-
-        const { id, label, hideLabel, children, ...attrs } = this.props;
+        const { id, label, rvtLabelVisibility, children, ...attrs } = this.props;
         const resolvedId = id || Rivet.shortuid();
-        const resolvedLabel = hideLabel ? <span className="rvt-sr-only">{label}</span> : label
+        const labelClass = rvtLabelVisibility === "screen-reader-only" ? "rvt-sr-only" : "";
         return (
             <React.Fragment>
-                <input id={resolvedId} type="checkbox" {...attrs} />
+                <input className={Rivet.classify(attrs)} id={resolvedId} type="checkbox" {...attrs} />
                 { children }
-                <label className={Rivet.classify(attrs)} htmlFor={resolvedId}>{resolvedLabel}</label>
+                <label className={labelClass} htmlFor={resolvedId}>{label}</label>
             </React.Fragment>
         );
     }
