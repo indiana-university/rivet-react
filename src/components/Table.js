@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import {copy, getRivetClasses} from '../util'
+import {copy, getRivetClasses} from './util'
 import classNames from 'classnames'
 
-export class Table extends Component {
+export default class Table extends Component {
     render() {
         var props = copy(this.props)
 

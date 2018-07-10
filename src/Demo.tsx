@@ -1,33 +1,28 @@
-import React, {Component} from 'react'
-import {render} from 'react-dom'
-import {BrowserRouter} from 'react-router-dom'
-
-if (process.env.NODE_ENV !== 'production') {
-    var axe = require('react-axe');
-    var ReactDOM = require('react-dom');
-    axe(React, ReactDOM, 1000);
-}
-
+import * as React from 'react'
 import 'rivet-uits/css/rivet.min.css'
+
+import Dropdown from './components/Dropdown';
+import File from './components/File';
+import Header from './components/Header';
+import Modal from './components/Modal';
+import Section from './components/Section';
+import SegmentedButtons from './components/SegmentedButtons';
+import Table from './components/Table';
+import TableRow from './components/TableRow';
+import Tabs from './components/Tabs';
 
 import {
     Alert,
     Button,
     Checkbox,
-    Dropdown,
-    File,
     Footer,
-    Header,
+    Form,
     Input,
     List,
-    Modal,
-    RadioButton,
-    Section,
-    SegmentedButtons,
-    Table,
-    TableRow,
-    Tabs
-} from '../../src'
+    Nav,
+    RadioButton, 
+    Textarea,
+} from './components'
 
 
 /**
@@ -40,16 +35,16 @@ import {
  */
 
 const appNav = [
-    { label: "Nav 1", href: "#nav1" },
-    { label: "Nav 2", href: "#nav2", subnav: [
-        { label: "Item 1", href: "#item1" },
-        { label: "Item 2", href: "#item2" },
-        { label: "Item 3", href: "#item3" }
+    { href: "#nav1", label: "Nav 1",  },
+    { href: "#nav2", label: "Nav 2", subnav: [
+        { href: "#item1", label: "Item 1" },
+        { href: "#item2", label: "Item 2" },
+        { href: "#item3", label: "Item 3" }
     ]},
     { label: "Nav 3", onClick: ()=>console.log("Nav 3 clicked"), subnav: [
-        { label: "Item 1", href: "#item1" },
-        { label: "Item 2", href: "#item2" },
-        { label: "Item 3", href: "#item3" }
+        { href: "#item1", label: "Item 1"  },
+        { href: "#item2", label: "Item 2"  },
+        { href: "#item3", label: "Item 3"  }
     ]}
 ]
 
@@ -99,22 +94,32 @@ const tabs = [
     { label: "Tab three", content: tab3 }
 ]
 
-//const header = <Header key={1} />
-//const header = <Header key={1} nav={appNav} />
-//const header = <Header key={1} avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
-//const header = <Header key={1} avatar="JL" user="jolamar" nav={appNav} logout={()=>console.log('logged out')} />
-//const header = <Header key={1} avatar="JL" user="jolamar" userNav={userNav} logout={()=>console.log('logged out')} />
+// const header = <Header key={1} />
+// const header = <Header key={1} nav={appNav} />
+// const header = <Header key={1} avatar="JL" user="jolamar" logout={()=>console.log('logged out')} />
+// const header = <Header key={1} avatar="JL" user="jolamar" nav={appNav} logout={()=>console.log('logged out')} />
+// const header = <Header key={1} avatar="JL" user="jolamar" userNav={userNav} logout={()=>console.log('logged out')} />
 const header = <Header avatar="JL" user="jolamar" nav={appNav} userNav={userNav}
                        logout={() => console.log('logged out')}/>
 
-class Demo extends Component {
+interface Dictionary<T> {
+    [key: string]: T;
+}
+interface DemoProps { }
+interface DemoState {
+    activeModal?: string;
+    desktopActiveDropdown?: string;
+    drawerDropdownVisibility: Dictionary<boolean>;
+};
 
-    constructor(props) {
+class Demo extends React.Component<DemoProps, DemoState> {
+
+    constructor(props: DemoProps) {
         super(props);
         this.state = {
             drawerDropdownVisibility: {},
-            desktopActiveDropdown: null,
-            activeModal: null
+            desktopActiveDropdown: undefined,
+            activeModal: undefined,
         };
 
         this.toggleDrawerDropdown = this.toggleDrawerDropdown.bind(this)
@@ -122,27 +127,8 @@ class Demo extends Component {
         this.toggleModal = this.toggleModal.bind(this)
     }
 
-    toggleDesktopDropdown(key) {
-        this.setState({
-            desktopActiveDropdown: key == this.state.desktopActiveDropdown ? null : key
-        })
-    }
 
-    toggleDrawerDropdown(key) {
-        let drawerDropdownVisibility = Object.assign({}, this.state.drawerDropdownVisibility);
-        drawerDropdownVisibility[key] = !drawerDropdownVisibility[key];
-        this.setState({
-            drawerDropdownVisibility: drawerDropdownVisibility
-        })
-    }
-
-    toggleModal(key) {
-        this.setState({
-            activeModal: key
-        })
-    }
-
-    render() {
+    public render() {
         return (
             <React.Fragment>
                 {header}
@@ -156,84 +142,41 @@ class Demo extends Component {
                         <button>For all of a users's group</button>
                     </Dropdown>
 
-                    <Alert className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Base</Alert>
-                    <Alert error className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Error</Alert>
-                    <Alert info className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Info</Alert>
-                    <Alert success className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Success</Alert>
+                    <Button onClick={() => console.log("hello") } margin="xs">Hello</Button>
+                    <Button onClick={() => console.log("world") } margin="xs" secondary>World</Button>
 
-                    <Button onClick={function () {
-                        console.log("hello")
-                    }} className="rvt-m-top-md">Hello</Button>
-                    <Button onClick={function () {
-                        console.log("world")
-                    }} className="rvt-m-left-md rvt-button--secondary rvt-m-top-lg">World</Button>
-
-
-                    <div className="rvt-m-top-md">
+                    <div className="rvt-m-top-md" >
                         <SegmentedButtons label="Numbers" fit>
-                            <Button onClick={function () {
-                                console.log("one")
-                            }} secondary>One</Button>
-                            <Button onClick={function () {
-                                console.log("two")
-                            }} secondary>Two</Button>
-                            <Button onClick={function () {
-                                console.log("three")
-                            }} secondary>Three</Button>
+                            <Button onClick={ () => console.log("one")} secondary >One</Button>
+                            <Button onClick={ () => console.log("two")} secondary >Two</Button>
+                            <Button onClick={ () => console.log("three")} secondary >Three</Button>
                         </SegmentedButtons>
                     </div>
 
-                    <form className="rvt-m-top-sm">
-                        <fieldset>
-                            <legend className="sr-only">Checkboxes inline</legend>
-                            <ul className="rvt-inline-list">
-                                <li>
-                                    <Checkbox name="numbers" label="One"/>
-                                </li>
-                                <li>
-                                    <Checkbox name="numbers" label="Two"/>
-                                </li>
-                            </ul>
-                        </fieldset>
-                    </form>
+                    <h1>Forms</h1>
+                    
+                    <Form label="Checkboxes inline" margin={{top:"md"}}>
+                        <List inline>
+                        <li><Checkbox name="numbers" label="One"/></li>
+                        <li><Checkbox name="numbers" label="Two"/></li>
+                        </List>
+                    </Form>
 
+                    <Form label="Radio buttons inline" margin={{top:"md"}}>
+                        <List inline>
+                        <li><RadioButton name="number" label="One"/></li>
+                        <li><RadioButton name="number" label="Two"/></li>
+                        </List>
+                    </Form>
 
-                    <form className="rvt-m-top-sm">
-                        <fieldset>
-                            <legend className="rvt-sr-only">Radio buttons inline</legend>
-                            <ul className="rvt-inline-list">
-                                <li>
-                                    <RadioButton name="number" label="One"/>
-                                </li>
-                                <li>
-                                    <RadioButton name="number" label="Two"/>
-                                </li>
-                            </ul>
-                        </fieldset>
-                    </form>
-
-
-                    <form className="rvt-m-top-sm">
-                        <fieldset>
-                            <legend className="rvt-sr-only">Mixed inputs inline</legend>
-                            <ul className="rvt-inline-list">
-                                <li>
-                                    <Input name="number" label="One"/>
-                                </li>
-                                <li>
-                                    <Input name="numbers" label="Two"/>
-                                </li>
-                            </ul>
-                        </fieldset>
-                    </form>
+                    <Form label="Mixed inputs" margin={{top:"md"}}>
+                        <List plain>
+                        <li><Input type="number" name="number" label="One Fish"/></li>
+                        <li><Input type="number" name="numbers" label="Two Fish"/></li>
+                        <li><RadioButton name="either" label="Red Fish"/></li>
+                        <li><RadioButton name="either" label="Blue Fish"/></li>
+                        </List>
+                    </Form>
 
                     <label htmlFor="select-demo">Select input:</label>
                     <select id="select-demo">
@@ -251,8 +194,28 @@ class Demo extends Component {
 
                 </main>
 
-                <Section margin='sm'>
+                <Section margin="sm">
+                    <h1> Text Inputs </h1>
+                    <Input type="text" name="input" label="Text Input" margin={{top: "md"}} />
+                    <Input type="text" name="inputWithNote" label="Input with Note" note="Here's the note!" margin={{top: "md"}} />
+                    <Input type="number" name="input" label="Numeric Input" note="I have a spinner and only accept numbers." margin={{top: "md"}} />
+                    <Input type="text" info name="inputWithInfo" label="Input with Info" note="Password must have at least 1 emoji" margin={{top: "md"}} />
+                    <Input type="text" valid name="inputWithValid" label="Valid Input" note="Password is strong" margin={{top: "md"}} />
+                    <Input type="text" warning name="inputWithWarning" label="Warning Input" note="Password is too weak"  margin={{top: "md"}} />
+                    <Input type="text" invalid name="inputWithInvalid" label="Invalid Input" note="Password is required" margin={{top: "md", bottom: "md"}} />
+                </Section>
 
+                <Section margin="sm">
+                    <h1> Text Areas </h1>
+                    <Textarea name="textarea" label="Text Area" margin={{top: "md"}} />
+                    <Textarea name="textareaWithNote" label="Text Area with Note" note="Here's the note!" margin={{top: "md"}} />
+                    <Textarea info name="textareaWithInfo" label="Text Area with Info" note="Submissions must have at least 1 emoji" margin={{top: "md"}} />
+                    <Textarea valid name="textareaWithValid" label="Valid Text Area" note="Submission is strong" margin={{top: "md"}} />
+                    <Textarea warning name="textareaWithWarning" label="Warning Text Area" note="Submission is too weak"  margin={{top: "md"}} />
+                    <Textarea cols={3} invalid name="textareaWithInvalid" label="Invalid Text Area" note="Submission is required" margin={{top: "md", bottom: "md"}} />
+                </Section>
+
+                <Section margin='sm'>
 
                     <h1>Spacing and Type Scale</h1>
                     <Section margin={{bottom: 'lg'}}>
@@ -325,21 +288,35 @@ class Demo extends Component {
 
                     <h1>Alerts</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <Alert margin={{bottom: 'xs'}}>This warning has no title!</Alert>
-                        <Alert margin={{bottom: 'xs'}} info title='Info'>A nice message for you!</Alert>
-                        <Alert margin={{bottom: 'xs'}} success title='Success!'>A great success for you!</Alert>
-                        <Alert margin={{bottom: 'xs'}} error title='Error'
-                               clickDismiss={() => window.alert('You click dismiss error?!?')}>A friendly error for
-                            you!</Alert>
+                        <Alert className="rvt-m-top-md" message>This warning has no title!</Alert>
+                        <Alert className="rvt-m-top-md" info title='Info'>A nice message for you!</Alert>
+                        <Alert className="rvt-m-top-md" success title='Success!'>A great success for you!</Alert>
+                        <Alert className="rvt-m-top-md" error dismissible title='Error'
+                               clickDismiss={() => window.alert('You click dismiss error?!?')}>
+                               A friendly error for you that can be dismissed!
+                        </Alert>
                     </Section>
+
 
                     <h1>Lists</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <List children={['some', 'unordered', 'stuff']}/>
-                        <List ordered children={['some', 'ordered', 'stuff']}/>
-                        <List plain children={['this', 'list', 'is', 'plain']}/>
-                        <List inline children={['this', 'list', 'is', 'inline']}/>
-                        <List inline>
+                        <List border="bottom">
+                            <li>An</li>
+                            <li>unordered</li>
+                            <li>list</li>
+                        </List>
+                        <List ordered border="bottom">
+                            <li>An</li>
+                            <li>ordered</li>
+                            <li>list</li>
+                        </List>
+                        <List plain border="bottom">
+                            <li>A</li>
+                            <li>plain (undecorated)</li>
+                            <li>list</li>
+                        </List>
+                        <List inline children={['this', 'list', 'is', 'inline']} border="bottom"/>
+                        <List inline >
                             <Button>This</Button>
                             <Button>is</Button>
                             <Button>inline</Button>
@@ -384,13 +361,31 @@ class Demo extends Component {
                     </Table>
 
                 </Section>
-                <Footer />
+                <Footer nav={[ new Nav("Rivet Documentation", "https://rivet.uits.iu.edu") ]}/>
             </React.Fragment>
         )
     }
+
+    private toggleDesktopDropdown(key: string) {
+        const nextState = key === this.state.desktopActiveDropdown ? undefined : key;
+        this.setState({
+            desktopActiveDropdown: nextState
+        })
+    }
+
+    private toggleDrawerDropdown(key: string) {
+        const nextState = Object.assign({}, this.state.drawerDropdownVisibility);
+        nextState[key] = !nextState[key];
+        this.setState({
+            drawerDropdownVisibility: nextState
+        })
+    }
+
+    private toggleModal(key: string) {
+        this.setState({
+            activeModal: key
+        })
+    }
 }
 
-const demo = <BrowserRouter>
-                <Demo/>
-            </BrowserRouter>
-render(demo, document.querySelector('#demo'))
+export default Demo

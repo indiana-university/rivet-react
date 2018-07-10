@@ -1,9 +1,45 @@
 # rivet-react npm package
+
+| Branch | Build | Code Coverage |
+| ------ | ----- | ------------- |
+| master | [![Build Status](https://travis-ci.org/indiana-university/rivet-react.svg?branch=master)](https://travis-ci.org/indiana-university/rivet-react) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/master/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/master) |
+| develop | [![Build Status](https://travis-ci.org/indiana-university/rivet-react.svg?branch=develop)](https://travis-ci.org/indiana-university/rivet-react) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/develop/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/develop) |
+
+
 Published to [https://www.npmjs.com/package/rivet-react](https://www.npmjs.com/package/rivet-react)
 
-## Installing
+## Installing the Library from 
+
+With npm:
+
     npm install rivet-react
-    
+
+Or with yarn:
+
+    yarn add rivet-react
+
+## Building Locally
+
+You can build with either npm or yarn.
+
+To compile the components:
+
+    yarn build
+
+To test the components:
+
+    yarn test
+
+To test with code coverage:
+
+    yarn test --coverage
+
+To start a local server with the Demo page:
+
+    yarn build && yarn start
+
+This project supports hot reloading of tests and the demo page.
+
 ## Importing CSS and components
 
     import 'rivet-uits/css/rivet.min.css'

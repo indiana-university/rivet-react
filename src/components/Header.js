@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Dropdown } from "./Dropdown"
+import Dropdown from "./Dropdown"
 import { Link } from 'react-router-dom'
 
 class Drawer extends Component {
@@ -44,7 +44,7 @@ class Drawer extends Component {
     }
 }
 
-export class Header extends Component {
+export default class Header extends Component {
 
     constructor(props) {
         super(props);
