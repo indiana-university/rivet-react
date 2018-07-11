@@ -2,12 +2,16 @@ import * as React from 'react'
 import * as Rivet from '../Rivet'
 
 export interface ListProps extends Rivet.Props {
-    /** A numerically ordered list */
-    ordered?: boolean;
-    /** Remove decoration (bullets, numbers, etc) from list items */
-    plain?: boolean;
-    /** Present all list items on a single line */
-    inline?: boolean;
+    /**
+     * Optional Rivet style for the type of list decoration.
+     * See: https://rivet.uits.iu.edu/components/page-content/lists/#unordered-list
+     */
+    rvtStyle?: "ordered" | "plain" | "unordered"
+    /**
+     * Optional Rivet style for the layout of the list. 
+     * See: https://rivet.uits.iu.edu/components/page-content/lists/#inline-list
+     */
+    rvtOrientation?: "inline" | "default";
 }
 
 /** Return any <li> children unchanged; otherwise wrap child in an <li> */
@@ -25,10 +29,10 @@ const asListItems = (children?: React.ReactNode) =>
     : [];
 
 const plainList = (props: ListProps) =>
-    props.plain ? "rvt-plain-list" : "";
+    props.rvtStyle === "plain" ? "rvt-plain-list" : "";
 
 const inlineList = (props: ListProps) =>
-    props.inline ? "rvt-inline-list" : "";
+    props.rvtOrientation === "inline" ? "rvt-inline-list" : "";
 
 const componentClass = "rvt-list";
 const componentDecorators = [ plainList, inlineList ];
@@ -37,8 +41,9 @@ class List extends React.Component<ListProps> {
     public render() {
         const classNames = Rivet.classify<ListProps>(this.props, componentClass, componentDecorators);
         const listItems = asListItems(this.props.children);
+        const ordered = this.props.rvtStyle === "ordered";
         return (
-            this.props.ordered 
+            ordered
             ? <ol className={classNames} {...this.props}> {listItems} </ol>
             : <ul className={classNames} {...this.props}> {listItems} </ul>
         );
