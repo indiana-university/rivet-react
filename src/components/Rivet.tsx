@@ -147,9 +147,6 @@ export const classify = <T extends Props> (props: T, componentClass: string = ""
     return classnames(componentClass, className, decorations, ...parseRivetClasses(margin, padding, ts, border, display, hide));
 }
 
-export const maybe = (option: boolean = false, className: string) => 
-    option ? className : "";
-
 /**
  * A type and class decorator for visually hidden labels
  * See: https://rivet.uits.iu.edu/components/utilities/display/#visually-hidden-labels-example
