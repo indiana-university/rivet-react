@@ -17,92 +17,114 @@ describe('nav', () => {
     });
 });
 
-describe('parseRivetSpacing', () => {
+  describe('margin', () => {
     it('ignores undefined', () => {
-      expect(Rivet.parseRivetSpacing("m", undefined)).toEqual([]);
-    });
-  
-    it('ignores noncompliant types', () => {
-      expect(Rivet.parseRivetSpacing("m", {})).toEqual([]);
+      expect(Rivet.classify({rvtMargin:undefined})).toEqual("");
     });
   
     it('one size fits all', () => {
-      expect(Rivet.parseRivetSpacing("m", "xs")).toEqual(["rvt-m-all-xs"]);
+      expect(Rivet.classify({rvtMargin:"xs"})).toEqual("rvt-m-all-xs");
     });
   
     it('discriminates bounds', () => {
-      expect(Rivet.parseRivetSpacing("m", { top: "xs", right:"sm", bottom: "md", left: "lg" }))
-          .toEqual(["rvt-m-top-xs", "rvt-m-right-sm", "rvt-m-bottom-md", "rvt-m-left-lg"]);
+      expect(Rivet.classify({rvtMargin:{ top: "xs", right:"sm", bottom: "md", left: "lg" }}))
+          .toEqual("rvt-m-top-xs rvt-m-right-sm rvt-m-bottom-md rvt-m-left-lg");
     });
   
     it('discriminates sizings', () => {
-      expect(Rivet.parseRivetSpacing("m", { xs: ['top', "bottom"], md: "left", lg: "right" }))
-          .toEqual(["rvt-m-top-xs", "rvt-m-bottom-xs", "rvt-m-left-md", "rvt-m-right-lg"]);
+        expect(Rivet.classify({rvtMargin:{ xs: ['top', "bottom"], md: "left", lg: "right" }}))
+          .toEqual("rvt-m-top-xs rvt-m-bottom-xs rvt-m-left-md rvt-m-right-lg");
+    }); 
+  }); 
+
+  describe('padding', () => {
+    it('ignores undefined', () => {
+      expect(Rivet.classify({rvtPadding:undefined})).toEqual("");
     });
   
+    it('one size fits all', () => {
+      expect(Rivet.classify({rvtPadding:"xs"})).toEqual("rvt-p-all-xs");
+    });
+  
+    it('discriminates bounds', () => {
+      expect(Rivet.classify({rvtPadding:{ top: "xs", right:"sm", bottom: "md", left: "lg" }}))
+          .toEqual("rvt-p-top-xs rvt-p-right-sm rvt-p-bottom-md rvt-p-left-lg");
+    });
+  
+    it('discriminates sizings', () => {
+        expect(Rivet.classify({rvtPadding:{ xs: ['top', "bottom"], md: "left", lg: "right" }}))
+          .toEqual("rvt-p-top-xs rvt-p-bottom-xs rvt-p-left-md rvt-p-right-lg");
+    }); 
   }); 
-  
-  describe('parseRivetTypescale', () => {
+
+  describe('typescale', () => {
       it('ignores undefined', () => {
-          expect(Rivet.parseRivetTypescale(undefined)).toEqual([]);
+          expect(Rivet.classify({rvtTypescale:undefined})).toEqual("");
       });
   
-      it('accepts number', () => {
-          expect(Rivet.parseRivetTypescale(123)).toEqual(["rvt-ts-123"]);
+      it('applies decoration', () => {
+          expect(Rivet.classify({rvtTypescale:12})).toEqual("rvt-ts-12");
+          expect(Rivet.classify({rvtTypescale:23})).toEqual("rvt-ts-23");
+          expect(Rivet.classify({rvtTypescale:"base"})).toEqual("rvt-ts-base");
       });
   });
   
-  describe('parseRivetBorder', () => {
+  describe('border', () => {
       it('ignores undefined', () => {
-          expect(Rivet.parseRivetBorder(undefined)).toEqual([]);
+          expect(Rivet.classify({rvtBorder:undefined})).toEqual("");
       });
   
-      it('accepts single string', () => {
-          expect(Rivet.parseRivetBorder("foo")).toEqual(["rvt-border-foo"]);
-      });
-  
-      it('accepts multiple strings', () => {
-          expect(Rivet.parseRivetBorder(["foo", "bar"])).toEqual(["rvt-border-foo", "rvt-border-bar"]);
+      it('applies decorations', () => {
+          expect(Rivet.classify({rvtBorder:"all"})).toEqual("rvt-border-all");
+          expect(Rivet.classify({rvtBorder:"bottom"})).toEqual("rvt-border-bottom");
+          expect(Rivet.classify({rvtBorder:"top"})).toEqual("rvt-border-top");
+          expect(Rivet.classify({rvtBorder:"left"})).toEqual("rvt-border-left");
+          expect(Rivet.classify({rvtBorder:"right"})).toEqual("rvt-border-right");
       });
   });
   
-  describe('parseRivetDisplay', () => {
+  describe('display', () => {
       it('ignores undefined', () => {
-          expect(Rivet.parseRivetDisplay(undefined)).toEqual([]);
+          expect(Rivet.classify({rvtDisplay:undefined})).toEqual("");
       });
   
-      it('accepts single string', () => {
-          expect(Rivet.parseRivetDisplay("sr-only")).toEqual(["rvt-sr-only"]);
-      });
-  
-      it('accepts multiple strings', () => {
-          expect(Rivet.parseRivetDisplay(["foo"])).toEqual(["rvt-display-foo"]);
+      it('applies decoration', () => {
+          expect(Rivet.classify({rvtDisplay:"inline"})).toEqual("rvt-display-inline");
+          expect(Rivet.classify({rvtDisplay:"inline-block"})).toEqual("rvt-display-inline-block");
+          expect(Rivet.classify({rvtDisplay:"block"})).toEqual("rvt-display-block");
+          expect(Rivet.classify({rvtDisplay:"flex"})).toEqual("rvt-display-flex");
+          expect(Rivet.classify({rvtDisplay:"flex-vertical-center"})).toEqual("rvt-display-flex rvt-vertical-center");
       });
   });
   
   describe('parseRivetHidden', () => {
       it('ignores undefined', () => {
-          expect(Rivet.parseRivetHidden(undefined)).toEqual([]);
+          expect(Rivet.classify({rvtHide:undefined})).toEqual("");
       });
   
-      it('accepts single string', () => {
-          expect(Rivet.parseRivetHidden("foo-bar")).toEqual(["rvt-hide-foo-bar"]);
+      it('applies decoration', () => {
+        expect(Rivet.classify({rvtHide:"lg-up"})).toEqual("rvt-hide-lg-up");
+        expect(Rivet.classify({rvtHide:"md-up"})).toEqual("rvt-hide-md-up");
+        expect(Rivet.classify({rvtHide:"sm-up"})).toEqual("rvt-hide-sm-up");
+        expect(Rivet.classify({rvtHide:"xl-up"})).toEqual("rvt-hide-xl-up");
+        expect(Rivet.classify({rvtHide:"xxl-up"})).toEqual("rvt-hide-xxl-up");
+        expect(Rivet.classify({rvtHide:"lg-down"})).toEqual("rvt-hide-lg-down");
+        expect(Rivet.classify({rvtHide:"md-down"})).toEqual("rvt-hide-md-down");
+        expect(Rivet.classify({rvtHide:"sm-down"})).toEqual("rvt-hide-sm-down");
+        expect(Rivet.classify({rvtHide:"xl-down"})).toEqual("rvt-hide-xl-down");
+        expect(Rivet.classify({rvtHide:"xxl-down"})).toEqual("rvt-hide-xxl-down");
       });
   });
   
   describe('generated class names', () => {
       it('observes component class', () => {
-          expect(Rivet.classify({}, "rvt-foo")).toEqual("rvt-foo");
+          expect(Rivet.classify({}, "rvt-class")).toEqual("rvt-class");
       });
 
       it('observes component class', () => {
-        expect(Rivet.classify({className:"external-class"}, "rvt-foo", [])).toEqual("rvt-foo external-class");
+        expect(Rivet.classify({className:"external-class"}, "rvt-class", [])).toEqual("rvt-class external-class");
     });
 
-      it('gracefully ingores component class', () => {
-          expect(Rivet.classify({})).toEqual("");
-      });
-  
       it('uses external class generators', () => {
           const fooDecorator = (props) => "rvt-foo";
           const barDecorator = (props) => "rvt-bar";

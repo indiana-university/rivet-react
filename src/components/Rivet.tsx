@@ -7,18 +7,43 @@ import { Link } from 'react-router-dom';
 
 export type Action = () => void;
 
-export interface Props extends React.Props<Props> {
+export interface Props {
     id?: string,
-    ref?: any,
-    className?: string
-    children?: React.ReactNode
-    //
-    ts?: number
-    hide?: boolean,
-    border?: Edge | Edge[],
-    margin?: Size | BoxStyle,
-    padding?: Size | BoxStyle,
-    display?: string,
+    key?: string,
+    children?: React.ReactNode,
+    className?: string,
+    /**
+     * Optional Rivet style: type scale adjustment
+     * See: https://rivet.uits.iu.edu/components/layout/typography/
+     */
+    rvtTypescale?: "base" | 12 | 14 | 16 | 18 | 20 | 23 | 26 | 29 | 32 | 36 | 41 | 46 | 52,
+    /**
+     * Optional Rivet style: show/hide content based on screen size.
+     * ex: 'md-down' will hide content on medium-sized screens and smaller.
+     * ex: 'lg-up' will hide content on large-sized screens and larger.
+     * See: https://rivet.uits.iu.edu/components/utilities/visibility/
+     */
+    rvtHide?: "sm-down" | "md-down" | "lg-down" | "xl-down" | "xxl-down" | "sm-up" | "md-up" | "lg-up" | "xl-up" | "xxl-up",
+    /**
+     * Optional Rivet style: add a border to any or all sides of an element
+     * See: https://rivet.uits.iu.edu/components/utilities/border/
+     */
+    rvtBorder?: "all" | Edge | Edge[],
+    /**
+     * Optional Rivet style: adjust the margin(s) of an element
+     * See: https://rivet.uits.iu.edu/components/layout/spacing/
+     */
+    rvtMargin?: Size | BoxStyle,
+    /**
+     * Optional Rivet style: adjust the padding(s) of an element
+     * See: https://rivet.uits.iu.edu/components/layout/spacing/
+     */
+    rvtPadding?: Size | BoxStyle,
+    /**
+     * Optional Rivet style: adjust the display property of an element
+     * See: https://rivet.uits.iu.edu/components/utilities/display/#display-property-utilities
+     */
+    rvtDisplay?: "inline" | "inline-block" | "block" | "flex" | "flex-vertical-center",
 }
 
 export type Size = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
@@ -93,58 +118,78 @@ const edgeSpecificSpacing = (t, style) =>
         .map(s => inflate(style[s]) 
             .map(e => rivetSpacing(t,e,s)))
         .reduce(flatten, []))
+        .join(" ");
 
-export const parseRivetSpacing = (type, style: Size | BoxStyle) =>
-    style !== undefined
+const parseRivetSpacing = (type, style?: Size | BoxStyle) =>
+    style
     ? typeof style === "string"
-        ? [rivetSpacing(type, "all", style)]
+        ? rivetSpacing(type, "all", style)
         : edgeSpecificSpacing(type, style)
-    : [];
+    : "";
 
-export const parseRivetMargin = (margin) => 
-    parseRivetSpacing('m', margin);
+const parseRivetMargin = (props: Props) => 
+    parseRivetSpacing('m', props.rvtMargin);
 
-export const parseRivetPadding = (padding) =>
-    parseRivetSpacing('p', padding);
+const parseRivetPadding = (props: Props) =>
+    parseRivetSpacing('p', props.rvtPadding);
 
-export const parseRivetTypescale = (ts?: number) =>
-    ts ? [ `rvt-ts-${ts}` ] : [];
+const parseRivetTypescale = (props: Props) =>
+    props.rvtTypescale 
+    ? `rvt-ts-${props.rvtTypescale}`
+    : "";
 
-export const parseRivetBorder = (border) => 
-    border
-    ? Array.isArray(border)
-        ? border.map((value) => `rvt-border-${value}`)
-        : [ `rvt-border-${border}` ]
-    : [];
+const parseRivetBorder = (props: Props) => 
+    props.rvtBorder
+    ? Array.isArray(props.rvtBorder)
+        ? props.rvtBorder.map((value) => `rvt-border-${value}`).join(" ")
+        : `rvt-border-${props.rvtBorder}`
+    :"";
 
-export const parseRivetDisplay = (display) =>
-    display 
-    ? display === 'sr-only'
-        ? [ `rvt-sr-only` ]
-        : [ `rvt-display-${display}` ]
-    : [];
+const parseRivetDisplay = (props: Props) => {
+    switch(props.rvtDisplay) {
+        case "inline":
+        case "inline-block":
+        case "block":
+        case "flex":
+            return `rvt-display-${props.rvtDisplay}`;
+        case "flex-vertical-center":
+            return "rvt-display-flex rvt-vertical-center";
+        default: return "";
+    }
+}
 
-export const parseRivetHidden = (hide: string) =>
-    hide
-    ? [ `rvt-hide-${hide}` ]
-    : [];
+const parseRivetHidden= (props: Props) =>
+    props.rvtHide
+    ? `rvt-hide-${props.rvtHide}`
+    : "";
 
-export const parseRivetClasses = (margin, padding, ts, border, display, hide) =>
-    [
-        ...parseRivetMargin(margin),
-        ...parseRivetPadding(padding),
-        ...parseRivetTypescale(ts),
-        ...parseRivetBorder(border),
-        ...parseRivetDisplay(display),
-        ...parseRivetHidden(hide)
-    ];
+const standardDecorators = [
+    parseRivetMargin,
+    parseRivetPadding,
+    parseRivetTypescale,
+    parseRivetBorder,
+    parseRivetDisplay,
+    parseRivetHidden
+];
 
-export type ComponentClassDecorator<T extends Props> = ( props: T ) => string;
+/**
+ *  Given component properties, generate one or more CSS class decorations.
+ */
+export type ComponentDecorator<T extends Props> = ( props: T ) => string;
 
-export const classify = <T extends Props> (props: T, componentClass: string = "", componentDecorators: Array<ComponentClassDecorator<T>> = []) => {
-    const { className, border, margin, padding, display="", hide=false, ts } = props;
-    const decorations = componentDecorators.map(cg => cg(props));
-    return classnames(componentClass, className, decorations, ...parseRivetClasses(margin, padding, ts, border, display, hide));
+/** 
+ * Generate class decorations for a Rivet component
+ * @param props The component properties
+ * @param componentClass (optional) The base component class, if any.
+ * @param componentDecorators (optional) A collection of functions that can generate component-specific decorations. 
+ */
+export const classify = <T extends Props>(
+    props: T, 
+    componentClass: string = "", 
+    componentDecorators: Array<ComponentDecorator<T>> = []
+) => {
+    const decorations = [ ...standardDecorators,  ...componentDecorators ].map(d => d(props));
+    return classnames(componentClass, props.className, decorations);
 }
 
 /**
@@ -152,5 +197,10 @@ export const classify = <T extends Props> (props: T, componentClass: string = ""
  * See: https://rivet.uits.iu.edu/components/utilities/display/#visually-hidden-labels-example
  */
 export type LabelVisibility = "screen-reader-only" | "default";
-export const labelVisiblityClass = (opt?: LabelVisibility) => 
-    opt === "screen-reader-only" ? "rvt-sr-only" : "";
+
+/** 
+ * Determine whether to apply class limiting label visibility to screenreaders.
+ * @param visibility The desired visibility type.
+ */
+export const labelVisiblityClass = (visibility?: LabelVisibility) => 
+    visibility === "screen-reader-only" ? "rvt-sr-only" : "";

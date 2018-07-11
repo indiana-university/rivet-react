@@ -17,8 +17,8 @@ export interface ListProps extends Rivet.Props {
 /** Return any <li> children unchanged; otherwise wrap child in an <li> */
 const asListItem = (child: React.ReactChild) =>
     typeof(child) === "string" 
-    || typeof(child) === "number" 
-    || child.type !== "li" 
+        || typeof(child) === "number" 
+        || child.type !== "li" 
     ? <li>{child}</li>
     : child;
 

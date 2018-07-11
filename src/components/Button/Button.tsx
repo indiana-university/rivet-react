@@ -5,7 +5,7 @@ import * as util from '../util'
 /**
  * The properties of a button.
  */
-interface ComponentProps extends Rivet.Props {
+interface ButtonProps extends Rivet.Props {
     onClick?: Rivet.Action,
     /** Optional Rivet style: a success/danger/plain button. See: https://rivet.uits.iu.edu/components/forms/buttons/#button-examples */
     rvtStyle?: "success" | "danger" | "plain" | "default"
@@ -20,7 +20,7 @@ interface ComponentProps extends Rivet.Props {
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
-const buttonRoleAndStyle = (props: ComponentProps) => {
+const buttonRoleAndStyle = (props: ButtonProps) => {
     const classParts = [
         props.rvtStyle && props.rvtStyle !== "default" ? props.rvtStyle : undefined,
         props.rvtRole && props.rvtRole !== "default" ? props.rvtRole : undefined
@@ -34,20 +34,13 @@ const buttonRoleAndStyle = (props: ComponentProps) => {
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
-const buttonSize = (props: ComponentProps) =>
+const buttonSize = (props: ButtonProps) =>
     props.rvtSize ? `${buttonClass}--${props.rvtSize}` : "";
 
 const buttonClass = "rvt-button";
 const buttonDecorators = [ buttonRoleAndStyle, buttonSize]
 
-/**
- * Button properies and styling attributes.
- */
-export type ButtonProps = 
-    ComponentProps & 
-    React.ButtonHTMLAttributes<HTMLButtonElement>; 
-
-class Button extends React.Component<ButtonProps> {
+class Button extends React.Component<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
     public render() {
         const { id, onClick, children, ...attrs } = this.props;
         return (
