@@ -3,12 +3,12 @@ import * as Rivet from '../Rivet'
 
 export interface TextProps extends Rivet.Props {
     label: string
-    note?: string
-    // validation style
-    info?: boolean
-    valid?: boolean
-    warning?: boolean
-    invalid?: boolean
+    rvtNote?: string
+    /**
+     * Optional Rivet style for inline validation.
+     * See: https://rivet.uits.iu.edu/components/forms/text-input/#inline-validation-states
+     */
+    rvtStyle?: "info" | "invalid" | "valid" | "warning" | "default"
 }
 
 const infoClass = "has-info";
@@ -41,19 +41,27 @@ const invalidIcon =
     </g>    
 
 const alertIcon = (props: TextProps) =>
-    props.info ? infoIcon
-    : props.valid ? validIcon
-    : props.warning ? warningIcon
-    : invalidIcon;
+{
+    switch(props.rvtStyle){
+        case "info": return infoIcon;
+        case "valid": return validIcon;
+        case "warning": return warningIcon;
+        default: return invalidIcon;
+    }
+}
 
 const alertClass = (props: TextProps) =>
-    props.info ? infoClass
-    : props.valid ? validClass
-    : props.warning ? warningClass
-    : invalidClass;
+{
+    switch(props.rvtStyle){
+        case "info": return infoClass;
+        case "valid": return validClass;
+        case "warning": return warningClass;
+        default: return invalidClass;
+    }
+}
 
 const isInlineAlert = (props: TextProps) => 
-    props.info || props.valid || props.warning || props.invalid;
+    props.rvtStyle && props.rvtStyle !== "default";
 
 const inlineAlert = (props: TextProps) =>
     <div className={`rvt-inline-alert rvt-inline-alert--${alertClass(props)}`}>
@@ -63,12 +71,12 @@ const inlineAlert = (props: TextProps) =>
             </svg>
         </span>
         <span className="rvt-inline-alert__message" id="description-message">
-            {props.note}
+            {props.rvtNote}
         </span>
     </div>
 
 const standardNote = (inputId: string, props: TextProps) =>
-    <small id={noteId(inputId)} className="rvt-display-block rvt-m-bottom-md">{props.note}</small>
+    <small id={noteId(inputId)} className="rvt-display-block rvt-m-bottom-md">{props.rvtNote}</small>
 
 const noteId = (inputId: string) => 
     `${inputId}_note`;
@@ -80,9 +88,11 @@ const labelFragment = (inputId: string, props: TextProps) =>
     <label htmlFor={inputId}>{props.label}</label>
 
 const noteFragment = (inputId: string, props: TextProps) =>
-    isInlineAlert(props)
+    props.rvtNote 
+    ? isInlineAlert(props)
         ? inlineAlert(props)
-        : standardNote(inputId, props);
+        : standardNote(inputId, props)
+    : "";
 
 type TextComponentGenerator = <T>(id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean, attrs: T) => JSX.Element; 
 
@@ -91,13 +101,13 @@ export const renderInput = <T extends React.HTMLAttributes<HTMLElement>>(
     inputGenerator: TextComponentGenerator ) => {
         const inputId = props.id || Rivet.shortuid();
         const className = inputClassName(props);
-        const ariaDescribedBy = props.note ? noteId(inputId) : ""
-        const ariaInvalid = props.invalid || false;
+        const ariaDescribedBy = props.rvtNote ? noteId(inputId) : ""
+        const ariaInvalid = props.rvtStyle === "invalid";
         return (
             <div className={Rivet.classify(props, "rvt-input")} >
                 {labelFragment(inputId, props)}
                 {inputGenerator<T>(inputId, className, ariaDescribedBy, ariaInvalid, props)}
-                {props.note && noteFragment(inputId, props)}
+                {noteFragment(inputId, props)}
             </div>
         );
 }
