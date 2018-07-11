@@ -29,9 +29,9 @@ describe('<RadioButton />', () => {
             expect(cut.find('legend').text()).toEqual("Foo");
         });
         it ('should create a screen-reader-only legend', () => {
-            const cut = shallow(<Form srOnly label="Foo" name="foo-1" />);
+            const cut = shallow(<Form rvtLabelVisibility="screen-reader-only" label="Foo" name="foo-1" />);
             expect(cut.find('legend').text()).toEqual("Foo");
-            expect(cut.find('legend').hasClass("sr-only")).toEqual(true);
+            expect(cut.find('legend').hasClass("rvt-sr-only")).toEqual(true);
         });
     });
     describe('Radio button list', () => {

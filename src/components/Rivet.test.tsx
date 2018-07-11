@@ -109,4 +109,15 @@ describe('parseRivetSpacing', () => {
           expect(Rivet.classify({}, "", [fooDecorator, barDecorator])).toEqual("rvt-foo rvt-bar");
       });
   });
+
+  describe('label visiblity', () => {
+    it('chooses the screen reader class', () =>{
+        expect(Rivet.labelVisiblityClass("screen-reader-only")).toEqual("rvt-sr-only");
+    });
+    it('chooses the default (no) class', () =>{
+        expect(Rivet.labelVisiblityClass("default")).toEqual("");
+    });
+  });
+
+
   

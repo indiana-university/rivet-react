@@ -149,3 +149,11 @@ export const classify = <T extends Props> (props: T, componentClass: string = ""
 
 export const maybe = (option: boolean = false, className: string) => 
     option ? className : "";
+
+/**
+ * A type and class decorator for visually hidden labels
+ * See: https://rivet.uits.iu.edu/components/utilities/display/#visually-hidden-labels-example
+ */
+export type LabelVisibility = "screen-reader-only" | "default";
+export const labelVisiblityClass = (opt?: LabelVisibility) => 
+    opt === "screen-reader-only" ? "rvt-sr-only" : "";
