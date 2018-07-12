@@ -81,6 +81,11 @@ describe('nav', () => {
           expect(Rivet.classify({rvtBorder:"left"})).toEqual("rvt-border-left");
           expect(Rivet.classify({rvtBorder:"right"})).toEqual("rvt-border-right");
       });
+
+      it('applies multiple decorations', () => {
+        expect(Rivet.classify({rvtBorder:["bottom", "top"]})).toEqual("rvt-border-bottom rvt-border-top");
+        expect(Rivet.classify({rvtBorder:["left", "right"]})).toEqual("rvt-border-left rvt-border-right");
+      });
   });
   
   describe('display', () => {
