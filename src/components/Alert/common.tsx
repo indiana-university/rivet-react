@@ -28,15 +28,3 @@ const alertStyle = (props: AlertProps) =>
 
 export const alertClass = "rvt-alert";
 export const alertDecorators = [ alertStyle ];
-
-export const renderAlert = <T extends AlertProps>(props: T, guts: React.ReactNode) => {
-    const componentId = props.id || Rivet.shortuid();
-    const titleId = Rivet.shortuid();
-    return (
-        <div className={Rivet.classify(props, alertClass, alertDecorators)} id={componentId} role='alertdialog' aria-labelledby={titleId}>
-            {headerFragment(titleId, props.rvtTitle)}
-            <p className='rvt-alert__message'>{props.children}</p>
-            {guts}
-        </div>
-    );
-}
