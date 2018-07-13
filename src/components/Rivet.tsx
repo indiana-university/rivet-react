@@ -8,42 +8,46 @@ import { Link } from 'react-router-dom';
 export type Action = () => void;
 
 export interface Props {
+    /** Optional component ID. Default: auto-generated unique ID. */
     id?: string,
+    /** Optional component key. */
     key?: string,
+    /** Optional component children. Children can be passed via this property or as the contents of the Component element. */
     children?: React.ReactNode,
+    /** Optional CSS class(es) to apply to the component. */
     className?: string,
     /**
      * Optional Rivet style: type scale adjustment
      * See: https://rivet.uits.iu.edu/components/layout/typography/
      */
-    rvtTypescale?: "base" | 12 | 14 | 16 | 18 | 20 | 23 | 26 | 29 | 32 | 36 | 41 | 46 | 52,
+    typescale?: "base" | 12 | 14 | 16 | 18 | 20 | 23 | 26 | 29 | 32 | 36 | 41 | 46 | 52,
     /**
      * Optional Rivet style: show/hide content based on screen size.
      * ex: 'md-down' will hide content on medium-sized screens and smaller.
      * ex: 'lg-up' will hide content on large-sized screens and larger.
      * See: https://rivet.uits.iu.edu/components/utilities/visibility/
      */
-    rvtHide?: "sm-down" | "md-down" | "lg-down" | "xl-down" | "xxl-down" | "sm-up" | "md-up" | "lg-up" | "xl-up" | "xxl-up",
+    hide?: "sm-down" | "md-down" | "lg-down" | "xl-down" | "xxl-down" | "sm-up" | "md-up" | "lg-up" | "xl-up" | "xxl-up",
     /**
      * Optional Rivet style: add a border to any or all sides of an element
      * See: https://rivet.uits.iu.edu/components/utilities/border/
      */
-    rvtBorder?: "all" | Edge | Edge[],
+    border?: "all" | Edge | Edge[],
     /**
      * Optional Rivet style: adjust the margin(s) of an element
      * See: https://rivet.uits.iu.edu/components/layout/spacing/
      */
-    rvtMargin?: Size | BoxStyle,
+    margin?: Size | BoxStyle,
     /**
      * Optional Rivet style: adjust the padding(s) of an element
      * See: https://rivet.uits.iu.edu/components/layout/spacing/
      */
-    rvtPadding?: Size | BoxStyle,
+    padding?: Size | BoxStyle,
     /**
      * Optional Rivet style: adjust the display property of an element
      * See: https://rivet.uits.iu.edu/components/utilities/display/#display-property-utilities
      */
-    rvtDisplay?: "inline" | "inline-block" | "block" | "flex" | "flex-vertical-center",
+    display?: "inline" | "inline-block" | "block" | "flex" | "flex-vertical-center",
 }
 
 export type Size = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
@@ -128,30 +132,30 @@ const parseRivetSpacing = (type, style?: Size | BoxStyle) =>
     : "";
 
 const parseRivetMargin = (props: Props) => 
-    parseRivetSpacing('m', props.rvtMargin);
+    parseRivetSpacing('m', props.margin);
 
 const parseRivetPadding = (props: Props) =>
-    parseRivetSpacing('p', props.rvtPadding);
+    parseRivetSpacing('p', props.padding);
 
 const parseRivetTypescale = (props: Props) =>
-    props.rvtTypescale 
-    ? `rvt-ts-${props.rvtTypescale}`
+    props.typescale 
+    ? `rvt-ts-${props.typescale}`
     : "";
 
 const parseRivetBorder = (props: Props) => 
-    props.rvtBorder
-    ? Array.isArray(props.rvtBorder)
-        ? props.rvtBorder.map((value) => `rvt-border-${value}`).join(" ")
-        : `rvt-border-${props.rvtBorder}`
+    props.border
+    ? Array.isArray(props.border)
+        ? props.border.map((value) => `rvt-border-${value}`).join(" ")
+        : `rvt-border-${props.border}`
     :"";
 
 const parseRivetDisplay = (props: Props) => {
-    switch(props.rvtDisplay) {
+    switch(props.display) {
         case "inline":
         case "inline-block":
         case "block":
         case "flex":
-            return `rvt-display-${props.rvtDisplay}`;
+            return `rvt-display-${props.display}`;
         case "flex-vertical-center":
             return "rvt-display-flex rvt-vertical-center";
         default: return "";
@@ -159,8 +163,8 @@ const parseRivetDisplay = (props: Props) => {
 }
 
 const parseRivetHidden= (props: Props) =>
-    props.rvtHide
-    ? `rvt-hide-${props.rvtHide}`
+    props.hide
+    ? `rvt-hide-${props.hide}`
     : "";
 
 const standardDecorators = [

@@ -44,7 +44,7 @@ describe('<Checkbox />', () => {
   });
 
   it('should apply the Rivet class name', () => {
-    const cut = shallow(<Checkbox label="the_label" rvtMargin="xs" />);
+    const cut = shallow(<Checkbox label="the_label" margin="xs" />);
     expect(cut.find('input').hasClass("rvt-m-all-xs")).toBe(true);
   });
 
