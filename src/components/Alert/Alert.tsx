@@ -14,7 +14,7 @@ const alertClass = "rvt-alert";
 const alertDecorators = [ alertStyle ];
 
 export const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElement>> = (props) => {
-    const {title, onDismiss, children, className, isOpen=true, id=Rivet.shortuid(), ...attrs} = props; 
+    const {title, onDismiss, children, isOpen=true, id=Rivet.shortuid(), ...attrs} = props; 
     const titleId = Rivet.shortuid();
 
     const headerFragment = () => 
@@ -33,7 +33,7 @@ export const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDi
         : null
 
     return isOpen 
-        ? <div id={id} className={Rivet.classify(props, alertClass, alertDecorators)} 
+        ? <div id={id} className={Rivet.classify(attrs, alertClass, alertDecorators)} 
                     role='alertdialog' aria-labelledby={titleId} {...attrs} >
                 {headerFragment()}
                 <p className='rvt-alert__message'>{children}</p>
