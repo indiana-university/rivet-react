@@ -3,7 +3,7 @@ import * as Rivet from '../Rivet';
 
 interface RadioButtonProps extends Rivet.Props {
     /** The text label/description for this radio option */
-    label: string
+    label: string;
 };
 
 const componentClass = "rvt-radio";
