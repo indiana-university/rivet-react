@@ -13,7 +13,7 @@ export interface TextProps extends Rivet.Props {
     variant?: Variant;
 }
 
-const variantDisplayOptions : Object = {
+const variantDisplayOptions : object = {
     info: {
         className: 'has-info',
         icon: (
@@ -65,7 +65,7 @@ const alertClass = (variant : Variant) => {
 
 const isInlineAlert = (variant : Variant) => variant && variant !== "default";
 
-const inlineAlert = (variant : Variant, note : String) => <div className={`rvt-inline-alert rvt-inline-alert--${alertClass(variant)}`}>
+const inlineAlert = (variant : Variant, note : string) => <div className={`rvt-inline-alert rvt-inline-alert--${alertClass(variant)}`}>
     <span className="rvt-inline-alert__icon">
         <svg
             role="img"
@@ -81,7 +81,7 @@ const inlineAlert = (variant : Variant, note : String) => <div className={`rvt-i
     </span>
 </div>
 
-const standardNote = (inputId : string, note : String) => <small id={noteId(inputId)} className="rvt-display-block rvt-m-bottom-md">{note}</small>
+const standardNote = (inputId : string, note : string) => <small id={noteId(inputId)} className="rvt-display-block rvt-m-bottom-md">{note}</small>
 
 const noteId = (inputId : string) => `${inputId}_note`;
 

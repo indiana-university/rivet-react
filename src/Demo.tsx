@@ -198,22 +198,22 @@ class Demo extends React.Component<DemoProps, DemoState> {
                 <Section margin="sm">
                     <h1> Text Inputs </h1>
                     <Input type="text" name="input" label="Text Input" rvtMargin={{top: "md"}} />
-                    <Input type="text" name="inputWithNote" label="Input with Note" rvtNote="Here's the note!" rvtMargin={{top: "md"}} />
-                    <Input type="number" name="input" label="Numeric Input" rvtNote="I have a spinner and only accept numbers." rvtMargin={{top: "md"}} />
-                    <Input type="text" rvtStyle="info" name="inputWithInfo" label="Input with Info" rvtNote="Password must have at least 1 emoji" rvtMargin={{top: "md"}} />
-                    <Input type="text" rvtStyle="valid" name="inputWithValid" label="Valid Input" rvtNote="Password is strong" rvtMargin={{top: "md"}} />
-                    <Input type="text" rvtStyle="warning" name="inputWithWarning" label="Warning Input" rvtNote="Password is too weak"  rvtMargin={{top: "md"}} />
-                    <Input type="text" rvtStyle="invalid" name="inputWithInvalid" label="Invalid Input" rvtNote="Password is required" rvtMargin={{top: "md", bottom: "md"}} />
+                    <Input type="text" name="inputWithNote" label="Input with Note" note="Here's the note!" rvtMargin={{top: "md"}} />
+                    <Input type="number" name="input" label="Numeric Input" note="I have a spinner and only accept numbers." rvtMargin={{top: "md"}} />
+                    <Input type="text" variant="info" name="inputWithInfo" label="Input with Info" note="Password must have at least 1 emoji" rvtMargin={{top: "md"}} />
+                    <Input type="text" variant="valid" name="inputWithValid" label="Valid Input" note="Password is strong" rvtMargin={{top: "md"}} />
+                    <Input type="text" variant="warning" name="inputWithWarning" label="Warning Input" note="Password is too weak"  rvtMargin={{top: "md"}} />
+                    <Input type="text" variant="invalid" name="inputWithInvalid" label="Invalid Input" note="Password is required" rvtMargin={{top: "md", bottom: "md"}} />
                 </Section>
 
                 <Section margin="sm">
                     <h1> Text Areas </h1>
                     <Textarea name="textarea" label="Text Area" rvtMargin={{top: "md"}} />
-                    <Textarea name="textareaWithNote" label="Text Area with Note" rvtNote="Here's the note!" rvtMargin={{top: "md"}} />
-                    <Textarea rvtStyle="info" name="textareaWithInfo" label="Text Area with Info" rvtNote="Submissions must have at least 1 emoji" rvtMargin={{top: "md"}} />
-                    <Textarea rvtStyle="valid" name="textareaWithValid" label="Valid Text Area" rvtNote="Submission is strong" rvtMargin={{top: "md"}} />
-                    <Textarea rvtStyle="warning" name="textareaWithWarning" label="Warning Text Area" rvtNote="Submission is too weak"  rvtMargin={{top: "md"}} />
-                    <Textarea rvtStyle="invalid" name="textareaWithInvalid" label="Invalid Text Area" rvtNote="Submission is required" rvtMargin={{top: "md", bottom: "md"}} />
+                    <Textarea name="textareaWithNote" label="Text Area with Note" note="Here's the note!" rvtMargin={{top: "md"}} />
+                    <Textarea variant="info" name="textareaWithInfo" label="Text Area with Info" note="Submissions must have at least 1 emoji" rvtMargin={{top: "md"}} />
+                    <Textarea variant="valid" name="textareaWithValid" label="Valid Text Area" note="Submission is strong" rvtMargin={{top: "md"}} />
+                    <Textarea variant="warning" name="textareaWithWarning" label="Warning Text Area" note="Submission is too weak"  rvtMargin={{top: "md"}} />
+                    <Textarea variant="invalid" name="textareaWithInvalid" label="Invalid Text Area" note="Submission is required" rvtMargin={{top: "md", bottom: "md"}} />
                 </Section>
 
                 <Section margin='sm'>
