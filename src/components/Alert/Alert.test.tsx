@@ -17,6 +17,10 @@ describe('<Alert />', () => {
             const cut = shallow(<Alert variant="info" title="Alert Title" />);
             expect(cut.find('.rvt-alert__title').text()).toEqual("Alert Title");
         });      
+        it('should apply the id', () => {
+            const cut = shallow(<Alert variant="info" id="the_id" />);
+            expect(cut.prop('id')).toEqual("the_id");
+        });      
     })
 
     describe('Styling', () => {
@@ -37,4 +41,35 @@ describe('<Alert />', () => {
             expect(cut.find('.rvt-alert').hasClass("rvt-alert--success")).toEqual(true);
         });        
     });
+
+    describe('Visbility', () => {
+        it('can be made invisible', () => {
+            const cut = shallow(<Alert variant="success" isOpen={false} />);
+            expect(cut.find('.rvt-alert')).toHaveLength(0);
+        });        
+    })
+
+    describe('Dismiss behavior', ()=> {
+        it('should include dismiss button when dismissible', () => {
+            const cut = shallow(<Alert variant="info" onDismiss={() => {;}} />);
+            expect(cut.find('button.rvt-alert__dismiss')).toHaveLength(1);
+        });
+        it('should fire dismiss delegate', () => {
+            let fired = false;
+            const delegate = () => fired = true;
+            const cut = shallow(<Alert variant="info" onDismiss={delegate} />);
+
+            cut.find('button.rvt-alert__dismiss').simulate("click");
+            
+            expect(fired).toEqual(true);
+        });
+        it('the alert should remain visible when dismiss button clicked', () => {
+            const cut = shallow(<Alert variant="info" onDismiss={() => {;}} />);
+            
+            cut.find('button.rvt-alert__dismiss').simulate("click");
+            
+            expect(cut.find('.rvt-alert')).toHaveLength(1);
+        });
+    });
+
 });
