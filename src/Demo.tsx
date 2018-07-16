@@ -289,11 +289,11 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Alerts</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <Alert className="rvt-m-top-md" rvtStyle="message">This warning has no title!</Alert>
-                        <Alert className="rvt-m-top-md" rvtStyle="info" rvtTitle='Info'>A nice message for you!</Alert>
-                        <Alert className="rvt-m-top-md" rvtStyle="success" rvtTitle='Success!'>A great success for you!</Alert>
-                        <DismissibleAlert className="rvt-m-top-md" rvtStyle="error" rvtTitle='Error'
-                               clickDismiss={() => window.alert('You click dismiss error?!?')}>
+                        <Alert className="rvt-m-top-md" variant="message">This warning has no title!</Alert>
+                        <Alert className="rvt-m-top-md" variant="info" title='Info'>A nice message for you!</Alert>
+                        <Alert className="rvt-m-top-md" variant="success" title='Success!'>A great success for you!</Alert>
+                        <DismissibleAlert className="rvt-m-top-md" variant="error" title='Error'
+                               onDismiss={() => window.alert('You click dismiss error?!?')}>
                                A friendly error for you that can be dismissed!
                         </DismissibleAlert>
                     </Section>
