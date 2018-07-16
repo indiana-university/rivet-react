@@ -6,16 +6,13 @@ import * as util from '../util'
  * The properties of a button.
  */
 interface ButtonProps extends Rivet.Props {
-    /** Optional event to raise when the button is clicked by the user  */
     onClick?: Rivet.Action,
     /** Optional Rivet style: a success/danger/plain button. See: https://rivet.uits.iu.edu/components/forms/buttons/#button-examples */
-    style?: "success" | "danger" | "plain" | "default"
+    rvtStyle?: "success" | "danger" | "plain" | "default"
     /** Optional Rivet style: a small button. See: https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons */
-    size?: "small" | "default"
+    rvtSize?: "small" | "default"
     /** Optional Rivet style: a secondary button. See: https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations */
-    role?: "secondary" | "default"
-    /** Optional: Disable the button */
-    disabled?: boolean,
+    rvtRole?: "secondary" | "default"
 }
 
 /**
@@ -25,8 +22,8 @@ interface ButtonProps extends Rivet.Props {
  */
 const buttonRoleAndStyle = (props: ButtonProps) => {
     const classParts = [
-        props.style && props.style !== "default" ? props.style : undefined,
-        props.role && props.role !== "default" ? props.role : undefined
+        props.rvtStyle && props.rvtStyle !== "default" ? props.rvtStyle : undefined,
+        props.rvtRole && props.rvtRole !== "default" ? props.rvtRole : undefined
     ].filter(x => x !== undefined);
     // combine variation and style, if any.
     return classParts.length === 0 ? "" : `${buttonClass}--${classParts.join("-")}`;
@@ -38,19 +35,21 @@ const buttonRoleAndStyle = (props: ButtonProps) => {
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
 const buttonSize = (props: ButtonProps) =>
-    props.size ? `${buttonClass}--${props.size}` : "";
+    props.rvtSize ? `${buttonClass}--${props.rvtSize}` : "";
 
 const buttonClass = "rvt-button";
 const buttonDecorators = [ buttonRoleAndStyle, buttonSize]
 
-class Button extends React.Component<ButtonProps> {
+class Button extends React.Component<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
     public render() {
+        const { id, onClick, children, ...attrs } = this.props;
         return (
-            <button id={this.props.id || util.shortuid()} 
+            <button id={id || util.shortuid()} 
                     className={ Rivet.classify(this.props, buttonClass, buttonDecorators) } 
-                    onClick={ this.props.onClick } 
-                    disabled={ this.props.disabled } >
-                {this.props.children}
+                    onClick={ onClick } 
+                    disabled={ onClick === undefined }
+                    { ...attrs } >
+                {children}
             </button>
         );
     }

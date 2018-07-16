@@ -143,34 +143,34 @@ class Demo extends React.Component<DemoProps, DemoState> {
                         <button>For all of a users's group</button>
                     </Dropdown>
 
-                    <Button onClick={() => console.log("hello") } margin="xs">Hello</Button>
-                    <Button onClick={() => console.log("world") } margin="xs" role="secondary">World</Button>
+                    <Button onClick={() => console.log("hello") } rvtMargin="xs">Hello</Button>
+                    <Button onClick={() => console.log("world") } rvtMargin="xs" rvtRole="secondary">World</Button>
 
                     <div className="rvt-m-top-md" >
                         <SegmentedButtons label="Numbers" fit>
-                            <Button onClick={ () => console.log("one")} role="secondary" >One</Button>
-                            <Button onClick={ () => console.log("two")} role="secondary" >Two</Button>
-                            <Button onClick={ () => console.log("three")} role="secondary" >Three</Button>
+                            <Button onClick={ () => console.log("one")} rvtRole="secondary" >One</Button>
+                            <Button onClick={ () => console.log("two")} rvtRole="secondary" >Two</Button>
+                            <Button onClick={ () => console.log("three")} rvtRole="secondary" >Three</Button>
                         </SegmentedButtons>
                     </div>
 
                     <h1>Forms</h1>
                     
-                    <Form label="Checkboxes inline" margin={{top:"md"}}>
+                    <Form label="Checkboxes inline" rvtMargin={{top:"md"}}>
                         <List rvtOrientation="inline">
                         <li><Checkbox name="numbers" label="One"/></li>
                         <li><Checkbox name="numbers" label="Two"/></li>
                         </List>
                     </Form>
 
-                    <Form label="Radio buttons inline" margin={{top:"md"}}>
+                    <Form label="Radio buttons inline" rvtMargin={{top:"md"}}>
                         <List rvtOrientation="inline">
                         <li><RadioButton name="number" label="One"/></li>
                         <li><RadioButton name="number" label="Two"/></li>
                         </List>
                     </Form>
 
-                    <Form label="Mixed inputs" margin={{top:"md"}}>
+                    <Form label="Mixed inputs" rvtMargin={{top:"md"}}>
                         <List rvtOrientation="inline">
                         <li><Input type="number" name="number" label="One Fish"/></li>
                         <li><Input type="number" name="numbers" label="Two Fish"/></li>
@@ -197,23 +197,23 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                 <Section margin="sm">
                     <h1> Text Inputs </h1>
-                    <Input type="text" name="input" label="Text Input" margin={{top: "md"}} />
-                    <Input type="text" name="inputWithNote" label="Input with Note" rvtNote="Here's the note!" margin={{top: "md"}} />
-                    <Input type="number" name="input" label="Numeric Input" rvtNote="I have a spinner and only accept numbers." margin={{top: "md"}} />
-                    <Input type="text" rvtStyle="info" name="inputWithInfo" label="Input with Info" rvtNote="Password must have at least 1 emoji" margin={{top: "md"}} />
-                    <Input type="text" rvtStyle="valid" name="inputWithValid" label="Valid Input" rvtNote="Password is strong" margin={{top: "md"}} />
-                    <Input type="text" rvtStyle="warning" name="inputWithWarning" label="Warning Input" rvtNote="Password is too weak"  margin={{top: "md"}} />
-                    <Input type="text" rvtStyle="invalid" name="inputWithInvalid" label="Invalid Input" rvtNote="Password is required" margin={{top: "md", bottom: "md"}} />
+                    <Input type="text" name="input" label="Text Input" rvtMargin={{top: "md"}} />
+                    <Input type="text" name="inputWithNote" label="Input with Note" rvtNote="Here's the note!" rvtMargin={{top: "md"}} />
+                    <Input type="number" name="input" label="Numeric Input" rvtNote="I have a spinner and only accept numbers." rvtMargin={{top: "md"}} />
+                    <Input type="text" rvtStyle="info" name="inputWithInfo" label="Input with Info" rvtNote="Password must have at least 1 emoji" rvtMargin={{top: "md"}} />
+                    <Input type="text" rvtStyle="valid" name="inputWithValid" label="Valid Input" rvtNote="Password is strong" rvtMargin={{top: "md"}} />
+                    <Input type="text" rvtStyle="warning" name="inputWithWarning" label="Warning Input" rvtNote="Password is too weak"  rvtMargin={{top: "md"}} />
+                    <Input type="text" rvtStyle="invalid" name="inputWithInvalid" label="Invalid Input" rvtNote="Password is required" rvtMargin={{top: "md", bottom: "md"}} />
                 </Section>
 
                 <Section margin="sm">
                     <h1> Text Areas </h1>
-                    <Textarea name="textarea" label="Text Area" margin={{top: "md"}} />
-                    <Textarea name="textareaWithNote" label="Text Area with Note" rvtNote="Here's the note!" margin={{top: "md"}} />
-                    <Textarea rvtStyle="info" name="textareaWithInfo" label="Text Area with Info" rvtNote="Submissions must have at least 1 emoji" margin={{top: "md"}} />
-                    <Textarea rvtStyle="valid" name="textareaWithValid" label="Valid Text Area" rvtNote="Submission is strong" margin={{top: "md"}} />
-                    <Textarea rvtStyle="warning" name="textareaWithWarning" label="Warning Text Area" rvtNote="Submission is too weak"  margin={{top: "md"}} />
-                    <Textarea rvtStyle="invalid" name="textareaWithInvalid" label="Invalid Text Area" rvtNote="Submission is required" margin={{top: "md", bottom: "md"}} />
+                    <Textarea name="textarea" label="Text Area" rvtMargin={{top: "md"}} />
+                    <Textarea name="textareaWithNote" label="Text Area with Note" rvtNote="Here's the note!" rvtMargin={{top: "md"}} />
+                    <Textarea rvtStyle="info" name="textareaWithInfo" label="Text Area with Info" rvtNote="Submissions must have at least 1 emoji" rvtMargin={{top: "md"}} />
+                    <Textarea rvtStyle="valid" name="textareaWithValid" label="Valid Text Area" rvtNote="Submission is strong" rvtMargin={{top: "md"}} />
+                    <Textarea rvtStyle="warning" name="textareaWithWarning" label="Warning Text Area" rvtNote="Submission is too weak"  rvtMargin={{top: "md"}} />
+                    <Textarea rvtStyle="invalid" name="textareaWithInvalid" label="Invalid Text Area" rvtNote="Submission is required" rvtMargin={{top: "md", bottom: "md"}} />
                 </Section>
 
                 <Section margin='sm'>
@@ -230,45 +230,45 @@ class Demo extends React.Component<DemoProps, DemoState> {
                             <Button onClick={() => {
                                 window.alert('Primary Button Click')
                             }}>Primary</Button>
-                            <Button style="success" onClick={() => {
+                            <Button rvtStyle="success" onClick={() => {
                                 window.alert('Success Button Click')
                             }}>Success</Button>
-                            <Button style="danger" onClick={() => {
+                            <Button rvtStyle="danger" onClick={() => {
                                 window.alert('Danger Button Click')
                             }}>Danger</Button>
                             <Button /* no onClick means disabled */>Disabled</Button>
                         </SegmentedButtons>
                         <br/>
                         <SegmentedButtons margin='xxs'>
-                            <Button role="secondary" onClick={() => {
+                            <Button rvtRole="secondary" onClick={() => {
                                 window.alert('Secondary Button Click')
                             }}>Primary</Button>
-                            <Button role="secondary" style="success" onClick={() => {
+                            <Button rvtRole="secondary" rvtStyle="success" onClick={() => {
                                 window.alert('Secondary Success Button Click')
                             }}>Success</Button>
-                            <Button role="secondary" style="danger" onClick={() => {
+                            <Button rvtRole="secondary" rvtStyle="danger" onClick={() => {
                                 window.alert('Secondary Danger Button Click')
                             }}>Danger</Button>
                             <Button /* no onClick means disabled */>Disabled</Button>
                         </SegmentedButtons>
                         <br/>
                         <SegmentedButtons margin='xxs'>
-                            <Button size="small" onClick={() => {
+                            <Button rvtSize="small" onClick={() => {
                                 window.alert('Small Button Click')
                             }}>Small</Button>
-                            <Button size="small" style="success" onClick={() => {
+                            <Button rvtSize="small" rvtStyle="success" onClick={() => {
                                 window.alert('Small Success Button Click')
                             }}>Success</Button>
-                            <Button size="small" style="danger" onClick={() => {
+                            <Button rvtSize="small" rvtStyle="danger" onClick={() => {
                                 window.alert('Small Danger Button Click')
                             }}>Danger</Button>
-                            <Button size="small" role="secondary" onClick={() => {
+                            <Button rvtSize="small" rvtRole="secondary" onClick={() => {
                                 window.alert('Small Secondary Button Click')
                             }}>Primary</Button>
-                            <Button size="small" role="secondary" style="success" onClick={() => {
+                            <Button rvtSize="small" rvtRole="secondary" rvtStyle="success" onClick={() => {
                                 window.alert('Small Secondary Success Button Click')
                             }}>Success</Button>
-                            <Button size="small" role="secondary" style="danger" onClick={() => {
+                            <Button rvtSize="small" rvtRole="secondary" rvtStyle="danger" onClick={() => {
                                 window.alert('Small Secondary Danger Button Click')
                             }}>Danger</Button>
                         </SegmentedButtons>
@@ -301,22 +301,22 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Lists</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <List border="bottom">
+                        <List rvtBorder="bottom">
                             <li>An</li>
                             <li>unordered</li>
                             <li>list</li>
                         </List>
-                        <List rvtStyle="ordered" border="bottom">
+                        <List rvtStyle="ordered" rvtBorder="bottom">
                             <li>An</li>
                             <li>ordered</li>
                             <li>list</li>
                         </List>
-                        <List rvtStyle="plain" border="bottom">
+                        <List rvtStyle="plain" rvtBorder="bottom">
                             <li>A</li>
                             <li>plain (undecorated)</li>
                             <li>list</li>
                         </List>
-                        <List rvtOrientation="inline" children={['this', 'list', 'is', 'inline']} border="bottom"/>
+                        <List rvtOrientation="inline" children={['this', 'list', 'is', 'inline']} rvtBorder="bottom"/>
                         <List rvtOrientation="inline" >
                             <Button>This</Button>
                             <Button>is</Button>
