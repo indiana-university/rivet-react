@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import * as React from 'react'
 import * as Rivet from '../Rivet'
 import * as util from '../util'
@@ -38,14 +39,14 @@ const buttonSize = (props: ButtonProps) =>
     props.rvtSize ? `${buttonClass}--${props.rvtSize}` : "";
 
 const buttonClass = "rvt-button";
-const buttonDecorators = [ buttonRoleAndStyle, buttonSize]
 
 class Button extends React.Component<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
     public render() {
-        const { id, onClick, children, ...attrs } = this.props;
+        const { id, onClick, children, className = '', ...attrs } = this.props;
+        const classes = classNames(buttonClass, buttonRoleAndStyle(attrs), buttonSize(attrs), className);
         return (
             <button id={id || util.shortuid()} 
-                    className={ Rivet.classify(this.props, buttonClass, buttonDecorators) } 
+                    className={ classes } 
                     onClick={ onClick } 
                     disabled={ onClick === undefined }
                     { ...attrs } >
@@ -55,4 +56,4 @@ class Button extends React.Component<ButtonProps & React.ButtonHTMLAttributes<HT
     }
 }
 
-export default Button
+export default Rivet.rivetize(Button);
