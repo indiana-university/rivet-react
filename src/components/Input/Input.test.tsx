@@ -30,38 +30,38 @@ describe('<Input />', () => {
     });
     describe("Notes", () => {
         it('should apply the note', () => {
-            const cut = shallow(<Input rvtNote="Note" label="Label" />);
+            const cut = shallow(<Input note="Note" label="Label" />);
             expect(cut.find('small').text()).toEqual("Note");
         });
         it('should associate the input with the note', () => {
-            const cut = shallow(<Input id="the_id" rvtNote="Note" label="Label" />);
+            const cut = shallow(<Input id="the_id" note="Note" label="Label" />);
             expect(cut.find('input').prop('aria-describedby')).toEqual("the_id_note");
         });
     });
     describe("Inline Alerts", () => {
         it('info style', () => { 
-            const cut = shallow(<Input rvtStyle="info" label="Label" rvtNote="🤔"/>);
+            const cut = shallow(<Input variant="info" label="Label" note="🤔"/>);
             expect(cut.find('input').hasClass("rvt-has-info")).toEqual(true);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-info")).toBe(true);
         });
         it('valid style', () => { 
-            const cut = shallow(<Input rvtStyle="valid" label="Label" rvtNote="😎" />);
+            const cut = shallow(<Input variant="valid" label="Label" note="😎" />);
             expect(cut.find('input').hasClass("rvt-is-valid")).toEqual(true);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-valid")).toBe(true);
         });
         it('warning style', () => { 
-            const cut = shallow(<Input rvtStyle="warning" label="Label" rvtNote="🤨"/>);
+            const cut = shallow(<Input variant="warning" label="Label" note="🤨"/>);
             expect(cut.find('input').hasClass("rvt-has-warning")).toEqual(true);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-warning")).toBe(true);
         });
         it('invalid style', () => { 
-            const cut = shallow(<Input rvtStyle="invalid" label="Label" rvtNote="😬"/>);
+            const cut = shallow(<Input variant="invalid" label="Label" note="😬"/>);
             expect(cut.find('input').hasClass("rvt-is-invalid")).toEqual(true);
             expect(cut.find('input').prop("aria-invalid")).toEqual(true);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-invalid")).toBe(true);
         });
         it('invalid has aria-invalid flag', () => { 
-            const cut = shallow(<Input rvtStyle="invalid" label="Label" />);
+            const cut = shallow(<Input variant="invalid" label="Label" />);
             expect(cut.find('input').prop("aria-invalid")).toEqual(true);
         });
     });

@@ -25,38 +25,38 @@ describe('<Texarea />', () => {
     });
     describe("Notes", () => {
         it('should apply the note', () => {
-            const cut = shallow(<Textarea rvtNote="Note" label="Label" />);
+            const cut = shallow(<Textarea note="Note" label="Label" />);
             expect(cut.find('small').text()).toEqual("Note");
         });
         it('should associate the input with the note', () => {
-            const cut = shallow(<Textarea id="the_id" rvtNote="Note" label="Label" />);
+            const cut = shallow(<Textarea id="the_id" note="Note" label="Label" />);
             expect(cut.find('textarea').prop('aria-describedby')).toEqual("the_id_note");
         });
     });
     describe("Inline Alerts", () => {
         it('info style', () => { 
-            const cut = shallow(<Textarea rvtStyle="info" label="Label" rvtNote="🤔"/>);
+            const cut = shallow(<Textarea variant="info" label="Label" note="🤔"/>);
             expect(cut.find('textarea').hasClass("rvt-has-info")).toEqual(true);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-info")).toBe(true);
         });
         it('valid style', () => { 
-            const cut = shallow(<Textarea rvtStyle="valid" label="Label" rvtNote="😎"/>);
+            const cut = shallow(<Textarea variant="valid" label="Label" note="😎"/>);
             expect(cut.find('textarea').hasClass("rvt-is-valid")).toEqual(true);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-valid")).toBe(true);
         });
         it('warning style', () => { 
-            const cut = shallow(<Textarea rvtStyle="warning" label="Label" rvtNote="🤨"/>);
+            const cut = shallow(<Textarea variant="warning" label="Label" note="🤨"/>);
             expect(cut.find('textarea').hasClass("rvt-has-warning")).toEqual(true);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-warning")).toBe(true);
         });
         it('invalid style', () => { 
-            const cut = shallow(<Textarea rvtStyle="invalid" label="Label" rvtNote="😬"/>);
+            const cut = shallow(<Textarea variant="invalid" label="Label" note="😬"/>);
             expect(cut.find('textarea').hasClass("rvt-is-invalid")).toEqual(true);
             expect(cut.find('textarea').prop("aria-invalid")).toEqual(true);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-invalid")).toBe(true);
         });
         it('invalid has aria-invalid flag', () => { 
-            const cut = shallow(<Textarea rvtStyle="invalid" label="Label" />);
+            const cut = shallow(<Textarea variant="invalid" label="Label" />);
             expect(cut.find('textarea').prop("aria-invalid")).toEqual(true);
         });
     });
