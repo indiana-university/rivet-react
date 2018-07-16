@@ -9,15 +9,15 @@ describe('<List />', () => {
             expect(cut.find('ul')).toHaveLength(1);
         });
         it('should render an ordered list', () =>{
-            const cut = shallow(<List rvtStyle="ordered" />)
+            const cut = shallow(<List variant="ordered" />)
             expect(cut.find('ol')).toHaveLength(1);
         });
         it('should render a plain list', () =>{
-            const cut = shallow(<List rvtStyle="plain" />)
+            const cut = shallow(<List variant="plain" />)
             expect(cut.find('ul').hasClass('rvt-plain-list')).toEqual(true);
         });
         it('should render an in-line list', () =>{
-            const cut = shallow(<List rvtOrientation="inline" />)
+            const cut = shallow(<List orientation="inline" />)
             expect(cut.find('ul').hasClass('rvt-inline-list')).toEqual(true);
         });
     });
