@@ -157,21 +157,21 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     <h1>Forms</h1>
                     
                     <Form label="Checkboxes inline" rvtMargin={{top:"md"}}>
-                        <List rvtOrientation="inline">
+                        <List orientation="inline">
                         <li><Checkbox name="numbers" label="One"/></li>
                         <li><Checkbox name="numbers" label="Two"/></li>
                         </List>
                     </Form>
 
                     <Form label="Radio buttons inline" rvtMargin={{top:"md"}}>
-                        <List rvtOrientation="inline">
+                        <List orientation="inline">
                         <li><RadioButton name="number" label="One"/></li>
                         <li><RadioButton name="number" label="Two"/></li>
                         </List>
                     </Form>
 
                     <Form label="Mixed inputs" rvtMargin={{top:"md"}}>
-                        <List rvtOrientation="inline">
+                        <List orientation="inline">
                         <li><Input type="number" name="number" label="One Fish"/></li>
                         <li><Input type="number" name="numbers" label="Two Fish"/></li>
                         <li><RadioButton name="either" label="Red Fish"/></li>
@@ -306,18 +306,18 @@ class Demo extends React.Component<DemoProps, DemoState> {
                             <li>unordered</li>
                             <li>list</li>
                         </List>
-                        <List rvtStyle="ordered" rvtBorder="bottom">
+                        <List variant="ordered" rvtBorder="bottom">
                             <li>An</li>
                             <li>ordered</li>
                             <li>list</li>
                         </List>
-                        <List rvtStyle="plain" rvtBorder="bottom">
+                        <List variant="plain" rvtBorder="bottom">
                             <li>A</li>
                             <li>plain (undecorated)</li>
                             <li>list</li>
                         </List>
-                        <List rvtOrientation="inline" children={['this', 'list', 'is', 'inline']} rvtBorder="bottom"/>
-                        <List rvtOrientation="inline" >
+                        <List orientation="inline" children={['this', 'list', 'is', 'inline']} rvtBorder="bottom"/>
+                        <List orientation="inline" >
                             <Button>This</Button>
                             <Button>is</Button>
                             <Button>inline</Button>

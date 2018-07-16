@@ -6,12 +6,12 @@ export interface ListProps extends Rivet.Props {
      * Optional Rivet style for the type of list decoration.
      * See: https://rivet.uits.iu.edu/components/page-content/lists/#unordered-list
      */
-    rvtStyle?: 'ordered' | 'plain' | 'unordered';
+    variant?: 'ordered' | 'plain' | 'unordered';
     /**
      * Optional Rivet style for the layout of the list.
      * See: https://rivet.uits.iu.edu/components/page-content/lists/#inline-list
      */
-    rvtOrientation?: 'inline' | 'default';
+    orientation?: 'inline' | 'default';
 }
 
 /** Return any <li> children unchanged; otherwise wrap child in an <li> */
@@ -26,21 +26,21 @@ const asListItems = (children?: React.ReactNode) => children
         .map(children, asListItem)
     : [];
 
-const plainList = (props : ListProps) => props.rvtStyle === 'plain'
+const plainList = (props : ListProps) => props.variant === 'plain'
     ? 'rvt-plain-list'
     : '';
 
-const inlineList = (props : ListProps) => props.rvtOrientation === 'inline'
+const inlineList = (props : ListProps) => props.orientation === 'inline'
     ? 'rvt-inline-list'
     : '';
 
 const componentClass = 'rvt-list';
 const componentDecorators = [plainList, inlineList];
 
-export const List : React.SFC<ListProps> = ({ children, rvtStyle, ...props} ) => {
-    const classNames = Rivet.classify<ListProps>({ rvtStyle, ...props}, componentClass, componentDecorators);
+export const List : React.SFC<ListProps> = ({ children, variant, ...props} ) => {
+    const classNames = Rivet.classify<ListProps>({ variant, ...props}, componentClass, componentDecorators);
     const listItems = asListItems(children);
-    const ordered = rvtStyle === 'ordered';
+    const ordered = variant === 'ordered';
     return (ordered
         ? <ol className={classNames} {...props}>
                 {listItems}
