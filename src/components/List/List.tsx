@@ -5,7 +5,6 @@ import * as Rivet from '../Rivet'
 type ListVariant = 'ordered' | 'plain' | 'unordered';
 type ListOrientation = 'inline' | 'default';
 export interface ListProps {
-    className?: string,
     /**
      * Optional Rivet style for the type of list decoration.
      * See: https://rivet.uits.iu.edu/components/page-content/lists/#unordered-list

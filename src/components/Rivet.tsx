@@ -8,10 +8,6 @@ import { Link } from 'react-router-dom';
 export type Action = () => void;
 
 export interface Props {
-    id?: string,
-    key?: string,
-    children?: React.ReactNode,
-    className?: string,
     /**
      * Optional Rivet style: type scale adjustment
      * See: https://rivet.uits.iu.edu/components/layout/typography/
@@ -173,8 +169,8 @@ const parseRivetHidden = (hide?: Hidden) => ({
  */
 export type ComponentDecorator<T extends Props> = ( props: T ) => string;
 
-export const rivetize = <T extends React.HTMLAttributes<T>>(Component: React.ComponentType<T>): React.SFC<T & Props> =>
-({ className, border, display, hide, margin, padding, typescale, ...attrs }: Props) => (
+export const rivetize = <T extends React.HTMLAttributes<HTMLElement>>(Component: React.ComponentType<T>): React.SFC<T & Props> =>
+({ className, border, display, hide, margin, padding, typescale, ...attrs }: Props & React.HTMLAttributes<HTMLElement>) => (
         <Component className={classnames(
             parseRivetMargin(margin),
             parseRivetPadding(padding),
