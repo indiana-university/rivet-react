@@ -1,17 +1,21 @@
+import * as classNames from 'classnames';
 import * as React from 'react'
 import * as Rivet from '../Rivet'
 
-export interface ListProps extends Rivet.Props {
+type ListVariant = 'ordered' | 'plain' | 'unordered';
+type ListOrientation = 'inline' | 'default';
+export interface ListProps {
+    className?: string,
     /**
      * Optional Rivet style for the type of list decoration.
      * See: https://rivet.uits.iu.edu/components/page-content/lists/#unordered-list
      */
-    variant?: 'ordered' | 'plain' | 'unordered';
+    variant?: ListVariant;
     /**
      * Optional Rivet style for the layout of the list.
      * See: https://rivet.uits.iu.edu/components/page-content/lists/#inline-list
      */
-    orientation?: 'inline' | 'default';
+    orientation?: ListOrientation;
 }
 
 /** Return any <li> children unchanged; otherwise wrap child in an <li> */
@@ -26,27 +30,26 @@ const asListItems = (children?: React.ReactNode) => children
         .map(children, asListItem)
     : [];
 
-const plainList = (props : ListProps) => props.variant === 'plain'
-    ? 'rvt-plain-list'
-    : '';
+const plainList = (variant?: ListVariant) => ({
+    ['rvt-plain-list']: variant === 'plain'
+});
 
-const inlineList = (props : ListProps) => props.orientation === 'inline'
-    ? 'rvt-inline-list'
-    : '';
+const inlineList = (orientation?: ListOrientation) => ({
+    ['rvt-inline-list']: orientation === 'inline'
+});
 
 const componentClass = 'rvt-list';
-const componentDecorators = [plainList, inlineList];
 
-export const List : React.SFC <ListProps> = ({ children, variant, ...props }) => {
-    const classNames = Rivet.classify <ListProps> ({ variant, ...props}, componentClass, componentDecorators);
+export const List : React.SFC <ListProps & React.HTMLAttributes<HTMLElement>> = ({ children, className = '', orientation, variant, ...props }) => {
+    const classes = classNames(componentClass, plainList(variant), inlineList(orientation), className);
     const listItems = asListItems(children);
     const ListTag = variant === 'ordered' ? 'ol' : 'ul';
     return (
-        <ListTag className={classNames} {...props}>
+        <ListTag className={classes} {...props}>
             {listItems}
         </ListTag>
     );
 };
 List.displayName = 'List';
 
-export default List;
+export default Rivet.rivetize(List);
