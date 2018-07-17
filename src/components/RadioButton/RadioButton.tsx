@@ -1,14 +1,17 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../Rivet';
 
-interface RadioButtonProps extends Rivet.Props {
+interface RadioButtonProps {
+    className?: string,
     /** The text label/description for this radio option */
     label: string;
 };
 
 const componentClass = "rvt-radio";
 
-export const RadioButton : React.SFC < RadioButtonProps & React.InputHTMLAttributes < HTMLInputElement >> = ({
+export const RadioButton : React.SFC <RadioButtonProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
+    className = '',
     id = Rivet.shortuid(),
     label,
     ...attrs
@@ -17,11 +20,11 @@ export const RadioButton : React.SFC < RadioButtonProps & React.InputHTMLAttribu
         <input
             id={id}
             type="radio"
-            className={Rivet.classify(attrs, componentClass)}
+            className={classNames(componentClass, className)}
             {...attrs}/>
         <label htmlFor={id}>{label}</label>
     </React.Fragment>
 );
 RadioButton.displayName = 'RadioButton';
 
-export default RadioButton
+export default Rivet.rivetize(RadioButton);
