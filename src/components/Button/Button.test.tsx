@@ -27,45 +27,45 @@ describe('<Button />', () => {
     describe('Styling', ()=>{
         // Primary variations
         it('should have success style', () => {
-            const cut = mount(<Button rvtStyle="success" />);
+            const cut = mount(<Button variant="success" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--success")).toEqual(true);
         });
         it('should have danger style', () => {
-            const cut = mount(<Button rvtStyle="danger" />);
+            const cut = mount(<Button variant="danger" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--danger")).toEqual(true);
         });
         it('should have plain style', () => {
-            const cut = mount(<Button rvtStyle="plain" />);
+            const cut = mount(<Button variant="plain" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--plain")).toEqual(true);
         });
 
         // Secondary variations
         it('should have secondary role', () => {
-            const cut = mount(<Button rvtRole="secondary" />);
+            const cut = mount(<Button role="secondary" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--secondary")).toEqual(true);
         });
         it('should have secondary success style', () => {
-            const cut = mount(<Button rvtRole="secondary" rvtStyle="success" />);
+            const cut = mount(<Button role="secondary" variant="success" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--success-secondary")).toEqual(true);
         });
         it('should have secondary danger style', () => {
-            const cut = mount(<Button rvtRole="secondary" rvtStyle="danger" />);
+            const cut = mount(<Button role="secondary" variant="danger" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--danger-secondary")).toEqual(true);
         });
         it('should have secondary plain style', () => {
-            const cut = mount(<Button rvtRole="secondary" rvtStyle="plain" />);
+            const cut = mount(<Button role="secondary" variant="plain" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--plain-secondary")).toEqual(true);
         });
         
         // Size variations
         it('should have small size', () => {
-            const cut = mount(<Button rvtSize="small"  />);
+            const cut = mount(<Button size="small"  />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--small")).toEqual(true);
         });
 
         // All together now!
         it('should have a secondary small size', () => {
-            const cut = mount(<Button rvtSize="small" rvtRole="secondary" rvtStyle="plain" />);
+            const cut = mount(<Button size="small" role="secondary" variant="plain" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--plain-secondary")).toEqual(true);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--small")).toEqual(true);
         });

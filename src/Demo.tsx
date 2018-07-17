@@ -144,13 +144,13 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     </Dropdown>
 
                     <Button onClick={() => console.log("hello") } margin="xs">Hello</Button>
-                    <Button onClick={() => console.log("world") } margin="xs" rvtRole="secondary">World</Button>
+                    <Button onClick={() => console.log("world") } margin="xs" role="secondary">World</Button>
 
                     <div className="rvt-m-top-md" >
                         <SegmentedButtons label="Numbers" fit>
-                            <Button onClick={ () => console.log("one")} rvtRole="secondary" >One</Button>
-                            <Button onClick={ () => console.log("two")} rvtRole="secondary" >Two</Button>
-                            <Button onClick={ () => console.log("three")} rvtRole="secondary" >Three</Button>
+                            <Button onClick={ () => console.log("one")} role="secondary" >One</Button>
+                            <Button onClick={ () => console.log("two")} role="secondary" >Two</Button>
+                            <Button onClick={ () => console.log("three")} role="secondary" >Three</Button>
                         </SegmentedButtons>
                     </div>
 
@@ -230,45 +230,45 @@ class Demo extends React.Component<DemoProps, DemoState> {
                             <Button onClick={() => {
                                 window.alert('Primary Button Click')
                             }}>Primary</Button>
-                            <Button rvtStyle="success" onClick={() => {
+                            <Button variant="success" onClick={() => {
                                 window.alert('Success Button Click')
                             }}>Success</Button>
-                            <Button rvtStyle="danger" onClick={() => {
+                            <Button variant="danger" onClick={() => {
                                 window.alert('Danger Button Click')
                             }}>Danger</Button>
                             <Button /* no onClick means disabled */>Disabled</Button>
                         </SegmentedButtons>
                         <br/>
                         <SegmentedButtons margin='xxs'>
-                            <Button rvtRole="secondary" onClick={() => {
+                            <Button role="secondary" onClick={() => {
                                 window.alert('Secondary Button Click')
                             }}>Primary</Button>
-                            <Button rvtRole="secondary" rvtStyle="success" onClick={() => {
+                            <Button role="secondary" variant="success" onClick={() => {
                                 window.alert('Secondary Success Button Click')
                             }}>Success</Button>
-                            <Button rvtRole="secondary" rvtStyle="danger" onClick={() => {
+                            <Button role="secondary" variant="danger" onClick={() => {
                                 window.alert('Secondary Danger Button Click')
                             }}>Danger</Button>
                             <Button /* no onClick means disabled */>Disabled</Button>
                         </SegmentedButtons>
                         <br/>
                         <SegmentedButtons margin='xxs'>
-                            <Button rvtSize="small" onClick={() => {
+                            <Button size="small" onClick={() => {
                                 window.alert('Small Button Click')
                             }}>Small</Button>
-                            <Button rvtSize="small" rvtStyle="success" onClick={() => {
+                            <Button size="small" variant="success" onClick={() => {
                                 window.alert('Small Success Button Click')
                             }}>Success</Button>
-                            <Button rvtSize="small" rvtStyle="danger" onClick={() => {
+                            <Button size="small" variant="danger" onClick={() => {
                                 window.alert('Small Danger Button Click')
                             }}>Danger</Button>
-                            <Button rvtSize="small" rvtRole="secondary" onClick={() => {
+                            <Button size="small" role="secondary" onClick={() => {
                                 window.alert('Small Secondary Button Click')
                             }}>Primary</Button>
-                            <Button rvtSize="small" rvtRole="secondary" rvtStyle="success" onClick={() => {
+                            <Button size="small" role="secondary" variant="success" onClick={() => {
                                 window.alert('Small Secondary Success Button Click')
                             }}>Success</Button>
-                            <Button rvtSize="small" rvtRole="secondary" rvtStyle="danger" onClick={() => {
+                            <Button size="small" role="secondary" variant="danger" onClick={() => {
                                 window.alert('Small Secondary Danger Button Click')
                             }}>Danger</Button>
                         </SegmentedButtons>
