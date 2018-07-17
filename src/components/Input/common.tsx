@@ -1,9 +1,10 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
-
 import * as Rivet from '../Rivet';
 
 type Variant = 'info' | 'invalid' | 'valid' | 'warning' | 'default';
-export interface TextProps extends Rivet.Props {
+export interface TextProps {
+    className?: string;
     label: string;
     note?: string;
     /**
@@ -102,15 +103,15 @@ export const renderInput =
     <T extends React.HTMLAttributes<HTMLElement>>( props: TextProps & T, inputGenerator: TextComponentGenerator ) => {
         const inputId = props.id || Rivet.shortuid();
         const variant: Variant = props.variant || 'default';
-        const className = inputClassName(variant);
+        const inputClass = inputClassName(variant);
         const ariaDescribedBy = props.note
             ? noteId(inputId)
             : ""
         const ariaInvalid = variant === "invalid";
         return (
-            <div className={Rivet.classify(props, "rvt-input")}>
+            <div className={classNames('rvt-input', props.className)}>
                 {labelFragment(inputId, props)}
-                {inputGenerator < T > (inputId, className, ariaDescribedBy, ariaInvalid, props)}
+                {inputGenerator < T > (inputId, inputClass, ariaDescribedBy, ariaInvalid, props)}
                 {noteFragment(inputId, variant, props.note)}
             </div>
         );
