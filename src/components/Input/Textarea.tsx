@@ -1,14 +1,13 @@
 import * as React from 'react'
-import * as c from './common';
+import { renderInput, TextProps } from './common';
 
-const textarea = 
-    (id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean, attrs:React.TextareaHTMLAttributes<HTMLTextAreaElement>) =>
-        <textarea id={id} className={className} aria-describedby={ariaDescribedBy} aria-invalid={ariaInvalid} {...attrs} />
+const textareaGenerator = (id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean, attrs:React.TextareaHTMLAttributes<HTMLTextAreaElement>) => (
+    <textarea id={id} className={className} aria-describedby={ariaDescribedBy} aria-invalid={ariaInvalid} {...attrs} />
+);
 
-export class Textarea extends React.Component<c.TextProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>> {
-    public render() {
-        return c.renderInput<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(this.props, textarea);
-    }
-}
+export const Textarea :  React.SFC<TextProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>> = (props) => (
+    renderInput<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(props, textareaGenerator)
+);
+Textarea.displayName = 'TextArea';
 
-export default Textarea
+export default Textarea;

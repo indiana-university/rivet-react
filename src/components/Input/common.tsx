@@ -97,7 +97,8 @@ const noteFragment = (inputId : string, variant: Variant, note? : string) => not
         : standardNote(inputId, note)
     : '';
 
-type TextComponentGenerator = <T>( id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean, attrs: T ) => JSX.Element; export const renderInput =
+type TextComponentGenerator = <T>( id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean, attrs: T ) => JSX.Element; 
+export const renderInput =
     <T extends React.HTMLAttributes<HTMLElement>>( props: TextProps & T, inputGenerator: TextComponentGenerator ) => {
         const inputId = props.id || Rivet.shortuid();
         const variant: Variant = props.variant || 'default';
