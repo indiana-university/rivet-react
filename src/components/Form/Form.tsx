@@ -1,7 +1,9 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../Rivet';
 
-interface FormProps extends Rivet.Props {
+interface FormProps {
+    className?: string,
     /** The text label/description for this form */
     label: string,
     /**
@@ -13,8 +15,8 @@ interface FormProps extends Rivet.Props {
 
 const componentClass = 'rvt-form';
 
-const Form : React.SFC<FormProps & React.FormHTMLAttributes<HTMLFormElement>> = ({ children, id = Rivet.shortuid(), label, labelVisibility, name, ...attrs }) => (
-    <form className={Rivet.classify(attrs, componentClass)} id={id} {...attrs}>
+const Form : React.SFC<FormProps & React.FormHTMLAttributes<HTMLFormElement>> = ({ children, className = '', id = Rivet.shortuid(), label, labelVisibility, name, ...attrs }) => (
+    <form className={classNames(componentClass, className)} id={id} {...attrs}>
         <fieldset>
             <legend className={Rivet.labelVisiblityClass(labelVisibility)}>{label}</legend>
             {children}
@@ -23,4 +25,4 @@ const Form : React.SFC<FormProps & React.FormHTMLAttributes<HTMLFormElement>> = 
 );
 Form.displayName = 'Form';
 
-export default Form;
+export default Rivet.rivetize(Form);
