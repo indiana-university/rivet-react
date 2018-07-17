@@ -3,7 +3,7 @@ import * as React from 'react';
 import RadioButton from '../RadioButton';
 import Form from './Form';
 
-describe('<RadioButton />', () => {
+describe('<Form />', () => {
     describe('Rendering and styling', () =>{
         it('should render without throwing an error', () => {
             const cut = shallow(<Form label="Foo Group" name="foo-1" />);
@@ -29,7 +29,7 @@ describe('<RadioButton />', () => {
             expect(cut.find('legend').text()).toEqual("Foo");
         });
         it ('should create a screen-reader-only legend', () => {
-            const cut = shallow(<Form rvtLabelVisibility="screen-reader-only" label="Foo" name="foo-1" />);
+            const cut = shallow(<Form labelVisibility="screen-reader-only" label="Foo" name="foo-1" />);
             expect(cut.find('legend').text()).toEqual("Foo");
             expect(cut.find('legend').hasClass("rvt-sr-only")).toEqual(true);
         });
