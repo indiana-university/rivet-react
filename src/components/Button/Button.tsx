@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 import * as React from 'react'
 import * as Rivet from '../Rivet'
 import * as util from '../util'
@@ -6,7 +6,7 @@ import * as util from '../util'
 /**
  * The properties of a button.
  */
-interface ButtonProps extends Rivet.Props {
+interface ButtonProps {
     onClick?: Rivet.Action,
     /** Optional Rivet style: a success/danger/plain button. See: https://rivet.uits.iu.edu/components/forms/buttons/#button-examples */
     rvtStyle?: "success" | "danger" | "plain" | "default"
