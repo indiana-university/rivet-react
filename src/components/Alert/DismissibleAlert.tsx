@@ -20,4 +20,4 @@ export class DismissibleAlert extends React.PureComponent<StatefulAlertProps & R
     };
 }
 
-export default DismissibleAlert
+export default DismissibleAlert;

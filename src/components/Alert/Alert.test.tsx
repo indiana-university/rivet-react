@@ -27,7 +27,7 @@ describe('<Alert />', () => {
         it('should specify style: error', () => {
             const cut = mount(<Alert variant="error" />);
             expect(cut.find('.rvt-alert').hasClass("rvt-alert--error")).toEqual(true);
-          });
+        });
         it('should specify style: info', () => {
             const cut = mount(<Alert variant="info" />);
             expect(cut.find('.rvt-alert').hasClass("rvt-alert--info")).toEqual(true);

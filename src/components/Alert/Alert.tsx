@@ -36,5 +36,6 @@ export const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDi
           </div>
         : null
 };
+Alert.displayName = 'Alert';
 
 export default Rivet.rivetize(Alert);

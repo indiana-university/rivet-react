@@ -16,14 +16,14 @@ export const RadioButton : React.SFC <RadioButtonProps & React.InputHTMLAttribut
     label,
     ...attrs
 }) => (
-    <React.Fragment>
+    <>
         <input
             id={id}
             type="radio"
             className={classNames(componentClass, className)}
             {...attrs}/>
         <label htmlFor={id}>{label}</label>
-    </React.Fragment>
+    </>
 );
 RadioButton.displayName = 'RadioButton';
 
