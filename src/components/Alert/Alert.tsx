@@ -1,20 +1,10 @@
+import * as classNames from 'classnames';
 import * as React from 'react'
 import * as Rivet from "../Rivet"
 import { StatelessAlertProps } from "./common"
 
-/**
- * Generate the style for this alert.
- * @param attrs This alert's properties
- */
-const alertStyle = (props: StatelessAlertProps) => {
-    return `${alertClass}--${props.variant}`;
-}
-
-const alertClass = "rvt-alert";
-const alertDecorators = [ alertStyle ];
-
 export const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElement>> = (props) => {
-    const {title, onDismiss, children, isOpen=true, id=Rivet.shortuid(), ...attrs} = props; 
+    const {title, onDismiss, children, className = '', isOpen=true, id=Rivet.shortuid(), variant, ...attrs} = props; 
     const titleId = Rivet.shortuid();
 
     const headerFragment = () => 
@@ -30,11 +20,16 @@ export const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDi
                 <path fill="currentColor" d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z"/>
             </svg>
           </button>
-        : null
+        : null;
+    
+    const classes = classNames({
+        ['rvt-alert']: true,
+        [`rvt-alert--${variant}`]: !!variant,
+        [className]: true
+    });
 
     return isOpen 
-        ? <div id={id} className={Rivet.classify(attrs, alertClass, alertDecorators)} 
-                    role='alertdialog' aria-labelledby={titleId} {...attrs} >
+        ? <div id={id} className={classes} role='alertdialog' aria-labelledby={titleId} {...attrs} >
                 {headerFragment()}
                 <p className='rvt-alert__message'>{children}</p>
                 {dismissFragment()}
@@ -42,4 +37,4 @@ export const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDi
         : null
 };
 
-export default Alert
+export default Rivet.rivetize(Alert);
