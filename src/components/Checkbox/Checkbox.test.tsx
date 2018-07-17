@@ -54,7 +54,7 @@ describe('<Checkbox />', () => {
   });
 
   it('should hide the label for sighted displays', () => {
-    const cut = shallow(<Checkbox label="the_label" rvtLabelVisibility="screen-reader-only" />);
+    const cut = shallow(<Checkbox label="the_label" labelVisibility="screen-reader-only" />);
     expect(cut.find('label').hasClass("rvt-sr-only")).toBe(true);
   });
 
