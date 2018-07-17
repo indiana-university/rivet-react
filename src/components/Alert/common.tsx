@@ -1,6 +1,6 @@
 import * as Rivet from "../Rivet"
 
-export interface StatefulAlertProps extends Rivet.Props {
+export interface StatefulAlertProps {
     /**
      * Rivet alert styling. 
      * @see https://rivet.uits.iu.edu/components/overlays/alerts
