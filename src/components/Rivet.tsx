@@ -131,33 +131,15 @@ const parseRivetSpacing = (type, style?: Size | BoxStyle) =>
         : edgeSpecificSpacing(type, style)
     : "";
 
-const parseRivetMarginLegacy = ({ margin }: Props) => 
-    parseRivetSpacing('m', margin);
-
 const parseRivetMargin = (margin?: Size | BoxStyle) =>
     parseRivetSpacing('m', margin);
-
-const parseRivetPaddingLegacy = ({padding}: Props) =>
-    parseRivetSpacing('p', padding);
 
 const parseRivetPadding = (padding?: Size | BoxStyle) =>
     parseRivetSpacing('p', padding);
 
-const parseRivetTypescaleLegacy = ({ typescale }: Props) =>
-    typescale 
-    ? `rvt-ts-${typescale}`
-    : "";
-
 const parseRivetTypescale = (typescale?: Typescale) => ({
     [`rvt-ts-${typescale}`]: !!typescale
 });
-
-const parseRivetBorderLegacy = ({ border }: Props) => 
-    border
-    ? Array.isArray(border)
-        ? border.map((value) => `rvt-border-${value}`).join(" ")
-        : `rvt-border-${border}`
-    :"";
 
 const parseRivetBorder = (border?: Border) => {
     if(Array.isArray(border)) {
@@ -166,19 +148,6 @@ const parseRivetBorder = (border?: Border) => {
         return ({
             [`rvt-border-${border}`]: !!border
         });
-    }
-}
-
-const parseRivetDisplayLegacy = ({ display }: Props) => {
-    switch(display) {
-        case "inline":
-        case "inline-block":
-        case "block":
-        case "flex":
-            return `rvt-display-${display}`;
-        case "flex-vertical-center":
-            return "rvt-display-flex rvt-vertical-center";
-        default: return "";
     }
 }
 
@@ -195,43 +164,14 @@ const parseRivetDisplay = (display?: Display) => {
     }
 }
 
-const parseRivetHiddenLegacy = ({ hide }: Props) =>
-    hide
-    ? `rvt-hide-${hide}`
-    : "";
-
 const parseRivetHidden = (hide?: Hidden) => ({
     [`rvt-hide-${hide}`]: !!hide
 });
-
-const legacyStandardDecorators = [
-    parseRivetMarginLegacy,
-    parseRivetPaddingLegacy,
-    parseRivetTypescaleLegacy,
-    parseRivetBorderLegacy,
-    parseRivetDisplayLegacy,
-    parseRivetHiddenLegacy
-];
 
 /**
  *  Given component properties, generate one or more CSS class decorations.
  */
 export type ComponentDecorator<T extends Props> = ( props: T ) => string;
-
-/** 
- * Generate class decorations for a Rivet component
- * @param props The component properties
- * @param componentClass (optional) The base component class, if any.
- * @param componentDecorators (optional) A collection of functions that can generate component-specific decorations. 
- */
-export const classify = <T extends Props>(
-    props: T, 
-    componentClass: string = "", 
-    componentDecorators: Array<ComponentDecorator<T>> = []
-) => {
-    const decorations = [ ...legacyStandardDecorators,  ...componentDecorators ].map(d => d(props));
-    return classnames(componentClass, props.className, decorations);
-}
 
 export const rivetize = <T extends React.HTMLAttributes<T>>(Component: React.ComponentType<T>): React.SFC<T & Props> =>
 ({ className, border, display, hide, margin, padding, typescale, ...attrs }: Props) => (
