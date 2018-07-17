@@ -14,7 +14,6 @@ describe('<List />', () => {
         });
         it('should render a plain list', () =>{
             const cut = mount(<List variant="plain" />)
-            console.log(cut.debug())
             expect(cut.find('ul').hasClass('rvt-plain-list')).toEqual(true);
         });
         it('should render an in-line list', () =>{
