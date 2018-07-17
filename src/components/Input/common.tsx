@@ -4,7 +4,6 @@ import * as Rivet from '../Rivet';
 
 type Variant = 'info' | 'invalid' | 'valid' | 'warning' | 'default';
 export interface TextProps {
-    className?: string;
     label: string;
     note?: string;
     /**

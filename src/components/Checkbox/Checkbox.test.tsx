@@ -24,7 +24,7 @@ describe('<Checkbox />', () => {
   });
 
   it('should apply standard html attribute', () => {
-    const cut = mount(<Checkbox label="the_label" checked />);
+    const cut = mount(<Checkbox label="the_label" checked readOnly />);
     expect(cut.find('input').prop('checked')).toBe(true);
   });
 

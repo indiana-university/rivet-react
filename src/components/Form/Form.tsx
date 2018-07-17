@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as Rivet from '../Rivet';
 
 interface FormProps {
-    className?: string,
     /** The text label/description for this form */
     label: string,
     /**

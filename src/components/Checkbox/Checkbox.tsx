@@ -3,7 +3,6 @@ import * as Rivet from '../Rivet';
 
 export interface CheckboxProps {
     label: string,
-    className?: string,
     /**
      * Optional Rivet style: Make the label visible only to screen readers.
      * See: https://rivet.uits.iu.edu/components/utilities/display/#visually-hidden-labels-example

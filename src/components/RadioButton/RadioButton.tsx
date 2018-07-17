@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as Rivet from '../Rivet';
 
 interface RadioButtonProps {
-    className?: string,
     /** The text label/description for this radio option */
     label: string;
 };
