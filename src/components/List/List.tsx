@@ -37,17 +37,16 @@ const inlineList = (props : ListProps) => props.orientation === 'inline'
 const componentClass = 'rvt-list';
 const componentDecorators = [plainList, inlineList];
 
-export const List : React.SFC<ListProps> = ({ children, variant, ...props} ) => {
-    const classNames = Rivet.classify<ListProps>({ variant, ...props}, componentClass, componentDecorators);
+export const List : React.SFC <ListProps> = ({ children, variant, ...props }) => {
+    const classNames = Rivet.classify <ListProps> ({ variant, ...props}, componentClass, componentDecorators);
     const listItems = asListItems(children);
-    const ordered = variant === 'ordered';
-    return (ordered
-        ? <ol className={classNames} {...props}>
-                {listItems}
-            </ol>
-        : <ul className={classNames} {...props}>
+    const ListTag = variant === 'ordered' ? 'ol' : 'ul';
+    return (
+        <ListTag className={classNames} {...props}>
             {listItems}
-        </ul>);
+        </ListTag>
+    );
 };
+List.displayName = 'List';
 
 export default List;
