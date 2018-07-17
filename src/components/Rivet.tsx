@@ -16,34 +16,34 @@ export interface Props {
      * Optional Rivet style: type scale adjustment
      * See: https://rivet.uits.iu.edu/components/layout/typography/
      */
-    rvtTypescale?: Typescale,
+    typescale?: Typescale,
     /**
      * Optional Rivet style: show/hide content based on screen size.
      * ex: 'md-down' will hide content on medium-sized screens and smaller.
      * ex: 'lg-up' will hide content on large-sized screens and larger.
      * See: https://rivet.uits.iu.edu/components/utilities/visibility/
      */
-    rvtHide?: Hidden,
+    hide?: Hidden,
     /**
      * Optional Rivet style: add a border to any or all sides of an element
      * See: https://rivet.uits.iu.edu/components/utilities/border/
      */
-    rvtBorder?: Border,
+    border?: Border,
     /**
      * Optional Rivet style: adjust the margin(s) of an element
      * See: https://rivet.uits.iu.edu/components/layout/spacing/
      */
-    rvtMargin?: Size | BoxStyle,
+    margin?: Size | BoxStyle,
     /**
      * Optional Rivet style: adjust the padding(s) of an element
      * See: https://rivet.uits.iu.edu/components/layout/spacing/
      */
-    rvtPadding?: Size | BoxStyle,
+    padding?: Size | BoxStyle,
     /**
      * Optional Rivet style: adjust the display property of an element
      * See: https://rivet.uits.iu.edu/components/utilities/display/#display-property-utilities
      */
-    rvtDisplay?: Display,
+    display?: Display,
 }
 
 export type Typescale = "base" | 12 | 14 | 16 | 18 | 20 | 23 | 26 | 29 | 32 | 36 | 41 | 46 | 52;
@@ -131,32 +131,32 @@ const parseRivetSpacing = (type, style?: Size | BoxStyle) =>
         : edgeSpecificSpacing(type, style)
     : "";
 
-const parseRivetMarginLegacy = ({ rvtMargin }: Props) => 
-    parseRivetSpacing('m', rvtMargin);
+const parseRivetMarginLegacy = ({ margin }: Props) => 
+    parseRivetSpacing('m', margin);
 
 const parseRivetMargin = (margin?: Size | BoxStyle) =>
     parseRivetSpacing('m', margin);
 
-const parseRivetPaddingLegacy = ({rvtPadding}: Props) =>
-    parseRivetSpacing('p', rvtPadding);
+const parseRivetPaddingLegacy = ({padding}: Props) =>
+    parseRivetSpacing('p', padding);
 
 const parseRivetPadding = (padding?: Size | BoxStyle) =>
     parseRivetSpacing('p', padding);
 
-const parseRivetTypescaleLegacy = ({ rvtTypescale }: Props) =>
-    rvtTypescale 
-    ? `rvt-ts-${rvtTypescale}`
+const parseRivetTypescaleLegacy = ({ typescale }: Props) =>
+    typescale 
+    ? `rvt-ts-${typescale}`
     : "";
 
 const parseRivetTypescale = (typescale?: Typescale) => ({
     [`rvt-ts-${typescale}`]: !!typescale
 });
 
-const parseRivetBorderLegacy = ({ rvtBorder }: Props) => 
-    rvtBorder
-    ? Array.isArray(rvtBorder)
-        ? rvtBorder.map((value) => `rvt-border-${value}`).join(" ")
-        : `rvt-border-${rvtBorder}`
+const parseRivetBorderLegacy = ({ border }: Props) => 
+    border
+    ? Array.isArray(border)
+        ? border.map((value) => `rvt-border-${value}`).join(" ")
+        : `rvt-border-${border}`
     :"";
 
 const parseRivetBorder = (border?: Border) => {
@@ -169,13 +169,13 @@ const parseRivetBorder = (border?: Border) => {
     }
 }
 
-const parseRivetDisplayLegacy = ({ rvtDisplay }: Props) => {
-    switch(rvtDisplay) {
+const parseRivetDisplayLegacy = ({ display }: Props) => {
+    switch(display) {
         case "inline":
         case "inline-block":
         case "block":
         case "flex":
-            return `rvt-display-${rvtDisplay}`;
+            return `rvt-display-${display}`;
         case "flex-vertical-center":
             return "rvt-display-flex rvt-vertical-center";
         default: return "";
@@ -195,9 +195,9 @@ const parseRivetDisplay = (display?: Display) => {
     }
 }
 
-const parseRivetHiddenLegacy = ({ rvtHide }: Props) =>
-    rvtHide
-    ? `rvt-hide-${rvtHide}`
+const parseRivetHiddenLegacy = ({ hide }: Props) =>
+    hide
+    ? `rvt-hide-${hide}`
     : "";
 
 const parseRivetHidden = (hide?: Hidden) => ({
@@ -234,14 +234,14 @@ export const classify = <T extends Props>(
 }
 
 export const rivetize = <T extends React.HTMLAttributes<T>>(Component: React.ComponentType<T>): React.SFC<T & Props> =>
-({ className, rvtBorder, rvtDisplay, rvtHide, rvtMargin, rvtPadding, rvtTypescale, ...attrs }: Props) => (
+({ className, border, display, hide, margin, padding, typescale, ...attrs }: Props) => (
         <Component className={classnames(
-            parseRivetMargin(rvtMargin),
-            parseRivetPadding(rvtPadding),
-            parseRivetTypescale(rvtTypescale),
-            parseRivetBorder(rvtBorder),
-            parseRivetDisplay(rvtDisplay),
-            parseRivetHidden(rvtHide),
+            parseRivetMargin(margin),
+            parseRivetPadding(padding),
+            parseRivetTypescale(typescale),
+            parseRivetBorder(border),
+            parseRivetDisplay(display),
+            parseRivetHidden(hide),
             className)
         } {...attrs} />
     );
