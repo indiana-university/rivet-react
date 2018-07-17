@@ -1,7 +1,11 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../Rivet';
 
-export interface FooterProps extends Rivet.Props {
+export interface FooterProps {
+    children?: React.ReactNode
+    className?: string,
+    id?: string,
     nav?: Rivet.Nav[]
 }
 
@@ -20,10 +24,8 @@ const footerNav = (nav: Rivet.Nav[] = []) =>
       </ul>
     : null;
 
-const Footer : React.SFC<FooterProps> = ({ id = Rivet.shortuid(), nav = [], ...attrs }) => (
-    <footer id={id} 
-            className={Rivet.classify(attrs, componentClass)} 
-            role="contentinfo">
+const Footer : React.SFC<FooterProps> = ({ className, id = Rivet.shortuid(), nav = [], ...attrs }) => (
+    <footer id={id} role="contentinfo" className={classNames(componentClass, className)} {...attrs}>
         <div className="rvt-footer__copyright-lockup">
             <div className="rvt-footer__trident">
                 <svg role="img" aria-labelledby="footer-trident" xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 20 25">
@@ -38,4 +40,4 @@ const Footer : React.SFC<FooterProps> = ({ id = Rivet.shortuid(), nav = [], ...a
 );
 Footer.displayName = 'Footer';
 
-export default Footer;
+export default Rivet.rivetize(Footer);
