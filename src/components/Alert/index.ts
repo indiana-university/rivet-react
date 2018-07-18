@@ -1,2 +1,2 @@
-export { Alert } from './Alert';
+export {default} from './Alert';
 export { DismissibleAlert } from './DismissibleAlert';
