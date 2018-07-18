@@ -10,7 +10,7 @@ interface RadioButtonProps {
 const componentClass = "rvt-radio";
 
 export const RadioButton : React.SFC <RadioButtonProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
-    className = '',
+    className,
     id = Rivet.shortuid(),
     label,
     ...attrs
