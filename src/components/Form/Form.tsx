@@ -14,7 +14,7 @@ interface FormProps {
 
 const componentClass = 'rvt-form';
 
-const Form : React.SFC<FormProps & React.FormHTMLAttributes<HTMLFormElement>> = ({ children, className = '', id = Rivet.shortuid(), label, labelVisibility, name, ...attrs }) => (
+const Form : React.SFC<FormProps & React.FormHTMLAttributes<HTMLFormElement>> = ({ children, className, id = Rivet.shortuid(), label, labelVisibility, name, ...attrs }) => (
     <form className={classNames(componentClass, className)} id={id} {...attrs}>
         <fieldset>
             <legend className={Rivet.labelVisiblityClass(labelVisibility)}>{label}</legend>
