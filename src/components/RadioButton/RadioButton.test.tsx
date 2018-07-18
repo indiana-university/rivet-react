@@ -19,6 +19,8 @@ describe('<RadioButton />', () => {
         });
         it('should apply custom class to input', () => {
             const cut = mount(<RadioButton label="Foo" name="name" className="rvt-radio-foo" />);
+            // The class names should be merged and contain both the component and custom classes
+            expect(cut.find('input').hasClass("rvt-radio")).toEqual(true);
             expect(cut.find('input').hasClass("rvt-radio-foo")).toEqual(true);
         });
     });
