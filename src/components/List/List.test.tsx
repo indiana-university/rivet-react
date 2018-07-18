@@ -20,6 +20,12 @@ describe('<List />', () => {
             const cut = mount(<List orientation="inline" />)
             expect(cut.find('ul').hasClass('rvt-inline-list')).toEqual(true);
         });
+        it('should apply a custom class to the list', () => {
+            const cut = mount(<List className='rvt-list-foo'/>);
+            // The class names should be merged and contain both the component and custom classes
+            expect(cut.find('ul').hasClass('rvt-list')).toEqual(true);
+            expect(cut.find('ul').hasClass('rvt-list-foo')).toEqual(true);
+        });
     });
     describe("List items", () => {
         it('should render <li> children', () => {
