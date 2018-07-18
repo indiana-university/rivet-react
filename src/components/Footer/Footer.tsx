@@ -3,8 +3,6 @@ import * as React from 'react';
 import * as Rivet from '../Rivet';
 
 export interface FooterProps {
-    children?: React.ReactNode
-    id?: string,
     nav?: Rivet.Nav[]
 }
 
