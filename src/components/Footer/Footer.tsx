@@ -23,7 +23,7 @@ const footerNav = (nav: Rivet.Nav[] = []) =>
       </ul>
     : null;
 
-const Footer : React.SFC<FooterProps & React.HTMLAttributes<HTMLDivElement>> = ({ className, id = Rivet.shortuid(), nav = [], ...attrs }) => (
+const Footer : React.SFC<FooterProps & React.HTMLAttributes<HTMLDivElement>> = ({ className, id = Rivet.shortuid(), nav, ...attrs }) => (
     <footer id={id} role="contentinfo" className={classNames(componentClass, className)} {...attrs}>
         <div className="rvt-footer__copyright-lockup">
             <div className="rvt-footer__trident">
