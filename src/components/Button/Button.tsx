@@ -19,6 +19,7 @@ interface ButtonProps {
     role?: RoleType;
 }
 
+const None = '';
 const buttonClass = 'rvt-button';
 /**
  * Generate the combined role and variation class for this button, if applicable.
@@ -27,9 +28,9 @@ const buttonClass = 'rvt-button';
  */
 const buttonRoleAndStyle = (variant: VariantType, role: RoleType) => {
   const classParts = [
-    variant && variant !== 'default' ? variant : undefined,
-    role && role !== 'default' ? role : undefined
-  ].filter(x => x !== undefined);
+    variant !== 'default' ? variant : None,
+    role !== 'default' ? role : None
+  ].filter(x => x !== None);
   // combine variation and style, if any.
   return classParts.length === 0
     ? ''
@@ -41,18 +42,10 @@ const buttonRoleAndStyle = (variant: VariantType, role: RoleType) => {
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
-const buttonSize = (size: SizeType) => (size ? `${buttonClass}--${size}` : '');
+const buttonSize = (size: SizeType) => (size !== "default" ? `${buttonClass}--${size}` : None);
 
-const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
-  id = util.shortuid(),
-  onClick,
-  children,
-  role = "default",
-  size = "default",
-  variant = "default",
-  className = "",
-  ...attrs
-}) => {
+const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
+  ({role = "default", size = "default", variant = "default", onClick, id = util.shortuid(), className, children, ...attrs}) => {
   const classes = classNames(buttonClass, buttonRoleAndStyle(variant, role), buttonSize(size), className);
   return (
     <button

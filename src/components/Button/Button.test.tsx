@@ -62,6 +62,10 @@ describe('<Button />', () => {
             const cut = mount(<Button size="small"  />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--small")).toEqual(true);
         });
+        it('should have normal size by default', () => {
+            const cut = mount(<Button />);
+            expect(cut.find('button.rvt-button').hasClass("rvt-button--small")).toEqual(false);
+        });
 
         // All together now!
         it('should have a secondary small size', () => {
