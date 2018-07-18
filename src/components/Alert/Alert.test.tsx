@@ -40,9 +40,21 @@ describe('<Alert />', () => {
             const cut = mount(<Alert variant="success" />);
             expect(cut.find('.rvt-alert').hasClass("rvt-alert--success")).toEqual(true);
         });        
+        it('should apply custom style', () => {
+            const cut = mount(<Alert variant="info" className="rvt-alert-custom" />);
+            expect(cut.find('.rvt-alert').hasClass("rvt-alert-custom")).toEqual(true);
+        });        
     });
 
     describe('Visbility', () => {
+        it('is visible by default', () => {
+            const cut = mount(<Alert variant="success" />);
+            expect(cut.find('.rvt-alert')).toHaveLength(1);
+        });        
+        it('can be made visible', () => {
+            const cut = mount(<Alert variant="success" isOpen={true} />);
+            expect(cut.find('.rvt-alert')).toHaveLength(1);
+        });        
         it('can be made invisible', () => {
             const cut = mount(<Alert variant="success" isOpen={false} />);
             expect(cut.find('.rvt-alert')).toHaveLength(0);

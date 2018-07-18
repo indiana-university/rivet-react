@@ -4,7 +4,7 @@ import * as Rivet from "../Rivet"
 import { StatelessAlertProps } from "./common"
 
 export const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElement>> = (props) => {
-    const {title, onDismiss, children, className = '', isOpen=true, id=Rivet.shortuid(), variant, ...attrs} = props; 
+    const { title, onDismiss,  variant, isOpen=true, id=Rivet.shortuid(), className, children, ...attrs} = props; 
     const titleId = Rivet.shortuid();
 
     const headerFragment = () => 
@@ -22,11 +22,7 @@ export const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDi
           </button>
         : null;
     
-    const classes = classNames({
-        ['rvt-alert']: true,
-        [`rvt-alert--${variant}`]: !!variant,
-        [className]: true
-    });
+    const classes = classNames('rvt-alert', `rvt-alert--${variant}`, className);
 
     return isOpen 
         ? <div id={id} className={classes} role='alertdialog' aria-labelledby={titleId} {...attrs} >
