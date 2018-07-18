@@ -15,6 +15,7 @@ import {
     Alert,
     Button,
     Checkbox,
+    DismissibleAlert,
     Footer,
     Form,
     Input,
@@ -143,34 +144,34 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     </Dropdown>
 
                     <Button onClick={() => console.log("hello") } margin="xs">Hello</Button>
-                    <Button onClick={() => console.log("world") } margin="xs" secondary>World</Button>
+                    <Button onClick={() => console.log("world") } margin="xs" role="secondary">World</Button>
 
                     <div className="rvt-m-top-md" >
                         <SegmentedButtons label="Numbers" fit>
-                            <Button onClick={ () => console.log("one")} secondary >One</Button>
-                            <Button onClick={ () => console.log("two")} secondary >Two</Button>
-                            <Button onClick={ () => console.log("three")} secondary >Three</Button>
+                            <Button onClick={ () => console.log("one")} role="secondary" >One</Button>
+                            <Button onClick={ () => console.log("two")} role="secondary" >Two</Button>
+                            <Button onClick={ () => console.log("three")} role="secondary" >Three</Button>
                         </SegmentedButtons>
                     </div>
 
                     <h1>Forms</h1>
                     
                     <Form label="Checkboxes inline" margin={{top:"md"}}>
-                        <List inline>
+                        <List orientation="inline">
                         <li><Checkbox name="numbers" label="One"/></li>
                         <li><Checkbox name="numbers" label="Two"/></li>
                         </List>
                     </Form>
 
                     <Form label="Radio buttons inline" margin={{top:"md"}}>
-                        <List inline>
+                        <List orientation="inline">
                         <li><RadioButton name="number" label="One"/></li>
                         <li><RadioButton name="number" label="Two"/></li>
                         </List>
                     </Form>
 
                     <Form label="Mixed inputs" margin={{top:"md"}}>
-                        <List plain>
+                        <List orientation="inline">
                         <li><Input type="number" name="number" label="One Fish"/></li>
                         <li><Input type="number" name="numbers" label="Two Fish"/></li>
                         <li><RadioButton name="either" label="Red Fish"/></li>
@@ -199,20 +200,20 @@ class Demo extends React.Component<DemoProps, DemoState> {
                     <Input type="text" name="input" label="Text Input" margin={{top: "md"}} />
                     <Input type="text" name="inputWithNote" label="Input with Note" note="Here's the note!" margin={{top: "md"}} />
                     <Input type="number" name="input" label="Numeric Input" note="I have a spinner and only accept numbers." margin={{top: "md"}} />
-                    <Input type="text" info name="inputWithInfo" label="Input with Info" note="Password must have at least 1 emoji" margin={{top: "md"}} />
-                    <Input type="text" valid name="inputWithValid" label="Valid Input" note="Password is strong" margin={{top: "md"}} />
-                    <Input type="text" warning name="inputWithWarning" label="Warning Input" note="Password is too weak"  margin={{top: "md"}} />
-                    <Input type="text" invalid name="inputWithInvalid" label="Invalid Input" note="Password is required" margin={{top: "md", bottom: "md"}} />
+                    <Input type="text" variant="info" name="inputWithInfo" label="Input with Info" note="Password must have at least 1 emoji" margin={{top: "md"}} />
+                    <Input type="text" variant="valid" name="inputWithValid" label="Valid Input" note="Password is strong" margin={{top: "md"}} />
+                    <Input type="text" variant="warning" name="inputWithWarning" label="Warning Input" note="Password is too weak"  margin={{top: "md"}} />
+                    <Input type="text" variant="invalid" name="inputWithInvalid" label="Invalid Input" note="Password is required" margin={{top: "md", bottom: "md"}} />
                 </Section>
 
                 <Section margin="sm">
                     <h1> Text Areas </h1>
                     <Textarea name="textarea" label="Text Area" margin={{top: "md"}} />
                     <Textarea name="textareaWithNote" label="Text Area with Note" note="Here's the note!" margin={{top: "md"}} />
-                    <Textarea info name="textareaWithInfo" label="Text Area with Info" note="Submissions must have at least 1 emoji" margin={{top: "md"}} />
-                    <Textarea valid name="textareaWithValid" label="Valid Text Area" note="Submission is strong" margin={{top: "md"}} />
-                    <Textarea warning name="textareaWithWarning" label="Warning Text Area" note="Submission is too weak"  margin={{top: "md"}} />
-                    <Textarea cols={3} invalid name="textareaWithInvalid" label="Invalid Text Area" note="Submission is required" margin={{top: "md", bottom: "md"}} />
+                    <Textarea variant="info" name="textareaWithInfo" label="Text Area with Info" note="Submissions must have at least 1 emoji" margin={{top: "md"}} />
+                    <Textarea variant="valid" name="textareaWithValid" label="Valid Text Area" note="Submission is strong" margin={{top: "md"}} />
+                    <Textarea variant="warning" name="textareaWithWarning" label="Warning Text Area" note="Submission is too weak"  margin={{top: "md"}} />
+                    <Textarea variant="invalid" name="textareaWithInvalid" label="Invalid Text Area" note="Submission is required" margin={{top: "md", bottom: "md"}} />
                 </Section>
 
                 <Section margin='sm'>
@@ -229,45 +230,45 @@ class Demo extends React.Component<DemoProps, DemoState> {
                             <Button onClick={() => {
                                 window.alert('Primary Button Click')
                             }}>Primary</Button>
-                            <Button success onClick={() => {
+                            <Button variant="success" onClick={() => {
                                 window.alert('Success Button Click')
                             }}>Success</Button>
-                            <Button danger onClick={() => {
+                            <Button variant="danger" onClick={() => {
                                 window.alert('Danger Button Click')
                             }}>Danger</Button>
                             <Button /* no onClick means disabled */>Disabled</Button>
                         </SegmentedButtons>
                         <br/>
                         <SegmentedButtons margin='xxs'>
-                            <Button secondary onClick={() => {
+                            <Button role="secondary" onClick={() => {
                                 window.alert('Secondary Button Click')
                             }}>Primary</Button>
-                            <Button secondary success onClick={() => {
+                            <Button role="secondary" variant="success" onClick={() => {
                                 window.alert('Secondary Success Button Click')
                             }}>Success</Button>
-                            <Button secondary danger onClick={() => {
+                            <Button role="secondary" variant="danger" onClick={() => {
                                 window.alert('Secondary Danger Button Click')
                             }}>Danger</Button>
                             <Button /* no onClick means disabled */>Disabled</Button>
                         </SegmentedButtons>
                         <br/>
                         <SegmentedButtons margin='xxs'>
-                            <Button small onClick={() => {
+                            <Button size="small" onClick={() => {
                                 window.alert('Small Button Click')
                             }}>Small</Button>
-                            <Button small success onClick={() => {
+                            <Button size="small" variant="success" onClick={() => {
                                 window.alert('Small Success Button Click')
                             }}>Success</Button>
-                            <Button small danger onClick={() => {
+                            <Button size="small" variant="danger" onClick={() => {
                                 window.alert('Small Danger Button Click')
                             }}>Danger</Button>
-                            <Button small secondary onClick={() => {
+                            <Button size="small" role="secondary" onClick={() => {
                                 window.alert('Small Secondary Button Click')
                             }}>Primary</Button>
-                            <Button small secondary success onClick={() => {
+                            <Button size="small" role="secondary" variant="success" onClick={() => {
                                 window.alert('Small Secondary Success Button Click')
                             }}>Success</Button>
-                            <Button small secondary danger onClick={() => {
+                            <Button size="small" role="secondary" variant="danger" onClick={() => {
                                 window.alert('Small Secondary Danger Button Click')
                             }}>Danger</Button>
                         </SegmentedButtons>
@@ -288,13 +289,13 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Alerts</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <Alert className="rvt-m-top-md" message>This warning has no title!</Alert>
-                        <Alert className="rvt-m-top-md" info title='Info'>A nice message for you!</Alert>
-                        <Alert className="rvt-m-top-md" success title='Success!'>A great success for you!</Alert>
-                        <Alert className="rvt-m-top-md" error dismissible title='Error'
-                               clickDismiss={() => window.alert('You click dismiss error?!?')}>
+                        <Alert className="rvt-m-top-md" variant="message">This warning has no title!</Alert>
+                        <Alert className="rvt-m-top-md" variant="info" title='Info'>A nice message for you!</Alert>
+                        <Alert className="rvt-m-top-md" variant="success" title='Success!'>A great success for you!</Alert>
+                        <DismissibleAlert className="rvt-m-top-md" variant="error" title='Error'
+                               onDismiss={() => window.alert('You click dismiss error?!?')}>
                                A friendly error for you that can be dismissed!
-                        </Alert>
+                        </DismissibleAlert>
                     </Section>
 
 
@@ -305,18 +306,18 @@ class Demo extends React.Component<DemoProps, DemoState> {
                             <li>unordered</li>
                             <li>list</li>
                         </List>
-                        <List ordered border="bottom">
+                        <List variant="ordered" border="bottom">
                             <li>An</li>
                             <li>ordered</li>
                             <li>list</li>
                         </List>
-                        <List plain border="bottom">
+                        <List variant="plain" border="bottom">
                             <li>A</li>
                             <li>plain (undecorated)</li>
                             <li>list</li>
                         </List>
-                        <List inline children={['this', 'list', 'is', 'inline']} border="bottom"/>
-                        <List inline >
+                        <List orientation="inline" children={['this', 'list', 'is', 'inline']} border="bottom"/>
+                        <List orientation="inline" >
                             <Button>This</Button>
                             <Button>is</Button>
                             <Button>inline</Button>

@@ -1,6 +1,12 @@
+import { mount } from 'enzyme';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import * as Rivet from './Rivet';
+
+const DemoComponent = Rivet.rivetize(({ children, ...attrs }) => (
+    <div {...attrs}>{children}</div>
+));
+
 
 describe('nav', () => {
     it('renders internal link', () => {
@@ -17,96 +23,139 @@ describe('nav', () => {
     });
 });
 
-describe('parseRivetSpacing', () => {
+  describe('margin', () => {
     it('ignores undefined', () => {
-      expect(Rivet.parseRivetSpacing("m", undefined)).toEqual([]);
-    });
-  
-    it('ignores noncompliant types', () => {
-      expect(Rivet.parseRivetSpacing("m", {})).toEqual([]);
+        const cut = mount(<DemoComponent margin={undefined} />);
+        expect(cut.find('div').prop('className')).toBe("");
     });
   
     it('one size fits all', () => {
-      expect(Rivet.parseRivetSpacing("m", "xs")).toEqual(["rvt-m-all-xs"]);
+        const cut = mount(<DemoComponent margin="xs" />);
+        expect(cut.find('div').hasClass('rvt-m-all-xs')).toBe(true);
     });
   
     it('discriminates bounds', () => {
-      expect(Rivet.parseRivetSpacing("m", { top: "xs", right:"sm", bottom: "md", left: "lg" }))
-          .toEqual(["rvt-m-top-xs", "rvt-m-right-sm", "rvt-m-bottom-md", "rvt-m-left-lg"]);
+        const cut = mount(<DemoComponent margin={{ top: "xs", right:"sm", bottom: "md", left: "lg" }} />);
+        expect(cut.find('div').hasClass('rvt-m-top-xs')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-m-right-sm')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-m-bottom-md')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-m-left-lg')).toBe(true);
     });
   
     it('discriminates sizings', () => {
-      expect(Rivet.parseRivetSpacing("m", { xs: ['top', "bottom"], md: "left", lg: "right" }))
-          .toEqual(["rvt-m-top-xs", "rvt-m-bottom-xs", "rvt-m-left-md", "rvt-m-right-lg"]);
+        const cut = mount(<DemoComponent margin={{ xs: ['top', "bottom"], md: "left", lg: "right" }} />);
+        expect(cut.find('div').hasClass('rvt-m-top-xs')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-m-bottom-xs')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-m-left-md')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-m-right-lg')).toBe(true);
+    }); 
+  }); 
+
+  describe('padding', () => {
+    it('ignores undefined', () => {
+        const cut = mount(<DemoComponent padding={undefined} />);
+        expect(cut.find('div').prop('className')).toBe("");
     });
   
+    it('one size fits all', () => {
+        const cut = mount(<DemoComponent padding="xs" />);
+        expect(cut.find('div').hasClass('rvt-p-all-xs')).toBe(true);
+    });
+  
+    it('discriminates bounds', () => {
+        const cut = mount(<DemoComponent padding={{ top: "xs", right:"sm", bottom: "md", left: "lg" }} />);
+        expect(cut.find('div').hasClass('rvt-p-top-xs')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-p-right-sm')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-p-bottom-md')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-p-left-lg')).toBe(true);
+    });
+  
+    it('discriminates sizings', () => {
+        const cut = mount(<DemoComponent padding={{ xs: ['top', "bottom"], md: "left", lg: "right" }} />);
+        expect(cut.find('div').hasClass('rvt-p-top-xs')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-p-bottom-xs')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-p-left-md')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-p-right-lg')).toBe(true);
+    }); 
   }); 
-  
-  describe('parseRivetTypescale', () => {
+
+  describe('typescale', () => {
       it('ignores undefined', () => {
-          expect(Rivet.parseRivetTypescale(undefined)).toEqual([]);
+        const cut = mount(<DemoComponent typescale={undefined} />);
+        expect(cut.find('div').prop('className')).toBe("");
       });
   
-      it('accepts number', () => {
-          expect(Rivet.parseRivetTypescale(123)).toEqual(["rvt-ts-123"]);
+      it('applies decoration', () => {
+        expect(mount(<DemoComponent typescale={12} />).find('div').hasClass('rvt-ts-12')).toBe(true);
+        expect(mount(<DemoComponent typescale={23} />).find('div').hasClass('rvt-ts-23')).toBe(true);
+        expect(mount(<DemoComponent typescale="base" />).find('div').hasClass('rvt-ts-base')).toBe(true);
       });
   });
   
-  describe('parseRivetBorder', () => {
+  describe('border', () => {
       it('ignores undefined', () => {
-          expect(Rivet.parseRivetBorder(undefined)).toEqual([]);
+        const cut = mount(<DemoComponent border={undefined} />);
+        expect(cut.find('div').prop('className')).toBe("");
       });
   
-      it('accepts single string', () => {
-          expect(Rivet.parseRivetBorder("foo")).toEqual(["rvt-border-foo"]);
+      it('applies decorations', () => {
+        expect(mount(<DemoComponent border="all" />).find('div').hasClass('rvt-border-all')).toBe(true);
+        expect(mount(<DemoComponent border="bottom" />).find('div').hasClass('rvt-border-bottom')).toBe(true);
+        expect(mount(<DemoComponent border="top" />).find('div').hasClass('rvt-border-top')).toBe(true);
+        expect(mount(<DemoComponent border="left" />).find('div').hasClass('rvt-border-left')).toBe(true);
+        expect(mount(<DemoComponent border="right" />).find('div').hasClass('rvt-border-right')).toBe(true);
       });
-  
-      it('accepts multiple strings', () => {
-          expect(Rivet.parseRivetBorder(["foo", "bar"])).toEqual(["rvt-border-foo", "rvt-border-bar"]);
+
+      it('applies multiple decorations', () => {
+        const cut = mount(<DemoComponent border={['left', 'right']} />);
+        expect(cut.find('div').hasClass('rvt-border-left')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-border-right')).toBe(true);
       });
   });
   
-  describe('parseRivetDisplay', () => {
+  describe('display', () => {
       it('ignores undefined', () => {
-          expect(Rivet.parseRivetDisplay(undefined)).toEqual([]);
+        const cut = mount(<DemoComponent display={undefined} />);
+        expect(cut.find('div').prop('className')).toBe("");
       });
   
-      it('accepts single string', () => {
-          expect(Rivet.parseRivetDisplay("sr-only")).toEqual(["rvt-sr-only"]);
-      });
-  
-      it('accepts multiple strings', () => {
-          expect(Rivet.parseRivetDisplay(["foo"])).toEqual(["rvt-display-foo"]);
+      it('applies decoration', () => {
+        expect(mount(<DemoComponent display="inline" />).find('div').hasClass('rvt-display-inline')).toBe(true);
+        expect(mount(<DemoComponent display="inline-block" />).find('div').hasClass('rvt-display-inline-block')).toBe(true);
+        expect(mount(<DemoComponent display="block" />).find('div').hasClass('rvt-display-block')).toBe(true);
+        expect(mount(<DemoComponent display="flex" />).find('div').hasClass('rvt-display-flex')).toBe(true);
+        expect(mount(<DemoComponent display="flex-vertical-center" />).find('div').hasClass('rvt-display-flex rvt-vertical-center')).toBe(true);
       });
   });
   
   describe('parseRivetHidden', () => {
       it('ignores undefined', () => {
-          expect(Rivet.parseRivetHidden(undefined)).toEqual([]);
+        const cut = mount(<DemoComponent hide={undefined} />);
+        expect(cut.find('div').prop('className')).toBe("");
       });
   
-      it('accepts single string', () => {
-          expect(Rivet.parseRivetHidden("foo-bar")).toEqual(["rvt-hide-foo-bar"]);
+      it('applies decoration', () => {
+        expect(mount(<DemoComponent hide="lg-up" />).find('div').hasClass('rvt-hide-lg-up')).toBe(true);
+        expect(mount(<DemoComponent hide="md-up" />).find('div').hasClass('rvt-hide-md-up')).toBe(true);
+        expect(mount(<DemoComponent hide="sm-up" />).find('div').hasClass('rvt-hide-sm-up')).toBe(true);
+        expect(mount(<DemoComponent hide="xl-up" />).find('div').hasClass('rvt-hide-xl-up')).toBe(true);
+        expect(mount(<DemoComponent hide="xxl-up" />).find('div').hasClass('rvt-hide-xxl-up')).toBe(true);
+        expect(mount(<DemoComponent hide="lg-down" />).find('div').hasClass('rvt-hide-lg-down')).toBe(true);
+        expect(mount(<DemoComponent hide="md-down" />).find('div').hasClass('rvt-hide-md-down')).toBe(true);
+        expect(mount(<DemoComponent hide="sm-down" />).find('div').hasClass('rvt-hide-sm-down')).toBe(true);
+        expect(mount(<DemoComponent hide="xl-down" />).find('div').hasClass('rvt-hide-xl-down')).toBe(true);
+        expect(mount(<DemoComponent hide="xxl-down" />).find('div').hasClass('rvt-hide-xxl-down')).toBe(true);
       });
   });
-  
-  describe('generated class names', () => {
-      it('observes component class', () => {
-          expect(Rivet.classify({}, "rvt-foo")).toEqual("rvt-foo");
-      });
 
-      it('observes component class', () => {
-        expect(Rivet.classify({className:"external-class"}, "rvt-foo", [])).toEqual("rvt-foo external-class");
+  describe('label visiblity', () => {
+    it('chooses the screen reader class', () =>{
+        expect(Rivet.labelVisiblityClass("screen-reader-only")).toEqual("rvt-sr-only");
     });
-
-      it('gracefully ingores component class', () => {
-          expect(Rivet.classify({})).toEqual("");
-      });
-  
-      it('uses external class generators', () => {
-          const fooDecorator = (props) => "rvt-foo";
-          const barDecorator = (props) => "rvt-bar";
-          expect(Rivet.classify({}, "", [fooDecorator, barDecorator])).toEqual("rvt-foo rvt-bar");
-      });
+    it('chooses the default (no) class', () =>{
+        expect(Rivet.labelVisiblityClass("default")).toEqual("");
+    });
   });
+
+
   

@@ -1,28 +1,27 @@
-import * as React from 'react'
-import * as Rivet from '../Rivet'
+import * as classNames from 'classnames';
+import * as React from 'react';
+import * as Rivet from '../Rivet';
 
-interface FormProps extends Rivet.Props {
-    /** The text label/description for this radio option */
+interface FormProps {
+    /** The text label/description for this form */
     label: string,
-    /** Include the group label only for screen readers. */
-    srOnly?: boolean,
+    /**
+     * Optional Rivet style: Make the label visible only to screen readers.
+     * See: https://rivet.uits.iu.edu/components/utilities/display/#visually-hidden-labels-example
+     */
+    labelVisibility?: Rivet.LabelVisibility
 }
 
-const componentClass = "rvt-form";
+const componentClass = 'rvt-form';
 
-class Form extends React.PureComponent<FormProps & React.FormHTMLAttributes<HTMLFormElement>> {
-    public render() {
-        const { id, label, name, srOnly, children, ...attrs} = this.props;
-        const formId = id || Rivet.shortuid();
-        return (
-            <form className={Rivet.classify(this.props, componentClass)} id={formId} {...attrs}>
-                <fieldset>
-                    <legend className={Rivet.maybe(srOnly, "sr-only")}>{label}</legend>
-                        {children}
-                </fieldset>
-            </form>
-        );
-    }
-}
+const Form : React.SFC<FormProps & React.FormHTMLAttributes<HTMLFormElement>> = ({ children, className, id = Rivet.shortuid(), label, labelVisibility, name, ...attrs }) => (
+    <form className={classNames(componentClass, className)} id={id} {...attrs}>
+        <fieldset>
+            <legend className={Rivet.labelVisiblityClass(labelVisibility)}>{label}</legend>
+            {children}
+        </fieldset>
+    </form>
+);
+Form.displayName = 'Form';
 
-export default Form
+export default Rivet.rivetize(Form);
