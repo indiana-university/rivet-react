@@ -74,5 +74,10 @@ describe('<Col />', () => {
             expect(cut.find('div').hasClass('rvt-grid__item-push-2-xl')).toEqual(true);
             expect(cut.find('div').hasClass('rvt-grid__item-push-1-xxl')).toEqual(true);
         });
+        it('should apply the last modifier classes', () => {
+            let cut = mount(<Col last />);
+            expect(cut.find('div').hasClass('rvt-grid__item')).toEqual(true);
+            expect(cut.find('div').hasClass('rvt-grid__item--last')).toEqual(true);
+        });
     });
 });
