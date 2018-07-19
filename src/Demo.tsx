@@ -15,15 +15,18 @@ import {
     Alert,
     Button,
     Checkbox,
+    Col,
+    Container,
     DismissibleAlert,
     Footer,
     Form,
+    Grid,
     Input,
     List,
     Nav,
-    RadioButton, 
+    RadioButton,
     Textarea,
-} from './components'
+} from './components';
 
 
 /**
@@ -360,6 +363,24 @@ class Demo extends React.Component<DemoProps, DemoState> {
                         <TableRow children={['Another', 'Data', 'Row']}/>
                         </tbody>
                     </Table>
+
+                    <h1>Grid</h1>
+                    <Container margin={{top: 'sm', bottom: 'lg'}}>
+                        <Grid>
+                            <Col lg={6} sm={8}>
+                                <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
+                            </Col>
+                            <Col lg={3} sm={4}>
+                                <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
+                            </Col>
+                            <Col sm>
+                                <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
+                            </Col>
+                            <Col xxl={1}>
+                                <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
+                            </Col>
+                        </Grid>
+                    </Container>
 
                 </Section>
                 <Footer nav={[ new Nav("Rivet Documentation", "https://rivet.uits.iu.edu") ]}/>
