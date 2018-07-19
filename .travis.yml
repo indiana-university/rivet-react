@@ -18,6 +18,6 @@ after_success:
 notifications:
   slack: 
     rooms:
-      - $SLACK_TOKEN
+      - $SLACK_TOKEN#rivet-react-es
     on_success: always
     on_failure: always
