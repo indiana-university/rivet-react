@@ -13,11 +13,11 @@ before_install:
 script:
   - yarn build
   - yarn test --coverage
-after_success:
-  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
 notifications:
   slack: 
     rooms:
       - $SLACK_TOKEN#rivet-react-es
     on_success: always
     on_failure: always
+after_success:
+  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
