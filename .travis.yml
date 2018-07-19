@@ -15,3 +15,7 @@ script:
   - yarn test --coverage
 after_success:
   - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+notifications:
+  slack: $SLACK_TOKEN
+    on_success: change
+    on_failure: always
