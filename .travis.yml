@@ -16,7 +16,7 @@ script:
 notifications:
   slack: 
     rooms: 
-      - iuitco:JEeYddTmwrPyZkpW7LjE9Ik5#travis-test
+      - iuitco:JEeYddTmwrPyZkpW7LjE9Ik5
     on_success: always # default: change
     on_failure: always # default: always
   email:
