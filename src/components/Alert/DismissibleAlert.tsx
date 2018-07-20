@@ -5,7 +5,7 @@ import { StatefulAlertProps } from "./common"
 const initialState = { isOpen: true }
 type AlertState = Readonly<typeof initialState>
 
-export class DismissibleAlert extends React.PureComponent<StatefulAlertProps & React.HTMLAttributes<HTMLDivElement>, AlertState> {
+class DismissibleAlert extends React.PureComponent<StatefulAlertProps & React.HTMLAttributes<HTMLDivElement>, AlertState> {
     public readonly state: AlertState = initialState;
 
     public render() {
