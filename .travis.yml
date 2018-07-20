@@ -14,6 +14,11 @@ script:
 - yarn build
 - yarn test --coverage
 notifications:
-  email: jhoerr@gmail.com jhoerr@iu.edu
+  email:
+    recipients:
+      - jhoerr@iu.edu
+      - jhoerr@gmail.com
+    on_success: always # default: change
+    on_failure: always # default: always
 after_success:
 - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
