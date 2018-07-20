@@ -1,26 +1,24 @@
 sudo: false
 language: node_js
 node_js:
-  - 8
+- 8
 cache:
   directories:
-    - node_modules
+  - node_modules
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH="$HOME/.yarn/bin:$PATH"
-  - yarn install
-  - yarn add codecov.io
+- curl -o- -L https://yarnpkg.com/install.sh | bash
+- export PATH="$HOME/.yarn/bin:$PATH"
+- yarn install
+- yarn add codecov.io
 script:
-  - yarn build
-  - yarn test --coverage
+- yarn build
+- yarn test --coverage
 notifications:
   slack:
     rooms:
-      secure: n0tw+GvaJysgHandOI/wb2FU7uLC9kPfB/gYW+ZaodyENZmcCIHkDz5D5OtA14ko4ZTBM8RXM71yWpjmjERFemydMJWFpb0zZNqqEow5jtSWUL7vMMd+Y0/rwp2DY81GMACBbeJ/YwujUtqgsF0OeA7bvgSh006paqHUVsI3hUMsOPCupujS/363t5NBzF4lyIxVz9Xqrgj9gzBblN5Spj4EMpJAYoVeQhAGJChZrNWe6HEKfMiHKW5oY7Hp/bqIBXqmfZrKuetVQfHxelawfO2iBDlb6ArO0QQy0pKZAlA8DKDmGEvR/65iqyirN1ClFhnC/1Bo39gnfBYwVwUGKjyoUegu5AKU969vnXgC7jN6XgKA5mB5B+cohs6v7uBjNGk75eeGJGmgyN8VkFk81PduSEIRc49Vk43Ob+sh7NiU3NO4DKDAqHqvWABhXrcM0Db6FQI5PlFMRo+CxU2Uzo7dyvmo8f5nYLwOmtruwjRJlINOQ8Wgo9JxLUts/VfjTV+ZjE+qUUcP+NBZIzr36qKSRsVWeyiA8y8qXuCmALAtUUcAPJs9QZJJLbipA5+0a5bMYfwzsAiPfdpZkiE5L1vK/jsDcVhWrxiSZm4+PJRbSRP2cz8GFxzByyN0npJeonXJmmnBIAWl8dgx154O59xVW8Nc46alH3tM3vwS3aE=
+      secure: rBLcme+nAVf3oU4tmiKDBOFKMm3wkbZquLGt15sPPfFgEFmpwzt3/ujFbpdxnqx4bKNbwQNUiKiW2DgJgHWWR2+lJv63Lk4dzWyBPtjgOL2nxk+tzX6JRWPKyLRKXWlojHiTGZIGJ18EFsNEA8EvOdTM8sXGA//PLJEVsu3+36kzD/X2XMNvtX50LUngh9GVG44eCkvDLWyQUFu0gxQQFTTIT2xu/7iyFcTPELnag7WoR420CrPo2pmcXfnJdpvKDAjLihVMSVs0yV4tpd5UrkAKm3ueWh770gNrn4eVrvFSbk8/bezM1530f34xOTYdepPqMb4s4KEIO6GCzH6R0Nb2o/WdyPMPJRDF7aPLab1bACR/oPWaGtkPam/8lPtvrBuD/NPLXc0YlN7OtYvlxlEqmITmSOP8xJ3ZEYU4SWCTmYYTV+uJfayLjAsGWj1eI55PohfAGejJ4ta+4FFnVFuCRV9WPI2VNdt1Z1POYE2xcfHJpbvZeypDSobmnKC02P5tx66FTa9e7OPIpGpwnxv2sHssiEYUnxPhlB/pg8I9l3cJEsZXwGZy3DHI/HUudz5IDXEOUZNgZEWMMeZOoSjnvsV6RVJx1qlCRcYNLAguY9qS0WAzNQpDOThGvcjORGj6+bW4WBOKvqkAynnqtmzJ+o4SLvpXeLkdSxP1z7Q=
     on_success: always
     on_failure: always
-  email:
-    jhoerr@gmail.com
-    jhoerr@iu.edu
+  email: jhoerr@gmail.com jhoerr@iu.edu
 after_success:
-  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+- cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
