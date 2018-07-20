@@ -3,7 +3,16 @@ import * as React from 'react';
 import { rivetize } from '../Rivet';
 
 interface ContainerProps {
+    /**
+     * When combined with a fixed width property this being set to true will
+     * cause the container to be horizontally centered within its parent.
+     * @see https://rivet.uits.iu.edu/components/layout/grid/#centering-a-container
+     */
     center?: boolean;
+    /**
+     * Sets the width of the container to a fixed size.
+     * @see https://rivet.uits.iu.edu/components/layout/grid/#container-sizes
+     */
     width?: 'freshman' | 'sophomore' | 'junior' | 'senior';
 }
 
