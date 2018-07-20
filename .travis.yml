@@ -18,7 +18,9 @@ after_success:
 notifications:
   slack:
     rooms:
-      - $ES_SLACK
-      - $ITCO_SLACK
+      secure: Clqk4AJ+0iwzljoqACQ+HSBdgoFkbrXtxK/ATFksfdnvD5Nona245j/vzkLRPkq6qguEZ7vyuCIRFO/hPdBXW8KAG+Kxag6ITWpvqT6g4HkAs9X29P0goInscL0mw/gORhnZNlan8A2Z1D+7qx2IID18ZUT4brQ15ya3NIhy3o0Vtoxf35gxYFps2cBoBw7wlkcr5+XqWOXjdpAiAUg6r8DVJKNLM884Uc+A2g+Muw/oSqavM2jbHDwIa6M8AXFr+rH3vKnOxD/d3jg5G7ZPIEwnN2qfT9vdiPoJSfvyx75SyvJ9cOuKH8Z380oGzmOJw6ZyJdmI61g67mN95dKFT0c4734YHah9gpMWUfwK5tgDQgbzrX7b8YJs4m7eKns0vi8tEMMHCTsIzm9+L6ToSJYOLAEGxYSSzZxSTx/od0ErsrLPtDkAYlbSEJQXzB3bNE0qDZfeniBymwdvcjki4hEH02umvuShWowiL7VYx/nCFmF1Qyp6FIitBPSENDQOLIjr0LwzZ2PR2ml4fzn4pdPxzbi+a4svxYgVXs0EAgj7+ukX7DYQo99zTMMZYdMK3eykjx4Z/AyaJBmIcQhVYuzyNaVHwgIXE5y+vny2UVmC4AYMycqNb4e3BG3r8cOCdKsQWPxjZjLAX3fwc98LVyVFIUdF8ZPD03a9+NRiohU=
+    on_success: always
+    on_failure: always
   email:
+    - jhoerr@gmail.com
     - jhoerr@iu.edu
