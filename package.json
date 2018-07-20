@@ -43,6 +43,9 @@
     "build/dist/components"
   ],
   "jest": {
-    "collectCoverageFrom": ["src/components/**/*.{js,jsx,ts,tsx}", "!src/components/**/index.{ts,tsx}"]
+    "collectCoverageFrom": [
+      "src/components/**/*.{js,jsx,ts,tsx}",
+      "!src/components/**/index.{ts,tsx}"
+    ]
   }
 }
