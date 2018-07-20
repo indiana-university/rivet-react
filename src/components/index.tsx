@@ -7,3 +7,4 @@ export { Input, Textarea } from './Input';
 export { default as RadioButton } from './RadioButton';
 export { default as List } from './List';
 export { Action, Nav } from './Rivet';
+export * from './Grid';
