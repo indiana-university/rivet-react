@@ -16,4 +16,4 @@ script:
 after_success:
   - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
 notifications:
-  slack: '$SLACK_TOKEN#rivet-react-es'
+  slack: '$SLACK_TOKEN#rivet-react'
