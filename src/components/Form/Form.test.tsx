@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import RadioButton from '../RadioButton';
+import { RadioButton } from '../RadioButton';
 import Form from './Form';
 
 describe('<Form />', () => {
