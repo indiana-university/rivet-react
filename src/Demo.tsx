@@ -58,39 +58,45 @@ const userNav = [
     {label: "Task 3", to: '/logout'},
 ]
 
-const tab1 = <React.Fragment>
-    <span className="rvt-ts-23 rvt-text-bold">Panel 1</span>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-        in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-</React.Fragment>
+const tab1 = (
+    <>
+        <span className="rvt-ts-23 rvt-text-bold">Panel 1</span>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </>
+);
 
 
-const tab2 = <React.Fragment>
-    <span className="rvt-ts-23 rvt-text-bold">Panel 2</span>
-    <p>
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-</React.Fragment>
+const tab2 = (
+    <>
+        <span className="rvt-ts-23 rvt-text-bold">Panel 2</span>
+        <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </>
+);
 
 
-const tab3 = <React.Fragment>
-    <span className="rvt-ts-23 rvt-text-bold">A grid inside a tab panel</span>
-    <div className="rvt-grid">
-        <div className="rvt-grid__item-4-md-up">
-            <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </div>
-        <div className="rvt-grid__item-8-md-up">
-            <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </div>
-    </div>
-</React.Fragment>
+const tab3 = (
+    <>
+        <span className="rvt-ts-23 rvt-text-bold">A grid inside a tab panel</span>
+        <Grid>
+            <Col md={4}>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </Col>
+            <Col md={8}>
+                <p>
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </Col>
+        </Grid>
+    </>
+);
 
 const tabs = [
     { label: "Tab one", content: tab1 },
@@ -134,68 +140,69 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
     public render() {
         return (
-            <React.Fragment>
+            <>
                 {header}
-                <main id="main-content" className="rvt-container rvt-container--freshman rvt-m-top-md">
-                    <h1>Rivet 1.0.0 React Components Demo</h1>
+                <main id="main-content">
+                    <Container width="freshman" margin={{top: 'md'}}>
+                        <h1>Rivet 1.0.0 React Components Demo</h1>
 
-                    <Tabs vertical className="rvt-m-bottom-md" tabs={tabs} />
+                        <Tabs vertical className="rvt-m-bottom-md" tabs={tabs} />
 
-                    <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id="request-group-ownership-dropdown" title="Request Group Ownership">
-                        <button>For an existing group</button>
-                        <button>For all of a users's group</button>
-                    </Dropdown>
+                        <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id="request-group-ownership-dropdown" title="Request Group Ownership">
+                            <button>For an existing group</button>
+                            <button>For all of a users's group</button>
+                        </Dropdown>
 
-                    <Button onClick={() => console.log("hello") } margin="xs">Hello</Button>
-                    <Button onClick={() => console.log("world") } margin="xs" role="secondary">World</Button>
+                        <Button onClick={() => console.log("hello")} margin="xs">Hello</Button>
+                        <Button onClick={() => console.log("world")} margin="xs" role="secondary">World</Button>
 
-                    <div className="rvt-m-top-md" >
-                        <SegmentedButtons label="Numbers" fit>
-                            <Button onClick={ () => console.log("one")} role="secondary" >One</Button>
-                            <Button onClick={ () => console.log("two")} role="secondary" >Two</Button>
-                            <Button onClick={ () => console.log("three")} role="secondary" >Three</Button>
-                        </SegmentedButtons>
-                    </div>
+                        <div className="rvt-m-top-md" >
+                            <SegmentedButtons label="Numbers" fit>
+                                <Button onClick={() => console.log("one")} role="secondary" >One</Button>
+                                <Button onClick={() => console.log("two")} role="secondary" >Two</Button>
+                                <Button onClick={() => console.log("three")} role="secondary" >Three</Button>
+                            </SegmentedButtons>
+                        </div>
 
-                    <h1>Forms</h1>
-                    
-                    <Form label="Checkboxes inline" margin={{top:"md"}}>
-                        <List orientation="inline">
-                        <li><Checkbox name="numbers" label="One"/></li>
-                        <li><Checkbox name="numbers" label="Two"/></li>
-                        </List>
-                    </Form>
+                        <h1>Forms</h1>
 
-                    <Form label="Radio buttons inline" margin={{top:"md"}}>
-                        <List orientation="inline">
-                        <li><RadioButton name="number" label="One"/></li>
-                        <li><RadioButton name="number" label="Two"/></li>
-                        </List>
-                    </Form>
+                        <Form label="Checkboxes inline" margin={{ top: "md" }}>
+                            <List orientation="inline">
+                                <li><Checkbox name="numbers" label="One" /></li>
+                                <li><Checkbox name="numbers" label="Two" /></li>
+                            </List>
+                        </Form>
 
-                    <Form label="Mixed inputs" margin={{top:"md"}}>
-                        <List orientation="inline">
-                        <li><Input type="number" name="number" label="One Fish"/></li>
-                        <li><Input type="number" name="numbers" label="Two Fish"/></li>
-                        <li><RadioButton name="either" label="Red Fish"/></li>
-                        <li><RadioButton name="either" label="Blue Fish"/></li>
-                        </List>
-                    </Form>
+                        <Form label="Radio buttons inline" margin={{ top: "md" }}>
+                            <List orientation="inline">
+                                <li><RadioButton name="number" label="One" /></li>
+                                <li><RadioButton name="number" label="Two" /></li>
+                            </List>
+                        </Form>
 
-                    <label htmlFor="select-demo">Select input:</label>
-                    <select id="select-demo">
-                        <option>Choose an option...</option>
-                        <option value="Option One">Option One</option>
-                        <option value="Option One">Option Two</option>
-                        <option value="Option One">Option Three</option>
-                        <option value="Option One">Option Four</option>
-                    </select>
+                        <Form label="Mixed inputs" margin={{ top: "md" }}>
+                            <List orientation="inline">
+                                <li><Input type="number" name="number" label="One Fish" /></li>
+                                <li><Input type="number" name="numbers" label="Two Fish" /></li>
+                                <li><RadioButton name="either" label="Red Fish" /></li>
+                                <li><RadioButton name="either" label="Blue Fish" /></li>
+                            </List>
+                        </Form>
+
+                        <label htmlFor="select-demo">Select input:</label>
+                        <select id="select-demo">
+                            <option>Choose an option...</option>
+                            <option value="Option One">Option One</option>
+                            <option value="Option One">Option Two</option>
+                            <option value="Option One">Option Three</option>
+                            <option value="Option One">Option Four</option>
+                        </select>
 
 
-                    <div className="rvt-m-top-md">
-                        <File name="profile"/>
-                    </div>
-
+                        <div className="rvt-m-top-md">
+                            <File name="profile" />
+                        </div>
+                    </Container>
                 </main>
 
                 <Section margin="sm">
@@ -384,7 +391,7 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                 </Section>
                 <Footer nav={[ new Nav("Rivet Documentation", "https://rivet.uits.iu.edu") ]}/>
-            </React.Fragment>
+            </>
         )
     }
 
