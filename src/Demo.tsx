@@ -5,7 +5,6 @@ import Dropdown from './components/Dropdown';
 import File from './components/File';
 import Header from './components/Header';
 import Modal from './components/Modal';
-import Section from './components/Section';
 import Table from './components/Table';
 import TableRow from './components/TableRow';
 import Tabs from './components/Tabs';
@@ -25,6 +24,7 @@ import {
     List,
     Nav,
     RadioButton,
+    Section,
     SegmentedButton,
     Textarea,
 } from './components';
@@ -230,8 +230,8 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Spacing and Type Scale</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <Section style={{border: '1px solid black'}} margin='xxs' ts={12}>XXS Margin Twelve</Section>
-                        <Section style={{border: '1px solid black'}} padding='xxl' ts={52}>XXL Padded Fifty Two</Section>
+                        <Section margin="xxs" typescale={12} border="all">XXS Margin Twelve</Section>
+                        <Section padding="xxl" typescale={52} border="all">XXL Padded Fifty Two</Section>
                     </Section>
 
                     <h1>Buttons</h1>
