@@ -25,9 +25,7 @@
     "build": "react-scripts-ts build",
     "build-dist": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.4",
@@ -40,7 +38,6 @@
     "@types/react-router-dom": "^4.2.7",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "gh-pages": "^1.2.0",
     "typescript": "^2.9.2"
   },
   "files": [
