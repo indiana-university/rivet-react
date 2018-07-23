@@ -24,6 +24,7 @@ notifications:
 deploy:
   provider: script
   script: yarn run deploy
+  api_key: $GITHUB_TOKEN
   skip_cleanup: true
   on:
     branch: feature/docs
