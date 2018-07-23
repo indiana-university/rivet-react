@@ -21,3 +21,10 @@ notifications:
       - secure: "tcIq3fb/SapP8aNBc7ryDq9bhRnn/+ASPa0lu791BO59sguDz27gzGjaF1Or4EC5Uvkvx9+AhHY64b/kJdSSERggOxfWMMKbnOZ9BmwMbZxjkvr6zUMZ/3EMzFjrS6FZ7QdFz9gYG/tYPbG8dVGiClevaistcniv5whKQgOYw/Kev+uOEGdELih8E4TmlHZjlsEj9gKmUuDufXtQpBpCPh4oprIH6HE5sgW+zUu8n4MKzmC4xY1VbiLPUNCxKw5MwZZZRUx1SKlxDcqVpJtMP9YnbY6qMotOQpgXVy1zOXKubCRFUpZgmP4WH2QEn3tswKHmuTm0RBr0Hl4cEAUzjqzeXGtI6uQb0vC5kroTc/qyodHlD2S3fuhTTOYgFFX8CScXFcGeYBbPZEUpAgzcRPF2Ik2wpglFFozo5c7w9GJQfIv2bCFGTaysXHoAyZQmqZT2wmirurBJwbxlvopth9ZbWce+mfTbPaLD2mPDmer8EKxVzuOZRsOn1zrOikXxpf9V6/i/pmbDthvcB4wEwpt/yPXGsN4ougkKjTs71UW68wEThHaLraP/c6sd3sCerRTOMuSeYBw7rHfUyJbPxlLgPAafXvBXZlATWYNVqbGEIN9UXhw7RmM9fbAvn7ulTlVVSJC3sNOPqfvBULXV2cILOTRkuO/sXhHjdCpzurM="
     on_success: change # default: change
     on_failure: always # default: always
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    branch: feature/gh-pages

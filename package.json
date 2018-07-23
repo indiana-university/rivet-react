@@ -4,6 +4,7 @@
   "description": "Rivet React components",
   "author": "",
   "license": "MIT",
+  "homepage": "http://indiana-university.github.io/rivet-react",
   "repository": "https://github.com/indiana-university/rivet-react",
   "keywords": [
     "react-component"
