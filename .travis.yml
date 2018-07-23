@@ -28,4 +28,4 @@ deploy:
   skip-cleanup: true
   keep-history: true
   on:
-    branch: feature/docs
+    branch: develop
