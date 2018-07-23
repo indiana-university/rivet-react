@@ -9,12 +9,12 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
   - yarn install
-  - yarn add codecov.io
-script:
-  - yarn build
-  - yarn test --coverage
-after_success:
-  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+#  - yarn add codecov.io
+#script:
+#  - yarn build
+#  - yarn test --coverage
+#after_success:
+#  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
 notifications:
   slack: 
     rooms: 
