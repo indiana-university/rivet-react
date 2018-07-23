@@ -6,7 +6,6 @@ import File from './components/File';
 import Header from './components/Header';
 import Modal from './components/Modal';
 import Section from './components/Section';
-import SegmentedButtons from './components/SegmentedButtons';
 import Table from './components/Table';
 import TableRow from './components/TableRow';
 import Tabs from './components/Tabs';
@@ -14,6 +13,7 @@ import Tabs from './components/Tabs';
 import {
     Alert,
     Button,
+    ButtonGroup,
     Checkbox,
     Col,
     Container,
@@ -25,6 +25,7 @@ import {
     List,
     Nav,
     RadioButton,
+    SegmentedButton,
     Textarea,
 } from './components';
 
@@ -147,22 +148,21 @@ class Demo extends React.Component<DemoProps, DemoState> {
                         <h1>Rivet 1.0.0 React Components Demo</h1>
 
                         <Tabs vertical className="rvt-m-bottom-md" tabs={tabs} />
+                        
+                        <ButtonGroup>
+                            <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id="request-group-ownership-dropdown" title="Request Group Ownership">
+                                <button>For an existing group</button>
+                                <button>For all of a users's group</button>
+                            </Dropdown>
+                            <Button onClick={() => console.log("hello")}>Hello</Button>
+                            <Button onClick={() => console.log("world")} role="secondary">World</Button>
+                        </ButtonGroup>
 
-                        <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id="request-group-ownership-dropdown" title="Request Group Ownership">
-                            <button>For an existing group</button>
-                            <button>For all of a users's group</button>
-                        </Dropdown>
-
-                        <Button onClick={() => console.log("hello")} margin="xs">Hello</Button>
-                        <Button onClick={() => console.log("world")} margin="xs" role="secondary">World</Button>
-
-                        <div className="rvt-m-top-md" >
-                            <SegmentedButtons label="Numbers" fit>
-                                <Button onClick={() => console.log("one")} role="secondary" >One</Button>
-                                <Button onClick={() => console.log("two")} role="secondary" >Two</Button>
-                                <Button onClick={() => console.log("three")} role="secondary" >Three</Button>
-                            </SegmentedButtons>
-                        </div>
+                        <SegmentedButton margin={{ top: 'md', bottom: 'lg' }} fit>
+                            <Button onClick={() => console.log("one")} role="secondary" >One</Button>
+                            <Button onClick={() => console.log("two")} role="secondary" >Two</Button>
+                            <Button onClick={() => console.log("three")} role="secondary" >Three</Button>
+                        </SegmentedButton>
 
                         <h1>Forms</h1>
 
@@ -236,7 +236,7 @@ class Demo extends React.Component<DemoProps, DemoState> {
 
                     <h1>Buttons</h1>
                     <Section margin={{bottom: 'lg'}}>
-                        <SegmentedButtons margin='xxs'>
+                        <SegmentedButton margin='xxs'>
                             <Button onClick={() => {
                                 window.alert('Primary Button Click')
                             }}>Primary</Button>
@@ -247,9 +247,9 @@ class Demo extends React.Component<DemoProps, DemoState> {
                                 window.alert('Danger Button Click')
                             }}>Danger</Button>
                             <Button /* no onClick means disabled */>Disabled</Button>
-                        </SegmentedButtons>
+                        </SegmentedButton>
                         <br/>
-                        <SegmentedButtons margin='xxs'>
+                        <SegmentedButton margin='xxs'>
                             <Button role="secondary" onClick={() => {
                                 window.alert('Secondary Button Click')
                             }}>Primary</Button>
@@ -260,9 +260,9 @@ class Demo extends React.Component<DemoProps, DemoState> {
                                 window.alert('Secondary Danger Button Click')
                             }}>Danger</Button>
                             <Button /* no onClick means disabled */>Disabled</Button>
-                        </SegmentedButtons>
+                        </SegmentedButton>
                         <br/>
-                        <SegmentedButtons margin='xxs'>
+                        <SegmentedButton margin='xxs'>
                             <Button size="small" onClick={() => {
                                 window.alert('Small Button Click')
                             }}>Small</Button>
@@ -281,10 +281,12 @@ class Demo extends React.Component<DemoProps, DemoState> {
                             <Button size="small" role="secondary" variant="danger" onClick={() => {
                                 window.alert('Small Secondary Danger Button Click')
                             }}>Danger</Button>
-                        </SegmentedButtons>
+                        </SegmentedButton>
 
-                        <Button onClick={() => {this.toggleModal("modal-example")}}>Modal</Button>
-                        <Button onClick={() => {this.toggleModal("modal-example-2")}}>Modal 2</Button>
+                        <ButtonGroup>
+                            <Button onClick={() => {this.toggleModal("modal-example")}}>Modal</Button>
+                            <Button onClick={() => {this.toggleModal("modal-example-2")}}>Modal 2</Button>
+                        </ButtonGroup>
 
                         <Modal toggleModal={this.toggleModal} activeModal={this.state.activeModal} id="modal-example" title="Transfer group account(s)">
                             <p>Your are requesting the transfer of groups:<br/><strong>ITDJHNWEB, JTDJHNWEB, DSOIUFNWEB,
