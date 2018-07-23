@@ -14,6 +14,7 @@ import Tabs from './components/Tabs';
 import {
     Alert,
     Button,
+    ButtonGroup,
     Checkbox,
     Col,
     Container,
@@ -147,14 +148,15 @@ class Demo extends React.Component<DemoProps, DemoState> {
                         <h1>Rivet 1.0.0 React Components Demo</h1>
 
                         <Tabs vertical className="rvt-m-bottom-md" tabs={tabs} />
-
-                        <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id="request-group-ownership-dropdown" title="Request Group Ownership">
-                            <button>For an existing group</button>
-                            <button>For all of a users's group</button>
-                        </Dropdown>
-
-                        <Button onClick={() => console.log("hello")} margin="xs">Hello</Button>
-                        <Button onClick={() => console.log("world")} margin="xs" role="secondary">World</Button>
+                        
+                        <ButtonGroup>
+                            <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id="request-group-ownership-dropdown" title="Request Group Ownership">
+                                <button>For an existing group</button>
+                                <button>For all of a users's group</button>
+                            </Dropdown>
+                            <Button onClick={() => console.log("hello")}>Hello</Button>
+                            <Button onClick={() => console.log("world")} role="secondary">World</Button>
+                        </ButtonGroup>
 
                         <div className="rvt-m-top-md" >
                             <SegmentedButtons label="Numbers" fit>
@@ -283,8 +285,10 @@ class Demo extends React.Component<DemoProps, DemoState> {
                             }}>Danger</Button>
                         </SegmentedButtons>
 
-                        <Button onClick={() => {this.toggleModal("modal-example")}}>Modal</Button>
-                        <Button onClick={() => {this.toggleModal("modal-example-2")}}>Modal 2</Button>
+                        <ButtonGroup>
+                            <Button onClick={() => {this.toggleModal("modal-example")}}>Modal</Button>
+                            <Button onClick={() => {this.toggleModal("modal-example-2")}}>Modal 2</Button>
+                        </ButtonGroup>
 
                         <Modal toggleModal={this.toggleModal} activeModal={this.state.activeModal} id="modal-example" title="Transfer group account(s)">
                             <p>Your are requesting the transfer of groups:<br/><strong>ITDJHNWEB, JTDJHNWEB, DSOIUFNWEB,
