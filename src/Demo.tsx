@@ -145,7 +145,7 @@ class Demo extends React.Component<DemoProps, DemoState> {
                 <main id="main-content">
                     <Container width="freshman" margin={{top: 'md'}}>
                         <h1>Rivet 1.0.0 React Components Demo</h1>
-                        
+
                         <Tabs vertical className="rvt-m-bottom-md" tabs={tabs} />
 
                         <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id="request-group-ownership-dropdown" title="Request Group Ownership">
