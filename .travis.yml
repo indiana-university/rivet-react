@@ -22,9 +22,7 @@ notifications:
     on_success: change # default: change
     on_failure: always # default: always
 deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
+  provider: script
+  script: bash scripts/gh-pages.sh
   on:
     branch: feature/gh-pages
