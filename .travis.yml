@@ -24,5 +24,6 @@ notifications:
 deploy:
   provider: script
   script: yarn run deploy
+  skip_cleanup: true
   on:
     branch: feature/docs
