@@ -25,4 +25,4 @@ deploy:
   provider: script
   script: bash scripts/gh-pages.sh
   on:
-    branch: feature/docs 
+    branch: feature/docs
