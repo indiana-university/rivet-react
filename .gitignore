@@ -21,6 +21,7 @@ npm-debug.log*
 # production
 /build
 /package
+/styleguide
 
 # misc
 .DS_Store
