@@ -3,7 +3,6 @@ import * as React from 'react';
 import { rivetize } from '../Rivet';
 
 interface BadgeProps {
-    secondary?: boolean,
     role?: 'default' | 'secondary',
     variant?: '' | 'action' | 'error' | 'success' | 'warning';
 }
