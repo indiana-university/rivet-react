@@ -112,6 +112,10 @@ interface ColProps {
     xxl?: AutoColumnWidth;
 }
 
+/**
+ * This is a test
+ * @param props
+ */
 const Column : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, last, lg, md, pullSm, pullMd, pullLg, pullXl, pullXxl, pushSm, pushMd, pushLg, pushXl, pushXxl, sm, xl, xxl, ...attrs }) => {
     const classes = classNames({
         ['rvt-grid__item']: !sm && !md && !lg && !xl && !xxl,
