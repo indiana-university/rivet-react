@@ -47,5 +47,8 @@ module.exports = {
         },
     ],
     styleguideDir: 'build/styleguide',
-    webpackConfig: require('./node_modules/react-scripts-ts/config/webpack.config.dev')
+    webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
+    require: [
+        'rivet-uits/css/rivet.min.css'
+      ]
 };
