@@ -29,4 +29,4 @@ deploy:
   local-dir: build
   skip-cleanup: true
   on:
-    branch: develop
+    branch: feature/style-guide
