@@ -142,8 +142,8 @@ const parseRivetBorder = (border?: Border) => {
         return border.map((value) => `rvt-border-${value}`);
     } else {
         return ({
-            [`rvt-border-${border}`]: !!border,
-            [`rvt-border-all`]: border === 'radius'
+            [`rvt-border-all`]: border === 'radius',
+            [`rvt-border-${border}`]: !!border
         });
     }
 }
