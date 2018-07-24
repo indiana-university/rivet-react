@@ -40,7 +40,7 @@ import {
  */
 
 const appNav = [
-    { href: "/rivet-react/styleguide", label: "Style Guide", onClick: ()=> window.location.href='/rivet-react/styleguide'  },
+    { href: "#nav1", label: "Nav 1",  },
     { href: "#nav2", label: "Nav 2", subnav: [
         { href: "#item1", label: "Item 1" },
         { href: "#item2", label: "Item 2" },
