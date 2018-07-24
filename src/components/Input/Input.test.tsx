@@ -36,21 +36,28 @@ describe('<Input />', () => {
             const cut = mount(<Input id="the_id" note="Note" label="Label" />);
             expect(cut.find('input').prop('aria-describedby')).toEqual("the_id_note");
         });
+        it('should not apply the aria-describedby attribute when no note is present', () => {
+            const cut = mount(<Input id="the_id" label="Label" />);
+            expect(cut.find('input').prop('aria-describedby')).toHaveLength(0);
+        })
     });
     describe("Inline Alerts", () => {
         it('info style', () => { 
             const cut = mount(<Input variant="info" label="Label" note="🤔"/>);
             expect(cut.find('input').hasClass("rvt-has-info")).toEqual(true);
+            expect(cut.find('input').prop("aria-invalid")).toEqual(false);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-info")).toBe(true);
         });
         it('valid style', () => { 
             const cut = mount(<Input variant="valid" label="Label" note="😎" />);
             expect(cut.find('input').hasClass("rvt-is-valid")).toEqual(true);
+            expect(cut.find('input').prop("aria-invalid")).toEqual(false);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-valid")).toBe(true);
         });
         it('warning style', () => { 
             const cut = mount(<Input variant="warning" label="Label" note="🤨"/>);
             expect(cut.find('input').hasClass("rvt-has-warning")).toEqual(true);
+            expect(cut.find('input').prop("aria-invalid")).toEqual(false);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-warning")).toBe(true);
         });
         it('invalid style', () => { 
@@ -58,10 +65,6 @@ describe('<Input />', () => {
             expect(cut.find('input').hasClass("rvt-is-invalid")).toEqual(true);
             expect(cut.find('input').prop("aria-invalid")).toEqual(true);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-invalid")).toBe(true);
-        });
-        it('invalid has aria-invalid flag', () => { 
-            const cut = mount(<Input variant="invalid" label="Label" />);
-            expect(cut.find('input').prop("aria-invalid")).toEqual(true);
         });
     });
 });
