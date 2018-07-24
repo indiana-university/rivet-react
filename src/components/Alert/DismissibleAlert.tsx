@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { rivetize } from '../Rivet';
 import Alert from './Alert'
 import { StatefulAlertProps } from "./common"
 
@@ -20,4 +21,4 @@ class DismissibleAlert extends React.PureComponent<StatefulAlertProps & React.HT
     };
 }
 
-export default DismissibleAlert;
+export default rivetize(DismissibleAlert);
