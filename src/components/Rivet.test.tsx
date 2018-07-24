@@ -104,6 +104,8 @@ describe('nav', () => {
         expect(mount(<DemoComponent border="top" />).find('div').hasClass('rvt-border-top')).toBe(true);
         expect(mount(<DemoComponent border="left" />).find('div').hasClass('rvt-border-left')).toBe(true);
         expect(mount(<DemoComponent border="right" />).find('div').hasClass('rvt-border-right')).toBe(true);
+        expect(mount(<DemoComponent border="radius" />).find('div').hasClass('rvt-border-radius')).toBe(true);
+        expect(mount(<DemoComponent border="radius" />).find('div').hasClass('rvt-border-all')).toBe(true);
       });
 
       it('applies multiple decorations', () => {
