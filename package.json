@@ -21,7 +21,7 @@
     "rivet-uits": "^1.0.0"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
+    "start": "npx styleguidist server",
     "build": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
