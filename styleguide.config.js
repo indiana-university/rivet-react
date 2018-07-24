@@ -11,6 +11,12 @@ module.exports = {
     }).parse,
     sections: [
         {
+            name: 'Demo',
+            components: () => [
+              'src/Demo.tsx', 
+          ],
+        },
+        {
             name: 'Page Content',
             components: () => [
               'src/components/List/*.tsx', 
@@ -46,7 +52,6 @@ module.exports = {
           ],
         },
     ],
-    styleguideDir: 'build/styleguide',
     webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
     require: [
         'rivet-uits/css/rivet.min.css'
