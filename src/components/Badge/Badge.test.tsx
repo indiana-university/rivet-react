@@ -22,7 +22,13 @@ describe('<Badge />', () => {
         });
         it('should apply secondary role', () => {
             const cut = mount(<Badge role="secondary" />);
-            expect(cut.find('span').hasClass('rvt-badge--action')).toBe(true);
+            expect(cut.find('span').hasClass('rvt-badge--secondary')).toBe(true);
+        });
+        it('should apply secondary variant class appropriately', () => {
+            const cut = mount(<Badge variant="action" role="secondary" />);
+            expect(cut.find('span').hasClass('rvt-badge--action')).toBe(false);
+            expect(cut.find('span').hasClass('rvt-badge--secondary')).toBe(false);
+            expect(cut.find('span').hasClass('rvt-badge--action-secondary')).toBe(true);
         });
     });
 });
