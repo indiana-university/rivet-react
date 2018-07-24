@@ -31,7 +31,7 @@ describe('<Texarea />', () => {
             const cut = mount(<Textarea id="the_id" note="Note" label="Label" />);
             expect(cut.find('textarea').prop('aria-describedby')).toEqual("the_id_note");
         });
-        it('should not apply the ariaDescribeBy attribute when no note is present', () => {
+        it('should not apply the aria-describedby attribute when no note is present', () => {
             const cut = mount(<Textarea id="the_id" label="Label" />);
             expect(cut.find('textarea').prop('aria-describedby')).toHaveLength(0);
         })
