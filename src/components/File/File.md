@@ -1,4 +1,4 @@
-### Sample
+### Example
 ```jsx
 <File name="demo" />
 ```
