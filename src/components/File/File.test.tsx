@@ -41,14 +41,14 @@ describe('<File />', () => {
             const cut = mount(<UnwrappedFile />);
             let state = cut.state() as FileState;
             expect(state.files).toBe('');
-            expect(cut.find('input').simulate('change', simulatedChangeEvent));
+            cut.find('input').simulate('change', simulatedChangeEvent);
             state = cut.state() as FileState;
             expect(state.files).toBe('foo.txt, bar.txt');
         });
         it('should invoke a provided onChange handler', () => {
             const spy = jest.fn();
             const cut = mount(<UnwrappedFile onChange={spy} />);
-            expect(cut.find('input').simulate('change', simulatedChangeEvent));
+            cut.find('input').simulate('change', simulatedChangeEvent);
             expect(spy).toBeCalled();
         });
     });
