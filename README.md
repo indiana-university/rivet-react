@@ -72,6 +72,6 @@ This project supports hot reloading of tests and the demo page.
 ### Contribution Requirements
 
 * **We aspire to full test coverage of all components.** Look at existing tests for examples on how to write them. If you have questions about testing or how to resolve coverage issues, we can help!  
-* ***All component properties should be documented.** Property documentation should link to relevant Rivet documentation if available, particularly if the property is for styling and presentation options. Look to existing components for examples.
+* **All component properties should be documented.** Property documentation should link to relevant Rivet documentation if available, particularly if the property is for styling and presentation options. Look to existing components for examples.
 * **Components should be included in the style guide.** `styleguide.config.js` organizes component documentation into sections that align with the Rivet component documentation. If you're adding a new component, please place its documentation in the appropriate section.
 * **Components should have usage examples.** Every component should have a markdown file (`.md`) alongside its implmentation file (`.tsx`) with usage examples for the style guide. Look to existing components for examples.
