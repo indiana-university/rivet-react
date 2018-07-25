@@ -19,7 +19,8 @@ module.exports = {
             components: () => [
               'src/components/Badge/*.tsx', 
               'src/components/List/*.tsx', 
-          ],
+            ],
+            exampleMode: 'expand'
         },
         {
             name: 'Forms',
@@ -30,26 +31,30 @@ module.exports = {
               'src/components/RadioButton/*.tsx', 
               'src/components/Input/Input.tsx', 
               'src/components/Input/Textarea.tsx', 
-          ],
+            ],
+            exampleMode: 'expand'
         },
         {
             name: 'Layout',
             components: () => [
               'src/components/Grid/*.tsx',
               'src/components/Section/*.tsx',
-          ],
+            ],
+            exampleMode: 'expand'
         },
         {   
             name: 'Navigation',
             components: () => [
               'src/components/Footer/*.tsx', 
-          ],
+            ],
+            exampleMode: 'expand'
         },
         {
             name: 'Overlays',
             components: () => [
               'src/components/Alert/*.tsx', 
-          ],
+            ],
+            exampleMode: 'expand'
         },
     ],
     webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
