@@ -1,4 +1,4 @@
-### Sample
+### Examples
 ```jsx
 <ButtonGroup>
     <Button onClick={() => { console.log('Click!') }}>OK</Button>

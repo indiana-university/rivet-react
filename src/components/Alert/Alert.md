@@ -1,6 +1,6 @@
 Alerts can be rendered with or without titles:
 
-### Sample
+### Examples
 ```jsx
 <Alert variant="info" margin={{ bottom: 'sm' }}>
     A nice message for you!

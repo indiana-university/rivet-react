@@ -1,4 +1,4 @@
-### Sample
+### Examples
 ```jsx
 <Container>
     <Grid>
