@@ -112,11 +112,7 @@ interface ColProps {
     xxl?: AutoColumnWidth;
 }
 
-/**
- * This is a test
- * @param props
- */
-const Column : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, last, lg, md, pullSm, pullMd, pullLg, pullXl, pullXxl, pushSm, pushMd, pushLg, pushXl, pushXxl, sm, xl, xxl, ...attrs }) => {
+const Col : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, last, lg, md, pullSm, pullMd, pullLg, pullXl, pullXxl, pushSm, pushMd, pushLg, pushXl, pushXxl, sm, xl, xxl, ...attrs }) => {
     const classes = classNames({
         ['rvt-grid__item']: !sm && !md && !lg && !xl && !xxl,
         [`rvt-grid__item--last`]: last,
@@ -147,6 +143,6 @@ const Column : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> = ({ c
         </div>
     );
 }
-Column.displayName = 'Col';
+Col.displayName = 'Col';
 
-export default rivetize(Column);
+export default rivetize(Col);
