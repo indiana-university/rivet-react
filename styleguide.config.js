@@ -11,6 +11,10 @@ module.exports = {
     }).parse,
     sections: [
         {
+            name: 'Introduction',
+            content: 'README.md'
+        },
+        {
             name: 'Page Content',
             components: () => [
               'src/components/Badge/*.tsx', 
