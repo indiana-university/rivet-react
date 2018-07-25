@@ -39,7 +39,7 @@ Check out the [Component Documentation and Style Guide](https://indiana-universi
 
 ## Contributing
 
-[Rivet-react](https://github.com/indiana-university/rivet-react/) is open source and maintained by members of the [Indiana University](https://github.com/indiana-university) organization on GitHub. If you have questions about the library or encounter problems please [file an issue](https://github.com/indiana-university/rivet-react/issues). If you wish to contributed, [pull requests](https://help.github.com/articles/about-pull-requests/) are welcome!
+[Rivet-react](https://github.com/indiana-university/rivet-react/) is open source and maintained by members of the [Indiana University](https://github.com/indiana-university) organization on GitHub. If you have questions about the library or encounter problems please [file an issue](https://github.com/indiana-university/rivet-react/issues). If you wish to contribute, [pull requests](https://help.github.com/articles/about-pull-requests/) are welcome!
 
 To get started, fork the [rivet-react repo](https://github.com/indiana-university/rivet-react/) on GitHub.
 
@@ -74,4 +74,4 @@ This project supports hot reloading of tests and the demo page.
 * **We aspire to full test coverage of all components.** Look at existing tests for examples on how to write them. If you have questions about testing or how to resolve coverage issues, we can help!  
 * **All component properties should be documented.** Property documentation should link to relevant Rivet documentation if available, particularly if the property is for styling and presentation options. Look to existing components for examples.
 * **Components should be included in the style guide.** `styleguide.config.js` organizes component documentation into sections that align with the Rivet component documentation. If you're adding a new component, please place its documentation in the appropriate section.
-* **Components should have usage examples.** Every component should have a markdown file (`.md`) alongside its implmentation file (`.tsx`) with usage examples for the style guide. Look to existing components for examples.
+* **Components should have usage examples.** Every component should have a markdown file (`.md`) alongside its implementation file (`.tsx`) with usage examples for the style guide. Look to existing components for examples.
