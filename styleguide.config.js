@@ -11,14 +11,9 @@ module.exports = {
     }).parse,
     sections: [
         {
-            name: 'Demo',
-            components: () => [
-              'src/Demo.tsx', 
-          ],
-        },
-        {
             name: 'Page Content',
             components: () => [
+              'src/components/Badge/*.tsx', 
               'src/components/List/*.tsx', 
           ],
         },
@@ -36,7 +31,8 @@ module.exports = {
         {
             name: 'Layout',
             components: () => [
-              'src/components/Grid/*.tsx', 
+              'src/components/Grid/*.tsx',
+              'src/components/Section/*.tsx',
           ],
         },
         {   
