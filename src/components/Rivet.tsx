@@ -48,7 +48,7 @@ export const Sizes = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' ];
 export type Edge = 'top' | 'right' | 'bottom' | 'left';
 export const Edges = [ 'top', 'right', 'bottom', 'left' ];
 export type Display = "inline" | "inline-block" | "block" | "flex" | "flex-vertical-center";
-export type Border = "all" | Edge | Edge[]
+export type Border = "all" | "radius" | Edge | Edge[]
 export type Hidden = "sm-down" | "md-down" | "lg-down" | "xl-down" | "xxl-down" | "sm-up" | "md-up" | "lg-up" | "xl-up" | "xxl-up"
 
 /**
@@ -142,6 +142,7 @@ const parseRivetBorder = (border?: Border) => {
         return border.map((value) => `rvt-border-${value}`);
     } else {
         return ({
+            [`rvt-border-all`]: border === 'radius',
             [`rvt-border-${border}`]: !!border
         });
     }

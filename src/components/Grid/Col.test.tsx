@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import Col from './Column';
+import Col from './Col';
 
 describe('<Col />', () => {
     describe('Rendering and styling', () =>{

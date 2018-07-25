@@ -22,9 +22,8 @@
     "rivet-uits": "^1.0.0"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "build-dist": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
+    "start": "npx styleguidist server",
+    "build": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
@@ -39,6 +38,8 @@
     "@types/react-router-dom": "^4.2.7",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "react-docgen-typescript": "1.6.2",
+    "react-styleguidist": "7.1.0",
     "typescript": "^2.9.2"
   },
   "files": [

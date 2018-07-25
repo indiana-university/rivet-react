@@ -34,9 +34,9 @@ To test with code coverage:
 
     yarn test --coverage
 
-To start a local server with the Demo page:
+To start a local server with the style guide and demo pages:
 
-    yarn build && yarn start
+    yarn start
 
 This project supports hot reloading of tests and the demo page.
 
