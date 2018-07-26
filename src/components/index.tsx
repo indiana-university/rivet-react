@@ -7,6 +7,7 @@ export * from './Form';
 export * from './Grid';
 export * from './Input';
 export * from './List';
+export * from './Panel';
 export * from './RadioButton';
 export * from './Section';
 export { Action, Nav } from './Rivet';
