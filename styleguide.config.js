@@ -9,6 +9,7 @@ module.exports = {
             prop.description.length > 0               // skip props with no documentation
             && prop.name.includes("aria-") === false  // skip aria props
     }).parse,
+    pagePerSection: true,
     sections: [
         {
             name: 'Introduction',
@@ -19,6 +20,13 @@ module.exports = {
             components: () => [
               'src/components/Badge/*.tsx', 
               'src/components/List/*.tsx', 
+            ],
+            sections: [
+                {
+                    name: 'Links',
+                    content: 'src/docs/links.md',
+                    exampleMode: 'expand'
+                }
             ],
             exampleMode: 'expand'
         },
@@ -37,9 +45,27 @@ module.exports = {
         },
         {
             name: 'Layout',
+            sections: [
+                {
+                    name: 'Grid',
+                    components: () => [
+                      'src/components/Grid/*.tsx',
+                    ],
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'Spacing',
+                    content: 'src/docs/spacing.md',
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'Typography',
+                    content: 'src/docs/typography.md',
+                    exampleMode: 'expand'
+                }
+            ],
             components: () => [
-              'src/components/Grid/*.tsx',
-              'src/components/Section/*.tsx',
+                'src/components/Section/*.tsx'
             ],
             exampleMode: 'expand'
         },
@@ -56,6 +82,36 @@ module.exports = {
               'src/components/Alert/*.tsx', 
             ],
             exampleMode: 'expand'
+        },
+        {
+            name: 'Utilities',
+            sections: [
+                {
+                    name: 'Border',
+                    content: 'src/docs/border.md',
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'Typography',
+                    content: 'src/docs/display.md',
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'Text',
+                    content: 'src/docs/text-utils.md',
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'Visibility',
+                    content: 'src/docs/visibility.md',
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'z-index',
+                    content: 'src/docs/z-index.md',
+                    exampleMode: 'expand'
+                }
+            ]
         },
     ],
     webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
