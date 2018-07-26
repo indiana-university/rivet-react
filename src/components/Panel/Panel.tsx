@@ -8,7 +8,7 @@ interface PanelProps {
      * If true, adds a class to create a panel with a white background
      * See https://rivet.uits.iu.edu/components/layout/panels/#light-modifier
      */
-    light?: boolean,
+    light?: boolean;
 }
 
 const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, id=shortuid(), light, ...attrs }) => {
