@@ -15,11 +15,6 @@ describe('<Panel />', () => {
             expect(cut.find('div').prop('id')).toBe(id);
         });
 
-        it('should generate an ID if one is not provided', () => {
-            const cut = mount(<Panel />);
-            expect(cut.find('div').prop('id')).toBeDefined();
-        });
-
         it('should contain the rivet class', () =>{
             const cut = mount(<Panel />);
             expect(cut.find('div').prop('className')).toBe('rvt-panel');

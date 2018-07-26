@@ -11,13 +11,13 @@ interface PanelProps {
     light?: boolean;
 }
 
-const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, id=shortuid(), light, ...attrs }) => {
+const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className,  light, ...attrs }) => {
     const classes = classNames({
         ['rvt-panel']: true,
         [`rvt-panel--light`]: light
     }, className);
     return (
-        <div className={classes} id={id} {...attrs}>{children}</div>
+        <div className={classes} {...attrs}>{children}</div>
     );
 };
 Panel.displayName = 'Panel';
