@@ -27,7 +27,8 @@ module.exports = {
             components: () => [
               'src/components/Form/*.tsx', 
               'src/components/Button/*.tsx', 
-              'src/components/Checkbox/*.tsx', 
+              'src/components/Checkbox/*.tsx',
+              'src/components/File/*.tsx',
               'src/components/RadioButton/*.tsx', 
               'src/components/Input/Input.tsx', 
               'src/components/Input/Textarea.tsx', 
