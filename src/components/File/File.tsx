@@ -30,18 +30,13 @@ class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInpu
 
     public readonly state: FileState = initialState;
 
-    constructor(props) {
-        super(props);
-        this.handleFileChange = this.handleFileChange.bind(this);
-    }
-
     public render() {
         return (
             <FileInput {...this.props} fileName={this.state.files} onChange={this.handleFileChange} />
         )
     }
 
-    private handleFileChange(changeEvent) {
+    private handleFileChange = (changeEvent) => {
         // changeEvent.target.files is a FileList which is not iterable, though a for..of loop works
         const files: string[] = [];
         for(const file of changeEvent.target.files) {
