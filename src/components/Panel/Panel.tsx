@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { rivetize, shortuid } from '../Rivet';
+import { rivetize } from '../Rivet';
 
 interface PanelProps {
 
