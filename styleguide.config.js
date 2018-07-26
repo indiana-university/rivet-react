@@ -6,8 +6,12 @@ module.exports = {
     resolver: require('react-docgen').resolver.findAllComponentDefinitions,
     propsParser: require('react-docgen-typescript').withDefaultConfig({
         propFilter: (prop, component) => 
-            prop.description.length > 0               // skip props with no documentation
-            && prop.name.includes("aria-") === false  // skip aria props
+            // skip props with no documentation
+            prop.description.length > 0
+            // skip aria props               
+            && prop.name.includes("aria-") === false
+            // skip 'rivetize' props (these are documented separately)
+            && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1  
     }).parse,
     pagePerSection: true,
     sections: [
