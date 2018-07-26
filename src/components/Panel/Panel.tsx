@@ -2,13 +2,15 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import { rivetize } from '../Rivet';
 
+type Variant = 'default' | 'light';
+
 interface PanelProps {
 
     /**
      * Color theming fot the panel
      * See https://rivet.uits.iu.edu/components/layout/panels/#light-modifier
      */
-    variant?: 'default' | 'light';
+    variant?: Variant;
 }
 
 const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className,  variant='default', ...attrs }) => {
