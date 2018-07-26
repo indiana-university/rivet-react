@@ -43,7 +43,7 @@ module.exports = {
               'src/components/File/*.tsx',
               'src/components/RadioButton/*.tsx', 
               'src/components/Input/Input.tsx', 
-              'src/components/Input/Textarea.tsx', 
+              'src/components/Input/Textarea.tsx',
             ],
             exampleMode: 'expand'
         },
@@ -84,7 +84,8 @@ module.exports = {
         {
             name: 'Overlays',
             components: () => [
-              'src/components/Alert/*.tsx', 
+              'src/components/Alert/*.tsx',
+              'src/components/Alert/InlineAlert.tsx',
             ],
             exampleMode: 'expand'
         },
