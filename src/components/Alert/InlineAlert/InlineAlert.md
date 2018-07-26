@@ -6,7 +6,7 @@ When using standalone inline alerts with a group of inputs, make sure to add the
 
 ```jsx
 <fieldset>
-    <legend className="rvt-sr-only">Checkbox List</legend>
+    <legend className="rvt-sr-only">Radio Button List</legend>
     <List variant="plain">
         <RadioButton name="radio-list-demo" label="Option One" />
         <RadioButton name="radio-list-demo" label="Option Two" defaultChecked />
