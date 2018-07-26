@@ -1,7 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../Rivet';
-import * as util from '../util';
 
 /**
  * The properties of a button.
@@ -45,7 +44,7 @@ const buttonRoleAndStyle = (variant: VariantType, role: RoleType) => {
 const buttonSize = (size: SizeType) => (size !== "default" ? `${buttonClass}--${size}` : None);
 
 const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
-  ({role = "default", size = "default", variant = "default", onClick, id = util.shortuid(), className, children, ...attrs}) => {
+  ({role = "default", size = "default", variant = "default", onClick, id = Rivet.shortuid(), className, children, ...attrs}) => {
   const classes = classNames(buttonClass, buttonRoleAndStyle(variant, role), buttonSize(size), className);
   return (
     <button

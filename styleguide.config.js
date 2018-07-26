@@ -6,9 +6,14 @@ module.exports = {
     resolver: require('react-docgen').resolver.findAllComponentDefinitions,
     propsParser: require('react-docgen-typescript').withDefaultConfig({
         propFilter: (prop, component) => 
-            prop.description.length > 0               // skip props with no documentation
-            && prop.name.includes("aria-") === false  // skip aria props
+            // skip props with no documentation
+            prop.description.length > 0
+            // skip aria props               
+            && prop.name.includes("aria-") === false
+            // skip 'rivetize' props (these are documented separately)
+            && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1  
     }).parse,
+    pagePerSection: true,
     sections: [
         {
             name: 'Introduction',
@@ -20,6 +25,13 @@ module.exports = {
               'src/components/Badge/*.tsx', 
               'src/components/List/*.tsx', 
             ],
+            sections: [
+                {
+                    name: 'Links',
+                    content: 'src/docs/links.md',
+                    exampleMode: 'expand'
+                }
+            ],
             exampleMode: 'expand'
         },
         {
@@ -27,7 +39,8 @@ module.exports = {
             components: () => [
               'src/components/Form/*.tsx', 
               'src/components/Button/*.tsx', 
-              'src/components/Checkbox/*.tsx', 
+              'src/components/Checkbox/*.tsx',
+              'src/components/File/*.tsx',
               'src/components/RadioButton/*.tsx', 
               'src/components/Input/Input.tsx', 
               'src/components/Input/Textarea.tsx', 
@@ -36,8 +49,27 @@ module.exports = {
         },
         {
             name: 'Layout',
+            sections: [
+                {
+                    name: 'Grid',
+                    components: () => [
+                      'src/components/Grid/*.tsx',
+                    ],
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'Spacing',
+                    content: 'src/docs/spacing.md',
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'Typography',
+                    content: 'src/docs/typography.md',
+                    exampleMode: 'expand'
+                }
+            ],
             components: () => [
-              'src/components/Grid/*.tsx',
+              'src/components/Panel/*.tsx',
               'src/components/Section/*.tsx',
             ],
             exampleMode: 'expand'
@@ -55,6 +87,36 @@ module.exports = {
               'src/components/Alert/*.tsx', 
             ],
             exampleMode: 'expand'
+        },
+        {
+            name: 'Utilities',
+            sections: [
+                {
+                    name: 'Border',
+                    content: 'src/docs/border.md',
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'Typography',
+                    content: 'src/docs/display.md',
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'Text',
+                    content: 'src/docs/text-utils.md',
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'Visibility',
+                    content: 'src/docs/visibility.md',
+                    exampleMode: 'expand'
+                },
+                {
+                    name: 'z-index',
+                    content: 'src/docs/z-index.md',
+                    exampleMode: 'expand'
+                }
+            ]
         },
     ],
     webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
