@@ -24,6 +24,12 @@ describe('Inline Alerts', () => {
     it('applies class names to the containing div', () => {
         const cut = mount(<InlineAlert variant="invalid" className="foo">😬</InlineAlert>);
         expect(cut.find('.rvt-inline-alert').hasClass("foo")).toBe(true);
+    });
+
+    it('renders the children as a message of the alert', () => {
+        const messageText = 'This is some alert text'
+        const cut = mount(<InlineAlert variant="info" >{messageText}</InlineAlert>);
+        expect(cut.find('.rvt-inline-alert').text()).toBe(messageText);
     })
 });
 

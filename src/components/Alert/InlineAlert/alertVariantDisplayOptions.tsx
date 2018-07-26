@@ -44,19 +44,6 @@ const variantDisplayOptions : object = {
     },
 }
 
-export const alertIcon = (variant : Variant) => variantDisplayOptions[variant] && (
-    <span className="rvt-inline-alert__icon">
-        <svg
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16">
-            <g fill="currentColor">
-                {variantDisplayOptions[variant].icon}
-            </g>
-        </svg>
-    </span>
-);
+export const alertIcon = (variant : Variant) => variantDisplayOptions[variant] && variantDisplayOptions[variant].icon;
 export const alertClass = (variant : Variant) => variantDisplayOptions[variant] && variantDisplayOptions[variant].className;
 

@@ -2,7 +2,7 @@ import * as classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import * as Rivet from '../Rivet';
+import * as Rivet from '../../Rivet';
 import { alertClass, alertIcon, Variant } from './alertVariantDisplayOptions';
 
 interface InlineAlertProps {
@@ -19,7 +19,14 @@ interface InlineAlertProps {
 };
 
 const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElement>> =
-    ({ children = null, className = '', id = Rivet.shortuid(), standalone = false, variant = 'info' }) => {
+    ({
+        children,
+        className,
+        id = Rivet.shortuid(),
+        standalone = false,
+        /* istanbul ignore next */ // We definitely want to set a default here, but Istanbul doesn't detect coverage correctly on props like this one
+        variant = 'info'
+    }) => {
         const classes = classNames({
             ['rvt-inline-alert']: true,
             ['rvt-inline-alert--standalone']: standalone,
@@ -46,4 +53,4 @@ InlineAlert.propTypes = {
     variant: PropTypes.string
 };
 
-export default InlineAlert;
+export default Rivet.rivetize(InlineAlert);
