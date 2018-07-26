@@ -39,6 +39,7 @@ module.exports = {
             name: 'Layout',
             components: () => [
               'src/components/Grid/*.tsx',
+              'src/components/Panel/*.tsx',
               'src/components/Section/*.tsx',
             ],
             exampleMode: 'expand'
