@@ -85,7 +85,7 @@ module.exports = {
             name: 'Overlays',
             components: () => [
               'src/components/Alert/*.tsx',
-              'src/components/Alert/InlineAlert/InlineAlert.tsx',
+              'src/components/Alert/InlineAlert.tsx',
             ],
             exampleMode: 'expand'
         },

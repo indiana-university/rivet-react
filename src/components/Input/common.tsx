@@ -1,10 +1,10 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import InlineAlert from '../Alert/InlineAlert/InlineAlert';
+import InlineAlert from '../Alert/InlineAlert';
 import * as Rivet from '../Rivet';
 
-import { alertClass, Variant } from '../Alert/InlineAlert/alertVariantDisplayOptions';
+import { alertClass, Variant } from '../Alert/inlineAlertVariantDisplayOptions';
 
 type InputVariant = Variant | 'default';
 export interface TextProps {

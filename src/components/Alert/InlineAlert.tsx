@@ -2,8 +2,8 @@ import * as classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import * as Rivet from '../../Rivet';
-import { alertClass, alertIcon, Variant } from './alertVariantDisplayOptions';
+import * as Rivet from '../Rivet';
+import { alertClass, alertIcon, Variant } from './inlineAlertVariantDisplayOptions';
 
 interface InlineAlertProps {
     /**
