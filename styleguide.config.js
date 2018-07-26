@@ -69,7 +69,9 @@ module.exports = {
                 }
             ],
             components: () => [
-                'src/components/Section/*.tsx'
+              'src/components/Section/*.tsx'
+              'src/components/Panel/*.tsx',
+              'src/components/Section/*.tsx',
             ],
             exampleMode: 'expand'
         },
