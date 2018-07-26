@@ -20,8 +20,8 @@ describe('<Panel />', () => {
             expect(cut.find('div').prop('className')).toBe('rvt-panel');
         });        
 
-        it('should contain the appropriate classes if given "light" prop', () =>{
-            const cut = mount(<Panel light />);
+        it('should contain the appropriate classes if given "variant" prop', () =>{
+            const cut = mount(<Panel variant="light" />);
             expect(cut.find('div').prop('className')).toBe('rvt-panel rvt-panel--light');
         });        
 

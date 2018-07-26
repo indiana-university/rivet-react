@@ -5,16 +5,16 @@ import { rivetize } from '../Rivet';
 interface PanelProps {
 
     /**
-     * If true, adds a class to create a panel with a white background
+     * Color theming fot the panel
      * See https://rivet.uits.iu.edu/components/layout/panels/#light-modifier
      */
-    light?: boolean;
+    variant?: 'default' | 'light';
 }
 
-const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className,  light, ...attrs }) => {
+const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className,  variant='default', ...attrs }) => {
     const classes = classNames({
         ['rvt-panel']: true,
-        [`rvt-panel--light`]: light
+        [`rvt-panel--${variant}`]: variant !== 'default' 
     }, className);
     return (
         <div className={classes} {...attrs}>{children}</div>
