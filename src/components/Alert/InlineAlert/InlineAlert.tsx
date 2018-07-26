@@ -12,7 +12,7 @@ interface InlineAlertProps {
      */
     standalone?: boolean;
     /**
-     * Optional Rivet style for inline validation.
+     * Rivet style for inline validation.
      * See: https://rivet.uits.iu.edu/components/forms/text-input/#inline-validation-states
      */
     variant: Variant;
@@ -24,8 +24,7 @@ const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElem
         className,
         id = Rivet.shortuid(),
         standalone = false,
-        /* istanbul ignore next */ // We definitely want to set a default here, but Istanbul doesn't detect coverage correctly on props like this one
-        variant = 'info'
+        variant
     }) => {
         const classes = classNames({
             ['rvt-inline-alert']: true,
