@@ -7,8 +7,8 @@ type Variant = 'default' | 'light';
 interface PanelProps {
 
     /**
-     * Color theming fot the panel
-     * See https://rivet.uits.iu.edu/components/layout/panels/#light-modifier
+     * Color theming for the panel
+     * @see https://rivet.uits.iu.edu/components/layout/panels/#light-modifier
      */
     variant?: Variant;
 }
