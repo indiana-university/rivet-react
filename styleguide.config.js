@@ -77,6 +77,7 @@ module.exports = {
         {   
             name: 'Navigation',
             components: () => [
+              'src/components/Dropdown/*.tsx', 
               'src/components/Footer/*.tsx', 
             ],
             exampleMode: 'expand'
