@@ -5,7 +5,7 @@ A modal is a smaller window that is displayed on top of the main application/sit
 #### Modal Example
 
 ```jsx
-<Modal title="Modal Title" controls={[<Button>OK</Button>, <Button>Cancel</Button>]}>
+<Modal isOpen title="Modal Title" onDismiss={(e) => e.preventDefault()} controls={[<Button key="modal-ok-button">OK</Button>, <Button key="modal-cancel-button">Cancel</Button>]}>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <a href="#">incididunt ut labore</a> et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </Modal>
 ```
@@ -17,7 +17,7 @@ We use the generic term “Modal” to mean any smaller window that is displayed
 A modal dialog is similar to a regular modal except that it requires the user to interact with it before continuing any interaction with the main application. The user must select from the available actions in the dialog—they cannot disregard and simply close the window.
 
 ```jsx
-<Modal dialog title="Modal Dialog" controls={[<Button>Yes</Button>, <Button>No, thanks</Button>]}>
+<Modal title="Modal Dialog" controls={[<Button key="dialog-yes-button">Yes</Button>, <Button key="dialog-no-button">No, thanks</Button>]}>
   <p>A modal dialog:</p>
     <ul>
       <li>Is not dismissable i.e. doesn't have an (X) button</li>

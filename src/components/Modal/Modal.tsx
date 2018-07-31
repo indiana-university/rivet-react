@@ -7,10 +7,13 @@ import Button, { ButtonProps } from '../Button/Button';
 
 interface ModalProps {
     /**
-     * Determines whether a button to close the modal is displayed.
-     * See https://rivet.uits.iu.edu/components/overlays/modals/
+     * Determines whether the modal is shown or not
      */
-    dialog?: boolean;
+    isOpen?: boolean;
+    /**
+     * Optional event to raise when the alert is dismissed
+     */
+    onDismiss?: Rivet.Action
     /**
      * The content of the modal's header
      */
@@ -22,31 +25,30 @@ interface ModalProps {
 }
 
 const Modal : React.SFC<ModalProps & React.HTMLAttributes<HTMLDivElement>> = 
-    ({ children, controls, dialog, title, id = Rivet.shortuid() }) => {
+    ({ children, controls, isOpen, onDismiss, title, id = Rivet.shortuid() }) => {
         return (
             <div
                 className="rvt-modal"
                 id={id}
                 role="dialog"
                 aria-labelledby={`${id}-title`}
-                aria-hidden="true"
+                aria-hidden={!isOpen}
                 tabIndex={-1}
-                data-modal-dialog={!!dialog}
             >
                 <div className="rvt-modal__inner">
                     <header className="rvt-modal__header">
                         <h1 className="rvt-modal__title" id={`${id}-title`}>{title}</h1>
                     </header>
                     <div className="rvt-modal__body">
-                        <p>{children}</p>
+                        {children}
                     </div>
                     { controls && 
                         <div className="rvt-modal__controls">
                             {controls}
                         </div>
                     }
-                    { dialog &&
-                        <button className="rvt-button rvt-modal__close" data-modal-close="close">
+                    { onDismiss &&
+                        <button className="rvt-button rvt-modal__close" data-modal-close="close" onClick={onDismiss}>
                             <span className="rvt-sr-only">Close</span>
                             <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                 <path fill="currentColor" d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z"/>
@@ -61,8 +63,9 @@ Modal.displayName = 'Modal';
 Modal.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
     controls: PropTypes.oneOf([PropTypes.instanceOf(Button), PropTypes.arrayOf(PropTypes.instanceOf(Button))]).isRequired,
-    dialog: PropTypes.bool,
     id: PropTypes.string,
+    isOpen: PropTypes.bool,
+    onDismiss: PropTypes.function,
     title: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
 };
 
