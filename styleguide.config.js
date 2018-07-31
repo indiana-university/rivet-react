@@ -86,6 +86,7 @@ module.exports = {
             components: () => [
               'src/components/Alert/*.tsx',
               'src/components/Alert/InlineAlert.tsx',
+              'src/components/Modal/*.tsx'
             ],
             exampleMode: 'expand'
         },

@@ -8,7 +8,7 @@ import * as Rivet from '../Rivet';
 type VariantType = 'success' | 'danger' | 'plain' | 'default';
 type SizeType = 'small' | 'default';
 type RoleType = 'secondary' | 'default';
-interface ButtonProps {
+export interface ButtonProps {
     onClick?: Rivet.Action;
     /** Optional Rivet style: a success/danger/plain button. See: https://rivet.uits.iu.edu/components/forms/buttons/#button-examples */
     variant?: VariantType;
