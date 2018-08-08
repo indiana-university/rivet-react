@@ -60,7 +60,6 @@ describe('<Modal />', () => {
     });
 
     it('should show its children in the body div', () => {
-        
         const cut = mount(<Modal title={title} controls={okButton}>{body}</Modal>);
         expect(cut.find('div.rvt-modal__body').text()).toBe(body);
     });

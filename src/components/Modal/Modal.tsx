@@ -31,17 +31,17 @@ export interface ModalProps {
 
 class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLButtonElement>> {
     
+    public static displayName = 'Modal';
+
     public static propTypes = {
         children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
         className: PropTypes.string,
-        controls: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape({ type: PropTypes.oneOf([Button]) })), PropTypes.shape({ type: PropTypes.oneOf([Button]) })]),
+        controls: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape({ type: PropTypes.oneOf([Button]) })), PropTypes.shape({ type: PropTypes.oneOf([Button]) })]).isRequired,
         id: PropTypes.string,
         isOpen: PropTypes.bool,
         onDismiss: PropTypes.func,
         title: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node, PropTypes.string]).isRequired
     };
-
-    public static displayName = 'Modal';
 
     private eventHandler;
 

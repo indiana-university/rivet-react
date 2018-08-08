@@ -1,6 +1,6 @@
 ### Modal
 
-A modal is a smaller window that is displayed on top of the main application/site window. The main page is still visible but, the background is darkened to direct focus to the content of the modal window.
+A modal is a smaller window that is displayed on top of the main application/site window. The main page is still visible but the background is darkened to direct focus to the content of the modal window.
 
 #### Modal Example
 
@@ -45,7 +45,6 @@ class ModalExample extends React.Component {
 }
 
 <ModalExample />
-
 ```
 
 #### Modal Dialog Example
@@ -54,7 +53,7 @@ We use the generic term “Modal” to mean any smaller window that is displayed
 
 A modal dialog is similar to a regular modal except that it requires the user to interact with it before continuing any interaction with the main application. The user must select from the available actions in the dialog—they cannot disregard and simply close the window.
 
-A modal dialog is created by not providing a `onDismiss` prop.
+A modal dialog is created by not providing an `onDismiss` prop.
 
 ```jsx
 class DialogExample extends React.Component {
@@ -101,4 +100,3 @@ class DialogExample extends React.Component {
 
 <DialogExample />
 ```
-  
