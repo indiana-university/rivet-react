@@ -4,8 +4,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import Button, { ButtonProps } from '../Button/Button';
-import ModalEvent from './ModalEvent';
 import * as Rivet from '../Rivet';
+import ModalEvent from './ModalEvent';
+
 
 export interface ModalProps {
     /**
