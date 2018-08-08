@@ -1,30 +1,20 @@
 ### Example
 ```jsx
-<Dropdown title="Navigation menu">
+<Dropdown label="Navigation menu">
     <a href="#">Item one</a>
     <a href="#">Item two</a>
     <a href="#" aria-current="page">Item three</a>
     <a href="#">Item four</a>
-    <DropdownGroup label="Related">
+    <DropdownGroup>
         <a href="#">Related item three</a>
         <a href="#">Related item four</a>
     </DropdownGroup>
 </Dropdown>
 ```
 
-### Navigation dropdown
-```jsx
-<Dropdown nav title="Navigation menu">
-    <a href="#">Item one</a>
-    <a href="#">Item two</a>
-    <a href="#" aria-current="page">Item three</a>
-    <a href="#">Item four</a>
-</Dropdown>
-```
-
 ### Right-align dropdown
 ```jsx
-<Dropdown title="Right menu" align="right">
+<Dropdown label="Right menu" align="right" variant="secondary">
     <a href="#">Item one</a>
     <a href="#">Item two</a>
     <a href="#" aria-current="page">Item three</a>

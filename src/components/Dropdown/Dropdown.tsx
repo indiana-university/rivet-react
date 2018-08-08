@@ -1,14 +1,14 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import Button, { ButtonProps } from '../Button/Button';
 import { Action, rivetize, shortuid } from '../Rivet';
 import DropdownEvent from './DropdownEvent';
 
-interface DropdownProps {
+
+interface DropdownProps extends ButtonProps {
     align?: 'right';
-    menuClass?: string;
-    nav?: boolean;
-    title?: string;
+    label?: string;
     toggleDesktopDropdown?: Action;
 }
 
@@ -42,24 +42,22 @@ class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttributes<
     }
 
     public render() {
-        const { align, children, className, id = shortuid(), menuClass, nav, title, ...attrs } = this.props;
+        const { align, children, className, id = shortuid(), label, ...attrs } = this.props;
         const classes = classNames({
-            ['rvt-button']: !nav,
-            ['rvt-dropdown__toggle']: nav
         }, className);
         const menuClasses = classNames({
             ['rvt-dropdown__menu']: true,
             [`rvt-dropdown__menu--${align}`]: !!align
-        }, menuClass);
+        });
         return (
             <div className="rvt-dropdown">
-                <button {...attrs} ref={this.toggleButton} className={classes} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
-                    <span className="rvt-dropdown__toggle-text">{title}</span>
+                <Button {...attrs} innerRef={this.toggleButton} className={classes} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
+                    <span className="rvt-dropdown__toggle-text">{label}</span>
                     <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                         <title>Dropdown icon</title>
                         <path fill="currentColor" d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z" />
                     </svg>
-                </button>
+                </Button>
     
                 {this.state.open &&
                     <div className={menuClasses} id={id} aria-hidden={!this.state.open} role="menu">
