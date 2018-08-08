@@ -101,46 +101,4 @@ class DialogExample extends React.Component {
 
 <DialogExample />
 ```
-
-### StatefulModal Example
-
-A StatefulModal provides default `onDismiss` behavior. I.e., clicking ourside of the modal or clicking the close button will close the modal.
-
-Does not work (you can open it once and close it, but will not open again). Not sure how you can open it from the parent, but close it from within.
-
-```jsx
-class StatefulModalExample extends React.Component  {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false
-    }
-
-    this.onClick = this.onClick.bind(this);
-  }
-
-  render() {
-    return (
-      <>
-        <Button onClick={this.onClick}>Open Modal</Button>
-        <StatefulModal 
-          isOpen={this.state.open} 
-          title="Modal Title" 
-          controls={[<Button key="modal-ok-button">OK</Button>, <Button key="modal-cancel-button">Cancel</Button>]}
-        >
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <a href="#">incididunt ut labore</a> et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </StatefulModal>
-      </>
-
-    );
-  }
-
-  onClick(e) {
-    this.setState({
-      open: true
-    });
-  }
-}
-<StatefulModalExample />
-```
+  
