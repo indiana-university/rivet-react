@@ -34,10 +34,7 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLBu
     public static propTypes = {
         children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
         className: PropTypes.string,
-        // TODO: this doesn't work. Not sure we should be so restrictive anyway, but also not sure why it doesn't work
-        // also, doesn't match the typescript type
-        // controls: PropTypes.oneOfType([PropTypes.instanceOf(Button), PropTypes.arrayOf(PropTypes.instanceOf(Button))]).isRequired,
-        control: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+        controls: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape({ type: PropTypes.oneOf([Button]) })), PropTypes.shape({ type: PropTypes.oneOf([Button]) })]),
         id: PropTypes.string,
         isOpen: PropTypes.bool,
         onDismiss: PropTypes.func,
