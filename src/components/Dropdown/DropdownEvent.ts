@@ -6,8 +6,6 @@ export const keys = {
 export default class DropdownEvent {
 
     public static handler = (callback) => {
-        // Ignoring Istanbul coverage here because we will not be able to test document-level event handling in a unit test
-        /* istanbul ignore next  */
         const eventHandler = (event) => {
             callback(new DropdownEvent(event));
         };

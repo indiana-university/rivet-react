@@ -2,20 +2,19 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Button, { ButtonProps } from '../Button/Button';
-import { Action, rivetize, shortuid } from '../Rivet';
+import { rivetize } from '../Rivet';
 import DropdownEvent from './DropdownEvent';
 
 
 interface DropdownProps extends ButtonProps {
     align?: 'right';
     label?: string;
-    toggleDesktopDropdown?: Action;
 }
 
 const initialState = { open: false }
 type DropdownState = Readonly<typeof initialState>
 
-class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttributes<HTMLButtonElement>, DropdownState> {
+export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttributes<HTMLButtonElement>, DropdownState> {
 
     public readonly state: DropdownState = initialState;
     private toggleButton: React.RefObject<HTMLButtonElement>;
@@ -24,6 +23,8 @@ class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttributes<
     constructor(props) {
         super(props);
         this.toggleButton = React.createRef();
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.toggleDropdown = this.toggleDropdown.bind(this);
         this.eventHandler = DropdownEvent.handler(this.handleClickOutside);
     }
 
@@ -42,7 +43,7 @@ class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttributes<
     }
 
     public render() {
-        const { align, children, className, id = shortuid(), label, ...attrs } = this.props;
+        const { align, children, className, label, ...attrs } = this.props;
         const classes = classNames({
         }, className);
         const menuClasses = classNames({
@@ -60,7 +61,7 @@ class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttributes<
                 </Button>
     
                 {this.state.open &&
-                    <div className={menuClasses} id={id} aria-hidden={!this.state.open} role="menu">
+                    <div className={menuClasses} aria-hidden={!this.state.open} role="menu">
                         {children}
                     </div>
                 }
@@ -68,8 +69,19 @@ class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttributes<
         );
     }
 
-    private toggleDropdown = (event) => {
+    public toggleDropdown(event) {
         this.setState({ open: !this.state.open });
+    }
+
+    public handleClickOutside(event: DropdownEvent) {
+        if(event && this.shouldToggleDropdown(event)) {
+            this.toggleDropdown(event);
+
+            if(event.isEscapeKeyPress() && this.toggleButton.current) {
+                // If the user pressed the escape key and we have a current reference to the dropdown toggle button put focus back on it
+                this.toggleButton.current.focus();
+            }
+        }
     }
 
     private shouldToggleDropdown = (event: DropdownEvent) => {
@@ -84,17 +96,6 @@ class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttributes<
         }
 
         return true;
-    }
-
-    private handleClickOutside = (event: DropdownEvent) => {
-        if(event && this.shouldToggleDropdown(event)) {
-            this.toggleDropdown(event);
-
-            if(event.isEscapeKeyPress() && this.toggleButton.current) {
-                // If the user pressed the escape key and we have a current reference to the dropdown toggle button put focus back on it
-                this.toggleButton.current.focus();
-            }
-        }
     }
 
     private handleEventRegistration = () => {
