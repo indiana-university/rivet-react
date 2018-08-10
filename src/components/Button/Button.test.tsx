@@ -73,6 +73,12 @@ describe('<Button />', () => {
             expect(cut.find('button.rvt-button').hasClass("rvt-button--plain-secondary")).toEqual(true);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--small")).toEqual(true);
         });
+
+        it('should apply appropriate navigation classes', () => {
+            const cut = mount(<Button variant="navigation" />);
+            expect(cut.find('button').hasClass("rvt-button")).toEqual(false);
+            expect(cut.find('button').hasClass("rvt-dropdown__toggle")).toEqual(true);
+        });
     });
 
     describe("Events", ()=>{
