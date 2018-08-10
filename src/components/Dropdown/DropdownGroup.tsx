@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface DropdownGroupProps {
-    label: string;
+    label?: string;
 }
 
 const DropdownGroup : React.SFC<DropdownGroupProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, label, ...attrs }) => (

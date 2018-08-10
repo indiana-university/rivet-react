@@ -69,11 +69,11 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
         );
     }
 
-    public toggleDropdown(event) {
+    private toggleDropdown(event) {
         this.setState({ open: !this.state.open });
     }
 
-    public handleClickOutside(event: DropdownEvent) {
+    private handleClickOutside(event: DropdownEvent) {
         if(event && this.shouldToggleDropdown(event)) {
             this.toggleDropdown(event);
 
