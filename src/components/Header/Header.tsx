@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import Identity from './HeaderIdentity';
 import Navigation from './HeaderNavigation';
 
 interface HeaderProps {
@@ -11,6 +12,7 @@ interface HeaderProps {
 
 interface Header extends React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> {
     Navigation? : typeof Navigation;
+    Identity? : typeof Identity;
 }
 
 const componentClass = "rvt-header";
@@ -37,5 +39,6 @@ const HeaderComponent : Header = ({ children, className, title, ...attrs }) => (
 
 HeaderComponent.displayName = 'Header';
 HeaderComponent.Navigation = Navigation;
+HeaderComponent.Identity = Identity;
 
 export default HeaderComponent;
