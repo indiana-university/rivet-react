@@ -15,7 +15,8 @@ interface DropdownProps extends ButtonProps {
     /**
      * The text to appear on the dropdown toggle button. 
      */
-    label: string;
+    label: string | React.ReactNode;
+    menuClass: string;
 }
 
 const initialState = { open: false }
@@ -50,13 +51,13 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
     }
 
     public render() {
-        const { align, children, className, label, ...attrs } = this.props;
+        const { align, children, className, label, menuClass, ...attrs } = this.props;
         const classes = classNames({
         }, className);
         const menuClasses = classNames({
             ['rvt-dropdown__menu']: true,
             [`rvt-dropdown__menu--${align}`]: !!align
-        });
+        }, menuClass);
         return (
             <div className="rvt-dropdown">
                 <Button {...attrs} innerRef={this.toggleButton} className={classes} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>

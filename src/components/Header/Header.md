@@ -4,6 +4,12 @@
 
 ```jsx
 <Header title="Application Title">
+    <Header.Identity avatar="RS" username="rswanson" onLogout={() => console.log('Logout!')} />
+</Header>
+```
+
+```jsx
+<Header title="Application Title">
     <Header.Navigation>
         <a href="#">Nav one</a>
         <Dropdown label="Nav two" variant="navigation">
@@ -20,5 +26,11 @@
             <a href="#">Item four</a>
         </Dropdown>
     </Header.Navigation>
+    
+    <Header.Identity avatar="RS" username="rswanson" onLogout={() => console.log('Logout!')}>
+        <a href="#">Account settings</a>
+        <a href="#">Admin task one</a>
+        <a href="#">Admin task two</a>
+    </Header.Identity>
 </Header>
 ```
