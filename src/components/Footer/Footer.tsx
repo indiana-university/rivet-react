@@ -37,4 +37,4 @@ const Footer : React.SFC<FooterProps & React.HTMLAttributes<HTMLDivElement>> = (
 );
 Footer.displayName = 'Footer';
 
-export default Rivet.rivetize(Footer);
+export default Footer;
