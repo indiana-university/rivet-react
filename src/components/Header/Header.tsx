@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import Navigation from './HeaderNavigation';
 
 interface HeaderProps {
     /**
@@ -8,9 +9,13 @@ interface HeaderProps {
     title: string;
 }
 
+interface Header extends React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> {
+    Navigation? : typeof Navigation;
+}
+
 const componentClass = "rvt-header";
 
-const Header : React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, title, ...attrs }) => (
+const HeaderComponent : Header = ({ children, className, title, ...attrs }) => (
     <header className={classNames(componentClass, className)} role="banner">
         <a className="rvt-skip-link" href="#main-content">Skip to content</a>
         <div className="rvt-header__trident">
@@ -23,8 +28,14 @@ const Header : React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> = (
         <span className="rvt-header__title">
             <a href="/">{title}</a>
         </span>
+        { children && 
+          <div className="rvt-header__controls">
+            {children}
+          </div> }
     </header>
 );
-Header.displayName = 'Header';
 
-export default Header;
+HeaderComponent.displayName = 'Header';
+HeaderComponent.Navigation = Navigation;
+
+export default HeaderComponent;

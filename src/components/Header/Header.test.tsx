@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 import Header from './Header';
 
-describe('<Grid />', () => {
+describe('<Header />', () => {
     let cut;
     
     beforeEach(() => {
