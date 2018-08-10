@@ -1,6 +1,10 @@
 import * as React from 'react';
 
 interface DropdownGroupProps {
+    /**
+     * Optional `header for the item group.
+     * @see https://rivet.uits.iu.edu/components/navigation/dropdown/#additional-dropdown-elements
+     */
     label?: string;
 }
 

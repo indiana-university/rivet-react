@@ -9,7 +9,7 @@ type VariantType = 'success' | 'danger' | 'plain' | 'default' | 'navigation';
 type SizeType = 'small' | 'default';
 type RoleType = 'secondary' | 'default';
 export interface ButtonProps {
-    /** Optional Rivet style: a success/danger/plain button. See: https://rivet.uits.iu.edu/components/forms/buttons/#button-examples */
+    /** Optional Rivet style: a success/danger/plain button. The 'navigation' variant is intended to support the Header component only. See: https://rivet.uits.iu.edu/components/forms/buttons/#button-examples */
     variant?: VariantType;
     /** Optional Rivet style: a small button. See: https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons */
     size?: SizeType;

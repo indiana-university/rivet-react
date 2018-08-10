@@ -7,8 +7,15 @@ import DropdownEvent from './DropdownEvent';
 
 
 interface DropdownProps extends ButtonProps {
+    /** 
+     * Optional Rivet style: alignment of the dropdown menu items. 
+     * @see https://rivet.uits.iu.edu/components/navigation/dropdown/#right-align-modifier 
+     */
     align?: 'right';
-    label?: string;
+    /**
+     * The text to appear on the dropdown toggle button. 
+     */
+    label: string;
 }
 
 const initialState = { open: false }
