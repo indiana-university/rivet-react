@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as Rivet from '../Rivet';
+import * as Rivet from '../util/Rivet';
 import { renderInput, TextProps } from './common';
 
 const textareaGenerator = (id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean, attrs:React.TextareaHTMLAttributes<HTMLTextAreaElement>) => (

@@ -1,4 +1,4 @@
-import * as Rivet from "../Rivet"
+import * as Rivet from '../util/Rivet';
 
 export interface StatefulAlertProps {
     /**

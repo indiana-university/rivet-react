@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { rivetize, shortuid } from '../Rivet';
+import { rivetize, shortuid } from '../util/Rivet';
 
 interface FileProps {
     fileName?: string;

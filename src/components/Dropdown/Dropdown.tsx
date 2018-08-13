@@ -2,7 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Button, { ButtonProps } from '../Button/Button';
-import { rivetize } from '../Rivet';
+import { rivetize } from '../util/Rivet';
 import DropdownEvent from './DropdownEvent';
 
 

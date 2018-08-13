@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { rivetize } from '../Rivet';
+import { rivetize } from '../util/Rivet';
 import Alert from './Alert'
 import { StatefulAlertProps } from "./common"
 
