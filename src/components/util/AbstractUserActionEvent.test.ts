@@ -21,7 +21,7 @@ const createTouchEvent = () => ({
     type: 'touchstart'
 }) as TouchEvent;
 
-describe('DropdownEvent', () => {
+describe('AbstractUserActionEvent', () => {
     describe('Keyboard Events', () =>{
         it('determines if the event is a keyboard event', () => {
             expect(new TestEvent(createKeyboardEvent(AbstractUserActionEvent.keys.escape)).isKeyEvent()).toBe(true);
