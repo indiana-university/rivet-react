@@ -2,7 +2,7 @@ import { mount, render } from 'enzyme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Dropdown, { Dropdown as UnwrappedDropdown } from './Dropdown';
-import { keys } from './DropdownEvent';
+import DropdownEvent from './DropdownEvent';
 
 describe('<Dropdown />', () => {
 
@@ -81,21 +81,21 @@ describe('<Dropdown />', () => {
             expectDropdownMenuIsClosed();
             clickToggleButton();
             expectDropdownMenuIsOpen();
-            document.body.dispatchEvent(new KeyboardEvent('keyup', { which: keys.escape }));
+            document.body.dispatchEvent(new KeyboardEvent('keyup', { which: DropdownEvent.keys.escape }));
             expectDropdownMenuIsClosed();
         });
         it('should not toggle the menu when the tab key is pressed inside the menu', () => {
             expectDropdownMenuIsClosed();
             clickToggleButton();
             expectDropdownMenuIsOpen();
-            document.getElementsByClassName('rvt-dropdown__menu')[0].dispatchEvent(new KeyboardEvent('keyup', { which: keys.tab }));
+            document.getElementsByClassName('rvt-dropdown__menu')[0].dispatchEvent(new KeyboardEvent('keyup', { which: DropdownEvent.keys.tab }));
             expectDropdownMenuIsOpen();
         });
         it('should toggle the menu when the tab key is pressed outside the menu', () => {
             expectDropdownMenuIsClosed();
             clickToggleButton();
             expectDropdownMenuIsOpen();
-            document.body.dispatchEvent(new KeyboardEvent('keyup', { which: keys.tab }));
+            document.body.dispatchEvent(new KeyboardEvent('keyup', { which: DropdownEvent.keys.tab }));
             expectDropdownMenuIsClosed();
         });
         it('should not toggle the menu when an unhandled key is pressed', () => {
