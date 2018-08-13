@@ -5,7 +5,8 @@ import Navigation from './HeaderNavigation';
 
 interface HeaderProps {
     /**
-     * The application name or title that appears in the header
+     * The application name or title that appears in the header.
+     * @see https://rivet.uits.iu.edu/components/navigation/header/#base-header
      */
     title: string;
 }

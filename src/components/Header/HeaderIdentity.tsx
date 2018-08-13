@@ -5,14 +5,17 @@ import DropdownGroup from '../Dropdown/DropdownGroup';
 interface HeaderIdentityProps {
     /**
      * An optional user avatar which appears next to the username
+     * @see https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
      */
     avatar?: string | React.ReactNode;
     /**
      * An optional action to take when the user logs out.  If provided a "log out" link will be included.
+     * @see https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
      */
     onLogout?: () => void
     /**
      * The currently logged in user's username
+     * @see https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
      */
     username: string;
 }
