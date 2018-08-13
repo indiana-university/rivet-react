@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { rivetize } from '../Rivet';
+import { rivetize } from '../util/Rivet';
 
 type Variant = 'default' | 'light';
 

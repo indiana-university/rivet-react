@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import * as Rivet from '../Rivet';
+import * as Rivet from '../util/Rivet';
 
 /**
  * The properties of a button.

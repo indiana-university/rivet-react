@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import * as Rivet from '../Rivet';
+import * as Rivet from '../util/Rivet';
 
 interface RadioButtonProps {
     /** The text label/description for this radio option */

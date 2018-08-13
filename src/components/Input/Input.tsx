@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as Rivet from '../Rivet';
+import * as Rivet from '../util/Rivet';
 import { renderInput, TextProps } from './common';
 
 const inputGenerator = (id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean, attrs: React.InputHTMLAttributes<HTMLInputElement>) => (

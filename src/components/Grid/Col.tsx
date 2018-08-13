@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { rivetize } from '../Rivet';
+import { rivetize } from '../util/Rivet';
 
 type ColumnWidth = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 type AutoColumnWidth = ColumnWidth | boolean;

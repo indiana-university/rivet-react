@@ -2,7 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 import InlineAlert from '../Alert/InlineAlert';
-import * as Rivet from '../Rivet';
+import * as Rivet from '../util/Rivet';
 
 import { alertClass, Variant } from '../Alert/inlineAlertVariantDisplayOptions';
 

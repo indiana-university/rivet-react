@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as Rivet from '../Rivet';
+import * as Rivet from '../util/Rivet';
 
 export interface CheckboxProps {
     label: string,

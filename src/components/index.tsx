@@ -10,4 +10,4 @@ export * from './List';
 export * from './Panel';
 export * from './RadioButton';
 export * from './Section';
-export { Action, Nav } from './Rivet';
+export { Action, Nav } from './util/Rivet';
