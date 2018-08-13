@@ -129,7 +129,7 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLBu
         }
     }    
 
-    private handleEventRegistration = () => {
+    public handleEventRegistration = () => {
         if(this.props.onDismiss && this.props.isOpen) {
             this.eventHandler.register();
         } else {
