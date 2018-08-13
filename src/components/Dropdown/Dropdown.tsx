@@ -13,9 +13,9 @@ interface DropdownProps extends ButtonProps {
      */
     align?: 'right';
     /**
-     * The text to appear on the dropdown toggle button. 
+     * Optional text which appears on the dropdown toggle button. 
      */
-    label: string | React.ReactNode;
+    label?: string | React.ReactNode;
     /**
      * Optional CSS classes which will be applied to the dropdown menu
      */
@@ -62,9 +62,9 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
             [`rvt-dropdown__menu--${align}`]: !!align
         }, menuClass);
         return (
-            <div className="rvt-dropdown">
+            <div className="dropdown">
                 <Button {...attrs} innerRef={this.toggleButton} className={classes} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
-                    <span className="rvt-dropdown__toggle-text">{label}</span>
+                    { label && <span className="rvt-dropdown__toggle-text">{label}</span> }
                     <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                         <title>Dropdown icon</title>
                         <path fill="currentColor" d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z" />
