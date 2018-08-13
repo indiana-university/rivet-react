@@ -36,7 +36,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
         this.toggleButton = React.createRef();
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
-        this.eventHandler = DropdownEvent.handler(this.handleClickOutside, DropdownEvent);
+        this.eventHandler = DropdownEvent.handler(this.handleClickOutside);
     }
 
     public componentDidMount() {

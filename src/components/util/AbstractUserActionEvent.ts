@@ -1,6 +1,6 @@
 
 
-export default abstract class BaseEvent {
+export default abstract class AbstractUserActionEvent {
     public static keys  = {
         tab: 9,
         escape: 27
@@ -41,11 +41,11 @@ export default abstract class BaseEvent {
     }
 
     public isTabKeyPress = () => {
-        return this.isKeyEvent() && this.which === BaseEvent.keys.tab;
+        return this.isKeyEvent() && this.which === AbstractUserActionEvent.keys.tab;
     }
 
     public isEscapeKeyPress = () => {
-        return this.isKeyEvent() && this.which === BaseEvent.keys.escape;
+        return this.isKeyEvent() && this.which === AbstractUserActionEvent.keys.escape;
     }
 
     public isMouseEvent = () => {
