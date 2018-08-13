@@ -16,7 +16,10 @@ interface DropdownProps extends ButtonProps {
      * The text to appear on the dropdown toggle button. 
      */
     label: string | React.ReactNode;
-    menuClass: string;
+    /**
+     * Optional CSS classes which will be applied to the dropdown menu
+     */
+    menuClass?: string;
 }
 
 const initialState = { open: false }
