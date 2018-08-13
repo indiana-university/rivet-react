@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
 import { MemoryRouter } from 'react-router';
-import * as Rivet from '../Rivet';
+import * as Rivet from '../util/Rivet';
 import Footer from './Footer';
 
 describe('<Footer />', () => {

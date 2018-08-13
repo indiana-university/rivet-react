@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { rivetize } from '../Rivet';
+import { rivetize } from '../util/Rivet';
 
 const Section : React.SFC<React.HTMLAttributes<HTMLDivElement>> = (props) => (
     <section {...props} />
