@@ -1,8 +1,9 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import DropdownGroup from '../Dropdown/DropdownGroup';
 
-interface HeaderIdentityProps {
+export interface HeaderIdentityProps {
     /**
      * An optional user avatar which appears next to the username
      * @see https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
@@ -20,21 +21,36 @@ interface HeaderIdentityProps {
     username: string;
 }
 
-const HeaderIdentity : React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLDivElement>> = ({ avatar, children, onLogout, username }) => {
+const HeaderIdentity : React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLDivElement>> = ({ avatar, children, className, onLogout, username }) => {
     const avatarIcon = avatar && <span className="rvt-header-id__avatar" aria-hidden="true">{avatar}</span>;
     const userLabel = <span className="rvt-header-id__user">{username}</span>;
     const label = <>{avatarIcon} {userLabel}</>;
     if(!children) {
-        return (
-            <div className="rvt-header-id">
-                <div className="rvt-header-id__profile">
-                    {label}
+        const logout = onLogout && (
+            <a href="javascript:void(0)" className="rvt-header-id__log-out" onClick={onLogout}>
+                Log out
+            </a>
+        );
+        const wrapperClasses = classNames('rvt-header-id', className);
+        if(wrapperClasses.includes('rvt-header-id--drawer')) {
+            return (
+                <div className={wrapperClasses}>
+                    <div className="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm">
+                        {label}
+                        {logout}
+                    </div>
                 </div>
-                {onLogout && <a href="javascript:void(0)" className="rvt-header-id__log-out" onClick={onLogout}>
-                    Log out
-                </a>}
-            </div>
-        );    
+            );        
+        } else {
+            return (
+                <div className={wrapperClasses}>
+                    <div className="rvt-header-id__profile">
+                        {label}
+                    </div>
+                    {logout}
+                </div>
+            );        
+        }
     } else {
         return (
             <div className="rvt-header-id">
