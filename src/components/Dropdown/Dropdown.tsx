@@ -13,7 +13,11 @@ interface DropdownProps extends ButtonProps {
      */
     align?: 'right';
     /**
-     * Optional text which appears on the dropdown toggle button. 
+     * Optional text which appears on the dropdown toggle button. The label 
+     * should always be provided with a standalone dropdown, however the label
+     * can be omitted if the dropdown is part of a SegmentedButton.
+     * @see https://rivet.uits.iu.edu/components/navigation/dropdown/
+     * @see https://rivet.uits.iu.edu/components/forms/buttons-segmented/#using-segmented-buttons-with-dropdowns
      */
     label?: string | React.ReactNode;
     /**
