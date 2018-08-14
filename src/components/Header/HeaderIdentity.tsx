@@ -2,6 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import DropdownGroup from '../Dropdown/DropdownGroup';
+import HeaderCollapse from './HeaderCollapse';
 
 export interface HeaderIdentityProps {
     /**
@@ -21,54 +22,65 @@ export interface HeaderIdentityProps {
     username: string;
 }
 
-const HeaderIdentity : React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLDivElement>> = ({ avatar, children, className, onLogout, username }) => {
-    const avatarIcon = avatar && <span className="rvt-header-id__avatar" aria-hidden="true">{avatar}</span>;
-    const userLabel = <span className="rvt-header-id__user">{username}</span>;
-    const label = <>{avatarIcon} {userLabel}</>;
-    if(!children) {
-        const logout = onLogout && (
-            <a href="javascript:void(0)" className="rvt-header-id__log-out" onClick={onLogout}>
-                Log out
-            </a>
-        );
-        const wrapperClasses = classNames('rvt-header-id', className);
-        if(wrapperClasses.includes('rvt-header-id--drawer')) {
-            return (
-                <div className={wrapperClasses}>
-                    <div className="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm">
-                        {label}
-                        {logout}
-                    </div>
-                </div>
-            );        
-        } else {
-            return (
-                <div className={wrapperClasses}>
-                    <div className="rvt-header-id__profile">
-                        {label}
-                    </div>
+const desktopWithoutChildren = (classes, label, logout) =>
+    <div className={classes}>
+        <div className="rvt-header-id__profile">
+            {label}
+        </div>
+        {logout}
+    </div>
+
+const drawerWithoutChildren = (classes, label, logout) =>
+    <div className={classes}>
+        <div className="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm">
+            {label}
+            {logout}
+        </div>
+    </div>
+
+const desktopWithChildren = (classes, label, logout, children) =>
+    <div className={classes}>
+        <Dropdown label={label} variant="navigation" align="right" className="rvt-header-id__profile rvt-header-id__profile--has-dropdown" menuClass="rvt-header-id__menu">
+            {children}
+            {logout &&
+                <DropdownGroup>
                     {logout}
-                </div>
-            );        
-        }
-    } else {
-        return (
-            <div className="rvt-header-id">
-                <Dropdown label={label} variant="navigation" align="right" className="rvt-header-id__profile rvt-header-id__profile--has-dropdown" menuClass="rvt-header-id__menu">
-                    {children}
-                    
-                    { onLogout && 
-                        <DropdownGroup>
-                            <a href="javascript:void(0)" onClick={onLogout}>
-                                Log out
-                            </a>
-                        </DropdownGroup>                    
-                    }
-                </Dropdown>
-            </div>
-        );
+                </DropdownGroup>
+            }
+        </Dropdown>
+    </div>
+
+const drawerWithChildren = (classes, label, logout, children) =>
+    <HeaderCollapse label={label}>
+        {children}
+        {logout}
+    </HeaderCollapse>
+
+const HeaderIdentity: React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLDivElement>> = ({ avatar, children, className, onLogout, username }) => {
+    const wrapperClasses = classNames('rvt-header-id', className);
+    const drawerOpen = wrapperClasses.includes('rvt-header-id--drawer');
+    const avatarIcon = avatar && <span className="rvt-header-id__avatar" aria-hidden="true">{avatar}</span>;
+    const userLabel = drawerOpen && children
+        ? <span className="rvt-header-id__user rvt-header-id__user--has-dropdown">{username}</span>
+        : <span className="rvt-header-id__user">{username}</span>;
+    const label = <>{avatarIcon} {userLabel}</>;
+   
+    let logout;
+    if (children && onLogout) {
+        logout = <a href="javascript:void(0)" className="rvt-header-id__log-out" onClick={onLogout}>Log out</a>
+    } else if (!children && onLogout) {
+        logout = <a href="javascript:void(0)" onClick={onLogout}>Log out</a>
     }
+
+    return children
+        ? drawerOpen
+            ? drawerWithChildren(wrapperClasses, label, logout, children)
+            : desktopWithChildren(wrapperClasses, label, logout, children)
+        : drawerOpen
+            ? drawerWithoutChildren(wrapperClasses, label, logout)
+            : desktopWithoutChildren(wrapperClasses, label, logout);
 }
+
 HeaderIdentity.displayName = 'HeaderIdentity';
 
 export default HeaderIdentity;

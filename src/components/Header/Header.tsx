@@ -13,7 +13,7 @@ interface HeaderProps {
 }
 
 const componentClass = "rvt-header";
-const initialState = { open: true };
+const initialState = { open: false };
 type HeaderState = Readonly<typeof initialState>;
 
 class Header extends React.PureComponent<HeaderProps & React.HTMLAttributes<HTMLDivElement>, HeaderState> {
@@ -91,27 +91,7 @@ class Header extends React.PureComponent<HeaderProps & React.HTMLAttributes<HTML
                         <nav className="rvt-drawer__nav" role="navigation">
                             <ul>
                                 <li className="has-children">
-                                    { identity && React.cloneElement(identity, { className: 'rvt-header-id--drawer'}) }
-                                    {/* <button className="rvt-header-id__profile rvt-header-id__profile--drawer" data-subnav-toggle="subnav-id" aria-haspopup="true" aria-expanded="false">
-                                        <span className="rvt-header-id__avatar" aria-hidden="true">RS</span>
-                                        <span className="rvt-header-id__user rvt-header-id__user--has-dropdown">rswanson</span>
-                                    </button>
-                                    <div id="subnav-id" role="menu" aria-hidden="true">
-                                        <ul>
-                                            <li>
-                                                <a href="#">Account settings</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Admin task one</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Admin task two</a>
-                                            </li>
-                                            <li>
-                                                <a href="">Log out</a>
-                                            </li>
-                                        </ul>
-                                    </div> */}
+                                    {identity && React.cloneElement(identity, { className: 'rvt-header-id--drawer' })}
                                 </li>
                                 <li>
                                     <a href="#">Nav one</a>
