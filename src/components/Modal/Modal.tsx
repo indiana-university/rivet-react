@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import Button, { ButtonProps } from '../Button/Button';
-import * as Rivet from '../Rivet';
+import * as Rivet from '../util/Rivet';
 import ModalEvent from './ModalEvent';
 
 
@@ -29,7 +29,7 @@ export interface ModalProps {
 }
 
 
-class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLButtonElement>> {
+export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLButtonElement>> {
     
     public static displayName = 'Modal';
 
@@ -109,7 +109,7 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLBu
         }        
     }
 
-    private shouldToggleDropdown = (event: ModalEvent) => {
+    private shouldToggleModal = (event: ModalEvent) => {
         if (event.isRightMouseClick() || event.isUnhandledKeyPress()) {
             // If the user right clicks anywhere on the screen or they press an unhandled key do not close the menu
             return false;
@@ -124,7 +124,7 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLBu
     }
 
     private handleClickOutside = (event: ModalEvent) => {
-        if(event && this.shouldToggleDropdown(event)) {
+        if(event && this.shouldToggleModal(event)) {
             this.closeModal(event);
         }
     }    
@@ -139,4 +139,4 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLBu
 
 }
 
-export default Modal;
+export default Rivet.rivetize(Modal);
