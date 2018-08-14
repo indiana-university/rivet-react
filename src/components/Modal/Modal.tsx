@@ -29,7 +29,7 @@ export interface ModalProps {
 }
 
 
-export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLButtonElement>> {
+export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDivElement>> {
     
     public static displayName = 'Modal';
 
@@ -67,7 +67,7 @@ export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes
     }    
     
     public render() {
-        const { children, className, controls, isOpen, onDismiss, title, id = Rivet.shortuid() } = this.props;
+        const { children, className, controls, id = Rivet.shortuid(), isOpen, onDismiss, title, ...others } = this.props;
         return (
             <div
                 className={classNames(["rvt-modal", className])}
@@ -76,6 +76,7 @@ export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes
                 aria-labelledby={`${id}-title`}
                 aria-hidden={!isOpen}
                 tabIndex={-1}
+                {...others}
             >
                 <div className="rvt-modal__inner">
                     <header className="rvt-modal__header">
@@ -116,7 +117,7 @@ export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes
         }
 
         if (event.targets(ReactDOM.findDOMNode(this)) && !event.isKeyEvent()) {
-            // If the user clicks ortouches inside the modal do not close the menu
+            // If the user clicks or touches inside the modal do not close the menu
             return false;
         }
 

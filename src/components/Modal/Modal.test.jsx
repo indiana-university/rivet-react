@@ -4,7 +4,6 @@ import * as ReactDOM from 'react-dom';
 
 import { Button } from '../Button';
 import Modal, { Modal as UnwrappedModal } from './Modal';
-import { ok } from 'assert';
 import ModalEvent from './ModalEvent';
 
 describe('<Modal />', () => {
@@ -27,7 +26,7 @@ describe('<Modal />', () => {
     const okButton = <Button key="ok" id="ok-button">OK</Button>;
     const body = 'modal body';
 
-    describe('render and structure', () => {
+    describe('Render and Structure', () => {
         it('should render without throwing an error', () => {
             const cut = mount(<Modal title={title} controls={okButton}>{body}</Modal>);
             expect(cut.find('div.rvt-modal')).toHaveLength(1);
@@ -177,7 +176,7 @@ describe('<Modal />', () => {
     
     });
 
-    describe('Event handler registration', () => {
+    describe('Event Handler Registration', () => {
         
         afterEach(() => {
             if(jest.isMockFunction(document.addEventListener)) {
