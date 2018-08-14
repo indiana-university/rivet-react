@@ -16,5 +16,9 @@ describe('<Table />', () => {
             const cut = mount(<Table className="foo" />);
             expect(cut.find('table').hasClass('foo')).toBe(true);
         });
+        it('should apply variant classes', () => {
+            expect(mount(<Table variant="stripes" />).find('table.rvt-table-stripes')).toHaveLength(1);
+            expect(mount(<Table variant="plain" />).find('table.rvt-table-plain')).toHaveLength(1);
+        });
     });
 });
