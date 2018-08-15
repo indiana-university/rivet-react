@@ -22,8 +22,9 @@ module.exports = {
         {
             name: 'Page Content',
             components: () => [
-              'src/components/Badge/*.tsx', 
-              'src/components/List/*.tsx', 
+              'src/components/Badge/*.tsx',
+              'src/components/List/*.tsx',
+              'src/components/Table/*.tsx',
             ],
             sections: [
                 {
