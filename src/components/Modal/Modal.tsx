@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import Button, { ButtonProps } from '../Button/Button';
+import Button from '../Button/Button';
 import * as Rivet from '../util/Rivet';
 import ModalEvent from './ModalEvent';
 
@@ -22,21 +22,22 @@ export interface ModalProps {
      * The content of the modal's header
      */
     title: React.ReactNode | string;
-    /**
-     * Button or buttons which will appear in the footer of the modal
-     */
-    controls: React.ReactElement<ButtonProps> | Array<React.ReactElement<ButtonProps>>;
 }
 
+const ModalCloseButton = ({ onDismiss }) => (
+    <Button className="rvt-modal__close" data-modal-close="close" onClick={onDismiss}>
+        <span className="rvt-sr-only">Close</span>
+        <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z"/>
+        </svg>
+    </Button>
+);
 
-export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDivElement>> {
-    
-    public static displayName = 'Modal';
+class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDivElement>> {
 
     public static propTypes = {
         children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
         className: PropTypes.string,
-        controls: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape({ type: PropTypes.oneOf([Button]) })), PropTypes.shape({ type: PropTypes.oneOf([Button]) })]).isRequired,
         id: PropTypes.string,
         isOpen: PropTypes.bool,
         onDismiss: PropTypes.func,
@@ -67,7 +68,7 @@ export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes
     }    
     
     public render() {
-        const { children, className, controls, id = Rivet.shortuid(), isOpen, onDismiss, title, ...others } = this.props;
+        const { children, className, id = Rivet.shortuid(), isOpen, onDismiss, title, ...attrs } = this.props;
         return (
             <div
                 className={classNames(["rvt-modal", className])}
@@ -76,28 +77,14 @@ export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes
                 aria-labelledby={`${id}-title`}
                 aria-hidden={!isOpen}
                 tabIndex={-1}
-                {...others}
+                {...attrs}
             >
                 <div className="rvt-modal__inner">
                     <header className="rvt-modal__header">
                         <h1 className="rvt-modal__title" id={`${id}-title`}>{title}</h1>
+                        { onDismiss && <ModalCloseButton onDismiss={onDismiss} /> }
                     </header>
-                    <div className="rvt-modal__body">
-                        {children}
-                    </div>
-                    { controls && 
-                        <div className="rvt-modal__controls">
-                            {controls}
-                        </div>
-                    }
-                    { onDismiss &&
-                        <Button className="rvt-modal__close" data-modal-close="close" onClick={onDismiss}>
-                            <span className="rvt-sr-only">Close</span>
-                            <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path fill="currentColor" d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z"/>
-                            </svg>
-                        </Button>
-                    }
+                    { children }
                 </div>
             </div>
         ); 
@@ -130,7 +117,7 @@ export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes
         }
     }    
 
-    public handleEventRegistration = () => {
+    private handleEventRegistration = () => {
         if(this.props.onDismiss && this.props.isOpen) {
             this.eventHandler.register();
         } else {
@@ -140,4 +127,4 @@ export class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes
 
 }
 
-export default Rivet.rivetize(Modal);
+export default Modal;
