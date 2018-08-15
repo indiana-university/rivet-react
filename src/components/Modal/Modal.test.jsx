@@ -45,10 +45,22 @@ describe('<Modal />', () => {
     }
 
     describe('Render and Structure', () => {
-        it('should render without throwing an error', () => {
+        it('renders without throwing an error', () => {
             const cut = mount(component());
             expect(cut.find('div.rvt-modal')).toHaveLength(1);
         });
+
+        it('uses the passed in id prop if available', () => {
+            const id = 'foo';
+            const cut = mount(component({ id }));
+            expect(cut.find('.rvt-modal').prop('id')).toBe(id);
+        });
+
+        it('generates an id prop if none is passed in', () => {
+            const cut = mount(component());
+            
+            expect(cut.find('.rvt-modal').prop('id')).toBeDefined();
+        });        
     
         it('should have the correct structure', () => {
             const cut = mount(component());
@@ -106,7 +118,7 @@ describe('<Modal />', () => {
         it('should not have a close button if an onDismiss prop is not provided', () => {
             const cut = mount(component());
             expect(cut.find('button.rvt-modal__close').length).toBe(0);
-        }); 
+        });        
     });
 
     describe('Toggle Behavior', () => {
@@ -166,22 +178,19 @@ describe('<Modal />', () => {
     });
 
     describe('Event Handler Registration', () => {
+
+        beforeEach(() => {
+            jest.spyOn(document, 'addEventListener');
+            jest.spyOn(document, 'removeEventListener');
+            jest.spyOn(Modal.prototype, 'handleEventRegistration');
+        });
         
         afterEach(() => {
-            if(jest.isMockFunction(document.addEventListener)) {
-                document.addEventListener.mockRestore();
-            }
-            if(jest.isMockFunction(document.removeEventListener)) {
-                document.removeEventListener.mockRestore();
-            }
-            if(jest.isMockFunction(Modal.prototype.componentDidUpdate)) {
-                Modal.prototype.componentDidUpdate.mockRestore();
-            }
+            jest.restoreAllMocks();
         });
 
         it('should register event handlers when it is mounted if there is an onDismiss and the modal is open', () => {
             const onDismiss = () => {};
-            jest.spyOn(document, 'addEventListener');
             expect(document.addEventListener).toHaveBeenCalledTimes(0);
             const cut = mount(component({ onDismiss }));
             expect(document.addEventListener).toHaveBeenCalled();
@@ -189,14 +198,12 @@ describe('<Modal />', () => {
 
         it('should not register event handlers when it is mounted if the modal is closed', () => {
             const onDismiss = () => {};
-            jest.spyOn(document, 'addEventListener');
             expect(document.addEventListener).toHaveBeenCalledTimes(0);
             const cut = mount(component({ isOpen: false, onDismiss }));
             expect(document.addEventListener).toHaveBeenCalledTimes(0);
         });
 
         it('should not register event handlers when it is mounted if there is no onDismiss', () => {
-            jest.spyOn(document, 'addEventListener');
             expect(document.addEventListener).toHaveBeenCalledTimes(0);
             const cut = mount(component());
             expect(document.addEventListener).toHaveBeenCalledTimes(0);
@@ -204,30 +211,34 @@ describe('<Modal />', () => {
 
         it('should register and unregister event handlers as isOpen changes', () => {
             const onDismiss = () => {};
-            jest.spyOn(document, 'addEventListener');
-            jest.spyOn(document, 'removeEventListener');
             expect(document.addEventListener).toHaveBeenCalledTimes(0);
             const cut = mount(component({ onDismiss }));
             expect(document.addEventListener).toHaveBeenCalledTimes(3);
             cut.setProps({ isOpen: false });
             expect(document.removeEventListener).toHaveBeenCalledTimes(3);
+            expect(Modal.prototype.handleEventRegistration).toHaveBeenCalled();
         });
 
         it('should register and unregister event handlers as isOpen changes', () => {
             const onDismiss = () => {};
-            jest.spyOn(document, 'addEventListener');
-            jest.spyOn(document, 'removeEventListener');
             expect(document.addEventListener).toHaveBeenCalledTimes(0);
             const cut = mount(component({ onDismiss }));
             expect(document.addEventListener).toHaveBeenCalledTimes(3);
             cut.setProps({ onDismiss: null });
+            expect(Modal.prototype.handleEventRegistration).toHaveBeenCalled();
             expect(document.removeEventListener).toHaveBeenCalledTimes(3);
-        });        
+        });
+        
+        it('does not modify registration when a prop besides isOpen and onDismiss changes', () => {
+            const title = 'new title';
+            const cut = mount(component());
+            cut.setProps({ title  });
+            expect(cut.find('h1.rvt-modal__title').text()).toBe(title);
+            expect(Modal.prototype.handleEventRegistration).toHaveBeenCalledTimes(0);
+        });                 
 
         it('should unregister event handlers when unmounting', () => {
             const onDismiss = () => {};
-            jest.spyOn(document, 'addEventListener');
-            jest.spyOn(document, 'removeEventListener');
             expect(document.addEventListener).toHaveBeenCalledTimes(0);
             const cut = mount(component({ onDismiss }));
             expect(document.addEventListener).toHaveBeenCalledTimes(3);
