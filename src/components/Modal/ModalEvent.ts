@@ -9,5 +9,4 @@ export default class ModalEvent extends AbstractUserActionEvent  {
     public isUnhandledKeyPress() : boolean {
         return this.isKeyEvent() && !this.isEscapeKeyPress();
     }
-
 }
