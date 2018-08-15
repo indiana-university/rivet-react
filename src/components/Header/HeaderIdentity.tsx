@@ -67,9 +67,9 @@ const HeaderIdentity: React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLD
    
     let logout;
     if (children && onLogout) {
-        logout = <a href="javascript:void(0)" className="rvt-header-id__log-out" onClick={onLogout}>Log out</a>
-    } else if (!children && onLogout) {
         logout = <a href="javascript:void(0)" onClick={onLogout}>Log out</a>
+    } else if (!children && onLogout) {
+        logout = <a href="javascript:void(0)" className="rvt-header-id__log-out" onClick={onLogout}>Log out</a>
     }
 
     return children
