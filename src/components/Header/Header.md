@@ -12,19 +12,19 @@
 <Header title="Application Title">
     <Header.Navigation>
         <a href="#">Nav one</a>
-        <Dropdown label="Nav two" variant="navigation">
+        <Header.Menu label="Nav two">
             <a href="#">Item one</a>
             <a href="#">Item two</a>
             <a href="#">Item three</a>
             <a href="#">Item four</a>
-        </Dropdown>
+        </Header.Menu>
         <a href="#" aria-current="page">Nav three</a>
-        <Dropdown label="Nav four" variant="navigation">
+        <Header.Menu label="Nav four">
             <a href="#">Item one</a>
             <a href="#">Item two</a>
             <a href="#">Item three</a>
             <a href="#">Item four</a>
-        </Dropdown>
+        </Header.Menu>
     </Header.Navigation>
     
     <Header.Identity avatar="RS" username="rswanson" onLogout={() => console.log('Logout!')}>

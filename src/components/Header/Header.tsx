@@ -3,6 +3,7 @@ import * as React from 'react';
 import getDisplayName from 'react-display-name';
 import Drawer from './HeaderDrawer';
 import Identity from './HeaderIdentity';
+import Menu from './HeaderMenu';
 import Navigation from './HeaderNavigation';
 
 interface HeaderProps {
@@ -15,6 +16,7 @@ interface HeaderProps {
 
 interface Header extends React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> {
     Identity?: typeof Identity;
+    Menu?: typeof Menu;
     Navigation?: typeof Navigation;
 }
 
@@ -51,9 +53,13 @@ const HeaderComponent: Header = ({ children, className, title, ...attrs }) => {
             </span>
             {(navigation || identity) &&
                 <div className="rvt-header__controls">
-                    {navigation}
+                    <nav className="rvt-header__main-nav" role="navigation">
+                        <ul>
+                            {navigation}
+                        </ul>
+                    </nav>
                     {identity}
-                    <Drawer identity={identity} />
+                    <Drawer identity={identity} navigation={navigation} />
                 </div>
             }
         </header>
@@ -62,6 +68,7 @@ const HeaderComponent: Header = ({ children, className, title, ...attrs }) => {
 
 HeaderComponent.displayName = 'Header';
 HeaderComponent.Identity = Identity;
+HeaderComponent.Menu = Menu;
 HeaderComponent.Navigation = Navigation;
 
 export default HeaderComponent;

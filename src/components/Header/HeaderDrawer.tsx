@@ -5,6 +5,7 @@ import HeaderDrawerEvent from './HeaderDrawerEvent';
 
 interface HeaderDrawerProps {
     identity?: React.ReactElement<any>;
+    navigation?: React.ReactElement<any>;
 }
 
 const initialState = { open: false };
@@ -45,7 +46,7 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
     }
 
     public render() {
-        const { identity } = this.props;
+        const { identity, navigation } = this.props;
         const drawerToggleClasses = classNames({
             ['rvt-drawer-button']: true,
             ['is-open']: this.state.open
@@ -77,44 +78,7 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
                                 <li className="has-children">
                                     { identity && React.Children.count(identity.props.children) !== 0 && React.cloneElement(identity, { className: 'rvt-header-id--drawer' }) }
                                 </li>
-                                <li>
-                                    <a href="#">Nav one</a>
-                                </li>
-                                <li className="has-children">
-                                    <button data-subnav-toggle="subnav-1" aria-haspopup="true" aria-expanded="false">Nav two</button>
-                                    <div id="subnav-1" role="menu" aria-hidden="true">
-                                        <ul>
-                                            <li>
-                                                <a href="#">Subnav one</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Subnav two</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Subnav three</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" aria-current="page">Nav three</a>
-                                </li>
-                                <li className="has-children">
-                                    <button data-subnav-toggle="subnav-2" aria-haspopup="true" aria-expanded="false">Nav four</button>
-                                    <div id="subnav-2" role="menu" aria-hidden="true">
-                                        <ul>
-                                            <li>
-                                                <a href="#">Subnav one</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Subnav two</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Subnav three</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                { navigation && React.cloneElement(navigation, { className: 'rvt-drawer-navigation' })}
                             </ul>
                             <button className="rvt-drawer__bottom-close">Close nav</button>
                         </nav>
