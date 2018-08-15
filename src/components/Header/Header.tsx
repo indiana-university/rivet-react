@@ -39,7 +39,7 @@ const findChildren = (children) => {
 const HeaderComponent: Header = ({ children, className, title, ...attrs }) => {
     const [identity, navigation ] = findChildren(children);
     return (
-        <header {...attrs} className={classNames(componentClass, className)} role="banner" style={{ position: 'relative' }}>
+        <header {...attrs} className={classNames(componentClass, className)} role="banner">
             <a className="rvt-skip-link" href="#main-content">Skip to content</a>
             <div className="rvt-header__trident">
                 <svg role="img" className="rvt-header__trident-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 48" aria-describedby="iu-logo">
@@ -53,11 +53,13 @@ const HeaderComponent: Header = ({ children, className, title, ...attrs }) => {
             </span>
             {(navigation || identity) &&
                 <div className="rvt-header__controls">
-                    <nav className="rvt-header__main-nav" role="navigation">
-                        <ul>
-                            {navigation}
-                        </ul>
-                    </nav>
+                    { navigation && 
+                        <nav className="rvt-header__main-nav" role="navigation">
+                            <ul>
+                                {navigation}
+                            </ul>
+                        </nav>                
+                    }
                     {identity}
                     <Drawer identity={identity} navigation={navigation} />
                 </div>
