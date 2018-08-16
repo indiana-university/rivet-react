@@ -89,7 +89,7 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
     }
 
     private handleClickOutside(event: HeaderDrawerEvent) {
-        if(event && this.shouldToggleDropdown(event)) {
+        if(event && this.shouldToggleDrawer(event)) {
             this.toggleDrawer(event);
 
             if(event.isEscapeKeyPress() && this.toggleButton.current) {
@@ -99,7 +99,7 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
         }
     }
 
-    private shouldToggleDropdown = (event: HeaderDrawerEvent) => {
+    private shouldToggleDrawer = (event: HeaderDrawerEvent) => {
         if (event.isRightMouseClick() || event.isUnhandledKeyPress()) {
             // If the user right clicks anywhere on the screen or they press an unhandled key do not close the menu
             return false;
