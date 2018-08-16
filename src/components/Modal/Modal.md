@@ -24,13 +24,13 @@ class ModalExample extends React.Component {
           title="Modal" 
           onDismiss={this.onDismiss}
         >
-          <ModalBody>
+          <Modal.Body>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <a href="#">incididunt ut labore</a> et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </ModalBody>
-          <ModalControls>
+          </Modal.Body>
+          <Modal.Controls>
             <Button key="ok">OK</Button>
             <Button key="close" onClick={this.onDismiss}>Close</Button>
-          </ModalControls>
+          </Modal.Controls>
         </Modal>
       </>
     );
@@ -79,16 +79,16 @@ class DialogExample extends React.Component {
           isOpen={this.state.open} 
           title="Modal Dialog" 
         >
-          <ModalBody>
+          <Modal.Body>
               <p>A modal dialog:</p>
               <ul>
                 <li>Is not dismissable i.e. doesn't have an (X) button</li>
                 <li>Requires user input before they continue their work</li>
               </ul>
-            </ModalBody>
-            <ModalControls>
+            </Modal.Body>
+            <Modal.Controls>
               <Button key="close" onClick={this.onCloseButtonClick}>Close</Button>
-            </ModalControls>
+            </Modal.Controls>
         </Modal>
       </>
     );
