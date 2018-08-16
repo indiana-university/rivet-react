@@ -95,10 +95,13 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDi
         ); 
     }
 
-
-    private closeModal = (event) => {
-        this.props.onDismiss && this.props.onDismiss();        
-    }
+    protected handleEventRegistration() {
+        if(this.props.onDismiss && this.props.isOpen) {
+            this.eventHandler.register();
+        } else {
+            this.eventHandler.deregister();
+        }
+    }  
 
     private shouldToggleModal = (event: ModalEvent) => {
         if (event.isRightMouseClick() || event.isUnhandledKeyPress()) {
@@ -115,18 +118,10 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDi
     }
 
     private handleClickOutside = (event: ModalEvent) => {
-        if(event && this.shouldToggleModal(event)) {
-            this.closeModal(event);
+        if(event && this.shouldToggleModal(event) && this.props.onDismiss) {
+            this.props.onDismiss();
         }
-    }    
-
-    protected handleEventRegistration() {
-        if(this.props.onDismiss && this.props.isOpen) {
-            this.eventHandler.register();
-        } else {
-            this.eventHandler.deregister();
-        }
-    }    
+    }      
 
 }
 
