@@ -50,7 +50,7 @@ jobs:
             echo 'https://$($GITHUB_ACCESS_TOKEN):x-oauth-basic@github.com`n' >> $HOME/.git-credentials
             git config --global user.email "jhoerr@gmail.com"
             git config --global user.name "John Hoerr"            
-            git subtree push --prefix styleguide origin gh-pages --force
+            git subtree push --prefix styleguide origin gh-pages
 workflows:
   version: 2
   build-test-and-publish:
