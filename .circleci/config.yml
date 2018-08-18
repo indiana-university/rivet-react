@@ -46,13 +46,7 @@ jobs:
           name: publish gh-pages
           command: |
             npx styleguidist build
-            mv styleguide styleguide_pub
-            git config --global credential.helper store
-            echo 'https://${GITHUB_ACCESS_TOKEN}:x-oauth-basic@github.com`n' >> $HOME/.git-credentials
-            git config --global user.email "jhoerr@gmail.com"
-            git config --global user.name "John Hoerr"            
-            git push origin --delete gh-pages
-            git subtree push --prefix styleguide_pub origin gh-pages
+            yarn deploy
 workflows:
   version: 2
   build-test-and-publish:
