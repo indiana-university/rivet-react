@@ -45,6 +45,7 @@ jobs:
       - run:
           name: publish gh-pages
           command: |
+            echo "$GITHUB_ACCESS_TOKEN"
             npx styleguidist build
             mv styleguide styleguide_pub
             git config --global credential.helper store
