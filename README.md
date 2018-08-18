@@ -4,7 +4,7 @@ Rivet-react resources:
 * [Component Documentation and Style Guide](https://indiana-university.github.io/rivet-react/)
 * [GitHub repo](https://github.com/indiana-university/rivet-react)
 * [NPM package](https://www.npmjs.com/package/rivet-react)
-* [Travis CI](https://travis-ci.org/indiana-university/rivet-react)
+* [Circle CI](https://circleci.com/gh/indiana-university/rivet-react)
 
 | Branch | Build | Code Coverage |
 | ------ | ----- | ------------- |
