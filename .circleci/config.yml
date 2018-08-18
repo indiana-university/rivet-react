@@ -20,6 +20,7 @@ aliases:
     branches:
       only:
         - master
+        - develop
   - &filter-ignore-gh-pages
     branches:
       ignore: gh-pages
