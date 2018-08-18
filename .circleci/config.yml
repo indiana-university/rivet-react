@@ -37,13 +37,10 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
       - run:
-          name: publish gh-pages
           command: |
             git config --global user.email "iubot@iu.edu"
             git config --global user.name "IU Bot"
-            npx styleguidist build 
-            cp -r .circleci styleguide
-            gh-pages -d styleguide
+            yarn publish-guide
 workflows:
   version: 2
   build-test-and-publish:

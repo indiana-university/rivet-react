@@ -23,7 +23,7 @@
   "scripts": {
     "start": "npx styleguidist server",
     "build": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
-    "publish-guide": "npx styleguidist build && gh-pages -d styleguide",
+    "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages -d styleguide",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
