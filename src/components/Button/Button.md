@@ -1,4 +1,4 @@
-### Default Buttons FOO
+### Default Buttons
 ```jsx
 <Button margin="xs" onClick={() => { console.log('Click!') }}>Primary</Button>
 <Button margin="xs" onClick={() => { console.log('Click!') }} variant="success">Success</Button>
