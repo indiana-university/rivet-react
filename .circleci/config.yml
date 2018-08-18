@@ -38,13 +38,18 @@ jobs:
     steps:
       - checkout 
       - restore_cache: *restore-node-modules
-      - run: yarn install
+      - run: 
+          name: Install packages
+          command: yarn install
       - save_cache: *save-node-modules
       - run: 
-         command: |
-           yarn build
-           yarn test -w 1 --coverage
-           cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+          name: Build components
+          command: yarn build
+      - run:
+          name: Test components
+          command: |
+            yarn test -w 1 --coverage
+            cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
   # Publish the style guide to gh-pages
   publish_guide:
     <<: *defaults
@@ -52,6 +57,7 @@ jobs:
       - checkout 
       - restore_cache: *restore-node-modules
       - run:
+          name: Publish style guide to gh-pages
           command: |
             git config --global user.email "iubot@iu.edu"
             git config --global user.name "IU Bot"
