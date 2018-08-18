@@ -45,8 +45,8 @@ jobs:
       - run:
           name: publish gh-pages
           command: |
-            git config --global user.email "jhoerr@gmail.com"
-            git config --global user.name "John Hoerr"
+            git config --global user.email "iubot@iu.edu"
+            git config --global user.name "IU Bot"
             yarn publish-guide
 workflows:
   version: 2
