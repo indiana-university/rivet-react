@@ -5,6 +5,9 @@
 version: 2
 jobs:
   build_test:
+    branches:
+      ignore:
+        - gh-pages
     docker:
       # specify the version you desire here
       - image: circleci/node:8
@@ -27,11 +30,10 @@ jobs:
       #      yarn test -w 1 --coverage
       #      cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
   publish_guide:
-    filters: 
-      branches:
-        only:
-          - master
-          - feature/circleci
+    branches:
+      only:
+        - master
+        - feature/circleci
     docker:
       - image: circleci/node:8
     working_directory: ~/repo
