@@ -49,7 +49,9 @@ jobs:
           command: |
             git config --global user.email "iubot@iu.edu"
             git config --global user.name "IU Bot"
-            yarn publish-guide
+            npx styleguidist build 
+            cp -r .circleci styleguide
+            gh-pages -d styleguide
 workflows:
   version: 2
   build-test-and-publish:
@@ -58,4 +60,3 @@ workflows:
       - publish_guide:
           requires:
             - build_test
-          context: rivet-react
