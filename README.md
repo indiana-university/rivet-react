@@ -4,12 +4,12 @@ Rivet-react resources:
 * [Component Documentation and Style Guide](https://indiana-university.github.io/rivet-react/)
 * [GitHub repo](https://github.com/indiana-university/rivet-react)
 * [NPM package](https://www.npmjs.com/package/rivet-react)
-* [Travis CI](https://travis-ci.org/indiana-university/rivet-react)
+* [Circle CI](https://circleci.com/gh/indiana-university/rivet-react)
 
 | Branch | Build | Code Coverage |
 | ------ | ----- | ------------- |
-| master | [![Build Status](https://travis-ci.org/indiana-university/rivet-react.svg?branch=master)](https://travis-ci.org/indiana-university/rivet-react) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/master/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/master) |
-| develop | [![Build Status](https://travis-ci.org/indiana-university/rivet-react.svg?branch=develop)](https://travis-ci.org/indiana-university/rivet-react) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/develop/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/develop) |
+| master | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/master.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/master) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/master/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/master) |
+| develop | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/develop.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/develop) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/develop/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/develop) |
 
 ## Installation
 
