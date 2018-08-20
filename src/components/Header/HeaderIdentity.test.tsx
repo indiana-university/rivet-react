@@ -80,4 +80,22 @@ describe('<Navigation />', () => {
             expect(logoutSpy).toHaveBeenCalled();
         });      
     });
+
+    describe('Drawer rendering', () => {
+        it('should render the identity menu with no navigation in the drawer view', () => {
+            cut = mount(
+                <Header.Identity avatar="RS" username="rswanson" className="rvt-header-id--drawer" />
+            );
+            expect(cut.find('div.rvt-header-id__profile').hasClass('rvt-header-id__profile--drawer')).toBe(true);
+        });
+        it('should render the identity menu with navigation in the drawer view', () => {
+            cut = mount(
+                <Header.Identity avatar="RS" username="rswanson" className="rvt-header-id--drawer">
+                    <a href="#" id="example-one">Example</a>
+                </Header.Identity>
+            );
+            cut.find('HeaderCollapse > button').simulate('click');
+            expect(cut.find('HeaderCollapse').find('a#example-one')).toHaveLength(1);
+        });
+    });
 });
