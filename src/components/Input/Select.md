@@ -58,7 +58,7 @@
        label="Type"
        note={<> You must pick a <strong>Type</strong> of meat. </>}
        margin={{bottom: 'md'}}>
-    <option value=""">Choose an option...</option>
+    <option value="">Choose an option...</option>
     <option value="Steak">Steak</option>
     <option value="Chops">Chops</option>
     <option value="Ribs">Ribs</option>
