@@ -1,6 +1,5 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import getDisplayName from 'react-display-name';
 import { findFirstChildOfType } from '../util/childUtils';
 import Drawer from './HeaderDrawer';
 import Identity from './HeaderIdentity';

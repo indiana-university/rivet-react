@@ -1,14 +1,9 @@
 import * as React from 'react';
-import getDisplayName from 'react-display-name';
+import { hasChildOfType } from '../util/childUtils';
 import HeaderMenu from './HeaderMenu';
 
-const hasChildren = (child) => { 
-    console.log(child && child.type && getDisplayName(child.type) === HeaderMenu.displayName)
-    return child && child.type && getDisplayName(child.type) === HeaderMenu.displayName;
-};
-
 const renderChild = (child, isDrawer) => {
-    if(isDrawer && hasChildren(child)) {
+    if(isDrawer && hasChildOfType(child, HeaderMenu.displayName)) {
         return (
             <li className="has-children">{React.cloneElement(child, { className: 'rvt-drawer-menu'})}</li>
         );

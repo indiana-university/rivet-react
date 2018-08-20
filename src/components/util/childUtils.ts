@@ -11,3 +11,7 @@ export const findFirstChildOfType = (children, componentDisplayName) => {
     });
     return firstChild;
 }
+
+export const hasChildOfType = (children, componentDisplayName) => {
+    return findFirstChildOfType(children, componentDisplayName) !== undefined;
+}

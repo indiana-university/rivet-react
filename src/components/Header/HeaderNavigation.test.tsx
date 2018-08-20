@@ -24,4 +24,25 @@ describe('<HeaderNavigation />', () => {
             expect(cut.find('nav.rvt-header__main-nav > ul > HeaderNavigation > li')).toHaveLength(2);
         });
     });
+
+    describe('Drawer rendering', () => {
+        
+        beforeEach(() => {
+            cut = mount(
+                <Header.Navigation className="rvt-drawer-navigation">
+                    <a href="#">Foo</a>
+                    <Header.Menu label="Example">
+                        <button>Bar</button>
+                    </Header.Menu>
+                </Header.Navigation>
+            );
+        });
+
+        it('should render the navigation in the drawer', () => {
+            expect(cut.find('HeaderNavigation > li')).toHaveLength(2);
+        });
+        it('should use the has-children class for wrapping header menus', () => {
+           expect(cut.find('HeaderNavigation > li.has-children > HeaderMenu')).toHaveLength(1);
+        });
+    });
 });
