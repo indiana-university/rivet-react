@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import getDisplayName from 'react-display-name';
+import { findFirstChildOfType } from '../util/childUtils';
 import Drawer from './HeaderDrawer';
 import Identity from './HeaderIdentity';
 import Menu from './HeaderMenu';
@@ -22,22 +23,9 @@ interface Header extends React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivEle
 
 const componentClass = "rvt-header";
 
-const findChildren = (children) => {
-    let identity;
-    let navigation;
-    React.Children.forEach(children, (child: React.ReactElement<any>) => {
-        const childType = child && child.type && getDisplayName(child.type);
-        if (childType === Navigation.displayName) {
-            navigation = child;
-        } else if (childType === Identity.displayName) {
-            identity = child;
-        }
-    });
-    return [identity, navigation];
-}
-
 const HeaderComponent: Header = ({ children, className, title, ...attrs }) => {
-    const [identity, navigation ] = findChildren(children);
+    const identity = findFirstChildOfType(children, Identity.displayName);
+    const navigation = findFirstChildOfType(children, Navigation.displayName);
     return (
         <header {...attrs} className={classNames(componentClass, className)} role="banner">
             <a className="rvt-skip-link" href="#main-content">Skip to content</a>

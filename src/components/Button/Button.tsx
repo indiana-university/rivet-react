@@ -46,7 +46,7 @@ const buttonRoleAndStyle = (variant: VariantType, role: RoleType) => {
  */
 const buttonSize = (size: SizeType) => (size !== "default" ? `${buttonClass}--${size}` : None);
 
-const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
+export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
   ({role = "default", size = "default", variant = "default", onClick, id = Rivet.shortuid(), innerRef, className, children, ...attrs}) => {
   const classes = classNames(buttonRoleAndStyle(variant, role), buttonSize(size), className);
   return (
@@ -62,5 +62,6 @@ const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonEleme
     </button>
   );
 };
+Button.displayName = 'Button';
 
 export default Rivet.rivetize(Button);
