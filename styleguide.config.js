@@ -44,6 +44,7 @@ module.exports = {
               'src/components/File/*.tsx',
               'src/components/RadioButton/*.tsx', 
               'src/components/Input/Input.tsx', 
+              'src/components/Input/Select.tsx',
               'src/components/Input/Textarea.tsx',
             ],
             exampleMode: 'expand'
