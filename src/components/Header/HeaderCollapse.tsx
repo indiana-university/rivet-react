@@ -10,20 +10,20 @@ interface HeaderCollapseProps {
 const initialState = { open: false }
 type HeaderCollapseState = Readonly<typeof initialState>
 
-export class HeaderCollapse extends React.PureComponent<HeaderCollapseProps & React.HTMLAttributes<HTMLButtonElement>, HeaderCollapseState> {
+class HeaderCollapse extends React.PureComponent<HeaderCollapseProps & React.HTMLAttributes<HTMLButtonElement>, HeaderCollapseState> {
 
     public readonly state: HeaderCollapseState = initialState;
 
     constructor(props) {
         super(props);
-        this.toggleDropdown = this.toggleDropdown.bind(this);
+        this.toggleCollapse = this.toggleCollapse.bind(this);
     }
 
     public render() {
-        const { children, className, label, ...attrs } = this.props;
+        const { children, label, ...attrs } = this.props;
         return (
             <>
-                <button {...attrs} className={className} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
+                <button {...attrs} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleCollapse}>
                     {label}
                 </button>    
                 { this.state.open &&
@@ -35,7 +35,8 @@ export class HeaderCollapse extends React.PureComponent<HeaderCollapseProps & Re
         );
     }
 
-    private toggleDropdown(event) {
+    private toggleCollapse(event) {
+        console.log('toggle')
         this.setState({ open: !this.state.open });
     }
 }
