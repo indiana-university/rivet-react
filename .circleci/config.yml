@@ -1,0 +1,79 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+# Aliases are shorthand references for common settings.
+aliases:
+  # Cache Management
+  - &restore-node-modules
+    keys:
+      - v2-node-modules-{{ checksum "package.json" }}
+  - &save-node-modules
+    paths:
+      - node_modules
+    key: v2-node-modules-{{ checksum "package.json" }}
+
+  # Branch Filtering
+  - &filter-only-master
+    branches:
+      only:
+        - master
+        - develop
+  - &filter-ignore-gh-pages
+    branches:
+      ignore: gh-pages
+  
+# Default settings for all jobs 
+defaults: &defaults
+  docker:
+      - image: circleci/node:8
+  working_directory: ~/repo
+
+# Job definitions. Job execution is orchestrated in the 'workflows' section.
+jobs:
+  # Build and test the components
+  build_test:
+    <<: *defaults
+    steps:
+      - checkout 
+      - restore_cache: *restore-node-modules
+      - run: 
+          name: Install packages
+          command: yarn install
+      - save_cache: *save-node-modules
+      - run: 
+          name: Build components
+          command: yarn build
+      - run:
+          name: Test components
+          command: |
+            yarn test -w 1 --coverage
+            cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+  # Publish the style guide to gh-pages
+  publish_guide:
+    <<: *defaults
+    steps:
+      - checkout 
+      - restore_cache: *restore-node-modules
+      - run:
+          name: Publish style guide to gh-pages
+          command: |
+            git config --global user.email "iubot@iu.edu"
+            git config --global user.name "IU Bot"
+            yarn publish-guide
+
+# Job orchestration
+workflows:
+  version: 2
+  # Build and test the code on every commit. 
+  # Publish the style guide on successful build/test of master.
+  build-test-and-publish:
+    jobs:
+      - build_test:
+          filters: *filter-ignore-gh-pages
+      - publish_guide:
+          requires:
+            - build_test
+          filters: *filter-only-master

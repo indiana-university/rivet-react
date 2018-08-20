@@ -23,6 +23,7 @@
   "scripts": {
     "start": "npx styleguidist server",
     "build": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
+    "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
@@ -35,8 +36,10 @@
     "@types/react": "^16.4.1",
     "@types/react-dom": "^16.0.6",
     "@types/react-router-dom": "^4.2.7",
+    "codecov.io": "^0.1.6",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "gh-pages": "^1.2.0",
     "react-docgen-typescript": "1.6.2",
     "react-styleguidist": "7.1.0",
     "typescript": "^2.9.2"
