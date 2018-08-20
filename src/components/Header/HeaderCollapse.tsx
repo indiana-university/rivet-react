@@ -36,7 +36,6 @@ class HeaderCollapse extends React.PureComponent<HeaderCollapseProps & React.HTM
     }
 
     private toggleCollapse(event) {
-        console.log('toggle')
         this.setState({ open: !this.state.open });
     }
 }
