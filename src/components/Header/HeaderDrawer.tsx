@@ -75,9 +75,11 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
                         { identity && React.Children.count(identity.props.children) === 0 && React.cloneElement(identity, { className: 'rvt-header-id--drawer' }) }
                         <nav className="rvt-drawer__nav" role="navigation">
                             <ul>
-                                <li className="has-children">
-                                    { identity && React.Children.count(identity.props.children) !== 0 && React.cloneElement(identity, { className: 'rvt-header-id--drawer' }) }
-                                </li>
+                                { identity && React.Children.count(identity.props.children) &&
+                                    <li className="has-children">
+                                        { React.cloneElement(identity, { className: 'rvt-header-id--drawer' }) }
+                                    </li> 
+                                }
                                 { navigation && React.cloneElement(navigation, { className: 'rvt-drawer-navigation' })}
                             </ul>
                             <button className="rvt-drawer__bottom-close">Close nav</button>

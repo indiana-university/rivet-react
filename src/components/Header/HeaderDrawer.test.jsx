@@ -1,8 +1,11 @@
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Drawer from './HeaderDrawer';
 import HeaderDrawerEvent from './HeaderDrawerEvent';
+import HeaderDrawer from './HeaderDrawer';
+import HeaderIdentity from './HeaderIdentity';
+import HeaderNavigation from './HeaderNavigation';
 
 describe('<Drawer />', () => {
 
@@ -29,6 +32,67 @@ describe('<Drawer />', () => {
             const cut = mount(<Drawer id="foo" />);
             cut.simulate('click');
             expect(cut.find('div')).toHaveLength(1);
+        });
+    });
+
+    describe('identity menu rendering', () =>{
+        describe ('It should not render identity menu when not provided', () => {
+            const cut = shallow(<HeaderDrawer/>);
+            
+            // open the drawer
+            cut.find('button').simulate('click');
+            
+            expect(cut.find('div.rvt-drawer > HeaderIdentity')).toHaveLength(0);
+            expect(cut.find('div.rvt-drawer > nav.rvt-drawer__nav > ul > li > HeaderIdentity')).toHaveLength(0);
+        });
+        describe ('It should render identity menu without children', () => {
+            const identity = <HeaderIdentity user="foo"/>
+            const cut = shallow(<HeaderDrawer identity={identity}/>);
+            
+            // open the drawer
+            cut.find('button').simulate('click');
+            
+            expect(cut.find('div.rvt-drawer > HeaderIdentity')).toHaveLength(1);
+            expect(cut.find('div.rvt-drawer > HeaderIdentity').hasClass('rvt-header-id--drawer')).toBe(true);
+            expect(cut.find('div.rvt-drawer > nav.rvt-drawer__nav > ul > li > HeaderIdentity')).toHaveLength(0);
+        });
+        describe ('It should render identity menu with children', () => {
+            const identity = 
+                <HeaderIdentity user="foo">
+                    <a href="#">Example one</a>
+                </HeaderIdentity>
+            const cut = shallow(<HeaderDrawer identity={identity}/>);
+            
+            // open the drawer
+            cut.find('button').simulate('click');
+
+            expect(cut.find('div.rvt-drawer > HeaderIdentity')).toHaveLength(0);
+            expect(cut.find('div.rvt-drawer > nav.rvt-drawer__nav > ul > li > HeaderIdentity')).toHaveLength(1);
+            expect(cut.find('div.rvt-drawer > nav.rvt-drawer__nav > ul > li > HeaderIdentity').hasClass('rvt-header-id--drawer')).toBe(true);
+        });
+    });
+
+    describe ('nav menu rendering', () => {
+        describe ('It should not render navigation menu when not provided', () => {
+            const cut = shallow(<HeaderDrawer/>);
+            
+            // open the drawer
+            cut.find('button').simulate('click');
+            
+            expect(cut.find('div.rvt-drawer > nav.rvt-drawer__nav > ul > HeaderNavigation')).toHaveLength(0);
+        });
+        describe ('It should render navigation menu', () => {
+            const navigation = 
+                <HeaderNavigation>
+                    <a href="#" id="example-one">Example One</a>
+                </HeaderNavigation>
+            const cut = shallow(<HeaderDrawer navigation={navigation}/>);
+            
+            // open the drawer
+            cut.find('button').simulate('click');
+            
+            expect(cut.find('div.rvt-drawer > nav.rvt-drawer__nav > ul > HeaderNavigation')).toHaveLength(1);
+            expect(cut.find('div.rvt-drawer > nav.rvt-drawer__nav > ul > HeaderNavigation').hasClass('rvt-drawer-navigation')).toBe(true);
         });
     });
 
