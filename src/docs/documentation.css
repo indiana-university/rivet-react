@@ -1,0 +1,7 @@
+header.rvt-header {
+  position: relative;
+}
+
+div.rvt-drawer {
+  min-height: 100vh;
+}
