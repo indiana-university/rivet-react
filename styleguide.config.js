@@ -80,7 +80,7 @@ module.exports = {
             components: () => [
               'src/components/Dropdown/*.tsx', 
               'src/components/Footer/*.tsx', 
-              'src/components/Header/*.tsx', 
+              'src/components/Header/Header.tsx'
             ],
             exampleMode: 'expand'
         },
