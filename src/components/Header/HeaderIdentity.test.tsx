@@ -9,7 +9,7 @@ describe('<Navigation />', () => {
 
     describe('Rendering and styling without navigation', () =>{
 
-        let logoutSpy = jest.fn();
+        const logoutSpy = jest.fn();
         beforeEach(() => {
             cut = shallow(
                 <HeaderIdentity avatar="RS" username="rswanson" onLogout={logoutSpy} />
@@ -50,7 +50,7 @@ describe('<Navigation />', () => {
 
     describe('Rendering and styling with navigation', () =>{
 
-        let logoutSpy = jest.fn();
+        const logoutSpy = jest.fn();
         beforeEach(() => {
             cut = mount(
                 <HeaderIdentity avatar="RS" username="rswanson" onLogout={logoutSpy}>
