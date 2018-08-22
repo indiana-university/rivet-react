@@ -4,6 +4,8 @@ import * as ReactDOM from 'react-dom';
 
 import { Button } from '../Button';
 import Modal from './Modal';
+import ModalBody from './ModalBody';
+import ModalControls from './ModalControls';
 import ModalEvent from './ModalEvent';
 
 describe('<Modal />', () => {
@@ -26,8 +28,8 @@ describe('<Modal />', () => {
     const okButton = <Button key="ok" id="ok-button">OK</Button>;
     const defaultChildren = (
         <div>
-            <Modal.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Modal.Body>
-            <Modal.Controls>{okButton}</Modal.Controls>
+            <ModalBody>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ModalBody>
+            <ModalControls>{okButton}</ModalControls>
         </div>   
     );
 

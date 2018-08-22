@@ -79,16 +79,16 @@ class DialogExample extends React.Component {
           isOpen={this.state.open} 
           title="Modal Dialog" 
         >
-          <Modal.Body>
+          <ModalBody>
               <p>A modal dialog:</p>
               <ul>
                 <li>Is not dismissable i.e. doesn't have an (X) button</li>
                 <li>Requires user input before they continue their work</li>
               </ul>
-            </Modal.Body>
-            <Modal.Controls>
+            </ModalBody>
+            <ModalControls>
               <Button key="close" onClick={this.onCloseButtonClick}>Close</Button>
-            </Modal.Controls>
+            </ModalControls>
         </Modal>
       </>
     );
