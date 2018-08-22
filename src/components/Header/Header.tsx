@@ -3,7 +3,6 @@ import * as React from 'react';
 import { findFirstChildOfType } from '../util/childUtils';
 import Drawer from './HeaderDrawer';
 import Identity from './HeaderIdentity';
-import Menu from './HeaderMenu';
 import Navigation from './HeaderNavigation';
 
 interface HeaderProps {
@@ -14,15 +13,9 @@ interface HeaderProps {
     title: string;
 }
 
-interface Header extends React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> {
-    Identity?: typeof Identity;
-    Menu?: typeof Menu;
-    Navigation?: typeof Navigation;
-}
-
 const componentClass = "rvt-header";
 
-const HeaderComponent: Header = ({ children, className, title, ...attrs }) => {
+const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, title, ...attrs }) => {
     const identity = findFirstChildOfType(children, Identity.displayName);
     const navigation = findFirstChildOfType(children, Navigation.displayName);
     return (
@@ -56,8 +49,5 @@ const HeaderComponent: Header = ({ children, className, title, ...attrs }) => {
 }
 
 HeaderComponent.displayName = 'Header';
-HeaderComponent.Identity = Identity;
-HeaderComponent.Menu = Menu;
-HeaderComponent.Navigation = Navigation;
 
 export default HeaderComponent;
