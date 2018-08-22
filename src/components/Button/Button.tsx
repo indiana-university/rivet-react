@@ -1,21 +1,26 @@
 import * as classNames from 'classnames';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
 /**
  * The properties of a button.
  */
-type VariantType = 'success' | 'danger' | 'plain' | 'default' | 'navigation';
-type SizeType = 'small' | 'default';
-type RoleType = 'secondary' | 'default';
 export interface ButtonProps {
     /** Optional Rivet style: a success/danger/plain button. The 'navigation' variant is intended to support the Header component only. See: https://rivet.uits.iu.edu/components/forms/buttons/#button-examples */
-    variant?: VariantType;
+    variant?: 'success' | 'danger' | 'plain' | 'default' | 'navigation';
     /** Optional Rivet style: a small button. See: https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons */
-    size?: SizeType;
+    size?: 'small' | 'default';
     /** Optional Rivet style: a secondary button. See: https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations */
-    role?: RoleType;
+    role?: 'secondary' | 'default';
     innerRef?: React.Ref<HTMLButtonElement>;
+}
+
+export const buttonPropTypes = {
+  variant: PropTypes.oneOf(['success', 'danger', 'plain', 'default', 'navigation']),
+  size: PropTypes.oneOf(['small', 'default']),
+  role: PropTypes.oneOf(['secondary', 'default']),
+  innerRef: PropTypes.node
 }
 
 const None = '';
@@ -25,7 +30,7 @@ const buttonClass = 'rvt-button';
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
-const buttonRoleAndStyle = (variant: VariantType, role: RoleType) => {
+const buttonRoleAndStyle = ({ role, variant }) => {
   if(variant === 'navigation') {
     return 'rvt-dropdown__toggle';
   }
@@ -44,11 +49,11 @@ const buttonRoleAndStyle = (variant: VariantType, role: RoleType) => {
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
-const buttonSize = (size: SizeType) => (size !== "default" ? `${buttonClass}--${size}` : None);
+const buttonSize = ({ size }) => (size !== "default" ? `${buttonClass}--${size}` : None);
 
 const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
   ({role = "default", size = "default", variant = "default", onClick, id = Rivet.shortuid(), innerRef, className, children, ...attrs}) => {
-  const classes = classNames(buttonRoleAndStyle(variant, role), buttonSize(size), className);
+  const classes = classNames(buttonRoleAndStyle({ role, variant }), buttonSize({ size }), className);
   return (
     <button
       id={id}
@@ -62,5 +67,6 @@ const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonEleme
     </button>
   );
 };
+Button.propTypes = buttonPropTypes;
 
 export default Rivet.rivetize(Button);
