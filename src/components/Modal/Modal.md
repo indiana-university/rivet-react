@@ -24,13 +24,13 @@ class ModalExample extends React.Component {
           title="Modal" 
           onDismiss={this.onDismiss}
         >
-          <Modal.Body>
+          <ModalBody>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <a href="#">incididunt ut labore</a> et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </Modal.Body>
-          <Modal.Controls>
+          </ModalBody>
+          <ModalControls>
             <Button key="ok">OK</Button>
             <Button key="close" onClick={this.onDismiss}>Close</Button>
-          </Modal.Controls>
+          </ModalControls>
         </Modal>
       </>
     );
