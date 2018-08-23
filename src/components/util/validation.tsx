@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-export type Variant = 'info' | 'invalid' | 'valid' | 'warning';
+export interface ValidationProps {
+    /**
+     * Rivet style for inline validation.
+     */
+    variant: 'info' | 'invalid' | 'valid' | 'warning';
+}
 
 const variantDisplayOptions : object = {
     info: {
@@ -44,6 +49,5 @@ const variantDisplayOptions : object = {
     },
 }
 
-export const alertIcon = (variant : Variant) => variantDisplayOptions[variant] && variantDisplayOptions[variant].icon;
-export const alertClass = (variant : Variant) => variantDisplayOptions[variant] && variantDisplayOptions[variant].className;
-
+export const validationIcon = (props : ValidationProps) => variantDisplayOptions[props.variant] && variantDisplayOptions[props.variant].icon;
+export const validationClass = (props : ValidationProps) => variantDisplayOptions[props.variant] && variantDisplayOptions[props.variant].className;

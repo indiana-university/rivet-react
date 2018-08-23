@@ -1,11 +1,9 @@
 import * as PropTypes from 'prop-types';
 
-
 export interface StatefulAlertProps {
     /**
      * Rivet alert styling. 
      * @see https://rivet.uits.iu.edu/components/overlays/alerts
-     * @memberof AlertProps
      */ 
     variant: "error" | "info" | "message" | "success",
     /**
@@ -26,7 +24,7 @@ export const statefulPropTypes = {
 
 export interface StatelessAlertProps extends StatefulAlertProps {
     /**
-     * Optional flag to determine whether the alert is rendered
+     * Optional flag to determine whether the alert is visible
      */
     isOpen?: boolean
 }
