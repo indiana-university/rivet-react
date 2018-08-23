@@ -4,32 +4,27 @@ import * as React from 'react';
 import InlineAlert from '../Alert/InlineAlert';
 import * as Rivet from '../util/Rivet';
 
-import { alertClass, Variant } from '../Alert/inlineAlertVariantDisplayOptions';
+import { validationClass, ValidationProps } from '../util/validation';
 
-type InputVariant = Variant;
-export interface TextProps {
+export interface TextProps extends ValidationProps {
     label: string;
     note?: React.ReactNode;
-    /**
-     * Optional Rivet style for inline validation.
-     * See: https://rivet.uits.iu.edu/components/forms/text-input/#inline-validation-states
-     */
-    variant?: InputVariant;
 }
 
-const isInlineAlert = (variant?: InputVariant) => variant && variant !== undefined;
+const isInlineAlert = (props: TextProps) => props.variant !== undefined;
 
 const standardNote = (id : string, note : React.ReactNode) => <small id={id} className="rvt-display-block rvt-m-bottom-md">{note}</small>
 
-const inputClassName = (variant?: InputVariant) => isInlineAlert(variant)
-    ? `rvt-${alertClass(variant as Variant)}`
+const inputClassName = (props: TextProps) => 
+    isInlineAlert(props)
+    ? `rvt-${validationClass(props)}`
     : '';
 
 const labelFragment = (inputId : string, props : TextProps) => <label htmlFor={inputId}>{props.label}</label>
 
-const noteFragment = (id : string, variant?: InputVariant, note? : React.ReactNode) => note
-    ? isInlineAlert(variant)
-        ? <InlineAlert id={id} variant={variant as Variant}>{note}</InlineAlert>
+const noteFragment = (id : string, props: TextProps, note? : React.ReactNode) => note
+    ? isInlineAlert(props)
+        ? <InlineAlert id={id} variant={props.variant}>{note}</InlineAlert>
         : standardNote(id, note)
     : null;
 
@@ -40,7 +35,7 @@ export const renderInput =
         const variant = props.variant;
         const note = props.note;
         const noteId = `${inputId}_note`;
-        const inputClass = inputClassName(variant);
+        const inputClass = inputClassName(props);
         const ariaDescribedBy = note
             ? noteId
             : '';
@@ -49,7 +44,7 @@ export const renderInput =
             <div className={classNames('rvt-input', props.className)}>
                 {labelFragment(inputId, props)}
                 {inputGenerator <T> (inputId, inputClass, ariaDescribedBy, ariaInvalid, props)}
-                {noteFragment(noteId, variant, note)}
+                {noteFragment(noteId, props, note)}
             </div>
         );
 }
