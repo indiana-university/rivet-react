@@ -81,7 +81,10 @@ module.exports = {
             components: () => [
               'src/components/Dropdown/*.tsx', 
               'src/components/Footer/*.tsx', 
-              'src/components/Header/Header.tsx'
+              'src/components/Header/Header.tsx',
+              'src/components/Header/HeaderIdentity.tsx',
+              'src/components/Header/HeaderNavigation.tsx',
+              'src/components/Header/HeaderMenu.tsx'
             ],
             exampleMode: 'expand'
         },

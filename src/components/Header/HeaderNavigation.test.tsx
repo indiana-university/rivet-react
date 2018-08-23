@@ -1,6 +1,8 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
 import Header from './Header';
+import HeaderMenu from './HeaderMenu'
+import HeaderNavigation from './HeaderNavigation'
 
 describe('<HeaderNavigation />', () => {
     let cut;
@@ -8,10 +10,10 @@ describe('<HeaderNavigation />', () => {
     beforeEach(() => {
         cut = mount(
             <Header title="Testing">
-                <Header.Navigation>
+                <HeaderNavigation>
                     <a href="#">Foo</a>
                     <button>Bar</button>
-                </Header.Navigation>
+                </HeaderNavigation>
             </Header>
         );
     })
@@ -29,12 +31,12 @@ describe('<HeaderNavigation />', () => {
         
         beforeEach(() => {
             cut = mount(
-                <Header.Navigation className="rvt-drawer-navigation">
+                <HeaderNavigation className="rvt-drawer-navigation">
                     <a href="#">Foo</a>
-                    <Header.Menu label="Example">
+                    <HeaderMenu label="Example">
                         <button>Bar</button>
-                    </Header.Menu>
-                </Header.Navigation>
+                    </HeaderMenu>
+                </HeaderNavigation>
             );
         });
 

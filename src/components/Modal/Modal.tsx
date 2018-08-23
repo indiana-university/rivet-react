@@ -5,8 +5,6 @@ import * as ReactDOM from 'react-dom';
 
 import Button from '../Button/Button';
 import * as Rivet from '../util/Rivet';
-import ModalBody from './ModalBody';
-import ModalControls from './ModalControls';
 import ModalEvent from './ModalEvent';
 
 export interface ModalProps {
@@ -44,9 +42,6 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDi
         onDismiss: PropTypes.func,
         title: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node, PropTypes.string]).isRequired
     };
-
-    public static Body = ModalBody;
-    public static Controls = ModalControls;
 
     private eventHandler;
 

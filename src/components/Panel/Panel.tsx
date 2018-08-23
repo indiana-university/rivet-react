@@ -2,7 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import { rivetize } from '../util/Rivet';
 
-type Variant = 'default' | 'light';
+type Variant = 'light';
 
 interface PanelProps {
 
@@ -13,10 +13,10 @@ interface PanelProps {
     variant?: Variant;
 }
 
-const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className,  variant='default', ...attrs }) => {
+const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, variant, ...attrs }) => {
     const classes = classNames({
         ['rvt-panel']: true,
-        [`rvt-panel--${variant}`]: variant !== 'default' 
+        [`rvt-panel--${variant}`]: variant !== undefined
     }, className);
     return (
         <div className={classes} {...attrs}>{children}</div>

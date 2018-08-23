@@ -9,10 +9,10 @@
 
 ### Secondary Buttons
 ```jsx
-<Button margin="xs" onClick={() => { console.log('Click!') }} role="secondary">Primary</Button>
-<Button margin="xs" onClick={() => { console.log('Click!') }} variant="success" role="secondary">Success</Button>
-<Button margin="xs" onClick={() => { console.log('Click!') }} variant="danger" role="secondary">Danger</Button>
-<Button margin="xs" onClick={() => { console.log('Click!') }} disabled role="secondary">Disabled</Button>
+<Button margin="xs" onClick={() => { console.log('Click!') }} modifier="secondary">Primary</Button>
+<Button margin="xs" onClick={() => { console.log('Click!') }} variant="success" modifier="secondary">Success</Button>
+<Button margin="xs" onClick={() => { console.log('Click!') }} variant="danger" modifier="secondary">Danger</Button>
+<Button margin="xs" onClick={() => { console.log('Click!') }} disabled modifier="secondary">Disabled</Button>
 ```
 
 ### Small Buttons

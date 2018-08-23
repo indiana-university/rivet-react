@@ -1,6 +1,8 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import Header from './Header';
+import Header from './Header'
+import HeaderIdentity from './HeaderIdentity'
+import HeaderNavigation from './HeaderNavigation'
 
 describe('<Header />', () => {
     let cut;
@@ -32,10 +34,10 @@ describe('<Header />', () => {
         beforeEach(() => {
             cut = shallow(
                 <Header title="foo">
-                    <Header.Navigation>
+                    <HeaderNavigation>
                         <a href="#" id="example-one">Example One</a>
                         <button id="example-two">Example Two</button>
-                    </Header.Navigation>
+                    </HeaderNavigation>
                 </Header>
             )
         });
@@ -61,10 +63,10 @@ describe('<Header />', () => {
         beforeEach(() => {
             cut = shallow(
                 <Header title="foo">
-                    <Header.Identity avatar="RS" username="rswanson">
+                    <HeaderIdentity avatar="RS" username="rswanson">
                         <a href="#" id="example-one">Example One</a>
                         <button id="example-two">Example Two</button>
-                    </Header.Identity>
+                    </HeaderIdentity>
                 </Header>
             )
         });

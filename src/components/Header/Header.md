@@ -10,42 +10,41 @@ View the [Rivet documentation for Header](https://rivet.uits.iu.edu/components/n
 <Header title="Application Title" />
 ```
 
-The `Header.Identity` adds a username, or username and avatar. On mobile this item 
+The `HeaderIdentity` adds a username, or username and avatar. On mobile this item 
 collapses into the side menu above all other options.
 
-```jsx
+```jsx 
 <Header title="Application Title">
-    <Header.Identity avatar="RS" username="rswanson" onLogout={() => console.log('Logout!')} />
+    <HeaderIdentity avatar="RS" username="rswanson" onLogout={() => console.log('Logout!')} />
 </Header>
 ```
 
-The `Header.Navigation` supports internal app navigation, either as individual links or as 
-dropdowns via the use of `Header.Menu`. The `Header.Identity` can take individual user tasks 
+The `HeaderNavigation` supports internal app navigation, either as individual links or as 
+dropdowns via the use of `HeaderMenu`. The `HeaderIdentity` can take individual user tasks 
 as child elements. On mobile these navigation elements will be rendered as an accordion (collapse).
 
-```jsx
+```jsx 
 <Header title="Application Title">
-    <Header.Navigation>
+    <HeaderNavigation>
         <a href="#">Nav one</a>
-        <Header.Menu label="Nav two">
+        <HeaderMenu label="Nav two">
             <a href="#">Item one</a>
             <a href="#">Item two</a>
             <a href="#">Item three</a>
             <a href="#">Item four</a>
-        </Header.Menu>
+        </HeaderMenu>
         <a href="#" aria-current="page">Nav three</a>
-        <Header.Menu label="Nav four">
+        <HeaderMenu label="Nav four">
             <a href="#">Item one</a>
             <a href="#">Item two</a>
             <a href="#">Item three</a>
             <a href="#">Item four</a>
-        </Header.Menu>
-    </Header.Navigation>
-    
-    <Header.Identity avatar="RS" username="rswanson" onLogout={() => console.log('Logout!')}>
+        </HeaderMenu>
+    </HeaderNavigation>
+    <HeaderIdentity avatar="RS" username="rswanson" onLogout={() => console.log('Logout!')}>
         <a href="#">Account settings</a>
         <a href="#">Admin task one</a>
         <a href="#">Admin task two</a>
-    </Header.Identity>
+    </HeaderIdentity>
 </Header>
 ```

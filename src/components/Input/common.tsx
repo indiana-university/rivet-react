@@ -6,7 +6,7 @@ import * as Rivet from '../util/Rivet';
 
 import { alertClass, Variant } from '../Alert/inlineAlertVariantDisplayOptions';
 
-type InputVariant = Variant | 'default';
+type InputVariant = Variant;
 export interface TextProps {
     label: string;
     note?: React.ReactNode;
@@ -17,17 +17,17 @@ export interface TextProps {
     variant?: InputVariant;
 }
 
-const isInlineAlert = (variant : InputVariant) => variant && variant !== 'default';
+const isInlineAlert = (variant?: InputVariant) => variant && variant !== undefined;
 
 const standardNote = (id : string, note : React.ReactNode) => <small id={id} className="rvt-display-block rvt-m-bottom-md">{note}</small>
 
-const inputClassName = (variant : InputVariant) => isInlineAlert(variant)
+const inputClassName = (variant?: InputVariant) => isInlineAlert(variant)
     ? `rvt-${alertClass(variant as Variant)}`
     : '';
 
 const labelFragment = (inputId : string, props : TextProps) => <label htmlFor={inputId}>{props.label}</label>
 
-const noteFragment = (id : string, variant: InputVariant, note? : React.ReactNode) => note
+const noteFragment = (id : string, variant?: InputVariant, note? : React.ReactNode) => note
     ? isInlineAlert(variant)
         ? <InlineAlert id={id} variant={variant as Variant}>{note}</InlineAlert>
         : standardNote(id, note)
@@ -37,7 +37,7 @@ type TextComponentGenerator = <T>(id:string, className: string, ariaDescribedBy:
 export const renderInput =
     <T extends React.HTMLAttributes<HTMLElement>>( props: TextProps & T, inputGenerator: TextComponentGenerator ) => {
         const inputId = props.id || Rivet.shortuid();
-        const variant = props.variant || 'default';
+        const variant = props.variant;
         const note = props.note;
         const noteId = `${inputId}_note`;
         const inputClass = inputClassName(variant);

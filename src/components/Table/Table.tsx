@@ -7,10 +7,10 @@ interface TableProps {
      * Optional Rivet style which changes the look and feel of the rendered table.
      * @see https://rivet.uits.iu.edu/components/page-content/tables/
      */
-    variant?: 'default' | 'stripes' | 'plain'
+    variant?: 'stripes' | 'plain'
 }
 
-const Table : React.SFC<TableProps & React.HTMLAttributes<HTMLTableElement>> = ({ children, className, variant = 'default', ...attrs }) => {
+const Table : React.SFC<TableProps & React.HTMLAttributes<HTMLTableElement>> = ({ children, className, variant, ...attrs }) => {
     const classes = classNames({
         ['rvt-table-plain']: variant === 'plain',
         ['rvt-table-stripes']: variant === 'stripes',

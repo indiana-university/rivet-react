@@ -5,13 +5,16 @@ import * as Rivet from '../util/Rivet';
 /**
  * The properties of a button.
  */
+type VariantType = 'success' | 'danger' | 'plain' | 'navigation';
+type SizeType = 'small';
+type ModifierType = 'secondary';
 export interface ButtonProps {
     /** Optional Rivet style: a success/danger/plain button. The 'navigation' variant is intended to support the Header component only. See: https://rivet.uits.iu.edu/components/forms/buttons/#button-examples */
+    variant?: VariantType;
     /** Optional Rivet style: a small button. See: https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons */
+    size?: SizeType;
     /** Optional Rivet style: a secondary button. See: https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations */
-    variant?: 'success' | 'danger' | 'plain' | 'navigation';
-    size?: 'small';
-    role?: 'secondary';
+    modifier?: ModifierType;
     innerRef?: React.Ref<HTMLButtonElement>;
 }
 
@@ -23,20 +26,22 @@ export const buttonPropTypes = {
   id: PropTypes.string
 }
 
+const None = '';
 const buttonClass = 'rvt-button';
 /**
- * Generate the combined role and variation class for this button, if applicable.
+ * Generate the combined modifier and variation class for this button, if applicable.
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
-const buttonRoleAndStyle = (props: ButtonProps) => {
-  if(props.variant === 'navigation') {
+
+const buttonModifierAndStyle = (variant?: VariantType, modifier?: ModifierType) => {
+  if(variant === 'navigation') {
     return 'rvt-dropdown__toggle';
   }
   const classParts = [
-    props.variant,
-    props.role
-  ].filter(x => x !== undefined);
+    variant !== undefined ? variant : None,
+    modifier !== undefined ? modifier : None
+  ].filter(x => x !== None);
   // combine variation and style, if any.
   return classParts.length === 0
     ? buttonClass
@@ -48,11 +53,12 @@ const buttonRoleAndStyle = (props: ButtonProps) => {
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
-const buttonSize = (props: ButtonProps) => (props.size ? `${buttonClass}--${props.size}` : undefined);
 
-const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
-  ({onClick, id = Rivet.shortuid(), innerRef, className, children, ...attrs}) => {
-  const classes = classNames(buttonRoleAndStyle(attrs), buttonSize(attrs), className);
+const buttonSize = (size?: SizeType) => (size !== undefined ? `${buttonClass}--${size}` : None);
+
+export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
+  ({ className, children, id = Rivet.shortuid(), innerRef, modifier, onClick, size, variant, ...attrs}) => {
+  const classes = classNames(buttonModifierAndStyle(variant, modifier), buttonSize(size), className);
   return (
     <button
       id={id}
