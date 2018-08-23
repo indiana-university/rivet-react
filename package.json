@@ -12,14 +12,14 @@
   "main": "build/dist/components/index.js",
   "types": "build/dist/components/index.d.ts",
   "dependencies": {
-    "classnames": "^2.2.6",
-    "jest-cli": "^23.1.0",
-    "react": "^16.4.1",
-    "react-display-name": "^0.2.4",
-    "react-dom": "^16.4.1",
-    "react-router-dom": "^4.3.1",
+    "classnames": "2.2.6",
+    "jest-cli": "23.1.0",
+    "react": "16.4.1",
+    "react-display-name": "0.2.4",
+    "react-dom": "16.4.1",
+    "react-router-dom": "4.3.1",
     "react-scripts-ts": "2.16.0",
-    "rivet-uits": "^1.0.0"
+    "rivet-uits": "1.0.0"
   },
   "scripts": {
     "start": "npx styleguidist server",
@@ -29,21 +29,21 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.4",
-    "@types/enzyme": "^3.1.10",
-    "@types/enzyme-adapter-react-16": "^1.0.2",
-    "@types/jest": "^23.1.1",
-    "@types/node": "^10.3.4",
-    "@types/react": "^16.4.1",
-    "@types/react-dom": "^16.0.6",
-    "@types/react-router-dom": "^4.2.7",
-    "codecov.io": "^0.1.6",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "gh-pages": "^1.2.0",
+    "@types/classnames": "2.2.4",
+    "@types/enzyme": "3.1.10",
+    "@types/enzyme-adapter-react-16": "1.0.2",
+    "@types/jest": "23.1.1",
+    "@types/node": "10.3.4",
+    "@types/react": "16.4.1",
+    "@types/react-dom": "16.0.6",
+    "@types/react-router-dom": "4.2.7",
+    "codecov.io": "0.1.6",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "gh-pages": "1.2.0",
     "react-docgen-typescript": "1.6.2",
     "react-styleguidist": "7.1.0",
-    "typescript": "^2.9.2"
+    "typescript": "2.9.2"
   },
   "files": [
     "build/dist/components"
