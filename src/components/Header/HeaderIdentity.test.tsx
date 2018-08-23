@@ -1,16 +1,18 @@
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
 import Header from './Header';
+import HeaderIdentity from './HeaderIdentity'
+import HeaderNavigation from './HeaderNavigation'
 
 describe('<Navigation />', () => {
     let cut;
 
     describe('Rendering and styling without navigation', () =>{
 
-        let logoutSpy = jest.fn();
+        const logoutSpy = jest.fn();
         beforeEach(() => {
             cut = shallow(
-                <Header.Identity avatar="RS" username="rswanson" onLogout={logoutSpy} />
+                <HeaderIdentity avatar="RS" username="rswanson" onLogout={logoutSpy} />
             );
         });
 
@@ -23,7 +25,7 @@ describe('<Navigation />', () => {
         });
         it('should not render an avatar if it is not provided', () => {
             cut = shallow(
-                <Header.Identity username="rswanson" />
+                <HeaderIdentity username="rswanson" />
             );
             expect(cut.find('span.rvt-header-id__avatar')).toHaveLength(0);
         });
@@ -36,7 +38,7 @@ describe('<Navigation />', () => {
         });
         it('should not render the logout link if no action provided', () => {
             cut = shallow(
-                <Header.Identity username="rswanson" />
+                <HeaderIdentity username="rswanson" />
             );
             expect(cut.find('a.rvt-header-id__log-out')).toHaveLength(0);
         });
@@ -48,12 +50,12 @@ describe('<Navigation />', () => {
 
     describe('Rendering and styling with navigation', () =>{
 
-        let logoutSpy = jest.fn();
+        const logoutSpy = jest.fn();
         beforeEach(() => {
             cut = mount(
-                <Header.Identity avatar="RS" username="rswanson" onLogout={logoutSpy}>
+                <HeaderIdentity avatar="RS" username="rswanson" onLogout={logoutSpy}>
                     <a href="#">Example</a>
-                </Header.Identity>
+                </HeaderIdentity>
             );
         });
 
@@ -84,15 +86,15 @@ describe('<Navigation />', () => {
     describe('Drawer rendering', () => {
         it('should render the identity menu with no navigation in the drawer view', () => {
             cut = mount(
-                <Header.Identity avatar="RS" username="rswanson" className="rvt-header-id--drawer" />
+                <HeaderIdentity avatar="RS" username="rswanson" className="rvt-header-id--drawer" />
             );
             expect(cut.find('div.rvt-header-id__profile').hasClass('rvt-header-id__profile--drawer')).toBe(true);
         });
         it('should render the identity menu with navigation in the drawer view', () => {
             cut = mount(
-                <Header.Identity avatar="RS" username="rswanson" className="rvt-header-id--drawer">
+                <HeaderIdentity avatar="RS" username="rswanson" className="rvt-header-id--drawer">
                     <a href="#" id="example-one">Example</a>
-                </Header.Identity>
+                </HeaderIdentity>
             );
             cut.find('HeaderCollapse > button').simulate('click');
             expect(cut.find('HeaderCollapse').find('a#example-one')).toHaveLength(1);
