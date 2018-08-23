@@ -13,7 +13,7 @@
   "types": "build/dist/components/index.d.ts",
   "dependencies": {
     "classnames": "2.2.6",
-    "jest-cli": "23.1.0",
+    "jest-cli": "23.5.0",
     "react": "16.4.1",
     "react-display-name": "0.2.4",
     "react-dom": "16.4.1",
@@ -32,7 +32,7 @@
     "@types/classnames": "2.2.4",
     "@types/enzyme": "3.1.10",
     "@types/enzyme-adapter-react-16": "1.0.2",
-    "@types/jest": "23.1.1",
+    "@types/jest": "23.3.1",
     "@types/node": "10.7.1",
     "@types/react": "16.4.1",
     "@types/react-dom": "16.0.6",
