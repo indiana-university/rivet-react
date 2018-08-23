@@ -2,7 +2,6 @@ import * as classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
-
 /**
  * The properties of a button.
  */
@@ -20,7 +19,8 @@ export const buttonPropTypes = {
   variant: PropTypes.oneOf(['success', 'danger', 'plain', 'navigation']),
   size: PropTypes.oneOf(['small']),
   role: PropTypes.oneOf(['secondary']),
-  innerRef: PropTypes.node
+  innerRef: PropTypes.any,
+  id: PropTypes.string
 }
 
 const buttonClass = 'rvt-button';
