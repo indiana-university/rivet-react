@@ -18,8 +18,8 @@ interface BadgeProps {
 
 
 const propTypes = {
-    role: PropTypes.oneOf(['default', 'secondary']),
-    variant: PropTypes.oneOf(['', 'action', 'error', 'success', 'warning'])
+    role: PropTypes.oneOf(['secondary']),
+    variant: PropTypes.oneOf(['action', 'error', 'success', 'warning'])
 };
 
 const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, modifier, variant, ...attrs }) => {

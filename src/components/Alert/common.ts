@@ -20,7 +20,7 @@ export interface StatefulAlertProps {
 }
 
 export const statefulPropTypes = {
-    variant: PropTypes.oneOf(['info', 'error', 'message', 'success']).isRequired,
+    variant: PropTypes.oneOf(['error', 'info', 'message', 'success']).isRequired,
     title: PropTypes.string,
     onDismiss: PropTypes.func
 };
