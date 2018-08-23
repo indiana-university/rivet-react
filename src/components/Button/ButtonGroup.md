@@ -1,7 +1,18 @@
-### Examples
+Use a `ButtonGroup` to present related buttons, or buttons whose actions are exclusive to one another.
+
 ```jsx
 <ButtonGroup>
-    <Button onClick={() => { console.log('Click!') }}>OK</Button>
-    <Button onClick={() => { console.log('Click!') }} modifier="secondary">Cancel</Button>
+    <Button onClick={() => { console.log('Ok!') }}>OK</Button>
+    <Button onClick={() => { console.log('Cancel!') }} modifier="secondary">Cancel</Button>
+</ButtonGroup>
+```
+
+### Right Alignment
+
+Use the `right` option to right-align the buttons in the container.
+```jsx
+<ButtonGroup right>
+    <Button onClick={() => { console.log('Ok!') }}>OK</Button>
+    <Button onClick={() => { console.log('Cancel!') }} modifier="secondary">Cancel</Button>
 </ButtonGroup>
 ```

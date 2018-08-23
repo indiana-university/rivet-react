@@ -5,9 +5,7 @@ import * as Rivet from '../util/Rivet';
 
 interface SegmentedButtonProps {
   /**
-   * Setting this to true will cause the segmented button to fill the entire
-   * width of its parent container
-   * @see https://rivet.uits.iu.edu/components/forms/buttons-segmented/#fitted-modifier
+   * Optional Rivet style: Expand the segmented buttons to fill the entire width of the parent container
    */
   fit?: boolean;
 };
