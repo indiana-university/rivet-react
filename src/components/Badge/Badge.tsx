@@ -6,16 +6,13 @@ import { rivetize } from '../util/Rivet';
 interface BadgeProps {
     /**
      * Optional Rivet style: a secondary badge.
-     * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
      */
     modifier?: 'secondary',
     /**
-     * Optional Rivet style: a success/danger/plain badge.
-     * @see https://rivet.uits.iu.edu/components/page-content/badges/#secondary-badges
+     * Optional Rivet style: an action/error/success/warning badge.
      */
     variant?: 'action' | 'error' | 'success' | 'warning';
 }
-
 
 const propTypes = {
     role: PropTypes.oneOf(['secondary']),
@@ -33,6 +30,7 @@ const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ 
         <span className={classes} {...attrs}>{children}</span>
     );
 };
+
 Badge.displayName = 'Badge';
 Badge.propTypes = propTypes;
 

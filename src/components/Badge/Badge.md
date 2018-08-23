@@ -1,3 +1,7 @@
+Use badges to call out or label important information in your UI.
+
+View the [Rivet documentation for Badges](https://rivet.uits.iu.edu/components/page-content/badges/).
+
 ### Default Badges
 ```jsx
 <Badge>Base</Badge>{' '}
