@@ -1,4 +1,5 @@
 import * as classNames from 'classnames';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
@@ -8,6 +9,10 @@ interface ButtonGroupProps {
    * @see https://rivet.uits.iu.edu/components/forms/buttons/#button-groups
    */
   right?: boolean;
+};
+
+const propTypes = {
+  right: PropTypes.bool
 };
 
 const ButtonGroup: React.SFC<ButtonGroupProps & React.HTMLAttributes<HTMLDivElement>> = ({ className, children, right, ...attrs }) => {
@@ -21,5 +26,7 @@ const ButtonGroup: React.SFC<ButtonGroupProps & React.HTMLAttributes<HTMLDivElem
     </div>
   );
 };
+ButtonGroup.displayName = 'ButtonGroup';
+ButtonGroup.propTypes = propTypes;
 
 export default Rivet.rivetize(ButtonGroup);

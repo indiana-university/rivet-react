@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
-
 /**
  * The properties of a button.
  */
@@ -18,6 +18,14 @@ export interface ButtonProps {
     innerRef?: React.Ref<HTMLButtonElement>;
 }
 
+export const buttonPropTypes = {
+  variant: PropTypes.oneOf(['success', 'danger', 'plain', 'navigation']),
+  size: PropTypes.oneOf(['small']),
+  role: PropTypes.oneOf(['secondary']),
+  innerRef: PropTypes.any,
+  id: PropTypes.string
+}
+
 const None = '';
 const buttonClass = 'rvt-button';
 /**
@@ -25,6 +33,7 @@ const buttonClass = 'rvt-button';
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
+
 const buttonModifierAndStyle = (variant?: VariantType, modifier?: ModifierType) => {
   if(variant === 'navigation') {
     return 'rvt-dropdown__toggle';
@@ -44,6 +53,7 @@ const buttonModifierAndStyle = (variant?: VariantType, modifier?: ModifierType) 
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
+
 const buttonSize = (size?: SizeType) => (size !== undefined ? `${buttonClass}--${size}` : None);
 
 export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
@@ -62,6 +72,7 @@ export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButt
     </button>
   );
 };
+Button.propTypes = buttonPropTypes;
 Button.displayName = 'Button';
 
 export default Rivet.rivetize(Button);

@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import * as Rivet from '../util/Rivet';
-import { alertClass, alertIcon, Variant } from './inlineAlertVariantDisplayOptions';
+import { alertClass, alertIcon } from './inlineAlertVariantDisplayOptions';
 
 interface InlineAlertProps {
     /**
@@ -15,7 +15,7 @@ interface InlineAlertProps {
      * Rivet style for inline validation.
      * See: https://rivet.uits.iu.edu/components/forms/text-input/#inline-validation-states
      */
-    variant: Variant;
+    variant: 'info' | 'invalid' | 'valid' | 'warning';
 };
 
 const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElement>> =

@@ -1,7 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+
 import * as Rivet from '../util/Rivet';
-import { StatelessAlertProps } from './common';
+import { StatelessAlertProps, statelessPropTypes } from './common';
 
 const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElement>> = 
     ({title, onDismiss, variant, isOpen=true, id=Rivet.shortuid(), className, children, ...attrs}) => {
@@ -33,5 +34,6 @@ const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElemen
         : null
 };
 Alert.displayName = 'Alert';
+Alert.propTypes = statelessPropTypes;
 
 export default Rivet.rivetize(Alert);

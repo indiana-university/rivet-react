@@ -1,4 +1,5 @@
 import * as classNames from 'classnames';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { rivetize } from '../util/Rivet';
 
@@ -15,6 +16,12 @@ interface BadgeProps {
     variant?: 'action' | 'error' | 'success' | 'warning';
 }
 
+
+const propTypes = {
+    role: PropTypes.oneOf(['secondary']),
+    variant: PropTypes.oneOf(['action', 'error', 'success', 'warning'])
+};
+
 const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, modifier, variant, ...attrs }) => {
     const classes = classNames({
         ['rvt-badge']: true,
@@ -27,5 +34,6 @@ const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ 
     );
 };
 Badge.displayName = 'Badge';
+Badge.propTypes = propTypes;
 
 export default rivetize(Badge);

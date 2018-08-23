@@ -1,3 +1,5 @@
+import * as PropTypes from 'prop-types';
+
 import * as Rivet from '../util/Rivet';
 
 export interface StatefulAlertProps {
@@ -6,7 +8,7 @@ export interface StatefulAlertProps {
      * @see https://rivet.uits.iu.edu/components/overlays/alerts
      * @memberof AlertProps
      */ 
-    variant: "info" | "message" | "error" | "success",
+    variant: "error" | "info" | "message" | "success",
     /**
      * Optional alert title
      */
@@ -17,9 +19,20 @@ export interface StatefulAlertProps {
     onDismiss?: Rivet.Action
 }
 
+export const statefulPropTypes = {
+    variant: PropTypes.oneOf(['error', 'info', 'message', 'success']).isRequired,
+    title: PropTypes.string,
+    onDismiss: PropTypes.func
+};
+
 export interface StatelessAlertProps extends StatefulAlertProps {
     /**
      * Optional flag to determine whether the alert is rendered
      */
     isOpen?: boolean
 }
+
+export const statelessPropTypes = {
+    ...statefulPropTypes,
+    isOpen: PropTypes.bool
+};
