@@ -1,6 +1,5 @@
 import * as PropTypes from 'prop-types';
 
-import * as Rivet from '../util/Rivet';
 
 export interface StatefulAlertProps {
     /**
@@ -16,7 +15,7 @@ export interface StatefulAlertProps {
     /**
      * Optional event to raise when the alert is dismissed
      */
-    onDismiss?: Rivet.Action
+    onDismiss?: () => void;
 }
 
 export const statefulPropTypes = {
