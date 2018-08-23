@@ -3,7 +3,7 @@ import * as React from 'react'
 import * as Rivet from '../util/Rivet'
 
 type ListVariant = 'ordered' | 'plain' | 'unordered';
-type ListOrientation = 'inline' | 'default';
+type ListOrientation = 'inline';
 export interface ListProps {
     /**
      * Optional Rivet style for the type of list decoration.
