@@ -81,7 +81,7 @@ module.exports = {
             components: () => [
               'src/components/Dropdown/*.tsx', 
               'src/components/Footer/*.tsx', 
-              'src/components/Header/*.tsx', 
+              'src/components/Header/Header.tsx'
             ],
             exampleMode: 'expand'
         },
@@ -128,6 +128,7 @@ module.exports = {
     ],
     webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
     require: [
-        'rivet-uits/css/rivet.min.css'
+        'rivet-uits/css/rivet.min.css',
+        './src/docs/documentation.css'
       ]
 };

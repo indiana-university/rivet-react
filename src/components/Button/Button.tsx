@@ -66,6 +66,10 @@ const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonEleme
     </button>
   );
 };
+
 Button.propTypes = buttonPropTypes;
+
+Button.displayName = 'Button';
+
 
 export default Rivet.rivetize(Button);
