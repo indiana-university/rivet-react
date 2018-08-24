@@ -1,309 +1,77 @@
-# rivet-react npm package
-Published to [https://www.npmjs.com/package/rivet-react](https://www.npmjs.com/package/rivet-react)
+[Rivet-react](https://github.com/indiana-university/rivet-react) is a library of React components that implement the [Rivet Software Design System](https://rivet.uits.iu.edu). The components are implemented in [TypeScript](http://www.typescriptlang.org/) and can be used by any Javascript application.
 
-## Installing
-    npm install rivet-react
-    
-## Importing CSS and components
+Rivet-react resources:
+* [Component Documentation and Style Guide](https://indiana-university.github.io/rivet-react/)
+* [GitHub repo](https://github.com/indiana-university/rivet-react)
+* [NPM package](https://www.npmjs.com/package/rivet-react)
+* [Circle CI](https://circleci.com/gh/indiana-university/rivet-react)
 
-    import 'rivet-uits/css/rivet.min.css'
-    import {
-        Alert,
-        Button,
-        Checkbox,
-        Dropdown,
-        File,
-        Footer,
-        Header,
-        Input,
-        List,
-        Modal,
-        RadioButton,
-        Section,
-        SegmentedButtons,
-        Table,
-        TableRow,
-        Tabs
-    } from 'rivet-react'
+| Branch | Build | Code Coverage |
+| ------ | ----- | ------------- |
+| master | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/master.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/master) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/master/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/master) |
+| develop | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/develop.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/develop) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/develop/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/develop) |
 
-## Demo components usage
-            
-    constructor(props) {
-        super(props);
-        this.state = {
-            drawerDropdownVisibility: {},
-            desktopActiveDropdown: null,
-            activeModal: null
-        };
+## Installation
 
-        this.toggleDrawerDropdown = this.toggleDrawerDropdown.bind(this)
-        this.toggleDesktopDropdown = this.toggleDesktopDropdown.bind(this)
-        this.toggleModal = this.toggleModal.bind(this)
-    }
+To install the rivet-react package from NPM,
 
-    toggleDesktopDropdown(key) {
-        this.setState({
-            desktopActiveDropdown: key == this.state.desktopActiveDropdown ? null : key
-        })
-    }
+```shell
+npm install rivet-react
+```
 
-    toggleDrawerDropdown(key) {
-        let drawerDropdownVisibility = Object.assign({}, this.state.drawerDropdownVisibility);
-        drawerDropdownVisibility[key] = !drawerDropdownVisibility[key];
-        this.setState({
-            drawerDropdownVisibility: drawerDropdownVisibility
-        })
-    }
+Or with yarn,
 
-    toggleModal(key) {
-        this.setState({
-            activeModal: key
-        })
-    }
+```shell
+yarn add rivet-react
+```
 
-    render() {
-        return (
-            <React.Fragment>
-                {header}
-                <div className="rvt-container rvt-container--freshman rvt-m-top-md">
-                    <h1>Rivet 1.0.0 React Components Demo</h1>
+Once installed you can use the components in your project. The Rivet styles are included as a dependency of *rivet-react* but they are not bundled into the components, so you'll need to import them as well.
 
-                    <Tabs vertical className="rvt-m-bottom-md" tabs={tabs} />
+```typescript
+import * as React from 'react'
+import 'rivet-uits/css/rivet.min.css'
+import { Alert } from 'rivet-react'
 
-                    <Dropdown toggleDesktopDropdown={this.toggleDesktopDropdown} desktopActiveDropdown={this.state.desktopActiveDropdown} id="request-group-ownership-dropdown" title="Request Group Ownership">
-                        <button>For an existing group</button>
-                        <button>For all of a users's group</button>
-                    </Dropdown>
+<Alert variant="info">A very important message for you!</Alert>
+``` 
 
-                    <Alert className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Base</Alert>
-                    <Alert error className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Error</Alert>
-                    <Alert info className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Info</Alert>
-                    <Alert success className="rvt-m-top-md" clickDismiss={function () {
-                        console.log('dismissed alert')
-                    }}>Success</Alert>
+Check out the [Component Documentation and Style Guide](https://indiana-university.github.io/rivet-react/) for comprehensive component documentation and examples.
 
-                    <Button onClick={function () {
-                        console.log("hello")
-                    }} className="rvt-m-top-md">Hello</Button>
-                    <Button onClick={function () {
-                        console.log("world")
-                    }} className="rvt-m-left-md rvt-button--secondary rvt-m-top-lg">World</Button>
+## Contributing
 
+[Rivet-react](https://github.com/indiana-university/rivet-react/) is open source and maintained by members of the [Indiana University](https://github.com/indiana-university) organization on GitHub. If you have questions about the library or encounter problems please [file an issue](https://github.com/indiana-university/rivet-react/issues). If you wish to contribute, [pull requests](https://help.github.com/articles/about-pull-requests/) are welcome!
 
-                    <div className="rvt-m-top-md">
-                        <SegmentedButtons label="Numbers" fit>
-                            <Button onClick={function () {
-                                console.log("one")
-                            }} secondary>One</Button>
-                            <Button onClick={function () {
-                                console.log("two")
-                            }} secondary>Two</Button>
-                            <Button onClick={function () {
-                                console.log("three")
-                            }} secondary>Three</Button>
-                        </SegmentedButtons>
-                    </div>
+To get started, fork the [rivet-react repo](https://github.com/indiana-university/rivet-react/) on GitHub.
 
-                    <form className="rvt-m-top-sm">
-                        <fieldset>
-                            <legend className="sr-only">Checkboxes inline</legend>
-                            <ul className="rvt-inline-list">
-                                <li>
-                                    <Checkbox name="numbers" label="One"/>
-                                </li>
-                                <li>
-                                    <Checkbox name="numbers" label="Two"/>
-                                </li>
-                            </ul>
-                        </fieldset>
-                    </form>
+To compile the components (we use `yarn` in these examples but `npm` works too):
 
+```shell
+yarn build
+```
 
-                    <form className="rvt-m-top-sm">
-                        <fieldset>
-                            <legend className="rvt-sr-only">Radio buttons inline</legend>
-                            <ul className="rvt-inline-list">
-                                <li>
-                                    <RadioButton name="number" label="One"/>
-                                </li>
-                                <li>
-                                    <RadioButton name="number" label="Two"/>
-                                </li>
-                            </ul>
-                        </fieldset>
-                    </form>
+To test the components:
 
+```shell
+yarn test
+```
 
-                    <form className="rvt-m-top-sm">
-                        <fieldset>
-                            <legend className="rvt-sr-only">Mixed inputs inline</legend>
-                            <ul className="rvt-inline-list">
-                                <li>
-                                    <Input name="number" label="One"/>
-                                </li>
-                                <li>
-                                    <Input name="numbers" label="Two"/>
-                                </li>
-                            </ul>
-                        </fieldset>
-                    </form>
+To test with code coverage:
 
-                    <label htmlFor="select-demo">Select input:</label>
-                    <select id="select-demo">
-                        <option>Choose an option...</option>
-                        <option value="Option One">Option One</option>
-                        <option value="Option One">Option Two</option>
-                        <option value="Option One">Option Three</option>
-                        <option value="Option One">Option Four</option>
-                    </select>
+```shell
+yarn test --coverage
+```
 
+To start a local server with the style guide and demo pages:
 
-                    <div className="rvt-m-top-md">
-                        <File name="profile"/>
-                    </div>
+```shell
+yarn start
+```
 
-                </div>
+This project supports hot reloading of tests and the demo page.
 
-                <Section margin='sm'>
+### Contribution Requirements
 
-
-                    <h1>Spacing and Type Scale</h1>
-                    <Section margin={{bottom: 'lg'}}>
-                        <Section style={{border: '1px solid black'}} margin='xxs' ts={12}>XXS Margin Twelve</Section>
-                        <Section style={{border: '1px solid black'}} padding='xxl' ts={52}>XXL Padded Fifty Two</Section>
-                    </Section>
-
-                    <h1>Buttons</h1>
-                    <Section margin={{bottom: 'lg'}}>
-                        <SegmentedButtons margin='xxs'>
-                            <Button onClick={() => {
-                                window.alert('Primary Button Click')
-                            }}>Primary</Button>
-                            <Button success onClick={() => {
-                                window.alert('Success Button Click')
-                            }}>Success</Button>
-                            <Button danger onClick={() => {
-                                window.alert('Danger Button Click')
-                            }}>Danger</Button>
-                            <Button /* no onClick means disabled */>Disabled</Button>
-                        </SegmentedButtons>
-                        <br/>
-                        <SegmentedButtons margin='xxs'>
-                            <Button secondary onClick={() => {
-                                window.alert('Secondary Button Click')
-                            }}>Primary</Button>
-                            <Button secondary success onClick={() => {
-                                window.alert('Secondary Success Button Click')
-                            }}>Success</Button>
-                            <Button secondary danger onClick={() => {
-                                window.alert('Secondary Danger Button Click')
-                            }}>Danger</Button>
-                            <Button /* no onClick means disabled */>Disabled</Button>
-                        </SegmentedButtons>
-                        <br/>
-                        <SegmentedButtons margin='xxs'>
-                            <Button small onClick={() => {
-                                window.alert('Small Button Click')
-                            }}>Small</Button>
-                            <Button small success onClick={() => {
-                                window.alert('Small Success Button Click')
-                            }}>Success</Button>
-                            <Button small danger onClick={() => {
-                                window.alert('Small Danger Button Click')
-                            }}>Danger</Button>
-                            <Button small secondary onClick={() => {
-                                window.alert('Small Secondary Button Click')
-                            }}>Primary</Button>
-                            <Button small secondary success onClick={() => {
-                                window.alert('Small Secondary Success Button Click')
-                            }}>Success</Button>
-                            <Button small secondary danger onClick={() => {
-                                window.alert('Small Secondary Danger Button Click')
-                            }}>Danger</Button>
-                        </SegmentedButtons>
-
-                        <Button onClick={() => {this.toggleModal("modal-example")}}>Modal</Button>
-                        <Button onClick={() => {this.toggleModal("modal-example-2")}}>Modal 2</Button>
-
-                        <Modal toggleModal={this.toggleModal} activeModal={this.state.activeModal} id="modal-example" title="Transfer group account(s)">
-                            <p>Your are requesting the transfer of groups:<br/><strong>ITDJHNWEB, JTDJHNWEB, DSOIUFNWEB,
-                                DOSIFUSDOIF</strong></p>
-                        </Modal>
-
-                        <Modal toggleModal={this.toggleModal} activeModal={this.state.activeModal} id="modal-example-2" title="Transfer group account(s)">
-                            <p>ANOTHER MODAL</p>
-                        </Modal>
-
-                    </Section>
-
-                    <h1>Alerts</h1>
-                    <Section margin={{bottom: 'lg'}}>
-                        <Alert margin={{bottom: 'xs'}}>This warning has no title!</Alert>
-                        <Alert margin={{bottom: 'xs'}} info title='Info'>A nice message for you!</Alert>
-                        <Alert margin={{bottom: 'xs'}} success title='Success!'>A great success for you!</Alert>
-                        <Alert margin={{bottom: 'xs'}} error title='Error'
-                               clickDismiss={() => window.alert('You click dismiss error?!?')}>A friendly error for
-                            you!</Alert>
-                    </Section>
-
-                    <h1>Lists</h1>
-                    <Section margin={{bottom: 'lg'}}>
-                        <List children={['some', 'unordered', 'stuff']}/>
-                        <List ordered children={['some', 'ordered', 'stuff']}/>
-                        <List plain children={['this', 'list', 'is', 'plain']}/>
-                        <List inline children={['this', 'list', 'is', 'inline']}/>
-                        <List inline>
-                            <Button>This</Button>
-                            <Button>is</Button>
-                            <Button>inline</Button>
-                            <Button>list</Button>
-                            <Button onClick={() => window.alert('you click "of"!')}>of</Button>
-                            <Button>buttons</Button>
-                        </List>
-                    </Section>
-
-                    <h1>Tables</h1>
-                    <h2>Default</h2>
-                    <Table margin={{bottom: 'md'}}>
-                        <thead>
-                        <TableRow header children={['Some', 'Header', 'Labels']}/>
-                        </thead>
-                        <tbody>
-                        <TableRow children={['A', 'Data', 'Row']}/>
-                        <TableRow children={['Another', 'Data', 'Row']}/>
-                        </tbody>
-                    </Table>
-
-                    <h2>Plain</h2>
-                    <Table plain margin={{bottom: 'md'}}>
-                        <thead>
-                        <TableRow header children={['Some', 'Header', 'Labels']}/>
-                        </thead>
-                        <tbody>
-                        <TableRow children={['A', 'Data', 'Row']}/>
-                        <TableRow children={['Another', 'Data', 'Row']}/>
-                        </tbody>
-                    </Table>
-
-                    <h2>Stripey</h2>
-                    <Table stripes margin={{bottom: 'md'}}>
-                        <thead>
-                        <TableRow header children={['Some', 'Header', 'Labels']}/>
-                        </thead>
-                        <tbody>
-                        <TableRow children={['A', 'Data', 'Row']}/>
-                        <TableRow children={['Another', 'Data', 'Row']}/>
-                        </tbody>
-                    </Table>
-
-                </Section>
-                <Footer />
-            </React.Fragment>
-        )
-    }
+* **We aspire to full test coverage of all components.** Look at existing tests for examples on how to write them. If you have questions about testing or how to resolve coverage issues, we can help!  
+* **All component properties should be documented.** Property documentation should link to relevant Rivet documentation if available, particularly if the property is for styling and presentation options. Look to existing components for examples.
+* **Components should be included in the style guide.** `styleguide.config.js` organizes component documentation into sections that align with the Rivet component documentation. If you're adding a new component, please place its documentation in the appropriate section.
+* **Components should have usage examples.** Every component should have a markdown file (`.md`) alongside its implementation file (`.tsx`) with usage examples for the style guide. Look to existing components for examples.

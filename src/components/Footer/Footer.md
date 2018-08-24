@@ -1,0 +1,4 @@
+### Examples
+```jsx
+<Footer />
+```
