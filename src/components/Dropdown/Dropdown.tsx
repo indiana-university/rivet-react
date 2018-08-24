@@ -17,7 +17,7 @@ interface DropdownProps extends ButtonProps {
 const initialState = { open: false }
 type DropdownState = Readonly<typeof initialState>
 
-class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttributes<HTMLButtonElement>, DropdownState> {
+export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttributes<HTMLButtonElement>, DropdownState> {
 
     public readonly state: DropdownState = initialState;
     private toggleButton: React.RefObject<HTMLButtonElement>;
