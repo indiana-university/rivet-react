@@ -33,4 +33,4 @@ A `List` with the `plain` variant will display the checkboxes vertically.
 ```
 
 ### Indeterminate State
-The current pre-release version of _rivet-react_ does not support checkboxes with indeterminant state. However, we plan to add support by version 1.0.0. Follow this [Github issue](https://github.com/indiana-university/rivet-react/issues/15) for details.
+The current pre-release version of _rivet-react_ does not support checkboxes with indeterminate state. However, we plan to add support by version 1.0.0. Follow this [Github issue](https://github.com/indiana-university/rivet-react/issues/15) for details.
