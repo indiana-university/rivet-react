@@ -3,14 +3,17 @@ import * as React from 'react';
 import { rivetize, shortuid } from '../util/Rivet';
 
 interface FileProps {
+    /** The name(s) of the selected files */
     fileName?: string;
+    /** The text for the file button */
     label?: string;
 }
 
 const initialState = { files: '' }
 type FileState = Readonly<typeof initialState>
 
-const FileInput: React.SFC<FileProps & React.HTMLAttributes<HTMLInputElement>> = ({ className, fileName, id = shortuid(), label = 'Upload a file', ...attrs }) => (
+const FileInput: React.SFC<FileProps & React.HTMLAttributes<HTMLInputElement>> = 
+({ className, fileName, id = shortuid(), label = 'Upload a file', ...attrs }) => (
     <div className={classNames('rvt-file', className)}>
         <input {...attrs} type="file" id={id} aria-describedby={id + "-file-description"} />
         <label htmlFor={id} className="rvt-button">
