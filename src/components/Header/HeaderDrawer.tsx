@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as svg from "../util/RivetIcons";
 import HeaderDrawerEvent from './HeaderDrawerEvent';
 
 interface HeaderDrawerProps {
@@ -55,20 +56,8 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
             <div> {/* This is a div instead of a fragment due to needing a real element wrapping this for how we use ReactDOM.findDOMNode */}
                 <button className={drawerToggleClasses} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDrawer} ref={this.toggleButton}>
                     <span className="sr-only">Toggle menu</span>
-                    {!this.state.open &&
-                        <svg role="img" className="rvt-drawer-button-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                            <g fill="currentColor">
-                                <path d="M15,3H1A1,1,0,0,1,1,1H15a1,1,0,0,1,0,2Z" />
-                                <path d="M15,9H1A1,1,0,0,1,1,7H15a1,1,0,0,1,0,2Z" />
-                                <path d="M15,15H1a1,1,0,0,1,0-2H15a1,1,0,0,1,0,2Z" />
-                            </g>
-                        </svg>
-                    }
-                    {this.state.open &&
-                        <svg role="img" className="rvt-drawer-button-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-                            <path fill="currentColor" d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z" />
-                        </svg>
-                    }
+                    {!this.state.open && svg.menu("rvt-drawer-button-open") }
+                    {this.state.open && svg.close("rvt-drawer-button-close") }
                 </button>
                 { this.state.open &&
                     <div className="rvt-drawer">
