@@ -1,7 +1,5 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import { MemoryRouter } from 'react-router';
-import * as Rivet from '../util/Rivet';
 import Footer from './Footer';
 
 describe('<Footer />', () => {
@@ -25,14 +23,17 @@ describe('<Footer />', () => {
     });
     describe('Navigation', () => {
         it('should include no links by default', () => {
-            const cut = mount(<Footer  />);
+            const cut = mount(<Footer />);
             expect(cut.find('ul.rvt-footer__aux-links')).toHaveLength(0);
         });
         it('should render nav links in list', () => {
-            const nav = [ new Rivet.Nav("privacy", "/privacy") ]
-            const cut = mount(<MemoryRouter><Footer nav={nav} /></MemoryRouter>);
+            const cut = mount(
+                <Footer>
+                    <a id="privacy" href="/privacy">Privacy Policy</a>
+                </Footer>);
             expect(cut.find('ul.rvt-footer__aux-links')).toHaveLength(1);
-            expect(cut.find('li.rvt-footer__aux-item > Link')).toHaveLength(1);
+            expect(cut.find('li.rvt-footer__aux-item > a')).toHaveLength(1);
+            expect(cut.find('#privacy')).toHaveLength(1);
         });
     });
 
