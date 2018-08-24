@@ -33,18 +33,16 @@ const buttonClass = 'rvt-button';
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
 
-const buttonModifierAndStyle = (variant, modifier) => {
+const buttonStyle = (variant, modifier) => {
+  // special case for navigation variant
   if(variant === 'navigation') {
     return 'rvt-dropdown__toggle';
   }
-  const classParts = [
-    variant,
-    modifier
-  ].filter(x => x !== undefined);
-  // combine variation and style, if any.
-  return classParts.length === 0
-    ? buttonClass
-    : `${buttonClass} ${buttonClass}--${classParts.join('-')}`;
+  // combine variation and modifier, if provided.
+  const classParts = [variant, modifier].filter(x => x).join('-');
+  return classParts
+    ? `${buttonClass} ${buttonClass}--${classParts}`
+    : buttonClass;
 };
 
 /**
@@ -60,13 +58,13 @@ const buttonSize = (size) =>
 
 export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
 ({ className, children, id = Rivet.shortuid(), innerRef, modifier, onClick, size, variant, ...attrs}) => {
-  const classes = classNames(buttonModifierAndStyle(variant, modifier), buttonSize(size), className);
+  const classes = classNames(buttonStyle(variant, modifier), buttonSize(size), className);
   return (
     <button
       id={id}
       className={classes}
       onClick={onClick}
-      disabled={onClick === undefined}
+      disabled={!onClick}
       ref={innerRef}
       {...attrs}
     >
