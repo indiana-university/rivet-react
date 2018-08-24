@@ -2,7 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 import * as Rivet from '../util/Rivet';
-import * as svg from '../util/RivetIcons';
+import Icon from '../util/RivetIcons';
 import { StatelessAlertProps, statelessPropTypes } from './common';
 
 const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElement>> = 
@@ -18,7 +18,7 @@ const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElemen
         onDismiss 
         ? <button className="rvt-alert__dismiss" onClick={ onDismiss }>
             <span className="rvt-sr-only">Dismiss this alert</span>
-            {svg.close()}
+            <Icon name="close" />
           </button>
         : null;
     

@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
-import * as svg from '../util/RivetIcons'
+import Icon from '../util/RivetIcons';
 
 export interface FooterProps {
     nav?: Rivet.Nav[]
@@ -26,7 +26,7 @@ const Footer : React.SFC<FooterProps & React.HTMLAttributes<HTMLDivElement>> = (
     <footer id={id} role="contentinfo" className={classNames(componentClass, className)} {...attrs}>
         <div className="rvt-footer__copyright-lockup">
             <div className="rvt-footer__trident">
-                {svg.iuTridentFooter}
+                <Icon name="trident-footer" />
             </div>
             <p><a href="https://www.iu.edu/copyright/index.html">Copyright</a> &copy; {new Date().getFullYear()} The Trustees of <a href="https://www.iu.edu/">Indiana University</a></p>
         </div>

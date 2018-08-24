@@ -1,4 +1,5 @@
-import * as svg from "../util/RivetIcons"
+import * as React from 'react';
+import Icon from '../util/RivetIcons';
 
 export interface ValidationProps {
     /**
@@ -10,19 +11,19 @@ export interface ValidationProps {
 const variantDisplayOptions : object = {
     info: {
         className: 'has-info',
-        icon: svg.info()
+        icon: <Icon name="info" />
     },
     valid: {
         className: 'is-valid',
-        icon: svg.success()
+        icon: <Icon name="success" />
     },
     warning: {
         className: 'has-warning',
-        icon: svg.warning()
+        icon: <Icon name="warning" />
     },
     invalid: {
         className: 'is-invalid',
-        icon: svg.error()
+        icon: <Icon name="error" />
     },
 }
 

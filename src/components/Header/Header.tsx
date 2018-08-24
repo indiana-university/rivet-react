@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import { findFirstChildOfType } from '../util/childUtils';
-import * as svg from '../util/RivetIcons'
+import Icon from '../util/RivetIcons';
 import Drawer from './HeaderDrawer';
 import Identity from './HeaderIdentity';
 import Navigation from './HeaderNavigation';
@@ -23,7 +23,7 @@ const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivEleme
         <header {...attrs} className={classNames(componentClass, className)} role="banner">
             <a className="rvt-skip-link" href="#main-content">Skip to content</a>
             <div className="rvt-header__trident">
-                {svg.iuTridentHeader}
+                <Icon name="trident-header" />
             </div>
             <span className="rvt-header__title">
                 <a href="/">{title}</a>

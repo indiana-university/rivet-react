@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import { rivetize, shortuid } from '../util/Rivet';
-import * as svg from '../util/RivetIcons';
+import Icon from '../util/RivetIcons';
 
 interface FileProps {
     fileName?: string;
@@ -16,7 +16,7 @@ const FileInput: React.SFC<FileProps & React.HTMLAttributes<HTMLInputElement>> =
         <input {...attrs} type="file" id={id} aria-describedby={id + "-file-description"} />
         <label htmlFor={id} className="rvt-button">
             <span>{label}</span>
-            {svg.file()}
+            <Icon name="file" />
         </label>
         <div className="rvt-file__preview" id={id + "-file-description"}>
             { fileName ? <span>{fileName}</span> : 'No file selected' }

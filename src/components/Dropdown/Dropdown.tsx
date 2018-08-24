@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Button, { ButtonProps } from '../Button/Button';
 import { rivetize } from '../util/Rivet';
-import * as svg from '../util/RivetIcons';
+import Icon from '../util/RivetIcons';
 import DropdownEvent from './DropdownEvent';
 
 interface DropdownProps extends ButtonProps {
@@ -56,7 +56,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
             <div className="rvt-dropdown">
                 <Button {...attrs} innerRef={this.toggleButton} className={className} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
                     <span className="rvt-dropdown__toggle-text">{label}</span>
-                    {svg.caretDown()}
+                    <Icon name="caret-down" />
                 </Button>
     
                 {this.state.open &&

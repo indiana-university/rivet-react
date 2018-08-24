@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as svg from "../util/RivetIcons";
+import Icon from '../util/RivetIcons';
 import HeaderDrawerEvent from './HeaderDrawerEvent';
 
 interface HeaderDrawerProps {
@@ -56,8 +56,8 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
             <div> {/* This is a div instead of a fragment due to needing a real element wrapping this for how we use ReactDOM.findDOMNode */}
                 <button className={drawerToggleClasses} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDrawer} ref={this.toggleButton}>
                     <span className="sr-only">Toggle menu</span>
-                    {!this.state.open && svg.menu("rvt-drawer-button-open") }
-                    {this.state.open && svg.close("rvt-drawer-button-close") }
+                    {!this.state.open && <Icon name="menu" className="rvt-drawer-button-open" /> }
+                    {this.state.open && <Icon name="close" className="rvt-drawer-button-close" /> }
                 </button>
                 { this.state.open &&
                     <div className="rvt-drawer">

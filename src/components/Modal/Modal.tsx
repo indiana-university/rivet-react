@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 
 import Button from '../Button/Button';
 import * as Rivet from '../util/Rivet';
-import * as svg from '../util/RivetIcons';
+import Icon from '../util/RivetIcons';
 import ModalEvent from './ModalEvent';
 
 export interface ModalProps {
@@ -27,7 +27,7 @@ export interface ModalProps {
 const ModalCloseButton = ({ onDismiss }) => (
     <Button className="rvt-modal__close" data-modal-close="close" onClick={onDismiss}>
         <span className="rvt-sr-only">Close</span>
-        {svg.close()}
+        <Icon name="close" />
     </Button>
 );
 
