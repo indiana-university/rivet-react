@@ -33,13 +33,13 @@ const buttonClass = 'rvt-button';
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
 
-const buttonModifierAndStyle = (props: ButtonProps) => {
-  if(props.variant === 'navigation') {
+const buttonModifierAndStyle = (variant, modifier) => {
+  if(variant === 'navigation') {
     return 'rvt-dropdown__toggle';
   }
   const classParts = [
-    props.variant,
-    props.modifier
+    variant,
+    modifier
   ].filter(x => x !== undefined);
   // combine variation and style, if any.
   return classParts.length === 0
@@ -53,14 +53,14 @@ const buttonModifierAndStyle = (props: ButtonProps) => {
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
 
-const buttonSize = (props: ButtonProps) => 
-  props.size
-  ? `${buttonClass}--${props.size}` 
-  : '';
+const buttonSize = (size) => 
+  size
+  ? `${buttonClass}--${size}` 
+  : undefined;
 
 export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
-  ({ className, children, id = Rivet.shortuid(), innerRef, onClick, ...props}) => {
-  const classes = classNames(buttonModifierAndStyle(props), buttonSize(props), className);
+({ className, children, id = Rivet.shortuid(), innerRef, modifier, onClick, size, variant, ...attrs}) => {
+  const classes = classNames(buttonModifierAndStyle(variant, modifier), buttonSize(size), className);
   return (
     <button
       id={id}
@@ -68,7 +68,7 @@ export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButt
       onClick={onClick}
       disabled={onClick === undefined}
       ref={innerRef}
-      {...props}
+      {...attrs}
     >
       {children}
     </button>
