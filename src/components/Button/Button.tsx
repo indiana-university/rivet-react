@@ -57,12 +57,10 @@ const buttonSize = (size) =>
   : undefined;
 
 export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
-({ className, children, id = Rivet.shortuid(), innerRef, modifier, onClick, size, variant, ...attrs}) => {
-  const classes = classNames(buttonStyle(variant, modifier), buttonSize(size), className);
-  return (
+({ className, children, id = Rivet.shortuid(), innerRef, modifier, onClick, size, variant, ...attrs}) => (
     <button
       id={id}
-      className={classes}
+      className={classNames(buttonStyle(variant, modifier), buttonSize(size), className)}
       onClick={onClick}
       disabled={!onClick}
       ref={innerRef}
@@ -70,8 +68,7 @@ export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButt
     >
       {children}
     </button>
-  );
-};
+);
 
 Button.propTypes = buttonPropTypes;
 Button.displayName = 'Button';
