@@ -24,7 +24,7 @@ Use the `label` property to set the text on the dropdown button.
 By default the dropdown menu is vertically aligned with the left edge of the dropdown button. Use the `align` option to vertically align the dropdown menu with the right edge of the dropdown button.   
 
 ```jsx
-<Dropdown label="Right menu" align="right" variant="secondary">
+<Dropdown label="Right menu" align="right" modifier="secondary">
     <a href="#">Item one</a>
     <a href="#">Item two</a>
     <a href="#" aria-current="page">Item three</a>

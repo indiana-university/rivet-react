@@ -29,11 +29,7 @@ const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElem
         return (
             <div className={classes}>
                 <span className="rvt-inline-alert__icon">
-                    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                        <g fill="currentColor">
-                            {validationIcon(props)}
-                        </g>
-                    </svg>
+                    {validationIcon(props)}
                 </span>
                 <span className="rvt-inline-alert__message" role="alert" id={id}>
                     {children}
