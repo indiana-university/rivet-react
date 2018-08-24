@@ -5,20 +5,12 @@ import Button, { ButtonProps } from '../Button/Button';
 import { rivetize } from '../util/Rivet';
 import DropdownEvent from './DropdownEvent';
 
-
 interface DropdownProps extends ButtonProps {
-    /** 
-     * Optional Rivet style: alignment of the dropdown menu items. 
-     * @see https://rivet.uits.iu.edu/components/navigation/dropdown/#right-align-modifier 
-     */
+    /** Optional Rivet style: alignment of the dropdown menu items relative to the edge of the dropdown button. */
     align?: 'right';
-    /**
-     * The text to appear on the dropdown toggle button. 
-     */
+    /** The text to appear on the dropdown toggle button. */
     label: string | React.ReactNode;
-    /**
-     * Optional CSS classes which will be applied to the dropdown menu
-     */
+    /** Optional CSS classes which will be applied to the dropdown menu */
     menuClass?: string;
 }
 
@@ -55,15 +47,13 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
 
     public render() {
         const { align, children, className, label, menuClass, ...attrs } = this.props;
-        const classes = classNames({
-        }, className);
         const menuClasses = classNames({
             ['rvt-dropdown__menu']: true,
             [`rvt-dropdown__menu--${align}`]: !!align
         }, menuClass);
         return (
             <div className="rvt-dropdown">
-                <Button {...attrs} innerRef={this.toggleButton} className={classes} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
+                <Button {...attrs} innerRef={this.toggleButton} className={className} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
                     <span className="rvt-dropdown__toggle-text">{label}</span>
                     <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                         <title>Dropdown icon</title>

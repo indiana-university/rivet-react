@@ -1,4 +1,5 @@
-### Dropdown group with header
+Use the `label` property to provide a helpful heading for a group of related menu items.
+
 ```jsx
 <Dropdown label="Application menu">
     <a href="#">Notify All</a>
