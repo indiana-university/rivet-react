@@ -5,8 +5,7 @@ import * as Rivet from '../util/Rivet';
 
 interface ButtonGroupProps {
   /**
-   * Right align the buttons in this button group
-   * @see https://rivet.uits.iu.edu/components/forms/buttons/#button-groups
+   * Optional Rivet style: Right-align the grouped buttons within the parent container
    */
   right?: boolean;
 };
