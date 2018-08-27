@@ -7,22 +7,6 @@ const DemoComponent = Rivet.rivetize(({ children, ...attrs }) => (
     <div {...attrs}>{children}</div>
 ));
 
-
-describe('nav', () => {
-    it('renders internal link', () => {
-        expect(new Rivet.Nav("foo", "/bar").render())
-        .toEqual(<Link to="/bar">foo</Link>)
-    });
-    it('renders external link (http)', () => {
-        expect(new Rivet.Nav("foo", "http://example.com").render())
-        .toEqual(<a href="http://example.com">foo</a>)
-    });
-    it('renders external link (https)', () => {
-        expect(new Rivet.Nav("foo", "https://example.com").render())
-        .toEqual(<a href="https://example.com">foo</a>)
-    });
-});
-
   describe('margin', () => {
     it('ignores undefined', () => {
         const cut = mount(<DemoComponent margin={undefined} />);

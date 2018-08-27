@@ -1,7 +1,5 @@
 import * as classnames from 'classnames'
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-
 
 // Classes, Interfaces, and Types
 
@@ -68,29 +66,6 @@ export interface BoxStyle {
     xl?: Edge | Edge[],
     xxl?: Edge | Edge[],
 }
-
-/**
- * Define and render a JSX navigation element. 
- */
-export class Nav {
-    public label: string
-    public to: string
-    constructor(label: string, to: string){
-        this.label=label;
-        this.to=to;
-    }
-    /**
-     * Render a navigation element.
-     * An external route (having a URL starting http(s)://) will be rendered as an HTML anchor <a/>.
-     * An internal route will be rendered as a React <Link>.
-     */
-    public render = () =>
-        (/^https?:\/\//.test(this.to))
-        ? <a href={this.to}>{this.label}</a>
-        : <Link to={this.to}>{this.label}</Link>;
-};
-
-
 
 // Helper and Styling Functions
 
@@ -187,11 +162,11 @@ export const rivetize = <T extends React.HTMLAttributes<HTMLElement>>(Component:
  * A type and class decorator for visually hidden labels
  * See: https://rivet.uits.iu.edu/components/utilities/display/#visually-hidden-labels-example
  */
-export type LabelVisibility = "screen-reader-only" | "default";
+export type LabelVisibility = "screen-reader-only" | undefined;
 
 /** 
  * Determine whether to apply class limiting label visibility to screenreaders.
  * @param visibility The desired visibility type.
  */
-export const labelVisiblityClass = (visibility) => 
+export const labelVisiblityClass = (visibility: LabelVisibility) => 
     visibility === "screen-reader-only" ? "rvt-sr-only" : "";
