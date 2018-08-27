@@ -135,5 +135,8 @@ module.exports = {
     require: [
         'rivet-uits/css/rivet.min.css',
         './src/docs/documentation.css'
-      ]
+      ],
+    theme: {
+        maxWidth: 1920
+      }
 };
