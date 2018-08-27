@@ -55,7 +55,9 @@ module.exports = {
                 {
                     name: 'Grid',
                     components: () => [
-                      'src/components/Grid/*.tsx',
+                        'src/components/Grid/Container.tsx',
+                        'src/components/Grid/Row.tsx',
+                        'src/components/Grid/Col.tsx'
                     ],
                     exampleMode: 'expand'
                 },
@@ -133,5 +135,8 @@ module.exports = {
     require: [
         'rivet-uits/css/rivet.min.css',
         './src/docs/documentation.css'
-      ]
+      ],
+    theme: {
+        maxWidth: 1920
+      }
 };
