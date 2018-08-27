@@ -1,7 +1,5 @@
 import * as classnames from 'classnames'
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-
 
 // Classes, Interfaces, and Types
 
@@ -68,29 +66,6 @@ export interface BoxStyle {
     xl?: Edge | Edge[],
     xxl?: Edge | Edge[],
 }
-
-/**
- * Define and render a JSX navigation element. 
- */
-export class Nav {
-    public label: string
-    public to: string
-    constructor(label: string, to: string){
-        this.label=label;
-        this.to=to;
-    }
-    /**
-     * Render a navigation element.
-     * An external route (having a URL starting http(s)://) will be rendered as an HTML anchor <a/>.
-     * An internal route will be rendered as a React <Link>.
-     */
-    public render = () =>
-        (/^https?:\/\//.test(this.to))
-        ? <a href={this.to}>{this.label}</a>
-        : <Link to={this.to}>{this.label}</Link>;
-};
-
-
 
 // Helper and Styling Functions
 
