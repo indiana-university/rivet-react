@@ -187,11 +187,11 @@ export const rivetize = <T extends React.HTMLAttributes<HTMLElement>>(Component:
  * A type and class decorator for visually hidden labels
  * See: https://rivet.uits.iu.edu/components/utilities/display/#visually-hidden-labels-example
  */
-export type LabelVisibility = "screen-reader-only" | "default";
+export type LabelVisibility = "screen-reader-only" | undefined;
 
 /** 
  * Determine whether to apply class limiting label visibility to screenreaders.
  * @param visibility The desired visibility type.
  */
-export const labelVisiblityClass = (visibility) => 
+export const labelVisiblityClass = (visibility: LabelVisibility) => 
     visibility === "screen-reader-only" ? "rvt-sr-only" : "";

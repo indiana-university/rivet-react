@@ -28,6 +28,10 @@ describe('<Form />', () => {
             const cut = mount(<Form label="Foo" name="foo-1" />);
             expect(cut.find('legend').text()).toEqual("Foo");
         });
+        it ('should not create a screen-reader-only legend', () => {
+            const cut = mount(<Form label="Foo" name="foo-1" />);
+            expect(cut.find('legend').hasClass("rvt-sr-only")).toEqual(false);
+        });
         it ('should create a screen-reader-only legend', () => {
             const cut = mount(<Form labelVisibility="screen-reader-only" label="Foo" name="foo-1" />);
             expect(cut.find('legend').text()).toEqual("Foo");
