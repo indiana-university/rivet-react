@@ -13,4 +13,3 @@ export * from './Panel';
 export * from './RadioButton';
 export * from './Section';
 export * from './Table';
-export { Action } from './util/Rivet';

@@ -3,8 +3,6 @@ import * as React from 'react';
 
 // Classes, Interfaces, and Types
 
-export type Action = () => void;
-
 export interface Props {
     /**
      * Optional Rivet style: type scale adjustment
