@@ -3,14 +3,18 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import * as Rivet from '../util/Rivet';
-import { validationClass, validationIcon, ValidationProps } from '../util/validation'
+import { validationClass, validationIcon } from '../util/validation'
 
-interface InlineAlertProps extends ValidationProps {
+interface InlineAlertProps {
     /**
      * Whether the inline alert is a standalone alert or not
      * See: https://rivet.uits.iu.edu/components/overlays/alerts/#standalone-inline-alerts
      */
     standalone?: boolean;
+    /**
+     * Rivet style for inline validation.
+     */
+    variant: 'info' | 'invalid' | 'valid' | 'warning';
 };
 
 const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElement>> =
@@ -19,17 +23,18 @@ const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElem
         className,
         id = Rivet.shortuid(),
         standalone = false,
-        ... props
+        variant,
+        ... attrs
     }) => {
         const classes = classNames({
             ['rvt-inline-alert']: true,
             ['rvt-inline-alert--standalone']: standalone,
-            [`rvt-inline-alert--${validationClass(props)}`]: true
+            [`rvt-inline-alert--${validationClass(variant)}`]: true
         }, className);
         return (
-            <div className={classes}>
+            <div className={classes} {...attrs}>
                 <span className="rvt-inline-alert__icon">
-                    {validationIcon(props)}
+                    {validationIcon(variant)}
                 </span>
                 <span className="rvt-inline-alert__message" role="alert" id={id}>
                     {children}
