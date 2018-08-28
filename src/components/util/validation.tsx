@@ -1,14 +1,9 @@
 import * as React from 'react';
 import Icon from '../util/RivetIcons';
 
-export interface ValidationProps {
-    /**
-     * Rivet style for inline validation.
-     */
-    variant: 'info' | 'invalid' | 'valid' | 'warning';
-}
+type ValidationType = 'info' | 'invalid' | 'valid' | 'warning';
 
-const variantDisplayOptions : object = {
+const validationDisplayOptions : object = {
     info: {
         className: 'has-info',
         icon: <Icon name="info" />
@@ -27,5 +22,5 @@ const variantDisplayOptions : object = {
     },
 }
 
-export const validationIcon = (props : ValidationProps) => variantDisplayOptions[props.variant] && variantDisplayOptions[props.variant].icon;
-export const validationClass = (props : ValidationProps) => variantDisplayOptions[props.variant] && variantDisplayOptions[props.variant].className;
+export const validationIcon = (validation: ValidationType) =>  validationDisplayOptions[validation].icon;
+export const validationClass = (validation : ValidationType) => validationDisplayOptions[validation].className;
