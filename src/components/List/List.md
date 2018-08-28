@@ -1,4 +1,11 @@
+Lists are used to group and organize collections of content.
+
+View the [Rivet documentation for List](https://rivet.uits.iu.edu/components/page-content/lists/).
+
 ### Unordered List
+
+Lists are unordered by default.
+
 ```jsx
 <List>
     <li>List Item One</li>
@@ -9,6 +16,9 @@
 ```
 
 ### Ordered List
+
+Use the *ordered* `variant` to create an ordered list.
+
 ```jsx
 <List variant="ordered">
     <li>List Item One</li>
@@ -18,6 +28,9 @@
 </List>
 ```
 ### Plain List
+
+Use the *plain* `variant` to create a plain list with no decoration.
+
 ```jsx
 <List variant="plain">
     <li>List Item One</li>
@@ -28,6 +41,9 @@
 ```
 
 ### Inline List
+
+Use the *inline* `variant` to to arrange list items horizontally (inline).
+
 ```jsx
 <List orientation="inline">
     <li>List Item One</li>
@@ -38,6 +54,9 @@
 ```
 
 ### Definition List
+
+Definition lists do not require a component and are included here for completeness.
+
 ```jsx
 <dl>
     <dt>Definition list item one</dt>
