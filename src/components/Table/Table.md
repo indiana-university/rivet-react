@@ -1,4 +1,11 @@
+Tables are used to display tabular data in rows and columns.
+
+View the [Rivet Documentation for Tables](https://rivet.uits.iu.edu/components/page-content/tables/)
+
 ### Default Table
+
+Default tables in Rivet come with styled headers and bottom borders on row to help with readability.
+
 ```jsx
 <Table>
     <caption className="rvt-sr-only">Table example one</caption>
@@ -35,6 +42,9 @@
 ```
 
 ### Striped Table
+
+The *stripes* `variant` to alternate light gray backgrounds on table rows for improved scannability.
+
 ```jsx
 <Table variant="stripes">
     <caption className="rvt-sr-only">Table example one</caption>
@@ -71,6 +81,9 @@
 ```
 
 ### Plain Table
+
+The *plain* `variant` will remove all borders and formatting from the table.
+
 ```jsx
 <Table variant="plain">
     <caption className="rvt-sr-only">Table example one</caption>
