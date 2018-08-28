@@ -1,3 +1,7 @@
+The Rivet text utilities make it easy to style text
+
+View the [Rivet Documentation for Text](https://rivet.uits.iu.edu/components/utilities/text/).
+
 ### Font Weght
 ```jsx
 <strong className="rvt-text-regular">Regular text utilitiy</strong>
