@@ -1,4 +1,11 @@
-### Inline Radio Buttons
+Radio buttons allow users to select a single value out of a set number of choices.
+
+View the (Rivet Documentation for Radio Buttons)[https://rivet.uits.iu.edu/components/forms/radio-buttons/].
+
+### Inline Radio Button Example
+
+Radio buttons are arranged within a `List`. Use the `List` *inline* `orientation` to display the radio buttons horizontally (inline). 
+
 ```jsx
 <fieldset>
     <legend className="rvt-sr-only">Inline Checkboxes</legend>
@@ -10,6 +17,9 @@
 ```
 
 ### Radio Button List
+
+Use the `List` *plain* `variant` to display the radio buttons in a vertical list without decoration. 
+
 ```jsx
 <fieldset>
     <legend className="rvt-sr-only">Checkbox List</legend>
