@@ -15,22 +15,15 @@ export interface TextProps {
     variant?: 'info' | 'invalid' | 'valid' | 'warning';
 }
 
-const standardNote = (id : string, note : React.ReactNode) => 
-    <small id={id} className="rvt-display-block rvt-m-bottom-md">{note}</small>
-
 const inputClassName = (variant) => 
     variant
     ? `rvt-${validationClass(variant)}`
     : '';
 
-const labelFragment = (inputId : string, label : string) => <label htmlFor={inputId}>{label}</label>
-
 const noteFragment = (id : string, variant, note? : React.ReactNode) => 
-    note
-    ? variant
-        ? <InlineAlert id={id} variant={variant}>{note}</InlineAlert>
-        : standardNote(id, note)
-    : null;
+    variant
+    ? <InlineAlert id={id} variant={variant}>{note}</InlineAlert>
+    : <small id={id} className="rvt-display-block rvt-m-bottom-md">{note}</small>
 
 export const renderInput =
     <T extends React.HTMLAttributes<HTMLElement>>(inputGenerator: (props) => JSX.Element ) => 
@@ -45,9 +38,9 @@ export const renderInput =
         }
         return (
             <div className={classNames('rvt-input', className)}>
-                {labelFragment(id, label)}
+                <label htmlFor={id}>{label}</label>
                 {inputGenerator (inputProps)}
-                {noteFragment(noteId, variant, note)}
+                {note && noteFragment(noteId, variant, note)}
             </div>
         );
 }
