@@ -109,7 +109,7 @@ module.exports = {
                     exampleMode: 'expand'
                 },
                 {
-                    name: 'Typography',
+                    name: 'Display',
                     content: 'src/docs/display.md',
                     exampleMode: 'expand'
                 },
