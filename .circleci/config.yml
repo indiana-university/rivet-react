@@ -28,6 +28,11 @@ aliases:
 defaults: &defaults
   docker:
       - image: circleci/node:8
+        environment:
+          GIT_AUTHOR_NAME: iubot
+          GIT_AUTHOR_EMAIL: iubot@iu.edu
+          GIT_COMMITTER_NAME: iubot
+          GIT_COMMITTER_EMAIL: iubot@iu.edu
   working_directory: ~/repo
 
 # Job definitions. Job execution is orchestrated in the 'workflows' section.
@@ -59,8 +64,8 @@ jobs:
       - run:
           name: Publish style guide to gh-pages
           command: |
-            git config --global user.email "iubot@iu.edu"
-            git config --global user.name "IU Bot"
+            git config --global user.email "$GIT_COMMITTER_EMAIL"
+            git config --global user.name "$GIT_COMMITTER_NAME"
             yarn publish-guide
   # Publish the package to NPM and tag GitHub releasex
   publish_package:
