@@ -62,7 +62,15 @@ jobs:
             git config --global user.email "iubot@iu.edu"
             git config --global user.name "IU Bot"
             yarn publish-guide
-
+  # Publish the package to NPM and tag GitHub releasex
+  publish_package:
+    <<: *defaults
+    steps:
+      - checkout 
+      - restore_cache: *restore-node-modules
+      - run:
+          name: Publish package
+          command: npx semantic-release
 # Job orchestration
 workflows:
   version: 2
@@ -75,4 +83,9 @@ workflows:
       - publish_guide:
           requires:
             - build_test
+          filters: *filter-only-master
+      - publish_package:
+          requires:
+            - build_test
+          context: rivet-react
           filters: *filter-only-master
