@@ -7,19 +7,13 @@ interface RadioButtonProps {
     label: string;
 };
 
-const componentClass = "rvt-radio";
-
-const RadioButton : React.SFC <RadioButtonProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
-    className,
-    id = Rivet.shortuid(),
-    label,
-    ...attrs
-}) => (
+const RadioButton : React.SFC <RadioButtonProps & React.InputHTMLAttributes<HTMLInputElement>> = 
+({className, id = Rivet.shortuid(), label, ...attrs}) => (
     <>
         <input
             id={id}
             type="radio"
-            className={classNames(componentClass, className)}
+            className={classNames("rvt-radio", className)}
             {...attrs}/>
         <label htmlFor={id}>{label}</label>
     </>

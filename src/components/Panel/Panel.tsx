@@ -2,21 +2,18 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import { rivetize } from '../util/Rivet';
 
-type Variant = 'light';
-
 interface PanelProps {
-
     /**
      * Color theming for the panel
-     * @see https://rivet.uits.iu.edu/components/layout/panels/#light-modifier
      */
-    variant?: Variant;
+    variant?: 'light';
 }
 
-const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, variant, ...attrs }) => {
+const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = 
+({ children, className, variant, ...attrs }) => {
     const classes = classNames({
         ['rvt-panel']: true,
-        [`rvt-panel--${variant}`]: variant !== undefined
+        [`rvt-panel--${variant}`]: !!variant
     }, className);
     return (
         <div className={classes} {...attrs}>{children}</div>

@@ -2,11 +2,12 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import { rivetize } from '../util/Rivet';
 
-const Grid : React.SFC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className, ...attrs }) => (
+const Row : React.SFC<React.HTMLAttributes<HTMLDivElement>> = 
+({ children, className, ...attrs }) => (
     <div className={classNames('rvt-grid', className)} {...attrs}>
         {children}
     </div>
 );
-Grid.displayName = 'Grid';
+Row.displayName = 'Row';
 
-export default rivetize(Grid);
+export default rivetize(Row);

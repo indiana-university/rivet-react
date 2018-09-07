@@ -17,7 +17,7 @@ export interface ModalProps {
      * Optional function to call to raise when the alert is dismissed. If undefined, the modal will act as a dialog (i.e., no close button, 
      * will not close on outside click or escape key)
      */
-    onDismiss?: Rivet.Action;
+    onDismiss?: () => void;
     /**
      * The content of the modal's header
      */

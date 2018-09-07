@@ -3,26 +3,20 @@ import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
 
-export interface FooterProps {
-    nav?: Rivet.Nav[]
-}
-
 const componentClass = 'rvt-footer';
 const ulClass = 'rvt-footer__aux-links';
 const liClass = 'rvt-footer__aux-item';
 
-/**
- * Render an unordered list of footer navigation links
- * @param nav Array of navigation objects
- */
-const footerNav = (nav: Rivet.Nav[] = []) =>
-    nav.length
-    ? <ul className={ulClass}>
-        {nav.map((n,i) => <li key={i} className={liClass}>{n.render()}</li>)}
-      </ul>
-    : null;
+const footerNavLi = (child, index) =>
+    <li key={index} className={liClass}>{child}</li>
 
-const Footer : React.SFC<FooterProps & React.HTMLAttributes<HTMLDivElement>> = ({ className, id = Rivet.shortuid(), nav, ...attrs }) => (
+const footerNav = (children) =>
+    <ul className={ulClass}>
+        {React.Children.map(children, footerNavLi)}
+    </ul>
+
+const Footer: React.SFC<React.HTMLAttributes<HTMLDivElement>> =
+({ className, children, id = Rivet.shortuid(), ...attrs }) => (
     <footer id={id} role="contentinfo" className={classNames(componentClass, className)} {...attrs}>
         <div className="rvt-footer__copyright-lockup">
             <div className="rvt-footer__trident">
@@ -30,7 +24,7 @@ const Footer : React.SFC<FooterProps & React.HTMLAttributes<HTMLDivElement>> = (
             </div>
             <p><a href="https://www.iu.edu/copyright/index.html">Copyright</a> &copy; {new Date().getFullYear()} The Trustees of <a href="https://www.iu.edu/">Indiana University</a></p>
         </div>
-        {footerNav(nav)}
+        {children && footerNav(children)}
     </footer>
 );
 Footer.displayName = 'Footer';
