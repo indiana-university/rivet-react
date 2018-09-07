@@ -2,6 +2,7 @@
 
 Rivet-react resources:
 * [Component Documentation and Style Guide](https://indiana-university.github.io/rivet-react/)
+* [Contribution Guidelines](https://github.com/indiana-university/rivet-react/blob/master/CONTRIBUTING.md)
 * [GitHub repo](https://github.com/indiana-university/rivet-react)
 * [NPM package](https://www.npmjs.com/package/rivet-react)
 * [Circle CI](https://circleci.com/gh/indiana-university/rivet-react)
@@ -27,7 +28,7 @@ yarn add rivet-react
 
 Once installed you can use the components in your project. The Rivet styles are included as a dependency of *rivet-react* but they are not bundled into the components, so you'll need to import them as well.
 
-```jsx
+```typescript
 import * as React from 'react'
 import 'rivet-uits/css/rivet.min.css'
 import { Alert } from 'rivet-react'
@@ -36,3 +37,7 @@ import { Alert } from 'rivet-react'
 ``` 
 
 Check out the [Component Documentation and Style Guide](https://indiana-university.github.io/rivet-react/) for comprehensive component documentation and examples.
+
+## Issues and Contributions
+
+[Rivet-react](https://github.com/indiana-university/rivet-react/) is open source and maintained by members of the [Indiana University](https://github.com/indiana-university) organization on GitHub. If you have questions about the library or encounter problems please [file an issue](https://github.com/indiana-university/rivet-react/issues). If you wish to contribute, [pull requests](https://help.github.com/articles/about-pull-requests/) are welcome! Please review our [Contribution Guidelines](https://github.com/indiana-university/rivet-react/blob/master/CONTRIBUTING.md).
