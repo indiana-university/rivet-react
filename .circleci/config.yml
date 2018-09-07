@@ -73,6 +73,9 @@ jobs:
     steps:
       - checkout 
       - restore_cache: *restore-node-modules
+      - run: 
+          name: Build components
+          command: yarn build
       - run:
           name: Publish package
           command: npx semantic-release
