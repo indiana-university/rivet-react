@@ -2,7 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Button, { ButtonProps } from '../Button/Button';
-import { rivetize } from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
 import DropdownEvent from './DropdownEvent';
 
@@ -107,4 +107,4 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
 
 }
 
-export default rivetize(Dropdown);
+export default Rivet.rivetize(Dropdown);

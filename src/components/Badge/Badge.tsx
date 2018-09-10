@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { rivetize } from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 
 interface BadgeProps {
     /**
@@ -34,4 +34,4 @@ const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ 
 Badge.displayName = 'Badge';
 Badge.propTypes = propTypes;
 
-export default rivetize(Badge);
+export default Rivet.rivetize(Badge);
