@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { rivetize } from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 
 interface ContainerProps {
     /**
@@ -27,4 +27,4 @@ const Container : React.SFC<ContainerProps & React.HTMLAttributes<HTMLDivElement
 };
 Container.displayName = 'Container';
 
-export default rivetize(Container);
+export default Rivet.rivetize(Container);

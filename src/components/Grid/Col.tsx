@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { rivetize } from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 
 interface ColProps {
     /**
@@ -143,4 +143,4 @@ const Col : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> =
 }
 Col.displayName = 'Col';
 
-export default rivetize(Col);
+export default Rivet.rivetize(Col);
