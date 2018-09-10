@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { rivetize } from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 
 interface PanelProps {
     /**
@@ -21,4 +21,4 @@ const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> =
 };
 Panel.displayName = 'Panel';
 
-export default rivetize(Panel);
+export default Rivet.rivetize(Panel);

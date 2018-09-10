@@ -1,6 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { rivetize } from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 
 interface TableProps {
     /** 
@@ -23,4 +23,4 @@ const Table : React.SFC<TableProps & React.HTMLAttributes<HTMLTableElement>> =
 };
 Table.displayName = 'Table';
 
-export default rivetize(Table);
+export default Rivet.rivetize(Table);
