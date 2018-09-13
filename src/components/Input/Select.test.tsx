@@ -33,6 +33,10 @@ describe('<Select />', () => {
             const select = cut.find('select');
             expect(select.children().length).toBe(3);
         });
+        it('should apply sr-only class to label', () => {
+            const cut = mount(<Select label="Label" labelVisibility="screen-reader-only" />);
+            expect(cut.find('div.rvt-input > label').hasClass("rvt-sr-only")).toEqual(true);
+        });
     });
     describe("Notes", () => {
         it('should apply the note', () => {

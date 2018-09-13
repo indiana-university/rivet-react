@@ -26,6 +26,10 @@ describe('<Input />', () => {
             const cut = mount(<Input className="my-class" label="Label" />);
             expect(cut.find('div.rvt-input').hasClass("my-class")).toEqual(true);
         });
+        it('should apply sr-only class to label', () => {
+            const cut = mount(<Input label="Label" labelVisibility="screen-reader-only" />);
+            expect(cut.find('div.rvt-input > label').hasClass("rvt-sr-only")).toEqual(true);
+        });
     });
     describe("Notes", () => {
         it('should apply the note', () => {
