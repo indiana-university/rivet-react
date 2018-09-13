@@ -76,7 +76,8 @@ module.exports = {
         {   
             name: 'Navigation',
             components: () => [
-              'src/components/Dropdown/*.tsx', 
+              'src/components/Breadcrumbs/*.tsx',
+              'src/components/Dropdown/*.tsx',
               'src/components/Footer/*.tsx', 
               'src/components/Header/Header.tsx',
               'src/components/Header/HeaderIdentity.tsx',
