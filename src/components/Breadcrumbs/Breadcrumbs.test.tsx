@@ -32,7 +32,7 @@ describe('<Breadcrumbs />', () => {
                 <a href="#">Link One</a>
                 Link Two
               </Breadcrumbs>);
-            expect(cut.find('nav > ol.rvt-breadcrumbs > li').last().prop('aria-label')).toEqual('Current page');
+            expect(cut.find('nav > ol.rvt-breadcrumbs > li').last().prop('aria-current')).toEqual('page');
         });
     })
 

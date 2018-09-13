@@ -12,9 +12,9 @@ View the [Rivet documentation for Breadcrumbs](https://rivet.uits.iu.edu/compone
 </Breadcrumbs>
 ```
 
-### Call out example
+### Callout example
 
-There is also a call out modifier class that adds a small amount of padding and a light gray background. This is useful for when you need to draw more attention to the breadcrumb.
+There is also a call-out modifier class that adds a small amount of padding and a light gray background. This is useful for when you need to draw more attention to the breadcrumb.
 
 ```jsx
 <Breadcrumbs variant="call-out">

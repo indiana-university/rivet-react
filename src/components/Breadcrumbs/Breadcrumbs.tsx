@@ -4,7 +4,7 @@ import * as Rivet from '../util/Rivet';
 
 export interface BreadcrumbsProps {
   /**
-   * Optional Rivet style: A call out styled set of breadcrumbs.
+   * Optional Rivet style: A call-out styled set of breadcrumbs.
    */
   variant?: 'call-out'
 }
@@ -12,7 +12,7 @@ export interface BreadcrumbsProps {
 const Breadcrumbs: React.SFC<BreadcrumbsProps & React.HTMLAttributes<HTMLDivElement>> =
   ({ children, variant, ...attrs }) => {
     const childCount = React.Children.count(children);
-    const breadcrumbLinks = React.Children.map(children, (child, index) => (index === (childCount - 1)) ? <li aria-label="Current page">{child}</li> : <li>{child}</li>);
+    const breadcrumbLinks = React.Children.map(children, (child, index) => (index === (childCount - 1)) ? <li aria-current="page">{child}</li> : <li>{child}</li>);
     const classes = classNames({
       ['rvt-breadcrumbs']: true,
       [`rvt-breadcrumbs--${variant}`]: variant
