@@ -21,6 +21,10 @@ describe('<Texarea />', () => {
             const cut = mount(<Textarea className="my-class" label="Label" />);
             expect(cut.find('div.rvt-input').hasClass("my-class")).toEqual(true);
         });
+        it('should apply sr-only class to label', () => {
+            const cut = mount(<Textarea label="Label" labelVisibility="screen-reader-only" />);
+            expect(cut.find('div.rvt-input > label').hasClass("rvt-sr-only")).toEqual(true);
+        });
     });
     describe("Notes", () => {
         it('should apply the note', () => {
