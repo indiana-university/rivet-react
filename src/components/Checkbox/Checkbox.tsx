@@ -17,7 +17,7 @@ const Checkbox : React.SFC<CheckboxProps & React.InputHTMLAttributes<HTMLInputEl
     <>
         <input id={id} type="checkbox" {...attrs} />
         { children }
-        <label className={Rivet.labelVisiblityClass(labelVisibility)} htmlFor={id}>{label}</label>
+        <label htmlFor={id}><span className={Rivet.labelVisiblityClass(labelVisibility)}>{label}</span></label>
     </>
 );
 Checkbox.displayName = 'Checkbox';
