@@ -37,7 +37,7 @@ describe('<Breadcrumbs />', () => {
     })
 
     describe('Styling', ()=>{
-        it('should have call out style', () => {
+        it('should have call-out style', () => {
             const cut = mount(<Breadcrumbs variant="call-out" />);
             expect(cut.find('nav > ol.rvt-breadcrumbs').hasClass("rvt-breadcrumbs--call-out")).toEqual(true);
         });
