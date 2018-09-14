@@ -8882,7 +8882,13 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rivet-uits@1.0.0:
+rivet-switch@^0.1.1-alpha:
+  version "0.1.1-alpha"
+  resolved "https://registry.yarnpkg.com/rivet-switch/-/rivet-switch-0.1.1-alpha.tgz#a49ee1e291d223010caeff54351a69703ad61b10"
+  dependencies:
+    rivet-uits "^1.0.0"
+
+rivet-uits@1.0.0, rivet-uits@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/rivet-uits/-/rivet-uits-1.0.0.tgz#73f8d011be56cdb3637245d0b9f8af9038a2478a"
 
