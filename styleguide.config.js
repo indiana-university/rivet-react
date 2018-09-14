@@ -123,7 +123,8 @@ module.exports = {
         {
             name: 'Addons',
             components: () => [
-              'src/components/Addons/Switch/*.tsx'
+              'src/components/Addons/Collapse/*.tsx',
+              'src/components/Addons/Switch/*.tsx',
             ],
         },
     ],
