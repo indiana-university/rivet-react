@@ -2,6 +2,7 @@ import * as React from 'react'
 
 type IconType =
     "caret-down"
+    | "caret-right"
     | "close"
     | "file"
     | "menu"
@@ -31,6 +32,12 @@ const icoCaretDown = (attrs) =>
     <svg {...attrs}>
         <path fill="currentColor" d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z" />
     </svg>;
+
+const icoCaretRight = (attrs) => (
+  <svg {...attrs}>
+    <path fill="currentColor" d="M5.5,15a1,1,0,0,1-.77-1.64L9.2,8,4.73,2.64A1,1,0,0,1,6.27,1.36L11.13,7.2a1.25,1.25,0,0,1,0,1.61L6.27,14.64A1,1,0,0,1,5.5,15ZM9.6,8.48h0Zm0-1h0Z" />
+  </svg>
+);
 
 const icoClose = (attrs) =>
     <svg {...attrs}>
@@ -100,6 +107,7 @@ const icoTridentFooter =
 const resolveContents = (name: IconType, attrs) => {
     switch (name) {
         case "caret-down": return icoCaretDown(attrs);
+        case "caret-right": return icoCaretRight(attrs);
         case "close": return icoClose(attrs);
         case "file": return icoFile(attrs);
         case "menu": return icoMenu(attrs);
