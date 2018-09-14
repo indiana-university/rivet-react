@@ -18,6 +18,8 @@ describe('<Switch />', () => {
           expect(cut.find('button.rvt-switch').prop('aria-checked')).toBe(true);
           cut.find('button.rvt-switch').simulate('click');
           expect(cut.find('button.rvt-switch').prop('aria-checked')).toBe(false);
+          cut.find('button.rvt-switch').simulate('click');
+          expect(cut.find('button.rvt-switch').prop('aria-checked')).toBe(true);
         });
         it('should allow you to set the default value', () => {
           const cut = mount(<Switch defaultValue="off" />);
