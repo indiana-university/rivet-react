@@ -40,12 +40,14 @@
     "react-docgen-typescript": "1.7.0",
     "react-scripts-ts": "2.17.0",
     "react-styleguidist": "7.2.5",
+    "rivet-switch": "0.1.1-alpha",
     "rivet-uits": "1.0.0",
     "semantic-release": "15.9.12",
     "typescript": "2.9.2"
   },
   "files": [
-    "build/dist/components"
+    "build/dist/components",
+    "addons"
   ],
   "jest": {
     "collectCoverageFrom": [

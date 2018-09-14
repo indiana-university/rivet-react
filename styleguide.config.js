@@ -120,6 +120,12 @@ module.exports = {
                 }
             ]
         },
+        {
+            name: 'Addons',
+            components: () => [
+              'src/components/Addons/Switch/*.tsx'
+            ],
+        },
     ],
     webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
     require: [
