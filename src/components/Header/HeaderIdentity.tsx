@@ -31,7 +31,8 @@ const desktopWithoutChildren = (classes, label, logout) =>
     </div>
 
 const drawerWithoutChildren = (classes, label, logout) =>
-    <div className={classes}>
+    // This custom style is only needed until https://github.iu.edu/UITS/rivet-source/issues/362 is resolved
+    <div className={classes} style={{borderBottom: '2px solid #eee'}}>
         <div className="rvt-header-id__profile rvt-header-id__profile--drawer p-all-sm">
             {label}
             {logout}
@@ -60,7 +61,7 @@ const HeaderIdentity: React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLD
     const wrapperClasses = classNames('rvt-header-id', className);
     const drawerOpen = wrapperClasses.includes('rvt-header-id--drawer');
     const avatarIcon = avatar && <span className="rvt-header-id__avatar" aria-hidden="true">{avatar}</span>;
-    const userLabel = drawerOpen && children
+    const userLabel = drawerOpen && (children || !onLogout)
         ? <span className="rvt-header-id__user rvt-header-id__user--has-dropdown">{username}</span>
         : <span className="rvt-header-id__user">{username}</span>;
     const label = <>{avatarIcon} {userLabel}</>;
