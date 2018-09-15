@@ -13,7 +13,7 @@ interface CollapseProps {
   /**
    * The component to use for the title element.  Defaults to "div".
    */
-  TitleComponent?: string;
+  TitleComponent?: 'div' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   /**
    * Optional Rivet style: A panel styled collapse.
    */
