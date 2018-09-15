@@ -62,7 +62,6 @@ export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButt
       id={id}
       className={classNames(buttonStyle(variant, modifier), buttonSize(size), className)}
       onClick={onClick}
-      disabled={!onClick}
       ref={innerRef}
       {...attrs}
     >

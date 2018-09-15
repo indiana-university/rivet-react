@@ -91,10 +91,5 @@ describe('<Button />', () => {
             
             expect(fired).toEqual(true);
         });
-
-        it('should be disabled if there is no click delegate', () => {
-            const cut = mount(<Button />);
-            expect(cut.find('button').prop('disabled')).toEqual(true);
-        })
     })
 });

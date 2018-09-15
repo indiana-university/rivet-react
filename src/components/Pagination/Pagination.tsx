@@ -14,30 +14,30 @@ interface PaginationProps {
   size?: 'small';
 }
 
-
-const Pagination: React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivElement>> = ({ align, children, className, size, ...attrs }) => {
-  const classes = classNames({
-    ['rvt-pagination']: true,
-    [`rvt-pagination--${align}`]: align,
-    [`rvt-pagination--${size}`]: size
-  });
-  const wrappedChildren = React.Children.map(children, (child: React.ReactElement<any>) => {
-    const childClasses = classNames({
-      'rvt-pagination__item': true,
-      'is-disabled': child.props && child.props['aria-disabled'],
-      'is-active': child.props && child.props['aria-current'] === 'page'
+const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivElement>> =
+ ({ align, children, className, size, ...attrs }) => {
+    const classes = classNames({
+      ['rvt-pagination']: true,
+      [`rvt-pagination--${align}`]: align,
+      [`rvt-pagination--${size}`]: size
+    });
+    const wrappedChildren = React.Children.map(children, (child: React.ReactElement<any>) => {
+      const childClasses = classNames({
+        'rvt-pagination__item': true,
+        'is-disabled': child.props && child.props['aria-disabled'],
+        'is-active': child.props && child.props['aria-current'] === 'page'
+      });
+      return (
+        <li className={childClasses}>{child}</li>
+      );
     });
     return (
-      <li className={childClasses}>{child}</li>
+      <nav {...attrs} role="navigation" className={className}>
+        <ul className={classes}>
+          {wrappedChildren}
+        </ul>
+      </nav>
     );
-  });
-  return (
-    <nav {...attrs} role="navigation" className={className}>
-      <ul className={classes}>
-        {wrappedChildren}
-      </ul>
-    </nav>
-  );
 };
 Pagination.displayName = 'Pagination';
 
