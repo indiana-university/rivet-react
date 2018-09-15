@@ -83,7 +83,8 @@ module.exports = {
               'src/components/Header/Header.tsx',
               'src/components/Header/HeaderIdentity.tsx',
               'src/components/Header/HeaderNavigation.tsx',
-              'src/components/Header/HeaderMenu.tsx'
+              'src/components/Header/HeaderMenu.tsx',
+              'src/components/Pagination/*.tsx',
             ],
         },
         {
