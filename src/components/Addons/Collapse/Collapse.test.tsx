@@ -17,6 +17,11 @@ describe('<Collapse />', () => {
           const cut = mount(<Collapse defaultClosed={false} />);
           expect(cut.find('div.rvt-collapsible > div.rvt-collapsible__title > button').prop('aria-expanded')).toBe(true);
         });
+        it('should allow you to use a custom title component', () => {
+          const cut = mount(<Collapse TitleComponent="h1" />);
+          expect(cut.find('div.rvt-collapsible > div.rvt-collapsible__title').length).toBe(0);
+          expect(cut.find('div.rvt-collapsible > h1.rvt-collapsible__title').length).toBe(1);
+        });
     });
 
     describe('Styling', () => {
