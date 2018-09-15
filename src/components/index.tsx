@@ -10,6 +10,7 @@ export * from './Grid';
 export * from './Header';
 export * from './Input';
 export * from './List';
+export * from './Pagination';
 export * from './Panel';
 export * from './RadioButton';
 export * from './Section';
