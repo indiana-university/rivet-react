@@ -13,7 +13,7 @@ interface CollapseProps {
   /**
    * The component to use for the title element.  Defaults to "div".
    */
-  TitleComponent: string;
+  TitleComponent?: string;
   /**
    * Optional Rivet style: A panel styled collapse.
    */
@@ -26,8 +26,7 @@ type CollapseState = Readonly<typeof initialState>;
 class Collapse extends React.PureComponent<CollapseProps & React.HTMLAttributes<HTMLDivElement>, CollapseState> {
 
   public static defaultProps = {
-    defaultClosed: true,
-    TitleComponent: 'div'
+    defaultClosed: true
   }
 
   public readonly state: CollapseState = initialState;
@@ -46,7 +45,7 @@ class Collapse extends React.PureComponent<CollapseProps & React.HTMLAttributes<
   }
 
   public render() {
-    const { children, className, defaultClosed, title, TitleComponent, variant, ...attrs } = this.props;
+    const { children, className, defaultClosed, title, TitleComponent = 'div', variant, ...attrs } = this.props;
     const classes = classNames({
       'rvt-collapsible': true,
       [`rvt-collapsible--${variant}`]: variant,
