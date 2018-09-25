@@ -81,6 +81,13 @@ const DemoComponent = Rivet.rivetize(({ children, ...attrs }) => (
         expect(mount(<DemoComponent typescale={12} />).find('div').hasClass('rvt-ts-12')).toBe(true);
         expect(mount(<DemoComponent typescale={23} />).find('div').hasClass('rvt-ts-23')).toBe(true);
         expect(mount(<DemoComponent typescale="base" />).find('div').hasClass('rvt-ts-base')).toBe(true);
+        expect(mount(<DemoComponent typescale="xxs" />).find('div').hasClass('rvt-ts-xxs')).toBe(true);
+        expect(mount(<DemoComponent typescale="xs" />).find('div').hasClass('rvt-ts-xs')).toBe(true);
+        expect(mount(<DemoComponent typescale="sm" />).find('div').hasClass('rvt-ts-sm')).toBe(true);
+        expect(mount(<DemoComponent typescale="md" />).find('div').hasClass('rvt-ts-md')).toBe(true);
+        expect(mount(<DemoComponent typescale="lg" />).find('div').hasClass('rvt-ts-lg')).toBe(true);
+        expect(mount(<DemoComponent typescale="xl" />).find('div').hasClass('rvt-ts-xl')).toBe(true);
+        expect(mount(<DemoComponent typescale="xxl" />).find('div').hasClass('rvt-ts-xxl')).toBe(true);
       });
   });
   
