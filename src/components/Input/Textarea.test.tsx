@@ -43,27 +43,27 @@ describe('<Texarea />', () => {
     describe("Inline Alerts", () => {
         it('info style', () => { 
             const cut = mount(<Textarea variant="info" label="Label" note="🤔"/>);
-            expect(cut.find('textarea').hasClass("rvt-has-info")).toEqual(true);
+            expect(cut.find('textarea').hasClass("rvt-validation-info")).toEqual(true);
             expect(cut.find('textarea').prop("aria-invalid")).toEqual(false);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-info")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--info")).toBe(true);
         });
         it('valid style', () => { 
             const cut = mount(<Textarea variant="valid" label="Label" note="😎"/>);
-            expect(cut.find('textarea').hasClass("rvt-is-valid")).toEqual(true);
+            expect(cut.find('textarea').hasClass("rvt-validation-success")).toEqual(true);
             expect(cut.find('textarea').prop("aria-invalid")).toEqual(false);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-valid")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--success")).toBe(true);
         });
         it('warning style', () => { 
             const cut = mount(<Textarea variant="warning" label="Label" note="🤨"/>);
-            expect(cut.find('textarea').hasClass("rvt-has-warning")).toEqual(true);
+            expect(cut.find('textarea').hasClass("rvt-validation-warning")).toEqual(true);
             expect(cut.find('textarea').prop("aria-invalid")).toEqual(false);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-warning")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--warning")).toBe(true);
         });
         it('invalid style', () => { 
             const cut = mount(<Textarea variant="invalid" label="Label" note="😬"/>);
-            expect(cut.find('textarea').hasClass("rvt-is-invalid")).toEqual(true);
+            expect(cut.find('textarea').hasClass("rvt-validation-danger")).toEqual(true);
             expect(cut.find('textarea').prop("aria-invalid")).toEqual(true);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-invalid")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--danger")).toBe(true);
         });
     });
 });
