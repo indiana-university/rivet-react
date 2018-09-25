@@ -5,19 +5,19 @@ type ValidationType = 'info' | 'invalid' | 'valid' | 'warning';
 
 const validationDisplayOptions : object = {
     info: {
-        className: 'has-info',
+        className: 'info',
         icon: <Icon name="info" />
     },
     valid: {
-        className: 'is-valid',
+        className: 'success',
         icon: <Icon name="success" />
     },
     warning: {
-        className: 'has-warning',
+        className: 'warning',
         icon: <Icon name="warning" />
     },
     invalid: {
-        className: 'is-invalid',
+        className: 'danger',
         icon: <Icon name="error" />
     },
 }

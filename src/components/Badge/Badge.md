@@ -8,7 +8,7 @@ View the [Rivet documentation for Badges](https://rivet.uits.iu.edu/components/p
 <Badge variant="action">Action</Badge>{' '}
 <Badge variant="success">Success</Badge>{' '}
 <Badge variant="warning">Warning</Badge>{' '}
-<Badge variant="error">Error</Badge>
+<Badge variant="danger">Error</Badge>
 ```
 
 ### Secondary Badges
@@ -17,5 +17,5 @@ View the [Rivet documentation for Badges](https://rivet.uits.iu.edu/components/p
 <Badge variant="action" modifier="secondary">Action</Badge>{' '}
 <Badge variant="success" modifier="secondary">Success</Badge>{' '}
 <Badge variant="warning" modifier="secondary">Warning</Badge>{' '}
-<Badge variant="error" modifier="secondary">Error</Badge>
+<Badge variant="danger" modifier="secondary">Error</Badge>
 ```

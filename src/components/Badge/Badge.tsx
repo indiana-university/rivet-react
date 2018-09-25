@@ -11,7 +11,7 @@ interface BadgeProps {
     /**
      * Optional Rivet style: an action/error/success/warning badge.
      */
-    variant?: 'action' | 'error' | 'success' | 'warning';
+    variant?: 'action' | 'error' | 'danger' | 'success' | 'warning';
 }
 
 const propTypes = {
