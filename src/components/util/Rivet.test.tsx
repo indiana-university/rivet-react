@@ -19,19 +19,23 @@ const DemoComponent = Rivet.rivetize(({ children, ...attrs }) => (
     });
   
     it('discriminates bounds', () => {
-        const cut = mount(<DemoComponent margin={{ top: "xs", right:"sm", bottom: "md", left: "lg" }} />);
+        const cut = mount(<DemoComponent margin={{ top: "xs", right:"sm", bottom: "md", left: "lg", lr: "xl", tb: "xxl" }} />);
         expect(cut.find('div').hasClass('rvt-m-top-xs')).toBe(true);
         expect(cut.find('div').hasClass('rvt-m-right-sm')).toBe(true);
         expect(cut.find('div').hasClass('rvt-m-bottom-md')).toBe(true);
         expect(cut.find('div').hasClass('rvt-m-left-lg')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-m-lr-xl')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-m-tb-xxl')).toBe(true);
     });
   
     it('discriminates sizings', () => {
-        const cut = mount(<DemoComponent margin={{ xs: ['top', "bottom"], md: "left", lg: "right" }} />);
+        const cut = mount(<DemoComponent margin={{ xs: ['top', "bottom"], md: "left", lg: "right", xl: "lr", xxl: "tb" }} />);
         expect(cut.find('div').hasClass('rvt-m-top-xs')).toBe(true);
         expect(cut.find('div').hasClass('rvt-m-bottom-xs')).toBe(true);
         expect(cut.find('div').hasClass('rvt-m-left-md')).toBe(true);
         expect(cut.find('div').hasClass('rvt-m-right-lg')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-m-lr-xl')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-m-tb-xxl')).toBe(true);
     }); 
   }); 
 
@@ -47,19 +51,23 @@ const DemoComponent = Rivet.rivetize(({ children, ...attrs }) => (
     });
   
     it('discriminates bounds', () => {
-        const cut = mount(<DemoComponent padding={{ top: "xs", right:"sm", bottom: "md", left: "lg" }} />);
+        const cut = mount(<DemoComponent padding={{ top: "xs", right:"sm", bottom: "md", left: "lg", lr: "xl", tb: "xxl" }} />);
         expect(cut.find('div').hasClass('rvt-p-top-xs')).toBe(true);
         expect(cut.find('div').hasClass('rvt-p-right-sm')).toBe(true);
         expect(cut.find('div').hasClass('rvt-p-bottom-md')).toBe(true);
         expect(cut.find('div').hasClass('rvt-p-left-lg')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-p-lr-xl')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-p-tb-xxl')).toBe(true);
     });
   
     it('discriminates sizings', () => {
-        const cut = mount(<DemoComponent padding={{ xs: ['top', "bottom"], md: "left", lg: "right" }} />);
+        const cut = mount(<DemoComponent padding={{ xs: ['top', "bottom"], md: "left", lg: "right", xl: "lr", xxl: "tb" }} />);
         expect(cut.find('div').hasClass('rvt-p-top-xs')).toBe(true);
         expect(cut.find('div').hasClass('rvt-p-bottom-xs')).toBe(true);
         expect(cut.find('div').hasClass('rvt-p-left-md')).toBe(true);
         expect(cut.find('div').hasClass('rvt-p-right-lg')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-p-lr-xl')).toBe(true);
+        expect(cut.find('div').hasClass('rvt-p-tb-xxl')).toBe(true);
     }); 
   }); 
 

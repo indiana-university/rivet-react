@@ -18,9 +18,9 @@ describe('<Table />', () => {
         });
         it('should apply variant classes', () => {
             expect(mount(<Table variant="stripes" />).find('table.rvt-table-stripes')).toHaveLength(1);
-          expect(mount(<Table variant="plain" />).find('table.rvt-table-plain')).toHaveLength(1);
-          expect(mount(<Table variant="compact" />).find('table.rvt-table-compact')).toHaveLength(1);
-          expect(mount(<Table variant="cells" />).find('table.rvt-table-cells')).toHaveLength(1);
+            expect(mount(<Table variant="plain" />).find('table.rvt-table-plain')).toHaveLength(1);
+            expect(mount(<Table variant="compact" />).find('table.rvt-table-compact')).toHaveLength(1);
+            expect(mount(<Table variant="cells" />).find('table.rvt-table-cells')).toHaveLength(1);
         });
     });
 });
