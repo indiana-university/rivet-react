@@ -29,7 +29,7 @@ describe('<Alert />', () => {
             const cut = mount(<DismissibleAlert variant="info" />);
             expect(cut.find('.rvt-alert').hasClass("rvt-alert--info")).toEqual(true);
         });
-        it('should specify style: message', () => {
+        it('should specify style: warning', () => {
             const cut = mount(<DismissibleAlert variant="warning" />);
             expect(cut.find('.rvt-alert').hasClass("rvt-alert--warning")).toEqual(true);
         });
