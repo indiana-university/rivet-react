@@ -30,8 +30,8 @@ describe('<Alert />', () => {
             expect(cut.find('.rvt-alert').hasClass("rvt-alert--info")).toEqual(true);
         });
         it('should specify style: message', () => {
-            const cut = mount(<DismissibleAlert variant="message" />);
-            expect(cut.find('.rvt-alert').hasClass("rvt-alert--message")).toEqual(true);
+            const cut = mount(<DismissibleAlert variant="warning" />);
+            expect(cut.find('.rvt-alert').hasClass("rvt-alert--warning")).toEqual(true);
         });
         it('should specify style: success', () => {
             const cut = mount(<DismissibleAlert variant="success" />);
