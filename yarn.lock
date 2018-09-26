@@ -8894,9 +8894,9 @@ rivet-switch@0.1.1-alpha:
   dependencies:
     rivet-uits "^1.0.0"
 
-rivet-uits@1.1.0-alpha.2:
-  version "1.1.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/rivet-uits/-/rivet-uits-1.1.0-alpha.2.tgz#ca44618536b7ce674ea1f3ed5340d0f9e40b4038"
+rivet-uits@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rivet-uits/-/rivet-uits-1.1.0.tgz#bd50edae3fd222cd1f8d67416e6513eecf9a4c23"
 
 rivet-uits@^1.0.0:
   version "1.0.0"

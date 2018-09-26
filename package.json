@@ -1,6 +1,6 @@
 {
   "name": "rivet-react",
-  "version": "0.4.0-alpha",
+  "version": "0.4.1",
   "description": "Rivet React components",
   "author": "",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "react-styleguidist": "7.2.5",
     "rivet-collapsible": "0.1.1-alpha",
     "rivet-switch": "0.1.1-alpha",
-    "rivet-uits": "1.1.0-alpha.2",
+    "rivet-uits": "1.1.0",
     "semantic-release": "15.9.12",
     "typescript": "2.9.2"
   },
