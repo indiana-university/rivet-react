@@ -4,7 +4,7 @@ View the [Rivet Documentation for Tables](https://rivet.uits.iu.edu/components/p
 
 ### Default Table
 
-Default tables in Rivet come with styled headers and bottom borders on row to help with readability.
+Default tables in Rivet come with styled headers and bottom borders on row to help with readability. This can be used along with the `compact` and `cells` booleans.
 
 ```jsx
 <Table>
@@ -43,7 +43,7 @@ Default tables in Rivet come with styled headers and bottom borders on row to he
 
 ### Striped Table
 
-The *stripes* `variant` to alternate light gray backgrounds on table rows for improved scannability.
+The *stripes* `variant` to alternate light gray backgrounds on table rows for improved scannability. This can be used along with the `compact` and `cells` booleans.
 
 ```jsx
 <Table variant="stripes">
@@ -82,7 +82,7 @@ The *stripes* `variant` to alternate light gray backgrounds on table rows for im
 
 ### Plain Table
 
-The *plain* `variant` will remove all borders and formatting from the table.
+The *plain* `variant` will remove all borders and formatting from the table. This can be used along with the `compact` boolean.
 
 ```jsx
 <Table variant="plain">
@@ -121,10 +121,10 @@ The *plain* `variant` will remove all borders and formatting from the table.
 
 ### Compact Table
 
-The *compact* `variant` decreases the amount of padding applied to each table cell.
+The *compact* `boolean` decreases the amount of padding applied to each table cell.
 
 ```jsx
-<Table variant="compact">
+<Table compact>
     <caption className="rvt-sr-only">Table example one</caption>
     <thead>
         <tr>
@@ -160,10 +160,10 @@ The *compact* `variant` decreases the amount of padding applied to each table ce
 
 ### Cells Table
 
-The *cells* `variant` adds borders to all table cells.
+The *cells* `boolean` adds borders to all table cells.
 
 ```jsx
-<Table variant="cells">
+<Table cells>
     <caption className="rvt-sr-only">Table example one</caption>
     <thead>
         <tr>

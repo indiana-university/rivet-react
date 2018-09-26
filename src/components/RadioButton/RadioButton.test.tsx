@@ -1,6 +1,5 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import * as Rivet from '../util/Rivet';
 import RadioButton from './RadioButton';
 
 describe('<RadioButton />', () => {
