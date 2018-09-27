@@ -3,12 +3,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Button, { ButtonProps } from '../Button/Button';
 import * as Rivet from '../util/Rivet';
+import Icon from '../util/RivetIcons';
 import DropdownEvent from './DropdownEvent';
 
 interface DropdownProps extends ButtonProps {
     /** Optional Rivet style: alignment of the dropdown menu items relative to the edge of the dropdown button. */
     align?: 'right';
-
     /**
      * Optional text which appears on the dropdown toggle button. The label 
      * should always be provided with a standalone dropdown, however the label
@@ -16,12 +16,10 @@ interface DropdownProps extends ButtonProps {
      * @see https://rivet.uits.iu.edu/components/navigation/dropdown/
      * @see https://rivet.uits.iu.edu/components/forms/buttons-segmented/#using-segmented-buttons-with-dropdowns
      */
-
     label?: string | React.ReactNode;
     /**
      * Optional CSS classes which will be applied to the dropdown menu
      */
-
     menuClass?: string;
 }
 
@@ -66,10 +64,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
             <div className="rvt-dropdown">
                 <Button {...attrs} innerRef={this.toggleButton} className={className} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
                     { label && <span className="rvt-dropdown__toggle-text">{label}</span> }
-                    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                        <title>Dropdown icon</title>
-                        <path fill="currentColor" d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z" />
-                    </svg>
+                    <Icon name="caret-down" />
                 </Button>
     
                 {this.state.open &&
