@@ -64,7 +64,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
         }, menuClass);
         return (
             <div className="rvt-dropdown">
-                <Button {...attrs} innerRef={this.toggleButton} className={classes} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
+                <Button {...attrs} innerRef={this.toggleButton} className={menuClasses} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
                     { label && <span className="rvt-dropdown__toggle-text">{label}</span> }
                     <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                         <title>Dropdown icon</title>
