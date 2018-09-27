@@ -22,9 +22,3 @@
     <div className="rvt-bg-midnight">xxl</div>
 </Container>
 ```
-
-### Responsive Spacing
-**Coming soon**
-
-### No spacing
-**Coming soon**

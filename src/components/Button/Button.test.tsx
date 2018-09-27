@@ -41,19 +41,19 @@ describe('<Button />', () => {
 
         // Secondary variations
         it('should have secondary role', () => {
-            const cut = mount(<Button role="secondary" />);
+            const cut = mount(<Button modifier="secondary" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--secondary")).toEqual(true);
         });
         it('should have secondary success style', () => {
-            const cut = mount(<Button role="secondary" variant="success" />);
+            const cut = mount(<Button modifier="secondary" variant="success" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--success-secondary")).toEqual(true);
         });
         it('should have secondary danger style', () => {
-            const cut = mount(<Button role="secondary" variant="danger" />);
+            const cut = mount(<Button modifier="secondary" variant="danger" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--danger-secondary")).toEqual(true);
         });
         it('should have secondary plain style', () => {
-            const cut = mount(<Button role="secondary" variant="plain" />);
+            const cut = mount(<Button modifier="secondary" variant="plain" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--plain-secondary")).toEqual(true);
         });
         
@@ -69,7 +69,7 @@ describe('<Button />', () => {
 
         // All together now!
         it('should have a secondary small size', () => {
-            const cut = mount(<Button size="small" role="secondary" variant="plain" />);
+            const cut = mount(<Button size="small" modifier="secondary" variant="plain" />);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--plain-secondary")).toEqual(true);
             expect(cut.find('button.rvt-button').hasClass("rvt-button--small")).toEqual(true);
         });
@@ -91,10 +91,5 @@ describe('<Button />', () => {
             
             expect(fired).toEqual(true);
         });
-
-        it('should be disabled if there is no click delegate', () => {
-            const cut = mount(<Button />);
-            expect(cut.find('button').prop('disabled')).toEqual(true);
-        })
     })
 });

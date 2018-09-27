@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import DropdownGroup from './DropdownGroup';
 import Dropdown from './Dropdown';
+import DropdownGroup from './DropdownGroup';
 
 describe('<DropdownGroup />', () => {
     describe('Rendering and styling', () => {

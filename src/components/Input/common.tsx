@@ -4,52 +4,45 @@ import * as React from 'react';
 import InlineAlert from '../Alert/InlineAlert';
 import * as Rivet from '../util/Rivet';
 
-import { alertClass, Variant } from '../Alert/inlineAlertVariantDisplayOptions';
+import { validationClass } from '../util/validation';
 
-type InputVariant = Variant | 'default';
 export interface TextProps {
+    /** The label for the input */
     label: string;
+    /** Visibility modifier for the input's label */
+    labelVisibility?: Rivet.LabelVisibility;
+    /** An optional note that will be displayed below the input */
     note?: React.ReactNode;
-    /**
-     * Optional Rivet style for inline validation.
-     * See: https://rivet.uits.iu.edu/components/forms/text-input/#inline-validation-states
-     */
-    variant?: InputVariant;
+    /** Rivet style for inline validation */
+    variant?: 'info' | 'invalid' | 'valid' | 'warning';
 }
 
-const isInlineAlert = (variant : InputVariant) => variant && variant !== 'default';
-
-const standardNote = (id : string, note : React.ReactNode) => <small id={id} className="rvt-display-block rvt-m-bottom-md">{note}</small>
-
-const inputClassName = (variant : InputVariant) => isInlineAlert(variant)
-    ? `rvt-${alertClass(variant as Variant)}`
+const inputClassName = (variant) => 
+    variant
+    ? `rvt-validation-${validationClass(variant)}`
     : '';
 
-const labelFragment = (inputId : string, props : TextProps) => <label htmlFor={inputId}>{props.label}</label>
+const noteFragment = (id : string, variant, note? : React.ReactNode) => 
+    variant
+    ? <InlineAlert id={id} variant={variant}>{note}</InlineAlert>
+    : <small id={id} className="rvt-display-block">{note}</small>
 
-const noteFragment = (id : string, variant: InputVariant, note? : React.ReactNode) => note
-    ? isInlineAlert(variant)
-        ? <InlineAlert id={id} variant={variant as Variant}>{note}</InlineAlert>
-        : standardNote(id, note)
-    : null;
-
-type TextComponentGenerator = <T>(id:string, className: string, ariaDescribedBy: string, ariaInvalid:boolean, attrs: T) => JSX.Element; 
 export const renderInput =
-    <T extends React.HTMLAttributes<HTMLElement>>( props: TextProps & T, inputGenerator: TextComponentGenerator ) => {
-        const inputId = props.id || Rivet.shortuid();
-        const variant = props.variant || 'default';
-        const note = props.note;
-        const noteId = `${inputId}_note`;
-        const inputClass = inputClassName(variant);
-        const ariaDescribedBy = note
-            ? noteId
-            : '';
-        const ariaInvalid = variant === 'invalid';
+    <T extends React.HTMLAttributes<HTMLElement>>(inputGenerator: (props) => JSX.Element ) => 
+    ({ id=Rivet.shortuid(), label, labelVisibility, note, variant, className, ...attrs}) => {
+        const noteId = `${id}_note`;
+        const inputProps = {
+            id, 
+            className: inputClassName(variant), 
+            "aria-describedby": note ? noteId : '', 
+            "aria-invalid": variant === 'invalid', 
+            ...attrs
+        }
         return (
-            <div className={classNames('rvt-input', props.className)}>
-                {labelFragment(inputId, props)}
-                {inputGenerator <T> (inputId, inputClass, ariaDescribedBy, ariaInvalid, props)}
-                {noteFragment(noteId, variant, note)}
+            <div className={classNames('rvt-input', className)}>
+                <label htmlFor={id} className={Rivet.labelVisiblityClass(labelVisibility)}>{label}</label>
+                {inputGenerator (inputProps)}
+                {note && noteFragment(noteId, variant, note)}
             </div>
         );
 }

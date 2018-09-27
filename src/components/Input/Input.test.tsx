@@ -1,6 +1,5 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import * as Rivet from '../util/Rivet';
 import Input from './Input';
 
 describe('<Input />', () => {
@@ -26,6 +25,10 @@ describe('<Input />', () => {
             const cut = mount(<Input className="my-class" label="Label" />);
             expect(cut.find('div.rvt-input').hasClass("my-class")).toEqual(true);
         });
+        it('should apply sr-only class to label', () => {
+            const cut = mount(<Input label="Label" labelVisibility="screen-reader-only" />);
+            expect(cut.find('div.rvt-input > label').hasClass("rvt-sr-only")).toEqual(true);
+        });
     });
     describe("Notes", () => {
         it('should apply the note', () => {
@@ -44,27 +47,27 @@ describe('<Input />', () => {
     describe("Inline Alerts", () => {
         it('info style', () => { 
             const cut = mount(<Input variant="info" label="Label" note="🤔"/>);
-            expect(cut.find('input').hasClass("rvt-has-info")).toEqual(true);
+            expect(cut.find('input').hasClass("rvt-validation-info")).toEqual(true);
             expect(cut.find('input').prop("aria-invalid")).toEqual(false);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-info")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--info")).toBe(true);
         });
         it('valid style', () => { 
             const cut = mount(<Input variant="valid" label="Label" note="😎" />);
-            expect(cut.find('input').hasClass("rvt-is-valid")).toEqual(true);
+            expect(cut.find('input').hasClass("rvt-validation-success")).toEqual(true);
             expect(cut.find('input').prop("aria-invalid")).toEqual(false);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-valid")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--success")).toBe(true);
         });
         it('warning style', () => { 
             const cut = mount(<Input variant="warning" label="Label" note="🤨"/>);
-            expect(cut.find('input').hasClass("rvt-has-warning")).toEqual(true);
+            expect(cut.find('input').hasClass("rvt-validation-warning")).toEqual(true);
             expect(cut.find('input').prop("aria-invalid")).toEqual(false);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-warning")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--warning")).toBe(true);
         });
         it('invalid style', () => { 
             const cut = mount(<Input variant="invalid" label="Label" note="😬"/>);
-            expect(cut.find('input').hasClass("rvt-is-invalid")).toEqual(true);
+            expect(cut.find('input').hasClass("rvt-validation-danger")).toEqual(true);
             expect(cut.find('input').prop("aria-invalid")).toEqual(true);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-invalid")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--danger")).toBe(true);
         });
     });
 });

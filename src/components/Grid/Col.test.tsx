@@ -39,7 +39,7 @@ describe('<Col />', () => {
             expect(cut.find('div').hasClass('rvt-grid__item-xxl')).toBe(true);
         });
         it('should apply responsive specific width classes', () => {
-            let cut = mount(<Col sm={8} md={6} lg={4} xl={2} xxl={1} />);
+            const cut = mount(<Col sm={8} md={6} lg={4} xl={2} xxl={1} />);
             expect(cut.find('div').hasClass('rvt-grid__item')).toEqual(false);
 
             expect(cut.find('div').hasClass('rvt-grid__item-sm')).toEqual(false);
@@ -55,7 +55,7 @@ describe('<Col />', () => {
             expect(cut.find('div').hasClass('rvt-grid__item-1-xxl-up')).toBe(true);
         });
         it('should apply pull classes', () => {
-            let cut = mount(<Col pullSm={8} pullMd={6} pullLg={4} pullXl={2} pullXxl={1} />);
+            const cut = mount(<Col pullSm={8} pullMd={6} pullLg={4} pullXl={2} pullXxl={1} />);
             expect(cut.find('div').hasClass('rvt-grid__item')).toEqual(true);
 
             expect(cut.find('div').hasClass('rvt-grid__item-pull-8-sm')).toEqual(true);
@@ -65,7 +65,7 @@ describe('<Col />', () => {
             expect(cut.find('div').hasClass('rvt-grid__item-pull-1-xxl')).toEqual(true);
         });
         it('should apply push classes', () => {
-            let cut = mount(<Col pushSm={8} pushMd={6} pushLg={4} pushXl={2} pushXxl={1} />);
+            const cut = mount(<Col pushSm={8} pushMd={6} pushLg={4} pushXl={2} pushXxl={1} />);
             expect(cut.find('div').hasClass('rvt-grid__item')).toEqual(true);
 
             expect(cut.find('div').hasClass('rvt-grid__item-push-8-sm')).toEqual(true);
@@ -75,7 +75,7 @@ describe('<Col />', () => {
             expect(cut.find('div').hasClass('rvt-grid__item-push-1-xxl')).toEqual(true);
         });
         it('should apply the last modifier classes', () => {
-            let cut = mount(<Col last />);
+            const cut = mount(<Col last />);
             expect(cut.find('div').hasClass('rvt-grid__item')).toEqual(true);
             expect(cut.find('div').hasClass('rvt-grid__item--last')).toEqual(true);
         });

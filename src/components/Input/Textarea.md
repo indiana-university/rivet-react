@@ -1,10 +1,16 @@
-### Text Areas
+### Textarea Example
+
+Use the `note` property to provide contextual information to the user.
+
 ```jsx
 <Textarea name="textarea-demo" label="Text Area" margin={{bottom: "md"}} />
 <Textarea name="textarea-demo-disabled" label="Text Area (Disabled)" disabled />
 ```
 
-### Text Area Inline Validation
+### Inline Validation 
+
+Use the `variant` property along with a `note` to provide validation feedback to the user.
+
 ```jsx
 <Textarea name="textarea-valid" 
           variant="valid" 

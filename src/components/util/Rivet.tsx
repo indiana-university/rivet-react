@@ -1,11 +1,7 @@
 import * as classnames from 'classnames'
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-
 
 // Classes, Interfaces, and Types
-
-export type Action = () => void;
 
 export interface Props {
     /**
@@ -42,11 +38,11 @@ export interface Props {
     display?: Display,
 }
 
-export type Typescale = "base" | 12 | 14 | 16 | 18 | 20 | 23 | 26 | 29 | 32 | 36 | 41 | 46 | 52;
+export type Typescale = "base" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | 12 | 14 | 16 | 18 | 20 | 23 | 26 | 29 | 32 | 36 | 41 | 46 | 52;
 export type Size = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export const Sizes = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' ];
-export type Edge = 'top' | 'right' | 'bottom' | 'left';
-export const Edges = [ 'top', 'right', 'bottom', 'left' ];
+export type Edge = 'top' | 'right' | 'bottom' | 'left' | 'tb' | 'lr';
+export const Edges = [ 'top', 'right', 'bottom', 'left', 'tb', 'lr' ];
 export type Display = "inline" | "inline-block" | "block" | "flex" | "flex-vertical-center";
 export type Border = "all" | "radius" | Edge | Edge[]
 export type Hidden = "sm-down" | "md-down" | "lg-down" | "xl-down" | "xxl-down" | "sm-up" | "md-up" | "lg-up" | "xl-up" | "xxl-up"
@@ -59,7 +55,9 @@ export interface BoxStyle {
     right?: Size,
     bottom?: Size,
     left?: Size,
-    // 
+    lr?: Size,
+    tb?: Size,
+    //
     xxs?: Edge | Edge[],
     xs?:  Edge | Edge[],
     sm?: Edge | Edge[],
@@ -68,29 +66,6 @@ export interface BoxStyle {
     xl?: Edge | Edge[],
     xxl?: Edge | Edge[],
 }
-
-/**
- * Define and render a JSX navigation element. 
- */
-export class Nav {
-    public label: string
-    public to: string
-    constructor(label: string, to: string){
-        this.label=label;
-        this.to=to;
-    }
-    /**
-     * Render a navigation element.
-     * An external route (having a URL starting http(s)://) will be rendered as an HTML anchor <a/>.
-     * An internal route will be rendered as a React <Link>.
-     */
-    public render = () =>
-        (/^https?:\/\//.test(this.to))
-        ? <a href={this.to}>{this.label}</a>
-        : <Link to={this.to}>{this.label}</Link>;
-};
-
-
 
 // Helper and Styling Functions
 
@@ -187,11 +162,11 @@ export const rivetize = <T extends React.HTMLAttributes<HTMLElement>>(Component:
  * A type and class decorator for visually hidden labels
  * See: https://rivet.uits.iu.edu/components/utilities/display/#visually-hidden-labels-example
  */
-export type LabelVisibility = "screen-reader-only" | "default";
+export type LabelVisibility = "screen-reader-only" | undefined;
 
 /** 
  * Determine whether to apply class limiting label visibility to screenreaders.
  * @param visibility The desired visibility type.
  */
-export const labelVisiblityClass = (visibility?: LabelVisibility) => 
+export const labelVisiblityClass = (visibility: LabelVisibility) => 
     visibility === "screen-reader-only" ? "rvt-sr-only" : "";

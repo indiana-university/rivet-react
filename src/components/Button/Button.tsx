@@ -1,42 +1,48 @@
 import * as classNames from 'classnames';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
-
 /**
  * The properties of a button.
  */
-type VariantType = 'success' | 'danger' | 'plain' | 'default' | 'navigation';
-type SizeType = 'small' | 'default';
-type RoleType = 'secondary' | 'default';
 export interface ButtonProps {
-    /** Optional Rivet style: a success/danger/plain button. The 'navigation' variant is intended to support the Header component only. See: https://rivet.uits.iu.edu/components/forms/buttons/#button-examples */
-    variant?: VariantType;
-    /** Optional Rivet style: a small button. See: https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons */
-    size?: SizeType;
-    /** Optional Rivet style: a secondary button. See: https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations */
-    role?: RoleType;
+    /** 
+     * Optional Rivet style: a success/danger/plain button. 
+     * The 'navigation' variant is intended to support the Header component only.
+     */
+    variant?: 'success' | 'danger' | 'plain' | 'navigation';
+    /** Optional Rivet style: a small button. */
+    size?: 'small';
+    /** Optional Rivet style: a secondary button. */
+    modifier?: 'secondary';
     innerRef?: React.Ref<HTMLButtonElement>;
 }
 
-const None = '';
+export const buttonPropTypes = {
+  variant: PropTypes.oneOf(['success', 'danger', 'plain', 'navigation']),
+  size: PropTypes.oneOf(['small']),
+  role: PropTypes.oneOf(['secondary']),
+  innerRef: PropTypes.any,
+  id: PropTypes.string
+}
+
 const buttonClass = 'rvt-button';
 /**
- * Generate the combined role and variation class for this button, if applicable.
+ * Generate the combined modifier and variation class for this button, if applicable.
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
-const buttonRoleAndStyle = (variant: VariantType, role: RoleType) => {
+
+const buttonStyle = (variant, modifier) => {
+  // special case for navigation variant
   if(variant === 'navigation') {
     return 'rvt-dropdown__toggle';
   }
-  const classParts = [
-    variant !== 'default' ? variant : None,
-    role !== 'default' ? role : None
-  ].filter(x => x !== None);
-  // combine variation and style, if any.
-  return classParts.length === 0
-    ? buttonClass
-    : `${buttonClass} ${buttonClass}--${classParts.join('-')}`;
+  // combine variation and modifier, if provided.
+  const classParts = [variant, modifier].filter(x => x).join('-');
+  return classParts
+    ? `${buttonClass} ${buttonClass}--${classParts}`
+    : buttonClass;
 };
 
 /**
@@ -44,23 +50,26 @@ const buttonRoleAndStyle = (variant: VariantType, role: RoleType) => {
  * @param attrs This button's properties
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
-const buttonSize = (size: SizeType) => (size !== "default" ? `${buttonClass}--${size}` : None);
 
-const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
-  ({role = "default", size = "default", variant = "default", onClick, id = Rivet.shortuid(), innerRef, className, children, ...attrs}) => {
-  const classes = classNames(buttonRoleAndStyle(variant, role), buttonSize(size), className);
-  return (
+const buttonSize = (size) => 
+  size
+  ? `${buttonClass}--${size}` 
+  : undefined;
+
+export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
+({ className, children, id = Rivet.shortuid(), innerRef, modifier, onClick, size, variant, ...attrs}) => (
     <button
       id={id}
-      className={classes}
+      className={classNames(buttonStyle(variant, modifier), buttonSize(size), className)}
       onClick={onClick}
-      disabled={onClick === undefined}
       ref={innerRef}
       {...attrs}
     >
       {children}
     </button>
-  );
-};
+);
+
+Button.propTypes = buttonPropTypes;
+Button.displayName = 'Button';
 
 export default Rivet.rivetize(Button);

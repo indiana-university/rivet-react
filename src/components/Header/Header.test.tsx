@@ -1,6 +1,8 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import Header from './Header';
+import Header from './Header'
+import HeaderIdentity from './HeaderIdentity'
+import HeaderNavigation from './HeaderNavigation'
 
 describe('<Header />', () => {
     let cut;
@@ -9,22 +11,79 @@ describe('<Header />', () => {
         cut = shallow(<Header title="foo"/>);
     })
 
-    describe('Rendering and styling', () =>{
+    describe('Rendering and styling with no children', () =>{
         it('should render without throwing an error', () => {
             expect(cut.find('header')).toHaveLength(1);
         });
         it('should include the title', () => {
             expect(cut.find('span.rvt-header__title > a').text()).toEqual("foo");
         });
-        it('should render children in a container div', () => {
+        it('should not render the header controls when no children are provided', () => {
+            expect(cut.find('div.rvt-header__controls')).toHaveLength(0);
+        });
+        it('should not render the header identity menu when it is not provided', () => {
+            expect(cut.find('HeaderIdentity')).toHaveLength(0);
+        });
+        it('should not render the header navigation when it is not provided', () => {
+            expect(cut.find('HeaderNavigation')).toHaveLength(0);
+        });
+    });
+
+    describe('Including header navigation', () => {
+
+        beforeEach(() => {
             cut = shallow(
                 <Header title="foo">
-                    <Header.Navigation>
-                        <a href="#">Example</a>
-                    </Header.Navigation>
+                    <HeaderNavigation>
+                        <a href="#" id="example-one">Example One</a>
+                        <button id="example-two">Example Two</button>
+                    </HeaderNavigation>
                 </Header>
-            );
-            expect(cut.find('div.rvt-header__controls').find('a')).toHaveLength(1);
+            )
+        });
+        
+        it('should render the header controls div when navigation is present', () => {
+            expect(cut.find('div.rvt-header__controls')).toHaveLength(1);
+        });
+        it('should render the header navigation', () => {
+            expect(cut.find('nav.rvt-header__main-nav')).toHaveLength(1);
+        });
+        it('should render the children nested inside the header navigation', () => {
+            const headerNavigation = cut.find('div.rvt-header__controls > nav.rvt-header__main-nav > ul > HeaderNavigation');
+            expect(headerNavigation.find('a#example-one')).toHaveLength(1);
+            expect(headerNavigation.find('button#example-two')).toHaveLength(1);
+        });
+        it('should pass the navigation to the header drawer', () => {
+            expect(cut.find('HeaderDrawer').props().navigation).toBeDefined();
+        });
+    });
+
+    describe('Including header identity menu', () => {
+
+        beforeEach(() => {
+            cut = shallow(
+                <Header title="foo">
+                    <HeaderIdentity avatar="RS" username="rswanson">
+                        <a href="#" id="example-one">Example One</a>
+                        <button id="example-two">Example Two</button>
+                    </HeaderIdentity>
+                </Header>
+            )
+        });
+        
+        it('should render the header controls div when identity menu is present', () => {
+            expect(cut.find('div.rvt-header__controls')).toHaveLength(1);
+        });
+        it('should render the header identity menu', () => {
+            expect(cut.find('HeaderIdentity')).toHaveLength(1);
+        });
+        it('should render the children nested inside the header identity menu', () => {
+            const headerIdentityMenu = cut.find('div.rvt-header__controls > HeaderIdentity');
+            expect(headerIdentityMenu.find('a#example-one')).toHaveLength(1);
+            expect(headerIdentityMenu.find('button#example-two')).toHaveLength(1);
+        });
+        it('should pass the identity menu to the header drawer', () => {
+            expect(cut.find('HeaderDrawer').props().identity).toBeDefined();
         });
     });
 });

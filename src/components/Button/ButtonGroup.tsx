@@ -1,13 +1,17 @@
 import * as classNames from 'classnames';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
 interface ButtonGroupProps {
   /**
-   * Right align the buttons in this button group
-   * @see https://rivet.uits.iu.edu/components/forms/buttons/#button-groups
+   * Optional Rivet style: Right-align the grouped buttons within the parent container
    */
   right?: boolean;
+};
+
+const propTypes = {
+  right: PropTypes.bool
 };
 
 const ButtonGroup: React.SFC<ButtonGroupProps & React.HTMLAttributes<HTMLDivElement>> = ({ className, children, right, ...attrs }) => {
@@ -21,5 +25,7 @@ const ButtonGroup: React.SFC<ButtonGroupProps & React.HTMLAttributes<HTMLDivElem
     </div>
   );
 };
+ButtonGroup.displayName = 'ButtonGroup';
+ButtonGroup.propTypes = propTypes;
 
 export default Rivet.rivetize(ButtonGroup);

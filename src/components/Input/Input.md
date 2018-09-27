@@ -1,11 +1,19 @@
-### Default Style
+Text inputs are the basic building blocks forms. They allow users to enter various types of data into web-based forms.
+
+View the [Rivet documentation for Text Inputs](https://rivet.uits.iu.edu/components/forms/text-input/).
+
+### Text input example
+
+Use the `note` property to provide contextual information to the user.
 
 ```jsx
 <Input type="text" name="text-demo" label="Text Input" note="This is a note." margin={{ bottom: 'md' }} />
 <Input type="text" name="text-demo-disabled" label="Text Input (Disabled)" disabled />
 ```
 
-### Input Inline Validation
+### Inline Validation
+
+Use the `variant` property along with a `note` to provide validation feedback to the user.
 
 ```jsx
 <Input type="text"

@@ -1,6 +1,6 @@
 {
   "name": "rivet-react",
-  "version": "0.2.5",
+  "version": "0.4.1",
   "description": "Rivet React components",
   "author": "",
   "license": "MIT",
@@ -9,40 +9,46 @@
   "keywords": [
     "react-component"
   ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "dependencies": {
-    "classnames": "^2.2.6",
-    "jest-cli": "^23.1.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "2.16.0",
-    "rivet-uits": "^1.0.0"
-  },
+  "main": "build/dist/components/index.js",
+  "types": "build/dist/components/index.d.ts",
   "scripts": {
     "start": "npx styleguidist server",
     "build": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
+    "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },
+  "dependencies": {
+    "classnames": "2.2.6",
+    "react": "16.4.1",
+    "react-display-name": "0.2.4",
+    "react-dom": "16.4.1"
+  },
   "devDependencies": {
-    "@types/classnames": "^2.2.4",
-    "@types/enzyme": "^3.1.10",
-    "@types/enzyme-adapter-react-16": "^1.0.2",
-    "@types/jest": "^23.1.1",
-    "@types/node": "^10.3.4",
-    "@types/react": "^16.4.1",
-    "@types/react-dom": "^16.0.6",
-    "@types/react-router-dom": "^4.2.7",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "react-docgen-typescript": "1.6.2",
-    "react-styleguidist": "7.1.0",
-    "typescript": "^2.9.2"
+    "@types/classnames": "2.2.6",
+    "@types/enzyme": "3.1.10",
+    "@types/enzyme-adapter-react-16": "1.0.2",
+    "@types/jest": "23.3.1",
+    "@types/node": "10.7.1",
+    "@types/react": "16.4.1",
+    "@types/react-dom": "16.0.6",
+    "codecov.io": "0.1.6",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "gh-pages": "1.2.0",
+    "jest-cli": "23.5.0",
+    "react-docgen-typescript": "1.7.0",
+    "react-scripts-ts": "2.17.0",
+    "react-styleguidist": "7.2.5",
+    "rivet-collapsible": "0.1.1-alpha",
+    "rivet-switch": "0.1.1-alpha",
+    "rivet-uits": "1.1.0",
+    "semantic-release": "15.9.12",
+    "typescript": "2.9.2"
   },
   "files": [
-    "build/dist/components"
+    "build/dist/components",
+    "addons"
   ],
   "jest": {
     "collectCoverageFrom": [

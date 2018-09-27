@@ -2,16 +2,13 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Button, { ButtonProps } from '../Button/Button';
-import { rivetize } from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 import DropdownEvent from './DropdownEvent';
 
-
 interface DropdownProps extends ButtonProps {
-    /** 
-     * Optional Rivet style: alignment of the dropdown menu items. 
-     * @see https://rivet.uits.iu.edu/components/navigation/dropdown/#right-align-modifier 
-     */
+    /** Optional Rivet style: alignment of the dropdown menu items relative to the edge of the dropdown button. */
     align?: 'right';
+
     /**
      * Optional text which appears on the dropdown toggle button. The label 
      * should always be provided with a standalone dropdown, however the label
@@ -19,10 +16,12 @@ interface DropdownProps extends ButtonProps {
      * @see https://rivet.uits.iu.edu/components/navigation/dropdown/
      * @see https://rivet.uits.iu.edu/components/forms/buttons-segmented/#using-segmented-buttons-with-dropdowns
      */
+
     label?: string | React.ReactNode;
     /**
      * Optional CSS classes which will be applied to the dropdown menu
      */
+
     menuClass?: string;
 }
 
@@ -59,14 +58,12 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
 
     public render() {
         const { align, children, className, label, menuClass, ...attrs } = this.props;
-        const classes = classNames({
-        }, className);
         const menuClasses = classNames({
             ['rvt-dropdown__menu']: true,
             [`rvt-dropdown__menu--${align}`]: !!align
         }, menuClass);
         return (
-            <div className="dropdown">
+            <div className="rvt-dropdown">
                 <Button {...attrs} innerRef={this.toggleButton} className={classes} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
                     { label && <span className="rvt-dropdown__toggle-text">{label}</span> }
                     <svg role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -123,4 +120,4 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
 
 }
 
-export default rivetize(Dropdown);
+export default Rivet.rivetize(Dropdown);

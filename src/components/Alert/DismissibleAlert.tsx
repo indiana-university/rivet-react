@@ -1,12 +1,14 @@
 import * as React from 'react'
-import { rivetize } from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 import Alert from './Alert'
-import { StatefulAlertProps } from "./common"
+import { StatefulAlertProps, statefulPropTypes } from "./common"
 
 const initialState = { isOpen: true }
 type AlertState = Readonly<typeof initialState>
 
 class DismissibleAlert extends React.PureComponent<StatefulAlertProps & React.HTMLAttributes<HTMLDivElement>, AlertState> {
+    public static propTypes = statefulPropTypes;
+    
     public readonly state: AlertState = initialState;
 
     public render() {
@@ -21,4 +23,4 @@ class DismissibleAlert extends React.PureComponent<StatefulAlertProps & React.HT
     };
 }
 
-export default rivetize(DismissibleAlert);
+export default Rivet.rivetize(DismissibleAlert);

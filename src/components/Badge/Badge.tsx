@@ -1,23 +1,37 @@
 import * as classNames from 'classnames';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { rivetize } from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 
 interface BadgeProps {
-    role?: 'default' | 'secondary',
-    variant?: '' | 'action' | 'error' | 'success' | 'warning';
+    /**
+     * Optional Rivet style: a secondary badge.
+     */
+    modifier?: 'secondary',
+    /**
+     * Optional Rivet style: an info/danger/success/warning badge.
+     */
+    variant?: 'info' | 'danger' | 'success' | 'warning';
 }
 
-const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, role = 'default', variant, ...attrs }) => {
+const propTypes = {
+    role: PropTypes.oneOf(['secondary']),
+    variant: PropTypes.oneOf(['info', 'danger', 'success', 'warning'])
+};
+
+const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, modifier, variant, ...attrs }) => {
     const classes = classNames({
         ['rvt-badge']: true,
-        [`rvt-badge--${variant}-secondary`]: !!variant && role === 'secondary',
-        [`rvt-badge--${variant}`]: !!variant && role === 'default',
-        ['rvt-badge--secondary']: !variant && role === 'secondary'
+        [`rvt-badge--${variant}-secondary`]: !!variant && modifier === 'secondary',
+        [`rvt-badge--${variant}`]: !!variant && modifier === undefined,
+        ['rvt-badge--secondary']: !variant && modifier === 'secondary'
     }, className);
     return (
         <span className={classes} {...attrs}>{children}</span>
     );
 };
-Badge.displayName = 'Badge';
 
-export default rivetize(Badge);
+Badge.displayName = 'Badge';
+Badge.propTypes = propTypes;
+
+export default Rivet.rivetize(Badge);

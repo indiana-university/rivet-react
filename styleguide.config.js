@@ -14,6 +14,8 @@ module.exports = {
             && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1  
     }).parse,
     pagePerSection: true,
+    exampleMode: 'expand',
+    usageMode: 'expand',
     sections: [
         {
             name: 'Introduction',
@@ -22,17 +24,17 @@ module.exports = {
         {
             name: 'Page Content',
             components: () => [
-              'src/components/Badge/*.tsx', 
-              'src/components/List/*.tsx', 
+              'src/components/Badge/*.tsx',
+              'src/components/List/*.tsx',
+              'src/components/Table/*.tsx',
+              'src/components/Tabs/*.tsx',
             ],
             sections: [
                 {
                     name: 'Links',
                     content: 'src/docs/links.md',
-                    exampleMode: 'expand'
                 }
             ],
-            exampleMode: 'expand'
         },
         {
             name: 'Forms',
@@ -44,8 +46,8 @@ module.exports = {
               'src/components/RadioButton/*.tsx', 
               'src/components/Input/Input.tsx', 
               'src/components/Input/Textarea.tsx',
+              'src/components/Input/Select.tsx',
             ],
-            exampleMode: 'expand'
         },
         {
             name: 'Layout',
@@ -53,43 +55,46 @@ module.exports = {
                 {
                     name: 'Grid',
                     components: () => [
-                      'src/components/Grid/*.tsx',
+                        'src/components/Grid/Container.tsx',
+                        'src/components/Grid/Row.tsx',
+                        'src/components/Grid/Col.tsx'
                     ],
-                    exampleMode: 'expand'
                 },
                 {
                     name: 'Spacing',
                     content: 'src/docs/spacing.md',
-                    exampleMode: 'expand'
                 },
                 {
                     name: 'Typography',
                     content: 'src/docs/typography.md',
-                    exampleMode: 'expand'
                 }
             ],
             components: () => [
               'src/components/Panel/*.tsx',
               'src/components/Section/*.tsx',
             ],
-            exampleMode: 'expand'
         },
         {   
             name: 'Navigation',
             components: () => [
-              'src/components/Dropdown/*.tsx', 
+              'src/components/Breadcrumbs/*.tsx',
+              'src/components/Dropdown/*.tsx',
               'src/components/Footer/*.tsx', 
-              'src/components/Header/*.tsx', 
+              'src/components/Header/Header.tsx',
+              'src/components/Header/HeaderIdentity.tsx',
+              'src/components/Header/HeaderNavigation.tsx',
+              'src/components/Header/HeaderMenu.tsx',
+              'src/components/Pagination/*.tsx',
             ],
-            exampleMode: 'expand'
         },
         {
             name: 'Overlays',
             components: () => [
-              'src/components/Alert/*.tsx',
+              'src/components/Alert/Alert.tsx',
+              'src/components/Alert/DismissibleAlert.tsx',
               'src/components/Alert/InlineAlert.tsx',
+              'src/components/Modal/*.tsx'
             ],
-            exampleMode: 'expand'
         },
         {
             name: 'Utilities',
@@ -97,33 +102,39 @@ module.exports = {
                 {
                     name: 'Border',
                     content: 'src/docs/border.md',
-                    exampleMode: 'expand'
                 },
                 {
-                    name: 'Typography',
+                    name: 'Display',
                     content: 'src/docs/display.md',
-                    exampleMode: 'expand'
                 },
                 {
                     name: 'Text',
                     content: 'src/docs/text-utils.md',
-                    exampleMode: 'expand'
                 },
                 {
                     name: 'Visibility',
                     content: 'src/docs/visibility.md',
-                    exampleMode: 'expand'
                 },
                 {
                     name: 'z-index',
                     content: 'src/docs/z-index.md',
-                    exampleMode: 'expand'
                 }
             ]
+        },
+        {
+            name: 'Addons',
+            components: () => [
+              'src/components/Addons/Collapse/*.tsx',
+              'src/components/Addons/Switch/*.tsx',
+            ],
         },
     ],
     webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
     require: [
-        'rivet-uits/css/rivet.min.css'
-      ]
+        'rivet-uits/css/rivet.min.css',
+        './src/docs/documentation.css'
+      ],
+    theme: {
+        maxWidth: 1920
+      }
 };

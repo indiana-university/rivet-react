@@ -1,9 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import { rivetize } from '../util/Rivet';
-
-type ColumnWidth = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-type AutoColumnWidth = ColumnWidth | boolean;
+import * as Rivet from '../util/Rivet';
 
 interface ColProps {
     /**
@@ -16,103 +13,104 @@ interface ColProps {
      * large screen widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
-    lg?: AutoColumnWidth;
+    lg?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | boolean;
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * medium screen widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
-    md?: AutoColumnWidth;
+    md?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | boolean;
     /**
      * Allows you to change the visual order of grid columns at small screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullSm?: ColumnWidth;
+    pullSm?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     /**
      * Allows you to change the visual order of grid columns at medium screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullMd?: ColumnWidth;
+    pullMd?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     
     /**
      * Allows you to change the visual order of grid columns at large screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullLg?: ColumnWidth;
+    pullLg?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     
     /**
      * Allows you to change the visual order of grid columns at extra large
      * screen widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullXl?: ColumnWidth;
+    pullXl?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     
     /**
      * Allows you to change the visual order of grid columns at very large
      * screen widths.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullXxl?: ColumnWidth;
+    pullXxl?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     
     /**
      * Allows you to change the visual order of grid columns at small screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pushSm?: ColumnWidth;
+    pushSm?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     
     /**
      * Allows you to change the visual order of grid columns at medium screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pushMd?: ColumnWidth;
+    pushMd?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     
     /**
      * Allows you to change the visual order of grid columns at large screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pushLg?: ColumnWidth;
+    pushLg?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     
     /**
      * Allows you to change the visual order of grid columns at extra large
      * screen widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pushXl?: ColumnWidth;
+    pushXl?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     
     /**
      * Allows you to change the visual order of grid columns at very large
      * screen widths.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pushXxl?: ColumnWidth;
+    pushXxl?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * small screen widths or larger.  This should be used to set the column
      * width if it should be set for all screen sizes.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
-    sm?: AutoColumnWidth;
+    sm?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | boolean;
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * extra large screen widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
-    xl?: AutoColumnWidth;
+    xl?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | boolean;
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * very large screen widths.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
-    xxl?: AutoColumnWidth;
+    xxl?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | boolean;
 }
 
-const Col : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, last, lg, md, pullSm, pullMd, pullLg, pullXl, pullXxl, pushSm, pushMd, pushLg, pushXl, pushXxl, sm, xl, xxl, ...attrs }) => {
+const Col : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> = 
+({ children, className, last, lg, md, pullSm, pullMd, pullLg, pullXl, pullXxl, pushSm, pushMd, pushLg, pushXl, pushXxl, sm, xl, xxl, ...attrs }) => {
     const classes = classNames({
         ['rvt-grid__item']: !sm && !md && !lg && !xl && !xxl,
         [`rvt-grid__item--last`]: last,
@@ -145,4 +143,4 @@ const Col : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> = ({ chil
 }
 Col.displayName = 'Col';
 
-export default rivetize(Col);
+export default Rivet.rivetize(Col);
