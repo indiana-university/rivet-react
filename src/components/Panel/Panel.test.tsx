@@ -28,7 +28,7 @@ describe('<Panel />', () => {
         it('should apply custom classes', () => {
             const className = 'foo';
             const cut = mount(<Panel className={className} />);
-            expect(cut.find('div').prop('className').split(' ')).toContain(className);
+            expect(cut.find('div').hasClass(className)).toBe(true);
         });
 
         it('should render children', () => {

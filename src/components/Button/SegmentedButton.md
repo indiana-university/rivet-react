@@ -31,3 +31,19 @@ Use the `fit` option to expand the buttons to the full width of the container.
     <Button onClick={() => { console.log('Click 3!') }}>Primary Three</Button>
 </SegmentedButton>
 ```
+
+### Segmented Button Dropdown
+```jsx
+<SegmentedButton>
+    <Button onClick={() => { console.log('Click!') }}>Primary Action</Button>
+    <Dropdown>
+        <button role="menuitemradio">Notify all</button>
+        <button role="menuitemradio" aria-checked="true">Notify admins</button>
+        <button role="menuitemradio">Notify contributors</button>
+        <DropdownGroup label="Personal settings">
+            <button role="menuitem">Profile Settings</button>
+            <button role="menuitem">Logout</button>
+        </DropdownGroup>
+    </Dropdown>
+</SegmentedButton>
+```

@@ -30,6 +30,13 @@ describe('<Dropdown />', () => {
             cut.simulate('click');
             expect(cut.find('div')).toHaveLength(1);
         });
+        it('should not render a label if it is not provided', () => {
+            let cut = mount(<Dropdown label="" />);
+            expect(cut.find('span.rvt-dropdown__toggle-text')).toHaveLength(0);
+            cut = mount(<Dropdown label="foo" />);
+            expect(cut.find('span.rvt-dropdown__toggle-text')).toHaveLength(1);
+
+        });
     });
 
     describe('Toggle behavior', () => {

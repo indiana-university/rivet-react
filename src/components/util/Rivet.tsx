@@ -38,11 +38,11 @@ export interface Props {
     display?: Display,
 }
 
-export type Typescale = "base" | 12 | 14 | 16 | 18 | 20 | 23 | 26 | 29 | 32 | 36 | 41 | 46 | 52;
+export type Typescale = "base" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | 12 | 14 | 16 | 18 | 20 | 23 | 26 | 29 | 32 | 36 | 41 | 46 | 52;
 export type Size = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export const Sizes = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' ];
-export type Edge = 'top' | 'right' | 'bottom' | 'left';
-export const Edges = [ 'top', 'right', 'bottom', 'left' ];
+export type Edge = 'top' | 'right' | 'bottom' | 'left' | 'tb' | 'lr';
+export const Edges = [ 'top', 'right', 'bottom', 'left', 'tb', 'lr' ];
 export type Display = "inline" | "inline-block" | "block" | "flex" | "flex-vertical-center";
 export type Border = "all" | "radius" | Edge | Edge[]
 export type Hidden = "sm-down" | "md-down" | "lg-down" | "xl-down" | "xxl-down" | "sm-up" | "md-up" | "lg-up" | "xl-up" | "xxl-up"
@@ -55,7 +55,9 @@ export interface BoxStyle {
     right?: Size,
     bottom?: Size,
     left?: Size,
-    // 
+    lr?: Size,
+    tb?: Size,
+    //
     xxs?: Edge | Edge[],
     xs?:  Edge | Edge[],
     sm?: Edge | Edge[],

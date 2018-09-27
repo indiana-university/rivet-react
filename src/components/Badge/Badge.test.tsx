@@ -17,18 +17,18 @@ describe('<Badge />', () => {
             expect(cut.find('span').hasClass('foo')).toBe(true);
         });
         it('should apply variant class', () => {
-            const cut = mount(<Badge variant="action" />);
-            expect(cut.find('span').hasClass('rvt-badge--action')).toBe(true);
+            const cut = mount(<Badge variant="info" />);
+            expect(cut.find('span').hasClass('rvt-badge--info')).toBe(true);
         });
         it('should apply secondary role', () => {
             const cut = mount(<Badge modifier="secondary" />);
             expect(cut.find('span').hasClass('rvt-badge--secondary')).toBe(true);
         });
         it('should apply secondary variant class appropriately', () => {
-            const cut = mount(<Badge variant="action" modifier="secondary" />);
-            expect(cut.find('span').hasClass('rvt-badge--action')).toBe(false);
+            const cut = mount(<Badge variant="info" modifier="secondary" />);
+            expect(cut.find('span').hasClass('rvt-badge--info')).toBe(false);
             expect(cut.find('span').hasClass('rvt-badge--secondary')).toBe(false);
-            expect(cut.find('span').hasClass('rvt-badge--action-secondary')).toBe(true);
+            expect(cut.find('span').hasClass('rvt-badge--info-secondary')).toBe(true);
         });
     });
 });

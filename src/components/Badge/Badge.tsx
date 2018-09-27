@@ -9,14 +9,14 @@ interface BadgeProps {
      */
     modifier?: 'secondary',
     /**
-     * Optional Rivet style: an action/error/success/warning badge.
+     * Optional Rivet style: an info/danger/success/warning badge.
      */
-    variant?: 'action' | 'error' | 'success' | 'warning';
+    variant?: 'info' | 'danger' | 'success' | 'warning';
 }
 
 const propTypes = {
     role: PropTypes.oneOf(['secondary']),
-    variant: PropTypes.oneOf(['action', 'error', 'success', 'warning'])
+    variant: PropTypes.oneOf(['info', 'danger', 'success', 'warning'])
 };
 
 const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, modifier, variant, ...attrs }) => {

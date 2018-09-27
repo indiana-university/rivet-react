@@ -7,20 +7,20 @@ View the [Rivet documentation for Tabs](https://rivet.uits.iu.edu/components/pag
 ```jsx
 <Tabs>
   <Tab id="t-one" title="Tab one">
-    <span class="rvt-ts-23 rvt-text-bold">Panel 1</span>
+    <span className="rvt-ts-23 rvt-text-bold">Panel 1</span>
     <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
         in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </Tab>
   <Tab id="t-two" title="Tab two">
-    <span class="rvt-ts-23 rvt-text-bold">Panel 2</span>
+    <span className="rvt-ts-23 rvt-text-bold">Panel 2</span>
     <p>
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </Tab>
   <Tab id="t-three" title="Tab three">
-    <span class="rvt-ts-23 rvt-text-bold">A grid inside a tab panel</span>
+    <span className="rvt-ts-23 rvt-text-bold">A grid inside a tab panel</span>
     <Row>
       <Col md={4}>
         <p>
@@ -44,20 +44,20 @@ Applying the `fitted` variant will make the tabs take up equal amounts of the sp
 ```jsx
 <Tabs variant="fitted">
   <Tab id="t-one" title="Tab one">
-    <span class="rvt-ts-26 rvt-text-bold rvt-display-block">Sue’s Salads</span>
+    <span className="rvt-ts-26 rvt-text-bold rvt-display-block">Sue’s Salads</span>
     <p>
         Panel 1: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
         irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </Tab>
   <Tab id="t-two" title="Tab two">
-    <span class="rvt-ts-26 rvt-text-bold rvt-display-block">JJ’s Diner</span>
+    <span className="rvt-ts-26 rvt-text-bold rvt-display-block">JJ’s Diner</span>
     <p>
         Panel 2: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </Tab>
   <Tab id="t-three" title="Tab three">
-    <span class="rvt-ts-26 rvt-text-bold rvt-display-block">Food n’ Stuff</span>
+    <span className="rvt-ts-26 rvt-text-bold rvt-display-block">Food n’ Stuff</span>
     <p>
         Panel 3: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
@@ -72,7 +72,7 @@ The `vertical` variant creates a set of tabs where the tab controls display in a
 ```jsx
 <Tabs variant="vertical">
   <Tab id="t-one" title="Tab one">
-    <span class="rvt-ts-26 rvt-text-bold rvt-display-block">Paunch Burger</span>
+    <span className="rvt-ts-26 rvt-text-bold rvt-display-block">Paunch Burger</span>
     <p>
         Panel 1: Lorem ipsum dolor sit amet,
         <a href="#0">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
@@ -80,7 +80,7 @@ The `vertical` variant creates a set of tabs where the tab controls display in a
     </p>
   </Tab>
   <Tab id="t-two" title="Tab two">
-    <span class="rvt-ts-26 rvt-text-bold rvt-display-block">JJ’s Diner</span>
+    <span className="rvt-ts-26 rvt-text-bold rvt-display-block">JJ’s Diner</span>
     <p>
         Panel 2: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>

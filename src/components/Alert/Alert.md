@@ -12,7 +12,7 @@ View the [Rivet documentation for Alerts](https://rivet.uits.iu.edu/components/o
     This system will be unavailable on August 1st due to scheduled system maintenance. Please check back on August 2nd.
 </Alert>
 
-<Alert variant="success" title="Thank you!" margin={{ bottom: 'sm' }}>
+<Alert variant="success" title="Thank you!" margin={{ tb: 'sm' }}>
     We have received your application. Check your email in a few weeks to find out if you’ve been admitted.
 </Alert>
 
@@ -20,7 +20,7 @@ View the [Rivet documentation for Alerts](https://rivet.uits.iu.edu/components/o
     Your changes have not been saved. To save your changes, click 'Save my changes' or click 'Cancel' to exit without saving.
 </Alert>
 
-<Alert variant="error" title="Incorrect User ID or Password">
+<Alert variant="danger" title="Incorrect User ID or Password">
     The user ID and password you entered do not match. Please check your entries and try again. <a href="#">Forgot your user ID or password?</a>
 </Alert>
 ```
