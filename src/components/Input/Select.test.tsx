@@ -1,6 +1,5 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import * as Rivet from '../util/Rivet';
 import Select from './Select';
 
 describe('<Select />', () => {
@@ -55,27 +54,27 @@ describe('<Select />', () => {
     describe("Inline Alerts", () => {
         it('info style', () => { 
             const cut = mount(<Select variant="info" label="Label" note="🤔"/>);
-            expect(cut.find('select').hasClass("rvt-has-info")).toEqual(true);
+            expect(cut.find('select').hasClass("rvt-validation-info")).toEqual(true);
             expect(cut.find('select').prop("aria-invalid")).toEqual(false);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-info")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--info")).toBe(true);
         });
         it('valid style', () => { 
             const cut = mount(<Select variant="valid" label="Label" note="😎" />);
-            expect(cut.find('select').hasClass("rvt-is-valid")).toEqual(true);
+            expect(cut.find('select').hasClass("rvt-validation-success")).toEqual(true);
             expect(cut.find('select').prop("aria-invalid")).toEqual(false);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-valid")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--success")).toBe(true);
         });
         it('warning style', () => { 
             const cut = mount(<Select variant="warning" label="Label" note="🤨"/>);
-            expect(cut.find('select').hasClass("rvt-has-warning")).toEqual(true);
+            expect(cut.find('select').hasClass("rvt-validation-warning")).toEqual(true);
             expect(cut.find('select').prop("aria-invalid")).toEqual(false);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--has-warning")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--warning")).toBe(true);
         });
         it('invalid style', () => { 
             const cut = mount(<Select variant="invalid" label="Label" note="😬"/>);
-            expect(cut.find('select').hasClass("rvt-is-invalid")).toEqual(true);
+            expect(cut.find('select').hasClass("rvt-validation-danger")).toEqual(true);
             expect(cut.find('select').prop("aria-invalid")).toEqual(true);
-            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--is-invalid")).toBe(true);
+            expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--danger")).toBe(true);
         });
     });
 });

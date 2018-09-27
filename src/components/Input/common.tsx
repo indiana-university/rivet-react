@@ -19,7 +19,7 @@ export interface TextProps {
 
 const inputClassName = (variant) => 
     variant
-    ? `rvt-${validationClass(variant)}`
+    ? `rvt-validation-${validationClass(variant)}`
     : '';
 
 const noteFragment = (id : string, variant, note? : React.ReactNode) => 

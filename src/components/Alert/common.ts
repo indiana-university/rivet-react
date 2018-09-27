@@ -5,7 +5,7 @@ export interface StatefulAlertProps {
      * Rivet alert styling. 
      * @see https://rivet.uits.iu.edu/components/overlays/alerts
      */ 
-    variant: "error" | "info" | "message" | "success",
+    variant: "danger" | "info" | "warning" | "success",
     /**
      * Optional alert title
      */
@@ -17,7 +17,7 @@ export interface StatefulAlertProps {
 }
 
 export const statefulPropTypes = {
-    variant: PropTypes.oneOf(['error', 'info', 'message', 'success']).isRequired,
+    variant: PropTypes.oneOf(['danger', 'info', 'warning', 'success']).isRequired,
     title: PropTypes.string,
     onDismiss: PropTypes.func
 };

@@ -25,16 +25,16 @@ describe('<Alert />', () => {
 
     describe('Styling', () => {
         it('should specify style: error', () => {
-            const cut = mount(<Alert variant="error" />);
-            expect(cut.find('.rvt-alert').hasClass("rvt-alert--error")).toEqual(true);
+            const cut = mount(<Alert variant="danger" />);
+            expect(cut.find('.rvt-alert').hasClass("rvt-alert--danger")).toEqual(true);
         });
         it('should specify style: info', () => {
             const cut = mount(<Alert variant="info" />);
             expect(cut.find('.rvt-alert').hasClass("rvt-alert--info")).toEqual(true);
         });
-        it('should specify style: message', () => {
-            const cut = mount(<Alert variant="message" />);
-            expect(cut.find('.rvt-alert').hasClass("rvt-alert--message")).toEqual(true);
+        it('should specify style: warning', () => {
+            const cut = mount(<Alert variant="warning" />);
+            expect(cut.find('.rvt-alert').hasClass("rvt-alert--warning")).toEqual(true);
         });
         it('should specify style: success', () => {
             const cut = mount(<Alert variant="success" />);

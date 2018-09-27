@@ -3,17 +3,28 @@ import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
 interface TableProps {
-    /** 
+    /**
      * Optional Rivet style which changes the look and feel of the rendered table.
      */
     variant?: 'stripes' | 'plain'
+
+    /**
+     * Determines if the table is compact.  Default is not compact.
+     */
+    compact?: boolean;
+
+    /**
+     * Determines if the table has borders around all cells.  Default is no borders around cells.
+     */
+    cells?: boolean;
 }
 
-const Table : React.SFC<TableProps & React.HTMLAttributes<HTMLTableElement>> = 
-({ children, className, variant, ...attrs }) => {
+const Table : React.SFC<TableProps & React.HTMLAttributes<HTMLTableElement>> =
+({ children, className, variant, compact, cells, ...attrs }) => {
     const classes = classNames({
-        ['rvt-table-plain']: variant === 'plain',
-        ['rvt-table-stripes']: variant === 'stripes',
+        [`rvt-table-${variant}`]: variant,
+        ['rvt-table-compact']: compact,
+        ['rvt-table-cells']: cells && variant !== 'plain',
     }, className);
     return (
         <table {...attrs} className={classes}>
