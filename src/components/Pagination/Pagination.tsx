@@ -14,6 +14,12 @@ interface PaginationProps {
   size?: 'small';
 }
 
+interface PaginationItemProps {
+  ['aria-current']: string;
+  ['aria-disabled']: boolean;
+  disabled: boolean;
+}
+
 const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivElement>> =
  ({ align, children, className, size, ...attrs }) => {
     const classes = classNames({
@@ -22,10 +28,11 @@ const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivEleme
       [`rvt-pagination--${size}`]: size
     });
     const wrappedChildren = React.Children.map(children, (child: React.ReactElement<any>) => {
+      const childProps = child.props as PaginationItemProps;
       const childClasses = classNames({
         'rvt-pagination__item': true,
-        'is-disabled': child.props && (child.props['aria-disabled'] || child.props['disabled']),
-        'is-active': child.props && child.props['aria-current'] === 'page'
+        'is-disabled': childProps && (childProps['aria-disabled'] || childProps.disabled),
+        'is-active': childProps && childProps['aria-current'] === 'page'
       });
       return (
         <li className={childClasses}>{child}</li>
