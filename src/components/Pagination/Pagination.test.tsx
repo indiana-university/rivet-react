@@ -39,12 +39,19 @@ describe('<Pagination />', () => {
           </Pagination>);
         expect(cut.find('nav > ul.rvt-pagination > li.rvt-pagination__item > a').length).toBe(2);
       });
-      it('should add class when child is disabled', () => {
+      it('should add class when child is disabled with aria attributes', () => {
         const cut = mount(
           <Pagination>
             <a href="#" id="test" aria-disabled="true">Link one</a>
           </Pagination>);
         expect(cut.find('nav > ul.rvt-pagination > li.rvt-pagination__item.is-disabled > a#test').length).toBe(1);
+      });
+      it('should add class when child is disabled', () => {
+        const cut = mount(
+          <Pagination>
+            <button id="test" disabled>Link one</button>
+          </Pagination>);
+        expect(cut.find('nav > ul.rvt-pagination > li.rvt-pagination__item.is-disabled > button#test').length).toBe(1);
       });
       it('should add class when child is the current page', () => {
         const cut = mount(
