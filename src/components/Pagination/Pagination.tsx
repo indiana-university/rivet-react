@@ -24,7 +24,7 @@ const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivEleme
     const wrappedChildren = React.Children.map(children, (child: React.ReactElement<any>) => {
       const childClasses = classNames({
         'rvt-pagination__item': true,
-        'is-disabled': child.props && child.props['aria-disabled'],
+        'is-disabled': child.props && (child.props['aria-disabled'] || child.props['disabled']),
         'is-active': child.props && child.props['aria-current'] === 'page'
       });
       return (
