@@ -31,7 +31,8 @@ class Switch extends React.PureComponent<SwitchProps & React.HTMLAttributes<HTML
     };
   }
 
-  public toggle = () => {
+  public toggle = (event) => {
+    this.props.onClick && this.props.onClick(event);
     this.setState({
       value: this.state.value === 'on' ? 'off' : 'on'
     });

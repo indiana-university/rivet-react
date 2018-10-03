@@ -42,4 +42,13 @@ describe('<Switch />', () => {
       });
     });
 
+    describe('Event handling', () => {
+      it('', () => {
+        const spy = jest.fn();
+        const cut = mount(<Switch onClick={spy} />);
+        cut.find('button').simulate('click');
+        expect(spy).toHaveBeenCalled();
+      });
+    });
+
 });
