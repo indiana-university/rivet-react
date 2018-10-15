@@ -54,4 +54,120 @@ describe('<Tabs />', () => {
     });
   });
 
+  describe('Tab keyboard interactions', () => {
+    let mock;
+
+    beforeEach(() => {
+      mock = mount(
+        <Tabs>
+          <Tab title="Tab one" id="t-one">
+            Tab one content
+          </Tab>
+          <Tab title="Tab two" id="t-two">
+            Tab two content
+          </Tab>
+          <Tab title="Tab three" id="t-three">
+            Tab two content
+          </Tab>
+        </Tabs>
+      );
+    })
+
+    it('Should focus the first tab by default', () => {
+      mock
+      .find('button#t-one-tab')
+      .simulate('click');
+
+      const focusedElement = document.activeElement;
+
+      expect(mock
+        .find('button#t-one-tab')
+        .matchesElement(focusedElement));
+    });
+
+    it('Should focus the next tab when the right arrow key is pressed', () => {
+      mock
+        .find('button#t-one-tab')
+        .simulate('click');
+
+      let focusedElement = document.activeElement;
+
+      expect(mock
+        .find('button#t-one-tab')
+        .matchesElement(focusedElement));
+
+      mock.find('button#t-one-tab').simulate('keydown', {keyCode: 39});
+
+      let focusedElement = document.activeElement;
+
+      expect(mock
+        .find('button#t-two-tab')
+        .matchesElement(focusedElement));
+    });
+
+    it('Should focus the previous tab when the left arrow key is pressed', () => {
+      mock.find('button#t-two-tab').simulate('click');
+
+      let focusedElement = document.activeElement;
+
+      expect(mock
+        .find('button#t-two-tab')
+        .matchesElement(focusedElement));
+
+      mock
+        .find('button#t-one-tab')
+        .simulate('keydown', { keyCode: 37 });
+
+      let focusedElement = document.activeElement;
+
+      expect(mock
+        .find('button#t-one-tab')
+        .matchesElement(focusedElement));
+    });
+
+
+    it('Should focus the last tab when the End key is pressed', () => {
+      mock
+        .find('button#t-one-tab')
+        .simulate('click');
+
+      let focusedElement = document.activeElement;
+
+      expect(mock
+        .find('button#t-one-tab')
+        .matchesElement(focusedElement));
+
+      mock
+        .find('button#t-one-tab')
+        .simulate('keydown', { keyCode: 35 });
+
+      let focusedElement = document.activeElement;
+
+      expect(mock
+        .find('button#t-three-tab')
+        .matchesElement(focusedElement));
+    });
+
+    it('Should focus the first tab when the Home key is pressed', () => {
+      mock
+        .find('button#t-three-tab')
+        .simulate('click');
+
+      let focusedElement = document.activeElement;
+
+      expect(mock
+        .find('button#t-three-tab')
+        .matchesElement(focusedElement));
+
+      mock
+        .find('button#t-three-tab')
+        .simulate('keydown', { keyCode: 36 });
+
+      let focusedElement = document.activeElement;
+
+      expect(mock
+        .find('button#t-three-tab')
+        .matchesElement(focusedElement));
+    });
+  });
 });
