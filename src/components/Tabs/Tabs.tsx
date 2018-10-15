@@ -125,6 +125,7 @@ class Tabs extends React.PureComponent<
         </button>
       );
     });
+
     const tabContent = React.Children.map(children, (child, index) => {
       if (index === this.state.selected) {
         return child;
@@ -132,6 +133,7 @@ class Tabs extends React.PureComponent<
         return null;
       }
     });
+
     const classes = classNames(
       {
         ['rvt-tabs']: true,
@@ -139,6 +141,7 @@ class Tabs extends React.PureComponent<
       },
       className
     );
+
     return (
       <div {...attrs} className={classes}>
         <div
