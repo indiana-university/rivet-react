@@ -3,11 +3,6 @@ import * as React from 'react';
 import Tab from './Tab';
 import Tabs from './Tabs';
 
-const createKeyboardEvent = (keyCode) => ({
-  type: 'keyup',
-  which: keyCode
-}) as KeyboardEvent;
-
 describe('<Tabs />', () => {
 
   describe('Rendering and text', () => {
