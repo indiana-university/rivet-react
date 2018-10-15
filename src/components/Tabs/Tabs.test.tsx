@@ -18,7 +18,7 @@ const simulateKeyboardInteraction = (options) => {
     .find(options.start)
     .simulate('keydown', { keyCode: options.key });
 
-  let focusedElement = document.activeElement;
+  focusedElement = document.activeElement;
 
   expect(options.component
     .find(options.end)
