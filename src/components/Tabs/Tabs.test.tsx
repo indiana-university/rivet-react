@@ -3,6 +3,28 @@ import * as React from 'react';
 import Tab from './Tab';
 import Tabs from './Tabs';
 
+const simulateKeyboardInteraction = (options) => {
+  options.component
+    .find(options.start)
+    .simulate('click');
+
+  let focusedElement = document.activeElement;
+
+  expect(options.component
+    .find(options.start)
+    .matchesElement(focusedElement));
+
+  options.component
+    .find(options.start)
+    .simulate('keydown', { keyCode: options.key });
+
+  let focusedElement = document.activeElement;
+
+  expect(options.component
+    .find(options.end)
+    .matchesElement(focusedElement));
+}
+
 describe('<Tabs />', () => {
 
   describe('Rendering and text', () => {
@@ -87,191 +109,86 @@ describe('<Tabs />', () => {
 
     // Test for default switch/fall-through switch statement
     it('Should not do anything if random keys are pressed', () => {
-      cut
-        .find('button#t-one-tab')
-        .simulate('click');
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-one-tab')
-        .matchesElement(focusedElement));
-
-      cut
-        .find('button#t-one-tab')
-        .simulate('keydown', { keyCode: 84 }) // "t" key
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-one-tab')
-        .matchesElement(focusedElement));
+      simulateKeyboardInteraction({
+        component: cut,
+        start: 'button#t-one-tab',
+        end: 'button#t-one-tab',
+        key: 84 // "t" key should not do anything
+      });
     });
 
     it('Should focus the next tab when the right arrow key is pressed', () => {
-      cut
-        .find('button#t-one-tab')
-        .simulate('click');
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-one-tab')
-        .matchesElement(focusedElement));
-
-      cut.find('button#t-one-tab').simulate('keydown', {keyCode: 39});
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-two-tab')
-        .matchesElement(focusedElement));
+      simulateKeyboardInteraction({
+        component: cut,
+        start: 'button#t-one-tab',
+        end: 'button#t-two-tab',
+        key: 39
+      })
     });
 
     it('Should focus the next tab when the down arrow key is pressed', () => {
-      cut
-        .find('button#t-one-tab')
-        .simulate('click');
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-one-tab')
-        .matchesElement(focusedElement));
-
-      cut.find('button#t-one-tab').simulate('keydown', { keyCode: 40 });
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-two-tab')
-        .matchesElement(focusedElement));
+      simulateKeyboardInteraction({
+        component: cut,
+        start: 'button#t-one-tab',
+        end: 'button#t-two-tab',
+        key: 40
+      });
     });
 
     it('Should focus the previous tab when the left arrow key is pressed', () => {
-      cut
-        .find('button#t-two-tab')
-        .simulate('click');
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-two-tab')
-        .matchesElement(focusedElement));
-
-      cut
-        .find('button#t-two-tab')
-        .simulate('keydown', { keyCode: 37 });
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-one-tab')
-        .matchesElement(focusedElement));
+      simulateKeyboardInteraction({
+        component: cut,
+        start: 'button#t-two-tab',
+        end: 'button#t-one-tab',
+        key: 37
+      });
     });
 
     it('Should focus the previous tab when the up arrow key is pressed', () => {
-      cut.find('button#t-two-tab').simulate('click');
-
-      let focusedElement = document.activeElement;
-
-      expect(cut.find('button#t-two-tab').matchesElement(focusedElement));
-
-      cut.find('button#t-one-tab').simulate('keydown', { keyCode: 38 });
-
-      let focusedElement = document.activeElement;
-
-      expect(cut.find('button#t-one-tab').matchesElement(focusedElement));
+      simulateKeyboardInteraction({
+        component: cut,
+        start: 'button#t-two-tab',
+        end: 'button#t-one-tab',
+        key: 38
+      });
     });
 
     it('Should focus the last tab when the End key is pressed', () => {
-      cut
-        .find('button#t-one-tab')
-        .simulate('click');
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-one-tab')
-        .matchesElement(focusedElement));
-
-      cut
-        .find('button#t-one-tab')
-        .simulate('keydown', { keyCode: 35 });
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-three-tab')
-        .matchesElement(focusedElement));
+      simulateKeyboardInteraction({
+        component: cut,
+        start: 'button#t-one-tab',
+        end: 'button#t-three-tab',
+        key: 35
+      });
     });
 
     it('Should focus the first tab when the Home key is pressed', () => {
-      cut
-        .find('button#t-three-tab')
-        .simulate('click');
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-three-tab')
-        .matchesElement(focusedElement));
-
-      cut
-        .find('button#t-three-tab')
-        .simulate('keydown', { keyCode: 36 });
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-three-tab')
-        .matchesElement(focusedElement));
+      simulateKeyboardInteraction({
+        component: cut,
+        start: 'button#t-three-tab',
+        end: 'button#t-one-tab',
+        key: 36
+      });
     });
 
     // Right arrow key should focus first tab if last tab has focus
     it('Should focus the first tab when last tab has focus and the right key is pressed', () => {
-      cut
-        .find('button#t-three-tab')
-        .simulate('click');
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-three-tab')
-        .matchesElement(focusedElement));
-
-      cut
-        .find('button#t-three-tab')
-        .simulate('keydown', { keyCode: 39 });
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-one-tab')
-        .matchesElement(focusedElement));
+      simulateKeyboardInteraction({
+        component: cut,
+        start: 'button#t-three-tab',
+        end: 'button#t-one-tab',
+        key: 39
+      });
     });
 
     // Left arrow key should focus last tab if first tab has focus
     it('Should focus the last tab when first tab has focus and the left key is pressed', () => {
-      cut
-        .find('button#t-one-tab')
-        .simulate('click');
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-one-tab')
-        .matchesElement(focusedElement));
-
-      cut
-        .find('button#t-one-tab')
-        .simulate('keydown', { keyCode: 37 });
-
-      let focusedElement = document.activeElement;
-
-      expect(cut
-        .find('button#t-three-tab')
-        .matchesElement(focusedElement));
+      simulateKeyboardInteraction({
+        component: cut,
+        start: 'button#t-one-tab',
+        end: 'button#t-three-tab',
+        key: 37
+      });
     });
   });
 });
