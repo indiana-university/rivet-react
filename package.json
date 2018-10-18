@@ -44,7 +44,8 @@
     "rivet-switch": "0.1.1-alpha",
     "rivet-uits": "1.1.0",
     "semantic-release": "15.9.12",
-    "typescript": "2.9.2"
+    "typescript": "2.9.2",
+    "webpack": "3.8.1"
   },
   "files": [
     "build/dist/components",
