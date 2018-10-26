@@ -23,7 +23,7 @@ Use the `variant` property along with a `note` to provide validation feedback to
 ```jsx
 <Select type="text"
        name="select-valid-state"
-       variant="valid"
+       variant="success"
        label="Type"
        note={<> You must pick a <strong>Type</strong> of meat. </>}
        margin={{bottom: 'md'}}>
@@ -49,7 +49,7 @@ Use the `variant` property along with a `note` to provide validation feedback to
 
 <Select type="text"
        name="select-error-state"
-       variant="invalid"
+       variant="danger"
        label="Type"
        note={<> You must pick a <strong>Type</strong> of meat. </>}
        margin={{bottom: 'md'}}>

@@ -13,7 +13,7 @@ Use the `variant` property along with a `note` to provide validation feedback to
 
 ```jsx
 <Textarea name="textarea-valid" 
-          variant="valid" 
+          variant="success" 
           label="Essay" 
           note={<>Your <strong>Essay</strong> is valid!</>} 
           margin={{bottom: "md"}} />
@@ -25,7 +25,7 @@ Use the `variant` property along with a `note` to provide validation feedback to
           margin={{bottom: "md"}} />
 
 <Textarea name="textarea-invalid" 
-          variant="invalid" 
+          variant="danger" 
           label="Description" 
           note={<>Your <strong>Description</strong> has invalid characters.</>} 
           margin={{bottom: "md"}} />
