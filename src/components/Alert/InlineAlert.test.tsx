@@ -7,7 +7,7 @@ describe('Inline Alerts', () => {
         const cut = mount(<InlineAlert variant="info">🤔</InlineAlert>);
         expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--info")).toBe(true);
     });
-    it('should have "success" styling with the valid variant', () => { 
+    it('should have "success" styling with the success variant', () => { 
         const cut = mount(<InlineAlert variant="success">😎</InlineAlert>);
         expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--success")).toBe(true);
     });
@@ -15,7 +15,7 @@ describe('Inline Alerts', () => {
         const cut = mount(<InlineAlert variant="warning">🤨</InlineAlert>);
         expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--warning")).toBe(true);
     });
-    it('should have "danger" styling with the invalid variant', () => { 
+    it('should have "danger" styling with the danger variant', () => { 
         const cut = mount(<InlineAlert variant="danger">😬</InlineAlert>);
         expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--danger")).toBe(true);
     });
