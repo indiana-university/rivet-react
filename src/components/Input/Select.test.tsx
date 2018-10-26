@@ -59,7 +59,7 @@ describe('<Select />', () => {
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--info")).toBe(true);
         });
         it('valid style', () => { 
-            const cut = mount(<Select variant="valid" label="Label" note="😎" />);
+            const cut = mount(<Select variant="success" label="Label" note="😎" />);
             expect(cut.find('select').hasClass("rvt-validation-success")).toEqual(true);
             expect(cut.find('select').prop("aria-invalid")).toEqual(false);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--success")).toBe(true);
@@ -71,7 +71,7 @@ describe('<Select />', () => {
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--warning")).toBe(true);
         });
         it('invalid style', () => { 
-            const cut = mount(<Select variant="invalid" label="Label" note="😬"/>);
+            const cut = mount(<Select variant="danger" label="Label" note="😬"/>);
             expect(cut.find('select').hasClass("rvt-validation-danger")).toEqual(true);
             expect(cut.find('select').prop("aria-invalid")).toEqual(true);
             expect(cut.find('.rvt-inline-alert').hasClass("rvt-inline-alert--danger")).toBe(true);

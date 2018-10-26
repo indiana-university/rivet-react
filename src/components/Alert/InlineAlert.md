@@ -11,7 +11,7 @@ View the [Rivet documentation for Standalone Inline Alerts](https://rivet.uits.i
         <RadioButton name="radio-list-demo" label="Option One" aria-describedby="alert" />
         <RadioButton name="radio-list-demo" label="Option Two" aria-describedby="alert" />
     </List>
-    <InlineAlert id="alert" variant='invalid'>You must choose an option to continue.</InlineAlert>
+    <InlineAlert id="alert" variant="danger">You must choose an option to continue.</InlineAlert>
 </fieldset>
 ```
 
@@ -24,6 +24,6 @@ You can use the `standalone` property to give the alert a subtle background colo
         <RadioButton name="radio-list-demo" label="Option One" aria-describedby="alert" />
         <RadioButton name="radio-list-demo" label="Option Two" aria-describedby="alert" />
     </List>
-    <InlineAlert id="alert" variant='invalid' standalone>You must choose an option to continue.</InlineAlert>
+    <InlineAlert id="alert-standalone" variant="danger" standalone>You must choose an option to continue.</InlineAlert>
 </fieldset>
 ```
