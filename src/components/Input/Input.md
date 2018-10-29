@@ -18,7 +18,7 @@ Use the `variant` property along with a `note` to provide validation feedback to
 ```jsx
 <Input type="text"
        name="valid-input"
-       variant="valid"
+       variant="success"
        label="First Name"
        note={<><strong>First Name</strong> is valid</>}
        margin={{bottom: 'md'}} />
@@ -32,7 +32,7 @@ Use the `variant` property along with a `note` to provide validation feedback to
 
 <Input type="text"
        name="error-input"
-       variant="invalid"
+       variant="danger"
        label="Username"
        note={<>The <strong>Username</strong> you entered is taken</>}
        margin={{bottom: 'md'}} />

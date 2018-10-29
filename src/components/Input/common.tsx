@@ -4,8 +4,6 @@ import * as React from 'react';
 import InlineAlert from '../Alert/InlineAlert';
 import * as Rivet from '../util/Rivet';
 
-import { validationClass } from '../util/validation';
-
 export interface TextProps {
     /** The label for the input */
     label: string;
@@ -14,12 +12,12 @@ export interface TextProps {
     /** An optional note that will be displayed below the input */
     note?: React.ReactNode;
     /** Rivet style for inline validation */
-    variant?: 'info' | 'invalid' | 'valid' | 'warning';
+    variant?: 'danger' | 'info' | 'success' | 'warning';
 }
 
 const inputClassName = (variant) => 
     variant
-    ? `rvt-validation-${validationClass(variant)}`
+    ? `rvt-validation-${variant}`
     : '';
 
 const noteFragment = (id : string, variant, note? : React.ReactNode) => 
@@ -35,7 +33,7 @@ export const renderInput =
             id, 
             className: inputClassName(variant), 
             "aria-describedby": note ? noteId : '', 
-            "aria-invalid": variant === 'invalid', 
+            "aria-invalid": variant === 'danger', 
             ...attrs
         }
         return (
