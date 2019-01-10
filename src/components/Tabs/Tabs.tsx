@@ -109,6 +109,7 @@ class Tabs extends React.PureComponent<
       const { id, title } = tab.props;
       return (
         <button
+          type="button" 
           className="rvt-tabs__tab"
           role="tab"
           aria-selected={this.state.selected === index}

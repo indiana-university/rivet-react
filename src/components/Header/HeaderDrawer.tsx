@@ -54,7 +54,7 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
         });
         return (
             <div> {/* This is a div instead of a fragment due to needing a real element wrapping this for how we use ReactDOM.findDOMNode */}
-                <button className={drawerToggleClasses} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDrawer} ref={this.toggleButton}>
+                <button type="button" className={drawerToggleClasses} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDrawer} ref={this.toggleButton}>
                     <span className="sr-only">Toggle menu</span>
                     {!this.state.open && <Icon name="menu" className="rvt-drawer-button-open" /> }
                     {this.state.open && <Icon name="close" className="rvt-drawer-button-close" /> }
@@ -71,7 +71,7 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
                                 }
                                 { navigation && React.cloneElement(navigation, { className: 'rvt-drawer-navigation' })}
                             </ul>
-                            <button className="rvt-drawer__bottom-close">Close nav</button>
+                            <button type="button" className="rvt-drawer__bottom-close">Close nav</button>
                         </nav>
                     </div>
                 }

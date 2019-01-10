@@ -23,7 +23,7 @@ class HeaderCollapse extends React.PureComponent<HeaderCollapseProps & React.HTM
         const { children, label, ...attrs } = this.props;
         return (
             <>
-                <button {...attrs} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleCollapse}>
+                <button type="button" {...attrs} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleCollapse}>
                     {label}
                 </button>    
                 { this.state.open &&
