@@ -62,7 +62,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
         }, menuClass);
         return (
             <div className="rvt-dropdown">
-                <Button {...attrs} innerRef={this.toggleButton} className={className} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
+                <Button type="button" {...attrs} innerRef={this.toggleButton} className={className} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
                     { label && <span className="rvt-dropdown__toggle-text">{label}</span> }
                     <Icon name="caret-down" />
                 </Button>

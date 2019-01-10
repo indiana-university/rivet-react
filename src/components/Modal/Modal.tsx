@@ -25,7 +25,7 @@ export interface ModalProps {
 }
 
 const ModalCloseButton = ({ onDismiss }) => (
-    <Button className="rvt-modal__close" data-modal-close="close" onClick={onDismiss}>
+    <Button type="button" className="rvt-modal__close" data-modal-close="close" onClick={onDismiss}>
         <span className="rvt-sr-only">Close</span>
         <Icon name="close" />
     </Button>

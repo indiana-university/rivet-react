@@ -53,7 +53,7 @@ class Collapse extends React.PureComponent<CollapseProps & React.HTMLAttributes<
     return (
       <div {...attrs} className={classes}>
         <TitleComponent className="rvt-collapsible__title">
-          <button aria-expanded={this.state.open} onClick={this.toggle}>
+          <button type="button" aria-expanded={this.state.open} onClick={this.toggle}>
             <Icon name="caret-right" />
             <span>{title}</span>
           </button>
