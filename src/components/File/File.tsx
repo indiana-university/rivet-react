@@ -7,6 +7,8 @@ import Icon from '../util/RivetIcons';
 interface FileProps {
     /** The name(s) of the selected files */
     fileName?: string;
+    /** File state, if maintaining state outside of the component */
+    files?: string;
     /** The text for the file button */
     label?: string;
 }
@@ -34,8 +36,9 @@ class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInpu
     public readonly state: FileState = initialState;
 
     public render() {
+        const files = ('files' in this.props) ? this.props.files : this.state.files;
         return (
-            <FileInput {...this.props} fileName={this.state.files} onChange={this.handleFileChange} />
+            <FileInput {...this.props} fileName={files} onChange={this.handleFileChange} />
         )
     }
 
