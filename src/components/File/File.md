@@ -8,48 +8,28 @@ View the [Rivet documentation for File Input](https://rivet.uits.iu.edu/componen
 <File name="demo" />
 ```
 
-### Passing in props instead of using internal state to track file name
+### Clearing a file input programattically
 
 ```jsx
 class FileProps extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      files: ''
-    };
-    this.fieldName = 'file-demo-2';
-    this.onChange = this.onChange.bind(this);
+    this.formRef = React.createRef();
     this.clearFile = this.clearFile.bind(this);
   }
 
   clearFile(e) {
-    // update dom
-    const element = document.querySelector(`[name="${this.fieldName}"]`);
-    element.value = '';
-    /// update state
-    this.setState({
-      files: ''
-    });
-  }
-
-  onChange(e) {
-    const files = [];
-    // e.target.files is not a real array, so cannot use forEach, map, etc. 
-    for (let i = 0; i < e.target.files.length; i++) {
-      files.push(e.target.files[i].name);
-    }
-    this.setState({
-      files: files.join(', ')
-    });    
+    e.preventDefault();
+    this.formRef.current.reset();
   }
 
   render() {
     return (
-      <div>
-        <File name={this.fieldName} files={this.state.files} onChange={this.onChange} />
+      <form ref={this.formRef}>
+        <File name='file-upload-demo-2' />
         <br />
-        <Button onClick={this.clearFile}>Clear file</Button>
-      </div>
+        <Button type="button" onClick={this.clearFile}>Clear file</Button>
+      </form>
     );
   }
 }
