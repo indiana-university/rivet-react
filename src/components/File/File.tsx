@@ -13,12 +13,8 @@ interface FileProps {
     label?: string;
 }
 
-const initialState = { count: 0 }
-type FileState = Readonly<typeof initialState>
 
-class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInputElement>, FileState> {
-
-    public readonly state: FileState = initialState;
+class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInputElement>> {
     
     private fileInput: React.RefObject<HTMLInputElement>;
     
@@ -43,10 +39,10 @@ class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInpu
         if (this.fileInput.current && this.fileInput.current.files && this.fileInput.current.files.length) {
             description = Array.from(this.fileInput.current.files).map(file => file.name).join(', ');
         }
-        
+
         return (
             <div className={classNames('rvt-file', className)}>
-                <input onChange={this.handleFileChange} {...attrs} ref={this.fileInput} type="file" id={id} aria-describedby={id + "-file-description"} />
+                <input onInput={this.handleFileChange} {...attrs} ref={this.fileInput} type="file" id={id} aria-describedby={id + "-file-description"} />
                 <label htmlFor={id} className="rvt-button">
                     <span>{label}</span>
                     <Icon name="file" />
@@ -68,4 +64,4 @@ class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInpu
 }
 
 export default Rivet.rivetize(File);
-export { File as UnwrappedFile, FileState };
+export { File as UnwrappedFile };

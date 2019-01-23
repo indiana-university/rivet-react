@@ -1,6 +1,6 @@
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import * as React from 'react';
-import File, { FileState, UnwrappedFile } from './File';
+import File, { UnwrappedFile } from './File';
 
 const simulatedChangeEvent = {
     target: {
@@ -39,11 +39,17 @@ describe('<File />', () => {
     describe('Stateful component behavior', () => {
         it('should handle file selection', () => {
             const cut = mount(<UnwrappedFile />);
-            let state = cut.state() as FileState;
-            expect(state.files).toBe('');
-            cut.find('input').simulate('change', simulatedChangeEvent);
-            state = cut.state() as FileState;
-            expect(state.files).toBe('foo.txt, bar.txt');
+            let description = cut.find('.rvt-file__preview').props().children;
+            expect(description).toBe('No file selected');
+            const input = cut.find('input');
+            // console.log('before event');
+            input.simulate('change', simulatedChangeEvent);
+            // console.log(input.instance().);
+            // console.log('after event');
+            cut.render();
+            // console.log(cut.debug());
+            // state = cut.state() as FileState;
+            // expect(state.files).toBe('foo.txt, bar.txt');
         });
         it('should invoke a provided onChange handler', () => {
             const spy = jest.fn();
