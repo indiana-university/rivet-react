@@ -5,10 +5,6 @@ import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
 
 interface FileProps {
-    /** The name(s) of the selected files */
-    fileName?: string;
-    /** File state, if maintaining state outside of the component */
-    files?: string;
     /** The text for the file button */
     label?: string;
     /** Handle on DOM file input field */
@@ -35,7 +31,7 @@ class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInpu
     }
 
     public render() {
-        const { className, fileName, id = Rivet.shortuid(), innerRef, label = 'Upload a file', ...attrs } = this.props;
+        const { className, id = Rivet.shortuid(), innerRef, label = 'Upload a file', ...attrs } = this.props;
 
         let description = 'No file selected';
         if (this.fileInput.current && this.fileInput.current.files && this.fileInput.current.files.length) {
