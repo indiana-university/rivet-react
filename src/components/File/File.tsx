@@ -11,6 +11,8 @@ interface FileProps {
     files?: string;
     /** The text for the file button */
     label?: string;
+    /** Handle on DOM file input field */
+    innerRef?: React.RefObject<HTMLInputElement>;
 }
 
 
@@ -20,7 +22,7 @@ class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInpu
     
     public constructor(props) {
         super(props);
-        this.fileInput = React.createRef();
+        this.fileInput = props.innerRef ? props.innerRef : React.createRef();
     }   
 
     public componentDidMount() {
@@ -33,7 +35,7 @@ class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInpu
     }
 
     public render() {
-        const { className, fileName, id = Rivet.shortuid(), label = 'Upload a file', ...attrs } = this.props;
+        const { className, fileName, id = Rivet.shortuid(), innerRef, label = 'Upload a file', ...attrs } = this.props;
 
         let description = 'No file selected';
         if (this.fileInput.current && this.fileInput.current.files && this.fileInput.current.files.length) {
