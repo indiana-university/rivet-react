@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
-import File, { FileState, UnwrappedFile } from './File';
+import File, { UnwrappedFile } from './File';
 
 const simulatedChangeEvent = {
     target: {
@@ -36,15 +36,7 @@ describe('<File />', () => {
         });
     });
 
-    describe('Stateful component behavior', () => {
-        it('should handle file selection', () => {
-            const cut = mount(<UnwrappedFile />);
-            let state = cut.state() as FileState;
-            expect(state.files).toBe('');
-            cut.find('input').simulate('change', simulatedChangeEvent);
-            state = cut.state() as FileState;
-            expect(state.files).toBe('foo.txt, bar.txt');
-        });
+    describe('Component behavior', () => {
         it('should invoke a provided onChange handler', () => {
             const spy = jest.fn();
             const cut = mount(<UnwrappedFile onChange={spy} />);
