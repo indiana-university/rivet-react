@@ -27,7 +27,7 @@ aliases:
 # Default settings for all jobs 
 defaults: &defaults
   docker:
-      - image: circleci/node:8
+      - image: circleci/node:10
         environment:
           GIT_AUTHOR_NAME: iubot
           GIT_AUTHOR_EMAIL: iubot@iu.edu
