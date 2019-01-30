@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import * as classNames from 'classnames';
 import * as React from 'react';
 
@@ -53,7 +57,7 @@ class Collapse extends React.PureComponent<CollapseProps & React.HTMLAttributes<
     return (
       <div {...attrs} className={classes}>
         <TitleComponent className="rvt-collapsible__title">
-          <button aria-expanded={this.state.open} onClick={this.toggle}>
+          <button type="button" aria-expanded={this.state.open} onClick={this.toggle}>
             <Icon name="caret-right" />
             <span>{title}</span>
           </button>

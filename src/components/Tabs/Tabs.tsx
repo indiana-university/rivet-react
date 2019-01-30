@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import * as classNames from 'classnames';
 import * as React from 'react';
 
@@ -109,6 +113,7 @@ class Tabs extends React.PureComponent<
       const { id, title } = tab.props;
       return (
         <button
+          type="button" 
           className="rvt-tabs__tab"
           role="tab"
           aria-selected={this.state.selected === index}

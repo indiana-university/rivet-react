@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import * as classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -25,7 +29,7 @@ export interface ModalProps {
 }
 
 const ModalCloseButton = ({ onDismiss }) => (
-    <Button className="rvt-modal__close" data-modal-close="close" onClick={onDismiss}>
+    <Button type="button" className="rvt-modal__close" data-modal-close="close" onClick={onDismiss}>
         <span className="rvt-sr-only">Close</span>
         <Icon name="close" />
     </Button>

@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import * as classNames from 'classnames';
 import * as React from 'react';
 
@@ -16,7 +20,7 @@ const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElemen
 
     const dismissFragment = () =>
         onDismiss 
-        ? <button className="rvt-alert__dismiss" onClick={ onDismiss }>
+        ? <button type="button" className="rvt-alert__dismiss" onClick={ onDismiss }>
             <span className="rvt-sr-only">Dismiss this alert</span>
             <Icon name="close" />
           </button>
