@@ -35,5 +35,4 @@ class FileProps extends React.Component {
 }
 
 <FileProps />
-
 ```
