@@ -62,7 +62,6 @@ describe('<Modal />', () => {
 
         it('generates an id prop if none is passed in', () => {
             const cut = mount(component());
-            
             expect(cut.find('.rvt-modal').prop('id')).toBeDefined();
         });        
     
