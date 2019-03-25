@@ -20,7 +20,11 @@ View the [Rivet documentation for Alerts](https://rivet.uits.iu.edu/components/o
     Your changes have not been saved. To save your changes, click 'Save my changes' or click 'Cancel' to exit without saving.
 </Alert>
 
-<Alert variant="danger" title="Incorrect User ID or Password">
+<Alert variant="danger" title="Incorrect User ID or Password" margin={{ bottom: 'sm'}}>
     The user ID and password you entered do not match. Please check your entries and try again. <a href="#">Forgot your user ID or password?</a>
+</Alert>
+
+<Alert variant="info" title={<><strong>Styled Elements</strong> in the Title</>}>
+    HTML is allowed in the title to style alerts
 </Alert>
 ```

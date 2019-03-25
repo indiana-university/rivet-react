@@ -13,7 +13,7 @@ export interface StatefulAlertProps {
     /**
      * Optional alert title
      */
-    title?: string,
+    title?: string | JSX.Element,
     /**
      * Optional event to raise when the alert is dismissed
      */
@@ -22,7 +22,7 @@ export interface StatefulAlertProps {
 
 export const statefulPropTypes = {
     variant: PropTypes.oneOf(['danger', 'info', 'warning', 'success']).isRequired,
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onDismiss: PropTypes.func
 };
 
