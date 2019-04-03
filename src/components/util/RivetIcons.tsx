@@ -33,28 +33,28 @@ const DefaultIconProps = {
 };
 
 const icoCaretDown = (attrs) =>
-    <svg {...attrs}>
+    <svg aria-hidden="true" {...attrs}>
         <path fill="currentColor" d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z" />
     </svg>;
 
 const icoCaretRight = (attrs) => (
-  <svg {...attrs}>
-    <path fill="currentColor" d="M5.5,15a1,1,0,0,1-.77-1.64L9.2,8,4.73,2.64A1,1,0,0,1,6.27,1.36L11.13,7.2a1.25,1.25,0,0,1,0,1.61L6.27,14.64A1,1,0,0,1,5.5,15ZM9.6,8.48h0Zm0-1h0Z" />
-  </svg>
+    <svg aria-hidden="true" {...attrs}>
+        <path fill="currentColor" d="M5.5,15a1,1,0,0,1-.77-1.64L9.2,8,4.73,2.64A1,1,0,0,1,6.27,1.36L11.13,7.2a1.25,1.25,0,0,1,0,1.61L6.27,14.64A1,1,0,0,1,5.5,15ZM9.6,8.48h0Zm0-1h0Z" />
+    </svg>
 );
 
 const icoClose = (attrs) =>
-    <svg {...attrs}>
+    <svg aria-hidden="true" {...attrs}>
         <path fill="currentColor" d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z" />
     </svg>
 
 const icoFile = (attrs) =>
-    <svg {...attrs}>
+    <svg aria-hidden="true" {...attrs}>
         <path fill="currentColor" d="M10.41,1H3.5A1.3,1.3,0,0,0,2.2,2.3V13.7A1.3,1.3,0,0,0,3.5,15h9a1.3,1.3,0,0,0,1.3-1.3V4.39ZM11.8,5.21V6H9.25V3h.34ZM4.2,13V3h3V6.75A1.25,1.25,0,0,0,8.5,8h3.3v5Z" />
     </svg>
 
 const icoMenu = (attrs) =>
-    <svg {...attrs}>
+    <svg aria-hidden="true" {...attrs}>
         <g fill="currentColor">
             <path d="M15,3H1A1,1,0,0,1,1,1H15a1,1,0,0,1,0,2Z" />
             <path d="M15,9H1A1,1,0,0,1,1,7H15a1,1,0,0,1,0,2Z" />
@@ -63,7 +63,7 @@ const icoMenu = (attrs) =>
     </svg>
 
 const icoInfo = (attrs) =>
-    <svg {...attrs}>
+    <svg aria-hidden="true" {...attrs}>
         <g fill="currentColor">
             <path d="M8,16a8,8,0,1,1,8-8A8,8,0,0,1,8,16ZM8,2a6,6,0,1,0,6,6A6,6,0,0,0,8,2Z" />
             <path d="M8,12a1,1,0,0,1-1-1V8A1,1,0,0,1,9,8v3A1,1,0,0,1,8,12Z" />
@@ -72,7 +72,7 @@ const icoInfo = (attrs) =>
     </svg>
 
 const icoSuccess = (attrs) =>
-    <svg {...attrs}>
+    <svg aria-hidden="true" {...attrs}>
         <g fill="currentColor">
             <path d="M10.2,5.4,7.1,9.53,5.67,8.25a1,1,0,1,0-1.34,1.5l2.05,1.82a1.29,1.29,0,0,0,.83.32h.12a1.23,1.23,0,0,0,.88-.49L11.8,6.6a1,1,0,1,0-1.6-1.2Z" />
             <path d="M8,0a8,8,0,1,0,8,8A8,8,0,0,0,8,0ZM8,14a6,6,0,1,1,6-6A6,6,0,0,1,8,14Z" />
@@ -80,7 +80,7 @@ const icoSuccess = (attrs) =>
     </svg>
 
 const icoWarning = (attrs) =>
-    <svg {...attrs}>
+    <svg aria-hidden="true" {...attrs}>
         <g fill="currentColor">
             <path d="M11,9H5A1,1,0,0,1,5,7h6a1,1,0,0,1,0,2Z" />
             <path d="M8,16a8,8,0,1,1,8-8A8,8,0,0,1,8,16ZM8,2a6,6,0,1,0,6,6A6,6,0,0,0,8,2Z" />
@@ -88,7 +88,7 @@ const icoWarning = (attrs) =>
     </svg>
 
 const icoError = (attrs) =>
-    <svg {...attrs}>
+    <svg aria-hidden="true" {...attrs}>
         <g fill="currentColor">
             <path d="M8,0a8,8,0,1,0,8,8A8,8,0,0,0,8,0ZM8,14a6,6,0,1,1,6-6A6,6,0,0,1,8,14Z" />
             <path d="M10.83,5.17a1,1,0,0,0-1.41,0L8,6.59,6.59,5.17A1,1,0,0,0,5.17,6.59L6.59,8,5.17,9.41a1,1,0,1,0,1.41,1.41L8,9.41l1.41,1.41a1,1,0,0,0,1.41-1.41L9.41,8l1.41-1.41A1,1,0,0,0,10.83,5.17Z" />
