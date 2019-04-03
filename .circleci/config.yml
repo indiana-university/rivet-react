@@ -67,7 +67,7 @@ jobs:
             git config --global user.email "$GIT_COMMITTER_EMAIL"
             git config --global user.name "$GIT_COMMITTER_NAME"
             yarn publish-guide
-  # Publish the package to NPM and tag GitHub releasex
+  # Publish the package to NPM and tag GitHub releases
   publish_package:
     <<: *defaults
     steps:
