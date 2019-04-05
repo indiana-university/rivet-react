@@ -31,6 +31,11 @@ describe('<Header />', () => {
         it('should not render the header navigation when it is not provided', () => {
             expect(cut.find('HeaderNavigation')).toHaveLength(0);
         });
+        it('should render the skip to content link with the full URL', () => {
+            const skipLink = cut.find('.rvt-skip-link')
+            expect(skipLink).toHaveLength(1);
+            expect(skipLink.props().href).toEqual(`${document.URL}#main-content`);
+        })
     });
 
     describe('Including header navigation', () => {

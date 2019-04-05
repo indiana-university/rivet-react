@@ -25,7 +25,7 @@ const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivEleme
     const navigation = findFirstChildOfType(children, Navigation.displayName);
     return (
         <header {...attrs} className={classNames(componentClass, className)} role="banner">
-            <a className="rvt-skip-link" href="#main-content">Skip to content</a>
+            <a className="rvt-skip-link" href={`${document.URL}#main-content`}>Skip to content</a>
             <div className="rvt-header__trident">
                 <Icon name="trident-header" />
             </div>
