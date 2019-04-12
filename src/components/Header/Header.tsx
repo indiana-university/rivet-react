@@ -23,15 +23,10 @@ const componentClass = "rvt-header";
 const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, title, ...attrs }) => {
     const identity = findFirstChildOfType(children, Identity.displayName);
     const navigation = findFirstChildOfType(children, Navigation.displayName);
-    let mainContentUrl = document.URL;
-    const anchorCharacter = '#';
-    if (mainContentUrl.indexOf(anchorCharacter) >= 0) {
-        mainContentUrl = mainContentUrl.split(/\s?(#[a-zA-Z0-9-]+)/).filter(string => !string.startsWith(anchorCharacter)).join('');;
-    }
 
     return (
         <header {...attrs} className={classNames(componentClass, className)} role="banner">
-            <a className="rvt-skip-link" href={`${mainContentUrl}${anchorCharacter}main-content`}>Skip to content</a>
+            <a className="rvt-skip-link" href={`${window.location.pathname}#main${window.location.search ? '?' + window.location.search : ''}`}>Skip to content</a>
             <div className="rvt-header__trident">
                 <Icon name="trident-header" />
             </div>
