@@ -29,14 +29,11 @@ const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivEleme
     if (mainContentUrl.indexOf(anchorCharacter) >= 0) {
         // Split on any anchors and filter them out
         const [baseUrl, ...params] = mainContentUrl.split(/\s?(#[a-zA-Z0-9-]+)/).filter(string => !string.startsWith(anchorCharacter));
-        console.log(baseUrl);
-        console.log(params);
         // Rejoin the URL with our anchor and any params
         mainContentUrl = [baseUrl, `${anchorCharacter}${mainContentAnchor}`, ...params].join('');
     } else {
         mainContentUrl = `${mainContentUrl}${anchorCharacter}${mainContentAnchor}`;
     }
-    console.log(mainContentUrl);
 
     return (
         <header {...attrs} className={classNames(componentClass, className)} role="banner">
