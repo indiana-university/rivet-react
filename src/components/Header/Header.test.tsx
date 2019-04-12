@@ -35,7 +35,7 @@ describe('<Header />', () => {
             const skipLink = cut.find('.rvt-skip-link')
             expect(skipLink).toHaveLength(1);
             expect(skipLink.props().href).toEqual(`${document.URL}#main-content`);
-        })
+        });
     });
 
     describe('Including header navigation', () => {
