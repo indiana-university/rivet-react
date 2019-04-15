@@ -28,7 +28,7 @@ const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivEleme
     const mainContentAnchor = 'main-content'
     if (mainContentUrl.indexOf(anchorCharacter) >= 0) {
         // Split on any anchors and filter them out
-        const [baseUrl, ...params] = mainContentUrl.split(/\s?(#[a-zA-Z0-9-]+)/).filter(string => !string.startsWith(anchorCharacter));
+        const [baseUrl, ...params] = mainContentUrl.split(/\s?(#[a-zA-Z0-9-]+)/).filter(section => !section.startsWith(anchorCharacter));
         // Rejoin the URL with our anchor and any params
         mainContentUrl = [baseUrl, `${anchorCharacter}${mainContentAnchor}`, ...params].join('');
     } else {
