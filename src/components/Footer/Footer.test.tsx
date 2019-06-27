@@ -28,7 +28,7 @@ describe('<Footer />', () => {
     describe('Navigation', () => {
         it('should include no links by default', () => {
             const cut = mount(<Footer />);
-            expect(cut.find('ul.rvt-footer__aux-links')).toHaveLength(0);
+            expect(cut.find('ul.rvt-footer__aux-links')).toHaveLength(1);
         });
         it('should render nav links in list', () => {
             const cut = mount(
@@ -36,7 +36,8 @@ describe('<Footer />', () => {
                     <a id="privacy" href="/privacy">Privacy Policy</a>
                 </Footer>);
             expect(cut.find('ul.rvt-footer__aux-links')).toHaveLength(1);
-            expect(cut.find('li.rvt-footer__aux-item > a')).toHaveLength(1);
+            // One link for accessibility, one for the child, and two for the copyright
+            expect(cut.find('li.rvt-footer__aux-item > a')).toHaveLength(4);
             expect(cut.find('#privacy')).toHaveLength(1);
         });
     });
