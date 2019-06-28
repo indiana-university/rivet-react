@@ -7,7 +7,7 @@ import * as React from 'react'
 
 
 export interface StepProps {
-    current: boolean;
+    current?: boolean;
     indicator: JSX.Element;
     label: JSX.Element;
     screenReaderIndicator: string
