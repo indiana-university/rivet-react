@@ -20,7 +20,7 @@ const indicatorClass = 'rvt-steps__indicator';
 const variantClass = (variant) => variant && `${indicatorClass}--${variant}`;
 
 const Step : React.SFC <StepProps & React.HTMLAttributes<HTMLLIElement>> =
-({ indicator, label, screenReaderIndicator, targetLocation, variant, ...attrs}) => {
+({ current, indicator, label, screenReaderIndicator, targetLocation, variant, ...attrs}) => {
     const content = (
         <>
             <span className="rvt-steps__label">{label}</span>
@@ -36,7 +36,7 @@ const Step : React.SFC <StepProps & React.HTMLAttributes<HTMLLIElement>> =
     );
     if (targetLocation) {
         wrapper = (
-            <li className="rvt-steps__item" {...attrs}>
+            <li className="rvt-steps__item" aria-current={current && 'step'} {...attrs}>
                 <a href={targetLocation} className="rvt-steps__item-content">
                     {content}
                 </a>
