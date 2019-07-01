@@ -13,6 +13,11 @@ export interface StepProps {
     current?: boolean;
 
     /**
+     * An optional URL that can be used to create a link from this step to another location
+     */
+    href?: string;
+
+    /**
      * A visual indicator to identify this step
      */
     indicator: JSX.Element;
@@ -26,11 +31,6 @@ export interface StepProps {
      * An textual indicator to be used by screenreaders since the visual indicator may not include text
      */
     screenReaderIndicator: string
-
-    /**
-     * An optional URL that can be used to create a link from this step to another location
-     */
-    href?: string;
 
     /**
      * An optional variant to be applied to the indicator
