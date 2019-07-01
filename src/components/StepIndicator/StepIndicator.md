@@ -7,8 +7,8 @@ View the [Rivet documentation for Step Indicator](https://rivet.iu.edu/component
 ```jsx
 <StepIndicator>
   <Step href="#" label="Personal Information" indicator="1" screenReaderIndicator="Step"/>
-  <Step label="Records &amp; transcripts" indicator="2" screenReaderIndicator="Step" current />
-  <Step label="Confirmation" indicator="3" screenReaderIndicator="Step"/>
+  <Step label="Records & transcripts" indicator="2" screenReaderIndicator="Step" current />
+  <Step label="Confirmation" indicator="3" screenReaderIndicator="Step" variant="success" />
 </StepIndicator>
 ```
 
@@ -17,8 +17,8 @@ View the [Rivet documentation for Step Indicator](https://rivet.iu.edu/component
 ```jsx
 <StepIndicator vertical>
   <Step href="#" label="Personal Information" indicator="1" screenReaderIndicator="Step"/>
-  <Step label="Records &amp; transcripts" indicator="2" screenReaderIndicator="Step" current />
-  <Step label="Confirmation" indicator="3" screenReaderIndicator="Step"/>
+  <Step label="Records & transcripts" indicator="2" screenReaderIndicator="Step" current />
+  <Step label="Confirmation" indicator="3" screenReaderIndicator="Step" variant="success" />
 </StepIndicator>
 
 ```

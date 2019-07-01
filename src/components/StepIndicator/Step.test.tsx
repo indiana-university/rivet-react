@@ -7,7 +7,7 @@ import * as React from 'react';
 
 import Step from './Step'
 
-describe('<Table />', () => {
+describe('<Step />', () => {
     describe('Rendering and styling', () =>{
         it('should render without throwing an error', () => {
             const cut = mount(<Step indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} />);
@@ -20,6 +20,26 @@ describe('<Table />', () => {
         it('should apply custom classes', () => {
             const cut = mount(<Step className="foo" indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} />);
             expect(cut.find('li').hasClass('foo')).toBe(true);
+        });
+
+        it('should set aria-current when current is set', () => {
+            const cut = mount(<Step current indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} />);
+            expect(cut.find('li').props()['aria-current']).toBe('step');
+        });
+
+        it('should not set aria-current when current is not set', () => {
+            const cut = mount(<Step indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} />);
+            expect(cut.find('li').props()['aria-current']).toBe(undefined);
+        });
+
+        it('should provide a link when targetLocation is set', () => {
+            const cut = mount(<Step indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} targetLocation="https://foo.com" />);
+            expect(cut.find('a')).toHaveLength(1);
+        });
+
+        it('should set a variant if the variant property is set', () => {
+            const cut = mount(<Step indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} variant="warning"/>);
+            expect(cut.find('span .rvt-steps__indicator--warning')).toHaveLength(1)
         });
     });
 });

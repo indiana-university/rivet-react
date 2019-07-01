@@ -7,7 +7,7 @@ import * as React from 'react';
 
 import StepIndicator from './StepIndicator'
 
-describe('<Table />', () => {
+describe('<StepIndicator />', () => {
     describe('Rendering and styling', () =>{
         it('should render without throwing an error', () => {
             const cut = mount(<StepIndicator />);
@@ -20,6 +20,16 @@ describe('<Table />', () => {
         it('should apply custom classes', () => {
             const cut = mount(<StepIndicator className="foo" />);
             expect(cut.find('ol').hasClass('foo')).toBe(true);
+        });
+
+        it('should apply vertical styling if the vertical property is set', () => {
+            const cut = mount(<StepIndicator vertical />);
+            expect(cut.find('ol').hasClass('rvt-steps--vertical')).toBe(true);
+        });
+
+        it('should not apply vertical styling if the vertical property is set', () => {
+            const cut = mount(<StepIndicator />);
+            expect(cut.find('ol').hasClass('rvt-steps--vertical')).toBe(false);
         });
     });
 });

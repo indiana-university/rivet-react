@@ -7,6 +7,9 @@ import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
 export interface StepIndicatorProps {
+    /**
+     * Defines whether the step indicator should use the alternate vertical styling
+     */
     vertical?: boolean
 }
 

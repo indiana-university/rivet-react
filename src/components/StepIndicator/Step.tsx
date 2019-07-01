@@ -7,11 +7,34 @@ import * as React from 'react'
 
 
 export interface StepProps {
+    /**
+     * Defines whether the indicated step is the current step
+     */
     current?: boolean;
+
+    /**
+     * A visual indicator to identify this step
+     */
     indicator: JSX.Element;
+
+    /**
+     * A label for this step
+     */
     label: JSX.Element;
+
+    /**
+     * An textual indicator to be used by screenreaders since the visual indicator may not include text
+     */
     screenReaderIndicator: string
-    targetLocation?: string;
+
+    /**
+     * An optional URL that can be used to create a link from this step to another location
+     */
+    href?: string;
+
+    /**
+     * An optional variant to be applied to the indicator
+     */
     variant?: 'success' | 'warning' | 'danger';
 }
 
@@ -20,7 +43,7 @@ const indicatorClass = 'rvt-steps__indicator';
 const variantClass = (variant) => variant && `${indicatorClass}--${variant}`;
 
 const Step : React.SFC <StepProps & React.HTMLAttributes<HTMLLIElement>> =
-({ current, indicator, label, screenReaderIndicator, targetLocation, variant, ...attrs}) => {
+({ current, href, indicator, label, screenReaderIndicator, variant, ...attrs}) => {
     const content = (
         <>
             <span className="rvt-steps__label">{label}</span>
@@ -30,17 +53,15 @@ const Step : React.SFC <StepProps & React.HTMLAttributes<HTMLLIElement>> =
         </>
     );
     let wrapper = (
-        <span className="rvt-steps__item-content">
+        <span className="rvt-steps__item-content" aria-current={current && 'step'}>
             {content}
         </span>
     );
-    if (targetLocation) {
+    if (href) {
         wrapper = (
-            <li className="rvt-steps__item" aria-current={current && 'step'} {...attrs}>
-                <a href={targetLocation} className="rvt-steps__item-content">
-                    {content}
-                </a>
-            </li>
+            <a href={href} className="rvt-steps__item-content" aria-current={current && 'step'}>
+                {content}
+            </a>
         );
     }
 
