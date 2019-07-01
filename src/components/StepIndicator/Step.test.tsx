@@ -27,6 +27,11 @@ describe('<Step />', () => {
             expect(cut.find('span[aria-current]')).toHaveLength(1);
         });
 
+        it('should set aria-current when current is set in an href', () => {
+            const cut = mount(<Step current href="https://foo.com" indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} />);
+            expect(cut.find('[aria-current="step"]')).toHaveLength(1);
+        });
+
         it('should not set aria-current when current is not set', () => {
             const cut = mount(<Step indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} />);
             expect(cut.find('span[aria-current]')).toHaveLength(0);
