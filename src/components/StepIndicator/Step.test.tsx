@@ -24,16 +24,16 @@ describe('<Step />', () => {
 
         it('should set aria-current when current is set', () => {
             const cut = mount(<Step current indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} />);
-            expect(cut.find('li').props()['aria-current']).toBe('step');
+            expect(cut.find('span[aria-current]')).toHaveLength(1);
         });
 
         it('should not set aria-current when current is not set', () => {
             const cut = mount(<Step indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} />);
-            expect(cut.find('li').props()['aria-current']).toBe(undefined);
+            expect(cut.find('span[aria-current]')).toHaveLength(0);
         });
 
-        it('should provide a link when targetLocation is set', () => {
-            const cut = mount(<Step indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} targetLocation="https://foo.com" />);
+        it('should provide a link when href is set', () => {
+            const cut = mount(<Step indicator={<span>1</span>} screenReaderIndicator="1" label={<span>Step</span>} href="https://foo.com" />);
             expect(cut.find('a')).toHaveLength(1);
         });
 
