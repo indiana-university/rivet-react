@@ -27,6 +27,7 @@ Use the *ordered* `variant` to create an ordered list.
     <li>List Item Four</li>
 </List>
 ```
+
 ### Plain List
 
 Use the *plain* `variant` to create a plain list with no decoration.

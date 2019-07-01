@@ -20,5 +20,6 @@ export * from './Pagination';
 export * from './Panel';
 export * from './RadioButton';
 export * from './Section';
+export * from './StepIndicator';
 export * from './Table';
 export * from './Tabs';
