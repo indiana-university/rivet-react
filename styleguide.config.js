@@ -30,6 +30,7 @@ module.exports = {
             components: () => [
               'src/components/Badge/*.tsx',
               'src/components/List/*.tsx',
+              'src/components/StepIndicator/*.tsx',
               'src/components/Table/*.tsx',
               'src/components/Tabs/*.tsx',
             ],

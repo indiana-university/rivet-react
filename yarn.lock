@@ -171,16 +171,9 @@
     "@types/node" "*"
     "@types/react" "*"
 
-"@types/react@*":
+"@types/react@*", "@types/react@16.4.1":
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.1.tgz#c53bbfb4a78933db587da085ac60dbf5fcf73f8f"
-  dependencies:
-    csstype "^2.2.0"
-
-"@types/react@16.4.7":
-  version "16.4.7"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.7.tgz#f33f6d759a7e1833befa15224d68942d178a5a3f"
-  integrity sha512-tHpSs7HMyjnpyfzka1G0pYh7rBNdpwGgcIDT4vfV6jUaR69yOHo/vNH2H+d9iYHo9xnX4qDe7UalPe9HiGRkLw==
   dependencies:
     csstype "^2.2.0"
 
@@ -8604,25 +8597,20 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rivet-collapsible@0.1.1-alpha:
-  version "0.1.1-alpha"
-  resolved "https://registry.yarnpkg.com/rivet-collapsible/-/rivet-collapsible-0.1.1-alpha.tgz#27c211891a8510e2c592f1caf305d14fb5337ffb"
-  dependencies:
-    rivet-uits "^1.0.0"
+rivet-collapsible@0.2.10:
+  version "0.2.10"
+  resolved "https://registry.npmjs.org/rivet-collapsible/-/rivet-collapsible-0.2.10.tgz#6ef38eadc032021b57495c8e17337cd92fbb1a4f"
+  integrity sha512-JWtF3nmysDb8yhT3wbpaiOIBC7SxJAQvnhnI2dmZxXlDub06RLxXQwFiPSpV+LObmgrI8huVNPVtkAgXzR/3ow==
 
-rivet-switch@0.1.1-alpha:
-  version "0.1.1-alpha"
-  resolved "https://registry.yarnpkg.com/rivet-switch/-/rivet-switch-0.1.1-alpha.tgz#a49ee1e291d223010caeff54351a69703ad61b10"
-  dependencies:
-    rivet-uits "^1.0.0"
+rivet-switch@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.npmjs.org/rivet-switch/-/rivet-switch-0.3.1.tgz#1a58086aad8f00760adbd4bcbdc26a0d0ae314b1"
+  integrity sha512-JWA/3/jN6qqb4+RadxHeukLNPf2EgRMMgzO9fypvY2kRw5W1HOaW2bJIwTC85j/SVvn+VciZjucYcmnQjYhlHQ==
 
-rivet-uits@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/rivet-uits/-/rivet-uits-1.1.0.tgz#bd50edae3fd222cd1f8d67416e6513eecf9a4c23"
-
-rivet-uits@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/rivet-uits/-/rivet-uits-1.0.0.tgz#73f8d011be56cdb3637245d0b9f8af9038a2478a"
+rivet-uits@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.npmjs.org/rivet-uits/-/rivet-uits-1.6.0.tgz#d58d57183afb55d501bfa841d597634d1e6dcaaf"
+  integrity sha512-SEpELSU4c5swRSIpWqVD+z/e71gdpaJNTZ19V5gqGwEZO16xlKxENPA+FSSuKkCVaoZ0OHUwmJdLZhUp4bZdUw==
 
 rst-selector-parser@^2.2.3:
   version "2.2.3"
