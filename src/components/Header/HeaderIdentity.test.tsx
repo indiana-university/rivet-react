@@ -104,4 +104,19 @@ describe('<Navigation />', () => {
             expect(cut.find('HeaderCollapse').find('a#example-one')).toHaveLength(1);
         });
     });
+
+    describe('should display "Log out" as the logout link text', () => {
+        const onLogout = jest.fn();
+        cut = mount(<HeaderIdentity avatar="RS" username="rswanson" className="rvt-header-id--drawer" onLogout={onLogout} />);
+        const logoutLink = cut.find('.rvt-header-id__log-out');
+        expect(logoutLink.text()).toBe('Log out');
+    });
+
+    describe('should allow users to customize the logout link text', () => {
+        const onLogout = jest.fn();
+        const logoutText = 'End backdoor';
+        cut = mount(<HeaderIdentity avatar="RS" username="rswanson" className="rvt-header-id--drawer" onLogout={onLogout} logoutLinkText={logoutText} />);
+        const logoutLink = cut.find('.rvt-header-id__log-out');
+        expect(logoutLink.text()).toBe(logoutText);
+    });
 });
