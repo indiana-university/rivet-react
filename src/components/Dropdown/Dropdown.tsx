@@ -25,6 +25,8 @@ interface DropdownProps extends ButtonProps {
      * Optional CSS classes which will be applied to the dropdown menu
      */
     menuClass?: string;
+    /** Optional flag to toggle the dropdown open state when a click is done within the dropdown contents */
+    toggleDropdownOnClickInside?: boolean;
 }
 
 const initialState = { open: false }
@@ -59,7 +61,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
     }
 
     public render() {
-        const { align, children, className, label, menuClass, ...attrs } = this.props;
+        const { align, children, className, label, menuClass, toggleDropdownOnClickInside, ...attrs } = this.props;
         const menuClasses = classNames({
             ['rvt-dropdown__menu']: true,
             [`rvt-dropdown__menu--${align}`]: !!align
@@ -101,7 +103,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
             return false;
         }
 
-        if (event.targets(ReactDOM.findDOMNode(this)) && (!event.isKeyEvent() || event.isTabKeyPress())) {
+        if (event.targets(ReactDOM.findDOMNode(this)) && !this.props.toggleDropdownOnClickInside && (!event.isKeyEvent() || event.isTabKeyPress())) {
             // If the user clicks, touches or tabs inside the dropdown do not close the menu
             return false;
         }

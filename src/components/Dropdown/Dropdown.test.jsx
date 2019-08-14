@@ -118,6 +118,39 @@ describe('<Dropdown />', () => {
         });
     });
 
+    describe('Toggle behavior click inside override', () => {
+
+        let cut;
+
+        const expectDropdownMenuIsOpen = () => {
+            expect(document.getElementsByClassName('rvt-dropdown__menu')).toHaveLength(1);
+        }
+
+        const expectDropdownMenuIsClosed = () => {
+            expect(document.getElementsByClassName('rvt-dropdown__menu')).toHaveLength(0);
+        }
+
+        const clickToggleButton = () => {
+            document.getElementsByTagName('button')[0].click();
+        }
+
+        beforeEach(() => {
+            ReactDOM.render(
+                <Dropdown toggleDropdownOnClickInside={true}>
+                    <a href="#">Hello, world!</a>
+                </Dropdown>, root
+            );
+        });
+
+        it('should toggle the menu when clicking inside the menu', () => {
+            expectDropdownMenuIsClosed();
+            clickToggleButton();
+            expectDropdownMenuIsOpen();
+            document.getElementsByTagName('a')[0].click();
+            expectDropdownMenuIsClosed();
+        });
+    });
+
     describe('Event handler registration', () => {
         
         afterEach(() => {
