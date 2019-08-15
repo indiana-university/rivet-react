@@ -61,7 +61,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
     }
 
     public render() {
-        const { align, children, className, label, menuClass, toggleDropdownOnClickInside, ...attrs } = this.props;
+        const { align, children, className, label, menuClass, toggleDropdownOnClickInside = false, ...attrs } = this.props;
         const menuClasses = classNames({
             ['rvt-dropdown__menu']: true,
             [`rvt-dropdown__menu--${align}`]: !!align
