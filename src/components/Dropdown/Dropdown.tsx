@@ -103,7 +103,8 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
             return false;
         }
 
-        if (event.targets(ReactDOM.findDOMNode(this)) && !this.props.toggleDropdownOnClickInside && (!event.isKeyEvent() || event.isTabKeyPress())) {
+        const preventToggleOnInsideClick = !event.isKeyEvent() && !this.props.toggleDropdownOnClickInside;
+        if (event.targets(ReactDOM.findDOMNode(this)) && (preventToggleOnInsideClick || event.isTabKeyPress())) {
             // If the user clicks, touches or tabs inside the dropdown do not close the menu
             return false;
         }
