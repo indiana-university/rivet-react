@@ -39,6 +39,6 @@ By default the dropdown menu will not close when an item within the dropdown is 
 ```jsx
 <Dropdown label="Toggle On Click" toggleDropdownOnClickInside>
     <Button onClick={() => alert('Clicked Item one')}>Item one</Button>
-    <Button onClick={() => alert('Clicked Item one')}>Item two</Button>
+    <Button onClick={() => alert('Clicked Item two')}>Item two</Button>
 </Dropdown>
 ```
