@@ -21,10 +21,8 @@ const propTypes = {
 
 const Badge = ({ children, className, modifier, variant, ...attrs }) => {
     const classes = classNames({
-        ['rvt-badge']: true,
         [`rvt-badge--${variant}-secondary`]: !!variant && modifier === 'secondary',
-        [`rvt-badge--${variant}`]: !!variant && modifier === undefined,
-        ['rvt-badge--secondary']: !variant && modifier === 'secondary'
+        [`rvt-badge--${variant}`]: !!variant && modifier === undefined
     }, className);
     return (
         <span className={classes} {...attrs}>{children}</span>

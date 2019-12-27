@@ -27,23 +27,23 @@ module.exports = {
         {
             name: 'Introduction',
             content: 'README.md'
-        }//,
-        // {
-        //     name: 'Page Content',
-        //     components: () => [
-        //       'src/components/Badge/*.js',
+        },
+        {
+            name: 'Page Content',
+            components: () => [
+              'src/components/Badge/*.js',
         //       'src/components/List/*.js',
         //       'src/components/StepIndicator/*.js',
         //       'src/components/Table/*.js',
         //       'src/components/Tabs/*.js',
-        //     ],
-        //     sections: [
-        //         {
-        //             name: 'Links',
-        //             content: 'src/docs/links.md',
-        //         }
-        //     ],
-        // },
+            ],
+            sections: [
+                {
+                    name: 'Links',
+                    content: 'src/docs/links.md',
+                }
+            ],
+        },
         // {
         //     name: 'Forms',
         //     components: () => [
