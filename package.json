@@ -11,8 +11,8 @@
   ],
   "main": "build/dist/components/index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npx styleguidist server",
+    "build": "rm -rf ./build && react-scripts build",
     "license": "license-check-and-add",
     "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles",
     "test": "react-scripts test",

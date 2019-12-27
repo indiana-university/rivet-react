@@ -7,7 +7,7 @@ import React from 'react';
 
 import Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
-import { StatelessAlertProps, statelessPropTypes } from './common';
+import { statelessPropTypes } from './common';
 
 const Alert = 
     ({title, onDismiss, variant, isOpen=true, id=Rivet.shortuid(), className, children, ...attrs}) => {
