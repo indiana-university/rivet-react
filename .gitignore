@@ -34,8 +34,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# This project uses Yarn mostly so ignore the regular NPM lock file
-package-lock.json
-
 # Ignore Visual Studio Code config files
 *.code-workspace

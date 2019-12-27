@@ -8,14 +8,16 @@ const glob = require('glob');
 module.exports = {
     title: 'Rivet React Style Guide',
     resolver: require('react-docgen').resolver.findAllComponentDefinitions,
-    propsParser: require('react-docgen-typescript').withDefaultConfig({
-        propFilter: (prop, component) => 
+    propsParser: require('react-docgen').withDefaultConfig({
+        // https://github.com/styleguidist/react-styleguidist/issues/1439
+        savePropValueAsString: true,
+        propFilter: (prop, component) =>
             // skip props with no documentation
             prop.description.length > 0
-            // skip aria props               
+            // skip aria props
             && prop.name.includes("aria-") === false
             // skip 'rivetize' props (these are documented separately)
-            && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1  
+            && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1
     }).parse,
     pagePerSection: true,
     exampleMode: 'expand',
@@ -28,11 +30,11 @@ module.exports = {
         {
             name: 'Page Content',
             components: () => [
-              'src/components/Badge/*.tsx',
-              'src/components/List/*.tsx',
-              'src/components/StepIndicator/*.tsx',
-              'src/components/Table/*.tsx',
-              'src/components/Tabs/*.tsx',
+              'src/components/Badge/*.js',
+              'src/components/List/*.js',
+              'src/components/StepIndicator/*.js',
+              'src/components/Table/*.js',
+              'src/components/Tabs/*.js',
             ],
             sections: [
                 {
@@ -44,14 +46,14 @@ module.exports = {
         {
             name: 'Forms',
             components: () => [
-              'src/components/Form/*.tsx', 
-              'src/components/Button/*.tsx', 
-              'src/components/Checkbox/*.tsx',
-              'src/components/File/*.tsx',
-              'src/components/RadioButton/*.tsx', 
-              'src/components/Input/Input.tsx', 
-              'src/components/Input/Textarea.tsx',
-              'src/components/Input/Select.tsx',
+              'src/components/Form/*.js',
+              'src/components/Button/*.js',
+              'src/components/Checkbox/*.js',
+              'src/components/File/*.js',
+              'src/components/RadioButton/*.js',
+              'src/components/Input/Input.js',
+              'src/components/Input/Textarea.js',
+              'src/components/Input/Select.js',
             ],
         },
         {
@@ -60,9 +62,9 @@ module.exports = {
                 {
                     name: 'Grid',
                     components: () => [
-                        'src/components/Grid/Container.tsx',
-                        'src/components/Grid/Row.tsx',
-                        'src/components/Grid/Col.tsx'
+                        'src/components/Grid/Container.js',
+                        'src/components/Grid/Row.js',
+                        'src/components/Grid/Col.js'
                     ],
                 },
                 {
@@ -75,30 +77,30 @@ module.exports = {
                 }
             ],
             components: () => [
-              'src/components/Panel/*.tsx',
-              'src/components/Section/*.tsx',
+              'src/components/Panel/*.js',
+              'src/components/Section/*.js',
             ],
         },
-        {   
+        {
             name: 'Navigation',
             components: () => [
-              'src/components/Breadcrumbs/*.tsx',
-              'src/components/Dropdown/*.tsx',
-              'src/components/Footer/*.tsx', 
-              'src/components/Header/Header.tsx',
-              'src/components/Header/HeaderIdentity.tsx',
-              'src/components/Header/HeaderNavigation.tsx',
-              'src/components/Header/HeaderMenu.tsx',
-              'src/components/Pagination/*.tsx',
+              'src/components/Breadcrumbs/*.js',
+              'src/components/Dropdown/*.js',
+              'src/components/Footer/*.js',
+              'src/components/Header/Header.js',
+              'src/components/Header/HeaderIdentity.js',
+              'src/components/Header/HeaderNavigation.js',
+              'src/components/Header/HeaderMenu.js',
+              'src/components/Pagination/*.js',
             ],
         },
         {
             name: 'Overlays',
             components: () => [
-              'src/components/Alert/Alert.tsx',
-              'src/components/Alert/DismissibleAlert.tsx',
-              'src/components/Alert/InlineAlert.tsx',
-              'src/components/Modal/*.tsx'
+              'src/components/Alert/Alert.js',
+              'src/components/Alert/DismissibleAlert.js',
+              'src/components/Alert/InlineAlert.js',
+              'src/components/Modal/*.js'
             ],
         },
         {
@@ -129,12 +131,11 @@ module.exports = {
         {
             name: 'Addons',
             components: () => [
-              'src/components/Addons/Collapse/*.tsx',
-              'src/components/Addons/Switch/*.tsx',
+              'src/components/Addons/Collapse/*.js',
+              'src/components/Addons/Switch/*.js',
             ],
         },
     ],
-    webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
     require: [
         'rivet-uits/css/rivet.min.css',
         './src/docs/documentation.css'
