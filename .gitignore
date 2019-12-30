@@ -1,3 +1,14 @@
+/coverage
+/demo/dist
+/es
+/lib
+/node_modules
+/umd
+npm-debug.log*
+/.idea
+.npmrc
+.vscode
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -7,9 +18,12 @@
 
 # testing
 /coverage
+/ts_conversion
 
 # production
 /build
+/package
+/styleguide
 
 # misc
 .DS_Store
@@ -27,3 +41,6 @@ yarn-error.log*
 
 # styleguidist
 styleguide/
+
+# Ignore Visual Studio Code config files
+*.code-workspace
