@@ -12,8 +12,10 @@
   "main": "build/dist/components/index.js",
   "types": "build/dist/components/index.d.ts",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npx styleguidist server",
+    "build": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
+    "license": "license-check-and-add",
+    "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
