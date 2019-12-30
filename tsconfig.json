@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "baseUrl": "./public",
     "outDir": "build/dist",
     "module": "esnext",
     "target": "es5",
-    "lib": ["dom","dom.iterable","esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "sourceMap": true,
-    //"allowJs": true
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
@@ -25,8 +27,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    
-    
+    "allowJs": true
   },
   "include": [
     "src/**/*"
