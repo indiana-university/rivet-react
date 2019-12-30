@@ -4,7 +4,7 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import { mount } from 'enzyme';
 import React from 'react';
-import Rivet from './Rivet';
+import * as Rivet from './Rivet';
 
 const DemoComponent = Rivet.rivetize(({ children, ...attrs }) => (
     <div {...attrs}>{children}</div>

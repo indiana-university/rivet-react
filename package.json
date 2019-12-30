@@ -18,31 +18,33 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "styleguidist build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "classnames": "2.2.6",
     "react": "16.12.0",
-    "react-display-name": "0.2.4",
+    "react-display-name": "0.2.5",
     "react-dom": "16.12.0",
     "react-scripts": "3.3.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.4.0",
-    "@testing-library/user-event": "7.2.1",
-    "acorn": "^6.4.0",
+    "@testing-library/user-event": "8.0.2",
+    "acorn": "^7.1.0",
     "codecov.io": "0.1.6",
-    "enzyme": "3.3.0",
-    "enzyme-adapter-react-16": "1.1.1",
-    "gh-pages": "2.0.1",
-    "license-check-and-add": "2.3.6",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
+    "gh-pages": "2.1.1",
+    "license-check-and-add": "3.0.3",
     "react-docgen": "5.0.0",
-    "react-styleguidist": "7.2.5",
-    "rivet-collapsible": "0.2.10",
-    "rivet-switch": "0.3.1",
-    "rivet-uits": "1.6.0",
-    "semantic-release": "15.9.12"
+    "react-styleguidist": "10.3.2",
+    "rivet-collapsible": "0.2.11",
+    "rivet-switch": "0.3.2",
+    "rivet-uits": "1.7.2",
+    "semantic-release": "15.14.0"
   },
   "eslintConfig": {
     "extends": "react-app"

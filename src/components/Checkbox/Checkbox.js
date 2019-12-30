@@ -3,7 +3,7 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import React from 'react';
-import Rivet from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 
 const Checkbox = 
 ({ children, id = Rivet.shortuid(), label, labelVisibility, ...attrs }) => (

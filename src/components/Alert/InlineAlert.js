@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Rivet from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 import { validationIcon } from '../util/validation'
 
 const InlineAlert =

@@ -7,7 +7,6 @@ const glob = require('glob');
 
 module.exports = {
     title: 'Rivet React Style Guide',
-    resolver: require('react-docgen').resolver.findAllComponentDefinitions,
 //    propsParser: require('react-docgen').withDefaultConfig({
 //        // https://github.com/styleguidist/react-styleguidist/issues/1439
 //        savePropValueAsString: true,
@@ -31,7 +30,7 @@ module.exports = {
         {
             name: 'Page Content',
             components: () => [
-              'src/components/Badge/*.js',
+              'src/components/Badge/[A-Z]*.js',
         //       'src/components/List/*.js',
         //       'src/components/StepIndicator/*.js',
         //       'src/components/Table/*.js',
@@ -140,8 +139,8 @@ module.exports = {
     require: [
         'rivet-uits/css/rivet.min.css',
         './src/docs/documentation.css'
-      ],
+    ],
     theme: {
         maxWidth: 1920
-      }
+    }
 };

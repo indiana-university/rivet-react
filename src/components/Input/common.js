@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import React from 'react';
 
 import InlineAlert from '../Alert/InlineAlert';
-import Rivet from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 import PropTypes from 'prop-types';
 
 const propTypes = {

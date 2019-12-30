@@ -145,7 +145,7 @@ const parseRivetHidden = (hide) => ({
     [`rvt-hide-${hide}`]: !!hide
 });
 
-const rivetize = (Component) =>
+export const rivetize = (Component) =>
 ({ className, border, display, hide, margin, padding, typescale, ...attrs }) => (
         <Component className={classNames(
             parseRivetMargin(margin),
@@ -164,5 +164,3 @@ const rivetize = (Component) =>
  */
 export const labelVisiblityClass = (visibility) => 
     visibility === "screen-reader-only" ? "rvt-sr-only" : "";
-
-export default rivetize;

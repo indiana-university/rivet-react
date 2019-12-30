@@ -4,7 +4,7 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
 import React from 'react';
-import Rivet from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 
 const Row = 
 ({ children, className, ...attrs }) => (

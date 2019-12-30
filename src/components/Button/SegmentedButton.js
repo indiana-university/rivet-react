@@ -5,7 +5,7 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Rivet from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 
 const propTypes = {
   fit: PropTypes.bool

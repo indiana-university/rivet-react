@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '../Button/Button';
-import Rivet from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
 import DropdownEvent from './DropdownEvent';
 import PropTypes from 'prop-types';

@@ -8,7 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Button from '../Button/Button';
-import Rivet from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
 import ModalEvent from './ModalEvent';
 

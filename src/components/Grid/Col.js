@@ -4,7 +4,7 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
 import React from 'react';
-import Rivet from '../util/Rivet';
+import * as Rivet from '../util/Rivet';
 import PropTypes from 'prop-types';
 
 const numList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
