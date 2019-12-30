@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 
 import * as Rivet from '../util/Rivet';
@@ -31,7 +31,7 @@ const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivEleme
       [`rvt-pagination--${align}`]: align,
       [`rvt-pagination--${size}`]: size
     });
-    const wrappedChildren = React.Children.map(children, (child: React.ReactElement<any>) => {
+    const wrappedChildren = React.Children.map(children, (child: any & React.ReactElement<any>) => {
       const childProps = child.props as PaginationItemProps;
       const childClasses = classNames({
         'rvt-pagination__item': true,

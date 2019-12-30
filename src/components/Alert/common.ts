@@ -9,15 +9,15 @@ export interface StatefulAlertProps {
      * Rivet alert styling. 
      * @see https://rivet.uits.iu.edu/components/overlays/alerts
      */ 
-    variant: "danger" | "info" | "warning" | "success",
+    variant: string, //"danger" | "info" | "warning" | "success",
     /**
      * Optional alert title
      */
-    title?: string | JSX.Element,
+    title?: any, //string | JSX.Element,
     /**
      * Optional event to raise when the alert is dismissed
      */
-    onDismiss?: () => void;
+    onDismiss?: any; //() => void;
 }
 
 export const statefulPropTypes = {

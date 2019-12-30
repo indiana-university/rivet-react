@@ -9,6 +9,8 @@ module.exports = {
     title: 'Rivet React Style Guide',
     resolver: require('react-docgen').resolver.findAllComponentDefinitions,
     propsParser: require('react-docgen-typescript').withDefaultConfig({
+        // https://github.com/styleguidist/react-styleguidist/issues/1439
+        savePropValueAsString: true,
         propFilter: (prop, component) => 
             // skip props with no documentation
             prop.description.length > 0
@@ -134,7 +136,7 @@ module.exports = {
             ],
         },
     ],
-    webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
+    //webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
     require: [
         'rivet-uits/css/rivet.min.css',
         './src/docs/documentation.css'

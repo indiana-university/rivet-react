@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
@@ -14,11 +14,11 @@ export interface ButtonProps {
      * Optional Rivet style: a success/danger/plain button. 
      * The 'navigation' variant is intended to support the Header component only.
      */
-    variant?: 'success' | 'danger' | 'plain' | 'navigation';
+    variant?: string; //'success' | 'danger' | 'plain' | 'navigation';
     /** Optional Rivet style: a small button. */
-    size?: 'small';
+    size?: string; //'small';
     /** Optional Rivet style: a secondary button. */
-    modifier?: 'secondary';
+    modifier?: string; //'secondary';
     innerRef?: React.Ref<HTMLButtonElement>;
 }
 

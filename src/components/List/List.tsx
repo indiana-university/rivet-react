@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react'
 import * as Rivet from '../util/Rivet'
 
@@ -12,11 +12,11 @@ export interface ListProps {
     /**
      * Optional Rivet style for the type of list decoration.
      */
-    variant?: 'ordered' | 'plain' | 'unordered';
+    variant?: any; //'ordered' | 'plain' | 'unordered';
     /**
      * Optional Rivet style for the layout of the list.
      */
-    orientation?: 'inline';
+    orientation?: any; //'inline';
 }
 
 /** Return any <li> children unchanged; otherwise wrap child in an <li> */
@@ -26,7 +26,7 @@ const asListItem = (child : React.ReactChild) =>
     : child;
 
 /** Ensure all children are <li> elements. */
-const asListItems = (children?: React.ReactNode) => 
+const asListItems = (children?: any & React.ReactNode) => 
     children
     ? React
         .Children

@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
@@ -11,11 +11,11 @@ interface BadgeProps {
     /**
      * Optional Rivet style: a secondary badge.
      */
-    modifier?: 'secondary',
+    modifier?: string, //'secondary',
     /**
      * Optional Rivet style: an info/danger/success/warning badge.
      */
-    variant?: 'info' | 'danger' | 'success' | 'warning';
+    variant?: string; //'info' | 'danger' | 'success' | 'warning';
 }
 
 const propTypes = {
