@@ -18,7 +18,7 @@ const renderChild = (child, isDrawer) => {
     }
 }
 
-const HeaderNavigation : React.SFC<React.HTMLAttributes<HTMLLIElement>> = ({ children, className }) => {
+const HeaderNavigation : React.FC<React.HTMLAttributes<HTMLLIElement>> = ({ children, className }) => {
     const isDrawer = !!className && className.includes('rvt-drawer-navigation');
     return (
         <>

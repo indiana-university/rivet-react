@@ -13,7 +13,7 @@ interface PanelProps {
     variant?: 'light';
 }
 
-const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = 
+const Panel : React.FC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = 
 ({ children, className, variant, ...attrs }) => {
     const classes = classNames({
         ['rvt-panel']: true,

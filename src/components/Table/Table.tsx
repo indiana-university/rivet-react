@@ -23,7 +23,7 @@ interface TableProps {
     cells?: boolean;
 }
 
-const Table : React.SFC<TableProps & React.HTMLAttributes<HTMLTableElement>> =
+const Table : React.FC<TableProps & React.HTMLAttributes<HTMLTableElement>> =
 ({ children, className, variant, compact, cells, ...attrs }) => {
     const classes = classNames({
         [`rvt-table-${variant}`]: variant,

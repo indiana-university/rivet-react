@@ -13,7 +13,7 @@ const liClass = 'rvt-footer__aux-item';
 const footerNavLi = (child, index) =>
     <li key={index} className={liClass}>{child}</li>
 
-const Footer: React.SFC<React.HTMLAttributes<HTMLDivElement>> =
+const Footer: React.FC<React.HTMLAttributes<HTMLDivElement>> =
 ({ className, children, id = Rivet.shortuid(), ...attrs }) => (
     <footer id={id} role="contentinfo" className={classNames(componentClass, className)} {...attrs}>
         <div className="rvt-footer__trident">

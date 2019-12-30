@@ -14,7 +14,7 @@ interface HeaderProps {
     label: string;
 }
 
-const HeaderMenu: React.SFC<HeaderProps & React.HTMLAttributes<HTMLButtonElement>> = ({ children, className, ...attrs }) => {
+const HeaderMenu: React.FC<HeaderProps & React.HTMLAttributes<HTMLButtonElement>> = ({ children, className, ...attrs }) => {
     const isDrawer = className && className.includes('rvt-drawer-menu');
     const Component = isDrawer ? HeaderCollapse : Dropdown;
     return (

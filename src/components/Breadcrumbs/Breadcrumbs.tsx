@@ -13,7 +13,7 @@ export interface BreadcrumbsProps {
   variant?: 'call-out'
 }
 
-const Breadcrumbs: React.SFC<BreadcrumbsProps & React.HTMLAttributes<HTMLDivElement>> =
+const Breadcrumbs: React.FC<BreadcrumbsProps & React.HTMLAttributes<HTMLDivElement>> =
   ({ children, variant, ...attrs }) => {
     const childCount = React.Children.count(children);
     const breadcrumbLinks = React.Children.map(children, (child, index) => (index === (childCount - 1)) ? <li aria-current="page">{child}</li> : <li>{child}</li>);

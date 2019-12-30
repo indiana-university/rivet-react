@@ -18,7 +18,7 @@ const propTypes = {
   right: PropTypes.bool
 };
 
-const ButtonGroup: React.SFC<ButtonGroupProps & React.HTMLAttributes<HTMLDivElement>> = ({ className, children, right, ...attrs }) => {
+const ButtonGroup: React.FC<ButtonGroupProps & React.HTMLAttributes<HTMLDivElement>> = ({ className, children, right, ...attrs }) => {
   const classes = classNames({
     ['rvt-button-group']: true,
     ['rvt-button-group--right']: right

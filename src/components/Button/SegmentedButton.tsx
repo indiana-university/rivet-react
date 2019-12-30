@@ -18,7 +18,7 @@ const propTypes = {
   fit: PropTypes.bool
 };
 
-const SegmentedButton: React.SFC<SegmentedButtonProps & React.HTMLAttributes<HTMLDivElement>> =
+const SegmentedButton: React.FC<SegmentedButtonProps & React.HTMLAttributes<HTMLDivElement>> =
   ({ className, children, fit, ...attrs }) => {
     const classes = classNames({
       ['rvt-button-segmented']: true,

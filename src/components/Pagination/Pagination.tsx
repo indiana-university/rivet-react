@@ -24,7 +24,7 @@ interface PaginationItemProps {
   disabled: boolean;
 }
 
-const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivElement>> =
+const Pagination : React.FC<PaginationProps & React.HTMLAttributes<HTMLDivElement>> =
  ({ align, children, className, size, ...attrs }) => {
     const classes = classNames({
       ['rvt-pagination']: true,

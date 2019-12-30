@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
-const Row : React.SFC<React.HTMLAttributes<HTMLDivElement>> = 
+const Row : React.FC<React.HTMLAttributes<HTMLDivElement>> = 
 ({ children, className, ...attrs }) => (
     <div className={classNames('rvt-grid', className)} {...attrs}>
         {children}

@@ -5,7 +5,7 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from 'classnames';
 import * as React from 'react';
 
-const ModalControls : React.SFC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className }) => (
+const ModalControls : React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className }) => (
     <div className={classNames(['rvt-modal__controls', className])}>
         { children }
     </div>

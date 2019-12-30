@@ -22,7 +22,7 @@ interface IconProps {
     name: IconType;
 }
 
-type Svg = React.SFC<IconProps & React.SVGAttributes<SVGElement>>;
+type Svg = React.FC<IconProps & React.SVGAttributes<SVGElement>>;
 
 const DefaultIconProps = {
     role: "img",

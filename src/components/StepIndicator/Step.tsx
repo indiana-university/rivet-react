@@ -42,7 +42,7 @@ const indicatorClass = 'rvt-steps__indicator';
 
 const variantClass = (variant) => variant && `${indicatorClass}--${variant}`;
 
-const Step : React.SFC <StepProps & React.HTMLAttributes<HTMLLIElement>> =
+const Step : React.FC <StepProps & React.HTMLAttributes<HTMLLIElement>> =
 ({ current, href, indicator, label, screenReaderIndicator, variant, ...attrs}) => {
     const content = (
         <>

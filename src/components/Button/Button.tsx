@@ -60,7 +60,7 @@ const buttonSize = (size) =>
   ? `${buttonClass}--${size}` 
   : undefined;
 
-export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
+export const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = 
 ({ className, children, id = Rivet.shortuid(), innerRef, modifier, onClick, size, variant, ...attrs}) => (
     <button
       id={id}

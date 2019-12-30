@@ -11,7 +11,7 @@ interface DropdownGroupProps {
     label?: string;
 }
 
-const DropdownGroup : React.SFC<DropdownGroupProps & React.HTMLAttributes<HTMLDivElement>> = 
+const DropdownGroup : React.FC<DropdownGroupProps & React.HTMLAttributes<HTMLDivElement>> = 
 ({ children, label, ...attrs }) => (
     <>
         { label && <div className="rvt-dropdown__menu-heading" aria-hidden="true">{label}</div>}

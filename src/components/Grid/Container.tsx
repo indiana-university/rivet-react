@@ -16,7 +16,7 @@ interface ContainerProps {
     width?: 'freshman' | 'sophomore' | 'junior' | 'senior';
 }
 
-const Container : React.SFC<ContainerProps & React.HTMLAttributes<HTMLDivElement>> = 
+const Container : React.FC<ContainerProps & React.HTMLAttributes<HTMLDivElement>> = 
 ({ center, children, className, width, ...attrs }) => {
     const classes = classNames({
         ['rvt-container']: true,

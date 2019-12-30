@@ -23,7 +23,7 @@ const propTypes = {
     variant: PropTypes.oneOf(['info', 'danger', 'success', 'warning'])
 };
 
-const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, modifier, variant, ...attrs }) => {
+const Badge : React.FC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, modifier, variant, ...attrs }) => {
     const classes = classNames({
         ['rvt-badge']: true,
         [`rvt-badge--${variant}-secondary`]: !!variant && modifier === 'secondary',

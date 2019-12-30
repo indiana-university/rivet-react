@@ -15,7 +15,7 @@ export interface StepIndicatorProps {
 
 const componentClass = 'rvt-steps';
 
-export const StepIndicator: React.SFC<StepIndicatorProps & React.HTMLAttributes<HTMLOListElement>> =
+export const StepIndicator: React.FC<StepIndicatorProps & React.HTMLAttributes<HTMLOListElement>> =
 ({ className, children, vertical, id = Rivet.shortuid(), ...attrs }) => (
     <ol id={id} className={classNames(componentClass, { 'rvt-steps--vertical': vertical}, className)} {...attrs}>
         {children}

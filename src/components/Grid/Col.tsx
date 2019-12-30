@@ -113,7 +113,7 @@ interface ColProps {
     xxl?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | boolean;
 }
 
-const Col : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> = 
+const Col : React.FC<ColProps & React.HTMLAttributes<HTMLDivElement>> = 
 ({ children, className, last, lg, md, pullSm, pullMd, pullLg, pullXl, pullXxl, pushSm, pushMd, pushLg, pushXl, pushXxl, sm, xl, xxl, ...attrs }) => {
     const classes = classNames({
         ['rvt-grid__item']: !sm && !md && !lg && !xl && !xxl,

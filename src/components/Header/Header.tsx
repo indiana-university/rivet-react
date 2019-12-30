@@ -20,7 +20,7 @@ interface HeaderProps {
 
 const componentClass = "rvt-header";
 
-const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, title, ...attrs }) => {
+const HeaderComponent: React.FC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, title, ...attrs }) => {
     const identity = findFirstChildOfType(children, Identity.displayName);
     const navigation = findFirstChildOfType(children, Navigation.displayName);
     let mainContentUrl = document.URL;

@@ -11,7 +11,7 @@ interface RadioButtonProps {
     label: string;
 };
 
-const RadioButton : React.SFC <RadioButtonProps & React.InputHTMLAttributes<HTMLInputElement>> = 
+const RadioButton : React.FC <RadioButtonProps & React.InputHTMLAttributes<HTMLInputElement>> = 
 ({className, id = Rivet.shortuid(), label, ...attrs}) => (
     <>
         <input

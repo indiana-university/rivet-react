@@ -16,7 +16,7 @@ export interface CheckboxProps {
     labelVisibility?: "screen-reader-only"
 }
 
-const Checkbox : React.SFC<CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>> = 
+const Checkbox : React.FC<CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>> = 
 ({ children, id = Rivet.shortuid(), label, labelVisibility, ...attrs }) => (
     <>
         <input id={id} type="checkbox" {...attrs} />
