@@ -19,6 +19,9 @@ module.exports = {
             // skip 'rivetize' props (these are documented separately)
             && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1  
     }).parse,
+    moduleAliases: {
+        'rsg-example': path.resolve(__dirname, 'src')
+    },
     pagePerSection: true,
     exampleMode: 'expand',
     usageMode: 'expand',
@@ -138,9 +141,10 @@ module.exports = {
     ],
     require: [
         'rivet-uits/css/rivet.min.css',
-        './src/docs/documentation.css'
-      ],
+        './src/docs/documentation.css',
+        path.resolve(__dirname, 'styleguide/setup.js')
+    ],
     theme: {
         maxWidth: 1920
-      }
+    }
 };

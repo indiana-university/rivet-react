@@ -26,6 +26,7 @@
     "react-dom": "16.12.0"
   },
   "devDependencies": {
+    "@typescript-eslint/parser": "2.14.0",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.4.0",
     "@testing-library/user-event": "8.0.2",
@@ -51,7 +52,33 @@
     "typescript": "3.7.4"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": ["plugin:@typescript-eslint/recommended"],
+    "rules": {
+      "@typescript-eslint/type-annotation-spacing": [
+        "warn",
+        {
+          "before": true,
+          "after": true
+        }
+      ],
+      "@typescript-eslint/member-delimiter-style": ["warn", {
+        "multiline": {
+          "delimiter": "comma",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "comma",
+          "requireLast": false
+        }
+      }]
+    },
+    "overrides": [
+      {
+        "files": ["**/*.ts?(x)"],
+        "rules": {
+        }
+      }
+    ]
   },
   "files": [
     "build/dist/components",
