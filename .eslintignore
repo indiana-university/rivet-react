@@ -1,0 +1,3 @@
+# Ignoring everything for now
+src/components/**/*.ts
+src/components/**/*.tsx

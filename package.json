@@ -17,7 +17,8 @@
     "license": "license-check-and-add",
     "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:fix": "eslint './src/components/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "classnames": "2.2.6",
@@ -26,7 +27,6 @@
     "react-dom": "16.12.0"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "2.14.0",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.4.0",
     "@testing-library/user-event": "8.0.2",
@@ -37,11 +37,17 @@
     "@types/node": "13.1.2",
     "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
+    "@typescript-eslint/eslint-plugin": "2.15.0",
+    "@typescript-eslint/parser": "2.14.0",
     "codecov.io": "0.1.6",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
+    "eslint-config-prettier": "6.9.0",
+    "eslint-config-react": "1.1.7",
+    "eslint-plugin-prettier": "3.1.2",
     "gh-pages": "2.1.1",
     "license-check-and-add": "3.0.3",
+    "prettier": "1.19.1",
     "react-docgen-typescript": "1.16.1",
     "react-scripts": "3.3.0",
     "react-styleguidist": "10.3.2",
@@ -50,35 +56,6 @@
     "rivet-uits": "1.7.2",
     "semantic-release": "15.14.0",
     "typescript": "3.7.4"
-  },
-  "eslintConfig": {
-    "extends": ["plugin:@typescript-eslint/recommended"],
-    "rules": {
-      "@typescript-eslint/type-annotation-spacing": [
-        "warn",
-        {
-          "before": true,
-          "after": true
-        }
-      ],
-      "@typescript-eslint/member-delimiter-style": ["warn", {
-        "multiline": {
-          "delimiter": "comma",
-          "requireLast": true
-        },
-        "singleline": {
-          "delimiter": "comma",
-          "requireLast": false
-        }
-      }]
-    },
-    "overrides": [
-      {
-        "files": ["**/*.ts?(x)"],
-        "rules": {
-        }
-      }
-    ]
   },
   "files": [
     "build/dist/components",
