@@ -7,7 +7,7 @@ import * as React from 'react';
 
 import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
-import { StatelessAlertProps, statelessPropTypes } from './common';
+import { StatelessAlertProps } from './common';
 
 const Alert : React.FC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElement>> = 
     ({title, onDismiss, variant, isOpen=true, id=Rivet.shortuid(), className, children, ...attrs}) => {
@@ -37,6 +37,5 @@ const Alert : React.FC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElement
         : null
 };
 Alert.displayName = 'Alert';
-Alert.propTypes = statelessPropTypes;
 
 export default Rivet.rivetize(Alert);

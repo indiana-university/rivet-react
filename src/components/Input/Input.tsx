@@ -6,7 +6,7 @@ import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 import { renderInput, TextProps } from './common';
 
-const Input : React.FC<any & TextProps & React.InputHTMLAttributes<HTMLInputElement>> = 
+const Input : any & React.FC<TextProps & React.InputHTMLAttributes<HTMLInputElement>> = 
     renderInput((attrs) => <input {...attrs}/>);
 Input.displayName = 'Input';
 

@@ -3,7 +3,6 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import * as Rivet from '../util/Rivet';
@@ -18,7 +17,7 @@ interface InlineAlertProps {
     /**
      * Rivet style for inline validation.
      */
-    variant: any; //'danger' | 'info' | 'success' | 'warning';
+    variant: 'danger' | 'info' | 'success' | 'warning';
 };
 
 const InlineAlert: React.FC<InlineAlertProps & React.HTMLAttributes<HTMLDivElement>> =
@@ -47,9 +46,5 @@ const InlineAlert: React.FC<InlineAlertProps & React.HTMLAttributes<HTMLDivEleme
         );
     };
 InlineAlert.displayName = 'InlineAlert';
-InlineAlert.propTypes = {
-    standalone: PropTypes.bool,
-    variant: PropTypes.oneOf(['danger', 'info', 'warning', 'success']).isRequired, //PropTypes.string
-};
 
 export default Rivet.rivetize(InlineAlert);

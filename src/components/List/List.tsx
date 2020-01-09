@@ -12,11 +12,11 @@ export interface ListProps {
     /**
      * Optional Rivet style for the type of list decoration.
      */
-    variant?: any; //'ordered' | 'plain' | 'unordered';
+    variant?: 'ordered' | 'plain' | 'unordered';
     /**
      * Optional Rivet style for the layout of the list.
      */
-    orientation?: any; //'inline';
+    orientation?: 'inline';
 }
 
 /** Return any <li> children unchanged; otherwise wrap child in an <li> */

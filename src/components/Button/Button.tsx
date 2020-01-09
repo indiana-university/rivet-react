@@ -3,7 +3,6 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 /**
@@ -14,20 +13,12 @@ export interface ButtonProps {
      * Optional Rivet style: a success/danger/plain button. 
      * The 'navigation' variant is intended to support the Header component only.
      */
-    variant?: string; //'success' | 'danger' | 'plain' | 'navigation';
+    variant?: 'success' | 'danger' | 'plain' | 'navigation';
     /** Optional Rivet style: a small button. */
-    size?: string; //'small';
+    size?: 'small';
     /** Optional Rivet style: a secondary button. */
-    modifier?: string; //'secondary';
+    modifier?: 'secondary';
     innerRef?: React.Ref<HTMLButtonElement>;
-}
-
-export const buttonPropTypes = {
-  variant: PropTypes.oneOf(['success', 'danger', 'plain', 'navigation']),
-  size: PropTypes.oneOf(['small']),
-  role: PropTypes.oneOf(['secondary']),
-  innerRef: PropTypes.any,
-  id: PropTypes.string
 }
 
 const buttonClass = 'rvt-button';
@@ -73,7 +64,6 @@ export const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButto
     </button>
 );
 
-Button.propTypes = buttonPropTypes;
 Button.displayName = 'Button';
 
 export default Rivet.rivetize(Button);
