@@ -18,7 +18,7 @@
     "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:fix": "eslint './src/components/**/*.{ts,tsx}'"
+    "lint:fix": "tsc --noEmit && eslint \"src/**/*.{js,ts,tsx}\" --quiet --fix"
   },
   "dependencies": {
     "classnames": "2.2.6",
