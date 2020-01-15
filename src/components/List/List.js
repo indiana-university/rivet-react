@@ -42,7 +42,7 @@ const inlineList = (orientation) => ({
 
 const componentClass = 'rvt-list';
 
-export const List = 
+const List = 
 ({ children, className, orientation, variant, ...props }) => {
     const classes = classNames(componentClass, plainList(variant), inlineList(orientation), className);
     const listItems = asListItems(children);

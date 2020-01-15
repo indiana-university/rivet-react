@@ -39,7 +39,6 @@
     "enzyme-adapter-react-16": "1.15.2",
     "gh-pages": "2.1.1",
     "license-check-and-add": "3.0.3",
-    "react-docgen": "5.0.0",
     "react-styleguidist": "10.3.2",
     "rivet-collapsible": "0.2.11",
     "rivet-switch": "0.3.2",

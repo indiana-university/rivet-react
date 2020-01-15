@@ -16,7 +16,7 @@ const propTypes = {
     vertical: PropTypes.bool
 }
 
-export const StepIndicator =
+const StepIndicator =
 ({ className, children, vertical, id = Rivet.shortuid(), ...attrs }) => (
     <ol id={id} className={classNames(componentClass, { 'rvt-steps--vertical': vertical}, className)} {...attrs}>
         {children}

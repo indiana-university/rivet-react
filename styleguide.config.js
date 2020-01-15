@@ -31,10 +31,10 @@ module.exports = {
             name: 'Page Content',
             components: () => [
               'src/components/Badge/[A-Z]*.js',
-        //       'src/components/List/*.js',
-        //       'src/components/StepIndicator/*.js',
-        //       'src/components/Table/*.js',
-        //       'src/components/Tabs/*.js',
+              'src/components/List/[A-Z]*.js',
+              'src/components/StepIndicator/[A-Z]*.js',
+              'src/components/Table/[A-Z]*.js',
+              'src/components/Tabs/[A-Z]*.js',
             ],
             sections: [
                 {
