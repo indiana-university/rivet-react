@@ -6,8 +6,7 @@ import React from 'react';
 import * as Rivet from '../util/Rivet';
 import { renderInput } from './common';
 
-const Textarea = 
-    renderInput((attrs) => <textarea {...attrs}/>);
+const Textarea = (attrs) => <>{renderInput(<textarea {...attrs}/>)}</>;
 Textarea.displayName = 'TextArea';
 
 export default Rivet.rivetize(Textarea);

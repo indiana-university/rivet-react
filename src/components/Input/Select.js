@@ -6,8 +6,7 @@ import React from 'react';
 import * as Rivet from '../util/Rivet';
 import { renderInput } from './common';
 
-const Select = 
-    renderInput((attrs) => <select {...attrs}/>);
+const Select = (attrs) =><>{renderInput(<select {...attrs}/>)}</>;
 Select.displayName = 'Select';
 
 export default Rivet.rivetize(Select);

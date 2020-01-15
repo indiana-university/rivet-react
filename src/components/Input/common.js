@@ -13,7 +13,7 @@ const propTypes = {
     /** The label for the input */
     label: PropTypes.string,
     /** Visibility modifier for the input's label */
-    labelVisibility: PropTypes.instanceOf(Rivet.LabelVisibility),
+    labelVisibility: PropTypes.string,
     /** An optional note that will be displayed below the input */
     note: PropTypes.instanceOf(React.ReactNode),
     /** Rivet style for inline validation */

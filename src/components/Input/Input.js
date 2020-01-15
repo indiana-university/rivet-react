@@ -6,8 +6,7 @@ import React from 'react';
 import * as Rivet from '../util/Rivet';
 import { renderInput } from './common';
 
-const Input = 
-    renderInput((attrs) => <input {...attrs}/>);
+const Input = (attrs) => <>{renderInput(<input {...attrs}/>)}</>;
 Input.displayName = 'Input';
 
 export default Rivet.rivetize(Input);

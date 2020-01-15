@@ -36,6 +36,7 @@ module.exports = {
               'src/components/Table/[A-Z]*.js',
               'src/components/Tabs/[A-Z]*.js',
             ],
+            ignore: ['src/components/**/index.js'],
             sections: [
                 {
                     name: 'Links',
@@ -43,19 +44,20 @@ module.exports = {
                 }
             ],
         },
-        // {
-        //     name: 'Forms',
-        //     components: () => [
-        //       'src/components/Form/*.js',
-        //       'src/components/Button/*.js',
-        //       'src/components/Checkbox/*.js',
-        //       'src/components/File/*.js',
-        //       'src/components/RadioButton/*.js',
-        //       'src/components/Input/Input.js',
-        //       'src/components/Input/Textarea.js',
-        //       'src/components/Input/Select.js',
-        //     ],
-        // },
+        {
+            name: 'Forms',
+            components: () => [
+              'src/components/Form/[A-Z]*.js',
+              'src/components/Button/[A-Z]*.js',
+              'src/components/Checkbox/[A-Z]*.js',
+              'src/components/File/[A-Z]*.js',
+              'src/components/RadioButton/[A-Z]*.js',
+              'src/components/Input/Input.js',
+              'src/components/Input/Textarea.js',
+              'src/components/Input/Select.js',
+            ],
+            ignore: ['src/components/**/index.js', 'src/components/Input/common.js'],
+        },
         // {
         //     name: 'Layout',
         //     sections: [
