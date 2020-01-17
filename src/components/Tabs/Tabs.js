@@ -141,7 +141,7 @@ class Tabs extends React.PureComponent {
 
     const classes = classNames(
       {
-        ['rvt-tabs']: true,
+        'rvt-tabs': true,
         [`rvt-tabs--${variant}`]: variant
       },
       className

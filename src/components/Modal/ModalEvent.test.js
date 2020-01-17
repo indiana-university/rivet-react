@@ -7,16 +7,16 @@ import ModalEvent from './ModalEvent';
 const createKeyboardEvent = (keyCode) => ({
     type: 'keyup',
     which: keyCode
-}) as KeyboardEvent;
+});
 
 const createMouseEvent = (buttonCode) => ({
     type: 'click',
     which: buttonCode
-}) as MouseEvent;
+});
 
 const createTouchEvent = () => ({
     type: 'touchstart'
-}) as TouchEvent;
+});
 
 describe('ModalEvent', () => {
     describe('Keyboard Events', () =>{

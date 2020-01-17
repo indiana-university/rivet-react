@@ -28,8 +28,8 @@ const Table =
 ({ children, className, variant, compact, cells, ...attrs }) => {
     const classes = classNames({
         [`rvt-table-${variant}`]: variant,
-        ['rvt-table-compact']: compact,
-        ['rvt-table-cells']: cells && variant !== 'plain',
+        'rvt-table-compact': compact,
+        'rvt-table-cells': cells && variant !== 'plain',
     }, className);
     return (
         <table {...attrs} className={classes}>

@@ -145,18 +145,17 @@ const parseRivetHidden = (hide) => ({
     [`rvt-hide-${hide}`]: !!hide
 });
 
-export const rivetize = (Component) =>
-({ className, border, display, hide, margin, padding, typescale, ...attrs }) => (
-        <Component className={classNames(
-            parseRivetMargin(margin),
-            parseRivetPadding(padding),
-            parseRivetTypescale(typescale),
-            parseRivetBorder(border),
-            parseRivetDisplay(display),
-            parseRivetHidden(hide),
-            className)
-        } {...attrs} />
-    );
+export const rivetize = (Component) => ({ className, border, display, hide, margin, padding, typescale, ...attrs }) => (
+    <Component className={classNames(
+        parseRivetMargin(margin),
+        parseRivetPadding(padding),
+        parseRivetTypescale(typescale),
+        parseRivetBorder(border),
+        parseRivetDisplay(display),
+        parseRivetHidden(hide),
+        className)
+    } {...attrs} />
+);
 
 /** 
  * Determine whether to apply class limiting label visibility to screenreaders.

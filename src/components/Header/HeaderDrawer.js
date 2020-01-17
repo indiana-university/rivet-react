@@ -57,8 +57,8 @@ class HeaderDrawer extends React.PureComponent {
     render() {
         const { identity, navigation } = this.props;
         const drawerToggleClasses = classNames({
-            ['rvt-drawer-button']: true,
-            ['is-open']: this.state.open
+            'rvt-drawer-button': true,
+            'is-open': this.state.open
         });
         return (
             <div> {/* This is a div instead of a fragment due to needing a real element wrapping this for how we use ReactDOM.findDOMNode */}

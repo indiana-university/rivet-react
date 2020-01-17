@@ -13,8 +13,8 @@ const propTypes = {
 
 const ButtonGroup = ({ className, children, right, ...attrs }) => {
   const classes = classNames({
-    ['rvt-button-group']: true,
-    ['rvt-button-group--right']: right
+    'rvt-button-group': true,
+    'rvt-button-group--right': right
   }, className);
   return (
     <div {...attrs} className={classes}>

@@ -33,17 +33,16 @@ const asListItems = (children) =>
     : [];
 
 const plainList = (variant) => ({
-    ['rvt-plain-list']: variant === 'plain'
+    'rvt-plain-list': variant === 'plain'
 });
 
 const inlineList = (orientation) => ({
-    ['rvt-inline-list']: orientation === 'inline'
+    'rvt-inline-list': orientation === 'inline'
 });
 
 const componentClass = 'rvt-list';
 
-const List = 
-({ children, className, orientation, variant, ...props }) => {
+const List = ({ children, className, orientation, variant, ...props }) => {
     const classes = classNames(componentClass, plainList(variant), inlineList(orientation), className);
     const listItems = asListItems(children);
     const ListTag = variant === 'ordered' ? 'ol' : 'ul';

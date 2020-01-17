@@ -4,9 +4,9 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import React from 'react';
 import * as Rivet from '../util/Rivet';
-import { renderInput } from './common';
+import { InputTag } from './common';
 
-const Select = (attrs) =><>{renderInput(<select {...attrs}/>)}</>;
+const Select = (attrs) =><InputTag Tag="select" {...attrs} />;
 Select.displayName = 'Select';
 
 export default Rivet.rivetize(Select);

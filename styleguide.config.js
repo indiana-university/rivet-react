@@ -7,21 +7,22 @@ const glob = require('glob');
 
 module.exports = {
     title: 'Rivet React Style Guide',
-//    propsParser: require('react-docgen').withDefaultConfig({
-//        // https://github.com/styleguidist/react-styleguidist/issues/1439
-//        savePropValueAsString: true,
-//        propFilter: (prop, component) =>
-//            // skip props with no documentation
-//            prop.description.length > 0
-//            // skip aria props
-//            && prop.name.includes("aria-") === false
-//            // skip 'rivetize' props (these are documented separately)
-//            && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1
-//    }).parse,
+   // propsParser: require('react-docgen').withDefaultConfig({
+   //     // https://github.com/styleguidist/react-styleguidist/issues/1439
+   //     savePropValueAsString: true,
+   //     propFilter: (prop, component) =>
+   //         // skip props with no documentation
+   //         prop.description.length > 0
+   //         // skip aria props
+   //         && prop.name.includes("aria-") === false
+   //         // skip 'rivetize' props (these are documented separately)
+   //         && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1
+   // }).parse,
     webpackConfig: require('react-scripts/config/webpack.config.js'),
     pagePerSection: true,
     exampleMode: 'expand',
     usageMode: 'expand',
+    skipComponentsWithoutExample: true,
     sections: [
         {
             name: 'Introduction',
@@ -140,7 +141,9 @@ module.exports = {
     ],
     require: [
         'rivet-uits/css/rivet.min.css',
-        './src/docs/documentation.css'
+        './src/docs/documentation.css',
+        // See https://stackoverflow.com/questions/46067207/how-to-add-examples-a-component-with-dependencies-in-react-styleguidist#answer-46090262
+        path.resolve(__dirname, 'styleguide.setup.js')
     ],
     theme: {
         maxWidth: 1920

@@ -8,16 +8,16 @@ import HeaderDrawerEvent from './HeaderDrawerEvent';
 const createKeyboardEvent = (keyCode) => ({
     type: 'keyup',
     which: keyCode
-}) as KeyboardEvent;
+});
 
 const createMouseEvent = (buttonCode) => ({
     type: 'click',
     which: buttonCode
-}) as MouseEvent;
+});
 
 const createTouchEvent = () => ({
     type: 'touchstart'
-}) as TouchEvent;
+});
 
 describe('HeaderDrawerEvent', () => {
     describe('Keyboard Events', () =>{

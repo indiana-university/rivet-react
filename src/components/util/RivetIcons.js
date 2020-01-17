@@ -107,6 +107,8 @@ const resolveContents = (name, attrs) => {
         case "error": return icoError(attrs);
         case "trident-header": return icoTridentHeader;
         case "trident-footer": return icoTridentFooter;
+        default:
+            throw new Error(`Invalid icon name: ${name}`);
     }
 }
 

@@ -4,9 +4,9 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import React from 'react';
 import * as Rivet from '../util/Rivet';
-import { renderInput } from './common';
+import { InputTag } from './common';
 
-const Textarea = (attrs) => <>{renderInput(<textarea {...attrs}/>)}</>;
+const Textarea = (attrs) => <InputTag Tag="textarea" {...attrs}/>;
 Textarea.displayName = 'TextArea';
 
 export default Rivet.rivetize(Textarea);

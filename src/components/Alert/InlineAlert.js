@@ -16,11 +16,11 @@ const InlineAlert =
         id = Rivet.shortuid(),
         standalone = false,
         variant,
-        ... attrs
+        ...attrs
     }) => {
         const classes = classNames({
-            ['rvt-inline-alert']: true,
-            ['rvt-inline-alert--standalone']: standalone,
+            'rvt-inline-alert': true,
+            'rvt-inline-alert--standalone': standalone,
             [`rvt-inline-alert--${variant}`]: true
         }, className);
         return (

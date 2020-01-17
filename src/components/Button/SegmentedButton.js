@@ -14,8 +14,8 @@ const propTypes = {
 const SegmentedButton =
   ({ className, children, fit, ...attrs }) => {
     const classes = classNames({
-      ['rvt-button-segmented']: true,
-      ['rvt-button-segmented--fitted']: fit
+      'rvt-button-segmented': true,
+      'rvt-button-segmented--fitted': fit
     }, className);
     return (
       <div {...attrs} role="group" className={classes}>
