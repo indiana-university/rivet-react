@@ -4,15 +4,17 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { propIsElementOfType } from '../util/propTypeUtils';
 import Icon from '../util/RivetIcons';
 import HeaderDrawerEvent from './HeaderDrawerEvent';
-import PropTypes from 'prop-types';
+
+
 
 const propTypes = {
-    identity: PropTypes.instanceOf(React.ReactElement),
-    navigation: PropTypes.instanceOf(React.ReactElement)
-}
+    identity: propIsElementOfType('HeaderIdentity'),
+    navigation: propIsElementOfType('HeaderNavigation')
+
+};
 
 const initialState = { open: false };
 
@@ -28,6 +30,8 @@ class HeaderDrawer extends React.PureComponent {
 
     constructor(props) {
         super(props);
+        this.myRef = React.createRef();
+
         this.toggleDrawer = this.toggleDrawer.bind(this);
         this.toggleButton = React.createRef();
         this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -61,7 +65,7 @@ class HeaderDrawer extends React.PureComponent {
             'is-open': this.state.open
         });
         return (
-            <div> {/* This is a div instead of a fragment due to needing a real element wrapping this for how we use ReactDOM.findDOMNode */}
+            <div ref={this.myRef}> {/* This is a div instead of a fragment due to needing a real element wrapping this for how we use ReactDOM.findDOMNode */}
                 <button type="button" className={drawerToggleClasses} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDrawer} ref={this.toggleButton}>
                     <span className="sr-only">Toggle menu</span>
                     {!this.state.open && <Icon name="menu" className="rvt-drawer-button-open" /> }
@@ -110,7 +114,7 @@ class HeaderDrawer extends React.PureComponent {
             return false;
         }
 
-        if (event.targets(ReactDOM.findDOMNode(this)) && !event.isKeyEvent()) {
+        if (event.targets(this.myRef.current) && !event.isKeyEvent()) {
             // If the user clicks, touches or tabs inside the dropdown do not close the menu
             return false;
         }

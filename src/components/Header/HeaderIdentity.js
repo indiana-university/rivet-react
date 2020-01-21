@@ -14,7 +14,7 @@ const propTypes = {
      * An optional user avatar which appears next to the username
      * @see https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
      */
-    avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(React.ReactNode)]),
+    avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /**
      * Override default text for logout link
      */
@@ -29,7 +29,7 @@ const propTypes = {
      * @see https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
      */
     username: PropTypes.string
-}
+};
 
 const desktopWithoutChildren = (classes, label, logout) =>
     <div className={classes}>
@@ -77,9 +77,9 @@ const HeaderIdentity = ({ avatar, children, className, logoutLinkText, onLogout,
    
     let logout;
     if (children && onLogout) {
-        logout = <a href="javascript:void(0)" onClick={onLogout}>{logoutLinkText}</a>
+        logout = <a href="" onClick={onLogout}>{logoutLinkText}</a>
     } else if (!children && onLogout) {
-        logout = <a href="javascript:void(0)" className="rvt-header-id__log-out" onClick={onLogout}>{logoutLinkText}</a>
+        logout = <a href="" className="rvt-header-id__log-out" onClick={onLogout}>{logoutLinkText}</a>
     }
 
     return children

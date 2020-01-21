@@ -22,7 +22,7 @@ const propTypes = {
    * @see https://rivet.uits.iu.edu/components/navigation/dropdown/
    * @see https://rivet.uits.iu.edu/components/forms/buttons-segmented/#using-segmented-buttons-with-dropdowns
    */
-  label: PropTypes.string,
+  label: PropTypes.node,
   /**
    * Optional CSS classes which will be applied to the dropdown menu
    */

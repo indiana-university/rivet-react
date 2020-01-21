@@ -9,8 +9,8 @@ const propTypes = {
     /**
      * The text to appear on the dropdown toggle button. 
      */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(React.ReactNode)])
-}
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+};
 
 const initialState = { open: false }
 

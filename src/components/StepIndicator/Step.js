@@ -39,7 +39,7 @@ const propTypes = {
     /**
      * An optional variant to be applied to the indicator
      */
-    variant: PropTypes.oneOf(['success' | 'warning' | 'danger'])
+    variant: PropTypes.oneOf(['success', 'warning', 'danger'])
 }
 
 const Step =

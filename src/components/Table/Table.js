@@ -11,7 +11,7 @@ const propTypes = {
     /**
      * Optional Rivet style which changes the look and feel of the rendered table.
      */
-    variant: PropTypes.oneOf(['stripes' | 'plain']),
+    variant: PropTypes.oneOf(['stripes', 'plain']),
 
     /**
      * Determines if the table is compact.  Default is not compact.

@@ -14,7 +14,7 @@ const propTypes = {
   /**
    * Optional Rivet style: A fitted or vertical set of tabs.
    */
-  variant: PropTypes.oneOf(['fitted' | 'vertical'])
+  variant: PropTypes.oneOf(['fitted', 'vertical'])
 }
 
 const initialState = { selected: 0 }
@@ -60,9 +60,13 @@ class Tabs extends React.PureComponent {
   }
 
   focusPreviousTab(tabs, target) {
-    const prev = tabs.indexOf(target) - 1;
-
-    !tabs[prev] ? tabs[tabs.length - 1].focus() : tabs[prev].focus();
+    let prevIndex = tabs.indexOf(target) - 1;
+    if (prevIndex < 0) {
+      prevIndex = tabs.length - 1;
+    }
+    // console.log(tabs[prevIndex]);
+    tabs[prevIndex].focus();
+    // this.changeTab(prevIndex);
   }
 
   handleKeydown(tabs, target, event) {
