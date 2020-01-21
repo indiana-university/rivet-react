@@ -25,7 +25,7 @@ const Footer: React.SFC<React.HTMLAttributes<HTMLDivElement>> =
             </li>
             {React.Children.map(children, footerNavLi)}
             <li key="copyright-footer-link" className={liClass}>
-                <a href="https://www.iu.edu/copyright/index.html">Copyright</a> &copy; 2019 The Trustees of <a href="https://www.iu.edu/">Indiana University</a>
+                <a href="https://www.iu.edu/copyright/index.html">Copyright</a> &copy; 2020 The Trustees of <a href="https://www.iu.edu/">Indiana University</a>
             </li>
         </ul>
     </footer>
