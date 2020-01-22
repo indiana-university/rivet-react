@@ -8,6 +8,9 @@ import React from 'react';
 import * as Rivet from '../util/Rivet';
 
 const propTypes = {
+  /**
+   * Optional Rivet style: Expand the segmented buttons to fill the entire width of the parent container
+   */
   fit: PropTypes.bool
 };
 

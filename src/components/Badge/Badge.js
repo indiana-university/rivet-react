@@ -5,7 +5,6 @@ import * as Rivet from '../util/Rivet';
 class Badge extends React.Component {
     static displayName = 'Badge';
     static propTypes = {
-        role: PropTypes.oneOf(['secondary']),
         /**
          * Optional Rivet style: a secondary badge.
          */

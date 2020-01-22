@@ -8,6 +8,9 @@ import React from 'react';
 import * as Rivet from '../util/Rivet';
 
 const propTypes = {
+  /** 
+   * Optional Rivet style: Right-align the grouped buttons within the parent container
+   */
   right: PropTypes.bool
 };
 

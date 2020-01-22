@@ -24,12 +24,12 @@ const propTypes = {
     /**
      * A visual indicator to identify this step
      */
-    indicator: PropTypes.any,
+    indicator: PropTypes.node,
 
     /**
      * A label for this step
      */
-    label: PropTypes.any,
+    label: PropTypes.node,
 
     /**
      * An textual indicator to be used by screenreaders since the visual indicator may not include text

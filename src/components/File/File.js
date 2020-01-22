@@ -13,7 +13,10 @@ const propTypes = {
     /** The text for the file button */
     label: PropTypes.string,
     /** Handle on DOM file input field */
-    innerRef: PropTypes.instanceOf(React.RefObject)
+    innerRef: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) })
+    ]),
 }
 
 class File extends React.PureComponent {

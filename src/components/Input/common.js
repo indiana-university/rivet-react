@@ -11,11 +11,11 @@ import PropTypes from 'prop-types';
 
 export const propTypes = {
     /** The label for the input */
-    label: PropTypes.string,
+    label: PropTypes.string.isRequired,
     /** Visibility modifier for the input's label */
-    labelVisibility: PropTypes.string,
+    labelVisibility: PropTypes.oneOf(["screen-reader-only"]),
     /** An optional note that will be displayed below the input */
-    note: PropTypes.instanceOf(React.ReactNode),
+    note: PropTypes.node,
     /** Rivet style for inline validation */
     variant: PropTypes.oneOf(['danger', 'info', 'success', 'warning'])
 };

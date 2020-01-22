@@ -9,7 +9,9 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
     /** The text label/description for this radio option */
-    label: PropTypes.string
+    label: PropTypes.string.isRequired,
+    /** @ignore */
+    id: PropTypes.string
 };
 
 const RadioButton = 

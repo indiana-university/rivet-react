@@ -17,7 +17,12 @@ export const buttonPropTypes = {
   size: PropTypes.oneOf(['small']),
   /** Optional Rivet style: a secondary button. */
   modifier: PropTypes.oneOf(['secondary']),
-  innerRef: PropTypes.any,
+  /** @ignore */
+  innerRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(HTMLButtonElement) })
+  ]),
+  /** @ignore */
   id: PropTypes.string
 }
 

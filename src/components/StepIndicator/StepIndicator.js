@@ -13,7 +13,9 @@ const propTypes = {
     /**
      * Defines whether the step indicator should use the alternate vertical styling
      */
-    vertical: PropTypes.bool
+    vertical: PropTypes.bool,
+    /** @ignore */
+    id: PropTypes.string
 }
 
 const StepIndicator =
