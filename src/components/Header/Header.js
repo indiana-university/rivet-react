@@ -16,7 +16,7 @@ const propTypes = {
      * The application name or title that appears in the header.
      * @see https://rivet.uits.iu.edu/components/navigation/header/#base-header
      */
-    title: PropTypes.string
+    title: PropTypes.string.isRequired
 }
 
 const componentClass = "rvt-header";

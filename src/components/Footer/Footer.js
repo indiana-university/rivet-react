@@ -6,6 +6,12 @@ import classNames from 'classnames';
 import React from 'react';
 import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+    /** @ignore */
+    id: PropTypes.string
+  }
 
 const componentClass = 'rvt-footer';
 const liClass = 'rvt-footer__aux-item';
@@ -31,5 +37,6 @@ const Footer =
     </footer>
 );
 Footer.displayName = 'Footer';
+Footer.propTypes = propTypes;
 
 export default Footer;

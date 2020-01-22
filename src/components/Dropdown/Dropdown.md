@@ -1,3 +1,5 @@
+Additional props for the dropdown component can be found in [Props & Methods for the Button](/#/Forms?id=button)
+
 Use the dropdown component to create a list of menu options that can be toggled with a button element.
 
 View the [Rivet documentation for Dropdowns](https://rivet.uits.iu.edu/components/navigation/dropdown/).

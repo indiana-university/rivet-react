@@ -12,7 +12,7 @@ const propTypes = {
      * The label of the menu
      * @see https://rivet.uits.iu.edu/components/navigation/header/#base-header
      */
-    label: PropTypes.string
+    label: PropTypes.string.isRequired
 }
 
 const HeaderMenu = ({ children, className, ...attrs }) => {

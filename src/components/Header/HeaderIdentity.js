@@ -14,7 +14,7 @@ const propTypes = {
      * An optional user avatar which appears next to the username
      * @see https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
      */
-    avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    avatar: PropTypes.node,
     /**
      * Override default text for logout link
      */
@@ -28,7 +28,7 @@ const propTypes = {
      * The currently logged in user's username
      * @see https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
      */
-    username: PropTypes.string
+    username: PropTypes.string.isRequired
 };
 
 const desktopWithoutChildren = (classes, label, logout) =>
