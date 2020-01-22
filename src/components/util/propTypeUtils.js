@@ -7,11 +7,10 @@ export const propIsElementOfType = propComponentName => {
     return (props, propName, componentName) => {
         const propComponent = props[propName];
         if (propComponent) {
-            if (!propComponent.type || !propComponent.type.displayName) {
+            if ((!propComponent.displayName && !propComponent.type) || (propComponent.type && !propComponent.type.displayName)) {
                 return new Error(`Error when validating ${componentName}. Value passed in for ${propName} does not have a 'displayName' property.`)
             }
-
-            let displayName = props[propName].type.displayName;
+            const displayName = propComponent.displayName || propComponent.type.displayName;
             if (displayName !== propComponentName) {
                 return new Error(`${componentName} expected element of type [${propComponentName}] for ${propName}, but received ${displayName}`);
             }
