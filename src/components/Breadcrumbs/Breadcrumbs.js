@@ -5,6 +5,14 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from 'classnames';
 import React from 'react';
 import * as Rivet from '../util/Rivet';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  /**
+  * Optional Rivet style: A call-out styled set of breadcrumbs.
+  */
+  variant: PropTypes.oneOf(['call-out'])
+}
 
 const Breadcrumbs =
   ({ children, variant, ...attrs }) => {
@@ -23,5 +31,6 @@ const Breadcrumbs =
     );
   };
 Breadcrumbs.displayName = 'Breadcrumbs';
+Breadcrumbs.propTypes = propTypes;
 
 export default Rivet.rivetize(Breadcrumbs);

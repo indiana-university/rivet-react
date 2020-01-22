@@ -1,3 +1,5 @@
+See [Props & Methods for the Input tag](/#/Forms?id=input)
+
 The select element creates a dropdown that allows users to choose one item from a list.
 
 View the [Rivet documentation for Select](https://rivet.uits.iu.edu/components/forms/select-input/).

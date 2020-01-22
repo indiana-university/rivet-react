@@ -1,3 +1,5 @@
+See [Props & Methods for the Input tag](/#/Forms?id=input)
+
 ### Textarea Example
 
 Use the `note` property to provide contextual information to the user.

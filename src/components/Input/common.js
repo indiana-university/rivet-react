@@ -7,18 +7,6 @@ import React from 'react';
 
 import InlineAlert from '../Alert/InlineAlert';
 import * as Rivet from '../util/Rivet';
-import PropTypes from 'prop-types';
-
-export const propTypes = {
-    /** The label for the input */
-    label: PropTypes.string.isRequired,
-    /** Visibility modifier for the input's label */
-    labelVisibility: PropTypes.oneOf(["screen-reader-only"]),
-    /** An optional note that will be displayed below the input */
-    note: PropTypes.node,
-    /** Rivet style for inline validation */
-    variant: PropTypes.oneOf(['danger', 'info', 'success', 'warning'])
-};
 
 const inputClassName = (variant) => 
     variant

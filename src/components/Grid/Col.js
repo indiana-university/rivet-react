@@ -14,7 +14,7 @@ const propTypes = {
      * Boolean specifying if this column should appear last and be right-aligned.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#right-align-last-item
      */ 
-    last: PropTypes.oneOfType([PropTypes.oneOf(numList), PropTypes.bool]),
+    last: PropTypes.bool,
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * large screen widths or larger.
@@ -24,12 +24,16 @@ const propTypes = {
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * medium screen widths or larger.
+     * 
+     * The value can be a boolean or an integer between 1 and 12
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
     md: PropTypes.oneOfType([PropTypes.oneOf(numList), PropTypes.bool]),
     /**
      * Allows you to change the visual order of grid columns at small screen
      * widths or larger.
+     * 
+     * The value can be a boolean or an integer between 1 and 12
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
     pullSm: PropTypes.oneOf(numList),
@@ -99,18 +103,24 @@ const propTypes = {
      * Sets the column width or whether it should be use automatic sizing at
      * small screen widths or larger.  This should be used to set the column
      * width if it should be set for all screen sizes.
+     * 
+     * The value can be a boolean or an integer between 1 and 12
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
     sm: PropTypes.oneOfType([PropTypes.oneOf(numList), PropTypes.bool]),
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * extra large screen widths or larger.
+     * 
+     * The value can be a boolean or an integer between 1 and 12
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
     xl: PropTypes.oneOfType([PropTypes.oneOf(numList), PropTypes.bool]),
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * very large screen widths.
+     * 
+     * The value can be a boolean or an integer between 1 and 12
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
     xxl: PropTypes.oneOfType([PropTypes.oneOf(numList), PropTypes.bool]),

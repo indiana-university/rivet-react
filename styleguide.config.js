@@ -7,17 +7,6 @@ const glob = require('glob');
 
 module.exports = {
     title: 'Rivet React Style Guide',
-   // propsParser: require('react-docgen').withDefaultConfig({
-   //     // https://github.com/styleguidist/react-styleguidist/issues/1439
-   //     savePropValueAsString: true,
-   //     propFilter: (prop, component) =>
-   //         // skip props with no documentation
-   //         prop.description.length > 0
-   //         // skip aria props
-   //         && prop.name.includes("aria-") === false
-   //         // skip 'rivetize' props (these are documented separately)
-   //         && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1
-   // }).parse,
     webpackConfig: require('react-scripts/config/webpack.config.js'),
     pagePerSection: true,
     exampleMode: 'expand',
