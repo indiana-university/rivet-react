@@ -36,3 +36,4 @@ yarn-error.log*
 
 # Ignore Visual Studio Code config files
 *.code-workspace
+.env

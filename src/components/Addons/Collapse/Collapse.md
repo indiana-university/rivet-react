@@ -7,19 +7,19 @@
 
 This component is a Rivet add-on so it requires an additional NPM module to be installed before it can be used.  The following command can be used to install the extra dependency:
 
-```sh
+```shell
 npm install rivet-collapsible
 ```
 
  Or with yarn,
 
-```sh
+```shell
 yarn add rivet-collapsible
 ```
 
 After the dependency has been added you may import the component through the "addons" submodule:
 
-```typescript
+```javascript
 import { Collapse } from 'rivet-react/addons';
 ```
 
