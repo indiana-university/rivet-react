@@ -133,13 +133,13 @@ module.exports = {
                 }
             ]
         },
-        // {
-        //     name: 'Addons',
-        //     components: () => [
-        //       'src/components/Addons/Collapse/[A-Z]*.js',
-        //       'src/components/Addons/Switch/[A-Z]*.js',
-        //     ],
-        // },
+        {
+            name: 'Addons',
+            components: () => [
+              'src/components/Addons/Collapse/[A-Z]*.js',
+              'src/components/Addons/Switch/[A-Z]*.js',
+            ],
+        },
     ],
     require: [
         'rivet-uits/css/rivet.min.css',
