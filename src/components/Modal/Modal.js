@@ -12,21 +12,6 @@ import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
 import ModalEvent from './ModalEvent';
 
-const propTypes = {
-    /**
-     * Determines whether the modal is shown or not
-     */
-    isOpen: PropTypes.bool,
-    /**
-     * Optional function to call to raise when the alert is dismissed. If undefined, the modal will act as a dialog (i.e., no close button, 
-     * will not close on outside click or escape key)
-     */
-    onDismiss: PropTypes.func,
-    /**
-     * The content of the modal's header
-     */
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(React.ReactNode)])
-}
 
 const ModalCloseButton = ({ onDismiss }) => (
     <Button type="button" className="rvt-modal__close" data-modal-close="close" onClick={onDismiss}>
@@ -38,12 +23,25 @@ const ModalCloseButton = ({ onDismiss }) => (
 class Modal extends React.PureComponent {
 
     static propTypes = {
+        /** @ignore */
         children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+        /** @ignore */
         className: PropTypes.string,
+        /** @ignore */
         id: PropTypes.string,
+        /**
+         * Determines whether the modal is shown or not
+         */
         isOpen: PropTypes.bool,
+        /**
+         * Optional function to call to raise when the alert is dismissed. If undefined, the modal will act as a dialog (i.e., no close button, 
+         * will not close on outside click or escape key)
+         */
         onDismiss: PropTypes.func,
-        title: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node, PropTypes.string]).isRequired
+        /**
+        * The content of the modal's header
+        */
+        title: PropTypes.node.isRequired
     };
 
     eventHandler;
@@ -128,7 +126,5 @@ class Modal extends React.PureComponent {
     }      
 
 }
-
-Modal.propTypes = propTypes;
 
 export default Modal;

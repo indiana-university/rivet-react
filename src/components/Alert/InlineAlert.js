@@ -44,7 +44,9 @@ InlineAlert.propTypes = {
     /**
      * Rivet style for inline validation.
      */
-    variant: PropTypes.string
+    variant: PropTypes.string.isRequired,
+    /** @ignore */
+    id: PropTypes.string
 };
 
 export default Rivet.rivetize(InlineAlert);

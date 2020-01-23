@@ -7,7 +7,29 @@ import React from 'react';
 
 import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
-import { statelessPropTypes } from './common';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+    /**
+     * Rivet alert styling. 
+     * @see https://rivet.uits.iu.edu/components/overlays/alerts
+     */
+    variant: PropTypes.oneOf(['danger', 'info', 'warning', 'success']).isRequired,
+    /**
+     * Optional alert title
+     */
+    title: PropTypes.node,
+    /**
+     * Optional event to raise when the alert is dismissed
+     */
+    onDismiss: PropTypes.func,
+    /**
+     * Optional flag to determine whether the alert is visible
+     */
+    isOpen: PropTypes.bool,
+    /** @ignore */
+    id: PropTypes.string
+}
 
 const Alert = 
     ({title, onDismiss, variant, isOpen=true, id=Rivet.shortuid(), className, children, ...attrs}) => {
@@ -37,6 +59,6 @@ const Alert =
         : null
 };
 Alert.displayName = 'Alert';
-Alert.propTypes = statelessPropTypes;
+Alert.propTypes = propTypes;
 
 export default Rivet.rivetize(Alert);

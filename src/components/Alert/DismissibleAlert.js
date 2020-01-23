@@ -5,12 +5,26 @@ SPDX-License-Identifier: BSD-3-Clause
 import React from 'react'
 import * as Rivet from '../util/Rivet';
 import Alert from './Alert'
-import { statefulPropTypes } from "./common"
+import PropTypes from 'prop-types';
 
 const initialState = { isOpen: true }
 
 class DismissibleAlert extends React.PureComponent {
-    static propTypes = statefulPropTypes;
+    static propTypes = {
+        /**
+         * Rivet alert styling. 
+         * @see https://rivet.uits.iu.edu/components/overlays/alerts
+         */
+        variant: PropTypes.oneOf(['danger', 'info', 'warning', 'success']).isRequired,
+        /**
+         * Optional alert title
+         */
+        title: PropTypes.node,
+        /**
+         * Optional event to raise when the alert is dismissed
+         */
+        onDismiss: PropTypes.func,
+    }    
     
     state = initialState;
 
