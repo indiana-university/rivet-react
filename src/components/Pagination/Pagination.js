@@ -4,9 +4,9 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import * as Rivet from '../util/Rivet';
-import PropTypes from 'prop-types';
 
 const propTypes = {
   /**
@@ -18,12 +18,6 @@ const propTypes = {
    */
   size: PropTypes.oneOf(['small'])
 }
-
-// interface PaginationItemProps {
-//   ['aria-current']: string;
-//   ['aria-disabled']: boolean;
-//   disabled: boolean;
-// }
 
 const Pagination =
  ({ align, children, className, size, ...attrs }) => {
