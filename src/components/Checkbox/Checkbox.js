@@ -10,7 +10,7 @@ const propTypes = {
     /**
      * The checkbox label
      */
-    label: PropTypes.string.isRequired,
+    label: PropTypes.node.isRequired,
     /**
      * Optional Rivet style: Make the label visible only to screen readers.
      */
