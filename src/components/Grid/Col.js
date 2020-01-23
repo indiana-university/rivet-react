@@ -7,7 +7,7 @@ import React from 'react';
 import * as Rivet from '../util/Rivet';
 import PropTypes from 'prop-types';
 
-const numList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const colWidthOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const propTypes = {
     /**
@@ -20,7 +20,7 @@ const propTypes = {
      * large screen widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
-    lg: PropTypes.oneOfType([PropTypes.oneOf(numList), PropTypes.bool]),
+    lg: PropTypes.oneOfType([PropTypes.oneOf(colWidthOptions), PropTypes.bool]),
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * medium screen widths or larger.
@@ -28,7 +28,7 @@ const propTypes = {
      * The value can be a boolean or an integer between 1 and 12
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
-    md: PropTypes.oneOfType([PropTypes.oneOf(numList), PropTypes.bool]),
+    md: PropTypes.oneOfType([PropTypes.oneOf(colWidthOptions), PropTypes.bool]),
     /**
      * Allows you to change the visual order of grid columns at small screen
      * widths or larger.
@@ -36,69 +36,69 @@ const propTypes = {
      * The value can be a boolean or an integer between 1 and 12
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullSm: PropTypes.oneOf(numList),
+    pullSm: PropTypes.oneOf(colWidthOptions),
     /**
      * Allows you to change the visual order of grid columns at medium screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullSm: PropTypes.oneOf(numList),
+    pullSm: PropTypes.oneOf(colWidthOptions),
     
     /**
      * Allows you to change the visual order of grid columns at large screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullLg: PropTypes.oneOf(numList),
+    pullLg: PropTypes.oneOf(colWidthOptions),
     
     /**
      * Allows you to change the visual order of grid columns at extra large
      * screen widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullXl: PropTypes.oneOf(numList),
+    pullXl: PropTypes.oneOf(colWidthOptions),
     
     /**
      * Allows you to change the visual order of grid columns at very large
      * screen widths.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullXxl: PropTypes.oneOf(numList),
+    pullXxl: PropTypes.oneOf(colWidthOptions),
     
     /**
      * Allows you to change the visual order of grid columns at small screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pushSm: PropTypes.oneOf(numList),
+    pushSm: PropTypes.oneOf(colWidthOptions),
     
     /**
      * Allows you to change the visual order of grid columns at medium screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pushMd: PropTypes.oneOf(numList),
+    pushMd: PropTypes.oneOf(colWidthOptions),
     
     /**
      * Allows you to change the visual order of grid columns at large screen
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pushLg: PropTypes.oneOf(numList),
+    pushLg: PropTypes.oneOf(colWidthOptions),
     
     /**
      * Allows you to change the visual order of grid columns at extra large
      * screen widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pushXl: PropTypes.oneOf(numList),
+    pushXl: PropTypes.oneOf(colWidthOptions),
     
     /**
      * Allows you to change the visual order of grid columns at very large
      * screen widths.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pushXxl: PropTypes.oneOf(numList),
+    pushXxl: PropTypes.oneOf(colWidthOptions),
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * small screen widths or larger.  This should be used to set the column
@@ -107,7 +107,7 @@ const propTypes = {
      * The value can be a boolean or an integer between 1 and 12
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
-    sm: PropTypes.oneOfType([PropTypes.oneOf(numList), PropTypes.bool]),
+    sm: PropTypes.oneOfType([PropTypes.oneOf(colWidthOptions), PropTypes.bool]),
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * extra large screen widths or larger.
@@ -115,7 +115,7 @@ const propTypes = {
      * The value can be a boolean or an integer between 1 and 12
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
-    xl: PropTypes.oneOfType([PropTypes.oneOf(numList), PropTypes.bool]),
+    xl: PropTypes.oneOfType([PropTypes.oneOf(colWidthOptions), PropTypes.bool]),
     /**
      * Sets the column width or whether it should be use automatic sizing at
      * very large screen widths.
@@ -123,7 +123,7 @@ const propTypes = {
      * The value can be a boolean or an integer between 1 and 12
      * @see https://rivet.uits.iu.edu/components/layout/grid/#responsive-automatic-columns
      */
-    xxl: PropTypes.oneOfType([PropTypes.oneOf(numList), PropTypes.bool]),
+    xxl: PropTypes.oneOfType([PropTypes.oneOf(colWidthOptions), PropTypes.bool]),
 }
 
 const Col = 
