@@ -4,10 +4,10 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
-import PropTypes from 'prop-types';
 
 const propTypes = {
     /**
