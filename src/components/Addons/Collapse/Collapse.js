@@ -4,6 +4,7 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import 'rivet-collapsible/dist/css/rivet-collapsible.css';
 
@@ -12,6 +13,21 @@ import Icon from '../../util/RivetIcons';
 const initialState = { open: false };
 
 class Collapse extends React.PureComponent {
+
+  static propTypes = {
+    /**
+   * Sets whether the collapse is open or closed by default.  Default is closed.
+   */
+    defaultClosed: PropTypes.bool,
+    /**
+     * The component to use for the title element.  Defaults to "div".
+     */
+    TitleComponent: PropTypes.oneOf(['div','h1','h2','h3','h4','h5','h6']),
+    /**
+     * Optional Rivet style: A panel styled collapse.
+     */
+    variant: PropTypes.oneOf(['panel'])
+  }
 
   static defaultProps = {
     defaultClosed: true

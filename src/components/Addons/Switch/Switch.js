@@ -4,11 +4,27 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'rivet-switch/dist/css/rivet-switch.css';
 
 const initialState = { value: 'on' };
 
 class Switch extends React.PureComponent {
+
+  static propTypes = {
+    /**
+   * Sets whether the switch is on or off by default.  Default is "on".
+   */
+    defaultValue: PropTypes.oneOf(['on','off']),
+    /**
+     * Optional Rivet style: A small switch
+     */
+    size: PropTypes.oneOf(['small']),
+    /**
+     * Optional Rivet style: A success or danger styled switch.
+     */
+    variant: PropTypes.oneOf(['success','danger']),
+  }
 
   state = initialState;
 
