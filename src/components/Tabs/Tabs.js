@@ -3,10 +3,10 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import * as Rivet from '../util/Rivet';
-import PropTypes from 'prop-types';
 
 const propTypes = {
   /** The title of the tab */
@@ -64,9 +64,7 @@ class Tabs extends React.PureComponent {
     if (prevIndex < 0) {
       prevIndex = tabs.length - 1;
     }
-    // console.log(tabs[prevIndex]);
     tabs[prevIndex].focus();
-    // this.changeTab(prevIndex);
   }
 
   handleKeydown(tabs, target, event) {
