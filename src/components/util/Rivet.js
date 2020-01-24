@@ -7,7 +7,6 @@ import React from 'react';
 
 export const sizes = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' ];
 export const edges = [ 'top', 'right', 'bottom', 'left', 'tb', 'lr' ];
-export const validSpacing = [ ...sizes, ...edges ];
 
 // Helper and Styling Functions
 
@@ -21,7 +20,7 @@ export const shortuid = () => {
 const inflate = (x) => Array.isArray(x) ? x : [x];
 const flatten = (a,b) => a.concat(b);
 const rivetSpacing = (type,edge,size) => {
-    return validSpacing.includes(size) ? `rvt-${type}-${edge}-${size}` : '';
+    return sizes.includes(size) ? `rvt-${type}-${edge}-${size}` : '';
 };
 
 // determine spacing based on edge- or size-based styling

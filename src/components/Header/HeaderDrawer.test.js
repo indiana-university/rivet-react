@@ -50,7 +50,7 @@ describe('<Drawer />', () => {
             expect(cut.find('div.rvt-drawer > nav.rvt-drawer__nav > ul > li > HeaderIdentity')).toHaveLength(0);
         });
         describe ('It should render identity menu without children', () => {
-            const identity = <HeaderIdentity user="foo"/>
+            const identity = <HeaderIdentity username="foo"/>
             const cut = shallow(<HeaderDrawer identity={identity}/>);
             
             // open the drawer
@@ -62,7 +62,7 @@ describe('<Drawer />', () => {
         });
         describe ('It should render identity menu with children', () => {
             const identity = 
-                <HeaderIdentity user="foo">
+                <HeaderIdentity username="foo">
                     <a href="#">Example one</a>
                 </HeaderIdentity>
             const cut = shallow(<HeaderDrawer identity={identity}/>);
