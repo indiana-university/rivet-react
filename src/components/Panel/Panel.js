@@ -17,7 +17,7 @@ const propTypes = {
 const Panel = 
 ({ children, className, variant, ...attrs }) => {
     const classes = classNames({
-        ['rvt-panel']: true,
+        'rvt-panel': true,
         [`rvt-panel--${variant}`]: !!variant
     }, className);
     return (

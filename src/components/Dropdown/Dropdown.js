@@ -5,14 +5,14 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from 'classnames';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from '../Button/Button';
+import Button, { buttonPropTypes } from '../Button/Button';
 import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
 import DropdownEvent from './DropdownEvent';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  ...Button.propTypes,
+  ...buttonPropTypes,
   /** Optional Rivet style: alignment of the dropdown menu items relative to the edge of the dropdown button. */
   align: PropTypes.oneOf(['right']),
   /**
@@ -64,7 +64,7 @@ export class Dropdown extends React.PureComponent {
     render() {
         const { align, children, className, label, menuClass, toggleDropdownOnClickInside = false, ...attrs } = this.props;
         const menuClasses = classNames({
-            ['rvt-dropdown__menu']: true,
+            'rvt-dropdown__menu': true,
             [`rvt-dropdown__menu--${align}`]: !!align
         }, menuClass);
         return (

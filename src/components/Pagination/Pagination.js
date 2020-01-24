@@ -22,7 +22,7 @@ const propTypes = {
 const Pagination =
  ({ align, children, className, size, ...attrs }) => {
     const classes = classNames({
-      ['rvt-pagination']: true,
+      'rvt-pagination': true,
       [`rvt-pagination--${align}`]: align,
       [`rvt-pagination--${size}`]: size
     });

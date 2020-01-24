@@ -42,7 +42,7 @@ const propTypes = {
      * widths or larger.
      * @see https://rivet.uits.iu.edu/components/layout/grid/#push-and-pull
      */
-    pullSm: PropTypes.oneOf(colWidthOptions),
+    pullMd: PropTypes.oneOf(colWidthOptions),
     
     /**
      * Allows you to change the visual order of grid columns at large screen
@@ -129,7 +129,7 @@ const propTypes = {
 const Col = 
 ({ children, className, last, lg, md, pullSm, pullMd, pullLg, pullXl, pullXxl, pushSm, pushMd, pushLg, pushXl, pushXxl, sm, xl, xxl, ...attrs }) => {
     const classes = classNames({
-        ['rvt-grid__item']: !sm && !md && !lg && !xl && !xxl,
+        'rvt-grid__item': !sm && !md && !lg && !xl && !xxl,
         [`rvt-grid__item--last`]: last,
         [`rvt-grid__item-sm`]: typeof sm === 'boolean',
         [`rvt-grid__item-${sm}-sm-up`]: typeof sm === 'number',
