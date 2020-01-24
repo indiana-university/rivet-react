@@ -4,73 +4,10 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames'
 import React from 'react';
-// import PropTypes from 'prop-types';
 
-// Classes, Interfaces, and Types
-
-// export type Typescale = "base" | "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | 12 | 14 | 16 | 18 | 20 | 23 | 26 | 29 | 32 | 36 | 41 | 46 | 52;
-// export type Size = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-export const Sizes = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' ];
-// export type Edge = 'top' | 'right' | 'bottom' | 'left' | 'tb' | 'lr';
-export const Edges = [ 'top', 'right', 'bottom', 'left', 'tb', 'lr' ];
-// export type Display = "inline" | "inline-block" | "block" | "flex" | "flex-vertical-center";
-// export type Border = "all" | "radius" | Edge | Edge[]
-// export type Hidden = "sm-down" | "md-down" | "lg-down" | "xl-down" | "xxl-down" | "sm-up" | "md-up" | "lg-up" | "xl-up" | "xxl-up"
-
-// export interface Props {
-//     /**
-//      * Optional Rivet style: type scale adjustment
-//      * See: https://rivet.uits.iu.edu/components/layout/typography/
-//      */
-//     typescale?: Typescale,
-//     /**
-//      * Optional Rivet style: show/hide content based on screen size.
-//      * ex: 'md-down' will hide content on medium-sized screens and smaller.
-//      * ex: 'lg-up' will hide content on large-sized screens and larger.
-//      * See: https://rivet.uits.iu.edu/components/utilities/visibility/
-//      */
-//     hide?: Hidden,
-//     /**
-//      * Optional Rivet style: add a border to any or all sides of an element
-//      * See: https://rivet.uits.iu.edu/components/utilities/border/
-//      */
-//     border?: Border,
-//     /**
-//      * Optional Rivet style: adjust the margin(s) of an element
-//      * See: https://rivet.uits.iu.edu/components/layout/spacing/
-//      */
-//     margin?: Size | BoxStyle,
-//     /**
-//      * Optional Rivet style: adjust the padding(s) of an element
-//      * See: https://rivet.uits.iu.edu/components/layout/spacing/
-//      */
-//     padding?: Size | BoxStyle,
-//     /**
-//      * Optional Rivet style: adjust the display property of an element
-//      * See: https://rivet.uits.iu.edu/components/utilities/display/#display-property-utilities
-//      */
-//     display?: Display,
-// }
-
-// /**
-//  * An interface for describing the styling of box edges. 
-//  */
-// export interface BoxStyle {
-//     top?: Size,
-//     right?: Size,
-//     bottom?: Size,
-//     left?: Size,
-//     lr?: Size,
-//     tb?: Size,
-//     //
-//     xxs?: Edge | Edge[],
-//     xs?:  Edge | Edge[],
-//     sm?: Edge | Edge[],
-//     md?: Edge | Edge[],
-//     lg?: Edge | Edge[],
-//     xl?: Edge | Edge[],
-//     xxl?: Edge | Edge[],
-// }
+export const sizes = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' ];
+export const edges = [ 'top', 'right', 'bottom', 'left', 'tb', 'lr' ];
+export const validSpacing = [ ...sizes, ...edges ];
 
 // Helper and Styling Functions
 
@@ -83,16 +20,18 @@ export const shortuid = () => {
 
 const inflate = (x) => Array.isArray(x) ? x : [x];
 const flatten = (a,b) => a.concat(b);
-const rivetSpacing = (type,edge,size) => `rvt-${type}-${edge}-${size}`
+const rivetSpacing = (type,edge,size) => {
+    return validSpacing.includes(size) ? `rvt-${type}-${edge}-${size}` : '';
+};
 
 // determine spacing based on edge- or size-based styling
 const edgeSpecificSpacing = (t, style) =>
-    Edges
+    edges
         .filter(e => style.hasOwnProperty(e))
         // edges can only have one specified size
         .map(e => rivetSpacing(t,e,style[e]))
         .concat(
-    Sizes
+    sizes
         .filter(s => style.hasOwnProperty(s))
         // sizes can be applied to one or more edges.
         .map(s => inflate(style[s]) 
@@ -107,43 +46,74 @@ const parseRivetSpacing = (type, style) =>
         : edgeSpecificSpacing(type, style)
     : "";
 
+/**
+ * Optional Rivet style: adjust the margin(s) of an element
+ * See: https://rivet.uits.iu.edu/components/layout/spacing/
+ */
 const parseRivetMargin = (margin) =>
     parseRivetSpacing('m', margin);
 
+/**
+ * Optional Rivet style: adjust the padding(s) of an element
+ * See: https://rivet.uits.iu.edu/components/layout/spacing/
+ */
 const parseRivetPadding = (padding) =>
     parseRivetSpacing('p', padding);
 
-const parseRivetTypescale = (typescale) => ({
-    [`rvt-ts-${typescale}`]: !!typescale
-});
+/**
+ * Optional Rivet style: type scale adjustment
+ * See: https://rivet.uits.iu.edu/components/layout/typography/
+ */
+const parseRivetTypescale = (typescale) => {
+    const validTypescales =  ["base", "xxs", "xs", "sm", "md", "lg", "xl", "xxl", 12, 14, 16, 18, 20, 23, 26, 29, 32, 36, 41, 46, 52];
+    return {[`rvt-ts-${typescale}`]: !!typescale && validTypescales.includes(typescale)};
+};
 
+/**
+ * Optional Rivet style: add a border to any or all sides of an element
+ * See: https://rivet.uits.iu.edu/components/utilities/border/
+ */
 const parseRivetBorder = (border) => {
+    const validBorder = ["all", "radius", ...edges];
     if(Array.isArray(border)) {
-        return border.map((value) => `rvt-border-${value}`);
+        return border.filter((value) => validBorder.includes(value))
+            .map((value) => `rvt-border-${value}`);
     } else {
         return ({
             [`rvt-border-all`]: border === 'radius',
-            [`rvt-border-${border}`]: !!border
+            [`rvt-border-${border}`]: !!border && validBorder.includes(border)
         });
     }
 }
 
+/**
+ * Optional Rivet style: adjust the display property of an element
+ * See: https://rivet.uits.iu.edu/components/utilities/display/#display-property-utilities
+ */
 const parseRivetDisplay = (display) => {
+    const validDisplays = ["inline", "inline-block", "block", "flex", "flex-vertical-center"];
     switch(display) {
         case 'inline':
         case 'inline-block':
         case 'block':
         case 'flex':
-            return `rvt-display-${display}`;
+            return validDisplays.includes(display) ? `rvt-display-${display}` : '';
         case 'flex-vertical-center':
             return 'rvt-display-flex rvt-vertical-center';
         default: return '';
     }
 }
 
-const parseRivetHidden = (hide) => ({
-    [`rvt-hide-${hide}`]: !!hide
-});
+/**
+ * Optional Rivet style: show/hide content based on screen size.
+ * ex: 'md-down' will hide content on medium-sized screens and smaller.
+ * ex: 'lg-up' will hide content on large-sized screens and larger.
+ * See: https://rivet.uits.iu.edu/components/utilities/visibility/
+ */
+const parseRivetHidden = (hide) => {
+    const validHidden = ["sm-down", "md-down", "lg-down", "xl-down", "xxl-down", "sm-up", "md-up", "lg-up", "xl-up", "xxl-up"];
+    return {[`rvt-hide-${hide}`]: !!hide && validHidden.includes(hide)};
+};
 
 export const rivetize = (Component) => ({ className, border, display, hide, margin, padding, typescale, ...attrs }) => (
     <Component className={classNames(
