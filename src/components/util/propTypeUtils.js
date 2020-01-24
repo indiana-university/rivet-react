@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2020 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+ */
 /**
  * Custom PropType. Verifies component passed in is of a given type
  * @param propComponentName - Display name of the component

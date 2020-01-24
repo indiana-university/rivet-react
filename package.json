@@ -13,7 +13,7 @@
   "scripts": {
     "start": "npx styleguidist server",
     "build": "rm -rf ./build && react-scripts build",
-    "license": "license-check-and-add",
+    "license": "license-check-and-add add -f ./license-check-and-add-config.json",
     "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -40,7 +40,7 @@
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
     "gh-pages": "2.1.1",
-    "license-check-and-add": "3.0.3",
+    "license-check-and-add": "3.0.4",
     "react-styleguidist": "10.3.2",
     "rivet-collapsible": "0.2.11",
     "rivet-switch": "0.3.2",
@@ -68,20 +68,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "license-check-and-add-config": {
-    "folder": ".",
-    "license": "license-header.txt",
-    "exact_paths_method": "INCLUDE",
-    "exact_paths": [
-      "addons",
-      "src",
-      "styleguide.config.js"
-    ],
-    "file_type_method": "INCLUDE",
-    "file_types": [
-      ".js"
-    ],
-    "insert_license": true
   }
 }

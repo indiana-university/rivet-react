@@ -1,0 +1,16 @@
+{
+    "ignore": [".git/**", ".circleci/**", "**/.*", "**/*.md", "styleguide.*", "build/**", "coverage/**"],
+    "license": "license-header.txt",
+    "licenseFormats": {
+        "js": {
+            "prepend": "/*",
+            "append": " */"
+        },
+        "dotfile": {
+            "eachLine": {
+                "prepend": "# "
+            }
+        }
+    },
+    "trailingWhitespace": "TRIM"
+}
