@@ -74,11 +74,13 @@ const HeaderIdentity = ({ avatar, children, className, logoutLinkText, onLogout,
         ? <span className="rvt-header-id__user rvt-header-id__user--has-dropdown">{username}</span>
         : <span className="rvt-header-id__user">{username}</span>;
     const label = <>{avatarIcon} {userLabel}</>;
-   
+
     let logout;
     if (children && onLogout) {
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
         logout = <a href="" onClick={onLogout}>{logoutLinkText}</a>
     } else if (!children && onLogout) {
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
         logout = <a href="" className="rvt-header-id__log-out" onClick={onLogout}>{logoutLinkText}</a>
     }
 

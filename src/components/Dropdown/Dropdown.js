@@ -62,6 +62,8 @@ export class Dropdown extends React.PureComponent {
     }
 
     render() {
+        // We don't want toggleDropdownOnClickInside passed to nested components, but we also don't have anything to do with it when rendering, so...
+        // eslint-disable-next-line no-unused-vars
         const { align, children, className, label, menuClass, toggleDropdownOnClickInside = false, ...attrs } = this.props;
         const menuClasses = classNames({
             'rvt-dropdown__menu': true,
