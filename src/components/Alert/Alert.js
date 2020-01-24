@@ -1,28 +1,17 @@
 /*
 Copyright (C) 2020 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
- */
+*/
 import classNames from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
+import { alertPropTypes } from './DismissibleAlert';
 
 const propTypes = {
-    /**
-     * Rivet alert styling. 
-     * @see https://rivet.uits.iu.edu/components/overlays/alerts
-     */
-    variant: PropTypes.oneOf(['danger', 'info', 'warning', 'success']).isRequired,
-    /**
-     * Optional alert title
-     */
-    title: PropTypes.node,
-    /**
-     * Optional event to raise when the alert is dismissed
-     */
-    onDismiss: PropTypes.func,
+    ...alertPropTypes,
     /**
      * Optional flag to determine whether the alert is visible
      */
