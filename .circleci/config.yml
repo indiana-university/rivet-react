@@ -45,16 +45,16 @@ jobs:
       - restore_cache: *restore-node-modules
       - run: 
           name: Install packages
-          command: yarn install
+          command: npm install
       - save_cache: *save-node-modules
       - run: 
           name: Build components
-          command: yarn build
+          command: npm build
       - run:
           name: Test components
           command: |
             yarn test -w 1 --coverage
-            cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+            cat ./coverage/lcov.info | ./node_modules/.bin/codecov
   # Publish the style guide to gh-pages
   publish_guide:
     <<: *defaults
@@ -66,7 +66,7 @@ jobs:
           command: |
             git config --global user.email "$GIT_COMMITTER_EMAIL"
             git config --global user.name "$GIT_COMMITTER_NAME"
-            yarn publish-guide
+            npm publish-guide
   # Publish the package to NPM and tag GitHub releases
   publish_package:
     <<: *defaults
@@ -75,7 +75,7 @@ jobs:
       - restore_cache: *restore-node-modules
       - run: 
           name: Build components
-          command: yarn build
+          command: npm build
       - run:
           name: Publish package
           command: npx semantic-release
