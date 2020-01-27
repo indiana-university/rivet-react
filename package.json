@@ -53,8 +53,8 @@
   ],
   "jest": {
     "collectCoverageFrom": [
-      "src/components/**/*.{js}",
-      "!src/components/**/index.{js}"
+      "src/components/**/*.js",
+      "!src/components/**/index.js"
     ]
   },
   "browserslist": {
