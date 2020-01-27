@@ -4,8 +4,8 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import { mount } from 'enzyme';
 import React from 'react';
-import SegmentedButton from './SegmentedButton';
 import Button from './Button';
+import SegmentedButton from './SegmentedButton';
 
 describe('<SegmentedButton />', () => {
     describe('Rendering and styling', () => {

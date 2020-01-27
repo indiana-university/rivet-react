@@ -3,9 +3,8 @@ Copyright (C) 2020 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
-import React from 'react';
 import PropTypes from 'prop-types';
-
+import React from 'react';
 import 'rivet-collapsible/dist/css/rivet-collapsible.css';
 
 import Icon from '../../util/RivetIcons';

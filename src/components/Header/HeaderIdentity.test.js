@@ -4,9 +4,7 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import { mount, shallow } from 'enzyme';
 import React from 'react';
-import Header from './Header';
-import HeaderIdentity from './HeaderIdentity'
-import HeaderNavigation from './HeaderNavigation'
+import HeaderIdentity from './HeaderIdentity';
 
 describe('<Navigation />', () => {
     let cut;

@@ -5,9 +5,9 @@ SPDX-License-Identifier: BSD-3-Clause
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Drawer from './HeaderDrawer';
+
+import { default as Drawer, default as HeaderDrawer } from './HeaderDrawer';
 import HeaderDrawerEvent from './HeaderDrawerEvent';
-import HeaderDrawer from './HeaderDrawer';
 import HeaderIdentity from './HeaderIdentity';
 import HeaderNavigation from './HeaderNavigation';
 

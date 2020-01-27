@@ -4,8 +4,8 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import { mount } from 'enzyme';
 import React from 'react';
-import ButtonGroup from './ButtonGroup';
 import Button from './Button';
+import ButtonGroup from './ButtonGroup';
 
 describe('<ButtonGroup />', () => {
     describe('Rendering and styling', () => {

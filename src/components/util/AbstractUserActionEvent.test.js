@@ -2,7 +2,6 @@
 Copyright (C) 2020 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import { mount } from 'enzyme';
 import AbstractUserActionEvent from './AbstractUserActionEvent';
 
 class TestEvent extends AbstractUserActionEvent {

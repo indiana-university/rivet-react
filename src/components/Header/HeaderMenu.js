@@ -2,10 +2,10 @@
 Copyright (C) 2020 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Dropdown } from '../Dropdown';
 import HeaderCollapse from './HeaderCollapse';
-import PropTypes from 'prop-types';
 
 const propTypes = {
     /**

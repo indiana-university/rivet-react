@@ -4,9 +4,9 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import { shallow } from 'enzyme';
 import React from 'react';
-import Header from './Header'
-import HeaderIdentity from './HeaderIdentity'
-import HeaderNavigation from './HeaderNavigation'
+import Header from './Header';
+import HeaderIdentity from './HeaderIdentity';
+import HeaderNavigation from './HeaderNavigation';
 
 describe('<Header />', () => {
     let cut;

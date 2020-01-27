@@ -2,10 +2,10 @@
 Copyright (C) 2020 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
+import PropTypes from 'prop-types';
 import React from 'react';
 import * as Rivet from '../util/Rivet';
 import { InputTag } from './common';
-import PropTypes from 'prop-types';
 
 /**
  * Styleguidist doesn't support imported propTypes documentation yet.

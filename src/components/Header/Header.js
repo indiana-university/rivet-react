@@ -3,13 +3,13 @@ Copyright (C) 2020 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { findFirstChildOfType } from '../util/childUtils';
 import Icon from '../util/RivetIcons';
 import Drawer from './HeaderDrawer';
 import Identity from './HeaderIdentity';
 import Navigation from './HeaderNavigation';
-import PropTypes from 'prop-types';
 
 const propTypes = {
     /**

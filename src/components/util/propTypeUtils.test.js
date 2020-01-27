@@ -5,6 +5,7 @@ SPDX-License-Identifier: BSD-3-Clause
 import { shallow } from 'enzyme';
 import React from 'react';
 import { propIsElementOfType } from './propTypeUtils';
+
 describe('propIsElementOfType', () => {
     const ValidComponentProp = () => <p></p>;
     ValidComponentProp.displayName = 'ValidComponentProp';

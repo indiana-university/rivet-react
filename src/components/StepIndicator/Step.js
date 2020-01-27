@@ -7,8 +7,8 @@ Copyright (C) 2019 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
-import React from 'react'
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const indicatorClass = 'rvt-steps__indicator';
 

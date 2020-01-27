@@ -3,9 +3,9 @@ Copyright (C) 2020 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 import * as Rivet from '../util/Rivet';
-import PropTypes from 'prop-types';
 
 const colWidthOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
