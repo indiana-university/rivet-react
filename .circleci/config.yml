@@ -54,7 +54,7 @@ jobs:
           name: Test components
           command: |
             yarn test -w 1 --coverage
-            cat ./coverage/lcov.info | ./node_modules/.bin/codecov
+            ./node_modules/.bin/codecov
   # Publish the style guide to gh-pages
   publish_guide:
     <<: *defaults
