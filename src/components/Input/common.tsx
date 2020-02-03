@@ -29,8 +29,8 @@ const noteFragment = (id : string, variant, note? : React.ReactNode) =>
     ? <InlineAlert id={id} variant={variant}>{note}</InlineAlert>
     : <small id={id} className="rvt-display-block">{note}</small>
 
-export const renderInput =
-    <T extends React.HTMLAttributes<HTMLElement>>(inputGenerator: (props) => JSX.Element ) => 
+export const renderInput = 
+    <T extends React.HTMLAttributes<HTMLElement>>(elementName: string) :  React.SFC<TextProps & T> => 
     ({ id=Rivet.shortuid(), label, labelVisibility, note, variant, className, ...attrs}) => {
         const noteId = `${id}_note`;
         const inputProps = {
@@ -43,7 +43,7 @@ export const renderInput =
         return (
             <div className={classNames.default('rvt-input', className)}>
                 <label htmlFor={id} className={Rivet.labelVisiblityClass(labelVisibility)}>{label}</label>
-                {inputGenerator (inputProps)}
+                {React.createElement(elementName, inputProps)}
                 {note && noteFragment(noteId, variant, note)}
             </div>
         );
