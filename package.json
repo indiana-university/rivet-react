@@ -21,6 +21,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@types/prop-types": "^15.7.3",
     "classnames": "2.2.6",
     "react": "16.4.2",
     "react-display-name": "0.2.4",
