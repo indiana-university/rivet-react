@@ -30,7 +30,7 @@ const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElem
         variant,
         ... attrs
     }) => {
-        const classes = classNames({
+        const classes = classNames.default({
             ['rvt-inline-alert']: true,
             ['rvt-inline-alert--standalone']: standalone,
             [`rvt-inline-alert--${variant}`]: true

@@ -17,7 +17,7 @@ const Breadcrumbs: React.SFC<BreadcrumbsProps & React.HTMLAttributes<HTMLDivElem
   ({ children, variant, ...attrs }) => {
     const childCount = React.Children.count(children);
     const breadcrumbLinks = React.Children.map(children, (child, index) => (index === (childCount - 1)) ? <li aria-current="page">{child}</li> : <li>{child}</li>);
-    const classes = classNames({
+    const classes = classNames.default({
       ['rvt-breadcrumbs']: true,
       [`rvt-breadcrumbs--${variant}`]: variant
     });

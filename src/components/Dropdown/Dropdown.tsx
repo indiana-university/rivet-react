@@ -60,7 +60,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
 
     public render() {
         const { align, children, className, label, menuClass, ...attrs } = this.props;
-        const menuClasses = classNames({
+        const menuClasses = classNames.default({
             ['rvt-dropdown__menu']: true,
             [`rvt-dropdown__menu--${align}`]: !!align
         }, menuClass);

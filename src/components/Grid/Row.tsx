@@ -8,7 +8,7 @@ import * as Rivet from '../util/Rivet';
 
 const Row : React.SFC<React.HTMLAttributes<HTMLDivElement>> = 
 ({ children, className, ...attrs }) => (
-    <div className={classNames('rvt-grid', className)} {...attrs}>
+    <div className={classNames.default('rvt-grid', className)} {...attrs}>
         {children}
     </div>
 );

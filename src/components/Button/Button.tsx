@@ -64,7 +64,7 @@ export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButt
 ({ className, children, id = Rivet.shortuid(), innerRef, modifier, onClick, size, variant, ...attrs}) => (
     <button
       id={id}
-      className={classNames(buttonStyle(variant, modifier), buttonSize(size), className)}
+      className={classNames.default(buttonStyle(variant, modifier), buttonSize(size), className)}
       onClick={onClick}
       ref={innerRef}
       {...attrs}

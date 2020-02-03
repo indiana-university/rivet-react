@@ -151,7 +151,7 @@ export type ComponentDecorator<T extends Props> = ( props: T ) => string;
 
 export const rivetize = <T extends React.HTMLAttributes<HTMLElement>>(Component: React.ComponentType<T>): React.SFC<T & Props> =>
 ({ className, border, display, hide, margin, padding, typescale, ...attrs }: Props & React.HTMLAttributes<HTMLElement>) => (
-        <Component className={classnames(
+        <Component className={classnames.default(
             parseRivetMargin(margin),
             parseRivetPadding(padding),
             parseRivetTypescale(typescale),

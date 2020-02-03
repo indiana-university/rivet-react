@@ -47,7 +47,7 @@ const Step : React.SFC <StepProps & React.HTMLAttributes<HTMLLIElement>> =
     const content = (
         <>
             <span className="rvt-steps__label">{label}</span>
-            <span className={classNames(indicatorClass, variantClass(variant))}>
+            <span className={classNames.default(indicatorClass, variantClass(variant))}>
                 <span className="rvt-sr-only">{screenReaderIndicator}</span> {indicator}
             </span>
         </>

@@ -15,7 +15,7 @@ const footerNavLi = (child, index) =>
 
 const Footer: React.SFC<React.HTMLAttributes<HTMLDivElement>> =
 ({ className, children, id = Rivet.shortuid(), ...attrs }) => (
-    <footer id={id} role="contentinfo" className={classNames(componentClass, className)} {...attrs}>
+    <footer id={id} role="contentinfo" className={classNames.default(componentClass, className)} {...attrs}>
         <div className="rvt-footer__trident">
             <Icon name="trident-footer" />
         </div>

@@ -6,7 +6,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 const ModalBody : React.SFC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className, ...attrs }) => (
-    <div className={classNames(['rvt-modal__body', className])} {...attrs}>
+    <div className={classNames.default(['rvt-modal__body', className])} {...attrs}>
         { children }
     </div>
 );

@@ -26,14 +26,14 @@ interface PaginationItemProps {
 
 const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivElement>> =
  ({ align, children, className, size, ...attrs }) => {
-    const classes = classNames({
+    const classes = classNames.default({
       ['rvt-pagination']: true,
       [`rvt-pagination--${align}`]: align,
       [`rvt-pagination--${size}`]: size
     });
     const wrappedChildren = React.Children.map(children, (child: React.ReactElement<any>) => {
       const childProps = child.props as PaginationItemProps;
-      const childClasses = classNames({
+      const childClasses = classNames.default({
         'rvt-pagination__item': true,
         'is-disabled': childProps && (childProps['aria-disabled'] || childProps.disabled),
         'is-active': childProps && childProps['aria-current'] === 'page'

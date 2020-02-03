@@ -17,7 +17,7 @@ const RadioButton : React.SFC <RadioButtonProps & React.InputHTMLAttributes<HTML
         <input
             id={id}
             type="radio"
-            className={classNames("rvt-radio", className)}
+            className={classNames.default("rvt-radio", className)}
             {...attrs}/>
         <label htmlFor={id}>{label}</label>
     </>

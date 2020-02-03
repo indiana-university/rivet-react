@@ -24,7 +24,7 @@ const propTypes = {
 };
 
 const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, modifier, variant, ...attrs }) => {
-    const classes = classNames({
+    const classes = classNames.default({
         ['rvt-badge']: true,
         [`rvt-badge--${variant}-secondary`]: !!variant && modifier === 'secondary',
         [`rvt-badge--${variant}`]: !!variant && modifier === undefined,

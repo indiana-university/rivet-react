@@ -26,7 +26,7 @@ const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElemen
           </button>
         : null;
     
-    const classes = classNames('rvt-alert', `rvt-alert--${variant}`, className);
+    const classes = classNames.default('rvt-alert', `rvt-alert--${variant}`, className);
 
     return isOpen 
         ? <div id={id} className={classes} role='alertdialog' aria-labelledby={titleId} {...attrs} >

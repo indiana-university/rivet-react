@@ -74,7 +74,7 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDi
         const { children, className, id = Rivet.shortuid(), isOpen, onDismiss, title, ...attrs } = this.props;
         return (
             <div
-                className={classNames(["rvt-modal", className])}
+                className={classNames.default(["rvt-modal", className])}
                 id={id}
                 role="dialog"
                 aria-labelledby={`${id}-title`}

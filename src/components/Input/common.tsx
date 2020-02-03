@@ -41,7 +41,7 @@ export const renderInput =
             ...attrs
         }
         return (
-            <div className={classNames('rvt-input', className)}>
+            <div className={classNames.default('rvt-input', className)}>
                 <label htmlFor={id} className={Rivet.labelVisiblityClass(labelVisibility)}>{label}</label>
                 {inputGenerator (inputProps)}
                 {note && noteFragment(noteId, variant, note)}

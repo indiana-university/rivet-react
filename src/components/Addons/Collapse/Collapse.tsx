@@ -50,7 +50,7 @@ class Collapse extends React.PureComponent<CollapseProps & React.HTMLAttributes<
 
   public render() {
     const { children, className, defaultClosed, title, TitleComponent = 'div', variant, ...attrs } = this.props;
-    const classes = classNames({
+    const classes = classNames.default({
       'rvt-collapsible': true,
       [`rvt-collapsible--${variant}`]: variant,
     }, className)

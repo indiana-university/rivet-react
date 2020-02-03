@@ -62,7 +62,7 @@ const drawerWithChildren = (classes, label, logout, children) =>
     </HeaderCollapse>
 
 const HeaderIdentity: React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLDivElement>> = ({ avatar, children, className, onLogout, username }) => {
-    const wrapperClasses = classNames('rvt-header-id', className);
+    const wrapperClasses = classNames.default('rvt-header-id', className);
     const drawerOpen = wrapperClasses.includes('rvt-header-id--drawer');
     const avatarIcon = avatar && <span className="rvt-header-id__avatar" aria-hidden="true">{avatar}</span>;
     const userLabel = drawerOpen && (children || !onLogout)

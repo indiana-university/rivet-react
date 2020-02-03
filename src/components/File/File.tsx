@@ -43,7 +43,7 @@ class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInpu
         }
 
         return (
-            <div className={classNames('rvt-file', className)}>
+            <div className={classNames.default('rvt-file', className)}>
                 <input onInput={this.handleFileChange} {...attrs} ref={this.fileInput} type="file" id={id} aria-describedby={id + "-file-description"} />
                 <label htmlFor={id} className="rvt-button">
                     <span>{label}</span>

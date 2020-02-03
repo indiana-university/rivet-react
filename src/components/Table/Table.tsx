@@ -25,7 +25,7 @@ interface TableProps {
 
 const Table : React.SFC<TableProps & React.HTMLAttributes<HTMLTableElement>> =
 ({ children, className, variant, compact, cells, ...attrs }) => {
-    const classes = classNames({
+    const classes = classNames.default({
         [`rvt-table-${variant}`]: variant,
         ['rvt-table-compact']: compact,
         ['rvt-table-cells']: cells && variant !== 'plain',

@@ -46,7 +46,7 @@ class Switch extends React.PureComponent<SwitchProps & React.HTMLAttributes<HTML
 
   public render() {
     const { className, size, variant, ...attrs } = this.props;
-    const classes = classNames({
+    const classes = classNames.default({
       'rvt-switch': true,
       [`rvt-switch--${variant}`]: variant,
       [`rvt-switch--${size}`]: size,
