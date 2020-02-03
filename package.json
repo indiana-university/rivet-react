@@ -13,7 +13,7 @@
   "types": "build/dist/components/index.d.ts",
   "scripts": {
     "start": "npx styleguidist server",
-    "build": "react-scripts build",
+    "build": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
     "license": "license-check-and-add",
     "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles",
     "watch": "react-scripts start",
