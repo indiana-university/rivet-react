@@ -31,11 +31,11 @@ const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivEleme
       [`rvt-pagination--${align}`]: align,
       [`rvt-pagination--${size}`]: size
     });
-    const wrappedChildren = React.Children.map(children, (child: React.ReactElement<any>) => {
-      const childProps = child.props as PaginationItemProps;
+    const wrappedChildren = React.Children.map(children, (child: React.ReactChild) => {
+      const childProps = child.hasOwnProperty("props") ? child['props'] as PaginationItemProps : {};
       const childClasses = classNames.default({
         'rvt-pagination__item': true,
-        'is-disabled': childProps && (childProps['aria-disabled'] || childProps.disabled),
+        'is-disabled': childProps && (childProps['aria-disabled'] || childProps['disabled']),
         'is-active': childProps && childProps['aria-current'] === 'page'
       });
       return (
