@@ -16,6 +16,8 @@ module.exports = {
             && prop.name.includes("aria-") === false
             // skip 'rivetize' props (these are documented separately)
             && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1  
+            // skip other props
+            && ['inputMode','is'].indexOf(prop.name) === -1  
     }).parse,
     pagePerSection: true,
     exampleMode: 'expand',
