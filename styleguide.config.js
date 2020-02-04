@@ -137,9 +137,11 @@ module.exports = {
     webpackConfig: require('react-scripts/config/webpack.config.js'),
     require: [
         'rivet-uits/css/rivet.min.css',
-        './src/docs/documentation.css'
+        './src/docs/documentation.css',
+        // See https://stackoverflow.com/questions/46067207/how-to-add-examples-a-component-with-dependencies-in-react-styleguidist#answer-46090262
+        path.resolve(__dirname, 'styleguide.setup.js')
       ],
     theme: {
         maxWidth: 1920
-      }
+    }
 };
