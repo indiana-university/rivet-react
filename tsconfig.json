@@ -23,6 +23,13 @@
     "rootDir": "src",
     "outDir": "build/dist",
     "sourceMap": true,
+
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "declaration": true
   },
   "include": [
     "src/**/*"
