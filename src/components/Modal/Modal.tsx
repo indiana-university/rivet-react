@@ -5,7 +5,6 @@ SPDX-License-Identifier: BSD-3-Clause
 import * as classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 
 import Button from '../Button/Button';
 import * as Rivet from '../util/Rivet';
@@ -47,9 +46,12 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDi
     };
 
     private eventHandler;
+    private modalWrapDiv: React.RefObject<HTMLDivElement>;
+
 
     constructor(props) {
         super(props);
+        this.modalWrapDiv = React.createRef();
         this.eventHandler = ModalEvent.handler(this.handleClickOutside);
         this.handleEventRegistration = this.handleEventRegistration.bind(this);
     }
@@ -73,7 +75,7 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDi
     public render() {
         const { children, className, id = Rivet.shortuid(), isOpen, onDismiss, title, ...attrs } = this.props;
         return (
-            <div
+            <div ref={this.modalWrapDiv}
                 className={classNames.default(["rvt-modal", className])}
                 id={id}
                 role="dialog"
@@ -107,7 +109,7 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDi
             return false;
         }
 
-        if (event.targets(ReactDOM.findDOMNode(this)) && !event.isKeyEvent()) {
+        if (event.targets(this.modalWrapDiv.current) && !event.isKeyEvent()) {
             // If the user clicks or touches inside the modal do not close the menu
             return false;
         }
