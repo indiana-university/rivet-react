@@ -4,7 +4,6 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import * as classNames from 'classnames';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import Icon from '../util/RivetIcons';
 import HeaderDrawerEvent from './HeaderDrawerEvent';
 
@@ -59,7 +58,7 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
             ['is-open']: this.state.open
         });
         return (
-            <div ref={this.drawerWrapDiv}> {/* This is a div instead of a fragment due to needing a real element wrapping this for how we use ReactDOM.findDOMNode */}
+            <div ref={this.drawerWrapDiv}>
                 <button type="button" className={drawerToggleClasses} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDrawer} ref={this.toggleButton}>
                     <span className="sr-only">Toggle menu</span>
                     {!this.state.open && <Icon name="menu" className="rvt-drawer-button-open" /> }
