@@ -162,4 +162,4 @@ class Tabs extends React.PureComponent<
   }
 }
 
-export default Rivet.rivetize(Tabs);
+export default Rivet.rivetize<TabsProps & React.HTMLAttributes<HTMLDivElement>>(Tabs);

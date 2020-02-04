@@ -24,4 +24,4 @@ const RadioButton : React.SFC <RadioButtonProps & React.InputHTMLAttributes<HTML
 );
 RadioButton.displayName = 'RadioButton';
 
-export default Rivet.rivetize(RadioButton);
+export default Rivet.rivetize<RadioButtonProps & React.InputHTMLAttributes<HTMLInputElement>>(RadioButton);

@@ -10,4 +10,4 @@ const Textarea :  React.SFC<TextProps & React.TextareaHTMLAttributes<HTMLTextAre
     renderInput("textarea");
 Textarea.displayName = 'TextArea';
 
-export default Rivet.rivetize(Textarea);
+export default Rivet.rivetize<TextProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>>(Textarea);

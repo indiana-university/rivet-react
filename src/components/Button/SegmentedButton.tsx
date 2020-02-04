@@ -33,4 +33,4 @@ const SegmentedButton: React.SFC<SegmentedButtonProps & React.HTMLAttributes<HTM
 SegmentedButton.displayName = 'SegmentedButton';
 SegmentedButton.propTypes = propTypes;
 
-export default Rivet.rivetize(SegmentedButton);
+export default Rivet.rivetize<SegmentedButtonProps & React.HTMLAttributes<HTMLDivElement>>(SegmentedButton);

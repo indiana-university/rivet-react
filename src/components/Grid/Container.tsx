@@ -31,4 +31,4 @@ const Container : React.SFC<ContainerProps & React.HTMLAttributes<HTMLDivElement
 };
 Container.displayName = 'Container';
 
-export default Rivet.rivetize(Container);
+export default Rivet.rivetize<ContainerProps & React.HTMLAttributes<HTMLDivElement>>(Container);

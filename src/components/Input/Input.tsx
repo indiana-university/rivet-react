@@ -10,4 +10,4 @@ const Input : React.SFC<TextProps & React.InputHTMLAttributes<HTMLInputElement>>
     renderInput('input');
 Input.displayName = 'Input';
 
-export default Rivet.rivetize(Input);
+export default Rivet.rivetize<TextProps & React.InputHTMLAttributes<HTMLInputElement>>(Input);

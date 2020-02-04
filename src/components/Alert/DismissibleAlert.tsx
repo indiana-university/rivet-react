@@ -57,4 +57,4 @@ class DismissibleAlert extends React.PureComponent<
   };
 }
 
-export default Rivet.rivetize(DismissibleAlert);
+export default Rivet.rivetize<DismissibleAlertProps & React.HTMLAttributes<HTMLDivElement>>(DismissibleAlert);

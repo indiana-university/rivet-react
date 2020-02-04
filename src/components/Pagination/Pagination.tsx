@@ -52,4 +52,4 @@ const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivEleme
 };
 Pagination.displayName = 'Pagination';
 
-export default Rivet.rivetize(Pagination);
+export default Rivet.rivetize<PaginationProps & React.HTMLAttributes<HTMLDivElement>>(Pagination);

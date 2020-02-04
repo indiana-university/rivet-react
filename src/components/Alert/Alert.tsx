@@ -65,4 +65,4 @@ Alert.propTypes = {
     isOpen: PropTypes.bool
 };
 
-export default Rivet.rivetize(Alert);
+export default Rivet.rivetize<AlertProps & React.HTMLAttributes<HTMLDivElement>>(Alert);

@@ -74,4 +74,5 @@ Button.propTypes = {
   id: PropTypes.string
 };
 
-export default Rivet.rivetize(Button);
+export default Rivet.rivetize<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>>(Button);
+

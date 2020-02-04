@@ -52,4 +52,4 @@ InlineAlert.propTypes = {
     variant: PropTypes.oneOf<any>(['danger', 'info', 'warning', 'success']).isRequired
 };
 
-export default Rivet.rivetize(InlineAlert);
+export default Rivet.rivetize<InlineAlertProps & React.HTMLAttributes<HTMLDivElement>>(InlineAlert);

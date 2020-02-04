@@ -31,4 +31,4 @@ const Breadcrumbs: React.SFC<BreadcrumbsProps & React.HTMLAttributes<HTMLDivElem
   };
 Breadcrumbs.displayName = 'Breadcrumbs';
 
-export default Rivet.rivetize(Breadcrumbs);
+export default Rivet.rivetize<BreadcrumbsProps & React.HTMLAttributes<HTMLDivElement>>(Breadcrumbs);

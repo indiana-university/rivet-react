@@ -147,4 +147,4 @@ const Col : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> =
 }
 Col.displayName = 'Col';
 
-export default Rivet.rivetize(Col);
+export default Rivet.rivetize<ColProps & React.HTMLAttributes<HTMLDivElement>>(Col);

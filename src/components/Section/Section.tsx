@@ -10,4 +10,4 @@ const Section : React.SFC<React.HTMLAttributes<HTMLDivElement>> = (props) => (
 );
 Section.displayName = 'Section';
 
-export default Rivet.rivetize(Section);
+export default Rivet.rivetize<React.HTMLAttributes<HTMLDivElement>>(Section);

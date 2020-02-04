@@ -56,4 +56,4 @@ export const List : React.SFC <ListProps & React.HTMLAttributes<HTMLElement>> =
 };
 List.displayName = 'List';
 
-export default Rivet.rivetize(List);
+export default Rivet.rivetize<ListProps & React.HTMLAttributes<HTMLElement>>(List);

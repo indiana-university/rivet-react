@@ -123,4 +123,4 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
 
 }
 
-export default Rivet.rivetize(Dropdown);
+export default Rivet.rivetize<DropdownProps & React.HTMLAttributes<HTMLButtonElement>>(Dropdown);

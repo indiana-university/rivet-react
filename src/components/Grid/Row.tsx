@@ -14,4 +14,4 @@ const Row : React.SFC<React.HTMLAttributes<HTMLDivElement>> =
 );
 Row.displayName = 'Row';
 
-export default Rivet.rivetize(Row);
+export default Rivet.rivetize<React.HTMLAttributes<HTMLDivElement>>(Row);

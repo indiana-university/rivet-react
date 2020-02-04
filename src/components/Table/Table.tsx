@@ -38,4 +38,4 @@ const Table : React.SFC<TableProps & React.HTMLAttributes<HTMLTableElement>> =
 };
 Table.displayName = 'Table';
 
-export default Rivet.rivetize(Table);
+export default Rivet.rivetize<TableProps & React.HTMLAttributes<HTMLTableElement>>(Table);

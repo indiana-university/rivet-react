@@ -23,4 +23,4 @@ export const StepIndicator: React.SFC<StepIndicatorProps & React.HTMLAttributes<
 );
 StepIndicator.displayName = 'StepIndicator';
 
-export default Rivet.rivetize(StepIndicator);
+export default Rivet.rivetize<StepIndicatorProps & React.HTMLAttributes<HTMLOListElement>>(StepIndicator);

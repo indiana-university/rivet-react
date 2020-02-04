@@ -36,4 +36,4 @@ Badge.propTypes =  {
     variant: PropTypes.oneOf(['info', 'danger', 'success', 'warning'])
 };
 
-export default Rivet.rivetize(Badge);
+export default Rivet.rivetize<BadgeProps & React.HTMLAttributes<HTMLDivElement>>(Badge);

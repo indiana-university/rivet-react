@@ -25,4 +25,4 @@ const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> =
 };
 Panel.displayName = 'Panel';
 
-export default Rivet.rivetize(Panel);
+export default Rivet.rivetize<PanelProps & React.HTMLAttributes<HTMLDivElement>>(Panel);

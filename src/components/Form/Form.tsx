@@ -26,4 +26,4 @@ const Form : React.SFC<FormProps & React.FormHTMLAttributes<HTMLFormElement>> =
 );
 Form.displayName = 'Form';
 
-export default Rivet.rivetize(Form);
+export default Rivet.rivetize<FormProps & React.FormHTMLAttributes<HTMLFormElement>>(Form);

@@ -65,5 +65,5 @@ class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInpu
 
 }
 
-export default Rivet.rivetize(File);
+export default Rivet.rivetize<FileProps & React.HTMLAttributes<HTMLInputElement>>(File);
 export { File as UnwrappedFile };

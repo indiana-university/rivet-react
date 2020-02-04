@@ -32,4 +32,4 @@ const ButtonGroup: React.SFC<ButtonGroupProps & React.HTMLAttributes<HTMLDivElem
 ButtonGroup.displayName = 'ButtonGroup';
 ButtonGroup.propTypes = propTypes;
 
-export default Rivet.rivetize(ButtonGroup);
+export default Rivet.rivetize<ButtonGroupProps & React.HTMLAttributes<HTMLDivElement>>(ButtonGroup);

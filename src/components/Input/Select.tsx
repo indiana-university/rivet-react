@@ -10,4 +10,4 @@ const Select : React.SFC<TextProps & React.SelectHTMLAttributes<HTMLSelectElemen
     renderInput("select");
 Select.displayName = 'Select';
 
-export default Rivet.rivetize(Select);
+export default Rivet.rivetize<TextProps & React.SelectHTMLAttributes<HTMLSelectElement>>(Select);
