@@ -31,3 +31,14 @@ By default the dropdown menu is vertically aligned with the left edge of the dro
     <a href="#">Item four</a>
 </Dropdown>
 ```
+
+### Toggle On Click Inside Modifier
+
+By default the dropdown menu will not close when an item within the dropdown is clicked. Set the 'toggleDropdownOnClickInside' option to true to specify the dropdown should be closed in this case.
+
+```jsx
+<Dropdown label="Toggle On Click" toggleDropdownOnClickInside>
+    <Button onClick={() => alert('Clicked Item one')}>Item one</Button>
+    <Button onClick={() => alert('Clicked Item two')}>Item two</Button>
+</Dropdown>
+```

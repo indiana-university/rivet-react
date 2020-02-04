@@ -14,6 +14,11 @@ export interface HeaderIdentityProps {
      * @see https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
      */
     avatar?: string | React.ReactNode;
+
+    /**
+     * Override default text for logout link
+     */
+    logoutLinkText?: string; 
     /**
      * An optional action to take when the user logs out.  If provided a "log out" link will be included.
      * @see https://rivet.uits.iu.edu/components/navigation/header/#header-with-identity-menu
@@ -61,7 +66,7 @@ const drawerWithChildren = (classes, label, logout, children) =>
         {logout}
     </HeaderCollapse>
 
-const HeaderIdentity: React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLDivElement>> = ({ avatar, children, className, onLogout, username }) => {
+const HeaderIdentity: React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLDivElement>> = ({ avatar, children, className, logoutLinkText, onLogout, username }) => {
     const wrapperClasses = classNames.default('rvt-header-id', className);
     const drawerOpen = wrapperClasses.includes('rvt-header-id--drawer');
     const avatarIcon = avatar && <span className="rvt-header-id__avatar" aria-hidden="true">{avatar}</span>;
@@ -72,9 +77,9 @@ const HeaderIdentity: React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLD
    
     let logout;
     if (children && onLogout) {
-        logout = <a href="javascript:void(0)" onClick={onLogout}>Log out</a>
+        logout = <a href="javascript:void(0)" onClick={onLogout}>{logoutLinkText}</a>
     } else if (!children && onLogout) {
-        logout = <a href="javascript:void(0)" className="rvt-header-id__log-out" onClick={onLogout}>Log out</a>
+        logout = <a href="javascript:void(0)" className="rvt-header-id__log-out" onClick={onLogout}>{logoutLinkText}</a>
     }
 
     return children
@@ -87,5 +92,8 @@ const HeaderIdentity: React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLD
 }
 
 HeaderIdentity.displayName = 'HeaderIdentity';
+HeaderIdentity.defaultProps = {
+    logoutLinkText: 'Log out'
+};
 
 export default HeaderIdentity;
