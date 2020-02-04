@@ -12,21 +12,17 @@ const simulateKeyboardInteraction = (options) => {
     .find(options.start)
     .simulate('click');
 
-  let focusedElement = document.activeElement;
-
   expect(options.component
     .find(options.start)
-    .matchesElement(focusedElement));
+    .matchesElement(options.component.find(':focus')));
 
   options.component
     .find(options.start)
     .simulate('keydown', { keyCode: options.key });
 
-  focusedElement = document.activeElement;
-
   expect(options.component
     .find(options.end)
-    .matchesElement(focusedElement));
+    .matchesElement(options.component.find(':focus')));
 }
 
 describe('<Tabs />', () => {
