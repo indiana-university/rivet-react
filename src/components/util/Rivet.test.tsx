@@ -157,7 +157,7 @@ const DemoComponent = Rivet.rivetize(({ children, ...attrs }) => (
         expect(Rivet.labelVisiblityClass("screen-reader-only")).toEqual("rvt-sr-only");
     });
     it('chooses the default (no) class', () =>{
-        expect(Rivet.labelVisiblityClass("default")).toEqual("");
+        expect(Rivet.labelVisiblityClass(undefined)).toEqual("");
     });
   });
 
