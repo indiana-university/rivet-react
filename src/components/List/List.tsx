@@ -26,7 +26,7 @@ const asListItem = (child : React.ReactChild) =>
     : child;
 
 /** Ensure all children are <li> elements. */
-const asListItems = (children?: React.ReactNode) => 
+const asListItems = (children?: any) => 
     children
     ? React
         .Children
