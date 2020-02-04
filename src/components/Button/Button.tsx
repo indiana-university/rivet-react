@@ -22,14 +22,6 @@ export interface ButtonProps {
     innerRef?: React.Ref<HTMLButtonElement>;
 }
 
-export const buttonPropTypes = {
-  variant: PropTypes.oneOf(['success', 'danger', 'plain', 'navigation']),
-  size: PropTypes.oneOf(['small']),
-  role: PropTypes.oneOf(['secondary']),
-  innerRef: PropTypes.any,
-  id: PropTypes.string
-}
-
 const buttonClass = 'rvt-button';
 /**
  * Generate the combined modifier and variation class for this button, if applicable.
@@ -73,7 +65,13 @@ export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButt
     </button>
 );
 
-Button.propTypes = buttonPropTypes;
-Button.displayName = 'Button';
+Button.displayName = "Button";
+Button.propTypes = {
+  variant: PropTypes.oneOf(["success", "danger", "plain", "navigation"]),
+  size: PropTypes.oneOf(["small"]),
+  role: PropTypes.oneOf(["secondary"]),
+  innerRef: PropTypes.any,
+  id: PropTypes.string
+};
 
 export default Rivet.rivetize(Button);

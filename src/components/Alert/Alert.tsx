@@ -3,13 +3,34 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import * as classNames from 'classnames';
+import * as PropTypes from "prop-types";
 import * as React from 'react';
 
 import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
-import { StatelessAlertProps, statelessPropTypes } from './common';
 
-const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElement>> = 
+export interface AlertProps {
+  /**
+   * Rivet alert styling.
+   * @see https://rivet.uits.iu.edu/components/overlays/alerts
+   */
+
+  variant: "danger" | "info" | "warning" | "success";
+  /**
+   * Optional alert title
+   */
+  title?: string | JSX.Element;
+  /**
+   * Optional event to raise when the alert is dismissed
+   */
+  onDismiss?: () => void;
+  /**
+   * Optional flag to determine whether the alert is visible
+   */
+  isOpen?: boolean;
+}
+
+const Alert : React.SFC<AlertProps & React.HTMLAttributes<HTMLDivElement>> = 
     ({title, onDismiss, variant, isOpen=true, id=Rivet.shortuid(), className, children, ...attrs}) => {
     const titleId = Rivet.shortuid();
 
@@ -37,6 +58,11 @@ const Alert : React.SFC<StatelessAlertProps & React.HTMLAttributes<HTMLDivElemen
         : null
 };
 Alert.displayName = 'Alert';
-Alert.propTypes = statelessPropTypes;
+Alert.propTypes = {
+    variant: PropTypes.oneOf<any>(['danger', 'info', 'warning', 'success']).isRequired,
+    title: PropTypes.oneOfType([PropTypes.string]),
+    onDismiss: PropTypes.func,
+    isOpen: PropTypes.bool
+};
 
 export default Rivet.rivetize(Alert);

@@ -18,11 +18,6 @@ interface BadgeProps {
     variant?: 'info' | 'danger' | 'success' | 'warning';
 }
 
-const propTypes = {
-    role: PropTypes.oneOf(['secondary']),
-    variant: PropTypes.oneOf(['info', 'danger', 'success', 'warning'])
-};
-
 const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, modifier, variant, ...attrs }) => {
     const classes = classNames.default({
         ['rvt-badge']: true,
@@ -36,6 +31,9 @@ const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ 
 };
 
 Badge.displayName = 'Badge';
-Badge.propTypes = propTypes;
+Badge.propTypes =  {
+    role: PropTypes.oneOf(['secondary']),
+    variant: PropTypes.oneOf(['info', 'danger', 'success', 'warning'])
+};
 
 export default Rivet.rivetize(Badge);

@@ -49,7 +49,7 @@ const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElem
 InlineAlert.displayName = 'InlineAlert';
 InlineAlert.propTypes = {
     standalone: PropTypes.bool,
-    variant: PropTypes.string
+    variant: PropTypes.oneOf<any>(['danger', 'info', 'warning', 'success']).isRequired
 };
 
 export default Rivet.rivetize(InlineAlert);
