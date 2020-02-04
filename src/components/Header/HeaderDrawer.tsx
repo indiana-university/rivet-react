@@ -20,10 +20,12 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
 
     public readonly state: HeaderDrawerState = initialState;
     private toggleButton: React.RefObject<HTMLButtonElement>;
+    private drawerWrapDiv: React.RefObject<HTMLDivElement>;
     private eventHandler;
 
     constructor(props) {
         super(props);
+        this.drawerWrapDiv = React.createRef();
         this.toggleDrawer = this.toggleDrawer.bind(this);
         this.toggleButton = React.createRef();
         this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -57,7 +59,7 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
             ['is-open']: this.state.open
         });
         return (
-            <div> {/* This is a div instead of a fragment due to needing a real element wrapping this for how we use ReactDOM.findDOMNode */}
+            <div ref={this.drawerWrapDiv}> {/* This is a div instead of a fragment due to needing a real element wrapping this for how we use ReactDOM.findDOMNode */}
                 <button type="button" className={drawerToggleClasses} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDrawer} ref={this.toggleButton}>
                     <span className="sr-only">Toggle menu</span>
                     {!this.state.open && <Icon name="menu" className="rvt-drawer-button-open" /> }
@@ -100,7 +102,7 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
             return false;
         }
 
-        if (event.targets(ReactDOM.findDOMNode(this)) && !event.isKeyEvent()) {
+        if (event.targets(this.drawerWrapDiv.current) && !event.isKeyEvent()) {
             // If the user clicks, touches or tabs inside the dropdown do not close the menu
             return false;
         }
