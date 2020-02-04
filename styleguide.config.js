@@ -134,7 +134,7 @@ module.exports = {
             ],
         },
     ],
-    webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
+    webpackConfig: require('react-scripts/config/webpack.config.js'),
     require: [
         'rivet-uits/css/rivet.min.css',
         './src/docs/documentation.css'
