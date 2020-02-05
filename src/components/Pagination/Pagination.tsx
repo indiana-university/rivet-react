@@ -32,7 +32,7 @@ const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivEleme
       [`rvt-pagination--${size}`]: size
     });
     const wrappedChildren = React.Children.map(children as JSX.Element[], (child: React.ReactChild) => {
-      const childProps = child.hasOwnProperty("props") ? child['props'] as PaginationItemProps : {};
+      const childProps = child.hasOwnProperty('props') ? child['props'] as PaginationItemProps : {};
       const childClasses = classNames.default({
         'rvt-pagination__item': true,
         'is-disabled': childProps && (childProps['aria-disabled'] || childProps['disabled']),
