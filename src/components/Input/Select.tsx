@@ -7,7 +7,7 @@ import * as Rivet from '../util/Rivet';
 import { renderInput, TextProps } from './common';
 
 const Select : React.SFC<TextProps & React.SelectHTMLAttributes<HTMLSelectElement>> = 
-    renderInput("select");
+    renderInput('select');
 Select.displayName = 'Select';
 
 export default Rivet.rivetize<TextProps & React.SelectHTMLAttributes<HTMLSelectElement>>(Select);
