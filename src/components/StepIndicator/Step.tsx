@@ -2,7 +2,7 @@
 Copyright (C) 2019 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react'
 
 
@@ -47,7 +47,7 @@ const Step : React.SFC <StepProps & React.HTMLAttributes<HTMLLIElement>> =
     const content = (
         <>
             <span className="rvt-steps__label">{label}</span>
-            <span className={classNames.default(indicatorClass, variantClass(variant))}>
+            <span className={classNames(indicatorClass, variantClass(variant))}>
                 <span className="rvt-sr-only">{screenReaderIndicator}</span> {indicator}
             </span>
         </>

@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 
 import InlineAlert from '../Alert/InlineAlert';
@@ -41,7 +41,7 @@ export const renderInput =
             ...attrs
         }
         return (
-            <div className={classNames.default('rvt-input', className)}>
+            <div className={classNames('rvt-input', className)}>
                 <label htmlFor={id} className={Rivet.labelVisiblityClass(labelVisibility)}>{label}</label>
                 {React.createElement(elementName, inputProps)}
                 {note && noteFragment(noteId, variant, note)}

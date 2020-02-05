@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
@@ -15,7 +15,7 @@ const footerNavLi = (child, index) =>
 
 const Footer: React.SFC<React.HTMLAttributes<HTMLDivElement>> =
 ({ className, children, id = Rivet.shortuid(), ...attrs }) => (
-    <footer id={id} role="contentinfo" className={classNames.default(componentClass, className)} {...attrs}>
+    <footer id={id} role="contentinfo" className={classNames(componentClass, className)} {...attrs}>
         <div className="rvt-footer__trident">
             <Icon name="trident-footer" />
         </div>

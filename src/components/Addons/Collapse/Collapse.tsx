@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 
 import 'rivet-collapsible/dist/css/rivet-collapsible.css';
@@ -50,7 +50,7 @@ class Collapse extends React.PureComponent<CollapseProps & React.HTMLAttributes<
 
   public render() {
     const { children, className, defaultClosed, title, TitleComponent = 'div', variant, ...attrs } = this.props;
-    const classes = classNames.default({
+    const classes = classNames({
       'rvt-collapsible': true,
       [`rvt-collapsible--${variant}`]: variant,
     }, className)

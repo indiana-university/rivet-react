@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import DropdownGroup from '../Dropdown/DropdownGroup';
@@ -67,7 +67,7 @@ const drawerWithChildren = (classes, label, logout, children) =>
     </HeaderCollapse>
 
 const HeaderIdentity: React.SFC<HeaderIdentityProps & React.HTMLAttributes<HTMLDivElement>> = ({ avatar, children, className, logoutLinkText, onLogout, username }) => {
-    const wrapperClasses = classNames.default('rvt-header-id', className);
+    const wrapperClasses = classNames('rvt-header-id', className);
     const drawerOpen = wrapperClasses.includes('rvt-header-id--drawer');
     const avatarIcon = avatar && <span className="rvt-header-id__avatar" aria-hidden="true">{avatar}</span>;
     const userLabel = drawerOpen && (children || !onLogout)

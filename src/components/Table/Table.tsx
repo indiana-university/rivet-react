@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
@@ -25,7 +25,7 @@ interface TableProps {
 
 const Table : React.SFC<TableProps & React.HTMLAttributes<HTMLTableElement>> =
 ({ children, className, variant, compact, cells, ...attrs }) => {
-    const classes = classNames.default({
+    const classes = classNames({
         [`rvt-table-${variant}`]: variant,
         ['rvt-table-compact']: compact,
         ['rvt-table-cells']: cells && variant !== 'plain',

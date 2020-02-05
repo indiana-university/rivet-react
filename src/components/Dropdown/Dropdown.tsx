@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import Button, { ButtonProps } from '../Button/Button';
 import * as Rivet from '../util/Rivet';
@@ -63,7 +63,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
 
     public render() {
         const { align, children, className, label, menuClass, toggleDropdownOnClickInside = false, ...attrs } = this.props;
-        const menuClasses = classNames.default({
+        const menuClasses = classNames({
             ['rvt-dropdown__menu']: true,
             [`rvt-dropdown__menu--${align}`]: !!align
         }, menuClass);

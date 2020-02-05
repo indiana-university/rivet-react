@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
@@ -17,7 +17,7 @@ const RadioButton : React.SFC <RadioButtonProps & React.InputHTMLAttributes<HTML
         <input
             id={id}
             type="radio"
-            className={classNames.default("rvt-radio", className)}
+            className={classNames("rvt-radio", className)}
             {...attrs}/>
         <label htmlFor={id}>{label}</label>
     </>

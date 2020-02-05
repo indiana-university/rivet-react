@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
@@ -115,7 +115,7 @@ interface ColProps {
 
 const Col : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> = 
 ({ children, className, last, lg, md, pullSm, pullMd, pullLg, pullXl, pullXxl, pushSm, pushMd, pushLg, pushXl, pushXxl, sm, xl, xxl, ...attrs }) => {
-    const classes = classNames.default({
+    const classes = classNames({
         ['rvt-grid__item']: !sm && !md && !lg && !xl && !xxl,
         [`rvt-grid__item--last`]: last,
         [`rvt-grid__item-sm`]: typeof sm === 'boolean',

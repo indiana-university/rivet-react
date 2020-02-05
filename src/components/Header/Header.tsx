@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import { findFirstChildOfType } from '../util/childUtils';
 import Icon from '../util/RivetIcons';
@@ -36,7 +36,7 @@ const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivEleme
     }
 
     return (
-        <header {...attrs} className={classNames.default(componentClass, className)} role="banner">
+        <header {...attrs} className={classNames(componentClass, className)} role="banner">
             <a className="rvt-skip-link" href={mainContentUrl}>Skip to content</a>
             <div className="rvt-header__trident">
                 <Icon name="trident-header" />

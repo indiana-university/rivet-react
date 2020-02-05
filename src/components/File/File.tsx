@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 
 import * as Rivet from '../util/Rivet';
@@ -43,7 +43,7 @@ class File extends React.PureComponent<FileProps & React.HTMLAttributes<HTMLInpu
         }
 
         return (
-            <div className={classNames.default('rvt-file', className)}>
+            <div className={classNames('rvt-file', className)}>
                 <input onInput={this.handleFileChange} {...attrs} ref={this.fileInput} type="file" id={id} aria-describedby={id + "-file-description"} />
                 <label htmlFor={id} className="rvt-button">
                     <span>{label}</span>

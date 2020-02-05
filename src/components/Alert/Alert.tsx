@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as PropTypes from "prop-types";
 import * as React from 'react';
 
@@ -47,7 +47,7 @@ const Alert : React.SFC<AlertProps & React.HTMLAttributes<HTMLDivElement>> =
           </button>
         : null;
     
-    const classes = classNames.default('rvt-alert', `rvt-alert--${variant}`, className);
+    const classes = classNames('rvt-alert', `rvt-alert--${variant}`, className);
 
     return isOpen 
         ? <div id={id} className={classes} role='alertdialog' aria-labelledby={titleId} {...attrs} >

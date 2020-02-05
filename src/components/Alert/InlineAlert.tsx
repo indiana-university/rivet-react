@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
@@ -30,7 +30,7 @@ const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElem
         variant,
         ... attrs
     }) => {
-        const classes = classNames.default({
+        const classes = classNames({
             ['rvt-inline-alert']: true,
             ['rvt-inline-alert--standalone']: standalone,
             [`rvt-inline-alert--${variant}`]: true

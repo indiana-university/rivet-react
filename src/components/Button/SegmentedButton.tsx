@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
@@ -20,7 +20,7 @@ const propTypes = {
 
 const SegmentedButton: React.SFC<SegmentedButtonProps & React.HTMLAttributes<HTMLDivElement>> =
   ({ className, children, fit, ...attrs }) => {
-    const classes = classNames.default({
+    const classes = classNames({
       ['rvt-button-segmented']: true,
       ['rvt-button-segmented--fitted']: fit
     }, className);

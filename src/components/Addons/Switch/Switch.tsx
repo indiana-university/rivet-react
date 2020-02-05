@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import 'rivet-switch/dist/css/rivet-switch.css';
 
@@ -46,7 +46,7 @@ class Switch extends React.PureComponent<SwitchProps & React.HTMLAttributes<HTML
 
   public render() {
     const { className, size, variant, ...attrs } = this.props;
-    const classes = classNames.default({
+    const classes = classNames({
       'rvt-switch': true,
       [`rvt-switch--${variant}`]: variant,
       [`rvt-switch--${size}`]: size,

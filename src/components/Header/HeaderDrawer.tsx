@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import Icon from '../util/RivetIcons';
 import HeaderDrawerEvent from './HeaderDrawerEvent';
@@ -53,7 +53,7 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
 
     public render() {
         const { identity, navigation } = this.props;
-        const drawerToggleClasses = classNames.default({
+        const drawerToggleClasses = classNames({
             ['rvt-drawer-button']: true,
             ['is-open']: this.state.open
         });

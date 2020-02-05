@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
@@ -56,7 +56,7 @@ export const Button: React.SFC<ButtonProps & React.ButtonHTMLAttributes<HTMLButt
 ({ className, children, id = Rivet.shortuid(), innerRef, modifier, onClick, size, variant, ...attrs}) => (
     <button
       id={id}
-      className={classNames.default(buttonStyle(variant, modifier), buttonSize(size), className)}
+      className={classNames(buttonStyle(variant, modifier), buttonSize(size), className)}
       onClick={onClick}
       ref={innerRef}
       {...attrs}

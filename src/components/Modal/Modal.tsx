@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
@@ -76,7 +76,7 @@ class Modal extends React.PureComponent<ModalProps & React.HTMLAttributes<HTMLDi
         const { children, className, id = Rivet.shortuid(), isOpen, onDismiss, title, ...attrs } = this.props;
         return (
             <div ref={this.modalWrapDiv}
-                className={classNames.default(["rvt-modal", className])}
+                className={classNames(["rvt-modal", className])}
                 id={id}
                 role="dialog"
                 aria-labelledby={`${id}-title`}

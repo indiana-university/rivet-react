@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react'
 import * as Rivet from '../util/Rivet'
 
@@ -45,7 +45,7 @@ const componentClass = 'rvt-list';
 
 export const List : React.SFC <ListProps & React.HTMLAttributes<HTMLElement>> = 
 ({ children, className, orientation, variant, ...props }) => {
-    const classes = classNames.default(componentClass, plainList(variant), inlineList(orientation), className);
+    const classes = classNames(componentClass, plainList(variant), inlineList(orientation), className);
     const listItems = asListItems(children);
     const ListTag = variant === 'ordered' ? 'ol' : 'ul';
     return (

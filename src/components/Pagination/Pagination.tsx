@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 
 import * as Rivet from '../util/Rivet';
@@ -26,14 +26,14 @@ interface PaginationItemProps {
 
 const Pagination : React.SFC<PaginationProps & React.HTMLAttributes<HTMLDivElement>> =
  ({ align, children, className, size, ...attrs }) => {
-    const classes = classNames.default({
+    const classes = classNames({
       ['rvt-pagination']: true,
       [`rvt-pagination--${align}`]: align,
       [`rvt-pagination--${size}`]: size
     });
     const wrappedChildren = React.Children.map(children as JSX.Element[], (child: React.ReactChild) => {
       const childProps = child.hasOwnProperty("props") ? child['props'] as PaginationItemProps : {};
-      const childClasses = classNames.default({
+      const childClasses = classNames({
         'rvt-pagination__item': true,
         'is-disabled': childProps && (childProps['aria-disabled'] || childProps['disabled']),
         'is-active': childProps && childProps['aria-current'] === 'page'
