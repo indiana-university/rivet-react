@@ -28,7 +28,7 @@ const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElem
         id = Rivet.shortuid(),
         standalone = false,
         variant,
-        ... attrs
+        ...attrs
     }) => {
         const classes = classNames({
             ['rvt-inline-alert']: true,
