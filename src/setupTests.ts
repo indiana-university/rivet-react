@@ -4,7 +4,6 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 // Temporary hack to suppress error
 // https://github.com/facebookincubator/create-react-app/issues/3199
-// tslint:disable-next-line:only-arrow-functions
 window.requestAnimationFrame = function (callback) {
     setTimeout(callback, 0);
     return 0;
