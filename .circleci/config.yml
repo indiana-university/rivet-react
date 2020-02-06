@@ -14,15 +14,6 @@ aliases:
     paths:
       - node_modules
     key: v2-node-modules-{{ checksum "package.json" }}
-
-  # Branch Filtering
-  - &filter-only-master
-    branches:
-      only:
-        - master
-  - &filter-ignore-gh-pages
-    branches:
-      ignore: gh-pages
   
 # Default settings for all jobs 
 defaults: &defaults
@@ -87,13 +78,22 @@ workflows:
   build-test-and-publish:
     jobs:
       - build_test:
-          filters: *filter-ignore-gh-pages
+          filters:
+            branches:
+              ignore: 
+                - gh-pages
       - publish_guide:
           requires:
             - build_test
-          filters: *filter-only-master
+          filters: 
+            branches:
+              only: 
+                - master
       - publish_package:
           requires:
             - build_test
           context: rivet-react
-          filters: *filter-only-master
+          filters: 
+            branches:
+              only: 
+                - master
