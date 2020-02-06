@@ -66,7 +66,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
             toggleDropdownOnClickInside = false, // eslint-disable-line @typescript-eslint/no-unused-vars
             align, children, className, label, menuClass, ...attrs } = this.props;
         const menuClasses = classNames({
-            ['rvt-dropdown__menu']: true,
+            'rvt-dropdown__menu': true,
             [`rvt-dropdown__menu--${align}`]: !!align
         }, menuClass);
         return (

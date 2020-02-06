@@ -31,8 +31,8 @@ const InlineAlert: React.SFC<InlineAlertProps & React.HTMLAttributes<HTMLDivElem
         ...attrs
     }) => {
         const classes = classNames({
-            ['rvt-inline-alert']: true,
-            ['rvt-inline-alert--standalone']: standalone,
+            'rvt-inline-alert': true,
+            'rvt-inline-alert--standalone': standalone,
             [`rvt-inline-alert--${variant}`]: true
         }, className);
         return (
