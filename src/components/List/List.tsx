@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react'
 import * as Rivet from '../util/Rivet'
 
@@ -26,7 +26,7 @@ const asListItem = (child : React.ReactChild) =>
     : child;
 
 /** Ensure all children are <li> elements. */
-const asListItems = (children?: React.ReactNode) => 
+const asListItems = (children?: any) => 
     children
     ? React
         .Children
@@ -56,4 +56,4 @@ export const List : React.SFC <ListProps & React.HTMLAttributes<HTMLElement>> =
 };
 List.displayName = 'List';
 
-export default Rivet.rivetize(List);
+export default Rivet.rivetize<ListProps & React.HTMLAttributes<HTMLElement>>(List);

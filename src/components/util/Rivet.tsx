@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classnames from 'classnames'
+import classNames from 'classnames'
 import * as React from 'react';
 
 // Classes, Interfaces, and Types
@@ -149,9 +149,9 @@ const parseRivetHidden = (hide?: Hidden) => ({
  */
 export type ComponentDecorator<T extends Props> = ( props: T ) => string;
 
-export const rivetize = <T extends React.HTMLAttributes<HTMLElement>>(Component: React.ComponentType<T>): React.SFC<T & Props> =>
-({ className, border, display, hide, margin, padding, typescale, ...attrs }: Props & React.HTMLAttributes<HTMLElement>) => (
-        <Component className={classnames(
+export const rivetize = <T extends React.HTMLAttributes<HTMLElement>>(Component: React.ComponentType<any>): React.FC<T & Props> =>
+    ({ className, border, display, hide, margin, padding, typescale, ...attrs }: T & Props) => (
+         <Component className={classNames(
             parseRivetMargin(margin),
             parseRivetPadding(padding),
             parseRivetTypescale(typescale),

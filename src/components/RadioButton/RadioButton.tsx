@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
@@ -24,4 +24,4 @@ const RadioButton : React.SFC <RadioButtonProps & React.InputHTMLAttributes<HTML
 );
 RadioButton.displayName = 'RadioButton';
 
-export default Rivet.rivetize(RadioButton);
+export default Rivet.rivetize<RadioButtonProps & React.InputHTMLAttributes<HTMLInputElement>>(RadioButton);

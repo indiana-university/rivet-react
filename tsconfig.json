@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": "./public",
+    "baseUrl": "src",
     "outDir": "build/dist",
     "module": "commonjs",
     "target": "es5",
-    "lib": ["es5","es6", "dom"],
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
     "sourceMap": true,
-    // "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
@@ -17,7 +20,15 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "declaration": true
+    "declaration": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
   "include": [
     "src/**/*"

@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
@@ -31,4 +31,4 @@ const Breadcrumbs: React.SFC<BreadcrumbsProps & React.HTMLAttributes<HTMLDivElem
   };
 Breadcrumbs.displayName = 'Breadcrumbs';
 
-export default Rivet.rivetize(Breadcrumbs);
+export default Rivet.rivetize<BreadcrumbsProps & React.HTMLAttributes<HTMLDivElement>>(Breadcrumbs);

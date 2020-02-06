@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
@@ -25,4 +25,4 @@ const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> =
 };
 Panel.displayName = 'Panel';
 
-export default Rivet.rivetize(Panel);
+export default Rivet.rivetize<PanelProps & React.HTMLAttributes<HTMLDivElement>>(Panel);

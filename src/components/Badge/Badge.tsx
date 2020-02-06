@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
@@ -18,11 +18,6 @@ interface BadgeProps {
     variant?: 'info' | 'danger' | 'success' | 'warning';
 }
 
-const propTypes = {
-    role: PropTypes.oneOf(['secondary']),
-    variant: PropTypes.oneOf(['info', 'danger', 'success', 'warning'])
-};
-
 const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, modifier, variant, ...attrs }) => {
     const classes = classNames({
         ['rvt-badge']: true,
@@ -36,6 +31,9 @@ const Badge : React.SFC<BadgeProps & React.HTMLAttributes<HTMLDivElement>> = ({ 
 };
 
 Badge.displayName = 'Badge';
-Badge.propTypes = propTypes;
+Badge.propTypes =  {
+    role: PropTypes.oneOf(['secondary']),
+    variant: PropTypes.oneOf(['info', 'danger', 'success', 'warning'])
+};
 
-export default Rivet.rivetize(Badge);
+export default Rivet.rivetize<BadgeProps & React.HTMLAttributes<HTMLDivElement>>(Badge);

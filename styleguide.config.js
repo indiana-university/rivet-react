@@ -16,6 +16,8 @@ module.exports = {
             && prop.name.includes("aria-") === false
             // skip 'rivetize' props (these are documented separately)
             && ['className','border','display','hide','margin','padding','typescale'].indexOf(prop.name) === -1  
+            // skip other props
+            && ['inputMode','is'].indexOf(prop.name) === -1  
     }).parse,
     pagePerSection: true,
     exampleMode: 'expand',
@@ -134,12 +136,14 @@ module.exports = {
             ],
         },
     ],
-    webpackConfig: require('react-scripts-ts/config/webpack.config.dev'),
+    webpackConfig: require('react-scripts/config/webpack.config.js'),
     require: [
         'rivet-uits/css/rivet.min.css',
-        './src/docs/documentation.css'
+        './src/docs/documentation.css',
+        // See https://stackoverflow.com/questions/46067207/how-to-add-examples-a-component-with-dependencies-in-react-styleguidist#answer-46090262
+        path.resolve(__dirname, 'styleguide.setup.js')
       ],
     theme: {
         maxWidth: 1920
-      }
+    }
 };

@@ -26,4 +26,4 @@ const Checkbox : React.SFC<CheckboxProps & React.InputHTMLAttributes<HTMLInputEl
 );
 Checkbox.displayName = 'Checkbox';
 
-export default Rivet.rivetize(Checkbox);
+export default Rivet.rivetize<CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>>(Checkbox);

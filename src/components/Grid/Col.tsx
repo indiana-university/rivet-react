@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
@@ -147,4 +147,4 @@ const Col : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> =
 }
 Col.displayName = 'Col';
 
-export default Rivet.rivetize(Col);
+export default Rivet.rivetize<ColProps & React.HTMLAttributes<HTMLDivElement>>(Col);

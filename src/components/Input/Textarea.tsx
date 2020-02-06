@@ -7,7 +7,7 @@ import * as Rivet from '../util/Rivet';
 import { renderInput, TextProps } from './common';
 
 const Textarea :  React.SFC<TextProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>> = 
-    renderInput((attrs) => <textarea {...attrs}/>);
+    renderInput('textarea');
 Textarea.displayName = 'TextArea';
 
-export default Rivet.rivetize(Textarea);
+export default Rivet.rivetize<TextProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>>(Textarea);

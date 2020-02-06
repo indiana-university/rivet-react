@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
@@ -33,4 +33,4 @@ const SegmentedButton: React.SFC<SegmentedButtonProps & React.HTMLAttributes<HTM
 SegmentedButton.displayName = 'SegmentedButton';
 SegmentedButton.propTypes = propTypes;
 
-export default Rivet.rivetize(SegmentedButton);
+export default Rivet.rivetize<SegmentedButtonProps & React.HTMLAttributes<HTMLDivElement>>(SegmentedButton);

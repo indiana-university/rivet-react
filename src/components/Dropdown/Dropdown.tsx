@@ -2,9 +2,8 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import Button, { ButtonProps } from '../Button/Button';
 import * as Rivet from '../util/Rivet';
 import Icon from '../util/RivetIcons';
@@ -36,11 +35,13 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
 
     public readonly state: DropdownState = initialState;
     private toggleButton: React.RefObject<HTMLButtonElement>;
+    private dropdownWrapDiv: React.RefObject<HTMLDivElement>;
     private eventHandler;
 
     constructor(props) {
         super(props);
         this.toggleButton = React.createRef();
+        this.dropdownWrapDiv = React.createRef();
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.toggleDropdown = this.toggleDropdown.bind(this);
         this.eventHandler = DropdownEvent.handler(this.handleClickOutside);
@@ -67,7 +68,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
             [`rvt-dropdown__menu--${align}`]: !!align
         }, menuClass);
         return (
-            <div className="rvt-dropdown">
+            <div className="rvt-dropdown" ref={this.dropdownWrapDiv}>
                 <Button type="button" {...attrs} innerRef={this.toggleButton} className={className} aria-haspopup="true" aria-expanded={this.state.open} onClick={this.toggleDropdown}>
                     { label && <span className="rvt-dropdown__toggle-text">{label}</span> }
                     <Icon name="caret-down" />
@@ -104,7 +105,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
         }
 
         const preventToggleOnInsideClick = !event.isKeyEvent() && !this.props.toggleDropdownOnClickInside;
-        if (event.targets(ReactDOM.findDOMNode(this)) && (preventToggleOnInsideClick || event.isTabKeyPress())) {
+        if (event.targets(this.dropdownWrapDiv.current) && (preventToggleOnInsideClick || event.isTabKeyPress())) {
             // If the user clicks, touches or tabs inside the dropdown do not close the menu
             return false;
         }
@@ -122,4 +123,4 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
 
 }
 
-export default Rivet.rivetize(Dropdown);
+export default Rivet.rivetize<DropdownProps & React.HTMLAttributes<HTMLButtonElement>>(Dropdown);

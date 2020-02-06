@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import * as Rivet from '../util/Rivet';
 
@@ -38,4 +38,4 @@ const Table : React.SFC<TableProps & React.HTMLAttributes<HTMLTableElement>> =
 };
 Table.displayName = 'Table';
 
-export default Rivet.rivetize(Table);
+export default Rivet.rivetize<TableProps & React.HTMLAttributes<HTMLTableElement>>(Table);
