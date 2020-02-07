@@ -1,5 +1,5 @@
 {
-    "ignore": [".git/**", ".circleci/**", "**/.*", "**/*.md", "build/**", "./coverage/**, yarn.lock"],
+    "ignore": [".git/**", ".circleci/**", "**/.*", "**/*.md", "build/**", "./coverage/**", "yarn.lock"],
     "license": "license-header.txt",
     "licenseFormats": {
         "js|ts|tsx": {
