@@ -2,14 +2,9 @@
     "ignore": [".git/**", ".circleci/**", "**/.*", "**/*.md", "styleguide.*", "build/**", "./coverage/**, yarn.lock"],
     "license": "license-header.txt",
     "licenseFormats": {
-        "tsx|js": {
+        "js|ts|tsx": {
             "prepend": "/*",
             "append": "*/"
-        },
-        "dotfile": {
-            "eachLine": {
-                "prepend": "# "
-            }
         }
     },
     "trailingWhitespace": "TRIM"
