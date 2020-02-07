@@ -1,0 +1,16 @@
+{
+    "ignore": [".git/**", ".circleci/**", "**/.*", "**/*.md", "styleguide.*", "build/**", "./coverage/**, yarn.lock"],
+    "license": "license-header.txt",
+    "licenseFormats": {
+        "tsx|js": {
+            "prepend": "/*",
+            "append": "*/"
+        },
+        "dotfile": {
+            "eachLine": {
+                "prepend": "# "
+            }
+        }
+    },
+    "trailingWhitespace": "TRIM"
+}
