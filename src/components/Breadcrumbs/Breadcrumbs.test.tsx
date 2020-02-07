@@ -25,7 +25,7 @@ describe('<Breadcrumbs />', () => {
         it('should wrap multiple children in list items', () => {
             const cut = mount(
               <Breadcrumbs>
-                <a href="#">Link One</a>
+                <a href="#0">Link One</a>
                 Link Two
               </Breadcrumbs>);
             expect(cut.find('nav > ol.rvt-breadcrumbs > li').length).toEqual(2);
@@ -33,7 +33,7 @@ describe('<Breadcrumbs />', () => {
         it('should mark the last child as the current page', () => {
             const cut = mount(
               <Breadcrumbs>
-                <a href="#">Link One</a>
+                <a href="#0">Link One</a>
                 Link Two
               </Breadcrumbs>);
             expect(cut.find('nav > ol.rvt-breadcrumbs > li').last().prop('aria-current')).toEqual('page');

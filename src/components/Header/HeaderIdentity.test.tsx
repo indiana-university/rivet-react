@@ -4,9 +4,7 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import { mount, shallow } from 'enzyme';
 import * as React from 'react';
-import Header from './Header';
 import HeaderIdentity from './HeaderIdentity'
-import HeaderNavigation from './HeaderNavigation'
 
 describe('<Navigation />', () => {
     let cut;
@@ -58,7 +56,7 @@ describe('<Navigation />', () => {
         beforeEach(() => {
             cut = mount(
                 <HeaderIdentity avatar="RS" username="rswanson" onLogout={logoutSpy}>
-                    <a href="#">Example</a>
+                    <a href="#0">Example</a>
                 </HeaderIdentity>
             );
         });
@@ -97,7 +95,7 @@ describe('<Navigation />', () => {
         it('should render the identity menu with navigation in the drawer view', () => {
             cut = mount(
                 <HeaderIdentity avatar="RS" username="rswanson" className="rvt-header-id--drawer">
-                    <a href="#" id="example-one">Example</a>
+                    <a href="#0" id="example-one">Example</a>
                 </HeaderIdentity>
             );
             cut.find('HeaderCollapse > button').simulate('click');

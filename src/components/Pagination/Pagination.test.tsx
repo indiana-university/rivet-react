@@ -38,15 +38,15 @@ describe('<Pagination />', () => {
       it('should render children', () => {
         const cut = mount(
           <Pagination>
-            <a href="#">Link one</a>
-            <a href="#">Link two</a>
+            <a href="#0">Link one</a>
+            <a href="#0">Link two</a>
           </Pagination>);
         expect(cut.find('nav > ul.rvt-pagination > li.rvt-pagination__item > a').length).toBe(2);
       });
       it('should add class when child is disabled with aria attributes', () => {
         const cut = mount(
           <Pagination>
-            <a href="#" id="test" aria-disabled="true">Link one</a>
+            <a href="#0" id="test" aria-disabled="true">Link one</a>
           </Pagination>);
         expect(cut.find('nav > ul.rvt-pagination > li.rvt-pagination__item.is-disabled > a#test').length).toBe(1);
       });
@@ -60,7 +60,7 @@ describe('<Pagination />', () => {
       it('should add class when child is the current page', () => {
         const cut = mount(
           <Pagination>
-            <a href="#" id="test" aria-current="page">Link one</a>
+            <a href="#0" id="test" aria-current="page">Link one</a>
           </Pagination>);
         expect(cut.find('nav > ul.rvt-pagination > li.rvt-pagination__item.is-active > a#test').length).toBe(1);
       });

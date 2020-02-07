@@ -12,7 +12,7 @@ describe('<HeaderMenu />', () => {
     beforeEach(() => {
         cut = mount(
             <HeaderMenu label="Testing">
-                <a href="#">Foo</a>
+                <a href="#0">Foo</a>
                 <button>Bar</button>
             </HeaderMenu>
         );
