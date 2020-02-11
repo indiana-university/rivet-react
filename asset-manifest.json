@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/rivet-react/static/css/main.10260cc0.chunk.css",
-    "main.js": "/rivet-react/build/main.4e6977b4.js",
+    "main.js": "/rivet-react/build/main.3a26d992.js",
     "runtime-main.js": "/rivet-react/build/bundle.47e562ce.js",
-    "static/css/2.52d6560f.chunk.css": "/rivet-react/static/css/2.52d6560f.chunk.css",
-    "build/2.f815d2de.js": "/rivet-react/build/2.f815d2de.js",
-    "build/2.f815d2de.js.LICENSE.txt": "/rivet-react/build/2.f815d2de.js.LICENSE.txt",
+    "static/css/2.485d215e.chunk.css": "/rivet-react/static/css/2.485d215e.chunk.css",
+    "build/2.4e1fc492.js": "/rivet-react/build/2.4e1fc492.js",
+    "build/2.4e1fc492.js.LICENSE.txt": "/rivet-react/build/2.4e1fc492.js.LICENSE.txt",
     "index.html": "/rivet-react/index.html",
-    "precache-manifest.162ce093fd936a1b06d1699240e1be0f.js": "/rivet-react/precache-manifest.162ce093fd936a1b06d1699240e1be0f.js",
+    "precache-manifest.a8677996144fb3da7d95aa741d3a3102.js": "/rivet-react/precache-manifest.a8677996144fb3da7d95aa741d3a3102.js",
     "service-worker.js": "/rivet-react/service-worker.js",
-    "static/css/2.52d6560f.chunk.css.map": "/rivet-react/static/css/2.52d6560f.chunk.css.map",
+    "static/css/2.485d215e.chunk.css.map": "/rivet-react/static/css/2.485d215e.chunk.css.map",
     "static/css/main.10260cc0.chunk.css.map": "/rivet-react/static/css/main.10260cc0.chunk.css.map"
   },
   "entrypoints": [
     "build/bundle.47e562ce.js",
-    "static/css/2.52d6560f.chunk.css",
-    "build/2.f815d2de.js",
+    "static/css/2.485d215e.chunk.css",
+    "build/2.4e1fc492.js",
     "static/css/main.10260cc0.chunk.css",
-    "build/main.4e6977b4.js"
+    "build/main.3a26d992.js"
   ]
 }
