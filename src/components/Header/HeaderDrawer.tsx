@@ -54,8 +54,8 @@ class HeaderDrawer extends React.PureComponent<HeaderDrawerProps & React.HTMLAtt
     public render() {
         const { identity, navigation } = this.props;
         const drawerToggleClasses = classNames({
-            ['rvt-drawer-button']: true,
-            ['is-open']: this.state.open
+            'rvt-drawer-button': true,
+            'is-open': this.state.open
         });
         return (
             <div ref={this.drawerWrapDiv}>

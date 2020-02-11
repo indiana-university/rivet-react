@@ -34,11 +34,11 @@ const asListItems = (children?: any) =>
     : [];
 
 const plainList = (variant?: ListVariant) => ({
-    ['rvt-plain-list']: variant === 'plain'
+    'rvt-plain-list': variant === 'plain'
 });
 
 const inlineList = (orientation?: ListOrientation) => ({
-    ['rvt-inline-list']: orientation === 'inline'
+    'rvt-inline-list': orientation === 'inline'
 });
 
 const componentClass = 'rvt-list';

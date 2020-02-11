@@ -15,7 +15,7 @@ describe('<HeaderNavigation />', () => {
         cut = mount(
             <Header title="Testing">
                 <HeaderNavigation>
-                    <a href="#">Foo</a>
+                    <a href="#0">Foo</a>
                     <button>Bar</button>
                 </HeaderNavigation>
             </Header>
@@ -36,7 +36,7 @@ describe('<HeaderNavigation />', () => {
         beforeEach(() => {
             cut = mount(
                 <HeaderNavigation className="rvt-drawer-navigation">
-                    <a href="#">Foo</a>
+                    <a href="#0">Foo</a>
                     <HeaderMenu label="Example">
                         <button>Bar</button>
                     </HeaderMenu>
