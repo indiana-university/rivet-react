@@ -116,7 +116,7 @@ interface ColProps {
 const Col : React.SFC<ColProps & React.HTMLAttributes<HTMLDivElement>> = 
 ({ children, className, last, lg, md, pullSm, pullMd, pullLg, pullXl, pullXxl, pushSm, pushMd, pushLg, pushXl, pushXxl, sm, xl, xxl, ...attrs }) => {
     const classes = classNames({
-        ['rvt-grid__item']: !sm && !md && !lg && !xl && !xxl,
+        'rvt-grid__item': !sm && !md && !lg && !xl && !xxl,
         [`rvt-grid__item--last`]: last,
         [`rvt-grid__item-sm`]: typeof sm === 'boolean',
         [`rvt-grid__item-${sm}-sm-up`]: typeof sm === 'number',

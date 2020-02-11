@@ -44,7 +44,7 @@ describe('<Header />', () => {
             cut = shallow(
                 <Header title="foo">
                     <HeaderNavigation>
-                        <a href="#" id="example-one">Example One</a>
+                        <a href="#0" id="example-one">Example One</a>
                         <button id="example-two">Example Two</button>
                     </HeaderNavigation>
                 </Header>
@@ -73,7 +73,7 @@ describe('<Header />', () => {
             cut = shallow(
                 <Header title="foo">
                     <HeaderIdentity avatar="RS" username="rswanson">
-                        <a href="#" id="example-one">Example One</a>
+                        <a href="#0" id="example-one">Example One</a>
                         <button id="example-two">Example Two</button>
                     </HeaderIdentity>
                 </Header>

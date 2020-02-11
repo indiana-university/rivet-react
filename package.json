@@ -18,7 +18,9 @@
     "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles",
     "watch": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint \"./src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
     "classnames": "2.2.6",
@@ -49,6 +51,9 @@
     "semantic-release": "17.0.2",
     "typescript": "3.7.5",
     "webpack": "4.41.5"
+  },
+  "eslintConfig": {
+    "extends": ["react-app"]
   },
   "files": [
     "build/dist/components",

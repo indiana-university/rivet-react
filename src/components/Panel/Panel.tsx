@@ -16,7 +16,7 @@ interface PanelProps {
 const Panel : React.SFC<PanelProps & React.HTMLAttributes<HTMLDivElement>> = 
 ({ children, className, variant, ...attrs }) => {
     const classes = classNames({
-        ['rvt-panel']: true,
+        'rvt-panel': true,
         [`rvt-panel--${variant}`]: !!variant
     }, className);
     return (

@@ -12,9 +12,9 @@ describe('<DropdownGroup />', () => {
         it('should render without throwing an error', () => {
             const cut = mount(
                 <Dropdown>
-                    <a href="#">Hello, world!</a>
+                    <a href="#0">Hello, world!</a>
                     <DropdownGroup>
-                        <a href="#">Grouped link</a>
+                        <a href="#0">Grouped link</a>
                     </DropdownGroup>
                 </Dropdown>
             );
@@ -24,9 +24,9 @@ describe('<DropdownGroup />', () => {
         it('should pass attributes through', () => {
             const cut = mount(
                 <Dropdown>
-                    <a href="#">Hello, world!</a>
+                    <a href="#0">Hello, world!</a>
                     <DropdownGroup id="the_id">
-                        <a href="#">Grouped link</a>
+                        <a href="#0">Grouped link</a>
                     </DropdownGroup>
                 </Dropdown>
             );
@@ -36,9 +36,9 @@ describe('<DropdownGroup />', () => {
         it('should add aria label when a label is provided', () => {
             const cut = mount(
                 <Dropdown>
-                    <a href="#">Hello, world!</a>
+                    <a href="#0">Hello, world!</a>
                     <DropdownGroup label="Links">
-                        <a href="#">Grouped link</a>
+                        <a href="#0">Grouped link</a>
                     </DropdownGroup>
                 </Dropdown>
             );
