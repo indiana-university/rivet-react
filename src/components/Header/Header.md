@@ -11,7 +11,7 @@ View the [Rivet documentation for Header](https://rivet.uits.iu.edu/components/n
 You can also overrice the default "`/`" URL for the link:
 
 ```jsx
-<Header title="Application Title" headerUrl="/foo" />
+<Header title="Application Title" href="/foo" />
 ```
 
 The `HeaderIdentity` adds a username, or username and avatar. On mobile this item

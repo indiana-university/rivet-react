@@ -15,7 +15,7 @@ interface HeaderProps {
      * The URL that the link in the upper left of the header will point to.
      * @see https://rivet.uits.iu.edu/components/navigation/header/
      */
-    headerUrl: string;
+    href: string;
     /**
      * The application name or title that appears in the header.
      * @see https://rivet.uits.iu.edu/components/navigation/header/#base-header
@@ -25,7 +25,7 @@ interface HeaderProps {
 
 const componentClass = "rvt-header";
 
-const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, headerUrl='/', title, ...attrs }) => {
+const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivElement>> = ({ children, className, href='/', title, ...attrs }) => {
     const identity = findFirstChildOfType(children, Identity.displayName);
     const navigation = findFirstChildOfType(children, Navigation.displayName);
     let mainContentUrl = document.URL;
@@ -47,7 +47,7 @@ const HeaderComponent: React.SFC<HeaderProps & React.HTMLAttributes<HTMLDivEleme
                 <Icon name="trident-header" />
             </div>
             <span className="rvt-header__title">
-                <a href={headerUrl}>{title}</a>
+                <a href={href}>{title}</a>
             </span>
             {(navigation || identity) &&
                 <div className="rvt-header__controls">

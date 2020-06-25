@@ -43,10 +43,10 @@ describe('<Header />', () => {
             expect(cut.find('.rvt-header__title a').props().href).toBe('/');
         });
 
-        it('can be overridden by headerUrl prop', () => {
-            const headerUrl = '/foo';
-            cut = shallow(<Header title="foo" headerUrl={headerUrl}/>);
-            expect(cut.find('.rvt-header__title a').props().href).toBe(headerUrl);
+        it('can be overridden by href prop', () => {
+            const href = '/foo';
+            cut = shallow(<Header title="foo" href={href}/>);
+            expect(cut.find('.rvt-header__title a').props().href).toBe(href);
         });
     });
 
