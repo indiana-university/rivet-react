@@ -7,7 +7,6 @@ import * as React from 'react';
 import Header from './Header'
 import HeaderIdentity from './HeaderIdentity'
 import HeaderNavigation from './HeaderNavigation'
-import { isMainThread } from 'worker_threads';
 
 describe('<Header />', () => {
     let cut;
