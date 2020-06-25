@@ -7,10 +7,11 @@ import * as React from 'react';
 import Header from './Header'
 import HeaderIdentity from './HeaderIdentity'
 import HeaderNavigation from './HeaderNavigation'
+import { isMainThread } from 'worker_threads';
 
 describe('<Header />', () => {
     let cut;
-    
+
     beforeEach(() => {
         cut = shallow(<Header title="foo"/>);
     })
@@ -38,6 +39,18 @@ describe('<Header />', () => {
         });
     });
 
+    describe('Header URL', () => {
+        it('should default to "/"', () => {
+            expect(cut.find('.rvt-header__title a').props().href).toBe('/');
+        });
+
+        it('can be overridden by headerUrl prop', () => {
+            const headerUrl = '/foo';
+            cut = shallow(<Header title="foo" headerUrl={headerUrl}/>);
+            expect(cut.find('.rvt-header__title a').props().href).toBe(headerUrl);
+        });
+    });
+
     describe('Including header navigation', () => {
 
         beforeEach(() => {
@@ -50,7 +63,7 @@ describe('<Header />', () => {
                 </Header>
             )
         });
-        
+
         it('should render the header controls div when navigation is present', () => {
             expect(cut.find('div.rvt-header__controls')).toHaveLength(1);
         });
@@ -79,7 +92,7 @@ describe('<Header />', () => {
                 </Header>
             )
         });
-        
+
         it('should render the header controls div when identity menu is present', () => {
             expect(cut.find('div.rvt-header__controls')).toHaveLength(1);
         });
