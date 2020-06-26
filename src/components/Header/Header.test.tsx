@@ -10,7 +10,7 @@ import HeaderNavigation from './HeaderNavigation'
 
 describe('<Header />', () => {
     let cut;
-    
+
     beforeEach(() => {
         cut = shallow(<Header title="foo"/>);
     })
@@ -38,6 +38,18 @@ describe('<Header />', () => {
         });
     });
 
+    describe('Header URL', () => {
+        it('should default to "/"', () => {
+            expect(cut.find('.rvt-header__title a').props().href).toBe('/');
+        });
+
+        it('can be overridden by href prop', () => {
+            const href = '/foo';
+            cut = shallow(<Header title="foo" href={href}/>);
+            expect(cut.find('.rvt-header__title a').props().href).toBe(href);
+        });
+    });
+
     describe('Including header navigation', () => {
 
         beforeEach(() => {
@@ -50,7 +62,7 @@ describe('<Header />', () => {
                 </Header>
             )
         });
-        
+
         it('should render the header controls div when navigation is present', () => {
             expect(cut.find('div.rvt-header__controls')).toHaveLength(1);
         });
@@ -79,7 +91,7 @@ describe('<Header />', () => {
                 </Header>
             )
         });
-        
+
         it('should render the header controls div when identity menu is present', () => {
             expect(cut.find('div.rvt-header__controls')).toHaveLength(1);
         });
