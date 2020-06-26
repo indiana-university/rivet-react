@@ -8,7 +8,7 @@ View the [Rivet documentation for Header](https://rivet.uits.iu.edu/components/n
 ```jsx
 <Header title="Application Title" />
 ```
-You can also overrice the default "`/`" URL for the link:
+You can also override the default "`/`" URL for the link:
 
 ```jsx
 <Header title="Application Title" href="/foo" />
