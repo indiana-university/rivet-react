@@ -13,7 +13,7 @@ interface DropdownProps extends ButtonProps {
     /** Optional Rivet style: alignment of the dropdown menu items relative to the edge of the dropdown button. */
     align?: 'right';
     /**
-     * Optional text which appears on the dropdown toggle button. The label 
+     * Optional text which appears on the dropdown toggle button. The label
      * should always be provided with a standalone dropdown, however the label
      * can be omitted if the dropdown is part of a SegmentedButton.
      * @see https://rivet.uits.iu.edu/components/navigation/dropdown/
@@ -26,6 +26,11 @@ interface DropdownProps extends ButtonProps {
     menuClass?: string;
     /** Optional flag to toggle the dropdown open state when a click is done within the dropdown contents */
     toggleDropdownOnClickInside?: boolean;
+
+    /** Optional flag to not render the role=menu on the Dropdown. This has accessibility implications, so make sure
+     *  this is the most accessible choice for your scenario before using this flag
+     */
+    excludeMenuRole?: boolean;
 }
 
 const initialState = { open: false }
@@ -64,7 +69,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
     public render() {
         const {
             toggleDropdownOnClickInside = false, // eslint-disable-line @typescript-eslint/no-unused-vars
-            align, children, className, label, menuClass, ...attrs } = this.props;
+            align, children, className, label, menuClass, excludeMenuRole = false, ...attrs } = this.props;
         const menuClasses = classNames({
             'rvt-dropdown__menu': true,
             [`rvt-dropdown__menu--${align}`]: !!align
@@ -75,9 +80,9 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
                     { label && <span className="rvt-dropdown__toggle-text">{label}</span> }
                     <Icon name="caret-down" />
                 </Button>
-    
+
                 {this.state.open &&
-                    <div className={menuClasses} aria-hidden={!this.state.open} role="menu">
+                    <div className={menuClasses} aria-hidden={!this.state.open} role={(excludeMenuRole && excludeMenuRole === true) ? undefined : 'menu'}>
                         {children}
                     </div>
                 }
