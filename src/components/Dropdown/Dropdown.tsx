@@ -27,8 +27,9 @@ interface DropdownProps extends ButtonProps {
     /** Optional flag to toggle the dropdown open state when a click is done within the dropdown contents */
     toggleDropdownOnClickInside?: boolean;
 
-    /** Optional flag to not render the role=menu on the Dropdown. This has accessibility implications, so make sure
-     *  this is the most accessible choice for your scenario before using this flag
+    /** Optional flag to NOT render the role="menu" on the Dropdown. This has accessibility implications, so
+     *  make sure this is the most accessible choice for your scenario before using this flag.
+     *  Default will include role="menu" in the rendered html
      */
     excludeMenuRole?: boolean;
 }
