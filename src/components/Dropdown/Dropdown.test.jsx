@@ -256,4 +256,46 @@ describe('<Dropdown />', () => {
             expect(UnwrappedDropdown.prototype.toggleDropdown).toHaveBeenCalledTimes(1);
         });    
     });
+
+    describe('Menu Role Behavior', () => {
+
+            it('role=menu should render by default', () => {
+                let cut = mount(<Dropdown>
+                                <a href="#">Hello, world!</a>
+                            </Dropdown>, { attachTo: root });
+                cut.find('button').simulate("click");
+
+                expect(cut.find( 'div.rvt-dropdown__menu[role="menu"]' )).toHaveLength(1);
+
+            });
+
+            it('excludeMenuRole=true should not render the role=menu', () => {
+                let cut = mount(<Dropdown excludeMenuRole={true}>
+                                <a href="#">Hello, world!</a>
+                            </Dropdown>, { attachTo: root });
+                cut.find('button').simulate("click");
+
+                expect(cut.find( 'div.rvt-dropdown__menu[role="menu"]' )).toHaveLength(0);
+
+            });
+
+            it('excludeMenuRole=false should render the role=menu', () => {
+                let cut = mount(<Dropdown excludeMenuRole={false}>
+                                <a href="#">Hello, world!</a>
+                            </Dropdown>, { attachTo: root });
+                cut.find('button').simulate("click");
+
+                expect(cut.find( 'div.rvt-dropdown__menu[role="menu"]' )).toHaveLength(1);
+            });
+
+            it('invalid value for excludeMenuRole should render the role=menu', () => {
+                let cut = mount(<Dropdown excludeMenuRole="bogus">
+                                <a href="#">Hello, world!</a>
+                            </Dropdown>, { attachTo: root });
+                cut.find('button').simulate("click");
+
+                expect(cut.find( 'div.rvt-dropdown__menu[role="menu"]' )).toHaveLength(1);
+            });
+
+        });
 });
