@@ -13,7 +13,7 @@ interface DropdownProps extends ButtonProps {
     /** Optional Rivet style: alignment of the dropdown menu items relative to the edge of the dropdown button. */
     align?: 'right';
     /**
-     * Optional text which appears on the dropdown toggle button. The label
+     * Optional text which appears on the dropdown toggle button. The label 
      * should always be provided with a standalone dropdown, however the label
      * can be omitted if the dropdown is part of a SegmentedButton.
      * @see https://rivet.uits.iu.edu/components/navigation/dropdown/
@@ -81,7 +81,7 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
                     { label && <span className="rvt-dropdown__toggle-text">{label}</span> }
                     <Icon name="caret-down" />
                 </Button>
-
+    
                 {this.state.open &&
                     <div className={menuClasses} aria-hidden={!this.state.open} role={(excludeMenuRole && excludeMenuRole === true) ? undefined : 'menu'}>
                         {children}
