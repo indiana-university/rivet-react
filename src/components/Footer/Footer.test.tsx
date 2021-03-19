@@ -23,7 +23,7 @@ describe('<Footer />', () => {
         it('should include custom class', () => {
             const cut = mount(<Footer className="rvt-footer--custom" />);
             expect(cut.find('footer').hasClass("rvt-footer--custom")).toEqual(true);
-        });    
+        });
     });
     describe('Navigation', () => {
         it('should include no links by default', () => {
@@ -39,6 +39,23 @@ describe('<Footer />', () => {
             // One link for accessibility, one for the child, and two for the copyright
             expect(cut.find('li.rvt-footer__aux-item > a')).toHaveLength(4);
             expect(cut.find('#privacy')).toHaveLength(1);
+        });
+        it('should render copyright with current year', () => {
+            const copyrightText = "Copyright © " + new Date().getFullYear() + " The Trustees of Indiana University";
+            const cut = mount(<Footer />);
+            expect(cut.find('li.rvt-footer__aux-item').at(1).text()).toEqual(copyrightText);
+        });
+        it('should render copyright year argument specified', () => {
+            const year = 2020;
+            const copyrightText = "Copyright © " + year + " The Trustees of Indiana University";
+            const cut = mount(<Footer copyrightYear={year} />);
+            expect(cut.find('li.rvt-footer__aux-item').at(1).text()).toEqual(copyrightText);
+        });
+        it('should render copyright with current year when given a non number', () => {
+            const year = "2020 - 2021";
+            const copyrightText = "Copyright © " + new Date().getFullYear() + " The Trustees of Indiana University";
+            const cut = mount(<Footer copyrightYear={year as any} />);
+            expect(cut.find('li.rvt-footer__aux-item').at(1).text()).toEqual(copyrightText);
         });
     });
 
