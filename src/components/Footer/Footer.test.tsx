@@ -41,19 +41,19 @@ describe('<Footer />', () => {
             expect(cut.find('#privacy')).toHaveLength(1);
         });
         it('should render copyright with current year', () => {
-            const copyrightText = "Copyright © " + new Date().getFullYear() + " The Trustees of Indiana University";
+            const copyrightText = 'Copyright © ' + new Date().getFullYear() + ' The Trustees of Indiana University';
             const cut = mount(<Footer />);
             expect(cut.find('li.rvt-footer__aux-item').at(1).text()).toEqual(copyrightText);
         });
         it('should render copyright year argument specified', () => {
             const year = 2020;
-            const copyrightText = "Copyright © " + year + " The Trustees of Indiana University";
+            const copyrightText = 'Copyright © ' + year + ' The Trustees of Indiana University';
             const cut = mount(<Footer copyrightYear={year} />);
             expect(cut.find('li.rvt-footer__aux-item').at(1).text()).toEqual(copyrightText);
         });
         it('should render copyright with current year when given a non number', () => {
-            const year = "2020 - 2021";
-            const copyrightText = "Copyright © " + new Date().getFullYear() + " The Trustees of Indiana University";
+            const year = '2020 - 2021';
+            const copyrightText = 'Copyright © ' + new Date().getFullYear() + ' The Trustees of Indiana University';
             const cut = mount(<Footer copyrightYear={year as any} />);
             expect(cut.find('li.rvt-footer__aux-item').at(1).text()).toEqual(copyrightText);
         });
