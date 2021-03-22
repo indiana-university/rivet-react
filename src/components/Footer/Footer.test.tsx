@@ -51,12 +51,6 @@ describe('<Footer />', () => {
             const cut = mount(<Footer copyrightYear={year} />);
             expect(cut.find('li.rvt-footer__aux-item').at(1).text()).toEqual(copyrightText);
         });
-        it('should render copyright with current year when given a non number', () => {
-            const year = '2020 - 2021';
-            const copyrightText = 'Copyright © ' + new Date().getFullYear() + ' The Trustees of Indiana University';
-            const cut = mount(<Footer copyrightYear={year as any} />);
-            expect(cut.find('li.rvt-footer__aux-item').at(1).text()).toEqual(copyrightText);
-        });
     });
 
 });

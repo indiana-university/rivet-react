@@ -17,14 +17,11 @@ interface FooterProps {
 
 const componentClass = 'rvt-footer';
 const liClass = 'rvt-footer__aux-item';
-const currentYear = new Date().getFullYear();
-
 const footerNavLi = (child, index) =>
     <li key={index} className={liClass}>{child}</li>
 
 const Footer: React.FunctionComponent<FooterProps & React.HTMLAttributes<HTMLDivElement>> =
-({ className, children, id = Rivet.shortuid(), copyrightYear, ...attrs }) => {
-const year = copyrightYear && typeof(copyrightYear) === 'number' ? copyrightYear : currentYear;
+({ className, children, id = Rivet.shortuid(), copyrightYear = new Date().getFullYear(), ...attrs }) => {
 return (
     <footer id={id} role="contentinfo" className={classNames(componentClass, className)} {...attrs}>
         <div className="rvt-footer__trident">
@@ -36,7 +33,7 @@ return (
             </li>
             {React.Children.map(children, footerNavLi)}
             <li key="copyright-footer-link" className={liClass}>
-                <a href="https://www.iu.edu/copyright/index.html">Copyright</a> &copy; {year} The Trustees of <a href="https://www.iu.edu/">Indiana University</a>
+                <a href="https://www.iu.edu/copyright/index.html">Copyright</a> &copy; {copyrightYear} The Trustees of <a href="https://www.iu.edu/">Indiana University</a>
             </li>
         </ul>
     </footer>
