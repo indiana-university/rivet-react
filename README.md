@@ -28,13 +28,13 @@ yarn add rivet-react
 
 Once installed you can use the components in your project. The Rivet styles are included as a dependency of *rivet-react* but they are not bundled into the components, so you'll need to import them as well.
 
-```typescript
+```typescript static
 import * as React from 'react'
 import 'rivet-uits/css/rivet.min.css'
 import { Alert } from 'rivet-react'
 
 <Alert variant="info">A very important message for you!</Alert>
-``` 
+```
 
 Check out the [Component Documentation and Style Guide](https://indiana-university.github.io/rivet-react/) for comprehensive component documentation and examples.
 

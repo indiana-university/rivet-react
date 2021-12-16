@@ -44,12 +44,12 @@
     "react-docgen-typescript": "2.2.2",
     "react-dom": "16.12.0",
     "react-scripts": "4.0.3",
-    "react-styleguidist": "10.6.1",
+    "react-styleguidist": "11.1.7",
     "rivet-collapsible": "0.2.13",
     "rivet-switch": "0.3.2",
     "rivet-uits": "1.8.2",
     "semantic-release": "18.0.1",
-    "typescript": "4.5.4",
+    "typescript": "4.4.4",
     "webpack": "4.44.2"
   },
   "eslintConfig": {
