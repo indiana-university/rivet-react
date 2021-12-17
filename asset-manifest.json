@@ -1,22 +1,20 @@
 {
   "files": {
-    "main.css": "/rivet-react/static/css/main.cb5c9250.chunk.css",
-    "main.js": "/rivet-react/build/main.cf8ec6fc.js",
-    "runtime-main.js": "/rivet-react/build/bundle.47e562ce.js",
-    "static/css/2.485d215e.chunk.css": "/rivet-react/static/css/2.485d215e.chunk.css",
-    "build/2.4e1fc492.js": "/rivet-react/build/2.4e1fc492.js",
-    "build/2.4e1fc492.js.LICENSE.txt": "/rivet-react/build/2.4e1fc492.js.LICENSE.txt",
+    "main.css": "/rivet-react/static/css/main.69eb20e4.chunk.css",
+    "main.js": "/rivet-react/build/main.6e498e87.js",
+    "runtime-main.js": "/rivet-react/build/bundle.eaded300.js",
+    "static/css/2.e5471fcb.chunk.css": "/rivet-react/static/css/2.e5471fcb.chunk.css",
+    "build/2.170afffd.js": "/rivet-react/build/2.170afffd.js",
+    "build/2.170afffd.js.LICENSE.txt": "/rivet-react/build/2.170afffd.js.LICENSE.txt",
     "index.html": "/rivet-react/index.html",
-    "precache-manifest.ebecec5e1d606f15ff95f40beaa186d8.js": "/rivet-react/precache-manifest.ebecec5e1d606f15ff95f40beaa186d8.js",
-    "service-worker.js": "/rivet-react/service-worker.js",
-    "static/css/2.485d215e.chunk.css.map": "/rivet-react/static/css/2.485d215e.chunk.css.map",
-    "static/css/main.cb5c9250.chunk.css.map": "/rivet-react/static/css/main.cb5c9250.chunk.css.map"
+    "static/css/2.e5471fcb.chunk.css.map": "/rivet-react/static/css/2.e5471fcb.chunk.css.map",
+    "static/css/main.69eb20e4.chunk.css.map": "/rivet-react/static/css/main.69eb20e4.chunk.css.map"
   },
   "entrypoints": [
-    "build/bundle.47e562ce.js",
-    "static/css/2.485d215e.chunk.css",
-    "build/2.4e1fc492.js",
-    "static/css/main.cb5c9250.chunk.css",
-    "build/main.cf8ec6fc.js"
+    "build/bundle.eaded300.js",
+    "static/css/2.e5471fcb.chunk.css",
+    "build/2.170afffd.js",
+    "static/css/main.69eb20e4.chunk.css",
+    "build/main.6e498e87.js"
   ]
 }

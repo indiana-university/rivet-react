@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/docs/documentation.css"],"names":[],"mappings":"AAIA,kBACE,iBACF,CAEA,eACE,gBACF","file":"main.69eb20e4.chunk.css","sourcesContent":["/*\nCopyright (C) 2018 The Trustees of Indiana University\nSPDX-License-Identifier: BSD-3-Clause\n*/\nheader.rvt-header {\n  position: relative;\n}\n\ndiv.rvt-drawer {\n  min-height: 100vh;\n}\n"]}
