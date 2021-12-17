@@ -57,7 +57,7 @@ export default abstract class AbstractUserActionEvent {
     }
 
     public isRightMouseClick = () => {
-        return this.isMouseEvent && this.which === 3;
+        return this.isMouseEvent() && this.which === 3;
     }
 
     public targets = (container: Element | Text | null) =>

@@ -19,7 +19,7 @@ yarn add rivet-collapsible
 
 After the dependency has been added you may import the component through the "addons" submodule:
 
-```typescript
+```typescript static
 import { Collapse } from 'rivet-react/addons';
 ```
 

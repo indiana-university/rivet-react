@@ -14,11 +14,11 @@ aliases:
     paths:
       - node_modules
     key: v2-node-modules-{{ checksum "package.json" }}
-  
-# Default settings for all jobs 
+
+# Default settings for all jobs
 defaults: &defaults
   docker:
-      - image: circleci/node:10
+      - image: circleci/node:16
         environment:
           GIT_AUTHOR_NAME: iubot
           GIT_AUTHOR_EMAIL: iubot@iu.edu
@@ -32,13 +32,13 @@ jobs:
   build_test:
     <<: *defaults
     steps:
-      - checkout 
+      - checkout
       - restore_cache: *restore-node-modules
-      - run: 
+      - run:
           name: Install packages
           command: yarn install
       - save_cache: *save-node-modules
-      - run: 
+      - run:
           name: Build components
           command: yarn build
       - run:
@@ -50,7 +50,7 @@ jobs:
   publish_guide:
     <<: *defaults
     steps:
-      - checkout 
+      - checkout
       - restore_cache: *restore-node-modules
       - run:
           name: Publish style guide to gh-pages
@@ -62,9 +62,9 @@ jobs:
   publish_package:
     <<: *defaults
     steps:
-      - checkout 
+      - checkout
       - restore_cache: *restore-node-modules
-      - run: 
+      - run:
           name: Build components
           command: yarn build
       - run:
@@ -73,28 +73,28 @@ jobs:
 # Job orchestration
 workflows:
   version: 2
-  # Build and test the code on every commit. 
+  # Build and test the code on every commit.
   # Publish the style guide on successful build/test of master.
   build-test-and-publish:
     jobs:
       - build_test:
           filters:
             branches:
-              ignore: 
+              ignore:
                 - gh-pages
       - publish_guide:
           requires:
             - build_test
-          filters: 
+          filters:
             branches:
-              only: 
+              only:
                 - master
       - publish_package:
           requires:
             - build_test
           context: rivet-react
-          filters: 
+          filters:
             branches:
-              only: 
+              only:
                 - master
                 - beta

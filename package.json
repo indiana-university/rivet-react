@@ -12,7 +12,7 @@
   "main": "build/dist/components/index.js",
   "types": "build/dist/components/index.d.ts",
   "scripts": {
-    "start": "npx styleguidist server",
+    "start": "styleguidist server",
     "build": "rm -rf ./build/dist && tsc -p tsconfig.dist.json",
     "license": "license-check-and-add add -f ./license-check-and-add-config.json",
     "publish-guide": "npx styleguidist build && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles",
@@ -23,37 +23,39 @@
     "lint:fix": "eslint \"./src/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
-    "classnames": "2.2.6",
-    "react": "16.12.0",
+    "classnames": "2.3.1",
+    "react": "16.14.0",
     "react-display-name": "0.2.5"
   },
   "devDependencies": {
-    "@types/classnames": "2.2.9",
-    "@types/enzyme": "3.10.4",
-    "@types/enzyme-adapter-react-16": "1.0.5",
-    "@types/jest": "25.1.1",
+    "@types/classnames": "2.3.1",
+    "@types/enzyme": "3.10.10",
+    "@types/enzyme-adapter-react-16": "1.0.6",
+    "@types/jest": "27.0.3",
     "@types/node": "13.7.0",
-    "@types/prop-types": "15.7.3",
-    "@types/react": "16.9.19",
-    "@types/react-dom": "16.9.5",
+    "@types/prop-types": "15.7.4",
+    "@types/react": "16.9.56",
+    "@types/react-dom": "16.9.8",
     "codecov.io": "0.1.6",
     "enzyme": "3.11.0",
-    "enzyme-adapter-react-16": "1.15.2",
-    "gh-pages": "2.2.0",
-    "license-check-and-add": "3.0.4",
-    "react-docgen-typescript": "1.16.2",
-    "react-dom": "16.12.0",
-    "react-scripts": "3.3.1",
-    "react-styleguidist": "10.6.1",
-    "rivet-collapsible": "0.2.11",
+    "enzyme-adapter-react-16": "1.15.6",
+    "gh-pages": "3.2.3",
+    "license-check-and-add": "4.0.3",
+    "react-docgen-typescript": "2.2.2",
+    "react-dom": "16.14.0",
+    "react-scripts": "4.0.3",
+    "react-styleguidist": "11.1.7",
+    "rivet-collapsible": "0.2.13",
     "rivet-switch": "0.3.2",
-    "rivet-uits": "1.7.2",
-    "semantic-release": "17.0.2",
-    "typescript": "3.7.5",
-    "webpack": "4.41.5"
+    "rivet-uits": "1.8.2",
+    "semantic-release": "18.0.1",
+    "typescript": "4.4.4",
+    "webpack": "4.44.2"
   },
   "eslintConfig": {
-    "extends": ["react-app"]
+    "extends": [
+      "react-app"
+    ]
   },
   "files": [
     "build/dist/components",
@@ -64,5 +66,11 @@
       "src/components/**/*.{js,jsx,ts,tsx}",
       "!src/components/**/index.{ts,tsx}"
     ]
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 10",
+    "not op_mini all"
+  ]
 }
