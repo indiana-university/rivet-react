@@ -20,7 +20,17 @@ describe('<Alert />', () => {
         it('should include title', () => {
             const cut = mount(<Alert variant="info" title="Alert Title" />);
             expect(cut.find('.rvt-alert__title').text()).toEqual("Alert Title");
-        });      
+        });   
+        it('ahould have and aria-labelledby if there is a title', () => {
+            const cut = mount(<Alert variant="info" title="Alert Title" />);
+            const div = cut.find('.rvt-alert');
+            expect(div.props()['aria-labelledby']).toBeDefined();
+        }); 
+        it('ahould not have and aria-labelledby if there is no title', () => {
+            const cut = mount(<Alert variant="info" />);
+            const div = cut.find('.rvt-alert');
+            expect(div.props()['aria-labelledby']).toBeUndefined();
+        });   
         it('should apply the id', () => {
             const cut = mount(<Alert variant="info" id="the_id" />);
             expect(cut.prop('id')).toEqual("the_id");

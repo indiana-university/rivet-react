@@ -49,8 +49,10 @@ const Alert : React.SFC<AlertProps & React.HTMLAttributes<HTMLDivElement>> =
     
     const classes = classNames('rvt-alert', `rvt-alert--${variant}`, className);
 
+    const ariaProps = title ? { 'aria-labelledby': titleId } : {};
+
     return isOpen 
-        ? <div id={id} className={classes} role='alertdialog' aria-labelledby={titleId} {...attrs} >
+        ? <div id={id} className={classes} role='alertdialog' {...ariaProps} {...attrs} >
                 {headerFragment()}
                 <p className='rvt-alert__message'>{children}</p>
                 {dismissFragment()}
