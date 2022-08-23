@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/rivet-react/static/css/main.69eb20e4.chunk.css",
-    "main.js": "/rivet-react/build/main.12f06de5.js",
-    "runtime-main.js": "/rivet-react/build/bundle.eaded300.js",
+    "main.js": "/rivet-react/build/main.720786cb.js",
+    "runtime-main.js": "/rivet-react/build/bundle.767ff698.js",
     "static/css/2.e5471fcb.chunk.css": "/rivet-react/static/css/2.e5471fcb.chunk.css",
-    "build/2.170afffd.js": "/rivet-react/build/2.170afffd.js",
-    "build/2.170afffd.js.LICENSE.txt": "/rivet-react/build/2.170afffd.js.LICENSE.txt",
+    "build/2.fabeebec.js": "/rivet-react/build/2.fabeebec.js",
+    "build/2.fabeebec.js.LICENSE.txt": "/rivet-react/build/2.fabeebec.js.LICENSE.txt",
     "index.html": "/rivet-react/index.html",
     "static/css/2.e5471fcb.chunk.css.map": "/rivet-react/static/css/2.e5471fcb.chunk.css.map",
     "static/css/main.69eb20e4.chunk.css.map": "/rivet-react/static/css/main.69eb20e4.chunk.css.map"
   },
   "entrypoints": [
-    "build/bundle.eaded300.js",
+    "build/bundle.767ff698.js",
     "static/css/2.e5471fcb.chunk.css",
-    "build/2.170afffd.js",
+    "build/2.fabeebec.js",
     "static/css/main.69eb20e4.chunk.css",
-    "build/main.12f06de5.js"
+    "build/main.720786cb.js"
   ]
 }
