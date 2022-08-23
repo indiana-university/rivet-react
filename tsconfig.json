@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "outDir": "build/dist",
-    "module": "ommonjs",
+    "module": "commonjs",
     "target": "es5",
     "lib": [
       "es5",
