@@ -87,6 +87,8 @@ export class Dropdown extends React.PureComponent<DropdownProps & React.HTMLAttr
 
     private toggleDropdown(event) {
         this.setState({ open: !this.state.open });
+        // if there is a stopPropagation method on the event we need to call is to prevent additional events from firing
+        event.stopPropagation && event.stopPropagation();
     }
 
     private handleClickOutside(event: DropdownEvent) {
