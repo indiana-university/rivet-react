@@ -4,8 +4,10 @@ import * as PropTypes from 'prop-types';
 
 import * as Rivet from '../util/Rivet';
 
+/**
+ * General component description in JSDoc format. Markdown is *supported*.
+ */
 const Alert = ({title, onDismiss, variant, isOpen = true, id = Rivet.shortuid(), className, children, ...attrs}) => {
-  debugger
 
   const titleId = Rivet.shortuid();
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import {Alert} from "./components/Alert"
 
@@ -9,6 +8,9 @@ function App() {
   return (
     <div className="App">
         <Alert variant={"danger"}>Some alerts don't need a title. This is one of them.</Alert>
+        <button onClick={() => setCount((count) => count + 1)}>
+            count is {count}
+        </button>
     </div>
   )
 }

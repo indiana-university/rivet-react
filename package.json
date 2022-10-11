@@ -25,15 +25,21 @@
     "react-dom": ">= 16"
   },
   "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-react": "^7.18.6",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "babel-loader": "^8.2.5",
+    "path": "0.12.7",
     "prop-types": "15.8.1",
+    "react-docgen": "5.4.3",
+    "react-scripts": "5.0.1",
     "react-styleguidist": "11.2.0",
     "rivet-collapsible": "0.2.13",
     "rivet-switch": "0.3.2",
     "rivet-uits": "1.8.2",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.1.0",
-    "path": "0.12.7",
     "vite": "^3.1.0",
     "vite-plugin-externalize-deps": "0.1.5"
   }
