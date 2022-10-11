@@ -1,3 +1,9 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
+const path = require('path');
+
 module.exports = {
     title: 'Rivet React Style Guide',
     resolver: require('react-docgen').resolver.findAllComponentDefinitions,
@@ -10,11 +16,9 @@ module.exports = {
     sections: [
         {
             name: 'Overlays',
-            // components: 'src/components/**/[A-Z]*.js',
-            components: 'src/components/**/[A-Z]*.jsx'
+            components: 'src/components/Alert/[A-Z]*.jsx'
         }
     ],
-    // webpackConfig: require('react-scripts/config/webpack.config.js')
     webpackConfig: {
         module: {
             rules: [
@@ -31,5 +35,12 @@ module.exports = {
                 }
             ]
         }
+    },
+    require: [
+        path.join(__dirname, 'node_modules/rivet-core/css/rivet.min.css'),
+        './src/docs/documentation.css',
+    ],
+    theme: {
+        maxWidth: 1920
     }
 }

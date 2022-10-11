@@ -1,5 +1,9 @@
-import * as React from 'react';
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import classNames from 'classnames';
+import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
 import * as Rivet from '../util/Rivet';
@@ -40,7 +44,7 @@ const Alert = ({title, onDismiss, variant, isOpen = true, id = Rivet.shortuid(),
 Alert.displayName = 'Alert';
 Alert.propTypes = {
   variant: PropTypes.oneOf(['danger', 'info', 'warning', 'success']).isRequired,
-  title: PropTypes.oneOfType([PropTypes.string]),
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   onDismiss: PropTypes.func,
   isOpen: PropTypes.bool
 };
