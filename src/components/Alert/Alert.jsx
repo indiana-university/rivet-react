@@ -9,7 +9,7 @@ import * as PropTypes from 'prop-types';
 import * as Rivet from '../util/Rivet';
 
 /**
- * Use the alert component to show brief important messages to the user like errors, action confirmations, or system status. Alerts can also be used to highlight form fields with missing or invalid input.
+ * Use the alert component to show brief important messages to the user like errors, action confirmations, or system status.
  */
 const Alert = ({title, onDismiss, variant, isOpen = true, id = Rivet.shortuid(), className, children, ...attrs}) => {
 
