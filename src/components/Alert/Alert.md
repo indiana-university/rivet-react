@@ -1,5 +1,3 @@
-Alerts are used to display brief important messages to users. They are designed to attract the user’s attention, but not interrupt their work.
-
 View the [Rivet documentation for Alerts](https://rivet.iu.edu/components/alert/).
 
 ```jsx
@@ -11,7 +9,7 @@ View the [Rivet documentation for Alerts](https://rivet.iu.edu/components/alert/
     We have received your application. Check your email in a few weeks to find out if you’ve been admitted.
 </Alert>
 
-<Alert variant="message" title="Unsaved Changes" margin={{ bottom: 'sm' }}>
+<Alert variant="warning" title="Unsaved Changes" margin={{ bottom: 'sm' }}>
     Your changes have not been saved. To save your changes, click 'Save my changes' or click 'Cancel' to exit without saving.
 </Alert>
 
