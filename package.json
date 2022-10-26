@@ -39,6 +39,7 @@
     "core-js": "3.25.5",
     "css-loader": "6.7.1",
     "path": "0.12.7",
+    "prettier": "2.7.1",
     "prop-types": "15.8.1",
     "react-docgen": "5.4.3",
     "react-scripts": "5.0.1",
