@@ -15,6 +15,12 @@ module.exports = {
     usageMode: 'expand',
     sections: [
         {
+            name: 'Forms',
+            components: () => [
+                'src/components/Button/*.jsx',
+            ],
+        },
+        {
             name: 'Overlays',
             components: 'src/components/Alert/[A-Z]*.jsx'
         }
@@ -39,6 +45,7 @@ module.exports = {
     require: [
         path.join(__dirname, 'node_modules/rivet-core/css/rivet.min.css'),
         './src/docs/documentation.css',
+        path.resolve(__dirname, 'styleguide.setup.js')
     ],
     theme: {
         maxWidth: 1920
