@@ -31,23 +31,23 @@ describe('<Alert />', () => {
 
 	describe('Styling', () => {
 		it('should specify style: error', () => {
-			render(<Alert variant="danger" />);
+			render(<Alert title={titleText} variant="danger" />);
 			expect(screen.getByRole('alert').firstChild.classList.contains('rvt-alert--danger'));
 		});
 		it('should specify style: info', () => {
-			render(<Alert variant="info" />);
+			render(<Alert title={titleText} variant="info" />);
 			expect(screen.getByRole('alert').firstChild.classList.contains('rvt-alert--info'));
 		});
 		it('should specify style: warning', () => {
-			render(<Alert variant="warning" />);
+			render(<Alert title={titleText} variant="warning" />);
 			expect(screen.getByRole('alert').firstChild.classList.contains('rvt-alert--warning'));
 		});
 		it('should specify style: success', () => {
-			render(<Alert variant="success" />);
+			render(<Alert title={titleText} variant="success" />);
 			expect(screen.getByRole('alert').firstChild.classList.contains('rvt-alert--success'));
 		});        
 		it('should apply custom style', () => {
-			render(<Alert variant="info" className="rvt-alert--custom" />);
+			render(<Alert title={titleText} variant="info" className="rvt-alert--custom" />);
 			expect(screen.getByRole('alert').firstChild.classList.contains('rvt-alert--custom'));
 		});        
 	});
@@ -69,20 +69,21 @@ describe('<Alert />', () => {
 
 	describe('Dismiss behavior', ()=> {
 		it('should include dismiss button when dismissible', () => {
-			render(<Alert variant="info" onDismiss={() => {;}} />);
+			render(<Alert title={titleText} variant="info" onDismiss={() => {;}} />);
 			expect(screen.getByRole('button')).toBeVisible();
 		});
 		it('should fire dismiss delegate', async () => {
 			let fired = false;
 			const delegate = () => fired = true;
-			render(<Alert variant="info" onDismiss={delegate} />);
+			render(<Alert title={titleText} variant="info" onDismiss={delegate} />);
 			await user.click(screen.getByRole('button'));
 
 			expect(fired).toEqual(true);
 		});
 		it('the alert should remain visible when dismiss button clicked', async () => {
-			render(<Alert variant="info" onDismiss={() => {;}} />);
-			await user.click(screen.getByRole('button'));
+			render(<Alert title={titleText} variant="info" onDismiss={() => {;}} />);
+			expect(screen.getByRole('alert')).toBeVisible();
+      await user.click(screen.getByRole('button'));
 
 			expect(screen.getByRole('alert')).toBeVisible();
 		});
