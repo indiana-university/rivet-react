@@ -10,8 +10,8 @@ import {
   isRightMouseClick,
   isTabKeyPress,
   targets,
-} from "../util/EventUtils";
-import { handler, isUnhandledKeyPress } from "./DropdownEventUtils";
+} from "../util/EventUtils.js";
+import { handler, isUnhandledKeyPress } from "./DropdownEventUtils.js";
 import { Button } from "../Button";
 import classNames from "classnames";
 
@@ -24,7 +24,25 @@ const Dropdown = ({
   menuClass,
   ...attrs
 }) => {
+  const handleClickOutside = (event) => {
+    if (event && shouldToggleDropdown(event)) {
+      toggleDropdown(event);
+
+      if (isEscapeKeyPress(event) && toggleButton.current) {
+        // If the user pressed the escape key and we have a current reference to the dropdown toggle button put focus back on it
+        toggleButton.current.focus();
+      }
+    }
+  };
+
   const [isOpen, setIsOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    handleEventRegistration();
+    return () => {
+      eventHandler.deregister();
+    };
+  });
 
   const toggleButton = React.createRef();
   const dropdownWrapDiv = React.createRef();
@@ -40,19 +58,8 @@ const Dropdown = ({
 
   const toggleDropdown = (event) => {
     setIsOpen(!isOpen);
-    // if there is a stopPropagation method on the event we need to call is to prevent additional events from firing
+    // if there is a stopPropagation method on the event we need to call it to prevent additional events from firing
     event.stopPropagation && event.stopPropagation();
-  };
-
-  const handleClickOutside = (event) => {
-    if (event && shouldToggleDropdown(event)) {
-      toggleDropdown(event);
-
-      if (isEscapeKeyPress(event) && toggleButton.current) {
-        // If the user pressed the escape key and we have a current reference to the dropdown toggle button put focus back on it
-        toggleButton.current.focus();
-      }
-    }
   };
 
   const shouldToggleDropdown = (event) => {
@@ -83,7 +90,11 @@ const Dropdown = ({
   };
 
   return (
-    <div className="rvt-dropdown" ref={dropdownWrapDiv}>
+    <div
+      className="rvt-dropdown"
+      data-rvt-dropdown="dropdownNavigation"
+      ref={dropdownWrapDiv}
+    >
       <Button
         type="button"
         {...attrs}
@@ -95,7 +106,15 @@ const Dropdown = ({
       >
         {label && <span className="rvt-dropdown__toggle-text">{label}</span>}
         {/* begin todo - replace with Icon component */}
-        <svg aria-hidden="true">
+        <svg
+          role="img"
+          alt=""
+          className="rvt-m-left-xs"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+        >
           <path
             fill="currentColor"
             d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z"
@@ -103,9 +122,8 @@ const Dropdown = ({
         </svg>
         {/* end todo - replace with Icon component */}
       </Button>
-
       {isOpen && (
-        <div className={menuClasses} aria-hidden={isOpen} role="menu">
+        <div className={menuClasses} aria-hidden={!isOpen} role="menu">
           {children}
         </div>
       )}

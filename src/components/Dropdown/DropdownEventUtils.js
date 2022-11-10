@@ -6,7 +6,7 @@ import {
   isEscapeKeyPress,
   isKeyEvent,
   isTabKeyPress,
-} from "../util/EventUtils";
+} from "../util/EventUtils.js";
 
 export const handler = (callback) => {
   const eventHandler = (event) => {
@@ -32,6 +32,6 @@ export const handler = (callback) => {
   };
 };
 
-export const isUnhandledKeyPress = () => {
-  return isKeyEvent() && isTabKeyPress() && !isEscapeKeyPress();
+export const isUnhandledKeyPress = (event) => {
+  return isKeyEvent(event) && isTabKeyPress(event) && !isEscapeKeyPress(event);
 };
