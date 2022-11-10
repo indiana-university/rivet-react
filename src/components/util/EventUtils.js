@@ -26,18 +26,6 @@ export const handler = (callback, InstantiatingClass) => {
   };
 };
 
-// protected type;
-// protected which;
-// protected target;
-
-// constructor(event: MouseEvent | KeyboardEvent | TouchEvent) {
-//     this.type = event.type;
-//     this.which = event.which;
-//     this.target = event.target;
-// }
-
-// public abstract isUnhandledKeyPress() : boolean;
-
 export const isKeyEvent = (event) => {
   return event.type === "keyup";
 };
