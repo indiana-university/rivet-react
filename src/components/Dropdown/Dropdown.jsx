@@ -24,7 +24,7 @@ const Dropdown = ({
   menuClass,
   ...attrs
 }) => {
-  const [open, setOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const toggleButton = React.createRef();
   const dropdownWrapDiv = React.createRef();
@@ -39,7 +39,7 @@ const Dropdown = ({
   );
 
   const toggleDropdown = (event) => {
-    setOpen(!open);
+    setIsOpen(!isOpen);
     // if there is a stopPropagation method on the event we need to call is to prevent additional events from firing
     event.stopPropagation && event.stopPropagation();
   };
@@ -75,7 +75,7 @@ const Dropdown = ({
   };
 
   const handleEventRegistration = () => {
-    if (open) {
+    if (isOpen) {
       eventHandler.register();
     } else {
       eventHandler.deregister();
@@ -90,7 +90,7 @@ const Dropdown = ({
         innerRef={toggleButton}
         className={className}
         aria-haspopup="true"
-        aria-expanded={open}
+        aria-expanded={isOpen}
         onClick={toggleDropdown}
       >
         {label && <span className="rvt-dropdown__toggle-text">{label}</span>}
@@ -104,8 +104,8 @@ const Dropdown = ({
         {/* end todo - replace with Icon component */}
       </Button>
 
-      {open && (
-        <div className={menuClasses} aria-hidden={open} role="menu">
+      {isOpen && (
+        <div className={menuClasses} aria-hidden={isOpen} role="menu">
           {children}
         </div>
       )}
