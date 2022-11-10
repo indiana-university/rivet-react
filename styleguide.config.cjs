@@ -16,7 +16,7 @@ module.exports = {
   sections: [
     {
       name: "Forms",
-      components: () => ["src/components/Button/*.jsx"],
+      components: "src/components/Button/[A-Z]*.jsx",
     },
     {
       name: "Overlays",
