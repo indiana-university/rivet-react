@@ -14,14 +14,17 @@ import {
 import { handler, isUnhandledKeyPress } from "./DropdownEventUtils.js";
 import { Button } from "../Button";
 import classNames from "classnames";
+import * as PropTypes from "prop-types";
 
 const Dropdown = ({
   toggleDropdownOnClickInside = false,
-  align,
+  align = "left",
   children,
   className,
   label,
   menuClass,
+  modifier = "secondary",
+  size = "small",
   ...attrs
 }) => {
   const handleClickOutside = (event) => {
@@ -129,6 +132,33 @@ const Dropdown = ({
       )}
     </div>
   );
+};
+
+Dropdown.displayName = "Dropdown";
+Dropdown.propTypes = {
+  /** Optional Rivet style: alignment of the dropdown menu items relative to the edge of the dropdown button. */
+  align: PropTypes.string,
+  /**
+   * Optional text which appears on the dropdown toggle button. The label
+   * should always be provided with a standalone dropdown, however the label
+   * can be omitted if the dropdown is part of a SegmentedButton.
+   * @see https://rivet.uits.iu.edu/components/navigation/dropdown/
+   * @see https://rivet.uits.iu.edu/components/forms/buttons-segmented/#using-segmented-buttons-with-dropdowns
+   */
+  label: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  /** Optional CSS classes which will be applied to the dropdown menu */
+  menuClass: PropTypes.string,
+  /** Optional Rivet style: a secondary button. */
+  modifier: PropTypes.string,
+  /** Optional Rivet style: a small button. */
+  size: PropTypes.string,
+  /** Optional flag to toggle the dropdown open state when a click is done within the dropdown contents */
+  toggleDropdownOnClickInside: PropTypes.bool,
+  /**
+   * Optional Rivet style: a success/danger/plain button.
+   * The 'navigation' variant is intended to support the Header component only.
+   */
+  variant: PropTypes.oneOf(["success", "danger", "plain"]),
 };
 
 export default Rivet.rivetize(Dropdown);
