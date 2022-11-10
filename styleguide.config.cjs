@@ -19,6 +19,10 @@ module.exports = {
       components: "src/components/Button/[A-Z]*.jsx",
     },
     {
+      name: "Navigation",
+      components: "src/components/Dropdown/[A-Z]*.jsx",
+    },
+    {
       name: "Overlays",
       components: "src/components/Alert/[A-Z]*.jsx",
     },
