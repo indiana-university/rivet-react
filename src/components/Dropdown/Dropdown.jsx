@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import * as React from "react";
+import React, { useState, useEffect, createRef } from "react";
 import * as Rivet from "../util/Rivet";
 import {
   isEscapeKeyPress,
@@ -16,7 +16,7 @@ import { Button } from "../Button";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 
-const Dropdown = ({
+export const Dropdown = ({
   toggleDropdownOnClickInside = false,
   align = "left",
   children,
@@ -38,17 +38,17 @@ const Dropdown = ({
     }
   };
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleEventRegistration();
     return () => {
       eventHandler.deregister();
     };
   });
 
-  const toggleButton = React.createRef();
-  const dropdownWrapDiv = React.createRef();
+  const toggleButton = createRef();
+  const dropdownWrapDiv = createRef();
   const eventHandler = handler(handleClickOutside);
 
   const menuClasses = classNames(
