@@ -82,8 +82,8 @@ describe("<Dropdown />", () => {
       await clickToggleButton();
       expectDropdownMenuIsOpen();
       // begin todo - use user-event library to invoke event
-      document.body.dispatchEvent(new KeyboardEvent("keyup", { which: 27 }));
-      // await user.keyboard("{/Escape}"); // dispatch the keyUp event on the Escape key
+      // document.body.dispatchEvent(new KeyboardEvent("keyup", { which: 27 }));
+      await user.keyboard("{Escape}"); // dispatch the keyUp event on the Escape key
       // end todo - use user-event library to invoke event
       expectDropdownMenuIsClosed();
     });
