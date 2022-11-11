@@ -3,6 +3,7 @@ Buttons are used to signal actions, submit forms, or trigger new content within 
 View the [Rivet documentation for Buttons](https://rivet.uits.iu.edu/components/forms/buttons/).
 
 ### Button Examples
+
 ```jsx
 <Button onClick={() => { console.log('Primary') }}>Primary</Button>{' '}
 <Button onClick={() => { console.log('Success') }} variant="success">Success</Button>{' '}
@@ -12,6 +13,7 @@ View the [Rivet documentation for Buttons](https://rivet.uits.iu.edu/components/
 ```
 
 ### Secondary Variations
+
 ```jsx
 <Button onClick={() => { console.log('Sec Primary') }} modifier="secondary">Primary</Button>{' '}
 <Button onClick={() => { console.log('Sec Success') }} variant="success" modifier="secondary">Success</Button>{' '}
@@ -20,6 +22,7 @@ View the [Rivet documentation for Buttons](https://rivet.uits.iu.edu/components/
 ```
 
 ### Small Buttons
+
 ```jsx
 <Button onClick={() => { console.log('Small Primary') }} size="small">Primary</Button>{' '}
 <Button onClick={() => { console.log('Small Success') }} variant="success" size="small">Success</Button>{' '}
