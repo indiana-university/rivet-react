@@ -15,6 +15,7 @@ import { handler, isUnhandledKeyPress } from "./DropdownEventUtils.js";
 import { Button } from "../Button";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
+import { TestUtils } from "../util/TestUtils";
 
 export const Dropdown = ({
   toggleDropdownOnClickInside = false,
@@ -74,7 +75,7 @@ export const Dropdown = ({
     const preventToggleOnInsideClick =
       !isKeyEvent(event) && !toggleDropdownOnClickInside;
     if (
-      targets(dropdownWrapDiv.current) &&
+      targets(dropdownWrapDiv.current, event) &&
       (preventToggleOnInsideClick || isTabKeyPress(event))
     ) {
       // If the user clicks, touches or tabs inside the dropdown do not close the menu
@@ -107,7 +108,14 @@ export const Dropdown = ({
         aria-expanded={isOpen}
         onClick={toggleDropdown}
       >
-        {label && <span className="rvt-dropdown__toggle-text">{label}</span>}
+        {label && (
+          <span
+            className="rvt-dropdown__toggle-text"
+            data-testid={TestUtils.Dropdown.testId}
+          >
+            {label}
+          </span>
+        )}
         {/* begin todo - replace with Icon component */}
         <svg
           role="img"
