@@ -3,7 +3,7 @@ View the [Rivet documentation for Dropdowns](https://rivet.iu.edu/components/dro
 ```jsx
 <Dropdown label="Navigation menu">
   <a href="#">Item one</a>
-  <a href="#">Item two</a>
+  <a href="#">Item two test</a>
   <a href="#" aria-current="page">
     Item three
   </a>
