@@ -2,7 +2,14 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import { render, screen } from "@testing-library/react";
+import {
+  fireEvent,
+  getByRole,
+  getAllByRole,
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { prettyDOM } from "@testing-library/dom";
 import userEvent from "@testing-library/user-event";
@@ -44,11 +51,20 @@ describe("<Dropdown />", () => {
       );
     });
 
-    const expectDropdownMenuIsOpen = () => {
+    const expectDropdownMenuIsOpen = async () => {
+      // console.log("inside expectDropdownMenuIsOpen")
+      // console.log("before")
+      // console.log(prettyDOM(document.body))
+      await screen.findByRole("menu");
+      console.log("inside expectDropdownMenuIsOpen");
+      console.log(prettyDOM(document.body));
       expect(screen.getByRole("menu")).toBeVisible();
     };
 
     const expectDropdownMenuIsClosed = () => {
+      // await screen.findByRole("menu")
+      console.log("inside expectDropdownMenuIsClosed");
+      console.log(prettyDOM(document.body));
       expect(screen.queryAllByTestId("menu")).toHaveLength(0);
     };
 
@@ -59,54 +75,69 @@ describe("<Dropdown />", () => {
     it("should toggle the menu when clicking the button", async () => {
       expectDropdownMenuIsClosed();
       await clickToggleButton();
-      expectDropdownMenuIsOpen();
+      await expectDropdownMenuIsOpen();
       await clickToggleButton();
       expectDropdownMenuIsClosed();
     });
     it("should not toggle the menu when clicking inside the menu", async () => {
       expectDropdownMenuIsClosed();
       await clickToggleButton();
-      expectDropdownMenuIsOpen();
+      await expectDropdownMenuIsOpen();
       await user.click(screen.getByRole("link"));
-      expectDropdownMenuIsOpen();
+      await expectDropdownMenuIsOpen();
     });
+    // begin todo - last expectDropdownMenuIsClosed shows menu as opened upon debugging
     it("should toggle the menu when clicking outside of the menu", async () => {
       expectDropdownMenuIsClosed();
       await clickToggleButton();
-      expectDropdownMenuIsOpen();
+      await expectDropdownMenuIsOpen();
       document.body.click();
       expectDropdownMenuIsClosed();
+      // end todo - last expectDropdownMenuIsClosed shows menu as opened upon debugging
     });
     it("should toggle the menu when escape is pressed", async () => {
-      expectDropdownMenuIsClosed();
+      await expectDropdownMenuIsClosed();
       await clickToggleButton();
-      expectDropdownMenuIsOpen();
-      // begin todo - use user-event library to invoke event
-      // document.body.dispatchEvent(new KeyboardEvent("keyup", { which: 27 }));
-      await user.keyboard("{Escape}"); // dispatch the keyUp event on the Escape key
-      // end todo - use user-event library to invoke event
+      await expectDropdownMenuIsOpen();
+      fireEvent.keyUp(document.body, {
+        key: "Escape",
+        code: "Escape",
+        charCode: 27,
+      });
       expectDropdownMenuIsClosed();
     });
-    // it("should not toggle the menu when the tab key is pressed inside the menu", () => {
-    //   expectDropdownMenuIsClosed();
-    //   clickToggleButton();
-    //   expectDropdownMenuIsOpen();
-    //   document
-    //     .getElementsByClassName("rvt-dropdown__menu")[0]
-    //     .dispatchEvent(
-    //       new KeyboardEvent("keyup", { which: DropdownEvent.keys.tab })
-    //     );
-    //   expectDropdownMenuIsOpen();
-    // });
-    // it("should toggle the menu when the tab key is pressed outside the menu", () => {
-    //   expectDropdownMenuIsClosed();
-    //   clickToggleButton();
-    //   expectDropdownMenuIsOpen();
-    //   document.body.dispatchEvent(
-    //     new KeyboardEvent("keyup", { which: DropdownEvent.keys.tab })
-    //   );
-    //   expectDropdownMenuIsClosed();
-    // });
+    it("should not toggle the menu when the tab key is pressed inside the menu", async () => {
+      expectDropdownMenuIsClosed();
+      await clickToggleButton();
+      await expectDropdownMenuIsOpen();
+      fireEvent.keyUp(getAllByRole(document.body, "link")[0], {
+        key: "Tab",
+        code: "Tab",
+        charCode: 9,
+      });
+      await expectDropdownMenuIsOpen();
+    });
+    // it("should toggle the menu when the tab key is pressed outside the menu", async () => {
+    //   await expectDropdownMenuIsClosed();
+    //   await clickToggleButton();
+    //   await expectDropdownMenuIsOpen();
+    //   console.log(prettyDOM(document.body))
+    //   // await user.keyboard("{Tab}", screen)
+    //     fireEvent.keyUp(document.body, {key: 'Tab', code: 'Tab', charCode: 9})
+    //   // document.body.dispatchEvent(
+    //   //   new KeyboardEvent("keyup", { which: DropdownEvent.keys.tab })
+    //   // );
+    //   //   waitForElementToBeRemoved(document.getElementsByClassName("rvt-dropdown__menu rvt-dropdown__menu--left")).then(() => {
+    //   //       console.log("element removed")
+    //   //   })
+    //
+    //     await screen.findAllByRole("menu")
+    //     console.log("after tab is pressed")
+    //     console.log(prettyDOM(document.body))
+    //     await expectDropdownMenuIsClosed();
+    //
+    //
+    // }, 10000000000);
     // it("should not toggle the menu when an unhandled key is pressed", () => {
     //   expectDropdownMenuIsClosed();
     //   clickToggleButton();

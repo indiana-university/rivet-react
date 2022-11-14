@@ -4,7 +4,7 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 
 const keys = {
-  tab: 9,
+  tab: "Tab",
   escape: "Escape",
 };
 
@@ -31,7 +31,7 @@ export const isKeyEvent = (event) => {
 };
 
 export const isTabKeyPress = (event) => {
-  return isKeyEvent(event) && event.which === keys.tab;
+  return isKeyEvent(event) && event.key === keys.tab;
 };
 
 export const isEscapeKeyPress = (event) => {
