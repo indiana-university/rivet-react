@@ -153,7 +153,7 @@ Dropdown.propTypes = {
    * @see https://rivet.uits.iu.edu/components/navigation/dropdown/
    * @see https://rivet.uits.iu.edu/components/forms/buttons-segmented/#using-segmented-buttons-with-dropdowns
    */
-  label: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  label: PropTypes.node,
   /** Optional CSS classes which will be applied to the dropdown menu */
   menuClass: PropTypes.string,
   /** Optional Rivet style: a secondary button. */
