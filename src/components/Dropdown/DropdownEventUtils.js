@@ -33,5 +33,5 @@ export const handler = (callback) => {
 };
 
 export const isUnhandledKeyPress = (event) => {
-  return isKeyEvent(event) && isTabKeyPress(event) && !isEscapeKeyPress(event);
+  return isKeyEvent(event) && !isTabKeyPress(event) && !isEscapeKeyPress(event);
 };
