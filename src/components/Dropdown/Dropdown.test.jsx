@@ -127,11 +127,8 @@ describe("<Dropdown />", () => {
       await clickToggleButton();
       await expectDropdownMenuIsOpen();
       fireEvent.keyUp(document.body, { key: "a", code: "keyA", charCode: 65 });
-      // document.body.dispatchEvent(
-      //   new KeyboardEvent("keyup", { which: "a".charCodeAt(0) })
-      // );
       await expectDropdownMenuIsOpen();
-    }, 100000000000000);
+    });
   });
 
   // describe('Toggle behavior click inside override', () => {
