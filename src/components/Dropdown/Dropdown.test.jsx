@@ -19,6 +19,28 @@ import Dropdown, { Dropdown as UnwrappedDropdown } from "./Dropdown";
 import { TestUtils } from "../util/TestUtils";
 // import DropdownEvent from './DropdownEvent';
 
+const user = userEvent.setup();
+
+const expectDropdownMenuIsOpen = async () => {
+  // console.log("inside expectDropdownMenuIsOpen")
+  // console.log("before")
+  // console.log(prettyDOM(document.body))
+  await screen.findByRole("menu");
+  console.log("inside expectDropdownMenuIsOpen");
+  console.log(prettyDOM(document.body));
+  expect(screen.getByRole("menu")).toBeVisible();
+};
+
+const expectDropdownMenuIsClosed = () => {
+  console.log("inside expectDropdownMenuIsClosed");
+  expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+  console.log(prettyDOM(document.body));
+};
+
+const clickToggleButton = async () => {
+  await user.click(screen.getByRole("button"));
+};
+
 describe("<Dropdown />", () => {
   describe("Rendering and styling", () => {
     it("should render without throwing an error", () => {
@@ -27,22 +49,16 @@ describe("<Dropdown />", () => {
     });
     it("should not render a label if it is not provided", () => {
       render(<Dropdown label="" />);
-      expect(screen.queryAllByTestId(TestUtils.Dropdown.testId)).toHaveLength(
-        0
-      );
+      expect(
+        screen.queryByTestId(TestUtils.Dropdown.testId)
+      ).not.toBeInTheDocument();
 
       render(<Dropdown label="foo" />);
-      expect(screen.getAllByTestId(TestUtils.Dropdown.testId)).toHaveLength(1);
+      expect(screen.getByTestId(TestUtils.Dropdown.testId)).toBeInTheDocument();
     });
   });
 
   describe("Toggle behavior", () => {
-    let user;
-
-    beforeAll(() => {
-      user = userEvent.setup();
-    });
-
     beforeEach(() => {
       render(
         <Dropdown>
@@ -50,27 +66,6 @@ describe("<Dropdown />", () => {
         </Dropdown>
       );
     });
-
-    const expectDropdownMenuIsOpen = async () => {
-      // console.log("inside expectDropdownMenuIsOpen")
-      // console.log("before")
-      // console.log(prettyDOM(document.body))
-      await screen.findByRole("menu");
-      console.log("inside expectDropdownMenuIsOpen");
-      console.log(prettyDOM(document.body));
-      expect(screen.getByRole("menu")).toBeVisible();
-    };
-
-    const expectDropdownMenuIsClosed = () => {
-      // await screen.findByRole("menu")
-      console.log("inside expectDropdownMenuIsClosed");
-      expect(screen.queryAllByRole("menu")).toHaveLength(0);
-      console.log(prettyDOM(document.body));
-    };
-
-    const clickToggleButton = async () => {
-      await user.click(screen.getByRole("button"));
-    };
 
     it("should toggle the menu when clicking the button", async () => {
       expectDropdownMenuIsClosed();
@@ -108,7 +103,7 @@ describe("<Dropdown />", () => {
       expectDropdownMenuIsClosed();
       await clickToggleButton();
       await expectDropdownMenuIsOpen();
-      fireEvent.keyUp(getAllByRole(document.body, "link")[0], {
+      fireEvent.keyUp(getByRole(document.body, "link"), {
         key: "Tab",
         code: "Tab",
         charCode: 9,
@@ -131,38 +126,23 @@ describe("<Dropdown />", () => {
     });
   });
 
-  // describe('Toggle behavior click inside override', () => {
-  //
-  //     let cut;
-  //
-  //     const expectDropdownMenuIsOpen = () => {
-  //         expect(document.getElementsByClassName('rvt-dropdown__menu')).toHaveLength(1);
-  //     }
-  //
-  //     const expectDropdownMenuIsClosed = () => {
-  //         expect(document.getElementsByClassName('rvt-dropdown__menu')).toHaveLength(0);
-  //     }
-  //
-  //     const clickToggleButton = () => {
-  //         document.getElementsByTagName('button')[0].click();
-  //     }
-  //
-  //     beforeEach(() => {
-  //         ReactDOM.render(
-  //             <Dropdown toggleDropdownOnClickInside={true}>
-  //                 <a href="#">Hello, world!</a>
-  //             </Dropdown>, root
-  //         );
-  //     });
-  //
-  //     it('should toggle the menu when clicking inside the menu', () => {
-  //         expectDropdownMenuIsClosed();
-  //         clickToggleButton();
-  //         expectDropdownMenuIsOpen();
-  //         document.getElementsByTagName('a')[0].click();
-  //         expectDropdownMenuIsClosed();
-  //     });
-  // });
+  describe("Toggle behavior click inside override", () => {
+    beforeEach(() => {
+      render(
+        <Dropdown toggleDropdownOnClickInside={true}>
+          <a href="#">Hello, world!</a>
+        </Dropdown>
+      );
+    });
+
+    it("should toggle the menu when clicking inside the menu", async () => {
+      expectDropdownMenuIsClosed();
+      await clickToggleButton();
+      await expectDropdownMenuIsOpen();
+      await user.click(screen.getByRole("link"));
+      expectDropdownMenuIsClosed();
+    });
+  });
 
   // describe('Event handler registration', () => {
   //
@@ -185,39 +165,39 @@ describe("<Dropdown />", () => {
   //         cut.find('button').simulate("click");
   //         expect(document.addEventListener).toHaveBeenCalled();
   //     });
-  //     it('should de-register event handlers when the dropdown menu is unmounted', () => {
-  //         jest.spyOn(document, 'removeEventListener');
-  //         const cut = mount(<Dropdown />);
-  //         cut.find('button').simulate("click");
-  //         document.removeEventListener.mockClear();
-  //         // On the second click the event listeners are removed since the dropdown is closed
-  //         cut.find('button').simulate("click");
-  //         expect(document.removeEventListener).toHaveBeenCalled();
-  //     });
-  //     it('should de-register event handlers when the dropdown unmounted', () => {
-  //         jest.spyOn(document, 'removeEventListener');
-  //         const cut = mount(<Dropdown />);
-  //         cut.find('button').simulate("click");
-  //         document.removeEventListener.mockClear();
-  //         // On the second click the event listeners are removed since the dropdown is closed
-  //         cut.unmount();
-  //         expect(document.removeEventListener).toHaveBeenCalled();
-  //     });
-  //     it('should not register event handlers when they are already registered', () => {
-  //         jest.spyOn(UnwrappedDropdown.prototype, 'componentDidUpdate');
-  //         jest.spyOn(document, 'addEventListener');
-  //
-  //         const cut = mount(<Dropdown>
-  //             <a href="#">Hello, world!</a>
-  //         </Dropdown>);
-  //
-  //         cut.find('button').simulate('click');
-  //         expect(UnwrappedDropdown.prototype.componentDidUpdate.mock.calls.length).toBe(1);
-  //         expect(document.addEventListener).toHaveBeenCalledTimes(3);
-  //         cut.setProps({ 'id': 'foo' });
-  //         expect(UnwrappedDropdown.prototype.componentDidUpdate.mock.calls.length).toBe(2);
-  //         expect(document.addEventListener).toHaveBeenCalledTimes(3);
-  //     });
+  // //     it('should de-register event handlers when the dropdown menu is unmounted', () => {
+  // //         jest.spyOn(document, 'removeEventListener');
+  // //         const cut = mount(<Dropdown />);
+  // //         cut.find('button').simulate("click");
+  // //         document.removeEventListener.mockClear();
+  // //         // On the second click the event listeners are removed since the dropdown is closed
+  // //         cut.find('button').simulate("click");
+  // //         expect(document.removeEventListener).toHaveBeenCalled();
+  // //     });
+  // //     it('should de-register event handlers when the dropdown unmounted', () => {
+  // //         jest.spyOn(document, 'removeEventListener');
+  // //         const cut = mount(<Dropdown />);
+  // //         cut.find('button').simulate("click");
+  // //         document.removeEventListener.mockClear();
+  // //         // On the second click the event listeners are removed since the dropdown is closed
+  // //         cut.unmount();
+  // //         expect(document.removeEventListener).toHaveBeenCalled();
+  // //     });
+  // //     it('should not register event handlers when they are already registered', () => {
+  // //         jest.spyOn(UnwrappedDropdown.prototype, 'componentDidUpdate');
+  // //         jest.spyOn(document, 'addEventListener');
+  // //
+  // //         const cut = mount(<Dropdown>
+  // //             <a href="#">Hello, world!</a>
+  // //         </Dropdown>);
+  // //
+  // //         cut.find('button').simulate('click');
+  // //         expect(UnwrappedDropdown.prototype.componentDidUpdate.mock.calls.length).toBe(1);
+  // //         expect(document.addEventListener).toHaveBeenCalledTimes(3);
+  // //         cut.setProps({ 'id': 'foo' });
+  // //         expect(UnwrappedDropdown.prototype.componentDidUpdate.mock.calls.length).toBe(2);
+  // //         expect(document.addEventListener).toHaveBeenCalledTimes(3);
+  // //     });
   // });
 
   // describe('Event propagation', () => {
