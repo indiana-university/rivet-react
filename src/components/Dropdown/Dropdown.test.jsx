@@ -40,6 +40,14 @@ describe("<Dropdown />", () => {
       render(<Dropdown label="foo" />);
       expect(screen.getByTestId(TestUtils.Dropdown.testId)).toBeInTheDocument();
     });
+    it("should align menu to the left, if alignRight is not provided, or if alignRight is false", () => {
+      render(<Dropdown />);
+      expect(screen.getByRole("menu")).toHaveClass("rvt-dropdown__menu--left");
+    });
+    it("should align menu to the right, if alignRight is true", () => {
+      render(<Dropdown alignRight={true} />);
+      expect(screen.getByRole("menu")).toHaveClass("rvt-dropdown__menu--right");
+    });
   });
 
   describe("Toggle behavior", () => {

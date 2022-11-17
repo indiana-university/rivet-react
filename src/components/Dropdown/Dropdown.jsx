@@ -19,7 +19,7 @@ import { TestUtils } from "../util/TestUtils";
 
 export const Dropdown = ({
   toggleDropdownOnClickInside = false,
-  align = "left",
+  alignRight = false,
   children,
   className,
   label,
@@ -28,6 +28,8 @@ export const Dropdown = ({
   size = "small",
   ...attrs
 }) => {
+  const align = alignRight ? "right" : "left";
+
   const handleClickOutside = (event) => {
     if (event && shouldToggleDropdown(event)) {
       toggleDropdown(event);
@@ -144,8 +146,8 @@ export const Dropdown = ({
 
 Dropdown.displayName = "Dropdown";
 Dropdown.propTypes = {
-  /** Optional Rivet style: alignment of the dropdown menu items relative to the edge of the dropdown button. */
-  align: PropTypes.string,
+  /** Optional flag that determines the alignment of the dropdown menu items relative to the edge of the dropdown button. */
+  alignRight: PropTypes.bool,
   /**
    * Optional text which appears on the dropdown toggle button. The label
    * should always be provided with a standalone dropdown, however the label
