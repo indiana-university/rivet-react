@@ -4,6 +4,8 @@ View the [Rivet documentation for Segmented Buttons](https://rivet.uits.iu.edu/c
 
 ### Default Style
 
+<!-- prettier-ignore-start -->
+
 ```jsx
 <SegmentedButton>
   <Button
@@ -30,7 +32,11 @@ View the [Rivet documentation for Segmented Buttons](https://rivet.uits.iu.edu/c
 </SegmentedButton>
 ```
 
+<!-- prettier-ignore-start -->
+
 ### Secondary Modifier
+
+<!-- prettier-ignore-start -->
 
 ```jsx
 <SegmentedButton>
@@ -61,9 +67,13 @@ View the [Rivet documentation for Segmented Buttons](https://rivet.uits.iu.edu/c
 </SegmentedButton>
 ```
 
+<!-- prettier-ignore-start -->
+
 ### Fitted Style
 
 Use the `fit` option to expand the buttons to the full width of the container.
+
+<!-- prettier-ignore-start -->
 
 ```jsx
 <SegmentedButton fit>
@@ -91,7 +101,11 @@ Use the `fit` option to expand the buttons to the full width of the container.
 </SegmentedButton>
 ```
 
+<!-- prettier-ignore-start -->
+
 ### Segmented Button Dropdown
+
+<!-- prettier-ignore-start -->
 
 ```jsx
 <SegmentedButton>
@@ -115,3 +129,5 @@ Use the `fit` option to expand the buttons to the full width of the container.
   </Dropdown>
 </SegmentedButton>
 ```
+
+<!-- prettier-ignore-start -->

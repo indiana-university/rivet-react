@@ -1,5 +1,7 @@
 Use a `ButtonGroup` to present related buttons, or buttons whose actions are exclusive to one another.
 
+<!-- prettier-ignore-start -->
+
 ```jsx
 <ButtonGroup>
   <Button
@@ -20,9 +22,13 @@ Use a `ButtonGroup` to present related buttons, or buttons whose actions are exc
 </ButtonGroup>
 ```
 
+<!-- prettier-ignore-start -->
+
 ### Right Alignment
 
 Use the `right` option to right-align the buttons in the container.
+
+<!-- prettier-ignore-start -->
 
 ```jsx
 <ButtonGroup right>
@@ -43,3 +49,5 @@ Use the `right` option to right-align the buttons in the container.
   </Button>
 </ButtonGroup>
 ```
+
+<!-- prettier-ignore-start -->

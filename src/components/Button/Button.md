@@ -4,6 +4,8 @@ View the [Rivet documentation for Buttons](https://rivet.uits.iu.edu/components/
 
 ### Button Examples
 
+<!-- prettier-ignore-start -->
+
 ```jsx
 <Button onClick={() => { console.log('Primary') }}>Primary</Button>{' '}
 <Button onClick={() => { console.log('Success') }} variant="success">Success</Button>{' '}
@@ -12,7 +14,11 @@ View the [Rivet documentation for Buttons](https://rivet.uits.iu.edu/components/
 <Button onClick={() => { console.log('Disabled') }} disabled>Disabled</Button>{' '}
 ```
 
+<!-- prettier-ignore-start -->
+
 ### Secondary Variations
+
+<!-- prettier-ignore-start -->
 
 ```jsx
 <Button onClick={() => { console.log('Sec Primary') }} modifier="secondary">Primary</Button>{' '}
@@ -21,7 +27,11 @@ View the [Rivet documentation for Buttons](https://rivet.uits.iu.edu/components/
 <Button onClick={() => { console.log('Sec Disabled') }} disabled modifier="secondary">Disabled</Button>{' '}
 ```
 
+<!-- prettier-ignore-start -->
+
 ### Small Buttons
+
+<!-- prettier-ignore-start -->
 
 ```jsx
 <Button onClick={() => { console.log('Small Primary') }} size="small">Primary</Button>{' '}
@@ -30,3 +40,5 @@ View the [Rivet documentation for Buttons](https://rivet.uits.iu.edu/components/
 <Button onClick={() => { console.log('Small Plain') }} variant="plain" size="small">Plain</Button>{' '}
 <Button onClick={() => { console.log('Small Disabled') }} disabled size="small">Disabled</Button>
 ```
+
+<!-- prettier-ignore-start -->
