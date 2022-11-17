@@ -115,7 +115,6 @@ describe("<Dropdown />", () => {
       });
       await expectDropdownMenuIsOpen();
     });
-    // begin todo - last expectDropdownMenuIsClosed shows menu as opened upon debugging
     it("should toggle the menu when the tab key is pressed outside the menu", async () => {
       expectDropdownMenuIsClosed();
       await clickToggleButton();
