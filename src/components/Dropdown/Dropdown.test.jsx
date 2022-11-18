@@ -135,41 +135,4 @@ describe("<Dropdown />", () => {
       expectDropdownMenuIsClosed();
     });
   });
-
-  describe("Event handler registration", () => {
-    afterEach(() => {
-      if (jest.isMockFunction(document.addEventListener)) {
-        document.addEventListener.mockRestore();
-      }
-      if (jest.isMockFunction(document.removeEventListener)) {
-        document.removeEventListener.mockRestore();
-      }
-    });
-
-    it("should register event handlers when it is mounted", async () => {
-      jest.spyOn(document, "addEventListener");
-      expect(document.addEventListener).toHaveBeenCalledTimes(0);
-      render(<Dropdown />);
-      await user.click(screen.getByRole("button"));
-      expect(document.addEventListener).toHaveBeenCalled();
-    });
-    it("should de-register event handlers when the dropdown menu is unmounted", async () => {
-      jest.spyOn(document, "removeEventListener");
-      render(<Dropdown />);
-      await user.click(screen.getByRole("button"));
-      document.removeEventListener.mockClear();
-      // On the second click the event listeners are removed since the dropdown is closed
-      await user.click(screen.getByRole("button"));
-      expect(document.removeEventListener).toHaveBeenCalled();
-    });
-    it("should de-register event handlers when the dropdown unmounted", async () => {
-      jest.spyOn(document, "removeEventListener");
-      const { unmount } = render(<Dropdown />);
-      await user.click(screen.getByRole("button"));
-      document.removeEventListener.mockClear();
-      // On the second click the event listeners are removed since the dropdown is closed
-      unmount();
-      expect(document.removeEventListener).toHaveBeenCalled();
-    });
-  });
 });
