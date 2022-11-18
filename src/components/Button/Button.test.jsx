@@ -11,12 +11,13 @@ import Button from "./Button";
 describe("<Button />", () => {
   describe("Rendering and text", () => {
     it("should render without throwing an error", () => {
-      const { container } = render(<Button />);
-      expect(container.querySelectorAll("button.rvt-button")).toHaveLength(1);
+      render(<Button />);
+      expect(screen.getByRole("button", {})).toHaveClass("rvt-button");
     });
     it("should take an id", () => {
-      const { container } = render(<Button id="the_id" />);
-      expect(container.querySelectorAll("button#the_id")).toHaveLength(1);
+      const testId = "the_id";
+      render(<Button id={testId} />);
+      expect(screen.getByRole("button", {})).toHaveProperty("id", testId);
     });
     it("should show text", () => {
       render(<Button>The text</Button>);
@@ -31,115 +32,69 @@ describe("<Button />", () => {
   describe("Styling", () => {
     // Primary variations
     it("should have success style", () => {
-      const { container } = render(<Button variant="success" />);
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--success")
-      ).toBe(true);
+      render(<Button variant="success" />);
+      expect(screen.getByRole("button", {})).toHaveClass("rvt-button--success");
     });
     it("should have danger style", () => {
-      const { container } = render(<Button variant="danger" />);
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--danger")
-      ).toBe(true);
+      render(<Button variant="danger" />);
+      expect(screen.getByRole("button", {})).toHaveClass("rvt-button--danger");
     });
     it("should have plain style", () => {
-      const { container } = render(<Button variant="plain" />);
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--plain")
-      ).toBe(true);
+      render(<Button variant="plain" />);
+      expect(screen.getByRole("button", {})).toHaveClass("rvt-button--plain");
     });
 
     // Secondary variations
     it("should have secondary role", () => {
-      const { container } = render(<Button modifier="secondary" />);
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--secondary")
-      ).toBe(true);
+      render(<Button modifier="secondary" />);
+      expect(screen.getByRole("button", {})).toHaveClass(
+        "rvt-button--secondary"
+      );
     });
     it("should have secondary success style", () => {
-      const { container } = render(
-        <Button modifier="secondary" variant="success" />
+      render(<Button modifier="secondary" variant="success" />);
+      expect(screen.getByRole("button", {})).toHaveClass(
+        "rvt-button--success-secondary"
       );
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--success-secondary")
-      ).toBe(true);
     });
     it("should have secondary danger style", () => {
-      const { container } = render(
-        <Button modifier="secondary" variant="danger" />
+      render(<Button modifier="secondary" variant="danger" />);
+      expect(screen.getByRole("button", {})).toHaveClass(
+        "rvt-button--danger-secondary"
       );
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--danger-secondary")
-      ).toBe(true);
     });
     it("should have secondary plain style", () => {
-      const { container } = render(
-        <Button modifier="secondary" variant="plain" />
+      render(<Button modifier="secondary" variant="plain" />);
+      expect(screen.getByRole("button", {})).toHaveClass(
+        "rvt-button--plain-secondary"
       );
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--plain-secondary")
-      ).toBe(true);
     });
 
     // Size variations
     it("should have small size", () => {
-      const { container } = render(<Button size="small" />);
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--small")
-      ).toBe(true);
+      render(<Button size="small" />);
+      expect(screen.getByRole("button", {})).toHaveClass("rvt-button--small");
     });
     it("should have normal size by default", () => {
-      const { container } = render(<Button />);
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--small")
-      ).toBe(false);
+      render(<Button />);
+      expect(screen.getByRole("button", {})).toHaveClass("rvt-button");
     });
 
     // All together now!
     it("should have a secondary small size", () => {
-      const { container } = render(
-        <Button size="small" modifier="secondary" variant="plain" />
+      render(<Button size="small" modifier="secondary" variant="plain" />);
+      expect(screen.getByRole("button", {})).toHaveClass(
+        "rvt-button--plain-secondary"
       );
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--plain-secondary")
-      ).toBe(true);
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-button--small")
-      ).toBe(true);
+      expect(screen.getByRole("button", {})).toHaveClass("rvt-button--small");
     });
 
     it("should apply appropriate navigation classes", () => {
-      const { container } = render(<Button variant="navigation" />);
-      expect(
-        container.querySelector("button").classList.contains("rvt-button")
-      ).toBe(false);
-      expect(
-        container
-          .querySelector("button")
-          .classList.contains("rvt-dropdown__toggle")
-      ).toBe(true);
+      render(<Button variant="navigation" />);
+      expect(screen.getByRole("button", {})).not.toHaveClass("rvt-button");
+      expect(screen.getByRole("button", {})).toHaveClass(
+        "rvt-dropdown__toggle"
+      );
     });
   });
 

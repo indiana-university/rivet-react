@@ -6,6 +6,7 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
+import { TestUtils } from "../util/TestUtils.js";
 
 const ButtonGroup = ({ className, children, right, ...attrs }) => {
   const classes = classNames(
@@ -16,7 +17,11 @@ const ButtonGroup = ({ className, children, right, ...attrs }) => {
     className
   );
   return (
-    <div {...attrs} className={classes}>
+    <div
+      {...attrs}
+      className={classes}
+      data-testid={TestUtils.ButtonGroup.testId}
+    >
       {children}
     </div>
   );
