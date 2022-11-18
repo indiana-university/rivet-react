@@ -1,5 +1,5 @@
 ## typescale
-Use the typescal property to set the font size of an element's text to a selection of preset sizes.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
+Use the typescale property to set the font size of an element's text to a selection of preset sizes.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
 
 View the [Rivet Documentation for Font Size](https://rivet.iu.edu/utilities/typography/#font-size).
 

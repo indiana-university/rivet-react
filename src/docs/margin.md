@@ -11,7 +11,6 @@ Property accepts 3 forms of entry:
 2. An object with edges as keys mapping to size value 
 3. An object with size as keys mapping to single or list of edge options
 
-
 Edge Options: 'top', 'right', 'bottom', 'left', 'all', 'tb', 'lr'
 
 Size Options: 'xxs', 'xs', 'base', 'sm', 'md', 'lg', 'xl', 'xxl', '3-xl', '4-xl', 'none'

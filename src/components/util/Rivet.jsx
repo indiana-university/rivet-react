@@ -16,7 +16,6 @@ export const shortuid = () => {
 
 const inflate = (x) => Array.isArray(x) ? x : [x];
 const flatten = (a,b) => a.concat(b);
-const rivetColor = (type,color) => `rvt-${type}-${color}`
 
 const singleEdges = [ 'top', 'right', 'bottom', 'left'];
 const combineEdges = [ 'all', 'tb', 'lr' ];
@@ -25,10 +24,9 @@ const Sizes = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3-xl', '4-xl', 'non
 const SpaceResp = ['sm-up', 'md-up', 'lg-up', 'xl-up', 'xxl-up'].map(r => Sizes.map(s => `${s}-${r}`)).flat(1)
 const Spacing = [...Sizes, ...SpaceResp];
 const BorderStandard = [ 'all', 'top', 'right', 'bottom', 'left', 'none' ];
-const BorderRemove = [ 'top-none', 'right-none', 'bottom-none', 'left-none'];
 const BorderRadius = [ 'radius', 'radius-cicle' ];
 const BorderColor = [ 'blue', 'crimson', 'gold', 'green', 'orange', 'purple' ];
-const Borders = [ ...BorderStandard, ...BorderRemove, ...BorderRadius, ...BorderColor ];
+const Borders = [ ...BorderStandard, ...BorderRadius ];
 const ColorBase= [ 'blue', 'crimson', 'gold', 'green', 'orange', 'purple' ];
 const ColorWeight= [ '000', '100', '200', '300', '400', '500', '600', '700' ].map(r => ColorBase.map(s => `${s}-${r}`)).flat(1);
 const Color = [...ColorBase, ...ColorWeight]
@@ -48,20 +46,34 @@ const WidthSize = ['xxs', 'xs', 'base', 'sm', 'md', 'lg', 'xl', 'xxl', '3-xl', '
 const WidthResp = ['sm-up', 'md-up', 'lg-up', 'xl-up', 'xxl-up'].map(r => WidthSize.map(s => `${s}-${r}`)).flat(1)
 const Width = [...WidthSize, ...WidthResp]
 const ZIndex = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-const Display = ['inline', 'inline-block', 'block', 'flex', 'none'];
-const FlexDirection = ['row', 'row-reverse', 'column', 'column-reverse'];
-const FlexWrap = ['wrap', 'no-wrap', 'wrap-reverse'];
-const JustifyContent = ['start', 'end', 'center', 'space-between', 'space-around', 'space-evenly'];
-const AlignContent = ['start', 'end', 'center', 'stretch', 'baseline'];
-const AlignItem = ['start', 'end', 'center', 'stretch', 'baseline'];
-const AlignSelf = ['self-start', 'self-end', 'center-end', 'stretch-end', 'baseline-end'];
-const FlexShrinkGrow = [ '0', '1'];
+const Display = ['inline', 'inline-block', 'block', 'none'];
+const FlexResp = ['sm-up', 'md-up', 'lg-up', 'xl-up', 'xxl-up']
+const FlexInline = ['inline', ...FlexResp.map(r => `inline-${r}`)]
+const FlexNormal = ['normal', ...FlexResp.map(r => `normal-${r}`)]
+const FlexDirectionBase = ['row', 'row-reverse', 'column', 'column-reverse'];
+const FlexDirectionResp = FlexResp.map(r => FlexDirectionBase.map(s => `${s}-${r}`)).flat(1)
+const FlexDirection = [...FlexDirectionBase, ...FlexDirectionResp];
+const FlexWrapBase = ['wrap', 'no-wrap', 'wrap-reverse'];
+const FlexWrapResp = FlexResp.map(r => FlexWrapBase.map(s => `${s}-${r}`)).flat(1)
+const FlexWrap = [...FlexWrapBase, ...FlexWrapResp];
+const JustifyBase = ['start', 'end', 'center', 'space-between', 'space-around', 'space-evenly'];
+const JustifyResp = FlexResp.map(r => JustifyBase.map(s => `${s}-${r}`)).flat(1)
+const JustifyContent = [...JustifyBase, ...JustifyResp];
+const AlignBase = ['start', 'end', 'center', 'stretch', 'baseline'];
+const AlignResp = FlexResp.map(r => AlignBase.map(s => `${s}-${r}`)).flat(1)
+const AlignContent = [...AlignBase, ...AlignResp];
+const AlignItems = [...AlignBase, ...AlignResp]
+const AlignSelfBase = ['self-start', 'self-end', 'center-end', 'stretch-end', 'baseline-end'];
+const AlignSelfResp = FlexResp.map(r => AlignSelfBase.map(s => `${s}-${r}`)).flat(1)
+const AlignSelf = [...AlignSelfBase, ...AlignSelfResp];
+const FlexShrinkGrowBase = [ '0', '1'];
+const FlexShrinkGrowResp = FlexResp.map(r => AlignSelfBase.map(s => `${s}-${r}`)).flat(1)
+const FlexShrinkGrow = [ ...FlexShrinkGrowBase, ...FlexShrinkGrowResp];
 const Weight = ['regular', 'medium', 'bold'];
 
 /**
  * Support functions
  */
-
 const parseRivetBooleanUtility = (value, css) => {
   return ({
     [css]: !!value
@@ -73,6 +85,22 @@ const parseRivetSingleListUtility = (list, value, css) => {
     return '';
   }
   return css
+}
+
+const parseRivetMultiListUtility = (list, values, cssBase) => {
+  if(Array.isArray(values)) {
+    return values.map((value) => {
+      if(!list.includes(value)) {
+        return '';
+      }
+      return `${cssBase}-${value}`
+    });
+  } else {
+    if(!list.includes(values)) {
+      return '';
+    }
+    return `${cssBase}-${values}`
+  }
 }
 
 const rivetSpacing = (type,edge,size) => {
@@ -109,39 +137,39 @@ const parseRivetSpacing = (type, style) =>
       : edgeSpecificSpacing(type, style))
     : "";
 
-/**
- * Attribute functions
- */
-
-/**
- * Optional Rivet style: add a border to any or all sides of an element
- * See: https://rivet.uits.iu.edu/components/utilities/border/
- */
 const parseRivetBorder = (border) => {
   if(Array.isArray(border)) {
     return border.map((value) => {
-      if(!Borders.includes(border)) {
-        return '';
-      }
-      return `rvt-border-${value}`
+      return parseBorderAux(value);
     });
   } else {
-    if(!Borders.includes(border)) {
-      return '';
-    }
-    return ({
-      [`rvt-border-all`]: BorderRadius.includes(border) === 'radius',
-      [`rvt-border-${border}`]: !!border
-    });
+    return parseBorderAux(border);
   }
 }
 
-/**
- * Optional Rivet style: show/hide content based on screen size.
- * ex: 'md-down' will hide content on medium-sized screens and smaller.
- * ex: 'lg-up' will hide content on large-sized screens and larger.
- * See: https://rivet.uits.iu.edu/components/utilities/visibility/
- */
+const parseBorderAux = (border) => {
+  if(!border) {
+    return '';
+  }
+
+  if(BorderRadius.includes(border)) {
+    return ({
+      [`rvt-border-all`]: true,
+      [`rvt-border-${border}`]: true
+    });
+  }
+
+  const neg = border.startsWith('-');
+  const processedBorder = neg ? border.substring(1) : border;
+
+  if(!Borders.includes(processedBorder)) {
+    return '';
+  }
+
+  return `rvt-border-${border}${neg ? '-none' : ''}`;
+}
+
+
 const parseRivetHidden = (hide) => {
   if(!Hidden.includes(hide)) {
     return '';
@@ -156,22 +184,10 @@ const parseRivetHidden = (hide) => {
   }
 }
 
-/**
- * Optional Rivet style: adjust the padding(s) of an element
- * See: https://rivet.uits.iu.edu/components/layout/spacing/
- */
- const parseRivetPadding = (padding) => parseRivetSpacing('p', padding);
+const parseRivetPadding = (padding) => parseRivetSpacing('p', padding);
 
-/**
- * Optional Rivet style: adjust the margin(s) of an element
- * See: https://rivet.uits.iu.edu/components/layout/spacing/
- */
- const parseRivetMargin = (margin) => parseRivetSpacing('m', margin);
+const parseRivetMargin = (margin) => parseRivetSpacing('m', margin);
 
-/**
- * Optional Rivet style: Adds a shadow effect to an element
- * See: https://rivet.uits.iu.edu/components/utilities/shadow/
- */
  const parseRivetShadow = (shadow) => {
   switch(shadow) {
     case 'normal':
@@ -183,44 +199,26 @@ const parseRivetHidden = (hide) => {
   }
 }
 
-/**
- * Optional Rivet style: Adjusts width of element
- * See: https://rivet.uits.iu.edu/components/utilities/width/
- */
- const parseRivetWidth = (width) => {
-  if(Array.isArray(width)) {
-    return width.map((value) => {
-      if(!Width.includes(value)) {
-        return '';
-      }
-      return `rvt-width-${value}`
+const parseRivetFlex = (flex) => {
+  if(Array.isArray(flex)) {
+    return flex.map((value) => {
+      return parseFlexAux(value)
     });
   } else {
-    if(!Width.includes(width)) {
-      return '';
-    }
-    return `rvt-width-${width}`
+    return parseFlexAux(flex)
   }
 }
 
-/**
- * Optional Rivet style: type scale adjustment
- * See: https://rivet.uits.iu.edu/components/layout/typography/
- */
-const parseRivetTypescale = (typescale) => {
-  if(Array.isArray(typescale)) {
-    return typescale.map((value) => {
-      if(!Typescale.includes(value)) {
-        return '';
-      }
-      return `rvt-ts-${value}`
-    });
-  } else {
-    if(!Typescale.includes(typescale)) {
-      return '';
-    }
-    return `rvt-ts-${typescale}`
+const parseFlexAux = (flex) => {
+  if(FlexNormal.includes(flex)) {
+    return flex.replace('normal','rvt-flex')
   }
+
+  if(FlexInline.includes(flex)) {
+    return flex.replace('inline','rvt-inline-flex')
+  }
+
+  return '';
 }
 
 /**
@@ -228,24 +226,29 @@ const parseRivetTypescale = (typescale) => {
  */
 export const rivetize = (Component) => {
   return ({
-    alignContent, alignItem, alignSelf, bg, border, className, color, display, flow, fontFamily, hide, justifyContent,
-    lhTitle, margin, padding, prose, shadow , stopBreak, textAlign, typescale, uppercase, weight, width, z, ...attrs
+    alignContent, alignItems, alignSelf, bg, border, borderColor, className, color, display, flex, flexDirection, flexWrap,
+    flow, fontFamily, grow, hide, justifyContent, lhTitle, margin, padding, prose, shadow, shrink, stopBreak,
+    textAlign, typescale, uppercase, weight, width, z, ...attrs
   }) => {
     return<Component
     className={classNames(
-      parseRivetSingleListUtility(AlignContent, alignContent, `rvt-content-${alignContent}`),
-      parseRivetSingleListUtility(AlignItem, alignItem, `rvt-items-${alignItem}`),
-      parseRivetSingleListUtility(AlignSelf, alignSelf, `rvt-${alignSelf}`),
+      parseRivetMultiListUtility(AlignContent, alignContent, `rvt-content`),
+      parseRivetMultiListUtility(AlignItems, alignItems, `rvt-items`),
+      parseRivetMultiListUtility(AlignSelf, alignSelf, `rvt`),
       parseRivetSingleListUtility(Color, bg, `rvt-bg-${bg}`),
       parseRivetBorder(border),
+      parseRivetSingleListUtility(BorderColor, borderColor, `rvt-border-color-${borderColor}`),
       parseRivetSingleListUtility(Color, color, `rvt-color-${color}`),
       parseRivetSingleListUtility(Display, display, `rvt-display-${display}`),
+      parseRivetFlex(flex),
+      parseRivetMultiListUtility(FlexDirection, flexDirection, `rvt-flex`),
+      parseRivetMultiListUtility(FlexWrap, flexWrap, `rvt`),
       parseRivetBooleanUtility(flow, 'rvt-flow'),
-      parseRivetSingleListUtility(FlexShrinkGrow, grow, `rvt-grow-${grow}`),
-      parseRivetSingleListUtility(FlexShrinkGrow, shrink, `rvt-shrink-${shrink}`),
+      parseRivetMultiListUtility(FlexShrinkGrow, grow, `rvt-grow`),
+      parseRivetMultiListUtility(FlexShrinkGrow, shrink, `rvt-shrink`),
       parseRivetSingleListUtility(FontFamily, fontFamily, `rvt-font-${fontFamily}`),
       parseRivetHidden(hide),
-      parseRivetSingleListUtility(JustifyContent, justifyContent, `rvt-justify-${justifyContent}`),
+      parseRivetMultiListUtility(JustifyContent, justifyContent, `rvt-justify`),
       parseRivetBooleanUtility(lhTitle, 'rvt-lh-title'),
       parseRivetMargin(margin),
       parseRivetPadding(padding),
@@ -253,10 +256,10 @@ export const rivetize = (Component) => {
       parseRivetShadow(shadow),
       parseRivetBooleanUtility(stopBreak, 'rvt-text-nobr'),
       parseRivetSingleListUtility(TextAlign, textAlign, `rvt-text-${textAlign}`),
-      parseRivetTypescale(Typescale, typescale, `rvt-ts-${typescale}`),
+      parseRivetMultiListUtility(Typescale, typescale, `rvt-ts`),
       parseRivetBooleanUtility(uppercase, 'rvt-text-uppercase'),
       parseRivetSingleListUtility(Weight, weight, `rvt-text-${weight}`),
-      parseRivetWidth(width),
+      parseRivetMultiListUtility(Width, width, `rvt-width`),
       parseRivetSingleListUtility(ZIndex, z, `rvt-z-${z * 100}`),
       className)
   } {...attrs} /> 

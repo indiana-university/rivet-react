@@ -4,6 +4,7 @@ Use the color property to set the color of the text and other content of the ele
 View the [Rivet Documentation for Color](https://rivet.iu.edu/utilities/color/).
 
 ### Acceptable Values
+
 Options can either be a basic color by itself or weighted shade of the color.
 
 Basic Colors: 'blue', 'crimson', 'gold', 'green', 'orange', 'purple'

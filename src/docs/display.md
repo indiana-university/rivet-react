@@ -5,7 +5,7 @@ View the [Rivet Documentation for Display](https://rivet.iu.edu/utilities/displa
 
 ### Acceptable Values
 
-Options: 'inline', 'inline-block', 'block', 'flex', 'none'
+Options: 'inline', 'inline-block', 'block', 'none'
 
 ### Examples
 ```jsx
