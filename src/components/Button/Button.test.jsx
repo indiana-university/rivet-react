@@ -91,10 +91,9 @@ describe("<Button />", () => {
 
     it("should apply appropriate navigation classes", () => {
       render(<Button variant="navigation" />);
-      expect(screen.getByRole("button", {})).not.toHaveClass("rvt-button");
-      expect(screen.getByRole("button", {})).toHaveClass(
-        "rvt-dropdown__toggle"
-      );
+      const button = screen.getByRole("button", {});
+      expect(button).not.toHaveClass("rvt-button");
+      expect(button).toHaveClass("rvt-dropdown__toggle");
     });
   });
 
