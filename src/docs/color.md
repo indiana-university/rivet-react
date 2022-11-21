@@ -18,5 +18,5 @@ Weighted options are added to a basic color selection using a '-', for example "
 <Container color='blue'>Text will be a basic blue</Container>
 <Container color='blue-000'>Text will be a really light blue</Container>
 <Container color='blue-700'>Text will be a really dark blue</Container>
-<Container color='red'>Text will be a red</Container>
+<Container color='crimson'>Text will be a red</Container>
 ```

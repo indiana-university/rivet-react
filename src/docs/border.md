@@ -19,4 +19,5 @@ Additionally multiple settings can be set by by passing an array of values in th
 <Container border="all">Component with a border on all edges</Container>
 <Container border="radius">Component with a border on all edges and rounded corners</Container>
 <Container border={["top","bottom"]}>Component with a border on the top and bottom edges</Container>
+<Container border="-right">Component with a border missing on the right edge</Container>
 ```

@@ -35,9 +35,10 @@ const HiddenUp = [ 'sm-up', 'md-up', 'lg-up', 'xl-up', 'xxl-up' ];
 const HiddenScreenReader = 'sr';
 const HiddenAll = 'all';
 const Hidden = [ ...HiddenDown, ...HiddenUp, HiddenScreenReader, HiddenAll ];
-const TypescaleNum = ['12', '14', '18', '20', '23', '26', '29', '32', '36', '41', '46', '52'];
+const TypescaleNum = [12, 14, 18, 20, 23, 26, 29, 32, 36, 41, 46, 52];
+const TypescaleNumStr = ['12', '14', '18', '20', '23', '26', '29', '32', '36', '41', '46', '52'];
 const TypescaleSize = ['xxs', 'xs', 'base', 'sm', 'md', 'lg', 'xl', 'xxl'];
-const TypescaleSizes = [...TypescaleNum, ...TypescaleSize];
+const TypescaleSizes = [...TypescaleNum, ...TypescaleNumStr, ...TypescaleSize];
 const TypescaleResp = ['sm-up', 'md-up', 'lg-up', 'xl-up', 'xxl-up'].map(r => TypescaleSizes.map(s => `${s}-${r}`)).flat(1)
 const Typescale = [...TypescaleSizes, ...TypescaleResp];
 const FontFamily = ['sans', 'serif', 'mono'];
@@ -45,7 +46,9 @@ const TextAlign = ['left', 'center', 'right'];
 const WidthSize = ['xxs', 'xs', 'base', 'sm', 'md', 'lg', 'xl', 'xxl', '3-xl', '4-xl'];
 const WidthResp = ['sm-up', 'md-up', 'lg-up', 'xl-up', 'xxl-up'].map(r => WidthSize.map(s => `${s}-${r}`)).flat(1)
 const Width = [...WidthSize, ...WidthResp]
-const ZIndex = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+const ZIndexNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const ZIndexStr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+const ZIndex = [...ZIndexNum, ...ZIndexStr];
 const Display = ['inline', 'inline-block', 'block', 'none'];
 const FlexResp = ['sm-up', 'md-up', 'lg-up', 'xl-up', 'xxl-up']
 const FlexInline = ['inline', ...FlexResp.map(r => `inline-${r}`)]
@@ -67,17 +70,24 @@ const AlignSelfBase = ['self-start', 'self-end', 'center-end', 'stretch-end', 'b
 const AlignSelfResp = FlexResp.map(r => AlignSelfBase.map(s => `${s}-${r}`)).flat(1)
 const AlignSelf = [...AlignSelfBase, ...AlignSelfResp];
 const FlexShrinkGrowBase = [ '0', '1'];
-const FlexShrinkGrowResp = FlexResp.map(r => AlignSelfBase.map(s => `${s}-${r}`)).flat(1)
-const FlexShrinkGrow = [ ...FlexShrinkGrowBase, ...FlexShrinkGrowResp];
+const FlexShrinkGrowResp = FlexResp.map(r => FlexShrinkGrowBase.map(s => `${s}-${r}`)).flat(1)
+const FlexShrinkGrow = [ 0, 1, ...FlexShrinkGrowBase, ...FlexShrinkGrowResp];
 const Weight = ['regular', 'medium', 'bold'];
 
 /**
  * Support functions
  */
 const parseRivetBooleanUtility = (value, css) => {
-  return ({
-    [css]: !!value
-  });
+  if(typeof value === 'string') {
+    if(value.toUpperCase() === 'TRUE') {
+      return css;
+    }
+    return '';
+  }
+  if(!!value) {
+    return css;
+  }
+  return '';
 }
 
 const parseRivetSingleListUtility = (list, value, css) => {
@@ -164,7 +174,7 @@ const parseBorderAux = (border) => {
     return '';
   }
 
-  return `rvt-border-${border}${neg ? '-none' : ''}`;
+  return `rvt-border-${neg ? processedBorder : border}${neg ? '-none' : ''}`;
 }
 
 
@@ -228,38 +238,38 @@ export const rivetize = (Component) => {
     flow, fontFamily, grow, hide, justifyContent, lhTitle, margin, padding, prose, shadow, shrink, stopBreak,
     textAlign, typescale, uppercase, weight, width, z, ...attrs
   }) => {
-    return<Component
-    className={classNames(
-      parseRivetMultiListUtility(AlignContent, alignContent, `rvt-content`),
-      parseRivetMultiListUtility(AlignItems, alignItems, `rvt-items`),
-      parseRivetMultiListUtility(AlignSelf, alignSelf, `rvt`),
-      parseRivetSingleListUtility(Color, bg, `rvt-bg-${bg}`),
-      parseRivetBorder(border),
-      parseRivetSingleListUtility(BorderColor, borderColor, `rvt-border-color-${borderColor}`),
-      parseRivetSingleListUtility(Color, color, `rvt-color-${color}`),
-      parseRivetSingleListUtility(Display, display, `rvt-display-${display}`),
-      parseRivetFlex(flex),
-      parseRivetMultiListUtility(FlexDirection, flexDirection, `rvt-flex`),
-      parseRivetMultiListUtility(FlexWrap, flexWrap, `rvt`),
-      parseRivetBooleanUtility(flow, 'rvt-flow'),
-      parseRivetMultiListUtility(FlexShrinkGrow, grow, `rvt-grow`),
-      parseRivetMultiListUtility(FlexShrinkGrow, shrink, `rvt-shrink`),
-      parseRivetSingleListUtility(FontFamily, fontFamily, `rvt-font-${fontFamily}`),
-      parseRivetHidden(hide),
-      parseRivetMultiListUtility(JustifyContent, justifyContent, `rvt-justify`),
-      parseRivetBooleanUtility(lhTitle, 'rvt-lh-title'),
-      parseRivetMargin(margin),
-      parseRivetPadding(padding),
-      parseRivetBooleanUtility(prose, 'rvt-prose'),
-      parseRivetShadow(shadow),
-      parseRivetBooleanUtility(stopBreak, 'rvt-text-nobr'),
-      parseRivetSingleListUtility(TextAlign, textAlign, `rvt-text-${textAlign}`),
-      parseRivetMultiListUtility(Typescale, typescale, `rvt-ts`),
-      parseRivetBooleanUtility(uppercase, 'rvt-text-uppercase'),
-      parseRivetSingleListUtility(Weight, weight, `rvt-text-${weight}`),
-      parseRivetMultiListUtility(Width, width, `rvt-width`),
-      parseRivetSingleListUtility(ZIndex, z, `rvt-z-${z * 100}`),
-      className)
-  } {...attrs} /> 
+    return <Component
+      className={classNames(
+        parseRivetMultiListUtility(AlignContent, alignContent, `rvt-content`),
+        parseRivetMultiListUtility(AlignItems, alignItems, `rvt-items`),
+        parseRivetMultiListUtility(AlignSelf, alignSelf, `rvt`),
+        parseRivetSingleListUtility(Color, bg, `rvt-bg-${bg}`),
+        parseRivetBorder(border),
+        parseRivetSingleListUtility(BorderColor, borderColor, `rvt-border-color-${borderColor}`),
+        parseRivetSingleListUtility(Color, color, `rvt-color-${color}`),
+        parseRivetSingleListUtility(Display, display, `rvt-display-${display}`),
+        parseRivetFlex(flex),
+        parseRivetMultiListUtility(FlexDirection, flexDirection, `rvt-flex`),
+        parseRivetMultiListUtility(FlexWrap, flexWrap, `rvt`),
+        parseRivetBooleanUtility(flow, 'rvt-flow'),
+        parseRivetMultiListUtility(FlexShrinkGrow, grow, `rvt-grow`),
+        parseRivetMultiListUtility(FlexShrinkGrow, shrink, `rvt-shrink`),
+        parseRivetSingleListUtility(FontFamily, fontFamily, `rvt-font-${fontFamily}`),
+        parseRivetHidden(hide),
+        parseRivetMultiListUtility(JustifyContent, justifyContent, `rvt-justify`),
+        parseRivetBooleanUtility(lhTitle, 'rvt-lh-title'),
+        parseRivetMargin(margin),
+        parseRivetPadding(padding),
+        parseRivetBooleanUtility(prose, 'rvt-prose'),
+        parseRivetShadow(shadow),
+        parseRivetBooleanUtility(stopBreak, 'rvt-text-nobr'),
+        parseRivetSingleListUtility(TextAlign, textAlign, `rvt-text-${textAlign}`),
+        parseRivetMultiListUtility(Typescale, typescale, `rvt-ts`),
+        parseRivetBooleanUtility(uppercase, 'rvt-text-uppercase'),
+        parseRivetSingleListUtility(Weight, weight, `rvt-text-${weight}`),
+        parseRivetMultiListUtility(Width, width, `rvt-width`),
+        parseRivetSingleListUtility(ZIndex, z, `rvt-z-${z * 100}`),
+        className)
+    } {...attrs} /> 
   }
 };
