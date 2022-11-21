@@ -8,11 +8,11 @@ import * as React from 'react';
 
 // Helper and Styling Functions
 export const shortuid = () => {
-  const m = Date.now() % 4194304
-  const r = Math.floor(Math.random() * 12582911) + 4194304
+  const m = Date.now() % 4194304;
+  const r = Math.floor(Math.random() * 12582911) + 4194304;
   const id = (m + r).toString(16);
   return `id_${id}`;
-}
+};
 
 const inflate = (x) => Array.isArray(x) ? x : [x];
 const flatten = (a,b) => a.concat(b);
@@ -117,24 +117,22 @@ const rivetSpacing = (type,edge,size) => {
 
 // determine spacing based on edge- or size-based styling
 const edgeSpecificSpacing = (t, style) =>
-  Edges
-    .filter(e => style.hasOwnProperty(e))
+  Edges.filter((e) => style.hasOwnProperty(e))
     // edges can only have one specified size
-    .map(e => rivetSpacing(t,e,style[e]))
+    .map((e) => rivetSpacing(t, e, style[e]))
     .concat(
-      Sizes
-        .filter(s => style.hasOwnProperty(s))
+      Sizes.filter((s) => style.hasOwnProperty(s))
         // sizes can be applied to one or more edges.
-        .map(s => inflate(style[s])
-          .map(e => rivetSpacing(t,e,s)))
-        .reduce(flatten, []))
+        .map((s) => inflate(style[s]).map((e) => rivetSpacing(t, e, s)))
+        .reduce(flatten, [])
+    )
     .join(" ");
 
 const parseRivetSpacing = (type, style) =>
   style
-    ? (typeof style === "string"
+    ? typeof style === "string"
       ? rivetSpacing(type, "all", style)
-      : edgeSpecificSpacing(type, style))
+      : edgeSpecificSpacing(type, style)
     : "";
 
 const parseRivetBorder = (border) => {
@@ -145,7 +143,7 @@ const parseRivetBorder = (border) => {
   } else {
     return parseBorderAux(border);
   }
-}
+};
 
 const parseBorderAux = (border) => {
   if(!border) {
@@ -172,7 +170,7 @@ const parseBorderAux = (border) => {
 
 const parseRivetHidden = (hide) => {
   if(!Hidden.includes(hide)) {
-    return '';
+    return ''; 
   }
   switch(hide) {
     case HiddenScreenReader:
@@ -197,7 +195,7 @@ const parseRivetMargin = (margin) => parseRivetSpacing('m', margin);
       return `rvt-shadow-${shadow}`;
     default: return '';
   }
-}
+};
 
 const parseRivetFlex = (flex) => {
   if(Array.isArray(flex)) {
