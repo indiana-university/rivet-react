@@ -6,6 +6,7 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
+import { TestUtils } from "../util/TestUtils.js";
 
 const SegmentedButton = ({ className, children, fit, ...attrs }) => {
   const classes = classNames(
@@ -16,7 +17,12 @@ const SegmentedButton = ({ className, children, fit, ...attrs }) => {
     className
   );
   return (
-    <div {...attrs} role="group" className={classes}>
+    <div
+      {...attrs}
+      role="group"
+      className={classes}
+      data-testid={TestUtils.SegmentedButton.testId}
+    >
       {children}
     </div>
   );
