@@ -28,6 +28,15 @@ export const Dropdown = ({
   size = "small",
   ...attrs
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    handleEventRegistration();
+    return () => {
+      eventHandler.deregister();
+    };
+  });
+
   const align = alignRight ? "right" : "left";
 
   const handleClickOutside = (event) => {
@@ -40,15 +49,6 @@ export const Dropdown = ({
       }
     }
   };
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    handleEventRegistration();
-    return () => {
-      eventHandler.deregister();
-    };
-  });
 
   const toggleButton = createRef();
   const dropdownWrapDiv = createRef();
