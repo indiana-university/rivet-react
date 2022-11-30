@@ -6,19 +6,8 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from 'classnames';
 import * as React from 'react';
 
-// Helper and Styling Functions
-export const shortuid = () => {
-  const m = Date.now() % 4194304;
-  const r = Math.floor(Math.random() * 12582911) + 4194304;
-  const id = (m + r).toString(16);
-  return `id_${id}`;
-};
-
-const inflate = (x) => Array.isArray(x) ? x : [x];
-const flatten = (a,b) => a.concat(b);
-
-const singleEdges = [ 'top', 'right', 'bottom', 'left'];
-const combineEdges = [ 'all', 'tb', 'lr' ];
+const singleEdges = [ 'all', 'top', 'right', 'bottom', 'left'];
+const combineEdges = [ 'tb', 'lr' ];
 const Edges = [...singleEdges, ...combineEdges];
 const Sizes = [ 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', '3-xl', '4-xl', 'none' ];
 const SpaceResp = ['sm-up', 'md-up', 'lg-up', 'xl-up', 'xxl-up'].map(r => Sizes.map(s => `${s}-${r}`)).flat(1)
@@ -75,6 +64,61 @@ const FlexShrinkGrow = [ 0, 1, ...FlexShrinkGrowBase, ...FlexShrinkGrowResp];
 const Weight = ['regular', 'medium', 'bold'];
 
 /**
+ *  Helper and Styling Functions
+ */
+export const shortuid = () => {
+  const m = Date.now() % 4194304;
+  const r = Math.floor(Math.random() * 12582911) + 4194304;
+  const id = (m + r).toString(16);
+  return `id_${id}`;
+};
+
+const inflate = (x) => Array.isArray(x) ? x : [x];
+const flatten = (a,b) => a.concat(b);
+
+ export const rivetize = (Component) => {
+  return ({
+    alignContent, alignItems, alignSelf, bg, border, borderColor, className, color, display, flex, flexDirection,
+    flexWrap, flow, fontFamily, grow, hide, justifyContent, lhTitle, margin, padding, prose, shadow, shrink,
+    stopBreak, textAlign, typescale, uppercase, weight, width, z, ...attrs
+  }) => {
+    return <Component
+      className={classNames(
+        parseRivetMultiListUtility(alignContent, AlignContent, `rvt-content`),
+        parseRivetMultiListUtility(alignItems, AlignItems, `rvt-items`),
+        parseRivetMultiListUtility(alignSelf, AlignSelf, `rvt`),
+        parseRivetSingleListUtility(bg, Color, `rvt-bg-${bg}`),
+        parseRivetBorder(border),
+        parseRivetSingleListUtility(borderColor, BorderColor, `rvt-border-color-${borderColor}`),
+        parseRivetSingleListUtility(color, Color, `rvt-color-${color}`),
+        parseRivetSingleListUtility(display, Display, `rvt-display-${display}`),
+        parseRivetFlex(flex),
+        parseRivetMultiListUtility(flexDirection, FlexDirection, `rvt-flex`),
+        parseRivetMultiListUtility(flexWrap, FlexWrap, `rvt`),
+        parseRivetBooleanUtility(flow, 'rvt-flow'),
+        parseRivetMultiListUtility(grow, FlexShrinkGrow, `rvt-grow`),
+        parseRivetSingleListUtility(fontFamily, FontFamily, `rvt-font-${fontFamily}`),
+        parseRivetHidden(hide),
+        parseRivetMultiListUtility(justifyContent, JustifyContent, `rvt-justify`),
+        parseRivetBooleanUtility(lhTitle, 'rvt-lh-title'),
+        parseRivetMargin(margin),
+        parseRivetPadding(padding),
+        parseRivetBooleanUtility(prose, 'rvt-prose'),
+        parseRivetShadow(shadow),
+        parseRivetMultiListUtility(shrink, FlexShrinkGrow, `rvt-shrink`),
+        parseRivetBooleanUtility(stopBreak, 'rvt-text-nobr'),
+        parseRivetSingleListUtility(textAlign, TextAlign, `rvt-text-${textAlign}`),
+        parseRivetMultiListUtility(typescale, Typescale, `rvt-ts`),
+        parseRivetBooleanUtility(uppercase, 'rvt-text-uppercase'),
+        parseRivetSingleListUtility(weight, Weight, `rvt-text-${weight}`),
+        parseRivetMultiListUtility(width, Width, `rvt-width`),
+        parseRivetSingleListUtility(z, ZIndex, `rvt-z-${z * 100}`),
+        className)
+    } {...attrs} /> 
+  }
+};
+
+/**
  * Support functions
  */
 const parseRivetBooleanUtility = (value, css) => {
@@ -90,14 +134,14 @@ const parseRivetBooleanUtility = (value, css) => {
   return '';
 }
 
-const parseRivetSingleListUtility = (list, value, css) => {
+const parseRivetSingleListUtility = (value, list, css) => {
   if(!list.includes(value)) {
     return '';
   }
   return css
 }
 
-const parseRivetMultiListUtility = (list, values, cssBase) => {
+const parseRivetMultiListUtility = (values, list, cssBase) => {
   if(Array.isArray(values)) {
     return values.map((value) => {
       if(!list.includes(value)) {
@@ -177,7 +221,6 @@ const parseBorderAux = (border) => {
   return `rvt-border-${neg ? processedBorder : border}${neg ? '-none' : ''}`;
 }
 
-
 const parseRivetHidden = (hide) => {
   if(!Hidden.includes(hide)) {
     return ''; 
@@ -228,48 +271,3 @@ const parseFlexAux = (flex) => {
 
   return '';
 }
-
-/**
- *  Given component properties, generate one or more CSS class decorations.
- */
-export const rivetize = (Component) => {
-  return ({
-    alignContent, alignItems, alignSelf, bg, border, borderColor, className, color, display, flex, flexDirection, flexWrap,
-    flow, fontFamily, grow, hide, justifyContent, lhTitle, margin, padding, prose, shadow, shrink, stopBreak,
-    textAlign, typescale, uppercase, weight, width, z, ...attrs
-  }) => {
-    return <Component
-      className={classNames(
-        parseRivetMultiListUtility(AlignContent, alignContent, `rvt-content`),
-        parseRivetMultiListUtility(AlignItems, alignItems, `rvt-items`),
-        parseRivetMultiListUtility(AlignSelf, alignSelf, `rvt`),
-        parseRivetSingleListUtility(Color, bg, `rvt-bg-${bg}`),
-        parseRivetBorder(border),
-        parseRivetSingleListUtility(BorderColor, borderColor, `rvt-border-color-${borderColor}`),
-        parseRivetSingleListUtility(Color, color, `rvt-color-${color}`),
-        parseRivetSingleListUtility(Display, display, `rvt-display-${display}`),
-        parseRivetFlex(flex),
-        parseRivetMultiListUtility(FlexDirection, flexDirection, `rvt-flex`),
-        parseRivetMultiListUtility(FlexWrap, flexWrap, `rvt`),
-        parseRivetBooleanUtility(flow, 'rvt-flow'),
-        parseRivetMultiListUtility(FlexShrinkGrow, grow, `rvt-grow`),
-        parseRivetMultiListUtility(FlexShrinkGrow, shrink, `rvt-shrink`),
-        parseRivetSingleListUtility(FontFamily, fontFamily, `rvt-font-${fontFamily}`),
-        parseRivetHidden(hide),
-        parseRivetMultiListUtility(JustifyContent, justifyContent, `rvt-justify`),
-        parseRivetBooleanUtility(lhTitle, 'rvt-lh-title'),
-        parseRivetMargin(margin),
-        parseRivetPadding(padding),
-        parseRivetBooleanUtility(prose, 'rvt-prose'),
-        parseRivetShadow(shadow),
-        parseRivetBooleanUtility(stopBreak, 'rvt-text-nobr'),
-        parseRivetSingleListUtility(TextAlign, textAlign, `rvt-text-${textAlign}`),
-        parseRivetMultiListUtility(Typescale, typescale, `rvt-ts`),
-        parseRivetBooleanUtility(uppercase, 'rvt-text-uppercase'),
-        parseRivetSingleListUtility(Weight, weight, `rvt-text-${weight}`),
-        parseRivetMultiListUtility(Width, width, `rvt-width`),
-        parseRivetSingleListUtility(ZIndex, z, `rvt-z-${z * 100}`),
-        className)
-    } {...attrs} /> 
-  }
-};

@@ -4,14 +4,10 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import user from "@testing-library/user-event";
 import React from "react";
 import RivetTestComponent from "./RivetTestComponent";
-import * as Rivet from './Rivet';
 
 describe("Rivetize", () => {
-  const titleText = "A Test Component";
-
   describe("alignContent", alignContentTests);
   describe("alignItems", alignItemsTests);
   describe("alignSelf", alignSelfTests);
@@ -24,7 +20,6 @@ describe("Rivetize", () => {
   describe("flexDirection",flexDirectionTests);
   describe("flow", flowTests);
   describe("grow", growTests);
-  describe("shrink", shrinkTests);
   describe("fontFamily", fontFamilyTests);
   describe("hide", hideTests);
   describe("justifyContent", justifyContentTests);
@@ -33,6 +28,7 @@ describe("Rivetize", () => {
   describe("padding", paddingTests);
   describe("prose", proseTests);
   describe("shadow", shadowTests);
+  describe("shrink", shrinkTests);
   describe("stopBreak", stopBreakTests);
   describe("textAlign", textAlignTests);
   describe("typescale", typescaleTests);
@@ -67,18 +63,8 @@ function alignContentTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("alignContent", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent alignContent={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent alignContent={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('alignContent', valid)
+        testNotPresent('alignContent', invalid)
     });
 }
 
@@ -107,18 +93,8 @@ function alignItemsTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("alignItems", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent alignItems={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent alignItems={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('alignItems', valid)
+        testNotPresent('alignItems', invalid)
     });
 }
 
@@ -142,19 +118,9 @@ function alignSelfTests () {
         }
     ]
     const invalid = ["BAD", null, ""];
-    describe("alignItems", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent alignSelf={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent alignSelf={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+    describe("alignSelf", () => {
+        testPresent('alignSelf', valid)
+        testNotPresent('alignSelf', invalid)
     });
 }
 
@@ -179,18 +145,8 @@ function bgTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("bg", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent bg={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent bg={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('bg', valid)
+        testNotPresent('bg', invalid)
     });
 }
 
@@ -227,19 +183,9 @@ function borderTests () {
         }
     ]
     const invalid = ["BAD", null, ""];
-    describe("bg", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent border={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent border={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+    describe("border", () => {
+        testPresent('border', valid)
+        testNotPresent('border', invalid)
     });
 }
 
@@ -259,19 +205,9 @@ function borderColorTests () {
         }
     ]
     const invalid = ["BAD", null, ""];
-    describe("bg", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent borderColor={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent borderColor={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+    describe("borderColor", () => {
+        testPresent('borderColor', valid)
+        testNotPresent('borderColor', invalid)
     });
 }
 
@@ -295,19 +231,9 @@ function colorTests () {
         }
     ]
     const invalid = ["BAD", null, ""];
-    describe("bg", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent color={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent color={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+    describe("color", () => {
+        testPresent('color', valid)
+        testNotPresent('color', invalid)
     });
 }
 
@@ -327,19 +253,9 @@ function displayTests () {
         }
     ]
     const invalid = ["BAD", null, ""];
-    describe("bg", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent display={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent display={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+    describe("display", () => {
+        testPresent('display', valid)
+        testNotPresent('display', invalid)
     });
 }
 
@@ -367,19 +283,9 @@ function flexTests () {
         }
     ]
     const invalid = ["BAD", null, ""];
-    describe("alignItems", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent flex={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent flex={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+    describe("flex", () => {
+        testPresent('flex', valid)
+        testNotPresent('flex', invalid)
     });
 }
 
@@ -407,19 +313,9 @@ function flexDirectionTests () {
         }
     ]
     const invalid = ["BAD", null, ""];
-    describe("alignItems", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent flexDirection={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent flexDirection={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+    describe("flexDirection", () => {
+        testPresent('flexDirection', valid)
+        testNotPresent('flexDirection', invalid)
     });
 }
 
@@ -447,19 +343,9 @@ function flexWrapTests () {
         }
     ]
     const invalid = ["BAD", null, ""];
-    describe("alignItems", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent flexWrap={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent flexWrap={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+    describe("flexWrap", () => {
+        testPresent('flexWrap', valid)
+        testNotPresent('flexWrap', invalid)
     });
 }
 
@@ -469,26 +355,7 @@ function flowTests () {
             render(<RivetTestComponent flow />);
             expect(screen.getByTestId("test")).toHaveClass("rvt-flow");
         });
-        it("should specify style", () => {
-            render(<RivetTestComponent flow="true" />);
-            expect(screen.getByTestId("test")).toHaveClass("rvt-flow");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent flow="TRUE" />);
-            expect(screen.getByTestId("test")).toHaveClass("rvt-flow");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent flow="false" />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-flow");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent flow="FALSE" />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-flow");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-flow");
-        });
+        testBooleanAux("flow", "rvt-flow")
     });
 }
 
@@ -521,18 +388,8 @@ function growTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("grow", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent grow={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent grow={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('grow', valid)
+        testNotPresent('grow', invalid)
     });
 }
 
@@ -565,18 +422,8 @@ function shrinkTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("shrink", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent shrink={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent shrink={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('shrink', valid)
+        testNotPresent('shrink', invalid)
     });
 }
 
@@ -597,18 +444,8 @@ function fontFamilyTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("fontFamily", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent fontFamily={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent fontFamily={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('fontFamily', valid)
+        testNotPresent('fontFamily', invalid)
     });
 }
 
@@ -633,18 +470,8 @@ function hideTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("hide", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent hide={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent hide={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('hide', valid)
+        testNotPresent('hide', invalid)
     });
 }
 
@@ -669,18 +496,8 @@ function justifyContentTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("justifyContent", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent justifyContent={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent justifyContent={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('justifyContent', valid)
+        testNotPresent('justifyContent', invalid)
     });
 }
 
@@ -690,98 +507,75 @@ function lhTitleTests () {
             render(<RivetTestComponent lhTitle />);
             expect(screen.getByTestId("test")).toHaveClass("rvt-lh-title");
         });
-        it("should specify style", () => {
-            render(<RivetTestComponent lhTitle="true" />);
-            expect(screen.getByTestId("test")).toHaveClass("rvt-lh-title");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent lhTitle="TRUE" />);
-            expect(screen.getByTestId("test")).toHaveClass("rvt-lh-title");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent lhTitle="false" />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-lh-title");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent lhTitle="FALSE" />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-lh-title");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-lh-title");
-        });
+        testBooleanAux("lhTitle", "rvt-lh-title")
     });
 }
 
 function marginTests () {
     const valid = [
         {
-            values: "self-start",
-            expected: "rvt-self-start"
+            values: "sm",
+            expected: "rvt-m-all-sm"
         },
         {
-            values: "self-end",
-            expected: "rvt-self-end"
+            values: "lg",
+            expected: "rvt-m-all-lg"
         },
         {
-            values: "self-end-lg-up",
-            expected: "rvt-self-end-lg-up"
+            values: "-lg",
+            expected: "-rvt-m-all-lg"
         },
         {
-            values: ['self-end-lg-up', 'center-end'],
-            expected: "rvt-self-end-lg-up rvt-center-end"
+            values: {'top': 'sm', 'bottom': 'lg'},
+            expected: "rvt-m-top-sm rvt-m-bottom-lg"
+        },
+        {
+            values: {'sm': 'top', 'lg': ['right', 'left']},
+            expected: "rvt-m-top-sm rvt-m-right-lg rvt-m-left-lg"
+        },
+        {
+            values: "md-lg-up",
+            expected: "rvt-m-all-md-lg-up"
         }
     ]
     const invalid = ["BAD", null, ""];
     describe("margin", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent margin={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent margin={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('margin', valid)
+        testNotPresent('margin', invalid)
     });
 }
 
 function paddingTests () {
     const valid = [
         {
-            values: "self-start",
-            expected: "rvt-self-start"
+            values: "sm",
+            expected: "rvt-p-all-sm"
         },
         {
-            values: "self-end",
-            expected: "rvt-self-end"
+            values: "lg",
+            expected: "rvt-p-all-lg"
         },
         {
-            values: "self-end-lg-up",
-            expected: "rvt-self-end-lg-up"
+            values: "-lg",
+            expected: "-rvt-p-all-lg"
         },
         {
-            values: ['self-end-lg-up', 'center-end'],
-            expected: "rvt-self-end-lg-up rvt-center-end"
+            values: {'top': 'sm', 'bottom': 'lg'},
+            expected: "rvt-p-top-sm rvt-p-bottom-lg"
+        },
+        {
+            values: {'sm': 'top', 'lg': ['right', 'left']},
+            expected: "rvt-p-top-sm rvt-p-right-lg rvt-p-left-lg"
+        },
+        {
+            values: "md-lg-up",
+            expected: "rvt-p-all-md-lg-up"
         }
     ]
     const invalid = ["BAD", null, ""];
     describe("padding", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent padding={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent padding={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('padding', valid)
+        testNotPresent('padding', invalid)
     });
 }
 
@@ -791,26 +585,7 @@ function proseTests () {
             render(<RivetTestComponent prose />);
             expect(screen.getByTestId("test")).toHaveClass("rvt-prose");
         });
-        it("should specify style", () => {
-            render(<RivetTestComponent prose="true" />);
-            expect(screen.getByTestId("test")).toHaveClass("rvt-prose");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent prose="TRUE" />);
-            expect(screen.getByTestId("test")).toHaveClass("rvt-prose");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent prose="false" />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-prose");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent prose="FALSE" />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-prose");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-prose");
-        });
+        testBooleanAux("prose", "rvt-prose")
     });
 }
 
@@ -831,18 +606,8 @@ function shadowTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("shadow", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent shadow={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent shadow={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('shadow', valid)
+        testNotPresent('shadow', invalid)
     });
 }
 
@@ -853,26 +618,7 @@ function stopBreakTests () {
             render(<RivetTestComponent stopBreak />);
             expect(screen.getByTestId("test")).toHaveClass("rvt-text-nobr");
         });
-        it("should specify style", () => {
-            render(<RivetTestComponent stopBreak="true" />);
-            expect(screen.getByTestId("test")).toHaveClass("rvt-text-nobr");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent stopBreak="TRUE" />);
-            expect(screen.getByTestId("test")).toHaveClass("rvt-text-nobr");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent stopBreak="false" />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-text-nobr");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent stopBreak="FALSE" />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-text-nobr");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-text-nobr");
-        });
+        testBooleanAux("stopBreak", "rvt-text-nobr")
     });
 }
 
@@ -893,18 +639,8 @@ function textAlignTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("textAlign", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent textAlign={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent textAlign={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('textAlign', valid)
+        testNotPresent('textAlign', invalid)
     });
 }
 
@@ -941,18 +677,8 @@ function typescaleTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("typescale", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent typescale={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent typescale={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('typescale', valid)
+        testNotPresent('typescale', invalid)
     });
 }
 
@@ -962,26 +688,7 @@ function uppercaseTests () {
             render(<RivetTestComponent uppercase />);
             expect(screen.getByTestId("test")).toHaveClass("rvt-text-uppercase");
         });
-        it("should specify style", () => {
-            render(<RivetTestComponent uppercase="true" />);
-            expect(screen.getByTestId("test")).toHaveClass("rvt-text-uppercase");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent uppercase="TRUE" />);
-            expect(screen.getByTestId("test")).toHaveClass("rvt-text-uppercase");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent uppercase="false" />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-text-uppercase");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent uppercase="FALSE" />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-text-uppercase");
-        });
-        it("should specify style", () => {
-            render(<RivetTestComponent />);
-            expect(screen.getByTestId("test")).not.toHaveClass("rvt-text-uppercase");
-        });
+        testBooleanAux("uppercase", "rvt-text-uppercase")
     });
 }
 
@@ -1002,18 +709,8 @@ function weightTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("weight", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent weight={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent weight={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('weight', valid)
+        testNotPresent('weight', invalid)
     });
 }
 
@@ -1046,18 +743,8 @@ function widthTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("width", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent width={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent width={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('width', valid)
+        testNotPresent('width', invalid)
     });
 }
 
@@ -1082,17 +769,56 @@ function zTests () {
     ]
     const invalid = ["BAD", null, ""];
     describe("z", () => {
-        valid.forEach(test => {
-            it("should specify style for: " + test.values, () => {
-                render(<RivetTestComponent z={test.values} />);
-                expect(screen.getByTestId("test")).toHaveClass(test.expected);
-            });
-        })
-        invalid.forEach(test => {
-            it("should specify style for: " + test, () => {
-                render(<RivetTestComponent z={test} />);
-                expect(screen.getByTestId("test")).not.toHaveClass();
-            });
-        })
+        testPresent('z', valid)
+        testNotPresent('z', invalid)
+    });
+}
+
+function testPresent(name, tests) {
+    tests.forEach(test => {
+        const value = test.values
+        const results = test.expected
+        it("should specify style for: " + value, () => {
+            const params = {
+                [name]: value
+            }
+            render(<RivetTestComponent {...params} />);
+            expect(screen.getByTestId("test")).toHaveClass(results);
+        });
+    })
+}
+
+function testNotPresent(name, tests) {
+    tests.forEach(value => {
+        const params = {
+            [name]: value
+        }
+        it("should not specify style for: " + value, () => {
+            render(<RivetTestComponent {...params} />);
+            expect(screen.getByTestId("test")).not.toHaveClass();
+        });
+    })
+}
+
+function testBooleanAux(param, value) {
+    it("should specify style", () => {
+        render(<RivetTestComponent {...{[param]: "true"}} />);
+        expect(screen.getByTestId("test")).toHaveClass(value);
+    });
+    it("should specify style", () => {
+        render(<RivetTestComponent {...{[param]: "TRUE"}} />);
+        expect(screen.getByTestId("test")).toHaveClass(value);
+    });
+    it("should specify style", () => {
+        render(<RivetTestComponent {...{[param]: "false"}} />);
+        expect(screen.getByTestId("test")).not.toHaveClass(value);
+    });
+    it("should specify style", () => {
+        render(<RivetTestComponent {...{[param]: "FALSE"}} />);
+        expect(screen.getByTestId("test")).not.toHaveClass(value);
+    });
+    it("should specify style", () => {
+        render(<RivetTestComponent />);
+        expect(screen.getByTestId("test")).not.toHaveClass(value);
     });
 }
