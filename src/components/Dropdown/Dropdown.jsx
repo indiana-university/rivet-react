@@ -16,6 +16,7 @@ import { Button } from "../Button";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import { TestUtils } from "../util/TestUtils";
+import Icon from "../util/RivetIcons";
 
 export const Dropdown = ({
   toggleDropdownOnClickInside = false,
@@ -118,22 +119,7 @@ export const Dropdown = ({
             {label}
           </span>
         )}
-        {/* begin todo - replace with Icon component */}
-        <svg
-          role="img"
-          alt=""
-          className="rvt-m-left-xs"
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill="currentColor"
-            d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z"
-          />
-        </svg>
-        {/* end todo - replace with Icon component */}
+        <Icon name="caret-down" />
       </Button>
       {isOpen && (
         <div className={menuClasses} aria-hidden={!isOpen} role="menu">
