@@ -21,6 +21,25 @@ Use the `label` property to set the text on the dropdown button.
 ```
 <!-- prettier-ignore-end -->
 
+### Label as React Node
+
+The `label` prop can also be a React Node.
+
+<!-- prettier-ignore-start -->
+```jsx
+<Dropdown label={<div>Navigation menu</div>}>
+    <a href="#">Item one</a>
+    <a href="#">Item two</a>
+    <a href="#" aria-current="page">Item three</a>
+    <a href="#">Item four</a>
+    <DropdownGroup>
+        <a href="#">Related item three</a>
+        <a href="#">Related item four</a>
+    </DropdownGroup>
+</Dropdown>
+```
+<!-- prettier-ignore-end -->
+
 ### Right-align Modifier
 
 By default the dropdown menu is vertically aligned with the left edge of the dropdown button. Use the `alignRight` option to vertically align the dropdown menu with the right edge of the dropdown button.
