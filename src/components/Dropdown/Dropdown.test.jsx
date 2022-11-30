@@ -2,7 +2,13 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import { fireEvent, getByRole, render, screen } from "@testing-library/react";
+import {
+  fireEvent,
+  getByRole,
+  prettyDOM,
+  render,
+  screen,
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import React from "react";
@@ -40,12 +46,14 @@ describe("<Dropdown />", () => {
       render(<Dropdown label="foo" />);
       expect(screen.getByTestId(TestUtils.Dropdown.testId)).toBeInTheDocument();
     });
-    it("should align menu to the left, if alignRight is not provided, or if alignRight is false", () => {
+    it("should align menu to the left, if alignRight is not provided, or if alignRight is false", async () => {
       render(<Dropdown />);
+      await clickToggleButton();
       expect(screen.getByRole("menu")).toHaveClass("rvt-dropdown__menu--left");
     });
-    it("should align menu to the right, if alignRight is true", () => {
+    it("should align menu to the right, if alignRight is true", async () => {
       render(<Dropdown alignRight={true} />);
+      await clickToggleButton();
       expect(screen.getByRole("menu")).toHaveClass("rvt-dropdown__menu--right");
     });
   });
