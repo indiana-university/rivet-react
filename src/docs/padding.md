@@ -1,7 +1,10 @@
 ## padding
+
 Use the padding property to set the padding of an element to a selection of preset sizes.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.  Sides can also be independently set using this property.
 
 View the [Rivet Documentation for Spacing](https://rivet.iu.edu/utilities/spacing/).
+
+<br/>
 
 ### Acceptable Values
 
@@ -20,11 +23,28 @@ Responsive Options: 'sm-up', 'md-up', 'lg-up', 'xl-up', 'xxl-up'
 
 Responsive options are added to a basic size selection using a '-', for example "xl-lg-up".
 
+<br/>
+
 ### Examples
+
 ```jsx
-<Container padding='sm'>Component with small padding on all sides</Container>
-<Container padding='lg'>Component with large padding on all sides</Container>
-<Container padding={{'top': 'sm', 'bottom': 'lg'}}>Component with small amount of padding on top, large amount at bottom and none on the sides</Container>
-<Container padding={{'sm': 'top', 'lg': ['right', 'left']}}>Component with small amount of padding on top, none at bottom and large amount on the sides</Container>
-<Container padding='md-lg-up'>On large screen sizes component will have medium padding on all sides </Container>
+<Container padding='sm'>
+    Component with small padding on all sides
+</Container>
+
+<Container padding='lg'>
+    Component with large padding on all sides
+</Container>
+
+<Container padding={{'top': 'sm', 'bottom': 'lg'}}>
+    Component with small amount of padding on top, large amount at bottom and none on the sides
+</Container>
+
+<Container padding={{'sm': 'top', 'lg': ['right', 'left']}}>
+    Component with small amount of padding on top, none at bottom and large amount on the sides
+</Container>
+
+<Container padding='md-lg-up'>
+    On large screen sizes component will have medium padding on all sides
+</Container>
 ```

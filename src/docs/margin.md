@@ -1,7 +1,10 @@
 ## margin
+
 Use the margin property to set the margin of an element to a selection of preset sizes.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.  Sides can also be independently set using this property.
 
 View the [Rivet Documentation for Spacing](https://rivet.iu.edu/utilities/spacing/).
+
+<br/>
 
 ### Acceptable Values
 
@@ -19,11 +22,28 @@ Responsive Options: 'sm-up', 'md-up', 'lg-up', 'xl-up', 'xxl-up'
 
 Responsive options are added to a basic size selection using a '-', for example "xl-lg-up".
 
+<br/>
+
 ### Examples
+
 ```jsx
-<Container margin='sm'>Component with small margin on all sides</Container>
-<Container margin='lg'>Component with large margin on all sides</Container>
-<Container margin={{'top': 'sm', 'bottom': 'lg'}}>Component with small amount of margin on top, large amount at bottom and none on the sides</Container>
-<Container margin={{'sm': 'top', 'lg': ['right', 'left']}}>Component with small amount of margin on top, none at bottom and large amount on the sides</Container>
-<Container margin='md-lg-up'>On large screen sizes component will have medium margin on all sides </Container>
+<Container margin='sm'>
+    Component with small margin on all sides
+</Container>
+
+<Container margin='lg'>
+    Component with large margin on all sides
+</Container>
+
+<Container margin={{'top': 'sm', 'bottom': 'lg'}}>
+    Component with small amount of margin on top, large amount at bottom and none on the sides
+</Container>
+
+<Container margin={{'sm': 'top', 'lg': ['right', 'left']}}>
+    Component with small amount of margin on top, none at bottom and large amount on the sides
+</Container>
+
+<Container margin='md-lg-up'>
+    On large screen sizes component will have medium margin on all sides
+</Container>
 ```

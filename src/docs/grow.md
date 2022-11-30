@@ -1,9 +1,12 @@
 ## grow
+
 Use the grow property to set the flex growth to a selection of presets.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
 
 View the [Rivet Documentation for flex-shrink and flex-grow](https://rivet.iu.edu/utilities/flex/#flex-shrink-and-flex-grow).
 
 As a flex utility requires appropiate setting of display to flex.
+
+<br/>
 
 ### Acceptable Values
 
@@ -15,11 +18,23 @@ Responsive options are added to a general value selection using a '-', for examp
 
 Additionally multiple settings can be set by by passing an array of values in the property, for example ['1-lg-up', '0-xxl-up', '1']
 
+<br/>
+
 ### Examples
+
 ```jsx
-<Container grow='0'>A component with no flex growth</Container>
-<Container grow='1'>A component with flex growth</Container>
-<Container grow='1-lg-up'>Component with flex growth on large screens</Container>
+<Container grow='0'>
+  A component with no flex growth
+</Container>
+
+<Container grow='1'>
+  A component with flex growth
+</Container>
+
+<Container grow='1-lg-up'>
+  Component with flex growth on large screens
+</Container>
+
 <Container grow={['1-lg-up', '0']}>
   On normal large screen component will be have flex growth and no growth on smaller screens.
 </Container>
