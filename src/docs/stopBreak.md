@@ -15,19 +15,19 @@ Property accepts boolean values 'true' or 'false'
 ### Examples
 
 ```jsx
-<Container>
+<Component>
     Component's text will break and wrap normally
-</Container>
+</Component>
 
-<Container uppercase='true'>
+<Component stopBreak='true'>
     Component's text will not break and wrap
-</Container>
+</Component>
 
-<Container uppercase='false'>
+<Component stopBreak='false'>
     Component's text will break and wrap normally
-</Container>
+</Component>
 
-<Container uppercase>
+<Component stopBreak>
     Component's text will not break and wrap
-</Container>
+</Component>
 ```

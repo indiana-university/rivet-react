@@ -15,19 +15,19 @@ Options: 'normal', 'subtle', 'heavy'
 ### Examples
 
 ```jsx
-<Container>
+<Component>
     Element will have no shadow
-</Container>
+</Component>
 
-<Container shadow='normal'>
+<Component shadow='normal'>
     Element will have a shadow
-</Container>
+</Component>
 
-<Container shadow='subtle'>
+<Component shadow='subtle'>
     Element will have a slight shadow
-</Container>
+</Component>
 
-<Container shadow='heavy'>
+<Component shadow='heavy'>
     Element will have a heavy shadow
-</Container>
+</Component>
 ```

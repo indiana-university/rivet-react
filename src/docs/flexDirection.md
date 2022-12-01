@@ -1,6 +1,6 @@
 ## flexDirection
 
-Use the flexDirection property to set the direction to a selection of presets.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
+Use the flexDirection property to set the direction to a selection of presets. In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
 
 View the [Rivet Documentation for flex, flex-direction, and flex-wrap](https://rivet.iu.edu/utilities/flex/#flex%2C-flex-direction%2C-and-flex-wrap).
 
@@ -21,20 +21,21 @@ Additionally multiple settings can be set by by passing an array of values in th
 <br/>
 
 ### Examples
+
 ```jsx
-<Container flexDirection='row'>
+<Component flexDirection='row'>
   A component with content render in a order in a row
-</Container>
+</Component>
 
-<Container flexDirection='row-reverse'>
+<Component flexDirection='row-reverse'>
   A component with content render in a reverse in a row
-</Container>
+</Component>
 
-<Container flexDirection='column-lg-up'>
+<Component flexDirection='column-lg-up'>
   Component with content render in a column on large screens
-</Container>
+</Component>
 
-<Container flexDirection={['row-lg-up', 'column']}>
+<Component flexDirection={['row-lg-up', 'column']}>
   On large screen component with content rendered in a row and in a column on smaller screens.
-</Container>
+</Component>
 ```

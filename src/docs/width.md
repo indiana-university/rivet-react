@@ -1,6 +1,6 @@
 ## width
 
-Use the width property to set the width of an element to a selection of preset sizes.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
+Use the width property to set the width of an element to a selection of preset sizes. In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
 
 View the [Rivet Documentation for Width](https://rivet.uits.iu.edu/components/utilities/width/).
 
@@ -21,23 +21,23 @@ Additionally multiple widths can be set by by passing an array of values in the 
 ### Examples
 
 ```jsx
-<Container width='sm'>
+<Component width='sm'>
   A component with a set small width
-</Container>
+</Component>
 
-<Container width='lg'>
+<Component width='lg'>
   A component with a set large width
-</Container>
+</Component>
 
-<Container width='4-xl'>
+<Component width='4-xl'>
   A component with a set largest width
-</Container>
+</Component>
 
-<Container width='md-lg-up'>
+<Component width='md-lg-up'>
   Component has a set medium width on large screens
-</Container>
+</Component>
 
-<Container width={['md-lg-up', 'lg-xxl-up', 'sm']}>
+<Component width={['md-lg-up', 'lg-xxl-up', 'sm']}>
   On extra large screen this Component will have a large width. However on normal large screen its width will be limited to medium and small on smaller screens.
-</Container>
+</Component>
 ```

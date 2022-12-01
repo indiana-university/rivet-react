@@ -13,16 +13,17 @@ Options: 'sans', 'serif', 'mono'
 <br/>
 
 ### Examples
+
 ```jsx
-<Container fontFamily='sans'>
+<Component fontFamily='sans'>
     Text will be in sans style
-</Container>
+</Component>
 
-<Container fontFamily='serif'>
+<Component fontFamily='serif'>
     Text will be in serif style
-</Container>
+</Component>
 
-<Container fontFamily='mono'>
+<Component fontFamily='mono'>
     Text will be in mono style
-</Container>
+</Component>
 ```

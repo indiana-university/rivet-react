@@ -1,6 +1,6 @@
 ## hide
 
-Use the hide property to hide elements on the page based on preset selections.  Options allow elements to be hidden statically or in response to screensize being larger or smaller.
+Use the hide property to hide elements on the page based on preset selections. Options allow elements to be hidden statically or in response to screensize being larger or smaller.
 
 View the [Rivet Documentation for Visibility](https://rivet.iu.edu/utilities/visibility/).
 
@@ -17,19 +17,19 @@ Smaller Responsive Options: 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-dow
 ### Examples
 
 ```jsx
-<Container hide='sr'>
+<Component hide='sr'>
     This component is only seen by screenreaders
-</Container>
+</Component>
 
-<Container hide='all'>
+<Component hide='all'>
     This component is not seen by anyone
-</Container>
+</Component>
 
-<Container hide='lg-up'>
+<Component hide='lg-up'>
     This component is not seen on large screens and larger
-</Container>
+</Component>
 
-<Container hide='md-down'>
+<Component hide='md-down'>
     This component is not seen on medium screens and smaller
-</Container>
+</Component>
 ```

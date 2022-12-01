@@ -1,6 +1,6 @@
 ## margin
 
-Use the margin property to set the margin of an element to a selection of preset sizes.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.  Sides can also be independently set using this property.
+Use the margin property to set the margin of an element to a selection of preset sizes. In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser. Sides can also be independently set using this property.
 
 View the [Rivet Documentation for Spacing](https://rivet.iu.edu/utilities/spacing/).
 
@@ -11,7 +11,7 @@ View the [Rivet Documentation for Spacing](https://rivet.iu.edu/utilities/spacin
 Property accepts 3 forms of entry:
 
 1. String containing a size option which is then applied to all sides
-2. An object with edges as keys mapping to size value 
+2. An object with edges as keys mapping to size value
 3. An object with size as keys mapping to single or list of edge options
 
 Edge Options: 'top', 'right', 'bottom', 'left', 'all', 'tb', 'lr'
@@ -27,23 +27,23 @@ Responsive options are added to a basic size selection using a '-', for example 
 ### Examples
 
 ```jsx
-<Container margin='sm'>
+<Component margin='sm'>
     Component with small margin on all sides
-</Container>
+</Component>
 
-<Container margin='lg'>
+<Component margin='lg'>
     Component with large margin on all sides
-</Container>
+</Component>
 
-<Container margin={{'top': 'sm', 'bottom': 'lg'}}>
+<Component margin={{'top': 'sm', 'bottom': 'lg'}}>
     Component with small amount of margin on top, large amount at bottom and none on the sides
-</Container>
+</Component>
 
-<Container margin={{'sm': 'top', 'lg': ['right', 'left']}}>
+<Component margin={{'sm': 'top', 'lg': ['right', 'left']}}>
     Component with small amount of margin on top, none at bottom and large amount on the sides
-</Container>
+</Component>
 
-<Container margin='md-lg-up'>
+<Component margin='md-lg-up'>
     On large screen sizes component will have medium margin on all sides
-</Container>
+</Component>
 ```

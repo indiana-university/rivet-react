@@ -1,6 +1,6 @@
 ## typescale
 
-Use the typescale property to set the font size of an element's text to a selection of preset sizes.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
+Use the typescale property to set the font size of an element's text to a selection of preset sizes. In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
 
 View the [Rivet Documentation for Font Size](https://rivet.iu.edu/utilities/typography/#font-size).
 
@@ -23,23 +23,23 @@ Additionally multiple widths can be set by by passing an array of values in the 
 ### Examples
 
 ```jsx
-<Container typescale='sm'>
+<Component typescale='sm'>
   A component with small text
-</Container>
+</Component>
 
-<Container typescale='lg'>
+<Component typescale='lg'>
   A component with large text
-</Container>
+</Component>
 
-<Container typescale='26'>
+<Component typescale='26'>
   A component with 26pt text
-</Container>
+</Component>
 
-<Container typescale='md-lg-up'>
+<Component typescale='md-lg-up'>
   Component text is medium sized on large screens
-</Container>
+</Component>
 
-<Container typescale={['md-lg-up', 'lg-xxl-up', 'sm']}>
+<Component typescale={['md-lg-up', 'lg-xxl-up', 'sm']}>
   On extra large screen this text will large. However on normal large screen text will be medium and small sized on smaller screens.
-</Container>
+</Component>
 ```

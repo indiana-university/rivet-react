@@ -15,23 +15,23 @@ Property accepts boolean values 'true' or 'false'
 ### Examples
 
 ```jsx
-<Container typescale='sm'>
+<Component typescale='sm'>
   <h1>Header will appear normal</h1>
   <p>Text will appear normal</p>
-</Container>
+</Component>
 
-<Container prose='true' typescale='sm'>
+<Component prose='true' typescale='sm'>
   <h1>Header text will be small </h1>
   <p>Text will be small</p>
-</Container>
+</Component>
 
-<Container prose='false' typescale='sm'>
+<Component prose='false' typescale='sm'>
   <h1>Header will appear normal</h1>
   <p>Text will appear normal</p>
-</Container>
+</Component>
 
-<Container prose typescale='sm'>
+<Component prose typescale='sm'>
   <h1>Header text will be small </h1>
   <p>Text will be small</p>
-</Container>
+</Component>
 ```

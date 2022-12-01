@@ -9,9 +9,11 @@ import * as PropTypes from "prop-types";
 import * as Rivet from "./Rivet";
 
 const RivetTestComponent = (props) => {
-  return <div data-testid="test" {...props} >
-    Test Component
-</div>
+  return (
+    <div data-testid="test" {...props}>
+      Test Component
+    </div>
+  );
 };
 
 export default Rivet.rivetize(RivetTestComponent);

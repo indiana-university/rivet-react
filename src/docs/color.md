@@ -1,7 +1,7 @@
 ## color
 
-Use the color property to set the color of the text and other content of the element to a selection of preset colors. 
- 
+Use the color property to set the color of the text and other content of the element to a selection of preset colors.
+
 View the [Rivet Documentation for Color](https://rivet.iu.edu/utilities/color/).
 
 <br/>
@@ -19,20 +19,21 @@ Weighted options are added to a basic color selection using a '-', for example "
 <br/>
 
 ### Examples
+
 ```jsx
-<Container color='blue'>
+<Component color='blue'>
     Text will be a basic blue
-</Container>
+</Component>
 
-<Container color='blue-000'>
+<Component color='blue-000'>
     Text will be a really light blue
-</Container>
+</Component>
 
-<Container color='blue-700'>
+<Component color='blue-700'>
     Text will be a really dark blue
-</Container>
+</Component>
 
-<Container color='crimson'>
+<Component color='crimson'>
     Text will be a red
-</Container>
+</Component>
 ```

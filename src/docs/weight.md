@@ -15,15 +15,15 @@ Options: 'regular', 'medium', 'bold'
 ### Examples
 
 ```jsx
-<Container weight='regular'>
+<Component weight='regular'>
     Text will be regular thickness
-</Container>
+</Component>
 
-<Container weight='medium'>
+<Component weight='medium'>
     Text will be slightly thicker
-</Container>
+</Component>
 
-<Container weight='bold'>
+<Component weight='bold'>
     Text will be thickest
-</Container>
+</Component>
 ```

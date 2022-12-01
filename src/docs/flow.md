@@ -15,23 +15,23 @@ Property accepts boolean values 'true' or 'false'
 ### Examples
 
 ```jsx
-<Container>
+<Component>
   <Section>Spacing between sections</Section>
   <Section>will be determined by the content</Section>
-</Container>
+</Component>
 
-<Container flow='true'>
+<Component flow='true'>
   <Section>Spacing between sections</Section>
   <Section>will be consistant</Section>
-</Container>
+</Component>
 
-<Container flow='false'>
+<Component flow='false'>
   <Section>Spacing between sections</Section>
   <Section>will be determined by the content</Section>
-</Container>
+</Component>
 
-<Container flow>
+<Component flow>
   <Section>Spacing between sections</Section>
   <Section>will be consistant</Section>
-</Container>
+</Component>
 ```

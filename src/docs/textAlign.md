@@ -15,15 +15,15 @@ Options: 'left', 'center', 'right'
 ### Examples
 
 ```jsx
-<Container textAlign='left'>
+<Component textAlign='left'>
     Text will be aligned on the left
-</Container>
+</Component>
 
-<Container textAlign='center'>
+<Component textAlign='center'>
     Text will be aligned in the center
-</Container>
+</Component>
 
-<Container textAlign='right'>
+<Component textAlign='right'>
     Text will be aligned on the right
-</Container>
+</Component>
 ```

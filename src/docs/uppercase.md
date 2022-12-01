@@ -15,19 +15,19 @@ Property accepts boolean values 'true' or 'false'
 ### Examples
 
 ```jsx
-<Container>
+<Component>
     Component's text will appear as is
-</Container>
+</Component>
 
-<Container uppercase='true'>
+<Component uppercase='true'>
     Component's text will appear in all uppercase
-</Container>
+</Component>
 
-<Container uppercase='false'>
+<Component uppercase='false'>
     Component's text will appear as is
-</Container>
+</Component>
 
-<Container uppercase>
+<Component uppercase>
     Component's text will appear in all uppercase
-</Container>
+</Component>
 ```

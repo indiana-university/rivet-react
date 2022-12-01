@@ -13,16 +13,17 @@ Options: 'inline', 'inline-block', 'block', 'none'
 <br/>
 
 ### Examples
+
 ```jsx
-<Container display='block'>
+<Component display='block'>
     Element will be a block
-</Container>
+</Component>
 
-<Container display='inline'>
+<Component display='inline'>
     Element will be inline with others
-</Container>
+</Component>
 
-<Container display='none'>
+<Component display='none'>
     Element will not be displayed
-</Container>
+</Component>
 ```

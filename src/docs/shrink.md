@@ -1,6 +1,6 @@
 ## shrink
 
-Use the shrink property to set the flex shrinking to a selection of presets.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
+Use the shrink property to set the flex shrinking to a selection of presets. In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
 
 View the [Rivet Documentation for flex-shrink and flex-grow](https://rivet.iu.edu/utilities/flex/#flex-shrink-and-flex-grow).
 
@@ -23,19 +23,19 @@ Additionally multiple settings can be set by by passing an array of values in th
 ### Examples
 
 ```jsx
-<Container shrink='0'>
+<Component shrink='0'>
   A component with no flex shrinking
-</Container>
+</Component>
 
-<Container shrink='1'>
+<Component shrink='1'>
   A component with flex shrinking
-</Container>
+</Component>
 
-<Container shrink='0-lg-up'>
+<Component shrink='0-lg-up'>
   Component with no flex shrinking on large screens
-</Container>
+</Component>
 
-<Container shrink={['1-lg-up', '0']}>
+<Component shrink={['1-lg-up', '0']}>
   On normal large screen component will be have flex shrinking and no shrinking on smaller screens.
-</Container>
+</Component>
 ```

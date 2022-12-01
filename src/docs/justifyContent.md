@@ -1,6 +1,6 @@
 ## justifyContent
 
-Use the justifyContent property to set the flex justification to a selection of presets.  In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
+Use the justifyContent property to set the flex justification to a selection of presets. In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
 
 View the [Rivet Documentation for justify-content](https://rivet.iu.edu/utilities/flex/#flex-shrink-and-flex-grow).
 
@@ -23,19 +23,19 @@ Additionally multiple settings can be set by by passing an array of values in th
 ### Examples
 
 ```jsx
-<Container justifyContent='start'>
+<Component justifyContent='start'>
   A component with content justified to start of line
-</Container>
+</Component>
 
-<Container justifyContent='end'>
+<Component justifyContent='end'>
   A component with content justified to end of line
-</Container>
+</Component>
 
-<Container justifyContent='center-lg-up'>
+<Component justifyContent='center-lg-up'>
   Component with content centered  on large screens
-</Container>
+</Component>
 
-<Container justifyContent={['end-lg-up', 'center']}>
+<Component justifyContent={['end-lg-up', 'center']}>
   On normal large screen component with content justified to end of line and centered on smaller screens.
-</Container>
+</Component>
 ```
