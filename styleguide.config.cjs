@@ -32,6 +32,7 @@ module.exports = {
       components: () => [
         "src/components/Breadcrumbs/[A-Z]*.jsx",
         "src/components/Dropdown/[A-Z]*.jsx",
+        "src/components/Header/[A-Z]*.jsx",
       ],
     },
     {
