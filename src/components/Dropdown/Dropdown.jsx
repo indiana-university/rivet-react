@@ -16,7 +16,7 @@ import { Button } from "../Button";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import { TestUtils } from "../util/TestUtils";
-import Icon from "../util/RivetIcons";
+import Icon, { IconNames } from "../util/RivetIcons";
 
 export const Dropdown = ({
   toggleDropdownOnClickInside = false,
@@ -119,7 +119,7 @@ export const Dropdown = ({
             {label}
           </span>
         )}
-        <Icon name="caret-down" />
+        <Icon name={IconNames.CARET_DOWN} />
       </Button>
       {isOpen && (
         <div className={menuClasses} aria-hidden={!isOpen} role="menu">
