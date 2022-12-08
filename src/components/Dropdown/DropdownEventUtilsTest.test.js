@@ -1,18 +1,10 @@
 import { isUnhandledKeyPress } from "./DropdownEventUtils";
 import { keys } from "../util/EventUtils.js";
-
-const createKeyboardEvent = (key) => ({
-  type: "keyup",
-  key,
-});
-
-const createMouseEvent = () => ({
-  type: "click",
-});
-
-const createTouchEvent = () => ({
-  type: "touchstart",
-});
+import {
+  createKeyboardEvent,
+  createMouseEvent,
+  createTouchEvent,
+} from "../util/EventUtils.test";
 
 describe("DropdownEvent", () => {
   describe("Keyboard Events", () => {
