@@ -43,7 +43,7 @@ export const isMouseEvent = (event) => {
 };
 
 export const isRightMouseClick = (event) => {
-  return isMouseEvent(event) && event.which === 3;
+  return isMouseEvent(event) && event.button === 2;
 };
 
 export const targets = (container, event) =>
