@@ -13,7 +13,6 @@ Use the `note` property to provide contextual information to the user.
   name="text-demo"
   label="Select Input"
   note="This is a note."
-  margin={{ bottom: "md" }}
 >
   <option value="">Choose an option...</option>
   <option value="Option One">Option One</option>
@@ -34,8 +33,7 @@ Use the `variant` property along with a `note` to provide validation feedback to
        name="select-valid-state"
        variant="success"
        label="Type"
-       note={<> You must pick a <strong>Type</strong> of meat. </>}
-       margin={{bottom: 'md'}}>
+       note={<> You must pick a <strong>Type</strong> of meat. </>}>
     <option value="">Choose an option...</option>
     <option value="Steak">Steak</option>
     <option value="Chops">Chops</option>
@@ -47,8 +45,7 @@ Use the `variant` property along with a `note` to provide validation feedback to
        name="select-warning-state"
        variant="warning"
        label="Type"
-       note={<> You must pick a <strong>Type</strong> of meat. </>}
-       margin={{bottom: 'md'}}>
+       note={<> You must pick a <strong>Type</strong> of meat. </>}>
     <option value="">Choose an option...</option>
     <option value="Steak">Steak</option>
     <option value="Chops">Chops</option>
@@ -60,8 +57,7 @@ Use the `variant` property along with a `note` to provide validation feedback to
        name="select-error-state"
        variant="danger"
        label="Type"
-       note={<> You must pick a <strong>Type</strong> of meat. </>}
-       margin={{bottom: 'md'}}>
+       note={<> You must pick a <strong>Type</strong> of meat. </>}>
     <option value="">Choose an option...</option>
     <option value="Steak">Steak</option>
     <option value="Chops">Chops</option>
@@ -73,8 +69,7 @@ Use the `variant` property along with a `note` to provide validation feedback to
        name="select-info-state"
        variant="info"
        label="Type"
-       note={<> You must pick a <strong>Type</strong> of meat. </>}
-       margin={{bottom: 'md'}}>
+       note={<> You must pick a <strong>Type</strong> of meat. </>}>
     <option value="">Choose an option...</option>
     <option value="Steak">Steak</option>
     <option value="Chops">Chops</option>
