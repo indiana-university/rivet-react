@@ -6,7 +6,7 @@ import * as React from "react";
 import * as Rivet from "../util/Rivet";
 import { propTypes, renderInput } from "./common";
 
-const Textarea = renderInput("textarea");
+const Textarea = (props) => <>{renderInput("textarea", props)}</>;
 
 Textarea.displayName = "TextArea";
 Textarea.propTypes = propTypes;

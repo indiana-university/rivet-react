@@ -42,9 +42,9 @@ export const propTypes = {
   variant: PropTypes.oneOf(["success", "danger", "info", "warning"]),
 };
 
-export const renderInput =
-  (elementName) =>
-  ({
+export const renderInput = (
+  elementName,
+  {
     id = Rivet.shortuid(),
     label,
     labelVisibility,
@@ -52,35 +52,36 @@ export const renderInput =
     variant,
     className,
     ...attrs
-  }) => {
-    const noteId = `${id}_note`;
-    const inputProps = {
-      id,
-      className: inputClassName(elementName, variant),
-      "aria-describedby": note ? noteId : "",
-      "aria-invalid": variant === "danger",
-      ...attrs,
-    };
-    return (
-      <div
+  }
+) => {
+  const noteId = `${id}_note`;
+  const inputProps = {
+    id,
+    className: inputClassName(elementName, variant),
+    "aria-describedby": note ? noteId : "",
+    "aria-invalid": variant === "danger",
+    ...attrs,
+  };
+  return (
+    <div
+      className={classNames(
+        "rvt-container-sm",
+        "rvt-p-all-lg",
+        "rvt-p-all-xxl-lg-up",
+        className
+      )}
+    >
+      <label
+        htmlFor={id}
         className={classNames(
-          "rvt-container-sm",
-          "rvt-p-all-lg",
-          "rvt-p-all-xxl-lg-up",
-          className
+          "rvt-label",
+          Rivet.labelVisiblityClass(labelVisibility)
         )}
       >
-        <label
-          htmlFor={id}
-          className={classNames(
-            "rvt-label",
-            Rivet.labelVisiblityClass(labelVisibility)
-          )}
-        >
-          {label}
-        </label>
-        {React.createElement(elementName, inputProps)}
-        {note && noteFragment(noteId, variant, note)}
-      </div>
-    );
-  };
+        {label}
+      </label>
+      {React.createElement(elementName, inputProps)}
+      {note && noteFragment(noteId, variant, note)}
+    </div>
+  );
+};

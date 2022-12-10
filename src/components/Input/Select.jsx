@@ -6,7 +6,7 @@ import * as React from "react";
 import * as Rivet from "../util/Rivet";
 import { propTypes, renderInput } from "./common";
 
-const Select = renderInput("select");
+const Select = (props) => <>{renderInput("select", props)}</>;
 
 Select.displayName = "Select";
 Select.propTypes = propTypes;
