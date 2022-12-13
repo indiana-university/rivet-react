@@ -63,14 +63,7 @@ export const renderInput = (
     ...attrs,
   };
   return (
-    <div
-      className={classNames(
-        "rvt-container-sm",
-        "rvt-p-all-lg",
-        "rvt-p-all-xxl-lg-up",
-        className
-      )}
-    >
+    <div className={classNames(className)}>
       <label
         htmlFor={id}
         className={classNames(
