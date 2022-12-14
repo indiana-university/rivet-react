@@ -5,3 +5,4 @@ SPDX-License-Identifier: BSD-3-Clause
 export * from "./Alert/index.jsx";
 export * from "./Button/index.jsx";
 export * from "./Dropdown/index.jsx";
+export * from "./Input/index.jsx";
