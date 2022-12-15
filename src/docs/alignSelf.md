@@ -1,5 +1,3 @@
-## alignSelf
-
 Use the alignSelf property to set the component's alignment to a selection of presets. In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
 
 View the [Rivet Documentation for align-self](https://rivet.iu.edu/utilities/flex/#align-self).
@@ -22,7 +20,7 @@ Additionally multiple settings can be set by by passing an array of values in th
 
 ### Examples
 
-```jsx
+```jsx static
 <Component alignSelf='self-start'>
   A component aligned to top of line
 </Component>

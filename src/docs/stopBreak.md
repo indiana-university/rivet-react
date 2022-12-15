@@ -1,5 +1,3 @@
-## stopBreak
-
 Use the stopBreak property to prevent text wrapping in an element.
 
 View the [Rivet Documentation for No break](https://rivet.iu.edu/utilities/typography/#no-break).
@@ -14,7 +12,7 @@ Property accepts boolean values 'true' or 'false'
 
 ### Examples
 
-```jsx
+```jsx static
 <Component>
     Component's text will break and wrap normally
 </Component>

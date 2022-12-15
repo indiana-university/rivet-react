@@ -1,5 +1,3 @@
-## shadow
-
 Use the shadow property to add a shadow effect to the element.
 
 View the [Rivet Documentation for Shadow](https://rivet.iu.edu/utilities/shadow/).
@@ -14,7 +12,7 @@ Options: 'normal', 'subtle', 'heavy'
 
 ### Examples
 
-```jsx
+```jsx static
 <Component>
     Element will have no shadow
 </Component>

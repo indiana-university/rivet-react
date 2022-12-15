@@ -1,5 +1,3 @@
-## alignContent
-
 Use the alignContent property to set the content alignment to a selection of presets. In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
 
 View the [Rivet Documentation for align-content](https://rivet.iu.edu/utilities/flex/#align-content).
@@ -22,7 +20,7 @@ Additionally multiple settings can be set by by passing an array of values in th
 
 ### Examples
 
-```jsx
+```jsx static
 <Component alignContent='start'>
   A component with content aligned to top of line
 </Component>

@@ -1,5 +1,3 @@
-## uppercase
-
 Use the uppercase property to transform text of the element to uppercase if possible
 
 View the [Rivet Documentation for Uppercase](https://rivet.iu.edu/utilities/typography/#uppercase).
@@ -14,7 +12,7 @@ Property accepts boolean values 'true' or 'false'
 
 ### Examples
 
-```jsx
+```jsx static
 <Component>
     Component's text will appear as is
 </Component>

@@ -1,5 +1,3 @@
-## Z
-
 Use the z property to set the stacking order of an element.
 
 View the [Rivet Documentation for Z Index](https://rivet.iu.edu/utilities/z-index/).
@@ -14,7 +12,7 @@ This property accepts values between 1 and 10 and translates them into multiples
 
 ### Examples
 
-```jsx
+```jsx static
 <Component>
     Item at z-index: auto
 </Component>

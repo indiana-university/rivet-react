@@ -1,5 +1,3 @@
-## width
-
 Use the width property to set the width of an element to a selection of preset sizes. In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser.
 
 View the [Rivet Documentation for Width](https://rivet.uits.iu.edu/components/utilities/width/).
@@ -20,7 +18,7 @@ Additionally multiple widths can be set by by passing an array of values in the 
 
 ### Examples
 
-```jsx
+```jsx static
 <Component width='sm'>
   A component with a set small width
 </Component>

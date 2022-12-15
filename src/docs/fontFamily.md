@@ -1,5 +1,3 @@
-## fontFamily
-
 Use the fontFamily property to set the font family for element's text.
 
 View the [Rivet Documentation for Font Family](https://rivet.iu.edu/utilities/typography/#font-family).
@@ -14,7 +12,7 @@ Options: 'sans', 'serif', 'mono'
 
 ### Examples
 
-```jsx
+```jsx static
 <Component fontFamily='sans'>
     Text will be in sans style
 </Component>

@@ -1,5 +1,3 @@
-## padding
-
 Use the padding property to set the padding of an element to a selection of preset sizes. In addition to the normal presets a tag can be appended to the size to create a responsive styling based on the screen size of the device or browser. Sides can also be independently set using this property.
 
 View the [Rivet Documentation for Spacing](https://rivet.iu.edu/utilities/spacing/).
@@ -26,7 +24,7 @@ Responsive options are added to a basic size selection using a '-', for example 
 
 ### Examples
 
-```jsx
+```jsx static
 <Component padding='sm'>
     Component with small padding on all sides
 </Component>

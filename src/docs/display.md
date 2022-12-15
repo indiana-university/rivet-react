@@ -1,5 +1,3 @@
-## display
-
 Use the display property to set the display style of the element.
 
 View the [Rivet Documentation for Display](https://rivet.iu.edu/utilities/display/).
@@ -14,7 +12,7 @@ Options: 'inline', 'inline-block', 'block', 'none'
 
 ### Examples
 
-```jsx
+```jsx static
 <Component display='block'>
     Element will be a block
 </Component>

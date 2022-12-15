@@ -1,5 +1,3 @@
-## flow
-
 Use the flow property to apply consistant vertical spacing between the direct children of the element
 
 View the [Rivet Documentation for Automatic vertical spacing](https://rivet.iu.edu/utilities/spacing/#automatic-vertical-spacing).
@@ -14,7 +12,7 @@ Property accepts boolean values 'true' or 'false'
 
 ### Examples
 
-```jsx
+```jsx static
 <Component>
   <Section>Spacing between sections</Section>
   <Section>will be determined by the content</Section>

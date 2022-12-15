@@ -1,5 +1,3 @@
-## lhTitle
-
 Use the lhTitle property to reduce line height to accomadate larger text
 
 View the [Rivet Documentation for Line height](https://rivet.iu.edu/utilities/typography/#line-height).
@@ -14,7 +12,7 @@ Property accepts boolean values 'true' or 'false'
 
 ### Examples
 
-```jsx
+```jsx static
 <h1>
     Line height will be standard
 </h1>

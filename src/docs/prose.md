@@ -1,5 +1,3 @@
-## prose
-
 Use the prose property to apply text styling to all headers and paragraphs in the elements
 
 View the [Rivet Documentation for Automatic styling of running text](https://rivet.iu.edu/utilities/typography/#automatic-styling-of-running-text).
@@ -14,7 +12,7 @@ Property accepts boolean values 'true' or 'false'
 
 ### Examples
 
-```jsx
+```jsx static
 <Component typescale='sm'>
   <h1>Header will appear normal</h1>
   <p>Text will appear normal</p>

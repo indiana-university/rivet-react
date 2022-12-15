@@ -1,5 +1,3 @@
-## textAlign
-
 Use the textAlign property to set the placement of text within the element.
 
 View the [Rivet Documentation for Text alignment](https://rivet.iu.edu/utilities/typography/#text-alignment).
@@ -14,7 +12,7 @@ Options: 'left', 'center', 'right'
 
 ### Examples
 
-```jsx
+```jsx static
 <Component textAlign='left'>
     Text will be aligned on the left
 </Component>

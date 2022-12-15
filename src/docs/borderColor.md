@@ -1,5 +1,3 @@
-## borderColor
-
 Use the borderColor property to set the color of the border to a selection of preset colors.
 
 View the [Rivet Documentation for Set border color](https://rivet.iu.edu/utilities/border/#set-border-color).
@@ -14,7 +12,7 @@ Basic Colors: 'blue', 'crimson', 'gold', 'green', 'orange', 'purple'
 
 ### Examples
 
-```jsx
+```jsx static
 <Component border='all' borderColor='blue'>
     Component with a blue border
 </Component>

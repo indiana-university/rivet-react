@@ -1,5 +1,3 @@
-## bg
-
 Use the bg property to set the color of the background of the element to a selection of preset colors.
 
 View the [Rivet Documentation for Color](https://rivet.iu.edu/utilities/color/).
@@ -20,7 +18,7 @@ Weighted options are added to a basic color selection using a '-', for example "
 
 ### Examples
 
-```jsx
+```jsx static
 <Component bg='blue'>
     Background will be a basic blue
 </Component>
