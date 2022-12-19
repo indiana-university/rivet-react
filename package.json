@@ -43,6 +43,7 @@
     "@types/react-dom": "18.0.6",
     "@vitejs/plugin-react": "2.1.0",
     "babel-loader": "8.2.5",
+    "codecov.io": "0.1.6",
     "core-js": "3.25.5",
     "css-loader": "6.7.1",
     "husky": "8.0.0",
