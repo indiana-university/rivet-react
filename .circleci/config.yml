@@ -44,8 +44,10 @@ jobs:
       - run:
           name: Test components
           command: |
-            npm test -- -w 1 --coverage
+            npm test -- -w 1 --coverage --reporters=jest-junit
             cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+      - store_test_results:
+          path: ./junit.xml
 
 # Job orchestration
 workflows:
