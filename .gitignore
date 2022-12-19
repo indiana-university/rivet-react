@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Code coverage
+# Testing and Code coverage
 coverage
+junit.xml
