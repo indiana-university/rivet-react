@@ -17,7 +17,7 @@
   "scripts": {
     "start": "styleguidist server --config styleguide.config.cjs",
     "dev": "vite",
-    "test": "set NODE_ENV=test & jest",
+    "test": "NODE_ENV=test jest",
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
