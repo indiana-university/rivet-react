@@ -392,3 +392,10 @@ const parseFlexAux = (flex) => {
 
   return "";
 };
+
+/**
+ * Determine whether to apply class limiting label visibility to screenreaders.
+ * @param visibility The desired visibility type.
+ */
+export const labelVisiblityClass = (visibility) =>
+  visibility === "screen-reader-only" ? "rvt-sr-only" : "";

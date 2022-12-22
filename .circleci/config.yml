@@ -1,0 +1,63 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+# Aliases are shorthand references for common settings.
+aliases:
+  # Cache Management
+  - &restore-node-modules
+    keys:
+      - v2-node-modules-{{ checksum "package.json" }}
+  - &save-node-modules
+    paths:
+      - node_modules
+    key: v2-node-modules-{{ checksum "package.json" }}
+
+# Default settings for all jobs
+defaults: &defaults
+  docker:
+    - image: cimg/node:18.12.1
+      environment:
+        GIT_AUTHOR_NAME: iubot
+        GIT_AUTHOR_EMAIL: iubot@iu.edu
+        GIT_COMMITTER_NAME: iubot
+        GIT_COMMITTER_EMAIL: iubot@iu.edu
+  working_directory: ~/repo
+
+# Job definitions. Job execution is orchestrated in the 'workflows' section.
+jobs:
+  # Build and test the components
+  build_test:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore-node-modules
+      - run:
+          name: Install packages
+          command: npm ci
+      - save_cache: *save-node-modules
+      - run:
+          name: Build components
+          command: npm run build
+      - run:
+          name: Test components
+          command: |
+            npm test -- -w 1 --coverage --reporters=jest-junit
+            cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+      - store_test_results:
+          path: ./junit.xml
+
+# Job orchestration
+workflows:
+  version: 2
+  # Build and test the code on every commit.
+  # Publish the style guide on successful build/test of master.
+  build-test-and-publish:
+    jobs:
+      - build_test:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
