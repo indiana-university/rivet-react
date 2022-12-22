@@ -15,6 +15,10 @@ module.exports = {
   usageMode: "expand",
   sections: [
     {
+      name: "Page Content",
+      components: () => ["src/components/PageContent/**/[A-Z]*.jsx"],
+    },
+    {
       name: "Forms",
       components: () => [
         "src/components/Button/[A-Z]*.jsx",
