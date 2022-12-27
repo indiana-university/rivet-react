@@ -22,6 +22,10 @@ module.exports = {
       ],
     },
     {
+      name: "Grid",
+      components: "src/components/Grid/[A-Z]*.jsx",
+    },
+    {
       name: "Navigation",
       components: "src/components/Dropdown/[A-Z]*.jsx",
     },
