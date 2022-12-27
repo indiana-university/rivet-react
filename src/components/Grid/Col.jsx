@@ -64,37 +64,13 @@ Col.propTypes = {
   id: PropTypes.string,
   breakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
   /** Width of the column (1-12) */
-  width: PropTypes.oneOf([
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-  ]),
+  // prettier-ignore
+  width: PropTypes.oneOf(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]),
   /** Indicates the breakpoint at which to pull or push the column. Requires shiftBreakpoint to be set. */
   shiftBreakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
   /** Indicates the number of columns to push or pull the column. Requires shiftBreakpoint to be set. */
-  shiftWidth: PropTypes.oneOf([
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-  ]),
+  // prettier-ignore
+  shiftWidth: PropTypes.oneOf(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]),
   /** Can be set to pull or push the column to the left or right, respectively */
   shiftType: PropTypes.oneOf(["pull", "push"]),
 };
