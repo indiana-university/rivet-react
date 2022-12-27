@@ -29,6 +29,10 @@ module.exports = {
       name: "Overlays",
       components: "src/components/Alert/[A-Z]*.jsx",
     },
+    {
+      name: "Tables",
+      components: "src/components/Table/[A-Z]*.jsx",
+    },
   ],
   webpackConfig: {
     module: {
