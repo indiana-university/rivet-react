@@ -1,6 +1,6 @@
 Use the checkbox component to allow users to pick zero, one, or many options from a list of choices.
 
-View the [Rivet documentation for Checkboxess](https://rivet.iu.edu/components/checkbox/).
+View the [Rivet documentation for Checkboxes](https://rivet.iu.edu/components/checkbox/).
 
 ### Checkbox Examples
 
