@@ -23,7 +23,10 @@ module.exports = {
     },
     {
       name: "Navigation",
-      components: "src/components/Dropdown/[A-Z]*.jsx",
+      components: () => [
+        "src/components/Breadcrumbs/[A-Z]*.jsx",
+        "src/components/Dropdown/[A-Z]*.jsx",
+      ],
     },
     {
       name: "Overlays",
