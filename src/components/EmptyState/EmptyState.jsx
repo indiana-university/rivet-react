@@ -26,11 +26,13 @@ const EmptyState = ({ children, ...attrs }) => {
     </div>
   );
 };
+EmptyState.displayName = "EmptyState";
 
 const Content = ({ children, ...attrs }) => (
   <div className={`${classPrefix}__content`}>{children}</div>
 );
 EmptyState.Content = Content;
+Content.displayName = "EmptyState.Content";
 
 const Actions = ({ children, ...attrs }) => (
   <div className={`${classPrefix}__actions`} {...attrs}>
@@ -38,5 +40,6 @@ const Actions = ({ children, ...attrs }) => (
   </div>
 );
 EmptyState.Actions = Actions;
+Actions.displayName = "EmptyState.Actions";
 
 export default EmptyState;
