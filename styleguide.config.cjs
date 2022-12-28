@@ -29,6 +29,10 @@ module.exports = {
       name: "Overlays",
       components: "src/components/Alert/[A-Z]*.jsx",
     },
+    {
+      name: "Miscellaneous",
+      components: () => ["src/components/EmptyState/[A-Z]*.jsx"],
+    },
   ],
   webpackConfig: {
     module: {
