@@ -22,6 +22,10 @@ module.exports = {
       ],
     },
     {
+      name: "List",
+      components: "src/components/List/[A-Z]*.jsx",
+    },
+    {
       name: "Navigation",
       components: "src/components/Dropdown/[A-Z]*.jsx",
     },
