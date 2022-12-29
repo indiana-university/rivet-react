@@ -18,6 +18,7 @@ module.exports = {
       name: "Forms",
       components: () => [
         "src/components/Button/[A-Z]*.jsx",
+        "src/components/File/[A-Z]*.jsx",
         "src/components/Input/[A-Z]*.jsx",
       ],
     },
