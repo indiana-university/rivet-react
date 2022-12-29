@@ -52,7 +52,7 @@ class File extends React.Component {
       description =
         this.fileInput.current.files.length > 1
           ? `${this.fileInput.current.files.length} files selected`
-          : this.fileInput.current.files[0];
+          : this.fileInput.current.files[0].name;
     }
 
     return (
@@ -108,13 +108,17 @@ File.propTypes = {
     PropTypes.func,
     // Or the instance of a DOM native element (see the note about SSR)
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    // used for testing
+    PropTypes.object,
   ]),
   /** The text to display on the file selection button, by default this is 'Upload multiple files' for multiple selection component or 'Upload a file' */
   label: PropTypes.string,
   /** Whether to allow multiple files to be selected */
   multiple: PropTypes.bool,
+  /** custom behavior when the file selection changes */
+  onChange: PropTypes.func,
   /** Whether to use secondary styling for the file selection button */
   secondary: PropTypes.bool,
 };
 
-export default Rivet.rivetize(File);
+export default File;
