@@ -5,57 +5,49 @@ SPDX-License-Identifier: BSD-3-Clause
 import * as React from "react";
 import Icon, { IconNames } from "../util/RivetIcons";
 import HeaderMenu from "./HeaderMenu";
-import { findFirstChildOfType } from "../util/childUtils";
-// import { hasChildOfType } from "../util/childUtils";
-// import HeaderMenu from "./HeaderMenu";
+import getDisplayName from "react-display-name";
 
-// const renderChild = (child, isDrawer) => {
-//   if (isDrawer && hasChildOfType(child, HeaderMenu.displayName)) {
-//     return (
-//       <li className="has-children">
-//         {React.cloneElement(child, { className: "rvt-drawer-menu" })}
-//       </li>
-//     );
-//   } else {
-//     return <li>{child}</li>;
-//   }
-// };
+const renderChild = (child, index) => {
+  const childType = child && child["type"] && getDisplayName(child["type"]);
+  return (
+    <li className="rvt-header-menu__item" key={"header-menu-item-" + index}>
+      {childType === HeaderMenu.displayName ? (
+        <>{child}</>
+      ) : (
+        React.cloneElement(child, { className: "rvt-header-menu__link" })
+      )}
+    </li>
+  );
+};
 
-const HeaderNavigation = ({ children, className, ...attrs }) => {
-  const [isHeaderMenuOpen, setIsHeaderMenuOpen] = React.useState(false);
-
-  // const isDrawer = !!className && className.includes("rvt-drawer-navigation");
-  // return <>{React.Children.map(children, (c) => renderChild(c, isDrawer))}</>;
-
-  const drawer = findFirstChildOfType(children, HeaderMenu.displayName);
+const HeaderNavigation = ({ children, ...attrs }) => {
+  const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
   return (
-    /* Header controls  */
     <div className="rvt-header-global__controls">
-      {/* Navigation */}
       <div data-rvt-disclosure="menu" data-rvt-close-click-outside>
-        {/* Menu button that shows/hides navigation on smaller screens */}
         <button
-          aria-expanded={isHeaderMenuOpen}
+          aria-expanded={isNavMenuOpen}
           className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
           data-rvt-disclosure-toggle="menu"
-          onClick={() => setIsHeaderMenuOpen(!isHeaderMenuOpen)}
+          onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
         >
           <span className="rvt-sr-only">Menu</span>
           <Icon
             name={
-              isHeaderMenuOpen ? IconNames.TOGGLE_OPEN : IconNames.TOGGLE_CLOSE
+              isNavMenuOpen ? IconNames.TOGGLE_OPEN : IconNames.TOGGLE_CLOSE
             }
           />
         </button>
-        {/* Navigation links */}
         <nav
           aria-label="Main"
           className="rvt-header-menu"
           data-rvt-disclosure-target="menu"
-          hidden={!isHeaderMenuOpen}
+          hidden={!isNavMenuOpen}
         >
-          {drawer}
+          <ul className="rvt-header-menu__list">
+            {React.Children.map(children, renderChild)}
+          </ul>
         </nav>
       </div>
     </div>
