@@ -9,15 +9,25 @@ import getDisplayName from "react-display-name";
 
 const renderChild = (child, index) => {
   const childType = child && child["type"] && getDisplayName(child["type"]);
-  return (
-    <li className="rvt-header-menu__item" key={"header-menu-item-" + index}>
-      {childType === HeaderMenu.displayName ? (
-        <>{child}</>
-      ) : (
+  return React.cloneElement(
+    ({ children }) => {
+      return React.Children.map(children, (child) =>
         React.cloneElement(child, { className: "rvt-header-menu__link" })
-      )}
-    </li>
+      );
+    },
+    { className: "rvt-header-menu__item" }
   );
+
+  // return (
+  //   <li className="rvt-header-menu__item" key={"header-menu-item-" + index}>
+  //     {childType === HeaderMenu.displayName ? (
+  //       <>{child}</>
+  //       // React.cloneElement(child, )
+  //     ) : (
+  //       React.cloneElement(child, { className: "rvt-header-menu__link" })
+  //     )}
+  //   </li>
+  // );
 };
 
 const HeaderNavigation = ({ children, ...attrs }) => {
