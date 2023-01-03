@@ -559,7 +559,7 @@ function paddingTests() {
       expected: "-rvt-p-all-lg",
     },
     {
-      values: { top: "sm", bottom: "lg" },
+      values: { top: "sm", bottom: "lg", tb: "xs" },
       expected: "rvt-p-top-sm rvt-p-bottom-lg",
     },
     {

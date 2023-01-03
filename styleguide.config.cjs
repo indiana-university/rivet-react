@@ -35,121 +35,121 @@ module.exports = {
       sections: [
         {
           name: "alignContent",
-          content: "src/docs/alignContent.md"
+          content: "src/docs/alignContent.md",
         },
         {
           name: "alignItems",
-          content: "src/docs/alignItems.md"
+          content: "src/docs/alignItems.md",
         },
         {
           name: "alignSelf",
-          content: "src/docs/alignSelf.md"
+          content: "src/docs/alignSelf.md",
         },
         {
           name: "bg",
-          content: "src/docs/bg.md"
+          content: "src/docs/bg.md",
         },
         {
           name: "border",
-          content: "src/docs/border.md"
+          content: "src/docs/border.md",
         },
         {
           name: "borderColor",
-          content: "src/docs/borderColor.md"
+          content: "src/docs/borderColor.md",
         },
         {
           name: "color",
-          content: "src/docs/color.md"
+          content: "src/docs/color.md",
         },
         {
           name: "display",
-          content: "src/docs/display.md"
+          content: "src/docs/display.md",
         },
         {
           name: "flex",
-          content: "src/docs/flex.md"
+          content: "src/docs/flex.md",
         },
         {
           name: "flexDirection",
-          content: "src/docs/flexDirection.md"
+          content: "src/docs/flexDirection.md",
         },
         {
           name: "flexWrap",
-          content: "src/docs/flexWrap.md"
+          content: "src/docs/flexWrap.md",
         },
         {
           name: "flow",
-          content: "src/docs/flow.md"
+          content: "src/docs/flow.md",
         },
         {
           name: "fontFamily",
-          content: "src/docs/fontFamily.md"
+          content: "src/docs/fontFamily.md",
         },
         {
           name: "grow",
-          content: "src/docs/grow.md"
+          content: "src/docs/grow.md",
         },
         {
           name: "hide",
-          content: "src/docs/hide.md"
+          content: "src/docs/hide.md",
         },
         {
           name: "justifyContent",
-          content: "src/docs/justifyContent.md"
+          content: "src/docs/justifyContent.md",
         },
         {
           name: "lhTitle",
-          content: "src/docs/lhTitle.md"
+          content: "src/docs/lhTitle.md",
         },
         {
           name: "margin",
-          content: "src/docs/margin.md"
+          content: "src/docs/margin.md",
         },
         {
           name: "padding",
-          content: "src/docs/padding.md"
+          content: "src/docs/padding.md",
         },
         {
           name: "prose",
-          content: "src/docs/prose.md"
+          content: "src/docs/prose.md",
         },
         {
           name: "shadow",
-          content: "src/docs/shadow.md"
+          content: "src/docs/shadow.md",
         },
         {
           name: "shrink",
-          content: "src/docs/shrink.md"
+          content: "src/docs/shrink.md",
         },
         {
           name: "stopBreak",
-          content: "src/docs/stopBreak.md"
+          content: "src/docs/stopBreak.md",
         },
         {
           name: "textAlign",
-          content: "src/docs/textAlign.md"
+          content: "src/docs/textAlign.md",
         },
         {
           name: "typescale",
-          content: "src/docs/typescale.md"
+          content: "src/docs/typescale.md",
         },
         {
           name: "uppercase",
-          content: "src/docs/uppercase.md"
+          content: "src/docs/uppercase.md",
         },
         {
           name: "weight",
-          content: "src/docs/weight.md"
+          content: "src/docs/weight.md",
         },
         {
           name: "width",
-          content: "src/docs/width.md"
+          content: "src/docs/width.md",
         },
         {
           name: "z",
-          content: "src/docs/z.md"
+          content: "src/docs/z.md",
         },
-      ]
+      ],
     },
   ],
   webpackConfig: {
