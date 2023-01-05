@@ -14,6 +14,12 @@ An optional subtitle can also be provided.
 <Header title="Application Title" subtitle="Optional subtitle" />
 ```
 
+You can also override the default "/" URL for the link:
+
+```jsx
+<Header title="Application Title" href="/foo" />
+```
+
 The width prop can be used to constrain the width of the header.
 
 ```jsx
