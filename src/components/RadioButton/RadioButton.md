@@ -30,7 +30,7 @@ View the [Rivet documentation for RadioButtons](https://rivet.iu.edu/components/
 ```
 <!-- prettier-ignore-end -->
 
-### RadioButton Examples
+### Inline RadioButtons
 
 <!-- prettier-ignore-start -->
 ```jsx
