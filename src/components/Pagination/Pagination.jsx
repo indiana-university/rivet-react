@@ -84,6 +84,8 @@ export const Item = ({
 Item.propTypes = {
   /** A accessible label to use when using icons in navigation */
   ariaLabel: PropTypes.string,
+  /** The display for the item */
+  children: PropTypes.any,
   /** Whether this item is the current page */
   current: PropTypes.bool,
   /** A unique identifier */
