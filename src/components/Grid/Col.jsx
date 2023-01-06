@@ -25,7 +25,7 @@ const columnClass = (breakpoint, width, classPrefix = columnClassPrefix) => {
 };
 
 /**
- * Use the row component inside a Container to create a grid row
+ * Use the col component inside a Container to create a grid row
  */
 const Col = ({
   className,

@@ -10,7 +10,7 @@ import * as Rivet from "../util/Rivet";
 const rowClass = "rvt-row";
 
 /**
- * Generate the a spacing class for this row
+ * Generate a spacing class for this row
  * @see https://rivet.uits.iu.edu/components/grid?example=columns
  */
 const rowSpacing = (spacing) => (spacing ? `${rowClass}--${spacing}` : "");
