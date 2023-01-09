@@ -18,7 +18,7 @@ const renderChild = (child, index) => {
   );
 };
 
-const HeaderMenu = ({ children, label, href = "#", ...attrs }) => {
+const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
@@ -31,6 +31,7 @@ const HeaderMenu = ({ children, label, href = "#", ...attrs }) => {
           className="rvt-header-menu__link"
           href={href}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          {...(current && { "aria-current": "page" })}
         >
           {label}
         </a>
