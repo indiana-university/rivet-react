@@ -8,22 +8,41 @@ import getDisplayName from "react-display-name";
 
 import Icon, { IconNames } from "../util/RivetIcons";
 import HeaderMenu from "./HeaderMenu";
+import { findFirstChildOfType } from "../util/childUtils";
 
 const renderChild = (child) => {
   const childType = child && child["type"] && getDisplayName(child["type"]);
+  const hasHeaderMenu = findFirstChildOfType(child, HeaderMenu.displayName);
 
+  let formattedChild = React.Children.map(child.props.children, (child) => {
+    return React.cloneElement(child, {
+      "aria-current": "page",
+      className: "rvt-header-menu__link",
+    });
+  });
+
+  // return (
+  //   <li
+  //     className={classNames(
+  //       "rvt-header-menu__item",
+  //       child.props["aria-current"] &&
+  //         child.props["aria-current"] === "page" &&
+  //         "rvt-header-menu__item--current"
+  //     )}
+  //   >
+  //     {childType === HeaderMenu.displayName
+  //       ? child
+  //       : React.cloneElement(child, { className: "rvt-header-menu__link" })}
+  //   </li>
+  // );
+
+  // return React.cloneElement(child, { className: "rvt-header-menu__item" }) hasHeaderMenu ?
+
+  // :
+  // todo - add aria-page="current" to enclosed <a>
   return (
-    <li
-      className={classNames(
-        "rvt-header-menu__item",
-        child.props["aria-current"] &&
-          child.props["aria-current"] === "page" &&
-          "rvt-header-menu__item--current"
-      )}
-    >
-      {childType === HeaderMenu.displayName
-        ? child
-        : React.cloneElement(child, { className: "rvt-header-menu__link" })}
+    <li className={classNames("rvt-header-menu__item", child.props.className)}>
+      {formattedChild}
     </li>
   );
 };
