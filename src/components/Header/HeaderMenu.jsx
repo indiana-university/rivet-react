@@ -41,7 +41,10 @@ const HeaderMenu = ({ children, label, ...attrs }) => {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
-          <Icon name={IconNames.CARET_DOWN} />
+          <Icon
+            name={IconNames.CARET_DOWN}
+            className={"rvt-global-toggle__open"}
+          />
         </button>
       </div>
       <div
