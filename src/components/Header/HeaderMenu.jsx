@@ -18,7 +18,7 @@ const renderChild = (child, index) => {
   );
 };
 
-const HeaderMenu = ({ children, label, ...attrs }) => {
+const HeaderMenu = ({ children, label, href = "#", ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
@@ -29,7 +29,7 @@ const HeaderMenu = ({ children, label, ...attrs }) => {
       <div className="rvt-header-menu__group">
         <a
           className="rvt-header-menu__link"
-          href="#"
+          href={href}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {label}
