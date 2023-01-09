@@ -3,31 +3,29 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import * as React from "react";
-import Icon, { IconNames } from "../util/RivetIcons";
-import HeaderMenu from "./HeaderMenu";
+import classNames from "classnames";
 import getDisplayName from "react-display-name";
 
-const renderChild = (child, index) => {
-  const childType = child && child["type"] && getDisplayName(child["type"]);
-  return React.cloneElement(
-    ({ children }) => {
-      return React.Children.map(children, (child) =>
-        React.cloneElement(child, { className: "rvt-header-menu__link" })
-      );
-    },
-    { className: "rvt-header-menu__item" }
-  );
+import Icon, { IconNames } from "../util/RivetIcons";
+import HeaderMenu from "./HeaderMenu";
 
-  // return (
-  //   <li className="rvt-header-menu__item" key={"header-menu-item-" + index}>
-  //     {childType === HeaderMenu.displayName ? (
-  //       <>{child}</>
-  //       // React.cloneElement(child, )
-  //     ) : (
-  //       React.cloneElement(child, { className: "rvt-header-menu__link" })
-  //     )}
-  //   </li>
-  // );
+const renderChild = (child) => {
+  const childType = child && child["type"] && getDisplayName(child["type"]);
+
+  return (
+    <li
+      className={classNames(
+        "rvt-header-menu__item",
+        child.props["aria-current"] &&
+          child.props["aria-current"] === "page" &&
+          "rvt-header-menu__item--current"
+      )}
+    >
+      {childType === HeaderMenu.displayName
+        ? child
+        : React.cloneElement(child, { className: "rvt-header-menu__link" })}
+    </li>
+  );
 };
 
 const HeaderNavigation = ({ children, ...attrs }) => {
