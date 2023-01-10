@@ -99,7 +99,7 @@ describe("<File />", () => {
       };
       render(
         <form>
-          <File innerRef={ref} data-testid={testId} />
+          <File data-testid={testId} />
           <button type="reset" data-testid="reset-id">
             Reset
           </button>

@@ -10,93 +10,86 @@ import Icon from "../util/RivetIcons";
 
 const classPrefix = "rvt-file";
 
-class File extends React.Component {
-  fileInput = null;
-
-  constructor(props) {
-    super(props);
-    this.fileInput = props.innerRef ? props.innerRef : React.createRef();
-  }
-
-  componentDidMount() {
-    const form = this.fileInput.current && this.fileInput.current.form;
-    if (form) {
-      form.onreset = (e) => {
-        this.forceUpdate();
-      };
-    }
-  }
-
-  render() {
-    const {
-      className,
-      id = Rivet.shortuid(),
-      innerRef,
-      label,
-      multiple,
-      secondary,
-      ...attrs
-    } = this.props;
-
-    let finalLabel = label;
-    if (!finalLabel) {
-      finalLabel = multiple ? "Upload multiple files" : "Upload a file";
-    }
-
-    let description = multiple ? "No files selected" : "No file selected";
-    if (
-      this.fileInput.current &&
-      this.fileInput.current.files &&
-      this.fileInput.current.files.length
-    ) {
-      description =
-        this.fileInput.current.files.length > 1
-          ? `${this.fileInput.current.files.length} files selected`
-          : this.fileInput.current.files[0].name;
-    }
-
-    return (
-      <div
-        className={classNames(classPrefix, className)}
-        data-rvt-file-input={id}
-      >
-        <input
-          onInput={this.handleFileChange}
-          {...attrs}
-          ref={this.fileInput}
-          type="file"
-          id={id}
-          multiple={multiple}
-          data-rvt-file-input-button={id}
-          aria-describedby={id + "-file-description"}
-        />
-        <label
-          htmlFor={id}
-          className={classNames(
-            "rvt-button",
-            secondary && "rvt-button--secondary"
-          )}
-        >
-          <span>{finalLabel}</span>
-          <Icon name="file" />
-        </label>
-        <div
-          className={`${classPrefix}__preview`}
-          id={id + "-file-description"}
-        >
-          {description}
-        </div>
-      </div>
-    );
-  }
-
-  handleFileChange = (changeEvent) => {
-    if (this.props.onChange) {
-      this.props.onChange(changeEvent);
-    }
-    this.forceUpdate();
-  };
+function useForceUpdate() {
+  const [value, setValue] = React.useState(0); // integer state
+  return () => setValue((value) => value + 1); // update state to force render
+  // A function that increment 👆🏻 the previous state like here
+  // is better than directly setting `setValue(value + 1)`
 }
+
+const handleFileChange = (onChange, forceUpdate) => (changeEvent) => {
+  if (onChange) {
+    onChange(changeEvent);
+  }
+  forceUpdate();
+};
+
+const File = ({
+  className,
+  id = Rivet.shortuid(),
+  innerRef,
+  label,
+  multiple,
+  onChange,
+  secondary,
+  ...attrs
+}) => {
+  const forceUpdate = useForceUpdate();
+  const fileInput = innerRef || React.useRef();
+  const form = fileInput.current && fileInput.current.form;
+  if (form) {
+    form.onreset = (e) => {
+      forceUpdate();
+    };
+  }
+  let finalLabel = label;
+  if (!finalLabel) {
+    finalLabel = multiple ? "Upload multiple files" : "Upload a file";
+  }
+
+  let description = multiple ? "No files selected" : "No file selected";
+  if (
+    fileInput.current &&
+    fileInput.current.files &&
+    fileInput.current.files.length
+  ) {
+    description =
+      fileInput.current.files.length > 1
+        ? `${fileInput.current.files.length} files selected`
+        : fileInput.current.files[0].name;
+  }
+
+  return (
+    <div
+      className={classNames(classPrefix, className)}
+      data-rvt-file-input={id}
+    >
+      <input
+        onInput={handleFileChange(onChange, forceUpdate)}
+        {...attrs}
+        ref={fileInput}
+        type="file"
+        id={id}
+        multiple={multiple}
+        data-rvt-file-input-button={id}
+        aria-describedby={id + "-file-description"}
+      />
+      <label
+        htmlFor={id}
+        className={classNames(
+          "rvt-button",
+          secondary && "rvt-button--secondary"
+        )}
+      >
+        <span>{finalLabel}</span>
+        <Icon name="file" />
+      </label>
+      <div className={`${classPrefix}__preview`} id={id + "-file-description"}>
+        {description}
+      </div>
+    </div>
+  );
+};
 
 File.displayName = "File";
 File.propTypes = {
