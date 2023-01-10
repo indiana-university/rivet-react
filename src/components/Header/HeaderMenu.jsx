@@ -5,7 +5,6 @@ SPDX-License-Identifier: BSD-3-Clause
 import * as React from "react";
 import Icon, { IconNames } from "../util/RivetIcons";
 import PropTypes from "prop-types";
-import HeaderComponent from "./Header";
 
 const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
