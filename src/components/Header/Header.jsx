@@ -2,12 +2,11 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import classNames from "classnames";
 import * as React from "react";
-import { findFirstChildOfType } from "../util/childUtils";
-import Icon, { IconNames } from "../util/RivetIcons";
-import Navigation from "./HeaderNavigation";
+import classNames from "classnames";
 import PropTypes from "prop-types";
+
+import Icon, { IconNames } from "../util/RivetIcons";
 
 const componentClass = "rvt-header-wrapper";
 
