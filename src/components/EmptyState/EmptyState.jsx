@@ -14,15 +14,13 @@ const classPrefix = "rvt-empty-state";
 const EmptyState = ({ children, ...attrs }) => {
   let subComponentList = Object.keys(EmptyState);
 
-  let subComponents = subComponentList.map((key) => {
-    return React.Children.map(children, (child) =>
-      child.type.name === key ? child : null
-    );
-  });
+  let subComponents = React.Children.map(children, (child) =>
+    subComponentList.includes(child.type.name) ? child : null
+  );
 
   return (
     <div className={classPrefix} {...attrs}>
-      {subComponents.map((component) => component)}
+      {subComponents}
     </div>
   );
 };
