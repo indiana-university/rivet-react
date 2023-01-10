@@ -41,8 +41,6 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   );
 };
 
-HeaderNavigation.displayName = "HeaderNavigation";
-
 const renderListItem = (child) => {
   const isListItemCurrent =
     child.props.className &&
@@ -75,5 +73,7 @@ const renderUnorderedList = (child) => {
   let listItems = React.Children.map(child.props.children, renderListItem);
   return <ul className={"rvt-header-menu__list"}>{listItems}</ul>;
 };
+
+HeaderNavigation.displayName = "HeaderNavigation";
 
 export default HeaderNavigation;
