@@ -13,30 +13,26 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
   return (
-    <div className="rvt-header-global__controls">
-      <div data-rvt-disclosure="menu" data-rvt-close-click-outside>
-        <button
-          aria-expanded={isNavMenuOpen}
-          className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
-          data-rvt-disclosure-toggle="menu"
-          onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
-        >
-          <span className="rvt-sr-only">Menu</span>
-          <Icon
-            name={
-              isNavMenuOpen ? IconNames.TOGGLE_OPEN : IconNames.TOGGLE_CLOSE
-            }
-          />
-        </button>
-        <nav
-          aria-label="Main"
-          className="rvt-header-menu"
-          data-rvt-disclosure-target="menu"
-          hidden={!isNavMenuOpen}
-        >
-          {React.Children.map(children, renderUnorderedList)}
-        </nav>
-      </div>
+    <div data-rvt-disclosure="menu" data-rvt-close-click-outside>
+      <button
+        aria-expanded={isNavMenuOpen}
+        className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
+        data-rvt-disclosure-toggle="menu"
+        onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
+      >
+        <span className="rvt-sr-only">Menu</span>
+        <Icon
+          name={isNavMenuOpen ? IconNames.TOGGLE_OPEN : IconNames.TOGGLE_CLOSE}
+        />
+      </button>
+      <nav
+        aria-label="Main"
+        className="rvt-header-menu"
+        data-rvt-disclosure-target="menu"
+        hidden={!isNavMenuOpen}
+      >
+        {React.Children.map(children, renderUnorderedList)}
+      </nav>
     </div>
   );
 };
