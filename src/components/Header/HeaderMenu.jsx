@@ -55,9 +55,11 @@ const renderChild = (child, index) => {
       className="rvt-header-menu__submenu-item"
       key={"header-submenu-item-" + index}
     >
-      {React.cloneElement(child, {
-        className: "rvt-header-menu__submenu-link",
-      })}
+      {child.type === "a"
+        ? React.cloneElement(child, {
+            className: "rvt-header-menu__submenu-link",
+          })
+        : child}
     </li>
   );
 };

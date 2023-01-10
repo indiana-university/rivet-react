@@ -43,8 +43,10 @@ const renderListItem = (child) => {
     child.props.className.includes("rvt-header-menu__item--current");
 
   let childrenWithProps = React.Children.map(child.props.children, (child) => {
-    const childType = child && child["type"] && getDisplayName(child["type"]);
-    const isHeaderMenu = childType === HeaderMenu.displayName;
+    const childType = child && child["type"];
+    const isHeaderMenu =
+      getDisplayName(child["type"]) === HeaderMenu.displayName;
+    const isLink = childType === "a";
 
     const headerMenuProps = { ...(isListItemCurrent && { current: true }) };
     const linkProps = {
@@ -52,10 +54,9 @@ const renderListItem = (child) => {
       ...(isListItemCurrent && { "aria-current": "page" }),
     };
 
-    return React.cloneElement(
-      child,
-      isHeaderMenu ? headerMenuProps : linkProps
-    );
+    return isHeaderMenu || isLink
+      ? React.cloneElement(child, isHeaderMenu ? headerMenuProps : linkProps)
+      : child;
   });
 
   return (
