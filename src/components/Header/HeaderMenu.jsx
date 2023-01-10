@@ -5,19 +5,6 @@ SPDX-License-Identifier: BSD-3-Clause
 import * as React from "react";
 import Icon, { IconNames } from "../util/RivetIcons";
 
-const renderChild = (child, index) => {
-  return (
-    <li
-      className="rvt-header-menu__submenu-item"
-      key={"header-submenu-item-" + index}
-    >
-      {React.cloneElement(child, {
-        className: "rvt-header-menu__submenu-link",
-      })}
-    </li>
-  );
-};
-
 const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -62,5 +49,18 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
 };
 
 HeaderMenu.displayName = "HeaderMenu";
+
+const renderChild = (child, index) => {
+  return (
+    <li
+      className="rvt-header-menu__submenu-item"
+      key={"header-submenu-item-" + index}
+    >
+      {React.cloneElement(child, {
+        className: "rvt-header-menu__submenu-link",
+      })}
+    </li>
+  );
+};
 
 export default HeaderMenu;
