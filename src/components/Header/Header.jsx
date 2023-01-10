@@ -38,7 +38,7 @@ const HeaderComponent = ({
                 </div>
               </a>
             </div>
-            {children}
+            <div className="rvt-header-global__controls">{children}</div>
           </div>
         </div>
       </div>
