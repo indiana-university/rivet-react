@@ -9,7 +9,7 @@ import getDisplayName from "react-display-name";
 import Icon, { IconNames } from "../util/RivetIcons";
 import HeaderMenu from "./HeaderMenu";
 
-const renderChild = (child) => {
+const renderListItem = (child) => {
   const isListItemCurrent =
     child.props.className &&
     child.props.className.includes("rvt-header-menu__item--current");
@@ -37,6 +37,11 @@ const renderChild = (child) => {
   );
 };
 
+const renderUnorderedList = (child) => {
+  let listItems = React.Children.map(child.props.children, renderListItem);
+  return <ul className={"rvt-header-menu__list"}>{listItems}</ul>;
+};
+
 const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
@@ -62,9 +67,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
           data-rvt-disclosure-target="menu"
           hidden={!isNavMenuOpen}
         >
-          <ul className="rvt-header-menu__list">
-            {React.Children.map(children, renderChild)}
-          </ul>
+          {React.Children.map(children, renderUnorderedList)}
         </nav>
       </div>
     </div>
