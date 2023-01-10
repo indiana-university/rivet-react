@@ -4,6 +4,8 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import * as React from "react";
 import Icon, { IconNames } from "../util/RivetIcons";
+import PropTypes from "prop-types";
+import HeaderComponent from "./Header";
 
 const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -48,8 +50,6 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   );
 };
 
-HeaderMenu.displayName = "HeaderMenu";
-
 const renderChild = (child, index) => {
   return (
     <li
@@ -61,6 +61,14 @@ const renderChild = (child, index) => {
       })}
     </li>
   );
+};
+
+HeaderMenu.displayName = "HeaderMenu";
+HeaderMenu.propTypes = {
+  /** The label of the menu */
+  label: PropTypes.string.isRequired,
+  /** The link that the menu redirects to */
+  href: PropTypes.string,
 };
 
 export default HeaderMenu;
