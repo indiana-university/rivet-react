@@ -20,8 +20,6 @@ const HeaderComponent = ({
   href = "/",
   ...attrs
 }) => {
-  const navigation = findFirstChildOfType(children, Navigation.displayName);
-
   return (
     <header {...attrs} className={classNames(componentClass, className)}>
       <a className="rvt-header-wrapper__skip-link" href="#main-content">
@@ -41,7 +39,7 @@ const HeaderComponent = ({
                 </div>
               </a>
             </div>
-            {navigation}
+            {children}
           </div>
         </div>
       </div>
