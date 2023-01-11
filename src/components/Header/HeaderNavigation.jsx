@@ -44,8 +44,7 @@ const renderListItem = (child) => {
 
   let childrenWithProps = React.Children.map(child.props.children, (child) => {
     const childType = child && child["type"];
-    const isHeaderMenu =
-      getDisplayName(child["type"]) === HeaderMenu.displayName;
+    const isHeaderMenu = getDisplayName(childType) === HeaderMenu.displayName;
     const isLink = childType === "a";
 
     const headerMenuProps = { ...(isListItemCurrent && { current: true }) };
