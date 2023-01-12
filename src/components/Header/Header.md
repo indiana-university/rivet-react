@@ -61,6 +61,7 @@ The HeaderNavigation supports internal app navigation, either as individual link
       </li>
     </ul>
   </HeaderNavigation>
+  <HeaderSearch/>
 </Header>
 ```
 <!-- prettier-ignore-end -->
