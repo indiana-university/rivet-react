@@ -47,12 +47,10 @@ const File = ({
     finalLabel = multiple ? "Upload multiple files" : "Upload a file";
   }
 
+  console.log(fileInput);
+
   let description = multiple ? "No files selected" : "No file selected";
-  if (
-    fileInput.current &&
-    fileInput.current.files &&
-    fileInput.current.files.length
-  ) {
+  if (fileInput.current?.files.length) {
     description =
       fileInput.current.files.length > 1
         ? `${fileInput.current.files.length} files selected`
