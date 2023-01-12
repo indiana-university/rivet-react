@@ -6,6 +6,7 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
+import Content from "./Content";
 
 const classPrefix = "rvt-empty-state";
 
@@ -28,11 +29,7 @@ const EmptyState = ({ children, ...attrs }) => {
 };
 EmptyState.displayName = "EmptyState";
 
-const Content = ({ children, ...attrs }) => (
-  <div className={`${classPrefix}__content`}>{children}</div>
-);
 EmptyState.Content = Content;
-Content.displayName = "EmptyState.Content";
 
 const Actions = ({ children, ...attrs }) => (
   <div className={`${classPrefix}__actions`} {...attrs}>
