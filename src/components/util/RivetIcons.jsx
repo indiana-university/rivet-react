@@ -20,6 +20,7 @@ export const IconNames = {
   TRIDENT_HEADER: "trident-header",
   TOGGLE_OPEN: "toggle-open",
   TOGGLE_CLOSE: "toggle-close",
+  TOGGLE_SEARCH: "toggle-search",
 };
 
 const icoCaretDown = (attrs) => (
@@ -59,6 +60,15 @@ const icoToggleClose = (attrs) => (
   </svg>
 );
 
+const icoToggleSearch = (attrs) => (
+  <svg {...attrs} className="rvt-global-toggle__search" fill="currentColor">
+    <path
+      d="M15.71,14.29,10.89,9.47a6,6,0,1,0-1.42,1.42l4.82,4.82a1,1,0,0,0,1.42,0A1,1,0,0,0,15.71,14.29ZM6,10a4,4,0,1,1,4-4A4,4,0,0,1,6,10Z"
+      fill="currentColor"
+    ></path>
+  </svg>
+);
+
 const Icon = ({ name, ...attrs }) => {
   switch (name) {
     case IconNames.CARET_DOWN:
@@ -69,6 +79,8 @@ const Icon = ({ name, ...attrs }) => {
       return icoToggleOpen(attrs);
     case IconNames.TOGGLE_CLOSE:
       return icoToggleClose(attrs);
+    case IconNames.TOGGLE_SEARCH:
+      return icoToggleSearch(attrs);
   }
 };
 
@@ -80,6 +92,7 @@ Icon.propTypes = {
     IconNames.TOGGLE_OPEN,
     IconNames.TOGGLE_CLOSE,
     IconNames.TRIDENT_HEADER,
+    IconNames.TOGGLE_SEARCH,
   ]),
 };
 

@@ -5,12 +5,14 @@ SPDX-License-Identifier: BSD-3-Clause
 import * as React from "react";
 
 const HeaderSearch = ({ ...attrs }) => {
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
+
   return (
     <div data-rvt-disclosure="search" data-rvt-close-click-outside>
       <button
         className="rvt-global-toggle"
         data-rvt-disclosure-toggle="search"
-        aria-expanded="false"
+        aria-expanded={isSearchOpen}
       >
         <span className="rvt-sr-only">Search</span>
         <svg
@@ -52,3 +54,7 @@ const HeaderSearch = ({ ...attrs }) => {
     </div>
   );
 };
+
+HeaderSearch.displayName = "HeaderSearch";
+
+export default HeaderSearch;
