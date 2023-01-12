@@ -34,7 +34,7 @@ The width prop can be used to constrain the width of the header.
 ```
 <!-- prettier-ignore-end -->
 
-The HeaderNavigation supports internal app navigation, either as individual links or as dropdowns via the use of HeaderMenu. The HeaderIdentity can take individual user tasks as child elements. On mobile these navigation elements will be rendered as an accordion (collapse).
+The HeaderNavigation supports internal app navigation, either as individual links or as dropdowns via the use of HeaderMenu. On mobile these navigation elements will be rendered as an accordion (collapse).
 
 <!-- prettier-ignore-start -->
 ```jsx
