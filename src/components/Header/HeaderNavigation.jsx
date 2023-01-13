@@ -21,9 +21,6 @@ const HeaderNavigation = ({ children, ...attrs }) => {
         onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
       >
         <span className="rvt-sr-only">Menu</span>
-        {/*<Icon*/}
-        {/*  name={isNavMenuOpen ? IconNames.TOGGLE_CLOSE : IconNames.TOGGLE_OPEN}*/}
-        {/*/>*/}
         <Icon name={IconNames.TOGGLE_OPEN} />
         <Icon name={IconNames.TOGGLE_CLOSE} />
       </button>
