@@ -39,6 +39,7 @@ The HeaderNavigation supports internal app navigation, either as individual link
 To indicate which item inside HeaderNavigation is currently active, wrap it in a `<li>` element with the class `rvt-header-menu__item--current`. This also applies the `aria-current="page"` attribute on the associated anchor element, to meet accessibility guidelines.
 
 <!-- prettier-ignore-start -->
+
 ```jsx
 <Header title="Application Title">
   <HeaderNavigation>
@@ -63,7 +64,7 @@ To indicate which item inside HeaderNavigation is currently active, wrap it in a
       </li>
     </ul>
   </HeaderNavigation>
-  <HeaderSearch/>
+  <HeaderSearch action={"/mySearchURL"} method={"post"}/>
 </Header>
 ```
 <!-- prettier-ignore-end -->
