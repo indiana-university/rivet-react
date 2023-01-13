@@ -3,8 +3,14 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import * as React from "react";
+import Icon, { IconNames } from "../util/RivetIcons";
+import PropTypes from "prop-types";
 
-const HeaderSearch = ({ ...attrs }) => {
+const HeaderSearch = ({
+  searchAction = "/search",
+  searchActionMethod = "get",
+  ...attrs
+}) => {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
   return (
@@ -13,28 +19,20 @@ const HeaderSearch = ({ ...attrs }) => {
         className="rvt-global-toggle"
         data-rvt-disclosure-toggle="search"
         aria-expanded={isSearchOpen}
+        onClick={() => {
+          setIsSearchOpen(!isSearchOpen);
+        }}
       >
         <span className="rvt-sr-only">Search</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="rvt-global-toggle__search"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        >
-          <path
-            d="M15.71,14.29,10.89,9.47a6,6,0,1,0-1.42,1.42l4.82,4.82a1,1,0,0,0,1.42,0A1,1,0,0,0,15.71,14.29ZM6,10a4,4,0,1,1,4-4A4,4,0,0,1,6,10Z"
-            fill="currentColor"
-          ></path>
-        </svg>
+        <Icon name={IconNames.TOGGLE_SEARCH} />
       </button>
       <form
-        action="/search"
+        action={searchAction}
         className="rvt-header-global__search"
         data-rvt-disclosure-target="search"
         role="search"
-        method="get"
-        hidden
+        method={searchActionMethod}
+        hidden={!isSearchOpen}
       >
         <label className="rvt-sr-only" htmlFor="search">
           Search
@@ -56,5 +54,12 @@ const HeaderSearch = ({ ...attrs }) => {
 };
 
 HeaderSearch.displayName = "HeaderSearch";
+
+HeaderSearch.propTypes = {
+  /** The path that the form data is submitted to */
+  searchAction: PropTypes.string,
+  /** The HTTP method to be used for form submission */
+  searchActionMethod: PropTypes.string,
+};
 
 export default HeaderSearch;
