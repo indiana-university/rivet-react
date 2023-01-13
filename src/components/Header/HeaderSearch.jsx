@@ -6,11 +6,7 @@ import * as React from "react";
 import Icon, { IconNames } from "../util/RivetIcons";
 import PropTypes from "prop-types";
 
-const HeaderSearch = ({
-  searchAction = "/search",
-  searchActionMethod = "get",
-  ...attrs
-}) => {
+const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
   return (
@@ -27,11 +23,11 @@ const HeaderSearch = ({
         <Icon name={IconNames.TOGGLE_SEARCH} />
       </button>
       <form
-        action={searchAction}
+        action={action}
         className="rvt-header-global__search"
         data-rvt-disclosure-target="search"
         role="search"
-        method={searchActionMethod}
+        method={method}
         hidden={!isSearchOpen}
       >
         <label className="rvt-sr-only" htmlFor="search">
@@ -57,9 +53,9 @@ HeaderSearch.displayName = "HeaderSearch";
 
 HeaderSearch.propTypes = {
   /** The path that the form data is submitted to */
-  searchAction: PropTypes.string,
+  action: PropTypes.string,
   /** The HTTP method to be used for form submission */
-  searchActionMethod: PropTypes.string,
+  method: PropTypes.string,
 };
 
 export default HeaderSearch;
