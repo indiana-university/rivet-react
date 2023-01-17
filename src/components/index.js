@@ -6,4 +6,4 @@ export * from "./Alert/index.jsx";
 export * from "./Button/index.jsx";
 export * from "./Dropdown/index.jsx";
 export * from "./Input/index.jsx";
-export * from "./Table.jsx";
+export * from "./Table/index.jsx";
