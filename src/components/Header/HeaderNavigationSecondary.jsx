@@ -4,7 +4,7 @@ import Icon, { IconNames } from "../util/RivetIcons";
 const HeaderNavigationSecondary = ({
   width = "xl",
   title,
-  hrefTitle = "#",
+  href = "#",
   ...attrs
 }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -17,7 +17,7 @@ const HeaderNavigationSecondary = ({
           data-rvt-disclosure="local-header-menu"
           data-rvt-close-click-outside
         >
-          <a href={hrefTitle} className="rvt-header-local__title">
+          <a href={href} className="rvt-header-local__title">
             {title}
           </a>
           <button
