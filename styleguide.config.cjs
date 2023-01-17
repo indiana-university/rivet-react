@@ -31,7 +31,12 @@ module.exports = {
     },
     {
       name: "Miscellaneous",
-      components: () => ["src/components/EmptyState/[A-Z]*.jsx"],
+      sections: [
+        {
+          name: "EmptyState",
+          components: () => ["src/components/EmptyState/[A-Z]*.jsx"],
+        },
+      ],
     },
   ],
   webpackConfig: {
