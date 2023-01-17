@@ -19,6 +19,7 @@ module.exports = {
       components: () => [
         "src/components/Button/[A-Z]*.jsx",
         "src/components/Input/[A-Z]*.jsx",
+        "src/components/RadioButton/[A-Z]*.jsx",
       ],
     },
     {
