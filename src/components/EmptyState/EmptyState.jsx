@@ -2,10 +2,8 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import classNames from "classnames";
-import * as PropTypes from "prop-types";
 import * as React from "react";
-import * as Rivet from "../util/Rivet";
+import Actions from "./Actions";
 import Content from "./Content";
 
 const classPrefix = "rvt-empty-state";
@@ -31,12 +29,6 @@ EmptyState.displayName = "EmptyState";
 
 EmptyState.Content = Content;
 
-const Actions = ({ children, ...attrs }) => (
-  <div className={`${classPrefix}__actions`} {...attrs}>
-    {children}
-  </div>
-);
 EmptyState.Actions = Actions;
-Actions.displayName = "EmptyState.Actions";
 
 export default EmptyState;

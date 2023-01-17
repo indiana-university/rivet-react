@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Content = ({ children, classPrefix, ...attrs }) => (
+const classPrefix = "rvt-empty-state";
+
+const Content = ({ children, classPrefix = classPrefix, ...attrs }) => (
   <div className={`${classPrefix}__content`}>{children}</div>
 );
 
