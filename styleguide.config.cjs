@@ -35,6 +35,10 @@ module.exports = {
       components: "src/components/Alert/[A-Z]*.jsx",
     },
     {
+      name: "Tables",
+      components: "src/components/Table/[A-Z]*.jsx",
+    },
+    {
       name: "Rivet Properties",
       content: "src/docs/RivetizedProperties.md",
       sections: [
