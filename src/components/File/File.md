@@ -6,7 +6,10 @@ View the [Rivet documentation for File Input](https://rivet.iu.edu/components/fi
 
 <!-- prettier-ignore-start -->
 ```jsx
+<form>
 <File />
+<input type="reset" value="Clear" />
+</form>
 ```
 <!-- prettier-ignore-end -->
 

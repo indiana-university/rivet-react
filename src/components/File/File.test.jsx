@@ -94,24 +94,10 @@ describe("<File />", () => {
 
     it("should allow resetting if embedded in a form", async () => {
       let fileObject = new File(["foo"], "foo.txt", { type: "text/plain" });
-
-      // const fileName = "index.html";
-      // const ref = {
-      //   current: {
-      //     files: [
-      //       {
-      //         name: fileName,
-      //       },
-      //     ],
-      //   },
-
-      // };
       render(
         <form>
           <MyFile id={testId} data-testid={testId} />
-          <button type="reset" data-testid="reset-id">
-            Reset
-          </button>
+          <input type="reset" data-testid="reset-id" value="Reset" />
         </form>
       );
 
@@ -132,7 +118,7 @@ describe("<File />", () => {
       await user.click(resetButton);
 
       // console.log(input.parentNode.innerHTML);
-      // expect(description.innerHTML).toBe("No file selected");
+      expect(description.innerHTML).toBe("No file selected");
     });
 
     // it("calls the user defined onchange function if one is defined", async () => {
