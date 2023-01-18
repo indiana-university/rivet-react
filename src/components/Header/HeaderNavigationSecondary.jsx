@@ -1,11 +1,15 @@
 import React from "react";
 import Icon, { IconNames } from "../util/RivetIcons";
 import PropTypes from "prop-types";
+import getDisplayName from "react-display-name";
+import HeaderMenu from "./HeaderMenu";
+import classNames from "classnames";
 
 const HeaderNavigationSecondary = ({
   width = "xl",
   title,
   href = "#",
+  children,
   ...attrs
 }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -38,72 +42,45 @@ const HeaderNavigationSecondary = ({
             data-rvt-disclosure-target="local-header-menu"
             hidden={!isExpanded}
           >
-            <ul className="rvt-header-menu__list">
-              <li className="rvt-header-menu__item">
-                <a className="rvt-header-menu__link" href="#">
-                  Section Item One
-                </a>
-              </li>
-              <li className="rvt-header-menu__item">
-                <div
-                  className="rvt-header-menu__dropdown rvt-dropdown"
-                  data-rvt-dropdown="secondary-nav-2"
-                >
-                  <div className="rvt-header-menu__group">
-                    <a className="rvt-header-menu__link" href="#">
-                      Section Item Two
-                    </a>
-                    <button
-                      aria-expanded="false"
-                      className="rvt-dropdown__toggle rvt-header-menu__toggle"
-                      data-rvt-dropdown-toggle="secondary-nav-2"
-                    >
-                      <span className="rvt-sr-only">Toggle Sub-navigation</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="rvt-global-toggle__open"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        width="16"
-                      >
-                        <path
-                          d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z"
-                          fill="currentColor"
-                        ></path>
-                      </svg>
-                    </button>
-                  </div>
-                  <div
-                    className="rvt-header-menu__submenu rvt-dropdown__menu rvt-dropdown__menu--right"
-                    data-rvt-dropdown-menu="secondary-nav-2"
-                    hidden
-                  >
-                    <ul className="rvt-header-menu__submenu-list">
-                      <li className="rvt-header-menu__submenu-item">
-                        <a className="rvt-header-menu__submenu-link" href="#">
-                          Sub Item One
-                        </a>
-                      </li>
-                      <li className="rvt-header-menu__submenu-item">
-                        <a className="rvt-header-menu__submenu-link" href="#">
-                          Sub Item Two
-                        </a>
-                      </li>
-                      <li className="rvt-header-menu__submenu-item">
-                        <a className="rvt-header-menu__submenu-link" href="#">
-                          Sub Item Three
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-            </ul>
+            {React.Children.map(children, renderUnorderedList)}
           </nav>
         </div>
       </div>
     </div>
   );
+};
+
+const renderListItem = (child) => {
+  const isListItemCurrent =
+    child.props.className &&
+    child.props.className.includes("rvt-header-menu__item--current");
+
+  let childrenWithProps = React.Children.map(child.props.children, (child) => {
+    const childType = child && child["type"];
+    const isHeaderMenu = getDisplayName(childType) === HeaderMenu.displayName;
+    const isLink = childType === "a";
+
+    const headerMenuProps = { ...(isListItemCurrent && { current: true }) };
+    const linkProps = {
+      className: "rvt-header-menu__link",
+      ...(isListItemCurrent && { "aria-current": "page" }),
+    };
+
+    return isHeaderMenu || isLink
+      ? React.cloneElement(child, isHeaderMenu ? headerMenuProps : linkProps)
+      : child;
+  });
+
+  return (
+    <li className={classNames("rvt-header-menu__item", child.props.className)}>
+      {childrenWithProps}
+    </li>
+  );
+};
+
+const renderUnorderedList = (child) => {
+  let listItems = React.Children.map(child.props.children, renderListItem);
+  return <ul className={"rvt-header-menu__list"}>{listItems}</ul>;
 };
 
 HeaderNavigationSecondary.displayName = "HeaderNavigationSecondary";
