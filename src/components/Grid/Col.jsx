@@ -42,7 +42,7 @@ const Col = ({
   <div
     id={id}
     className={classNames(
-      `${columnClass(breakpoint, width)}`,
+      columnClass(breakpoint, width),
       shiftType &&
         columnClass(
           shiftBreakpoint,
@@ -75,4 +75,4 @@ Col.propTypes = {
   shiftType: PropTypes.oneOf(["pull", "push"]),
 };
 
-export default Rivet.rivetize(Col);
+export default Col;
