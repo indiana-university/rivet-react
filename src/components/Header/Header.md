@@ -1,6 +1,6 @@
 A header is a section at the top of each page that contains the title of your website or application and the IU trident logo. Headers can also contain navigation links and a search button.
 
-Branding guidelines require each site to have an IU-branded header. For more information on web branding guidelines, visit [brand.iu.edu](brand.iu.edu).
+Branding guidelines require each site to have an IU-branded header.
 
 View the [Rivet documentation for Header](https://rivet.iu.edu/components/header/).
 
@@ -33,10 +33,6 @@ The width prop can be used to constrain the width of the header.
 <Header title="Application Title" width="md" />
 ```
 <!-- prettier-ignore-end -->
-
-The HeaderNavigation supports internal app navigation, either as individual links or as dropdowns via the use of HeaderMenu. On mobile these navigation elements will be rendered as an accordion (collapse).
-
-To indicate which item inside HeaderNavigation is currently active, wrap it in a `<li>` element with the class `rvt-header-menu__item--current`. Doing this also applies the `aria-current="page"` attribute on the associated anchor element, to meet accessibility standards.
 
 Header with Primary Navigation:
 
