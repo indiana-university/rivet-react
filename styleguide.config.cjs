@@ -32,7 +32,11 @@ module.exports = {
       components: () => [
         "src/components/Breadcrumbs/[A-Z]*.jsx",
         "src/components/Dropdown/[A-Z]*.jsx",
-        "src/components/Header/[A-Z]*.jsx",
+        "src/components/Header/Header.jsx",
+        "src/components/Header/HeaderNavigation.jsx",
+        "src/components/Header/HeaderMenu.jsx",
+        "src/components/Header/HeaderSearch.jsx",
+        "src/components/Header/HeaderNavigationSecondary.jsx",
       ],
     },
     {

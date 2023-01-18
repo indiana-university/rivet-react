@@ -1,5 +1,6 @@
 import React from "react";
 import Icon, { IconNames } from "../util/RivetIcons";
+import PropTypes from "prop-types";
 
 const HeaderNavigationSecondary = ({
   width = "xl",
@@ -104,3 +105,26 @@ const HeaderNavigationSecondary = ({
     </div>
   );
 };
+
+HeaderNavigationSecondary.displayName = "HeaderNavigationSecondary";
+
+HeaderNavigationSecondary.propTypes = {
+  /** Optional prop to constrain the width of all content in the header */
+  width: PropTypes.oneOf([
+    "xxs",
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl",
+    "xxl",
+    "3-xl",
+    "4-xl",
+  ]),
+  /** The title of the anchor towards the left */
+  title: PropTypes.string.isRequired,
+  /** The URL that the anchor towards the left will point to */
+  href: PropTypes.string,
+};
+
+export default HeaderNavigationSecondary;
