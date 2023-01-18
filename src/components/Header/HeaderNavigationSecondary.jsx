@@ -97,9 +97,9 @@ HeaderNavigationSecondary.propTypes = {
     "3-xl",
     "4-xl",
   ]),
-  /** The title of the anchor towards the left */
+  /** The title of the anchor */
   title: PropTypes.string.isRequired,
-  /** The URL that the anchor towards the left will point to */
+  /** The URL that the anchor will redirect to */
   href: PropTypes.string,
 };
 

@@ -68,7 +68,7 @@ HeaderMenu.displayName = "HeaderMenu";
 HeaderMenu.propTypes = {
   /** The label of the menu */
   label: PropTypes.string.isRequired,
-  /** The link that the menu redirects to */
+  /** The link that the corresponding anchor redirects to */
   href: PropTypes.string,
 };
 
