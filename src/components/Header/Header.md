@@ -36,7 +36,7 @@ The width prop can be used to constrain the width of the header.
 
 The HeaderNavigation supports internal app navigation, either as individual links or as dropdowns via the use of HeaderMenu. On mobile these navigation elements will be rendered as an accordion (collapse).
 
-To indicate which item inside HeaderNavigation is currently active, wrap it in a `<li>` element with the class `rvt-header-menu__item--current`. This also applies the `aria-current="page"` attribute on the associated anchor element, to meet accessibility guidelines.
+To indicate which item inside HeaderNavigation is currently active, wrap it in a `<li>` element with the class `rvt-header-menu__item--current`. This also applies the `aria-current="page"` attribute on the associated anchor element, to meet accessibility standards.
 
 <!-- prettier-ignore-start -->
 
@@ -44,27 +44,30 @@ To indicate which item inside HeaderNavigation is currently active, wrap it in a
 <Header title="Application Title">
   <HeaderNavigation>
     <ul>
-      <li><a href="#">Nav one</a></li>
+      <li><a href="#">Nav item one</a></li>
+      <li><a href="#">Nav item two</a></li>
       <li className={"rvt-header-menu__item--current"}>
-        <HeaderMenu label="Nav two">
-          <a href="#">Item one</a>
-          <a href="#">Item two</a>
-          <a href="#">Item three</a>
-          <a href="#">Item four</a>
-        </HeaderMenu>
-      </li>
-      <li><a href="#">Nav three</a></li>
-      <li>
-        <HeaderMenu label="Nav four">
-          <a href="#">Item one</a>
-          <a href="#">Item two</a>
-          <a href="#">Item three</a>
-          <a href="#">Item four</a>
+        <HeaderMenu label="Nav item three">
+          <a href="#">Sub item one</a>
+          <a href="#">Sub item two</a>
+          <a href="#">Sub item three</a>
         </HeaderMenu>
       </li>
     </ul>
   </HeaderNavigation>
   <HeaderSearch action={"/mySearchURL"} method={"post"}/>
+  <HeaderNavigationSecondary title={"Component Library"}>
+    <ul>
+      <li><a href="#">Section item one</a></li>
+      <li className={"rvt-header-menu__item--current"}>
+        <HeaderMenu label="Section item two">
+          <a href="#">Sub tem one</a>
+          <a href="#">Sub item two</a>
+          <a href="#">Sub item three</a>
+        </HeaderMenu>
+      </li>
+    </ul>
+  </HeaderNavigationSecondary>
 </Header>
 ```
 <!-- prettier-ignore-end -->
