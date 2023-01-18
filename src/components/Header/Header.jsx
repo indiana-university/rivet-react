@@ -52,7 +52,7 @@ HeaderComponent.propTypes = {
   title: PropTypes.string.isRequired,
   /** Optional subTitle that will be displayed below the title */
   subtitle: PropTypes.string,
-  /** The URL that the link in the upper left of the header will point to */
+  /** The URL that the anchor towards the left of the header will point to */
   href: PropTypes.string,
   /** Optional prop to constrain the width of all content in the header */
   width: PropTypes.oneOf([
