@@ -107,7 +107,6 @@ const HeaderNavigationSecondary = ({
 };
 
 HeaderNavigationSecondary.displayName = "HeaderNavigationSecondary";
-
 HeaderNavigationSecondary.propTypes = {
   /** Optional prop to constrain the width of all content in the header */
   width: PropTypes.oneOf([
