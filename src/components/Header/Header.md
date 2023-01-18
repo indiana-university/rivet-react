@@ -36,10 +36,56 @@ The width prop can be used to constrain the width of the header.
 
 The HeaderNavigation supports internal app navigation, either as individual links or as dropdowns via the use of HeaderMenu. On mobile these navigation elements will be rendered as an accordion (collapse).
 
-To indicate which item inside HeaderNavigation is currently active, wrap it in a `<li>` element with the class `rvt-header-menu__item--current`. This also applies the `aria-current="page"` attribute on the associated anchor element, to meet accessibility standards.
+To indicate which item inside HeaderNavigation is currently active, wrap it in a `<li>` element with the class `rvt-header-menu__item--current`. Doing this also applies the `aria-current="page"` attribute on the associated anchor element, to meet accessibility standards.
+
+Header with Primary Navigation:
 
 <!-- prettier-ignore-start -->
+```jsx
+<Header title="Application Title">
+  <HeaderNavigation>
+    <ul>
+      <li><a href="#">Nav item one</a></li>
+      <li><a href="#">Nav item two</a></li>
+      <li className={"rvt-header-menu__item--current"}>
+        <HeaderMenu label="Nav item three">
+          <a href="#">Sub item one</a>
+          <a href="#">Sub item two</a>
+          <a href="#">Sub item three</a>
+        </HeaderMenu>
+      </li>
+    </ul>
+  </HeaderNavigation>
+</Header>
+```
+<!-- prettier-ignore-end -->
 
+Header with Primary Navigation and Search:
+
+<!-- prettier-ignore-start -->
+```jsx
+<Header title="Application Title">
+  <HeaderNavigation>
+    <ul>
+      <li><a href="#">Nav item one</a></li>
+      <li><a href="#">Nav item two</a></li>
+      <li className={"rvt-header-menu__item--current"}>
+        <HeaderMenu label="Nav item three">
+          <a href="#">Sub item one</a>
+          <a href="#">Sub item two</a>
+          <a href="#">Sub item three</a>
+        </HeaderMenu>
+      </li>
+    </ul>
+  </HeaderNavigation>
+  <HeaderSearch action={"/mySearchURL"} method={"post"}/>
+</Header>
+```
+<!-- prettier-ignore-end -->
+
+Header with Primary Navigation, Search and Secondary Navigation:
+
+<!-- prettier-ignore-start -->
 ```jsx
 <Header title="Application Title">
   <HeaderNavigation>
