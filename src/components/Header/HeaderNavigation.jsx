@@ -69,6 +69,6 @@ const renderUnorderedList = (child) => {
   return <ul className={"rvt-header-menu__list"}>{listItems}</ul>;
 };
 
-HeaderNavigation.displayName = "HeaderNavigation";
+HeaderNavigation.displayName = "Header.Navigation";
 
 export default HeaderNavigation;

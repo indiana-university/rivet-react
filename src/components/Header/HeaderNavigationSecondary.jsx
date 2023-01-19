@@ -83,7 +83,7 @@ const renderUnorderedList = (child) => {
   return <ul className={"rvt-header-menu__list"}>{listItems}</ul>;
 };
 
-HeaderNavigationSecondary.displayName = "HeaderNavigationSecondary";
+HeaderNavigationSecondary.displayName = "Header.NavigationSecondary";
 HeaderNavigationSecondary.propTypes = {
   /** Optional prop to constrain the width of all content in the header */
   width: PropTypes.oneOf([
