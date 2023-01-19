@@ -12,7 +12,7 @@ import HeaderNavigationSecondary from "./HeaderNavigationSecondary";
 
 const componentClass = "rvt-header-wrapper";
 
-const HeaderComponent = ({
+const Header = ({
   children,
   className,
   title,
@@ -66,8 +66,8 @@ const HeaderComponent = ({
   );
 };
 
-HeaderComponent.displayName = "Header";
-HeaderComponent.propTypes = {
+Header.displayName = "Header";
+Header.propTypes = {
   /** The application name or title that appears in the header */
   title: PropTypes.string.isRequired,
   /** Optional subTitle that will be displayed below the title */
@@ -88,4 +88,4 @@ HeaderComponent.propTypes = {
   ]),
 };
 
-export default HeaderComponent;
+export default Header;
