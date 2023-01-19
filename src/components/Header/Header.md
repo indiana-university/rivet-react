@@ -34,6 +34,8 @@ The width prop can be used to constrain the width of the header.
 ```
 <!-- prettier-ignore-end -->
 
+Header can also be provided the [HeaderNavigation](#/Navigation?id=headernavigation), [HeaderSearch](#/Navigation?id=headersearch) and [HeaderNavigationSecondary](#/Navigation?id=headernavigationsecondary) components as children.
+
 Header with Primary Navigation:
 
 <!-- prettier-ignore-start -->
