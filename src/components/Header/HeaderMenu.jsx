@@ -64,7 +64,7 @@ const renderChild = (child, index) => {
   );
 };
 
-HeaderMenu.displayName = "HeaderMenu";
+HeaderMenu.displayName = "Header.Menu";
 HeaderMenu.propTypes = {
   /** The label of the menu */
   label: PropTypes.string.isRequired,
