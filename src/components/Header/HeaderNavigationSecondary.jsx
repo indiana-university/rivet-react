@@ -1,9 +1,8 @@
 import React from "react";
-import Icon, { IconNames } from "../util/RivetIcons";
 import PropTypes from "prop-types";
-import getDisplayName from "react-display-name";
-import HeaderMenu from "./HeaderMenu";
-import classNames from "classnames";
+
+import Icon, { IconNames } from "../util/RivetIcons";
+import { renderHeaderUnorderedList } from "../util/childUtils";
 
 const HeaderNavigationSecondary = ({
   width = "xl",
@@ -42,45 +41,12 @@ const HeaderNavigationSecondary = ({
             data-rvt-disclosure-target="local-header-menu"
             hidden={!isExpanded}
           >
-            {React.Children.map(children, renderUnorderedList)}
+            {React.Children.map(children, renderHeaderUnorderedList)}
           </nav>
         </div>
       </div>
     </div>
   );
-};
-
-const renderListItem = (child) => {
-  const isListItemCurrent =
-    child.props.className &&
-    child.props.className.includes("rvt-header-menu__item--current");
-
-  let childrenWithProps = React.Children.map(child.props.children, (child) => {
-    const childType = child && child["type"];
-    const isHeaderMenu = getDisplayName(childType) === HeaderMenu.displayName;
-    const isLink = childType === "a";
-
-    const headerMenuProps = { ...(isListItemCurrent && { current: true }) };
-    const linkProps = {
-      className: "rvt-header-menu__link",
-      ...(isListItemCurrent && { "aria-current": "page" }),
-    };
-
-    return isHeaderMenu || isLink
-      ? React.cloneElement(child, isHeaderMenu ? headerMenuProps : linkProps)
-      : child;
-  });
-
-  return (
-    <li className={classNames("rvt-header-menu__item", child.props.className)}>
-      {childrenWithProps}
-    </li>
-  );
-};
-
-const renderUnorderedList = (child) => {
-  let listItems = React.Children.map(child.props.children, renderListItem);
-  return <ul className={"rvt-header-menu__list"}>{listItems}</ul>;
 };
 
 HeaderNavigationSecondary.displayName = "Header.NavigationSecondary";
