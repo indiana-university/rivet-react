@@ -45,7 +45,7 @@ Header with Primary Navigation:
     <ul>
       <li><a href="#">Nav item one</a></li>
       <li><a href="#">Nav item two</a></li>
-      <li className={"rvt-header-menu__item--current"}>
+      <li data-rvt-c-header-nav-item__current>
         <Header.Menu label="Nav item three">
           <a href="#">Sub item one</a>
           <a href="#">Sub item two</a>
@@ -67,7 +67,7 @@ Header with Primary Navigation and Search:
     <ul>
       <li><a href="#">Nav item one</a></li>
       <li><a href="#">Nav item two</a></li>
-      <li className={"rvt-header-menu__item--current"}>
+      <li data-rvt-c-header-nav-item__current>
         <Header.Menu label="Nav item three">
           <a href="#">Sub item one</a>
           <a href="#">Sub item two</a>
@@ -90,7 +90,7 @@ Header with Primary Navigation, Search and Secondary Navigation:
     <ul>
       <li><a href="#">Nav item one</a></li>
       <li><a href="#">Nav item two</a></li>
-      <li className={"rvt-header-menu__item--current"}>
+      <li data-rvt-c-header-nav-item__current>
         <Header.Menu label="Nav item three">
           <a href="#">Sub item one</a>
           <a href="#">Sub item two</a>
@@ -103,7 +103,7 @@ Header with Primary Navigation, Search and Secondary Navigation:
   <Header.NavigationSecondary title={"Component Library"}>
     <ul>
       <li><a href="#">Section item one</a></li>
-      <li className={"rvt-header-menu__item--current"}>
+      <li data-rvt-c-header-nav-item__current>
         <Header.Menu label="Section item two">
           <a href="#">Sub tem one</a>
           <a href="#">Sub item two</a>

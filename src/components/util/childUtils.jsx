@@ -5,6 +5,7 @@ SPDX-License-Identifier: BSD-3-Clause
 import * as React from "react";
 import getDisplayName from "react-display-name";
 import classNames from "classnames";
+import { HeaderMenu } from "../Header";
 
 export const findFirstChildOfType = (children, componentDisplayName) => {
   let firstChild;
@@ -22,9 +23,7 @@ export const hasChildOfType = (children, componentDisplayName) => {
 };
 
 const renderHeaderListItem = (child) => {
-  const isListItemCurrent =
-    child.props.className &&
-    child.props.className.includes("rvt-header-menu__item--current");
+  const isListItemCurrent = child.props["data-rvt-c-header-nav-item__current"];
 
   let childrenWithProps = React.Children.map(child.props.children, (child) => {
     const childType = child && child["type"];
@@ -43,7 +42,12 @@ const renderHeaderListItem = (child) => {
   });
 
   return (
-    <li className={classNames("rvt-header-menu__item", child.props.className)}>
+    <li
+      className={classNames(
+        "rvt-header-menu__item",
+        isListItemCurrent && "rvt-header-menu__item--current"
+      )}
+    >
       {childrenWithProps}
     </li>
   );
