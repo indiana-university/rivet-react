@@ -16,18 +16,13 @@ const HeaderNavigationSecondary = ({
   return (
     <div className="rvt-header-local">
       <div className={"rvt-container-" + width}>
-        <div
-          className="rvt-header-local__inner"
-          data-rvt-disclosure="local-header-menu"
-          data-rvt-close-click-outside
-        >
+        <div className="rvt-header-local__inner">
           <a href={href} className="rvt-header-local__title">
             {title}
           </a>
           <button
             aria-expanded={isExpanded}
             className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
-            data-rvt-disclosure-toggle="local-header-menu"
             onClick={() => {
               setIsExpanded(!isExpanded);
             }}
@@ -38,7 +33,6 @@ const HeaderNavigationSecondary = ({
           <nav
             aria-label="Secondary"
             className="rvt-header-menu"
-            data-rvt-disclosure-target="local-header-menu"
             hidden={!isExpanded}
           >
             {React.Children.map(children, renderHeaderUnorderedList)}
