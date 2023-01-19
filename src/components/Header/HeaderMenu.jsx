@@ -10,10 +10,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <div
-      className="rvt-header-menu__dropdown rvt-dropdown"
-      data-rvt-dropdown="primary-nav-1"
-    >
+    <div className="rvt-header-menu__dropdown rvt-dropdown">
       <div className="rvt-header-menu__group">
         <a
           className="rvt-header-menu__link"
@@ -26,7 +23,6 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
         <button
           aria-expanded={isMenuOpen}
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
-          data-rvt-dropdown-toggle="primary-nav-1"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
@@ -38,7 +34,6 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
       </div>
       <div
         className="rvt-header-menu__submenu rvt-dropdown__menu rvt-dropdown__menu--right"
-        data-rvt-dropdown-menu="primary-nav-1"
         hidden={!isMenuOpen}
       >
         <ul className="rvt-header-menu__submenu-list">

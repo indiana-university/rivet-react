@@ -11,11 +11,10 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
   return (
-    <div data-rvt-disclosure="menu" data-rvt-close-click-outside>
+    <div data-rvt-disclosure="menu">
       <button
         aria-expanded={isNavMenuOpen}
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
-        data-rvt-disclosure-toggle="menu"
         onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
       >
         <span className="rvt-sr-only">Menu</span>
@@ -25,7 +24,6 @@ const HeaderNavigation = ({ children, ...attrs }) => {
       <nav
         aria-label="Main"
         className="rvt-header-menu"
-        data-rvt-disclosure-target="menu"
         hidden={!isNavMenuOpen}
       >
         {React.Children.map(children, renderHeaderUnorderedList)}

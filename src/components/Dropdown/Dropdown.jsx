@@ -97,11 +97,7 @@ export const Dropdown = ({
   };
 
   return (
-    <div
-      className="rvt-dropdown"
-      data-rvt-dropdown="dropdownNavigation"
-      ref={dropdownWrapDiv}
-    >
+    <div className="rvt-dropdown" ref={dropdownWrapDiv}>
       <Button
         type="button"
         {...attrs}

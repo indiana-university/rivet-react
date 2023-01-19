@@ -10,10 +10,9 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
   return (
-    <div data-rvt-disclosure="search" data-rvt-close-click-outside>
+    <div data-rvt-disclosure="search">
       <button
         className="rvt-global-toggle"
-        data-rvt-disclosure-toggle="search"
         aria-expanded={isSearchOpen}
         onClick={() => {
           setIsSearchOpen(!isSearchOpen);
@@ -25,7 +24,6 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
       <form
         action={action}
         className="rvt-header-global__search"
-        data-rvt-disclosure-target="search"
         role="search"
         method={method}
         hidden={!isSearchOpen}
