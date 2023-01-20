@@ -28,7 +28,7 @@ describe("<Col />", () => {
 
     it("should allow specifying the width of the column", async () => {
       const width = "12";
-      render(<Col width={width}>{content}</Col>);
+      render(<Col columnWidth={width}>{content}</Col>);
 
       const col = await screen.findByText(content);
       expect(col).toHaveClass(`rvt-cols-${width}`);
@@ -41,7 +41,7 @@ describe("<Col />", () => {
       render(
         <Col
           breakpoint={breakpoint}
-          width={width}
+          columnWidth={width}
           shiftType={shiftType}
           shiftBreakpoint={breakpoint}
           shiftWidth={width}
@@ -62,7 +62,7 @@ describe("<Col />", () => {
       render(
         <Col
           breakpoint={breakpoint}
-          width={width}
+          columnWidth={width}
           shiftType={shiftType}
           shiftBreakpoint={breakpoint}
           shiftWidth={width}
@@ -80,7 +80,7 @@ describe("<Col />", () => {
       const width = "6",
         breakpoint = "md";
       render(
-        <Col breakpoint={breakpoint} width={width} last>
+        <Col breakpoint={breakpoint} columnWidth={width} last>
           {content}
         </Col>
       );
