@@ -57,7 +57,7 @@ const File = ({
   console.log("files length", fileInput.current?.files);
 
   if (fileInput.current?.files.length) {
-    console.log("updating description", fileInput.current);
+    console.log("updating description", fileInput.current.files);
     description =
       fileInput.current.files.length > 1
         ? `${fileInput.current.files.length} files selected`
