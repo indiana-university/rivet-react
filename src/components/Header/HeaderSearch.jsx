@@ -3,8 +3,10 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import * as React from "react";
-import Icon, { IconNames } from "../util/RivetIcons";
 import PropTypes from "prop-types";
+
+import * as Rivet from "../util/Rivet";
+import Icon, { IconNames } from "../util/RivetIcons";
 
 const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
@@ -55,4 +57,4 @@ HeaderSearch.propTypes = {
   method: PropTypes.string,
 };
 
-export default HeaderSearch;
+export default Rivet.rivetize(HeaderSearch);

@@ -4,6 +4,7 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import * as React from "react";
 
+import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
 import { renderHeaderUnorderedList } from "../util/childUtils";
 
@@ -34,4 +35,4 @@ const HeaderNavigation = ({ children, ...attrs }) => {
 
 HeaderNavigation.displayName = "Header.Navigation";
 
-export default HeaderNavigation;
+export default Rivet.rivetize(HeaderNavigation);
