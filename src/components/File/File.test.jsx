@@ -109,7 +109,7 @@ describe("<File />", () => {
         })
       );
 
-      screen.debug();
+      // screen.debug();
       const input = document.getElementById(testId);
       const description = input.parentNode.children[2];
       expect(description.innerHTML).toBe("No file selected");

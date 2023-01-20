@@ -5,7 +5,6 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import { useEffect } from "react";
 import * as Rivet from "../util/Rivet";
 import Icon from "../util/RivetIcons";
 
@@ -36,35 +35,30 @@ const File = ({
   ...attrs
 }) => {
   const forceUpdate = useForceUpdate();
+
   const fileInput = innerRef || React.useRef();
 
-  useEffect(() => {
-    const form = fileInput.current && fileInput.current.form;
-    console.log({ form });
-    if (form) {
-      form.onreset = (e) => {
-        forceUpdate();
-      };
-    }
-  });
+  const form = fileInput.current && fileInput.current.form;
+  if (form) {
+    form.onreset = () => {
+      fileInput.current.value = "";
+      forceUpdate();
+    };
+  }
 
   let finalLabel = label;
   if (!finalLabel) {
     finalLabel = multiple ? "Upload multiple files" : "Upload a file";
   }
 
+  // determine the description based on fileInput.current.files
   let description = multiple ? "No files selected" : "No file selected";
-  console.log("files length", fileInput.current?.files);
-
   if (fileInput.current?.files.length) {
-    console.log("updating description", fileInput.current.files);
     description =
       fileInput.current.files.length > 1
         ? `${fileInput.current.files.length} files selected`
         : fileInput.current.files[0].name;
   }
-
-  console.log("rendering", description, fileInput);
 
   return (
     <div
