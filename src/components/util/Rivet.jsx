@@ -137,8 +137,8 @@ export const rivetize = (Component) => {
     );
   };
 
+  // copy any properties set on the original component. Needed for child components (like Header.Navigation), which would otherwise be lost.
   for (const [key, val] of Object.entries(Component)) {
-    // copy any properties set on the original component
     ret[key] = val;
   }
 
