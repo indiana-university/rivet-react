@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 
 import Icon, { IconNames } from "../util/RivetIcons";
 import { findFirstChildOfType, hasChildOfType } from "../util/childUtils";
+import * as Rivet from "../util/Rivet";
 import HeaderNavigationSecondary from "./HeaderNavigationSecondary";
 import HeaderNavigation from "./HeaderNavigation";
 import HeaderSearch from "./HeaderSearch";
@@ -96,4 +97,4 @@ Header.propTypes = {
   ]),
 };
 
-export default Header;
+export default Rivet.rivetize(Header);

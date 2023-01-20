@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
 import { renderHeaderUnorderedList } from "../util/childUtils";
 
@@ -63,4 +64,4 @@ HeaderNavigationSecondary.propTypes = {
   href: PropTypes.string,
 };
 
-export default HeaderNavigationSecondary;
+export default Rivet.rivetize(HeaderNavigationSecondary);

@@ -45,7 +45,7 @@ export const shortuid = () => {
 };
 
 export const rivetize = (Component) => {
-  return ({
+  let ret = ({
     alignContent,
     alignItems,
     alignSelf,
@@ -136,6 +136,13 @@ export const rivetize = (Component) => {
       />
     );
   };
+
+  for (const [key, val] of Object.entries(Component)) {
+    // copy any properties set on the original component
+    ret[key] = val;
+  }
+
+  return ret;
 };
 
 /**
