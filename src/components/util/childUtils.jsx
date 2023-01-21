@@ -9,12 +9,24 @@ import { HeaderMenu } from "../Header";
 
 export const findFirstChildOfType = (children, componentDisplayName) => {
   let firstChild;
-  React.Children.forEach(children, (child) => {
-    const childType = child && child["type"] && getDisplayName(child["type"]);
-    if (!firstChild && childType === componentDisplayName) {
-      firstChild = child;
+
+  if (typeof children === "object" && !Array.isArray(children)) {
+    let displayName =
+      children && children["type"] && getDisplayName(children["type"]);
+    return displayName === componentDisplayName ? children : undefined;
+  }
+
+  for (const child of children || []) {
+    if (firstChild) {
+      break;
+    } else {
+      const childType = child && child["type"] && getDisplayName(child["type"]);
+      if (childType === componentDisplayName) {
+        firstChild = child;
+      }
     }
-  });
+  }
+
   return firstChild;
 };
 
