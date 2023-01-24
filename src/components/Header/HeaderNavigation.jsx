@@ -11,12 +11,17 @@ import { renderHeaderUnorderedList } from "../util/childUtils";
 const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
+  const toggleNavigation = (event) => {
+    setIsNavMenuOpen(!isNavMenuOpen);
+    event.stopPropagation && event.stopPropagation();
+  };
+
   return (
     <div data-rvt-disclosure="menu">
       <button
         aria-expanded={isNavMenuOpen}
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
-        onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
+        onClick={(e) => toggleNavigation(e)}
       >
         <span className="rvt-sr-only">Menu</span>
         <Icon name={IconNames.TOGGLE_OPEN} />

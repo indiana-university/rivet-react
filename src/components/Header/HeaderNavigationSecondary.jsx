@@ -14,6 +14,11 @@ const HeaderNavigationSecondary = ({
 }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
+  const toggleNavigation = (event) => {
+    setIsExpanded(!isExpanded);
+    event.stopPropagation && event.stopPropagation();
+  };
+
   return (
     <div className="rvt-header-local">
       <div className={"rvt-container-" + width}>
@@ -24,8 +29,8 @@ const HeaderNavigationSecondary = ({
           <button
             aria-expanded={isExpanded}
             className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
-            onClick={() => {
-              setIsExpanded(!isExpanded);
+            onClick={(e) => {
+              toggleNavigation(e);
             }}
           >
             <span className="rvt-sr-only">Toggle local menu</span>

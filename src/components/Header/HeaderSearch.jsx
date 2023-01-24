@@ -11,13 +11,18 @@ import Icon, { IconNames } from "../util/RivetIcons";
 const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
+  const toggleSearch = (event) => {
+    setIsSearchOpen(!isSearchOpen);
+    event.stopPropagation && event.stopPropagation();
+  };
+
   return (
     <div data-rvt-disclosure="search">
       <button
         className="rvt-global-toggle"
         aria-expanded={isSearchOpen}
-        onClick={() => {
-          setIsSearchOpen(!isSearchOpen);
+        onClick={(e) => {
+          toggleSearch(e);
         }}
       >
         <span className="rvt-sr-only">Search</span>
