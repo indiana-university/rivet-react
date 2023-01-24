@@ -11,13 +11,18 @@ import Icon, { IconNames } from "../util/RivetIcons";
 const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  const toggleMenu = (event) => {
+    setIsMenuOpen(!isMenuOpen);
+    event.stopPropagation && event.stopPropagation();
+  };
+
   return (
     <div className="rvt-header-menu__dropdown rvt-dropdown">
       <div className="rvt-header-menu__group">
         <a
           className="rvt-header-menu__link"
           href={href}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={(e) => toggleMenu(e)}
           {...(current && { "aria-current": "page" })}
         >
           {label}
@@ -25,7 +30,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
         <button
           aria-expanded={isMenuOpen}
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={(e) => toggleMenu(e)}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
           <Icon
