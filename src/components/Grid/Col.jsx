@@ -13,10 +13,14 @@ const columnClassPrefix = "rvt-cols";
  * Generate the a spacing class for this row
  * @see https://rivet.uits.iu.edu/components/grid?example=columns
  */
-const columnClass = (breakpoint, width, classPrefix = columnClassPrefix) => {
+const columnClass = (
+  breakpoint,
+  columnWidth,
+  classPrefix = columnClassPrefix
+) => {
   let className = classPrefix;
-  if (width) {
-    className += `-${width}`;
+  if (columnWidth) {
+    className += `-${columnWidth}`;
   }
   if (breakpoint) {
     className += `-${breakpoint}`;
@@ -31,7 +35,7 @@ const Col = ({
   className,
   children,
   id = Rivet.shortuid(),
-  width,
+  columnWidth,
   breakpoint,
   shiftBreakpoint,
   shiftType,
@@ -42,7 +46,7 @@ const Col = ({
   <div
     id={id}
     className={classNames(
-      columnClass(breakpoint, width),
+      `${columnClass(breakpoint, columnWidth)}`,
       shiftType &&
         columnClass(
           shiftBreakpoint,
@@ -65,7 +69,7 @@ Col.propTypes = {
   breakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
   /** Width of the column (1-12) */
   // prettier-ignore
-  width: PropTypes.oneOf(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]),
+  columnWidth: PropTypes.oneOf(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]),
   /** Indicates the breakpoint at which to pull or push the column. Requires shiftBreakpoint to be set. */
   shiftBreakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
   /** Indicates the number of columns to push or pull the column. Requires shiftBreakpoint to be set. */
@@ -75,4 +79,4 @@ Col.propTypes = {
   shiftType: PropTypes.oneOf(["pull", "push"]),
 };
 
-export default Col;
+export default Rivet.rivetize(Col);
