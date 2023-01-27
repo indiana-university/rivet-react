@@ -7,10 +7,11 @@ import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { handler } from "../Header/HeaderEventUtils.js";
 import {
-  isKeyEvent,
+  isArrowDownKeyPress,
+  isArrowUpKeyPress,
   isRightMouseClick,
   isTabKeyPress,
   targets,
@@ -20,6 +21,8 @@ import { isUnhandledKeyPress } from "../Header/HeaderEventUtils.js";
 const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  const [focusedItemIndex, setFocusedItemIndex] = useState(null);
+
   useEffect(() => {
     handleEventRegistration();
     return () => {
@@ -27,25 +30,41 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     };
   });
 
-  const firstMenuItemRef = useRef(null);
+  const menuItemsRef = useRef(null);
+
   useEffect(() => {
-    firstMenuItemRef.current.focus();
+    // put focus on the first anchor element when the menu opens
+    if (isMenuOpen) {
+      focusMenuItem(0);
+    }
   }, [isMenuOpen]);
 
   const wrapperDivRef = useRef(null);
+
+  const getRefsMap = () => {
+    if (!menuItemsRef.current) {
+      menuItemsRef.current = new Map();
+    }
+    return menuItemsRef.current;
+  };
+
+  const focusMenuItem = (index) => {
+    getRefsMap().get(index).focus();
+    setFocusedItemIndex(index);
+  };
 
   const toggleMenu = (event) => {
     setIsMenuOpen(!isMenuOpen);
     event.stopPropagation && event.stopPropagation();
   };
 
-  const handleClickOutside = (event) => {
+  const handleEvent = (event) => {
     if (event && shouldToggleMenu(event)) {
       toggleMenu(event);
     }
   };
 
-  const eventHandler = handler(handleClickOutside);
+  const eventHandler = handler(handleEvent);
 
   const shouldToggleMenu = (event) => {
     if (
@@ -88,7 +107,32 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
         {child.type === "a"
           ? React.cloneElement(child, {
               className: "rvt-header-menu__submenu-link",
-              ...(index === 0 && { ref: firstMenuItemRef }),
+              ref: (node) => {
+                const map = getRefsMap();
+                if (node) {
+                  map.set(index, node);
+                } else {
+                  map.delete(index);
+                }
+              },
+              onKeyUp: (event) => {
+                if (Array.isArray(children)) {
+                  if (isArrowDownKeyPress(event)) {
+                    focusMenuItem(
+                      focusedItemIndex === children.length - 1
+                        ? 0
+                        : focusedItemIndex + 1
+                    );
+                  }
+                  if (isArrowUpKeyPress(event)) {
+                    focusMenuItem(
+                      focusedItemIndex === 0
+                        ? children.length - 1
+                        : focusedItemIndex - 1
+                    );
+                  }
+                }
+              },
             })
           : child}
       </li>
