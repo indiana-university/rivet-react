@@ -21,8 +21,11 @@ import { isUnhandledKeyPress } from "../Header/HeaderEventUtils.js";
 
 const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
   const [focusedItemIndex, setFocusedItemIndex] = useState(null);
+
+  const menuItemsRef = useRef(null);
+  const wrapperDivRef = useRef(null);
+  const toggleButtonRef = useRef(null);
 
   useEffect(() => {
     handleEventRegistration();
@@ -31,20 +34,12 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     };
   });
 
-  const menuItemsRef = useRef(null);
-
   useEffect(() => {
-    // put focus on the first anchor element when the menu opens
+    // put focus on the first menu item when the menu opens
     if (isMenuOpen) {
       focusMenuItem(0);
     }
-    // else {
-    //   toggleButtonRef.current.focus()
-    // }
   }, [isMenuOpen]);
-
-  const wrapperDivRef = useRef(null);
-  const toggleButtonRef = useRef(null);
 
   const getRefsMap = () => {
     if (!menuItemsRef.current) {
