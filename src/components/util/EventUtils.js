@@ -6,6 +6,8 @@ SPDX-License-Identifier: BSD-3-Clause
 export const keys = {
   tab: "Tab",
   escape: "Escape",
+  arrowUp: "ArrowUp",
+  arrowDown: "ArrowDown",
 };
 
 export const handler = (callback, InstantiatingClass) => {
@@ -36,6 +38,14 @@ export const isTabKeyPress = (event) => {
 
 export const isEscapeKeyPress = (event) => {
   return isKeyEvent(event) && event.key === keys.escape;
+};
+
+export const isArrowUpKeyPress = (event) => {
+  return isKeyEvent(event) && event.key === keys.arrowUp;
+};
+
+export const isArrowDownKeyPress = (event) => {
+  return isKeyEvent(event) && event.key === keys.arrowDown;
 };
 
 export const isMouseEvent = (event) => {
