@@ -27,11 +27,12 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     };
   });
 
+  const firstMenuItemRef = useRef(null);
   useEffect(() => {
-    menuItemAnchorRef.current.focus();
+    firstMenuItemRef.current.focus();
   }, [isMenuOpen]);
 
-  const menuItemAnchorRef = useRef(null);
+  const wrapperDivRef = useRef(null);
 
   const toggleMenu = (event) => {
     setIsMenuOpen(!isMenuOpen);
@@ -47,8 +48,11 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const eventHandler = handler(handleClickOutside);
 
   const shouldToggleMenu = (event) => {
-    if (isRightMouseClick(event) || isUnhandledKeyPress(event)) {
-      // If the user right clicks anywhere on the screen or they press an unhandled key do not close the menu
+    if (
+      isRightMouseClick(event) ||
+      isUnhandledKeyPress(event) ||
+      (isTabKeyPress(event) && targets(wrapperDivRef.current, event))
+    ) {
       return false;
     }
 
@@ -84,7 +88,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
         {child.type === "a"
           ? React.cloneElement(child, {
               className: "rvt-header-menu__submenu-link",
-              ...(index === 0 && { ref: menuItemAnchorRef }),
+              ...(index === 0 && { ref: firstMenuItemRef }),
             })
           : child}
       </li>
@@ -92,7 +96,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   };
 
   return (
-    <div className="rvt-header-menu__dropdown rvt-dropdown">
+    <div className="rvt-header-menu__dropdown rvt-dropdown" ref={wrapperDivRef}>
       <div className="rvt-header-menu__group">
         <a
           className="rvt-header-menu__link"
