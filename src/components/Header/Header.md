@@ -6,7 +6,7 @@ View the [Rivet documentation for Header](https://rivet.iu.edu/components/header
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title" />
+// <Header title="Application Title" />
 ```
 <!-- prettier-ignore-end -->
 
@@ -14,7 +14,7 @@ An optional subtitle can also be provided.
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title" subtitle="Optional subtitle" />
+// <Header title="Application Title" subtitle="Optional subtitle" />
 ```
 <!-- prettier-ignore-end -->
 
@@ -22,7 +22,7 @@ You can also override the default "/" URL for the link:
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title" href="/foo" />
+// <Header title="Application Title" href="/foo" />
 ```
 <!-- prettier-ignore-end -->
 
@@ -30,7 +30,7 @@ The width prop can be used to constrain the width of the header.
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title" width="md" />
+// <Header title="Application Title" width="md" />
 ```
 <!-- prettier-ignore-end -->
 
@@ -43,13 +43,13 @@ Header with Primary Navigation:
 <Header title="Application Title">
   <Header.Navigation>
     <ul>
-      <li><a href="#">Nav item one</a></li>
-      <li><a href="#">Nav item two</a></li>
+      <li><a href={"#"}>Nav item one</a></li>
+      <li><a href={"#"}>Nav item two</a></li>
       <li data-rvt-c-header-nav-item__current>
         <Header.Menu label="Nav item three">
-          <a href="#">Sub item one</a>
-          <a href="#">Sub item two</a>
-          <a href="#">Sub item three</a>
+          <a href={"#"}>Sub item one</a>
+          <a href={"#"}>Sub item two</a>
+          <a href={"#"}>Sub item three</a>
         </Header.Menu>
       </li>
     </ul>
@@ -62,22 +62,22 @@ Header with Primary Navigation and Search:
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title">
-  <Header.Navigation>
-    <ul>
-      <li><a href="#">Nav item one</a></li>
-      <li><a href="#">Nav item two</a></li>
-      <li data-rvt-c-header-nav-item__current>
-        <Header.Menu label="Nav item three">
-          <a href="#">Sub item one</a>
-          <a href="#">Sub item two</a>
-          <a href="#">Sub item three</a>
-        </Header.Menu>
-      </li>
-    </ul>
-  </Header.Navigation>
-  <Header.Search action={"/mySearchURL"} method={"post"}/>
-</Header>
+// <Header title="Application Title">
+//   <Header.Navigation>
+//     <ul>
+//       <li><a href="#">Nav item one</a></li>
+//       <li><a href="#">Nav item two</a></li>
+//       <li data-rvt-c-header-nav-item__current>
+//         <Header.Menu label="Nav item three">
+//           <a href="#">Sub item one</a>
+//           <a href="#">Sub item two</a>
+//           <a href="#">Sub item three</a>
+//         </Header.Menu>
+//       </li>
+//     </ul>
+//   </Header.Navigation>
+//   <Header.Search action={"/mySearchURL"} method={"post"}/>
+// </Header>
 ```
 <!-- prettier-ignore-end -->
 
@@ -85,33 +85,33 @@ Header with Primary Navigation, Search and Secondary Navigation:
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title">
-  <Header.Navigation>
-    <ul>
-      <li><a href="#">Nav item one</a></li>
-      <li><a href="#">Nav item two</a></li>
-      <li data-rvt-c-header-nav-item__current>
-        <Header.Menu label="Nav item three">
-          <a href="#">Sub item one</a>
-          <a href="#">Sub item two</a>
-          <a href="#">Sub item three</a>
-        </Header.Menu>
-      </li>
-    </ul>
-  </Header.Navigation>
-  <Header.Search action={"/mySearchURL"} method={"post"}/>
-  <Header.NavigationSecondary title={"Component Library"}>
-    <ul>
-      <li><a href="#">Section item one</a></li>
-      <li data-rvt-c-header-nav-item__current>
-        <Header.Menu label="Section item two">
-          <a href="#">Sub tem one</a>
-          <a href="#">Sub item two</a>
-          <a href="#">Sub item three</a>
-        </Header.Menu>
-      </li>
-    </ul>
-  </Header.NavigationSecondary>
-</Header>
+// <Header title="Application Title">
+//   <Header.Navigation>
+//     <ul>
+//       <li><a href="#">Nav item one</a></li>
+//       <li><a href="#">Nav item two</a></li>
+//       <li data-rvt-c-header-nav-item__current>
+//         <Header.Menu label="Nav item three">
+//           <a href="#">Sub item one</a>
+//           <a href="#">Sub item two</a>
+//           <a href="#">Sub item three</a>
+//         </Header.Menu>
+//       </li>
+//     </ul>
+//   </Header.Navigation>
+//   <Header.Search action={"/mySearchURL"} method={"post"}/>
+//   <Header.NavigationSecondary title={"Component Library"}>
+//     <ul>
+//       <li><a href="#">Section item one</a></li>
+//       <li data-rvt-c-header-nav-item__current>
+//         <Header.Menu label="Section item two">
+//           <a href="#">Sub tem one</a>
+//           <a href="#">Sub item two</a>
+//           <a href="#">Sub item three</a>
+//         </Header.Menu>
+//       </li>
+//     </ul>
+//   </Header.NavigationSecondary>
+// </Header>
 ```
 <!-- prettier-ignore-end -->

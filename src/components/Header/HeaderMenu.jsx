@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { handler } from "../Header/HeaderEventUtils.js";
 import {
   isKeyEvent,
@@ -27,14 +27,15 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     };
   });
 
+  useEffect(() => {
+    menuItemAnchorRef.current.focus();
+  }, [isMenuOpen]);
+
+  const menuItemAnchorRef = useRef(null);
+
   const toggleMenu = (event) => {
     setIsMenuOpen(!isMenuOpen);
     event.stopPropagation && event.stopPropagation();
-
-    let firstListItemChild = document.getElementsByClassName(
-      "rvt-header-menu__submenu-item"
-    )[0].firstChild;
-    firstListItemChild && firstListItemChild.focus();
   };
 
   const handleClickOutside = (event) => {
@@ -74,6 +75,22 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     }
   };
 
+  const renderChild = (child, index) => {
+    return (
+      <li
+        className="rvt-header-menu__submenu-item"
+        key={"header-submenu-item-" + index}
+      >
+        {child.type === "a"
+          ? React.cloneElement(child, {
+              className: "rvt-header-menu__submenu-link",
+              ...(index === 0 && { ref: menuItemAnchorRef }),
+            })
+          : child}
+      </li>
+    );
+  };
+
   return (
     <div className="rvt-header-menu__dropdown rvt-dropdown">
       <div className="rvt-header-menu__group">
@@ -106,21 +123,6 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
         </ul>
       </div>
     </div>
-  );
-};
-
-const renderChild = (child, index) => {
-  return (
-    <li
-      className="rvt-header-menu__submenu-item"
-      key={"header-submenu-item-" + index}
-    >
-      {child.type === "a"
-        ? React.cloneElement(child, {
-            className: "rvt-header-menu__submenu-link",
-          })
-        : child}
-    </li>
   );
 };
 
