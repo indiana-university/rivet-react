@@ -38,9 +38,13 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     if (isMenuOpen) {
       focusMenuItem(0);
     }
+    // else {
+    //   toggleButtonRef.current.focus()
+    // }
   }, [isMenuOpen]);
 
   const wrapperDivRef = useRef(null);
+  const toggleButtonRef = useRef(null);
 
   const getRefsMap = () => {
     if (!menuItemsRef.current) {
@@ -62,6 +66,10 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const handleEvent = (event) => {
     if (event && shouldToggleMenu(event)) {
       toggleMenu(event);
+      // if button is being closed through an escape key press, put focus back on the toggle button
+      if (isEscapeKeyPress(event)) {
+        toggleButtonRef.current.focus();
+      }
     }
   };
 
@@ -141,6 +149,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
           {label}
         </a>
         <button
+          ref={toggleButtonRef}
           aria-expanded={isMenuOpen}
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
           onClick={(e) => toggleMenu(e)}
