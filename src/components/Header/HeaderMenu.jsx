@@ -12,6 +12,7 @@ import { handler } from "../Header/HeaderEventUtils.js";
 import {
   isArrowDownKeyPress,
   isArrowUpKeyPress,
+  isEscapeKeyPress,
   isRightMouseClick,
   isTabKeyPress,
   targets,
@@ -70,22 +71,11 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     if (
       isRightMouseClick(event) ||
       isUnhandledKeyPress(event) ||
-      (isTabKeyPress(event) && targets(wrapperDivRef.current, event))
+      (isTabKeyPress(event) && targets(wrapperDivRef.current, event)) ||
+      (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
     ) {
       return false;
     }
-
-    // const preventToggleOnInsideClick =
-    //   !isKeyEvent(event) && !toggleDropdownOnClickInside;
-    // if (
-    //   targets(dropdownWrapDiv.current, event) &&
-    //   (preventToggleOnInsideClick || isTabKeyPress(event))
-    // ) {
-    //   // If the user clicks, touches or tabs inside the dropdown do not close the menu
-    //   return false;
-    // }
-
-    // if (is)
 
     return true;
   };
