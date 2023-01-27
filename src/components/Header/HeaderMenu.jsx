@@ -7,13 +7,71 @@ import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
+import { useEffect } from "react";
+import { handler } from "../Header/HeaderEventUtils.js";
+import {
+  isKeyEvent,
+  isRightMouseClick,
+  isTabKeyPress,
+  targets,
+} from "../util/EventUtils.js";
+import { isUnhandledKeyPress } from "../Header/HeaderEventUtils.js";
 
 const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  useEffect(() => {
+    handleEventRegistration();
+    return () => {
+      eventHandler.deregister();
+    };
+  });
+
   const toggleMenu = (event) => {
     setIsMenuOpen(!isMenuOpen);
     event.stopPropagation && event.stopPropagation();
+
+    let firstListItemChild = document.getElementsByClassName(
+      "rvt-header-menu__submenu-item"
+    )[0].firstChild;
+    firstListItemChild && firstListItemChild.focus();
+  };
+
+  const handleClickOutside = (event) => {
+    if (event && shouldToggleMenu(event)) {
+      toggleMenu(event);
+    }
+  };
+
+  const eventHandler = handler(handleClickOutside);
+
+  const shouldToggleMenu = (event) => {
+    if (isRightMouseClick(event) || isUnhandledKeyPress(event)) {
+      // If the user right clicks anywhere on the screen or they press an unhandled key do not close the menu
+      return false;
+    }
+
+    // const preventToggleOnInsideClick =
+    //   !isKeyEvent(event) && !toggleDropdownOnClickInside;
+    // if (
+    //   targets(dropdownWrapDiv.current, event) &&
+    //   (preventToggleOnInsideClick || isTabKeyPress(event))
+    // ) {
+    //   // If the user clicks, touches or tabs inside the dropdown do not close the menu
+    //   return false;
+    // }
+
+    // if (is)
+
+    return true;
+  };
+
+  const handleEventRegistration = () => {
+    if (isMenuOpen) {
+      eventHandler.register();
+    } else {
+      eventHandler.deregister();
+    }
   };
 
   return (
