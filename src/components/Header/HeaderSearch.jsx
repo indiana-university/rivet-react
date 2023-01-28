@@ -29,9 +29,8 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
     };
   });
 
-  const toggleSearch = (event) => {
+  const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
-    event.stopPropagation && event.stopPropagation();
   };
 
   const shouldToggleSearch = (event) => {
