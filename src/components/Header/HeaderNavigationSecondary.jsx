@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
 import { renderHeaderUnorderedList } from "../util/childUtils";
+import {
+  isEscapeKeyPress,
+  isMouseEvent,
+  isRightMouseClick,
+  isTabKeyPress,
+  targets,
+} from "../util/EventUtils";
+import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 
 const HeaderNavigationSecondary = ({
   width = "xl",
@@ -14,19 +22,63 @@ const HeaderNavigationSecondary = ({
 }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
-  const toggleNavigation = (event) => {
+  const wrapperDivRef = useRef(null);
+  const toggleButtonRef = useRef(null);
+
+  const toggleNavigation = () => {
     setIsExpanded(!isExpanded);
-    event.stopPropagation && event.stopPropagation();
+  };
+
+  useEffect(() => {
+    handleEventRegistration();
+    return () => {
+      eventHandler.deregister();
+    };
+  });
+
+  const handleClickOutside = (event) => {
+    if (event && shouldToggleNavigation(event)) {
+      toggleNavigation(event);
+      // if menu is being closed through an escape key press, put focus back on the toggle button
+      if (isEscapeKeyPress(event)) {
+        toggleButtonRef.current.focus();
+      }
+    }
+  };
+
+  const eventHandler = handler(handleClickOutside);
+
+  const shouldToggleNavigation = (event) => {
+    if (
+      isRightMouseClick(event) ||
+      isUnhandledKeyPress(event) ||
+      isTabKeyPress(event) ||
+      (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event)) ||
+      (isMouseEvent(event) && targets(wrapperDivRef.current, event))
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleEventRegistration = () => {
+    if (isExpanded) {
+      eventHandler.register();
+    } else {
+      eventHandler.deregister();
+    }
   };
 
   return (
-    <div className="rvt-header-local">
+    <div className="rvt-header-local" ref={wrapperDivRef}>
       <div className={"rvt-container-" + width}>
         <div className="rvt-header-local__inner">
           <a href={href} className="rvt-header-local__title">
             {title}
           </a>
           <button
+            ref={toggleButtonRef}
             aria-expanded={isExpanded}
             className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
             onClick={(e) => {
