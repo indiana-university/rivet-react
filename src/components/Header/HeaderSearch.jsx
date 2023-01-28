@@ -7,18 +7,70 @@ import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
+import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
+import {
+  isEscapeKeyPress,
+  isRightMouseClick,
+  isTabKeyPress,
+  targets,
+} from "../util/EventUtils";
+import { useEffect, useRef, useState } from "react";
 
 const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
-  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const wrapperDivRef = useRef(null);
+  const searchButtonRef = useRef(null);
+
+  useEffect(() => {
+    handleEventRegistration();
+    return () => {
+      eventHandler.deregister();
+    };
+  });
 
   const toggleSearch = (event) => {
     setIsSearchOpen(!isSearchOpen);
     event.stopPropagation && event.stopPropagation();
   };
 
+  const shouldToggleSearch = (event) => {
+    if (
+      isRightMouseClick(event) ||
+      isUnhandledKeyPress(event) ||
+      isTabKeyPress(event) ||
+      (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleClickOutside = (event) => {
+    if (event && shouldToggleSearch(event)) {
+      toggleSearch(event);
+      // if search is being closed through an escape key press, put focus back on the search button
+      if (isEscapeKeyPress(event)) {
+        searchButtonRef.current.focus();
+      }
+    }
+  };
+
+  const eventHandler = handler(handleClickOutside);
+
+  const handleEventRegistration = () => {
+    if (isSearchOpen) {
+      eventHandler.register();
+    } else {
+      eventHandler.deregister();
+    }
+  };
+
   return (
-    <div data-rvt-disclosure="search">
+    <div data-rvt-disclosure="search" ref={wrapperDivRef}>
       <button
+        ref={searchButtonRef}
         className="rvt-global-toggle"
         aria-expanded={isSearchOpen}
         onClick={(e) => {
