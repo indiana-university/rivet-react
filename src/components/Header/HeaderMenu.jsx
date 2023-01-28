@@ -53,9 +53,8 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     setFocusedItemIndex(index);
   };
 
-  const toggleMenu = (event) => {
+  const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    event.stopPropagation && event.stopPropagation();
   };
 
   const handleEvent = (event) => {
