@@ -11,6 +11,7 @@ import { useEffect, useRef } from "react";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import {
   isEscapeKeyPress,
+  isMouseEvent,
   isRightMouseClick,
   isTabKeyPress,
   targets,
@@ -50,7 +51,8 @@ const HeaderNavigation = ({ children, ...attrs }) => {
       isRightMouseClick(event) ||
       isUnhandledKeyPress(event) ||
       isTabKeyPress(event) ||
-      (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
+      (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event)) ||
+      (isMouseEvent(event) && targets(wrapperDivRef.current, event))
     ) {
       return false;
     }
