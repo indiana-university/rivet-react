@@ -7,18 +7,69 @@ import * as React from "react";
 import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
 import { renderHeaderUnorderedList } from "../util/childUtils";
+import { useEffect, useRef } from "react";
+import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
+import {
+  isEscapeKeyPress,
+  isRightMouseClick,
+  isTabKeyPress,
+  targets,
+} from "../util/EventUtils";
 
 const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
-  const toggleNavigation = (event) => {
+  const wrapperDivRef = useRef(null);
+  const toggleButtonRef = useRef(null);
+
+  const toggleNavigation = () => {
     setIsNavMenuOpen(!isNavMenuOpen);
-    event.stopPropagation && event.stopPropagation();
+  };
+
+  useEffect(() => {
+    handleEventRegistration();
+    return () => {
+      eventHandler.deregister();
+    };
+  });
+
+  const handleClickOutside = (event) => {
+    if (event && shouldToggleNavigation(event)) {
+      toggleNavigation(event);
+      // if menu is being closed through an escape key press, put focus back on the toggle button
+      if (isEscapeKeyPress(event)) {
+        toggleButtonRef.current.focus();
+      }
+    }
+  };
+
+  const eventHandler = handler(handleClickOutside);
+
+  const shouldToggleNavigation = (event) => {
+    if (
+      isRightMouseClick(event) ||
+      isUnhandledKeyPress(event) ||
+      isTabKeyPress(event) ||
+      (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleEventRegistration = () => {
+    if (isNavMenuOpen) {
+      eventHandler.register();
+    } else {
+      eventHandler.deregister();
+    }
   };
 
   return (
-    <div data-rvt-disclosure="menu">
+    <div data-rvt-disclosure="menu" ref={wrapperDivRef}>
       <button
+        ref={toggleButtonRef}
         aria-expanded={isNavMenuOpen}
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
         onClick={(e) => toggleNavigation(e)}
