@@ -57,17 +57,17 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleEvent = (event) => {
+  const handleClickOutside = (event) => {
     if (event && shouldToggleMenu(event)) {
       toggleMenu(event);
-      // if button is being closed through an escape key press, put focus back on the toggle button
+      // if menu is being closed through an escape key press, put focus back on the toggle button
       if (isEscapeKeyPress(event)) {
         toggleButtonRef.current.focus();
       }
     }
   };
 
-  const eventHandler = handler(handleEvent);
+  const eventHandler = handler(handleClickOutside);
 
   const shouldToggleMenu = (event) => {
     if (
