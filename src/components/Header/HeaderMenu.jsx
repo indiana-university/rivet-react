@@ -73,7 +73,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     if (
       isRightMouseClick(event) ||
       isUnhandledKeyPress(event) ||
-      (isTabKeyPress(event) && targets(wrapperDivRef.current, event)) ||
+      isTabKeyPress(event) ||
       (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
     ) {
       return false;
