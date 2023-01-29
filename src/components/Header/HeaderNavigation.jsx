@@ -69,7 +69,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   };
 
   return (
-    <div data-rvt-disclosure="menu" ref={wrapperDivRef}>
+    <div ref={wrapperDivRef}>
       <button
         ref={toggleButtonRef}
         aria-expanded={isNavMenuOpen}
