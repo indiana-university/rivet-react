@@ -13,6 +13,7 @@ import HeaderNavigationSecondary from "./HeaderNavigationSecondary";
 import HeaderNavigation from "./HeaderNavigation";
 import HeaderSearch from "./HeaderSearch";
 import HeaderMenu from "./HeaderMenu";
+import { TestUtils } from "../util/TestUtils";
 
 const componentClass = "rvt-header-wrapper";
 
@@ -44,14 +45,22 @@ const Header = ({
 
   return (
     <header {...attrs} className={classNames(componentClass, className)}>
-      <a className="rvt-header-wrapper__skip-link" href="#main-content">
+      <a
+        className="rvt-header-wrapper__skip-link"
+        href="#main-content"
+        data-testid={TestUtils.Header.skipLinkTestId}
+      >
         Skip to main content
       </a>
       <div className="rvt-header-global">
         <div className={"rvt-container-" + width}>
           <div className="rvt-header-global__inner">
             <div className="rvt-header-global__logo-slot">
-              <a className="rvt-lockup" href={href}>
+              <a
+                className="rvt-lockup"
+                href={href}
+                data-testid={TestUtils.Header.anchorTestId}
+              >
                 <div className="rvt-lockup__tab">
                   <Icon name={IconNames.TRIDENT_HEADER} />
                 </div>
