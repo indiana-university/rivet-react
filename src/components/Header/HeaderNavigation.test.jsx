@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import Header from "./Header";
-import HeaderNavigation from "./HeaderNavigation";
 import { TestUtils } from "../util/TestUtils";
 
 describe("<HeaderNavigation />", () => {
@@ -39,12 +38,10 @@ describe("<HeaderNavigation />", () => {
       expect(screen.getByText("Sub item three")).toBeInTheDocument();
     });
 
-    // it("shows the toggle icon for smaller screen widths", () => {
-    //   expect(screen.getByTestId(TestUtils.Header.navButtonToggleTestId))
-    //     .toHaveStyle({display: 'inline-block'})
-    //     // .not.toBeVisible()
-    // });
-
-    // it("should ")
+    it("should apply appropriate styles on the nav item that has been provided the data-rvt-c-header-nav-item__current custom HTML attribute", () => {
+      expect(
+        screen.getAllByTestId(TestUtils.Header.navListItem)[1]
+      ).toHaveClass("rvt-header-menu__item--current");
+    });
   });
 });

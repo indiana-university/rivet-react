@@ -61,7 +61,6 @@ describe("<HeaderMenu/>", () => {
 
     it("should provide the label and href props to the label anchor", () => {
       const testLabel = "Nav item";
-
       render(
         <Header.Menu label={testLabel} href={testHref}>
           <a href="#">Sub item</a>
@@ -103,6 +102,7 @@ describe("<HeaderMenu/>", () => {
     });
 
     it("should show the menu items when the toggle button is clicked", async () => {
+      // open the menu
       await clickToggleButton();
       expect(
         screen.getByTestId(TestUtils.Header.menuItemsContainer)
@@ -116,18 +116,131 @@ describe("<HeaderMenu/>", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should hide the menu items if the toggle button is clicked when the menu is open", async () => {
+    it("should hide the menu if the Escape key is pressed while the menu is open", async () => {
+      // open the menu
       await clickToggleButton();
-      // first verify that the menu is opened
+      // verify that the menu is opened
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+      ).not.toHaveAttribute("hidden", "");
+      // press Escape
+      await user.keyboard("{Escape}");
+
+      // finally, verify that the menu is closed
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+      ).toHaveAttribute("hidden", "");
+    });
+
+    it("should hide the menu if a DOM element outside the menu is clicked", async () => {
+      // open the menu
+      await clickToggleButton();
+      // verify that the menu is opened
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+      ).not.toHaveAttribute("hidden", "");
+      // click outside the menu
+      await user.click(document.body);
+
+      // finally, verify that the menu is closed
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+      ).toHaveAttribute("hidden", "");
+    });
+
+    it("should hide the menu items if the toggle button is clicked when the menu is open", async () => {
+      // open the menu
+      await clickToggleButton();
+      // verify that the menu is opened
       expect(
         screen.getByTestId(TestUtils.Header.menuItemsContainer)
       ).not.toHaveAttribute("hidden", "");
       // click the toggle button again
       await clickToggleButton();
+
       // finally, verify that the menu is closed
       expect(
         screen.getByTestId(TestUtils.Header.menuItemsContainer)
       ).toHaveAttribute("hidden", "");
+    });
+
+    it("should not close the menu when focus is moved to a DOM element outside the menu", async () => {
+      // first, move focus to the last menu item
+      await clickToggleButton(); // open the menu
+      await user.keyboard("{Tab}");
+      // assert that focus is on last menu item
+      expect(screen.getByText("Sub item two")).toHaveFocus();
+      // Press tab to move focus outside the HeaderMenu component
+      await user.keyboard("{Tab}");
+
+      // assert that menu is still open
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+      ).not.toHaveAttribute("hidden", "");
+    });
+  });
+
+  describe("Focus behavior", () => {
+    beforeEach(() => {
+      render(
+        <Header.Menu label="Nav item three">
+          <a href="#">Sub item one</a>
+          <a href="#">Sub item two</a>
+        </Header.Menu>
+      );
+    });
+
+    it("should move focus to the first menu item when the menu is opened", async () => {
+      // open the menu
+      await clickToggleButton();
+      expect(screen.getByText("Sub item one")).toHaveFocus();
+    });
+
+    it("should move focus to the next menu item when tab is pressed, and to the previous menu item when shift + tab is pressed", async () => {
+      // open the menu
+      await clickToggleButton();
+
+      await user.keyboard("{Tab}");
+      expect(screen.getByText("Sub item two")).toHaveFocus();
+
+      await user.keyboard("{Shift>}{Tab}"); // Shift> = keep Shift pressed
+      expect(screen.getByText("Sub item one")).toHaveFocus();
+    });
+
+    it("should move focus back to the toggle button, if menu is closed by pressing Escape", async () => {
+      // open the menu
+      await clickToggleButton();
+      // press Escape
+      await user.keyboard("{Escape}");
+
+      // verify focus is on the toggle button
+      expect(
+        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId)
+      ).toHaveFocus();
+    });
+
+    it("should move focus back to the toggle button, if menu is closed by clicking the toggle button", async () => {
+      // open the menu
+      await clickToggleButton();
+      // close the menu by clicking the toggle button again
+      await clickToggleButton();
+
+      // verify focus is on the toggle button
+      expect(
+        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId)
+      ).toHaveFocus();
+    });
+
+    it("should not move focus back to the toggle button, if menu is closed by clicking outside the menu", async () => {
+      // open the menu
+      await clickToggleButton();
+      // close the menu by clicking outside
+      await user.click(document.body);
+
+      // verify focus is not on the toggle button
+      expect(
+        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId)
+      ).not.toHaveFocus();
     });
   });
 });

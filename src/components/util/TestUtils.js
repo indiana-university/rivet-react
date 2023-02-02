@@ -11,5 +11,6 @@ export const TestUtils = {
     menuButtonToggleTestId: "menu-button-toggle-testId",
     menuContainer: "menu-container-testId",
     menuItemsContainer: "menu-items-container-testId",
+    navListItem: "nav-list-item-testId",
   },
 };
