@@ -15,6 +15,7 @@ import {
   targets,
 } from "../util/EventUtils";
 import { useEffect, useRef, useState } from "react";
+import { TestUtils } from "../util/TestUtils";
 
 const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -67,7 +68,11 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
   };
 
   return (
-    <div data-rvt-disclosure="search" ref={wrapperDivRef}>
+    <div
+      data-rvt-disclosure="search"
+      ref={wrapperDivRef}
+      data-testid={TestUtils.Header.searchWrapperTestId}
+    >
       <button
         ref={searchButtonRef}
         className="rvt-global-toggle"
