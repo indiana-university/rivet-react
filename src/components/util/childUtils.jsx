@@ -6,6 +6,7 @@ import * as React from "react";
 import getDisplayName from "react-display-name";
 import classNames from "classnames";
 import { HeaderMenu } from "../Header";
+import { TestUtils } from "./TestUtils";
 
 export const findFirstChildOfType = (children, componentDisplayName) => {
   let firstChild;
@@ -59,6 +60,7 @@ const renderHeaderListItem = (child) => {
         "rvt-header-menu__item",
         isListItemCurrent && "rvt-header-menu__item--current"
       )}
+      data-testid={TestUtils.Header.navListItem}
     >
       {childrenWithProps}
     </li>
