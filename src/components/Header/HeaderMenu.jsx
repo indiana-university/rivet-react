@@ -18,6 +18,7 @@ import {
   targets,
 } from "../util/EventUtils.js";
 import { isUnhandledKeyPress } from "../Header/HeaderEventUtils.js";
+import { TestUtils } from "../util/TestUtils";
 
 const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -132,7 +133,11 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   };
 
   return (
-    <div className="rvt-header-menu__dropdown rvt-dropdown" ref={wrapperDivRef}>
+    <div
+      className="rvt-header-menu__dropdown rvt-dropdown"
+      ref={wrapperDivRef}
+      data-testid={TestUtils.Header.menuContainer}
+    >
       <div className="rvt-header-menu__group">
         <a
           className="rvt-header-menu__link"
@@ -147,6 +152,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
           aria-expanded={isMenuOpen}
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
           onClick={(e) => toggleMenu(e)}
+          data-testid={TestUtils.Header.menuButtonToggleTestId}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
           <Icon
@@ -158,6 +164,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
       <div
         className="rvt-header-menu__submenu rvt-dropdown__menu rvt-dropdown__menu--right"
         hidden={!isMenuOpen}
+        data-testid={TestUtils.Header.menuItemsContainer}
       >
         <ul className="rvt-header-menu__submenu-list">
           {React.Children.map(children, renderChild)}

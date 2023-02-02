@@ -16,6 +16,7 @@ import {
   isTabKeyPress,
   targets,
 } from "../util/EventUtils";
+import { TestUtils } from "../util/TestUtils";
 
 const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
@@ -75,6 +76,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
         aria-expanded={isNavMenuOpen}
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
         onClick={(e) => toggleNavigation(e)}
+        data-testid={TestUtils.Header.navButtonToggleTestId}
       >
         <span className="rvt-sr-only">Menu</span>
         <Icon name={IconNames.TOGGLE_OPEN} />
