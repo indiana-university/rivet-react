@@ -12,9 +12,10 @@ import {
   targets,
 } from "../util/EventUtils";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
+import { TestUtils } from "../util/TestUtils";
 
 const HeaderNavigationSecondary = ({
-  width = "xl",
+  navWidth = "xl",
   title,
   href = "#",
   children,
@@ -25,16 +26,16 @@ const HeaderNavigationSecondary = ({
   const wrapperDivRef = useRef(null);
   const toggleButtonRef = useRef(null);
 
-  const toggleNavigation = () => {
-    setIsExpanded(!isExpanded);
-  };
-
   useEffect(() => {
     handleEventRegistration();
     return () => {
       eventHandler.deregister();
     };
   });
+
+  const toggleNavigation = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   const handleClickOutside = (event) => {
     if (event && shouldToggleNavigation(event)) {
@@ -72,7 +73,10 @@ const HeaderNavigationSecondary = ({
 
   return (
     <div className="rvt-header-local" ref={wrapperDivRef}>
-      <div className={"rvt-container-" + width}>
+      <div
+        className={"rvt-container-" + navWidth}
+        data-testid={TestUtils.Header.secondaryNavContainer}
+      >
         <div className="rvt-header-local__inner">
           <a href={href} className="rvt-header-local__title">
             {title}
@@ -104,7 +108,7 @@ const HeaderNavigationSecondary = ({
 HeaderNavigationSecondary.displayName = "Header.NavigationSecondary";
 HeaderNavigationSecondary.propTypes = {
   /** Optional prop to constrain the width of all content in the header */
-  width: PropTypes.oneOf([
+  navWidth: PropTypes.oneOf([
     "xxs",
     "xs",
     "sm",
