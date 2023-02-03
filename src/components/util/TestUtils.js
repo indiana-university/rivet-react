@@ -17,5 +17,8 @@ export const TestUtils = {
     searchButton: "search-button-testId",
     searchForm: "search-form-testId",
     searchInput: "search-input-testId",
+    secondaryNav: "secondary-nav-testId",
+    secondaryNavContainer: "nav-secondary-container-testId",
+    secondaryNavToggle: "secondary-nav-toggle",
   },
 };
