@@ -28,7 +28,7 @@ const testHref = "/testHref";
 
 describe("<HeaderMenu/>", () => {
   describe("Rendering and styling", () => {
-    it("should render all the provided children, and retain any attributes provided to the children", () => {
+    it("should render all the provided children", () => {
       render(
         <Header.Menu label="Nav item three">
           <a href="#">Sub item one</a>
@@ -38,6 +38,15 @@ describe("<HeaderMenu/>", () => {
 
       expect(screen.getByText("Sub item one")).toBeInTheDocument();
       expect(screen.getByText("Sub item two")).toBeInTheDocument();
+    });
+
+    it("should retain any attributes provided to the children", () => {
+      render(
+        <Header.Menu label="Nav item three">
+          <a href="#">Sub item one</a>
+          <a href={testHref}>Sub item two</a>
+        </Header.Menu>
+      );
 
       expect(screen.getByText("Sub item one")).toHaveAttribute("href", "#");
       expect(screen.getByText("Sub item two")).toHaveAttribute(
@@ -84,7 +93,7 @@ describe("<HeaderMenu/>", () => {
         </Header.Menu>
       );
 
-      // custom HTML attributes don't need to have a value, so checking for "" is good enough
+      // custom HTML attributes don't have a value. toHaveAttribute() interprets the absence of a value as the value being "".
       expect(
         screen.getByTestId(TestUtils.Header.menuItemsContainer)
       ).toHaveAttribute("hidden", "");
