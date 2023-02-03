@@ -41,16 +41,16 @@ const renderHeaderListItem = (child) => {
   let childrenWithProps = React.Children.map(child.props.children, (child) => {
     const childType = child && child["type"];
     const isHeaderMenu = getDisplayName(childType) === HeaderMenu.displayName;
-    const isLink = childType === "a";
+    const isAnchor = childType === "a";
 
     const headerMenuProps = { ...(isListItemCurrent && { current: true }) };
-    const linkProps = {
+    const anchorProps = {
       className: "rvt-header-menu__link",
       ...(isListItemCurrent && { "aria-current": "page" }),
     };
 
-    return isHeaderMenu || isLink
-      ? React.cloneElement(child, isHeaderMenu ? headerMenuProps : linkProps)
+    return isHeaderMenu || isAnchor
+      ? React.cloneElement(child, isHeaderMenu ? headerMenuProps : anchorProps)
       : child;
   });
 
