@@ -197,17 +197,18 @@ describe("<HeaderMenu/>", () => {
       ).toHaveAttribute("hidden", "");
     });
 
-    it("should not hide the menu if the Escape key is pressed on a target that lies outside the menu", async () => {
+    it("should not hide the menu if the Escape key is pressed while a DOM element that lies outside the menu has focus", async () => {
       // open the menu
       await clickToggleButton();
       // verify that the menu is opened
       expect(
         screen.getByTestId(TestUtils.Header.menuItemsContainer)
       ).not.toHaveAttribute("hidden", "");
-      // press Escape on a target outside the HeaderMenu
-      fireEvent.keyUp(document.body, {
-        key: "Escape",
-      });
+
+      // move to focus to document body
+      document.activeElement.blur();
+      // press Escape
+      await user.keyboard("{Escape}");
 
       // finally, verify that the menu is not closed
       expect(
