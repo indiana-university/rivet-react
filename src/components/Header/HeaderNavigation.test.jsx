@@ -95,6 +95,21 @@ describe("<HeaderNavigation />", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
+    it("should hide the nav when the return key is pressed on the toggle button, if the nav is already open", async () => {
+      await pressReturnOnToggleButton();
+      // verify that the nav is open
+      expect(
+        screen.getByTestId(TestUtils.Header.headerNav)
+      ).not.toHaveAttribute("hidden", "");
+      // press toggle again
+      await pressReturnOnToggleButton();
+      // verify that the menu is closed
+      expect(screen.getByTestId(TestUtils.Header.headerNav)).toHaveAttribute(
+        "hidden",
+        ""
+      );
+    });
+
     it("should not hide the nav if the Tab key is pressed while the nav is open", async () => {
       // open the nav
       await clickToggleButton();
@@ -258,11 +273,47 @@ describe("<HeaderNavigation />", () => {
     });
 
     it("should keep focus on the toggle button when the nav is opened", async () => {
-      // open the menu
+      // open the nav
       await clickToggleButton();
       expect(
         screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
       ).toHaveFocus();
+    });
+
+    it("should move focus back to the toggle button, if nav is closed by pressing Escape", async () => {
+      // open the nav
+      await clickToggleButton();
+      // press Escape
+      await user.keyboard("{Escape}");
+
+      // verify focus is on the toggle button
+      expect(
+        screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
+      ).toHaveFocus();
+    });
+
+    it("should move focus back to the toggle button, if nav is closed by clicking the toggle button", async () => {
+      // open the nav
+      await clickToggleButton();
+      // close the menu by clicking the toggle button again
+      await clickToggleButton();
+
+      // verify focus is on the toggle button
+      expect(
+        screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
+      ).toHaveFocus();
+    });
+
+    it("should not move focus back to the toggle button, if nav is closed by clicking outside the menu", async () => {
+      // open the nav
+      await clickToggleButton();
+      // close the menu by clicking outside
+      await user.click(document.body);
+
+      // verify focus is not on the toggle button
+      expect(
+        screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
+      ).not.toHaveFocus();
     });
   });
 

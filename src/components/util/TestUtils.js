@@ -13,5 +13,8 @@ export const TestUtils = {
     menuItemsContainer: "menu-items-container-testId",
     navListItem: "nav-list-item-testId",
     headerNav: "header-nav-testId",
+    searchToggleButton: "search-toggle-button-testId",
+    searchButton: "search-button-testId",
+    searchForm: "search-form-testId",
   },
 };

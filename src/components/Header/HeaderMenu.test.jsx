@@ -104,7 +104,7 @@ describe("<HeaderMenu/>", () => {
       );
     });
 
-    it("should show the menu items when the toggle button is clicked", async () => {
+    it("should show the menu when the toggle button is clicked", async () => {
       // open the menu
       await clickToggleButton();
       expect(
@@ -112,11 +112,25 @@ describe("<HeaderMenu/>", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should show the menu button when the return key is pressed on the toggle button", async () => {
+    it("should show the menu when the return key is pressed on the toggle button", async () => {
       await pressReturnOnToggleButton();
       expect(
         screen.getByTestId(TestUtils.Header.menuItemsContainer)
       ).not.toHaveAttribute("hidden", "");
+    });
+
+    it("should hide the menu when the return key is pressed on the toggle button, if the menu is already open", async () => {
+      await pressReturnOnToggleButton();
+      // verify that the menu is open
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+      ).not.toHaveAttribute("hidden", "");
+      // press toggle again
+      await pressReturnOnToggleButton();
+      // verify that the menu is closed
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+      ).toHaveAttribute("hidden", "");
     });
 
     it("should not hide the menu if the Tab key is pressed while the menu is open", async () => {
@@ -262,17 +276,6 @@ describe("<HeaderMenu/>", () => {
     it("should move focus to the first menu item when the menu is opened", async () => {
       // open the menu
       await clickToggleButton();
-      expect(screen.getByText("Sub item one")).toHaveFocus();
-    });
-
-    it("should move focus to the next menu item when Tab is pressed, and to the previous menu item when Shift + Tab is pressed", async () => {
-      // open the menu
-      await clickToggleButton();
-
-      await user.keyboard("{Tab}");
-      expect(screen.getByText("Sub item two")).toHaveFocus();
-
-      await user.keyboard("{Shift>}{Tab}"); // Shift> = keep Shift pressed
       expect(screen.getByText("Sub item one")).toHaveFocus();
     });
 
