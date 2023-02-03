@@ -4,9 +4,6 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import * as React from "react";
 import getDisplayName from "react-display-name";
-import classNames from "classnames";
-import { HeaderMenu } from "../Header";
-import { TestUtils } from "./TestUtils";
 
 export const findFirstChildOfType = (children, componentDisplayName) => {
   let firstChild;
