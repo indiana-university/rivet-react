@@ -80,7 +80,7 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
         onClick={(e) => {
           toggleSearch(e);
         }}
-        data-testid={TestUtils.Header.searchToggleButton}
+        data-testid={TestUtils.Header.searchToggleButtonTestId}
       >
         <span className="rvt-sr-only">Search</span>
         <Icon name={IconNames.TOGGLE_SEARCH} />
@@ -91,7 +91,7 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
         role="search"
         method={method}
         hidden={!isSearchOpen}
-        data-testid={TestUtils.Header.searchForm}
+        data-testid={TestUtils.Header.searchFormTestId}
       >
         <label className="rvt-sr-only" htmlFor="search">
           Search
@@ -101,12 +101,12 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
             id="search"
             className="rvt-input-group__input rvt-text-input"
             type="text"
-            data-testid={TestUtils.Header.searchInput}
+            data-testid={TestUtils.Header.searchInputTestId}
           />
           <div className="rvt-input-group__append">
             <button
               className="rvt-button"
-              data-testid={TestUtils.Header.searchButton}
+              data-testid={TestUtils.Header.searchButtonTestId}
             >
               Search
             </button>

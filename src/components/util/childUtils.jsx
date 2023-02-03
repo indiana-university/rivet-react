@@ -60,7 +60,7 @@ const renderHeaderListItem = (child) => {
         "rvt-header-menu__item",
         isListItemCurrent && "rvt-header-menu__item--current"
       )}
-      data-testid={TestUtils.Header.navListItem}
+      data-testid={TestUtils.Header.navListItemTestId}
     >
       {childrenWithProps}
     </li>
