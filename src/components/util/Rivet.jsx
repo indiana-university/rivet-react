@@ -45,7 +45,7 @@ export const shortuid = () => {
 };
 
 export const rivetize = (Component) => {
-  let ret = ({
+  let rivetizedComponent = ({
     alignContent,
     alignItems,
     alignSelf,
@@ -139,10 +139,10 @@ export const rivetize = (Component) => {
 
   // copy any properties set on the original component. Needed for child components (like Header.Navigation), which would otherwise be lost.
   for (const [key, val] of Object.entries(Component)) {
-    ret[key] = val;
+    rivetizedComponent[key] = val;
   }
 
-  return ret;
+  return rivetizedComponent;
 };
 
 /**
