@@ -77,7 +77,6 @@ Header with Primary Navigation and Search:
     <ul>
       <li><a href="#">Nav item one</a></li>
       <li><a href="#">Nav item two</a></li>
-      <li><a href="#">Nav item three</a></li>
       <li data-rvt-c-header-nav-item__current>
         <Header.Menu label="Nav item three">
           <a href="#">Sub item one</a>
