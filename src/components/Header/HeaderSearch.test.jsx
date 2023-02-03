@@ -10,11 +10,13 @@ import userEvent from "@testing-library/user-event";
 const user = userEvent.setup();
 
 const clickToggleButton = async () => {
-  await user.click(screen.getByTestId(TestUtils.Header.searchToggleButton));
+  await user.click(
+    screen.getByTestId(TestUtils.Header.searchToggleButtonTestId)
+  );
 };
 
 const pressReturnOnToggleButton = async () => {
-  screen.getByTestId(TestUtils.Header.searchToggleButton).focus();
+  screen.getByTestId(TestUtils.Header.searchToggleButtonTestId).focus();
   await user.keyboard("{Enter}");
 };
 
@@ -23,13 +25,13 @@ describe("<HeaderSearch/>", () => {
     it("should render a toggle button, an input and a search button", async () => {
       render(<Header.Search />);
       expect(
-        screen.getByTestId(TestUtils.Header.searchToggleButton)
+        screen.getByTestId(TestUtils.Header.searchToggleButtonTestId)
       ).toBeInTheDocument();
       expect(
-        screen.getByTestId(TestUtils.Header.searchInput)
+        screen.getByTestId(TestUtils.Header.searchInputTestId)
       ).toBeInTheDocument();
       expect(
-        screen.getByTestId(TestUtils.Header.searchButton)
+        screen.getByTestId(TestUtils.Header.searchButtonTestId)
       ).toBeInTheDocument();
     });
 
@@ -38,14 +40,12 @@ describe("<HeaderSearch/>", () => {
       const method = "post";
       render(<Header.Search action={action} method={method} />);
 
-      expect(screen.getByTestId(TestUtils.Header.searchForm)).toHaveAttribute(
-        "action",
-        action
-      );
-      expect(screen.getByTestId(TestUtils.Header.searchForm)).toHaveAttribute(
-        "method",
-        method
-      );
+      expect(
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
+      ).toHaveAttribute("action", action);
+      expect(
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
+      ).toHaveAttribute("method", method);
     });
   });
 
@@ -59,7 +59,7 @@ describe("<HeaderSearch/>", () => {
       await clickToggleButton();
 
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -68,7 +68,7 @@ describe("<HeaderSearch/>", () => {
       await pressReturnOnToggleButton();
 
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -77,16 +77,15 @@ describe("<HeaderSearch/>", () => {
       await pressReturnOnToggleButton();
       // verify that search is open
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
       // press toggle again
       await pressReturnOnToggleButton();
 
       // verify that search is closed
-      expect(screen.getByTestId(TestUtils.Header.searchForm)).toHaveAttribute(
-        "hidden",
-        ""
-      );
+      expect(
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
+      ).toHaveAttribute("hidden", "");
     });
 
     it("should not hide the search form if the Tab key is pressed while the search form is open", async () => {
@@ -94,14 +93,14 @@ describe("<HeaderSearch/>", () => {
       await clickToggleButton();
       // verify that the search is opened
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
       // press Escape
       await user.keyboard("{Tab}");
 
       // finally, verify that the search is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -110,14 +109,14 @@ describe("<HeaderSearch/>", () => {
       await clickToggleButton();
       // verify that the search is opened
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
       // do a right click
       await user.pointer("[MouseRight]");
 
       // finally, verify that the search is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -126,14 +125,14 @@ describe("<HeaderSearch/>", () => {
       await clickToggleButton();
       // verify that the search is opened
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
       // press an unhandled key
       await user.keyboard("{a}");
 
       // finally, verify that the search is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -142,16 +141,15 @@ describe("<HeaderSearch/>", () => {
       await clickToggleButton();
       // verify that the search is opened
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
       // press Escape
       await user.keyboard("{Escape}");
 
       // finally, verify that the search is closed
-      expect(screen.getByTestId(TestUtils.Header.searchForm)).toHaveAttribute(
-        "hidden",
-        ""
-      );
+      expect(
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
+      ).toHaveAttribute("hidden", "");
     });
 
     it("should not hide the search form if the Escape key is pressed on a target that lies outside the search form", async () => {
@@ -159,7 +157,7 @@ describe("<HeaderSearch/>", () => {
       await clickToggleButton();
       // verify that the search is opened
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
       // press Escape on a target outside the HeaderSearch
       fireEvent.keyUp(document.body, {
@@ -168,7 +166,7 @@ describe("<HeaderSearch/>", () => {
 
       // finally, verify that the search is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -177,16 +175,15 @@ describe("<HeaderSearch/>", () => {
       await clickToggleButton();
       // verify that the search is opened
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
       // click outside the search
       await user.click(document.body);
 
       // finally, verify that the search is closed
-      expect(screen.getByTestId(TestUtils.Header.searchForm)).toHaveAttribute(
-        "hidden",
-        ""
-      );
+      expect(
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
+      ).toHaveAttribute("hidden", "");
     });
 
     it("should hide the search form if the toggle button is clicked when the search is open", async () => {
@@ -194,16 +191,15 @@ describe("<HeaderSearch/>", () => {
       await clickToggleButton();
       // verify that the search is opened
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
       // click the toggle button again
       await clickToggleButton();
 
       // finally, verify that the search is closed
-      expect(screen.getByTestId(TestUtils.Header.searchForm)).toHaveAttribute(
-        "hidden",
-        ""
-      );
+      expect(
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
+      ).toHaveAttribute("hidden", "");
     });
 
     it("should not hide the search form when focus is moved to a DOM element outside the search form", async () => {
@@ -212,13 +208,15 @@ describe("<HeaderSearch/>", () => {
       await user.keyboard("{Tab}"); // move focus to the <input>
       await user.keyboard("{Tab}"); // move focus to the <button>
       // assert that focus is on Search button
-      expect(screen.getByTestId(TestUtils.Header.searchButton)).toHaveFocus();
+      expect(
+        screen.getByTestId(TestUtils.Header.searchButtonTestId)
+      ).toHaveFocus();
       // Press tab to move focus outside the HeaderSearch component
       await user.keyboard("{Tab}");
 
       // assert that search form is still open
       expect(
-        screen.getByTestId(TestUtils.Header.searchForm)
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
     });
   });
@@ -232,7 +230,7 @@ describe("<HeaderSearch/>", () => {
       // open the search form
       await clickToggleButton();
       expect(
-        screen.getByTestId(TestUtils.Header.searchToggleButton)
+        screen.getByTestId(TestUtils.Header.searchToggleButtonTestId)
       ).toHaveFocus();
     });
 
@@ -244,7 +242,7 @@ describe("<HeaderSearch/>", () => {
 
       // verify focus is on the toggle button
       expect(
-        screen.getByTestId(TestUtils.Header.searchToggleButton)
+        screen.getByTestId(TestUtils.Header.searchToggleButtonTestId)
       ).toHaveFocus();
     });
 
@@ -256,7 +254,7 @@ describe("<HeaderSearch/>", () => {
 
       // verify focus is on the toggle button
       expect(
-        screen.getByTestId(TestUtils.Header.searchToggleButton)
+        screen.getByTestId(TestUtils.Header.searchToggleButtonTestId)
       ).toHaveFocus();
     });
 
@@ -268,7 +266,7 @@ describe("<HeaderSearch/>", () => {
 
       // verify focus is not on the toggle button
       expect(
-        screen.getByTestId(TestUtils.Header.searchToggleButton)
+        screen.getByTestId(TestUtils.Header.searchToggleButtonTestId)
       ).not.toHaveFocus();
     });
   });
@@ -280,14 +278,14 @@ describe("<HeaderSearch/>", () => {
 
     it("should default the aria-expanded attribute to false", () => {
       expect(
-        screen.getByTestId(TestUtils.Header.searchToggleButton)
+        screen.getByTestId(TestUtils.Header.searchToggleButtonTestId)
       ).toHaveAttribute("aria-expanded", "false");
     });
 
     it("should change the aria-expanded attribute to true, when the search form is opened", async () => {
       await clickToggleButton();
       expect(
-        screen.getByTestId(TestUtils.Header.searchToggleButton)
+        screen.getByTestId(TestUtils.Header.searchToggleButtonTestId)
       ).toHaveAttribute("aria-expanded", "true");
     });
   });

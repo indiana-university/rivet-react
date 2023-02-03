@@ -10,11 +10,13 @@ import userEvent from "@testing-library/user-event";
 const user = userEvent.setup();
 
 const clickToggleButton = async () => {
-  await user.click(screen.getByTestId(TestUtils.Header.secondaryNavToggle));
+  await user.click(
+    screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
+  );
 };
 
 const pressReturnOnToggleButton = async () => {
-  screen.getByTestId(TestUtils.Header.secondaryNavToggle).focus();
+  screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId).focus();
   await user.keyboard("{Enter}");
 };
 
@@ -53,7 +55,7 @@ describe("<HeaderNavigationSecondary/>", () => {
 
     it("should apply to the container div a rivet class specifying the navWidth, if navWidth is provided", () => {
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavContainer)
+        screen.getByTestId(TestUtils.Header.secondaryNavContainerTestId)
       ).toHaveClass("rvt-container-" + testWidth);
     });
 
@@ -87,7 +89,7 @@ describe("<HeaderNavigationSecondary/>", () => {
 
     it("should default the width on the containing DOM element to xl, if navWidth is not provided", () => {
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavContainer)
+        screen.getByTestId(TestUtils.Header.secondaryNavContainerTestId)
       ).toHaveClass("rvt-container-xl");
     });
   });
@@ -115,7 +117,7 @@ describe("<HeaderNavigationSecondary/>", () => {
       await clickToggleButton();
 
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -124,7 +126,7 @@ describe("<HeaderNavigationSecondary/>", () => {
       await pressReturnOnToggleButton();
 
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -132,15 +134,14 @@ describe("<HeaderNavigationSecondary/>", () => {
       await pressReturnOnToggleButton();
       // verify that the secondary nav is open
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // press toggle again
       await pressReturnOnToggleButton();
       // verify that the secondary nav is closed
-      expect(screen.getByTestId(TestUtils.Header.secondaryNav)).toHaveAttribute(
-        "hidden",
-        ""
-      );
+      expect(
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+      ).toHaveAttribute("hidden", "");
     });
 
     it("should not hide the secondary nav if the Tab key is pressed while the secondary nav is open", async () => {
@@ -148,14 +149,14 @@ describe("<HeaderNavigationSecondary/>", () => {
       await clickToggleButton();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // press Escape
       await user.keyboard("{Tab}");
 
       // finally, verify that the secondary nav is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -164,14 +165,14 @@ describe("<HeaderNavigationSecondary/>", () => {
       await clickToggleButton();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // do a right click
       await user.pointer("[MouseRight]");
 
       // finally, verify that the secondary nav is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -180,14 +181,14 @@ describe("<HeaderNavigationSecondary/>", () => {
       await clickToggleButton();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // press an unhandled key
       await user.keyboard("{a}");
 
       // finally, verify that the secondary nav is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -196,16 +197,15 @@ describe("<HeaderNavigationSecondary/>", () => {
       await clickToggleButton();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // press Escape
       await user.keyboard("{Escape}");
 
       // finally, verify that the secondary nav is closed
-      expect(screen.getByTestId(TestUtils.Header.secondaryNav)).toHaveAttribute(
-        "hidden",
-        ""
-      );
+      expect(
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+      ).toHaveAttribute("hidden", "");
     });
 
     it("should not hide the secondary nav if the Escape key is pressed while a DOM element that lies outside the secondary nav has focus", async () => {
@@ -213,7 +213,7 @@ describe("<HeaderNavigationSecondary/>", () => {
       await clickToggleButton();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
 
       // move to focus to document body
@@ -223,7 +223,7 @@ describe("<HeaderNavigationSecondary/>", () => {
 
       // finally, verify that the secondary nav is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -232,16 +232,15 @@ describe("<HeaderNavigationSecondary/>", () => {
       await clickToggleButton();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // click outside the secondary nav
       await user.click(document.body);
 
       // finally, verify that the secondary nav is closed
-      expect(screen.getByTestId(TestUtils.Header.secondaryNav)).toHaveAttribute(
-        "hidden",
-        ""
-      );
+      expect(
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+      ).toHaveAttribute("hidden", "");
     });
 
     it("should not hide the secondary nav if a DOM element inside the secondary nav is clicked", async () => {
@@ -249,14 +248,14 @@ describe("<HeaderNavigationSecondary/>", () => {
       await clickToggleButton();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // click inside the secondary nav
-      await user.click(screen.getByTestId(TestUtils.Header.secondaryNav));
+      await user.click(screen.getByTestId(TestUtils.Header.secondaryNavTestId));
 
       // finally, verify that the secondary nav is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -265,16 +264,15 @@ describe("<HeaderNavigationSecondary/>", () => {
       await clickToggleButton();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // click the toggle button again
       await clickToggleButton();
 
       // finally, verify that the secondary nav is closed
-      expect(screen.getByTestId(TestUtils.Header.secondaryNav)).toHaveAttribute(
-        "hidden",
-        ""
-      );
+      expect(
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+      ).toHaveAttribute("hidden", "");
     });
 
     it("should not hide the secondary nav when focus is moved to a DOM element outside the secondary nav", async () => {
@@ -289,7 +287,7 @@ describe("<HeaderNavigationSecondary/>", () => {
 
       // assert that nav is still open
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNav)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
     });
   });
@@ -319,7 +317,7 @@ describe("<HeaderNavigationSecondary/>", () => {
       console.log(document.activeElement);
 
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavToggle)
+        screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
       ).not.toHaveFocus();
     });
 
@@ -331,7 +329,7 @@ describe("<HeaderNavigationSecondary/>", () => {
 
       // verify focus is on the toggle button
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavToggle)
+        screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
       ).toHaveFocus();
     });
 
@@ -343,7 +341,7 @@ describe("<HeaderNavigationSecondary/>", () => {
 
       // verify focus is on the toggle button
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavToggle)
+        screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
       ).toHaveFocus();
     });
 
@@ -355,7 +353,7 @@ describe("<HeaderNavigationSecondary/>", () => {
 
       // verify focus is not on the toggle button
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavToggle)
+        screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
       ).not.toHaveFocus();
     });
   });
@@ -380,7 +378,7 @@ describe("<HeaderNavigationSecondary/>", () => {
 
     it("should default the aria-expanded attribute to false", () => {
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavToggle)
+        screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
       ).toHaveAttribute("aria-expanded", "false");
     });
 
@@ -389,7 +387,7 @@ describe("<HeaderNavigationSecondary/>", () => {
       await clickToggleButton();
 
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavToggle)
+        screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
       ).toHaveAttribute("aria-expanded", "true");
     });
   });

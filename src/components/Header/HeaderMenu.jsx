@@ -136,7 +136,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     <div
       className="rvt-header-menu__dropdown rvt-dropdown"
       ref={wrapperDivRef}
-      data-testid={TestUtils.Header.menuContainer}
+      data-testid={TestUtils.Header.menuContainerTestId}
     >
       <div className="rvt-header-menu__group">
         <a
@@ -164,7 +164,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
       <div
         className="rvt-header-menu__submenu rvt-dropdown__menu rvt-dropdown__menu--right"
         hidden={!isMenuOpen}
-        data-testid={TestUtils.Header.menuItemsContainer}
+        data-testid={TestUtils.Header.menuItemsContainerTestId}
       >
         <ul className="rvt-header-menu__submenu-list">
           {React.Children.map(children, renderChild)}

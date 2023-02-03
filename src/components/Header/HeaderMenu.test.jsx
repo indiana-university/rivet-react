@@ -58,7 +58,7 @@ describe("<HeaderMenu/>", () => {
       );
 
       expect(
-        screen.getByTestId(TestUtils.Header.menuContainer)
+        screen.getByTestId(TestUtils.Header.menuContainerTestId)
       ).toContainElement(screen.getByTestId(testId));
     });
 
@@ -89,7 +89,7 @@ describe("<HeaderMenu/>", () => {
 
       // custom HTML attributes don't have a value. toHaveAttribute() interprets the absence of a value as the value being "".
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).toHaveAttribute("hidden", "");
     });
   });
@@ -108,14 +108,14 @@ describe("<HeaderMenu/>", () => {
       // open the menu
       await clickToggleButton();
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
     it("should show the menu when the return key is pressed on the toggle button", async () => {
       await pressReturnOnToggleButton();
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -123,13 +123,13 @@ describe("<HeaderMenu/>", () => {
       await pressReturnOnToggleButton();
       // verify that the menu is open
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // press toggle again
       await pressReturnOnToggleButton();
       // verify that the menu is closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).toHaveAttribute("hidden", "");
     });
 
@@ -138,14 +138,14 @@ describe("<HeaderMenu/>", () => {
       await clickToggleButton();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // press Escape
       await user.keyboard("{Tab}");
 
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -154,14 +154,14 @@ describe("<HeaderMenu/>", () => {
       await clickToggleButton();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // do a right click
       await user.pointer("[MouseRight]");
 
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -170,14 +170,14 @@ describe("<HeaderMenu/>", () => {
       await clickToggleButton();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // press an unhandled key
       await user.keyboard("{a}");
 
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -186,14 +186,14 @@ describe("<HeaderMenu/>", () => {
       await clickToggleButton();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // press Escape
       await user.keyboard("{Escape}");
 
       // finally, verify that the menu is closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).toHaveAttribute("hidden", "");
     });
 
@@ -202,7 +202,7 @@ describe("<HeaderMenu/>", () => {
       await clickToggleButton();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
 
       // move to focus to document body
@@ -212,7 +212,7 @@ describe("<HeaderMenu/>", () => {
 
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -221,14 +221,14 @@ describe("<HeaderMenu/>", () => {
       await clickToggleButton();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // click outside the menu
       await user.click(document.body);
 
       // finally, verify that the menu is closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).toHaveAttribute("hidden", "");
     });
 
@@ -237,14 +237,14 @@ describe("<HeaderMenu/>", () => {
       await clickToggleButton();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // click the toggle button again
       await clickToggleButton();
 
       // finally, verify that the menu is closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).toHaveAttribute("hidden", "");
     });
 
@@ -259,7 +259,7 @@ describe("<HeaderMenu/>", () => {
 
       // assert that menu is still open
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainer)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
   });
