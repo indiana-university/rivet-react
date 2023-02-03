@@ -86,6 +86,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
         aria-label="Main"
         className="rvt-header-menu"
         hidden={!isNavMenuOpen}
+        data-testid={TestUtils.Header.headerNav}
       >
         {React.Children.map(children, renderHeaderUnorderedList)}
       </nav>
