@@ -101,7 +101,7 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
             id="search"
             className="rvt-input-group__input rvt-text-input"
             type="text"
-            name="q"
+            data-testid={TestUtils.Header.searchInput}
           />
           <div className="rvt-input-group__append">
             <button
