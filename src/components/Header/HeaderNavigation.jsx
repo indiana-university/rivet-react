@@ -24,16 +24,16 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   const wrapperDivRef = useRef(null);
   const toggleButtonRef = useRef(null);
 
-  const toggleNavigation = () => {
-    setIsNavMenuOpen(!isNavMenuOpen);
-  };
-
   useEffect(() => {
     handleEventRegistration();
     return () => {
       eventHandler.deregister();
     };
   });
+
+  const toggleNavigation = () => {
+    setIsNavMenuOpen(!isNavMenuOpen);
+  };
 
   const handleClickOutside = (event) => {
     if (event && shouldToggleNavigation(event)) {
