@@ -103,7 +103,7 @@ describe("<HeaderNavigation />", () => {
       ).not.toHaveAttribute("hidden", "");
       // press toggle again
       await pressReturnOnToggleButton();
-      // verify that the menu is closed
+      // verify that the nav is closed
       expect(screen.getByTestId(TestUtils.Header.headerNav)).toHaveAttribute(
         "hidden",
         ""
@@ -175,17 +175,18 @@ describe("<HeaderNavigation />", () => {
       );
     });
 
-    it("should not hide the nav if the Escape key is pressed on a target that lies outside the nav", async () => {
+    it("should not hide the nav if the Escape key is pressed while a DOM element that lies outside the nav has focus", async () => {
       // open the nav
       await clickToggleButton();
       // verify that the nav is opened
       expect(
         screen.getByTestId(TestUtils.Header.headerNav)
       ).not.toHaveAttribute("hidden", "");
-      // press Escape on a target outside the HeaderNavigation
-      fireEvent.keyUp(document.body, {
-        key: "Escape",
-      });
+
+      // move to focus to document body
+      document.activeElement.blur();
+      // press Escape
+      await user.keyboard("{Escape}");
 
       // finally, verify that the nav is not closed
       expect(
