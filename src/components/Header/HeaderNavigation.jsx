@@ -6,7 +6,6 @@ import * as React from "react";
 
 import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
-import { renderHeaderUnorderedList } from "../util/childUtils";
 import { useEffect, useRef } from "react";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import {
@@ -17,6 +16,7 @@ import {
   targets,
 } from "../util/EventUtils";
 import { TestUtils } from "../util/TestUtils";
+import { renderHeaderUnorderedList } from "./childUtils";
 
 const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);

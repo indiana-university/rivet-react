@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
-import { renderHeaderUnorderedList } from "../util/childUtils";
 import {
   isEscapeKeyPress,
   isMouseEvent,
@@ -13,6 +12,7 @@ import {
 } from "../util/EventUtils";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import { TestUtils } from "../util/TestUtils";
+import { renderHeaderUnorderedList } from "./childUtils";
 
 const HeaderNavigationSecondary = ({
   navWidth = "xl",
