@@ -12,5 +12,6 @@ export const TestUtils = {
     menuContainer: "menu-container-testId",
     menuItemsContainer: "menu-items-container-testId",
     navListItem: "nav-list-item-testId",
+    headerNav: "header-nav-testId",
   },
 };
