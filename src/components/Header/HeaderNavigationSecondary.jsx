@@ -88,6 +88,7 @@ const HeaderNavigationSecondary = ({
             onClick={(e) => {
               toggleNavigation(e);
             }}
+            data-testid={TestUtils.Header.secondaryNavToggle}
           >
             <span className="rvt-sr-only">Toggle local menu</span>
             <Icon name={IconNames.CARET_DOWN} />
@@ -96,6 +97,7 @@ const HeaderNavigationSecondary = ({
             aria-label="Secondary"
             className="rvt-header-menu"
             hidden={!isExpanded}
+            data-testid={TestUtils.Header.secondaryNav}
           >
             {React.Children.map(children, renderHeaderUnorderedList)}
           </nav>
