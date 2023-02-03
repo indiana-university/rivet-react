@@ -20,10 +20,16 @@ const pressReturnOnToggleButton = async () => {
 
 describe("<HeaderSearch/>", () => {
   describe("Rendering and styling", () => {
-    it("should render a button", () => {
+    it("should render a toggle button, an input and a search button", async () => {
       render(<Header.Search />);
       expect(
         screen.getByTestId(TestUtils.Header.searchToggleButton)
+      ).toBeInTheDocument();
+      expect(
+        screen.getByTestId(TestUtils.Header.searchInput)
+      ).toBeInTheDocument();
+      expect(
+        screen.getByTestId(TestUtils.Header.searchButton)
       ).toBeInTheDocument();
     });
 
@@ -31,8 +37,6 @@ describe("<HeaderSearch/>", () => {
       const action = "action";
       const method = "post";
       render(<Header.Search action={action} method={method} />);
-      // open the search
-      await clickToggleButton();
 
       expect(screen.getByTestId(TestUtils.Header.searchForm)).toHaveAttribute(
         "action",

@@ -16,5 +16,6 @@ export const TestUtils = {
     searchToggleButton: "search-toggle-button-testId",
     searchButton: "search-button-testId",
     searchForm: "search-form-testId",
+    searchInput: "search-input-testId",
   },
 };
