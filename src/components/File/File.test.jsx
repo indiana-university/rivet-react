@@ -52,13 +52,11 @@ describe("<File />", () => {
     it("renders a different message if there is a file", async () => {
       const fileName = "index.html";
       const ref = {
-        current: {
-          files: [
-            {
-              name: fileName,
-            },
-          ],
-        },
+        files: [
+          {
+            name: fileName,
+          },
+        ],
       };
       render(<MyFile data-testid={testId} innerRef={ref} />);
 
@@ -72,16 +70,14 @@ describe("<File />", () => {
     it("renders a different message if there is a file", async () => {
       const fileName = "index.html";
       const ref = {
-        current: {
-          files: [
-            {
-              name: fileName,
-            },
-            {
-              name: "index2.html",
-            },
-          ],
-        },
+        files: [
+          {
+            name: fileName,
+          },
+          {
+            name: "index2.html",
+          },
+        ],
       };
       render(<MyFile data-testid={testId} innerRef={ref} multiple />);
 

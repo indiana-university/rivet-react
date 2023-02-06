@@ -36,7 +36,7 @@ const File = ({
 }) => {
   const forceUpdate = useForceUpdate();
 
-  const fileInput = innerRef || React.useRef();
+  const fileInput = React.useRef(innerRef);
 
   const form = fileInput.current && fileInput.current.form;
   if (form) {
