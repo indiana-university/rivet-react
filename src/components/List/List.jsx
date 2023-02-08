@@ -37,7 +37,7 @@ const List = ({
 
 List.displayName = "List";
 List.propTypes = {
-  /** A unique identifier for the alert */
+  /** A unique identifier for the list */
   id: PropTypes.string,
   /** Whether to render the list inline */
   inline: PropTypes.bool,
