@@ -27,7 +27,7 @@ const DescriptionList = ({
 };
 DescriptionList.displayName = "DescriptionList";
 DescriptionList.propTypes = {
-  /** A unique identifier for the alert */
+  /** A unique identifier for the description list */
   id: PropTypes.string,
 };
 
