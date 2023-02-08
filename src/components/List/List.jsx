@@ -41,7 +41,7 @@ List.propTypes = {
   id: PropTypes.string,
   /** Whether to render the list inline */
   inline: PropTypes.bool,
-  /** The variant type which determines how the alert is styled */
+  /** The variant type which determines how the list is styled */
   variant: PropTypes.oneOf(["plain", "ordered", "unordered"]),
 };
 
