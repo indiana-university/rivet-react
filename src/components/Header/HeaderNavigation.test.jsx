@@ -85,7 +85,7 @@ describe("<HeaderNavigation />", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should show the nav elements when the return key is pressed on the toggle button", async () => {
+    it("should show the nav elements when the return key is pressed while the toggle button has focus", async () => {
       // open the nav
       await pressReturnOnToggleButton();
 
@@ -94,7 +94,7 @@ describe("<HeaderNavigation />", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should hide the nav when the return key is pressed on the toggle button, if the nav is already open", async () => {
+    it("should hide the nav when the return key is pressed while the toggle button has focus and the nav is already open", async () => {
       await pressReturnOnToggleButton();
       // verify that the nav is open
       expect(

@@ -112,14 +112,14 @@ describe("<HeaderMenu/>", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should show the menu when the return key is pressed on the toggle button", async () => {
+    it("should show the menu when the return key is pressed while the toggle button has focus", async () => {
       await pressReturnOnToggleButton();
       expect(
         screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should hide the menu when the return key is pressed on the toggle button, if the menu is already open", async () => {
+    it("should hide the menu when the return key is pressed while the toggle button has focus and the menu is already open", async () => {
       await pressReturnOnToggleButton();
       // verify that the menu is open
       expect(
