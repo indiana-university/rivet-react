@@ -121,7 +121,7 @@ describe("<HeaderNavigationSecondary/>", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should show the secondary nav when the return key is pressed on the toggle button", async () => {
+    it("should show the secondary nav when the return key is pressed while the toggle button has focus", async () => {
       // open the secondary nav
       await pressReturnOnToggleButton();
 
@@ -130,7 +130,7 @@ describe("<HeaderNavigationSecondary/>", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should hide the secondary nav when the return key is pressed on the toggle button, if the secondary nav is already open", async () => {
+    it("should hide the secondary nav when the return key is pressed while the toggle button has focus, if the secondary nav is already open", async () => {
       await pressReturnOnToggleButton();
       // verify that the secondary nav is open
       expect(
@@ -216,7 +216,7 @@ describe("<HeaderNavigationSecondary/>", () => {
         screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
 
-      // move to focus to document body
+      // move focus to document body
       document.activeElement.blur();
       // press Escape
       await user.keyboard("{Escape}");

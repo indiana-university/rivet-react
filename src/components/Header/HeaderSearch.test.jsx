@@ -63,7 +63,7 @@ describe("<HeaderSearch/>", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should show the search form when the return key is pressed on the toggle button", async () => {
+    it("should show the search form when the return key is pressed while the toggle button has focus", async () => {
       // open the nav
       await pressReturnOnToggleButton();
 
@@ -72,7 +72,7 @@ describe("<HeaderSearch/>", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should hide the search form when the return key is pressed on the toggle button, if the search form is already open", async () => {
+    it("should hide the search form when the return key is pressed while the toggle button has focus, if the search form is already open", async () => {
       // open the nav
       await pressReturnOnToggleButton();
       // verify that search is open
@@ -152,14 +152,14 @@ describe("<HeaderSearch/>", () => {
       ).toHaveAttribute("hidden", "");
     });
 
-    it("should not hide the search form if the Escape key is pressed on a target that lies outside the search form", async () => {
+    it("should not hide the search form if the Escape key is pressed while a target that lies outside the search form has focus", async () => {
       // open the search
       await clickToggleButton();
       // verify that the search is opened
       expect(
         screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
-      // press Escape on a target outside the HeaderSearch
+      // press Escape so focus moves to a target outside the HeaderSearch
       fireEvent.keyUp(document.body, {
         key: "Escape",
       });
