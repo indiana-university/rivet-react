@@ -4,11 +4,34 @@ import "@testing-library/jest-dom";
 
 import Header from "./Header";
 import { TestUtils } from "../util/TestUtils";
+import userEvent from "@testing-library/user-event";
 
 const testTitle = "Test title";
 const testHref = "/testHref";
 const testSubTitle = "Test Sub title";
 const testWidth = "md";
+
+const user = userEvent.setup();
+
+const clickSearchToggleButton = async () => {
+  await user.click(
+    screen.getByTestId(TestUtils.Header.searchToggleButtonTestId)
+  );
+};
+
+const clickHeaderMenuToggleButton = async () => {
+  await user.click(screen.getByTestId(TestUtils.Header.menuButtonToggleTestId));
+};
+
+const clickHeaderNavToggleButton = async () => {
+  await user.click(screen.getByTestId(TestUtils.Header.navButtonToggleTestId));
+};
+
+const clickSecondaryNavToggleButton = async () => {
+  await user.click(
+    screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
+  );
+};
 
 describe("<Header />", () => {
   describe("Rendering and styling", () => {
@@ -122,6 +145,97 @@ describe("<Header />", () => {
       expect(
         screen.getByText("Secondary nav sub item two")
       ).toBeInTheDocument();
+    });
+  });
+
+  // the following tests assert that each sub-component of the Header closes when another sub-component is opened
+  describe("Sub-components' Toggle behavior", () => {
+    beforeEach(() => {
+      render(
+        <Header>
+          <Header.Navigation>
+            <ul>
+              <li>
+                <Header.Menu label="Nav item">
+                  <a href={"#"}>Sub item</a>
+                </Header.Menu>
+              </li>
+            </ul>
+          </Header.Navigation>
+          <Header.Search action={"/mySearchURL"} method={"post"} />
+          <Header.NavigationSecondary title={"Component Library"}>
+            <ul>
+              <li>
+                <a href="#">Section item one</a>
+              </li>
+            </ul>
+          </Header.NavigationSecondary>
+        </Header>
+      );
+    });
+
+    it("should close HeaderSearch if HeaderMenu is opened", async () => {
+      // open HeaderSearch
+      await clickSearchToggleButton();
+      // assert that HeaderSearch is open
+      expect(
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
+      ).not.toHaveAttribute("hidden", "");
+
+      // open HeaderMenu
+      await clickHeaderMenuToggleButton();
+      // assert that HeaderSearch is not open
+      expect(
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
+      ).toHaveAttribute("hidden", "");
+    });
+
+    it("should close HeaderMenu if HeaderSearch is opened", async () => {
+      // open HeaderMenu
+      await clickHeaderMenuToggleButton();
+      // assert that HeaderMenu is open
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+      ).not.toHaveAttribute("hidden", "");
+
+      // open HeaderSearch
+      await clickSearchToggleButton();
+      // assert that HeaderMenu is not open
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+      ).toHaveAttribute("hidden", "");
+    });
+
+    it("should close HeaderNavigation if HeaderSearch is opened", async () => {
+      // open HeaderNavigation
+      await clickHeaderNavToggleButton();
+      // assert that HeaderNavigation is open
+      expect(
+        screen.getByTestId(TestUtils.Header.headerNavTestId)
+      ).not.toHaveAttribute("hidden", "");
+
+      // open HeaderSearch
+      await clickSearchToggleButton();
+      // assert that HeaderNavigation is not open
+      expect(
+        screen.getByTestId(TestUtils.Header.headerNavTestId)
+      ).toHaveAttribute("hidden", "");
+    });
+
+    it("should close HeaderNavigationSecondary if HeaderSearch is opened", async () => {
+      // open HeaderNavigationSecondary
+      await clickSecondaryNavToggleButton();
+      // assert that HeaderNavigationSecondary is open
+      expect(
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+      ).not.toHaveAttribute("hidden", "");
+
+      // open HeaderSearch
+      await clickSearchToggleButton();
+      // assert that HeaderNavigationSecondary is not open
+      expect(
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+      ).toHaveAttribute("hidden", "");
     });
   });
 });
