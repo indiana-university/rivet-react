@@ -35,7 +35,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
     setIsNavMenuOpen(!isNavMenuOpen);
   };
 
-  const handleClickOutside = (event) => {
+  const handleEvent = (event) => {
     if (event && shouldToggleNavigation(event)) {
       toggleNavigation(event);
       // if menu is being closed through an escape key press, put focus back on the toggle button
@@ -45,7 +45,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
     }
   };
 
-  const eventHandler = handler(handleClickOutside);
+  const eventHandler = handler(handleEvent);
 
   const shouldToggleNavigation = (event) => {
     if (
@@ -75,7 +75,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
         ref={toggleButtonRef}
         aria-expanded={isNavMenuOpen}
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
-        onClick={(e) => toggleNavigation(e)}
+        onClick={toggleNavigation}
         data-testid={TestUtils.Header.navButtonToggleTestId}
       >
         <span className="rvt-sr-only">Menu</span>

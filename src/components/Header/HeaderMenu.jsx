@@ -58,7 +58,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleClickOutside = (event) => {
+  const handleEvent = (event) => {
     if (event && shouldToggleMenu(event)) {
       toggleMenu(event);
       // if menu is being closed through an escape key press, put focus back on the toggle button
@@ -68,7 +68,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     }
   };
 
-  const eventHandler = handler(handleClickOutside);
+  const eventHandler = handler(handleEvent);
 
   const shouldToggleMenu = (event) => {
     if (
@@ -151,7 +151,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
           ref={toggleButtonRef}
           aria-expanded={isMenuOpen}
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
-          onClick={(e) => toggleMenu(e)}
+          onClick={toggleMenu}
           data-testid={TestUtils.Header.menuButtonToggleTestId}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
