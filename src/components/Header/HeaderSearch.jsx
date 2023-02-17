@@ -47,7 +47,7 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
     return true;
   };
 
-  const handleClickOutside = (event) => {
+  const handleEvent = (event) => {
     if (event && shouldToggleSearch(event)) {
       toggleSearch(event);
       // if search is being closed through an escape key press, put focus back on the search button
@@ -57,7 +57,7 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
     }
   };
 
-  const eventHandler = handler(handleClickOutside);
+  const eventHandler = handler(handleEvent);
 
   const handleEventRegistration = () => {
     if (isSearchOpen) {
@@ -77,9 +77,7 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
         ref={searchButtonRef}
         className="rvt-global-toggle"
         aria-expanded={isSearchOpen}
-        onClick={(e) => {
-          toggleSearch(e);
-        }}
+        onClick={toggleSearch}
         data-testid={TestUtils.Header.searchToggleButtonTestId}
       >
         <span className="rvt-sr-only">Search</span>
