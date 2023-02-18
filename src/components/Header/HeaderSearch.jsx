@@ -8,12 +8,7 @@ import PropTypes from "prop-types";
 import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
-import {
-  isEscapeKeyPress,
-  isRightMouseClick,
-  isTabKeyPress,
-  targets,
-} from "../util/EventUtils";
+import { isEscapeKeyPress, isTabKeyPress, targets } from "../util/EventUtils";
 import { useEffect, useRef, useState } from "react";
 import { TestUtils } from "../util/TestUtils";
 
@@ -21,7 +16,6 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const wrapperDivRef = useRef(null);
-  const searchButtonRef = useRef(null);
 
   useEffect(() => {
     handleEventRegistration();
@@ -36,24 +30,18 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
 
   const shouldToggleSearch = (event) => {
     if (
-      isRightMouseClick(event) ||
       isUnhandledKeyPress(event) ||
       isTabKeyPress(event) ||
       (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
     ) {
       return false;
     }
-
     return true;
   };
 
   const handleEvent = (event) => {
     if (event && shouldToggleSearch(event)) {
       toggleSearch(event);
-      // if search is being closed through an escape key press, put focus back on the search button
-      if (isEscapeKeyPress(event)) {
-        searchButtonRef.current.focus();
-      }
     }
   };
 
@@ -74,7 +62,6 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
       data-testid={TestUtils.Header.searchWrapperTestId}
     >
       <button
-        ref={searchButtonRef}
         className="rvt-global-toggle"
         aria-expanded={isSearchOpen}
         onClick={toggleSearch}
