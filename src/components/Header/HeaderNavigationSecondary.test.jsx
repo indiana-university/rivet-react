@@ -207,25 +207,6 @@ describe("<HeaderNavigationSecondary/>", () => {
     });
   });
 
-  describe("Focus behavior", () => {
-    beforeEach(() => {
-      render(
-        <Header.NavigationSecondary title={"Title"}>
-          <ul>
-            <li>
-              <a href="#">Section item one</a>
-            </li>
-            <li data-rvt-c-header-nav-item__current>
-              <Header.Menu label="Section item two">
-                <a href="#">Sub item one</a>
-              </Header.Menu>
-            </li>
-          </ul>
-        </Header.NavigationSecondary>
-      );
-    });
-  });
-
   describe("Accessibility", () => {
     beforeEach(() => {
       render(
