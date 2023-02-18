@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent, prettyDOM } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import Header from "./Header";
@@ -55,6 +55,21 @@ describe("<HeaderSearch/>", () => {
       expect(
         screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", ""); // testing-library assumes the value of a custom HTML attribute to be "".
+    });
+
+    it("should not hide the search form if the Tab key is pressed while the search form is open", async () => {
+      // open the search
+      await toggleSearchThroughClick();
+      // verify that the search is opened
+      expect(
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
+      ).not.toHaveAttribute("hidden", "");
+      // press Tab
+      await user.keyboard("{Tab}");
+      // finally, verify that the search is not closed
+      expect(
+        screen.getByTestId(TestUtils.Header.searchFormTestId)
+      ).not.toHaveAttribute("hidden", "");
     });
 
     it("should not hide the search form if an unhandled key is pressed while the search form is open", async () => {

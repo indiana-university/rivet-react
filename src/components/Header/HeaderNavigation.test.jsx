@@ -86,7 +86,7 @@ describe("<HeaderNavigation />", () => {
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
-      // press Escape
+      // press Tab
       await user.keyboard("{Tab}");
       // finally, verify that the menu is not closed
       expect(
