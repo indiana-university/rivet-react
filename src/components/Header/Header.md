@@ -29,8 +29,9 @@ You can also override the default "/" URL for the link:
 The width prop can be used to constrain the width of the header.
 
 <!-- prettier-ignore-start -->
+
 ```jsx
-<Header title="Application Title" width="md" />
+<Header title="Application Title" headerWidth="md"/>
 ```
 <!-- prettier-ignore-end -->
 

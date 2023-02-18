@@ -22,8 +22,8 @@ const Header = ({
   className,
   title,
   subtitle,
-  width = "xl",
-  href = "/",
+  headerWidth = "xl",
+  href = "#",
   ...attrs
 }) => {
   const hasSecondaryNav = hasChildOfType(
@@ -53,7 +53,10 @@ const Header = ({
         Skip to main content
       </a>
       <div className="rvt-header-global">
-        <div className={"rvt-container-" + width}>
+        <div
+          className={"rvt-container-" + headerWidth}
+          data-testid={TestUtils.Header.headerWidthDivTestId}
+        >
           <div className="rvt-header-global__inner">
             <div className="rvt-header-global__logo-slot">
               <a
@@ -93,7 +96,7 @@ Header.propTypes = {
   /** The URL that the anchor towards the left of the header will point to */
   href: PropTypes.string,
   /** Optional prop to constrain the width of all content in the header */
-  width: PropTypes.oneOf([
+  headerWidth: PropTypes.oneOf([
     "xxs",
     "xs",
     "sm",

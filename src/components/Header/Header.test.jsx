@@ -81,13 +81,17 @@ describe("<Header />", () => {
     });
 
     it("should apply to the container div a rivet class specifying the width, if width is provided", () => {
-      render(<Header width={testWidth} />);
-      expect(screen.getByRole("banner")).toHaveClass("rvt-width-" + testWidth);
+      render(<Header headerWidth={testWidth} />);
+      expect(
+        screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
+      ).toHaveClass("rvt-container-" + testWidth);
     });
 
     it("should apply to the container div a rivet class that defaults the width to xl, if width is not provided", () => {
       render(<Header />);
-      expect(screen.getByRole("banner")).toHaveClass("rvt-width-xl");
+      expect(
+        screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
+      ).toHaveClass("rvt-container-xl");
     });
 
     it("should render all provided children", () => {

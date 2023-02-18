@@ -20,5 +20,6 @@ export const TestUtils = {
     secondaryNavTestId: "secondary-nav__testId",
     secondaryNavContainerTestId: "nav-secondary-container__testId",
     secondaryNavToggleTestId: "secondary-nav-toggle__testId",
+    headerWidthDivTestId: "header-width",
   },
 };
