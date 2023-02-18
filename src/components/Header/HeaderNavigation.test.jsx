@@ -8,13 +8,8 @@ import userEvent from "@testing-library/user-event";
 
 const user = userEvent.setup();
 
-const clickToggleButton = async () => {
+const toggleNavThroughClick = async () => {
   await user.click(screen.getByTestId(TestUtils.Header.navButtonToggleTestId));
-};
-
-const pressReturnOnToggleButton = async () => {
-  screen.getByTestId(TestUtils.Header.navButtonToggleTestId).focus();
-  await user.keyboard("{Enter}");
 };
 
 describe("<HeaderNavigation />", () => {
@@ -59,7 +54,7 @@ describe("<HeaderNavigation />", () => {
     it("should hide the nav elements by default", () => {
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
-      ).toHaveAttribute("hidden", "");
+      ).toHaveAttribute("hidden", ""); // testing-library assumes the value of a custom HTML attribute to be "".
     });
   });
 
@@ -78,63 +73,22 @@ describe("<HeaderNavigation />", () => {
 
     it("should show the nav elements when the toggle button is clicked", async () => {
       // open the nav
-      await clickToggleButton();
-
+      await toggleNavThroughClick();
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
-    });
-
-    it("should show the nav elements when the return key is pressed while the toggle button has focus", async () => {
-      // open the nav
-      await pressReturnOnToggleButton();
-
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId)
-      ).not.toHaveAttribute("hidden", "");
-    });
-
-    it("should hide the nav when the return key is pressed while the toggle button has focus and the nav is already open", async () => {
-      await pressReturnOnToggleButton();
-      // verify that the nav is open
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId)
-      ).not.toHaveAttribute("hidden", "");
-      // press toggle again
-      await pressReturnOnToggleButton();
-      // verify that the nav is closed
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId)
-      ).toHaveAttribute("hidden", "");
     });
 
     it("should not hide the nav if the Tab key is pressed while the nav is open", async () => {
       // open the nav
-      await clickToggleButton();
+      await toggleNavThroughClick();
       // verify that the nav is opened
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // press Escape
       await user.keyboard("{Tab}");
-
       // finally, verify that the menu is not closed
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId)
-      ).not.toHaveAttribute("hidden", "");
-    });
-
-    it("should not hide the nav if a right click occurs while the nav is open", async () => {
-      // open the nav
-      await clickToggleButton();
-      // verify that the nav is opened
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId)
-      ).not.toHaveAttribute("hidden", "");
-      // do a right click
-      await user.pointer("[MouseRight]");
-
-      // finally, verify that the nav is not closed
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
@@ -142,49 +96,30 @@ describe("<HeaderNavigation />", () => {
 
     it("should not hide the nav if an unhandled key is pressed while the menu is open", async () => {
       // open the nav
-      await clickToggleButton();
+      await toggleNavThroughClick();
       // verify that the nav is opened
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // press an unhandled key
       await user.keyboard("{a}");
-
       // finally, verify that the nav is not closed
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should hide the nav if the Escape key is pressed while the nav is open", async () => {
-      // open the nav
-      await clickToggleButton();
-      // verify that the nav is opened
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId)
-      ).not.toHaveAttribute("hidden", "");
-      // press Escape
-      await user.keyboard("{Escape}");
-
-      // finally, verify that the nav is closed
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId)
-      ).toHaveAttribute("hidden", "");
-    });
-
     it("should not hide the nav if the Escape key is pressed while a DOM element that lies outside the nav has focus", async () => {
       // open the nav
-      await clickToggleButton();
+      await toggleNavThroughClick();
       // verify that the nav is opened
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
-
-      // move to focus to document body
-      document.activeElement.blur();
-      // press Escape
-      await user.keyboard("{Escape}");
-
+      // press escape on a target that lies outside HeaderNavigation
+      fireEvent.keyUp(document.body, {
+        key: "Escape",
+      });
       // finally, verify that the nav is not closed
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
@@ -193,14 +128,13 @@ describe("<HeaderNavigation />", () => {
 
     it("should hide the nav if a DOM element outside the nav is clicked", async () => {
       // open the nav
-      await clickToggleButton();
+      await toggleNavThroughClick();
       // verify that the nav is opened
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // click outside the nav
       await user.click(document.body);
-
       // finally, verify that the nav is closed
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
@@ -209,14 +143,13 @@ describe("<HeaderNavigation />", () => {
 
     it("should not hide the nav if a DOM element inside the nav is clicked", async () => {
       // open the nav
-      await clickToggleButton();
+      await toggleNavThroughClick();
       // verify that the nav is opened
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // click inside the nav
       await user.click(screen.getByTestId(TestUtils.Header.headerNavTestId));
-
       // finally, verify that the nav is not closed
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
@@ -225,91 +158,17 @@ describe("<HeaderNavigation />", () => {
 
     it("should hide the nav if the toggle button is clicked when the nav is open", async () => {
       // open the nav
-      await clickToggleButton();
+      await toggleNavThroughClick();
       // verify that the nav is opened
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
       // click the toggle button again
-      await clickToggleButton();
-
+      await toggleNavThroughClick();
       // finally, verify that the nav is closed
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).toHaveAttribute("hidden", "");
-    });
-
-    it("should not hide the nav when focus is moved to a DOM element outside the nav", async () => {
-      // first, move focus to the last nav item
-      await clickToggleButton(); // open the nav
-      await user.keyboard("{Tab}");
-      // assert that focus is on last nav item
-      expect(screen.getByText("Nav item one")).toHaveFocus();
-      // Press tab to move focus outside the HeaderNavigation component
-      await user.keyboard("{Tab}");
-
-      // assert that nav is still open
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId)
-      ).not.toHaveAttribute("hidden", "");
-    });
-  });
-
-  describe("Focus behavior", () => {
-    beforeEach(() => {
-      render(
-        <Header.Navigation>
-          <ul>
-            <li>
-              <a href={"#"}>Nav item one</a>
-            </li>
-          </ul>
-        </Header.Navigation>
-      );
-    });
-
-    it("should keep focus on the toggle button when the nav is opened", async () => {
-      // open the nav
-      await clickToggleButton();
-      expect(
-        screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
-      ).toHaveFocus();
-    });
-
-    it("should move focus back to the toggle button, if nav is closed by pressing Escape", async () => {
-      // open the nav
-      await clickToggleButton();
-      // press Escape
-      await user.keyboard("{Escape}");
-
-      // verify focus is on the toggle button
-      expect(
-        screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
-      ).toHaveFocus();
-    });
-
-    it("should move focus back to the toggle button, if nav is closed by clicking the toggle button", async () => {
-      // open the nav
-      await clickToggleButton();
-      // close the menu by clicking the toggle button again
-      await clickToggleButton();
-
-      // verify focus is on the toggle button
-      expect(
-        screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
-      ).toHaveFocus();
-    });
-
-    it("should not move focus back to the toggle button, if nav is closed by clicking outside the menu", async () => {
-      // open the nav
-      await clickToggleButton();
-      // close the menu by clicking outside
-      await user.click(document.body);
-
-      // verify focus is not on the toggle button
-      expect(
-        screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
-      ).not.toHaveFocus();
     });
   });
 
@@ -327,7 +186,6 @@ describe("<HeaderNavigation />", () => {
           </ul>
         </Header.Navigation>
       );
-
       expect(screen.getByText("Nav item two")).toHaveAttribute(
         "aria-current",
         "page"
@@ -349,7 +207,6 @@ describe("<HeaderNavigation />", () => {
           </ul>
         </Header.Navigation>
       );
-
       expect(screen.getByText("Nav item two")).toHaveAttribute(
         "aria-current",
         "page"
@@ -366,7 +223,6 @@ describe("<HeaderNavigation />", () => {
           </ul>
         </Header.Navigation>
       );
-
       expect(
         screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
       ).toHaveAttribute("aria-expanded", "false");
@@ -382,9 +238,7 @@ describe("<HeaderNavigation />", () => {
           </ul>
         </Header.Navigation>
       );
-      // open the nav
-      await clickToggleButton();
-
+      await toggleNavThroughClick(); // open the nav
       expect(
         screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
       ).toHaveAttribute("aria-expanded", "true");

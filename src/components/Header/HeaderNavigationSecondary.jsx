@@ -6,7 +6,6 @@ import Icon, { IconNames } from "../util/RivetIcons";
 import {
   isEscapeKeyPress,
   isMouseEvent,
-  isRightMouseClick,
   isTabKeyPress,
   targets,
 } from "../util/EventUtils";
@@ -24,7 +23,6 @@ const HeaderNavigationSecondary = ({
   const [isExpanded, setIsExpanded] = React.useState(false);
 
   const wrapperDivRef = useRef(null);
-  const toggleButtonRef = useRef(null);
 
   useEffect(() => {
     handleEventRegistration();
@@ -40,10 +38,6 @@ const HeaderNavigationSecondary = ({
   const handleEvent = (event) => {
     if (event && shouldToggleNavigation(event)) {
       toggleNavigation(event);
-      // if menu is being closed through an escape key press, put focus back on the toggle button
-      if (isEscapeKeyPress(event)) {
-        toggleButtonRef.current.focus();
-      }
     }
   };
 
@@ -51,7 +45,6 @@ const HeaderNavigationSecondary = ({
 
   const shouldToggleNavigation = (event) => {
     if (
-      isRightMouseClick(event) ||
       isUnhandledKeyPress(event) ||
       isTabKeyPress(event) ||
       (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event)) ||
@@ -59,7 +52,6 @@ const HeaderNavigationSecondary = ({
     ) {
       return false;
     }
-
     return true;
   };
 
@@ -82,7 +74,6 @@ const HeaderNavigationSecondary = ({
             {title}
           </a>
           <button
-            ref={toggleButtonRef}
             aria-expanded={isExpanded}
             className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
             onClick={toggleNavigation}

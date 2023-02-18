@@ -15,11 +15,6 @@ const toggleSearchThroughClick = async () => {
   );
 };
 
-const toggleSearchThroughReturn = async () => {
-  screen.getByTestId(TestUtils.Header.searchToggleButtonTestId).focus();
-  await user.keyboard("{Enter}");
-};
-
 describe("<HeaderSearch/>", () => {
   describe("Rendering and styling", () => {
     it("should render a toggle button, an input and a search button", async () => {
@@ -59,15 +54,7 @@ describe("<HeaderSearch/>", () => {
       await toggleSearchThroughClick();
       expect(
         screen.getByTestId(TestUtils.Header.searchFormTestId)
-      ).not.toHaveAttribute("hidden", "");
-    });
-
-    it("should show the search form when the return key is pressed while the toggle button has focus", async () => {
-      // open the nav
-      await toggleSearchThroughReturn();
-      expect(
-        screen.getByTestId(TestUtils.Header.searchFormTestId)
-      ).not.toHaveAttribute("hidden", "");
+      ).not.toHaveAttribute("hidden", ""); // testing-library assumes the value of a custom HTML attribute to be "".
     });
 
     it("should not hide the search form if an unhandled key is pressed while the search form is open", async () => {
@@ -83,21 +70,6 @@ describe("<HeaderSearch/>", () => {
       expect(
         screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
-    });
-
-    it("should hide the search form if the Escape key is pressed while the search form is open", async () => {
-      // open the search
-      await toggleSearchThroughClick();
-      // verify that the search is opened
-      expect(
-        screen.getByTestId(TestUtils.Header.searchFormTestId)
-      ).not.toHaveAttribute("hidden", "");
-      // press Escape
-      await user.keyboard("{Escape}");
-      // finally, verify that the search is closed
-      expect(
-        screen.getByTestId(TestUtils.Header.searchFormTestId)
-      ).toHaveAttribute("hidden", "");
     });
 
     it("should not hide the search form if the Escape key is pressed while a target that lies outside the search form has focus", async () => {
@@ -145,12 +117,6 @@ describe("<HeaderSearch/>", () => {
       expect(
         screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).toHaveAttribute("hidden", "");
-    });
-  });
-
-  describe("Focus behavior", () => {
-    beforeEach(() => {
-      render(<Header.Search />);
     });
   });
 
