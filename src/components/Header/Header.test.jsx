@@ -181,7 +181,6 @@ describe("<Header />", () => {
       expect(
         screen.getByTestId(TestUtils.Header.searchFormTestId)
       ).not.toHaveAttribute("hidden", "");
-
       // open HeaderMenu
       await clickHeaderMenuToggleButton();
       // assert that HeaderSearch is not open
@@ -197,7 +196,6 @@ describe("<Header />", () => {
       expect(
         screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
-
       // open HeaderSearch
       await clickSearchToggleButton();
       // assert that HeaderMenu is not open
@@ -213,7 +211,6 @@ describe("<Header />", () => {
       expect(
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).not.toHaveAttribute("hidden", "");
-
       // open HeaderSearch
       await clickSearchToggleButton();
       // assert that HeaderNavigation is not open
@@ -229,7 +226,6 @@ describe("<Header />", () => {
       expect(
         screen.getByTestId(TestUtils.Header.secondaryNavTestId)
       ).not.toHaveAttribute("hidden", "");
-
       // open HeaderSearch
       await clickSearchToggleButton();
       // assert that HeaderNavigationSecondary is not open

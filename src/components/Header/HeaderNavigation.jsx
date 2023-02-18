@@ -11,7 +11,6 @@ import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import {
   isEscapeKeyPress,
   isMouseEvent,
-  isRightMouseClick,
   isTabKeyPress,
   targets,
 } from "../util/EventUtils";
@@ -22,7 +21,6 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
   const wrapperDivRef = useRef(null);
-  const toggleButtonRef = useRef(null);
 
   useEffect(() => {
     handleEventRegistration();
@@ -38,10 +36,6 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   const handleEvent = (event) => {
     if (event && shouldToggleNavigation(event)) {
       toggleNavigation(event);
-      // if menu is being closed through an escape key press, put focus back on the toggle button
-      if (isEscapeKeyPress(event)) {
-        toggleButtonRef.current.focus();
-      }
     }
   };
 
@@ -49,7 +43,6 @@ const HeaderNavigation = ({ children, ...attrs }) => {
 
   const shouldToggleNavigation = (event) => {
     if (
-      isRightMouseClick(event) ||
       isUnhandledKeyPress(event) ||
       isTabKeyPress(event) ||
       (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event)) ||
@@ -57,7 +50,6 @@ const HeaderNavigation = ({ children, ...attrs }) => {
     ) {
       return false;
     }
-
     return true;
   };
 
@@ -72,7 +64,6 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   return (
     <div ref={wrapperDivRef}>
       <button
-        ref={toggleButtonRef}
         aria-expanded={isNavMenuOpen}
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
         onClick={toggleNavigation}
