@@ -188,6 +188,18 @@ describe("<HeaderMenu/>", () => {
       );
     });
 
+    it("should put focus back on the toggle button, if menu is closed through the Escape key", async () => {
+      await toggleMenuThroughClick(); // open the menu
+      // verify focus is not on the toggle button
+      expect(screen.getByText("Sub item one")).toHaveFocus();
+      // press Escape
+      await user.keyboard("{Escape}");
+      // verify focus is now on the toggle button
+      expect(
+        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId)
+      ).toHaveFocus();
+    });
+
     it("should move focus to the first menu item when the menu is opened", async () => {
       await toggleMenuThroughClick(); // open the menu
       expect(screen.getByText("Sub item one")).toHaveFocus();
