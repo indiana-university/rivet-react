@@ -4,7 +4,7 @@ import { HeaderMenu } from "./index";
 import classNames from "classnames";
 import { TestUtils } from "../util/TestUtils";
 
-const renderHeaderListItem = (child) => {
+const renderHeaderNavListItem = (child) => {
   const isListItemCurrent = child.props["data-rvt-c-header-nav-item__current"];
 
   let childrenWithProps = React.Children.map(child.props.children, (child) => {
@@ -36,10 +36,10 @@ const renderHeaderListItem = (child) => {
   );
 };
 
-export const renderHeaderUnorderedList = (child) => {
+export const renderHeaderNavUnorderedList = (child) => {
   let listItems = React.Children.map(
     child.props.children,
-    renderHeaderListItem
+    renderHeaderNavListItem
   );
   return <ul className={"rvt-header-menu__list"}>{listItems}</ul>;
 };
