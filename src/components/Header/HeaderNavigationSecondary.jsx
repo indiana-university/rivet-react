@@ -11,7 +11,7 @@ import {
 } from "../util/EventUtils";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import { TestUtils } from "../util/TestUtils";
-import { renderHeaderUnorderedList } from "./childUtils";
+import { renderHeaderNavUnorderedList } from "./childUtils";
 
 const HeaderNavigationSecondary = ({
   navWidth = "xl",
@@ -88,7 +88,7 @@ const HeaderNavigationSecondary = ({
             hidden={!isExpanded}
             data-testid={TestUtils.Header.secondaryNavTestId}
           >
-            {React.Children.map(children, renderHeaderUnorderedList)}
+            {React.Children.map(children, renderHeaderNavUnorderedList)}
           </nav>
         </div>
       </div>

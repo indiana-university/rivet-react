@@ -15,7 +15,7 @@ import {
   targets,
 } from "../util/EventUtils";
 import { TestUtils } from "../util/TestUtils";
-import { renderHeaderUnorderedList } from "./childUtils";
+import { renderHeaderNavUnorderedList } from "./childUtils";
 
 const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
@@ -79,7 +79,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
         hidden={!isNavMenuOpen}
         data-testid={TestUtils.Header.headerNavTestId}
       >
-        {React.Children.map(children, renderHeaderUnorderedList)}
+        {React.Children.map(children, renderHeaderNavUnorderedList)}
       </nav>
     </div>
   );
