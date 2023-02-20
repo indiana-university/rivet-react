@@ -7,7 +7,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 
 import Icon, { IconNames } from "../util/RivetIcons";
-import { findFirstChildOfType, hasChildOfType } from "../util/childUtils";
+import { findFirstChildOfType } from "../util/childUtils";
 import * as Rivet from "../util/Rivet";
 import HeaderNavigationSecondary from "./HeaderNavigationSecondary";
 import HeaderNavigation from "./HeaderNavigation";
@@ -26,22 +26,18 @@ const Header = ({
   href = "#",
   ...attrs
 }) => {
-  const hasSecondaryNav = hasChildOfType(
+  const headerSearchChild = findFirstChildOfType(
+    children,
+    HeaderSearch.displayName
+  );
+  const headerNavChild = findFirstChildOfType(
+    children,
+    HeaderNavigation.displayName
+  );
+  const secondaryNavChild = findFirstChildOfType(
     children,
     HeaderNavigationSecondary.displayName
   );
-  const secondaryNavChild =
-    hasSecondaryNav &&
-    findFirstChildOfType(children, HeaderNavigationSecondary.displayName);
-
-  let innerChildren; // inner children are HeaderNavigation and HeaderSearch
-
-  if (typeof children === "object" && !Array.isArray(children)) {
-    innerChildren = !hasSecondaryNav && children;
-  } else {
-    innerChildren =
-      children && children.filter((child) => child !== secondaryNavChild);
-  }
 
   return (
     <header {...attrs} className={classNames(componentClass, className)}>
@@ -73,7 +69,10 @@ const Header = ({
                 </div>
               </a>
             </div>
-            <div className="rvt-header-global__controls">{innerChildren}</div>
+            <div className="rvt-header-global__controls">
+              <>{headerNavChild}</>
+              <>{headerSearchChild}</>
+            </div>
           </div>
         </div>
       </div>

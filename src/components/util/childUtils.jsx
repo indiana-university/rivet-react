@@ -7,24 +7,12 @@ import getDisplayName from "react-display-name";
 
 export const findFirstChildOfType = (children, componentDisplayName) => {
   let firstChild;
-
-  if (typeof children === "object" && !Array.isArray(children)) {
-    let displayName =
-      children && children["type"] && getDisplayName(children["type"]);
-    return displayName === componentDisplayName ? children : undefined;
-  }
-
-  for (const child of children || []) {
-    if (firstChild) {
-      break;
-    } else {
-      const childType = child && child["type"] && getDisplayName(child["type"]);
-      if (childType === componentDisplayName) {
-        firstChild = child;
-      }
+  React.Children.map(children, (child) => {
+    let displayName = child && child["type"] && getDisplayName(child["type"]);
+    if (!firstChild && displayName === componentDisplayName) {
+      firstChild = child;
     }
-  }
-
+  });
   return firstChild;
 };
 
