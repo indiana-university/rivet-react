@@ -139,7 +139,6 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
         <a
           className="rvt-header-menu__link"
           href={href}
-          onClick={(e) => toggleMenu(e)}
           {...(current && { "aria-current": "page" })}
         >
           {label}
