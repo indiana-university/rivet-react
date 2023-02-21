@@ -3,6 +3,7 @@ import getDisplayName from "react-display-name";
 import { HeaderMenu } from "./index";
 import classNames from "classnames";
 import { TestUtils } from "../util/TestUtils";
+import HeaderAvatar from "./HeaderAvatar";
 
 const renderHeaderNavListItem = (child) => {
   const isListItemCurrent = child.props["data-rvt-c-header-nav-item__current"];
@@ -37,6 +38,11 @@ const renderHeaderNavListItem = (child) => {
 };
 
 export const renderHeaderNavUnorderedList = (child) => {
+  const childType = child && child.type;
+  if (getDisplayName(childType) === HeaderAvatar.displayName) {
+    return <></>;
+  }
+
   let listItems = React.Children.map(
     child.props.children,
     renderHeaderNavListItem

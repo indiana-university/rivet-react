@@ -14,6 +14,7 @@ import HeaderNavigation from "./HeaderNavigation";
 import HeaderSearch from "./HeaderSearch";
 import HeaderMenu from "./HeaderMenu";
 import { TestUtils } from "../util/TestUtils";
+import HeaderAvatar from "./HeaderAvatar";
 
 const componentClass = "rvt-header-wrapper";
 
@@ -82,6 +83,7 @@ const Header = ({
 };
 
 Header.Navigation = HeaderNavigation;
+Header.Avatar = HeaderAvatar;
 Header.Menu = HeaderMenu;
 Header.Search = HeaderSearch;
 Header.NavigationSecondary = HeaderNavigationSecondary;

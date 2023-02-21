@@ -16,6 +16,8 @@ import {
 } from "../util/EventUtils";
 import { TestUtils } from "../util/TestUtils";
 import { renderHeaderNavUnorderedList } from "./childUtils";
+import { findFirstChildOfType } from "../util/childUtils";
+import HeaderAvatar from "./HeaderAvatar";
 
 const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
@@ -28,6 +30,8 @@ const HeaderNavigation = ({ children, ...attrs }) => {
       eventHandler.deregister();
     };
   });
+
+  const avatarChild = findFirstChildOfType(children, HeaderAvatar.displayName);
 
   const toggleNavigation = () => {
     setIsNavMenuOpen(!isNavMenuOpen);
@@ -80,6 +84,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
         data-testid={TestUtils.Header.headerNavTestId}
       >
         {React.Children.map(children, renderHeaderNavUnorderedList)}
+        {avatarChild}
       </nav>
     </div>
   );
