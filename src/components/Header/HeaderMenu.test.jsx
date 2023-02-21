@@ -84,7 +84,7 @@ describe("<HeaderMenu/>", () => {
     });
 
     it("should default the label prop, if not provided", () => {
-      render(<Header.Menu></Header.Menu>);
+      render(<Header.Menu />);
       expect(screen.getAllByRole("link")[0]).toHaveTextContent("Label");
     });
   });
