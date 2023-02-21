@@ -28,6 +28,8 @@ const HeaderMenu = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [focusedItemIndex, setFocusedItemIndex] = useState(null);
+  const [isArrowDownPressed, setIsArrowDownPressed] = useState(false);
+  const [isArrowUpPressed, setIsArrowUpPressed] = useState(false);
 
   const menuItemsRef = useRef(null);
   const wrapperDivRef = useRef(null);
@@ -77,6 +79,8 @@ const HeaderMenu = ({
 
   const shouldToggleMenu = (event) => {
     if (
+      isArrowDownKeyPress(event) ||
+      isArrowUpKeyPress(event) ||
       isUnhandledKeyPress(event) ||
       isTabKeyPress(event) ||
       (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
@@ -91,6 +95,19 @@ const HeaderMenu = ({
       eventHandler.register();
     } else {
       eventHandler.deregister();
+    }
+  };
+
+  const handleArrowKeyPress = (event) => {
+    if (isArrowDownKeyPress(event)) {
+      focusMenuItem(
+        focusedItemIndex === children.length - 1 ? 0 : focusedItemIndex + 1
+      );
+    }
+    if (isArrowUpKeyPress(event)) {
+      focusMenuItem(
+        focusedItemIndex === 0 ? children.length - 1 : focusedItemIndex - 1
+      );
     }
   };
 
@@ -111,23 +128,15 @@ const HeaderMenu = ({
                   map.delete(index);
                 }
               },
+              onKeyDown: (event) => {
+                handleArrowKeyPress(event);
+                setIsArrowDownPressed(true);
+              },
               onKeyUp: (event) => {
-                if (Array.isArray(children)) {
-                  if (isArrowDownKeyPress(event)) {
-                    focusMenuItem(
-                      focusedItemIndex === children.length - 1
-                        ? 0
-                        : focusedItemIndex + 1
-                    );
-                  }
-                  if (isArrowUpKeyPress(event)) {
-                    focusMenuItem(
-                      focusedItemIndex === 0
-                        ? children.length - 1
-                        : focusedItemIndex - 1
-                    );
-                  }
+                if (!isArrowDownPressed) {
+                  handleArrowKeyPress(event);
                 }
+                setIsArrowDownPressed(false);
               },
             })
           : child}

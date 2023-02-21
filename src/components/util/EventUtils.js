@@ -29,7 +29,7 @@ export const handler = (callback, InstantiatingClass) => {
 };
 
 export const isKeyEvent = (event) => {
-  return event.type === "keyup";
+  return event.type === "keydown" || event.type === "keyup";
 };
 
 export const isTabKeyPress = (event) => {
