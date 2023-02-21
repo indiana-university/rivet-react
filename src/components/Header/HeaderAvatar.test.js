@@ -20,10 +20,10 @@ describe("<HeaderAvatar/>", () => {
       );
 
       expect(
-        screen.getByTestId(TestUtils.Header.avatarUsername)
+        screen.getByTestId(TestUtils.Header.avatarUsernameTestId)
       ).toHaveTextContent(username);
       expect(
-        screen.getByTestId(TestUtils.Header.avatarShortName)
+        screen.getByTestId(TestUtils.Header.avatarShortNameTestId)
       ).toHaveTextContent(shortName);
       expect(screen.getByRole("link")).toHaveAttribute("href", link);
     });
