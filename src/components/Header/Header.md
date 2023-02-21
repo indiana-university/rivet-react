@@ -59,6 +59,29 @@ Header with Primary Navigation:
 ```
 <!-- prettier-ignore-end -->
 
+Header with Primary Navigation and Avatar:
+
+<!-- prettier-ignore-start -->
+```jsx
+<Header title="Application Title">
+  <Header.Navigation>
+    <ul>
+      <li><a href="#">Nav item one</a></li>
+      <li><a href="#">Nav item two</a></li>
+      <li data-rvt-c-header-nav-item__current>
+        <Header.Menu label="Nav item three">
+          <a href="#">Sub item one</a>
+          <a href="#">Sub item two</a>
+          <a href="#">Sub item three</a>
+        </Header.Menu>
+      </li>
+    </ul>
+    <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"} />
+  </Header.Navigation>
+</Header>
+```
+<!-- prettier-ignore-end -->
+
 Header with Search:
 
 <!-- prettier-ignore-start -->
@@ -92,7 +115,7 @@ Header with Primary Navigation and Search:
 ```
 <!-- prettier-ignore-end -->
 
-Header with Primary Navigation, Search and Secondary Navigation:
+Header with Primary Navigation, Search, Avatar and Secondary Navigation:
 
 <!-- prettier-ignore-start -->
 ```jsx
@@ -109,6 +132,7 @@ Header with Primary Navigation, Search and Secondary Navigation:
         </Header.Menu>
       </li>
     </ul>
+    <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"} />
   </Header.Navigation>
   <Header.Search action={"/mySearchURL"} method={"post"}/>
   <Header.NavigationSecondary title={"Component Library"}>
