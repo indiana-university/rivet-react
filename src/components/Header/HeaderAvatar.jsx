@@ -14,14 +14,14 @@ const HeaderAvatar = ({ username, shortName, logoutURL = "#0" }) => {
       <div className="rvt-avatar rvt-avatar--xs">
         <span
           className="rvt-avatar__text"
-          data-testid={TestUtils.Header.avatarShortName}
+          data-testid={TestUtils.Header.avatarShortNameTestId}
         >
           {shortName}
         </span>
       </div>
       <div
         className="rvt-ts-14 rvt-m-left-xs rvt-p-right-xs rvt-m-right-xs rvt-border-right"
-        data-testid={TestUtils.Header.avatarUsername}
+        data-testid={TestUtils.Header.avatarUsernameTestId}
       >
         {username}
       </div>
