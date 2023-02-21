@@ -65,11 +65,6 @@ describe("<HeaderMenu/>", () => {
       expect(screen.getAllByRole("link")[0]).toHaveAttribute("href", testHref);
     });
 
-    it("should default the label anchor's href prop to #, if not provided", () => {
-      render(<Header.Menu label="Nav item"></Header.Menu>);
-      expect(screen.getAllByRole("link")[0]).toHaveAttribute("href", "#");
-    });
-
     it("should hide the menu items by default", () => {
       render(
         <Header.Menu label="Label">
@@ -79,6 +74,18 @@ describe("<HeaderMenu/>", () => {
       expect(
         screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
       ).toHaveAttribute("hidden", ""); // testing-library assumes the value of a custom HTML attribute to be "".
+    });
+  });
+
+  describe("Defaulting props", () => {
+    it("should default the label anchor's href prop to #, if not provided", () => {
+      render(<Header.Menu label="Nav item"></Header.Menu>);
+      expect(screen.getAllByRole("link")[0]).toHaveAttribute("href", "#");
+    });
+
+    it("should default the label prop, if not provided", () => {
+      render(<Header.Menu></Header.Menu>);
+      expect(screen.getAllByRole("link")[0]).toHaveTextContent("Label");
     });
   });
 

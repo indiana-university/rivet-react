@@ -87,6 +87,10 @@ describe("<HeaderNavigationSecondary/>", () => {
         screen.getByTestId(TestUtils.Header.secondaryNavContainerTestId)
       ).toHaveClass("rvt-container-xl");
     });
+
+    it("should default the title prop, if not provided", () => {
+      expect(screen.getByRole("link")).toHaveTextContent("Title");
+    });
   });
 
   describe("Toggle behavior", () => {

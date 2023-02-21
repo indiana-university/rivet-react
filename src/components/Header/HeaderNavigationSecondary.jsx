@@ -15,7 +15,7 @@ import { renderHeaderNavUnorderedList } from "./childUtils";
 
 const HeaderNavigationSecondary = ({
   navWidth = "xl",
-  title,
+  title = "Title",
   href = "#",
   children,
   ...attrs
