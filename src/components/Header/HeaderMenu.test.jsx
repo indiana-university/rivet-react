@@ -122,6 +122,36 @@ describe("<HeaderMenu/>", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
+    it("should not hide the menu if the Arrow Up key is pressed while the menu is open", async () => {
+      // open the menu
+      await toggleMenuThroughClick();
+      // verify that the menu is opened
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+      ).not.toHaveAttribute("hidden", "");
+      // press ArrowUp
+      await user.keyboard("{ArrowUp}");
+      // finally, verify that the menu is not closed
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+      ).not.toHaveAttribute("hidden", "");
+    });
+
+    it("should not hide the menu if the Arrow Down key is pressed while the menu is open", async () => {
+      // open the menu
+      await toggleMenuThroughClick();
+      // verify that the menu is opened
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+      ).not.toHaveAttribute("hidden", "");
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      // finally, verify that the menu is not closed
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+      ).not.toHaveAttribute("hidden", "");
+    });
+
     it("should not hide the menu if an unhandled key is pressed while the menu is open", async () => {
       // open the menu
       await toggleMenuThroughClick();
