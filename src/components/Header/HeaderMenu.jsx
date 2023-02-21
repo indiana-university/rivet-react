@@ -29,7 +29,6 @@ const HeaderMenu = ({
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [focusedItemIndex, setFocusedItemIndex] = useState(null);
   const [isArrowDownPressed, setIsArrowDownPressed] = useState(false);
-  const [isArrowUpPressed, setIsArrowUpPressed] = useState(false);
 
   const menuItemsRef = useRef(null);
   const wrapperDivRef = useRef(null);
