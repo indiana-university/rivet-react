@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from "react";
 import { handler } from "../Header/HeaderEventUtils.js";
 import {
   isArrowDownKeyPress,
+  isArrowKeyPress,
   isArrowUpKeyPress,
   isEscapeKeyPress,
   isTabKeyPress,
@@ -70,7 +71,7 @@ const HeaderMenu = ({
       if (isEscapeKeyPress(event)) {
         toggleButtonRef.current.focus();
       }
-    } else if (isArrowUpKeyPress(event) || isArrowDownKeyPress(event)) {
+    } else if (isArrowKeyPress(event)) {
       handleArrowKeyPress(event);
     }
   };
@@ -79,8 +80,7 @@ const HeaderMenu = ({
 
   const shouldToggleMenu = (event) => {
     if (
-      isArrowDownKeyPress(event) ||
-      isArrowUpKeyPress(event) ||
+      isArrowKeyPress(event) ||
       isUnhandledKeyPress(event) ||
       isTabKeyPress(event) ||
       (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))

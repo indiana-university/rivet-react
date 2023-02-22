@@ -40,6 +40,9 @@ export const isEscapeKeyPress = (event) => {
   return isKeyEvent(event) && event.key === keys.escape;
 };
 
+export const isArrowKeyPress = (event) =>
+  isArrowUpKeyPress(event) || isArrowDownKeyPress(event);
+
 export const isArrowUpKeyPress = (event) => {
   return isKeyEvent(event) && event.key === keys.arrowUp;
 };
