@@ -23,6 +23,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
   const wrapperDivRef = useRef(null);
+  const toggleButtonRef = useRef(null);
 
   useEffect(() => {
     handleEventRegistration();
@@ -40,6 +41,9 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   const handleEvent = (event) => {
     if (event && shouldToggleNavigation(event)) {
       toggleNavigation(event);
+      if (isEscapeKeyPress(event)) {
+        toggleButtonRef.current.focus();
+      }
     }
   };
 
@@ -72,6 +76,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
         onClick={toggleNavigation}
         data-testid={TestUtils.Header.navButtonToggleTestId}
+        ref={toggleButtonRef}
       >
         <span className="rvt-sr-only">Menu</span>
         <Icon name={IconNames.TOGGLE_OPEN} />

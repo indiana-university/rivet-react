@@ -172,6 +172,37 @@ describe("<HeaderNavigation />", () => {
     });
   });
 
+  describe("Focus behavior", () => {
+    beforeEach(() => {
+      render(
+        <Header.Navigation>
+          <ul>
+            <li>
+              <a href={"#"}>Nav item one</a>
+            </li>
+          </ul>
+        </Header.Navigation>
+      );
+    });
+
+    it("moves focus back to the toggle button, if the nav is closed by pressing Escape while an item inside the nav has focus", async () => {
+      // open the nav
+      await toggleNavThroughClick();
+      // move focus to an item inside nav
+      screen.getByRole("link").focus();
+      // assert that focus is not on the toggle button
+      expect(
+        screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
+      ).not.toHaveFocus();
+      // close the nav by pressing Escape
+      await user.keyboard("{Escape}");
+      // assert that focus is on the toggle button
+      expect(
+        screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
+      ).toHaveFocus();
+    });
+  });
+
   describe("Accessibility", () => {
     it("should apply the aria-current attribute with value 'page' on an anchor nav item that is wrapped in an <li> with the data-rvt-c-header-nav-item__current attribute", () => {
       render(
