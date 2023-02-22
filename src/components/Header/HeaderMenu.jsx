@@ -28,7 +28,6 @@ const HeaderMenu = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [focusedItemIndex, setFocusedItemIndex] = useState(null);
-  const [isArrowDownPressed, setIsArrowDownPressed] = useState(false);
 
   const menuItemsRef = useRef(null);
   const wrapperDivRef = useRef(null);
@@ -65,12 +64,14 @@ const HeaderMenu = ({
   };
 
   const handleEvent = (event) => {
-    if (event && shouldToggleMenu(event)) {
+    if (shouldToggleMenu(event)) {
       toggleMenu(event);
       // if menu is being closed through an escape key press, put focus back on the toggle button
       if (isEscapeKeyPress(event)) {
         toggleButtonRef.current.focus();
       }
+    } else if (isArrowUpKeyPress(event) || isArrowDownKeyPress(event)) {
+      handleArrowKeyPress(event);
     }
   };
 
@@ -98,6 +99,9 @@ const HeaderMenu = ({
   };
 
   const handleArrowKeyPress = (event) => {
+    if (event.type === "keyup") {
+      return;
+    }
     if (isArrowDownKeyPress(event)) {
       focusMenuItem(
         focusedItemIndex === children.length - 1 ? 0 : focusedItemIndex + 1
@@ -126,16 +130,6 @@ const HeaderMenu = ({
                 } else {
                   map.delete(index);
                 }
-              },
-              onKeyDown: (event) => {
-                handleArrowKeyPress(event);
-                setIsArrowDownPressed(true);
-              },
-              onKeyUp: (event) => {
-                if (!isArrowDownPressed) {
-                  handleArrowKeyPress(event);
-                }
-                setIsArrowDownPressed(false);
               },
             })
           : child}
