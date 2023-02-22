@@ -60,6 +60,7 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
       data-rvt-disclosure="search"
       ref={wrapperDivRef}
       data-testid={TestUtils.Header.searchWrapperTestId}
+      onKeyDown={handleEvent}
     >
       <button
         className="rvt-global-toggle"

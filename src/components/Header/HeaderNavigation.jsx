@@ -66,7 +66,7 @@ const HeaderNavigation = ({ children, ...attrs }) => {
   };
 
   return (
-    <div ref={wrapperDivRef}>
+    <div ref={wrapperDivRef} onKeyDown={handleEvent}>
       <button
         aria-expanded={isNavMenuOpen}
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"

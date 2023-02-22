@@ -142,6 +142,7 @@ const HeaderMenu = ({
       className="rvt-header-menu__dropdown rvt-dropdown"
       ref={wrapperDivRef}
       data-testid={TestUtils.Header.menuContainerTestId}
+      onKeyDown={handleEvent}
     >
       <div className="rvt-header-menu__group">
         <a

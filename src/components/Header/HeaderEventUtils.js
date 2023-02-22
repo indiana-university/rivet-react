@@ -10,7 +10,7 @@ export const handler = (callback) => {
   };
   return {
     register: () => {
-      ["click", "keydown"].forEach((event) =>
+      ["click"].forEach((event) =>
         document.addEventListener(event, eventHandler)
       );
       ["touchstart"].forEach((event) =>
@@ -18,7 +18,7 @@ export const handler = (callback) => {
       );
     },
     deregister: () => {
-      ["click", "keydown"].forEach((event) =>
+      ["click"].forEach((event) =>
         document.removeEventListener(event, eventHandler)
       );
       ["touchstart"].forEach((event) =>

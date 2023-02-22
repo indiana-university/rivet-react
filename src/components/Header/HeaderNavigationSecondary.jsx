@@ -64,7 +64,11 @@ const HeaderNavigationSecondary = ({
   };
 
   return (
-    <div className="rvt-header-local" ref={wrapperDivRef}>
+    <div
+      className="rvt-header-local"
+      ref={wrapperDivRef}
+      onKeyDown={handleEvent}
+    >
       <div
         className={"rvt-container-" + navWidth}
         data-testid={TestUtils.Header.secondaryNavContainerTestId}
