@@ -95,6 +95,20 @@ describe("<Button />", () => {
       expect(button).not.toHaveClass("rvt-button");
       expect(button).toHaveClass("rvt-dropdown__toggle");
     });
+
+    it("should apply appropriate loading styling", () => {
+      render(<Button loading>Update settings</Button>);
+      const button = screen.getByRole("button", {});
+      expect(button).toBeVisible();
+      expect(button).toBeDisabled();
+      expect(button.attributes.getNamedItem("aria-busy").value).toBeTruthy();
+      expect(button).toHaveClass("rvt-button");
+      expect(button).toHaveClass("rvt-button--loading");
+      expect(screen.getByRole("buttonContent", {})).toHaveClass(
+        "rvt-button__content"
+      );
+      expect(screen.getByRole("loadingIndicator", {})).toBeVisible();
+    });
   });
 
   describe("Events", () => {

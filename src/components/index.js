@@ -9,5 +9,6 @@ export * from "./Checkbox/index.jsx";
 export * from "./Dropdown/index.jsx";
 export * from "./Grid/index.jsx";
 export * from "./Input/index.jsx";
+export * from "./LoadingIndicator/index.jsx";
 export * from "./RadioButton/index.jsx";
 export * from "./Table/index.jsx";
