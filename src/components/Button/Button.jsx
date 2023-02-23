@@ -61,10 +61,16 @@ const Button = ({
     aria-busy={loading}
     {...attrs}
   >
-    <span className="rvt-button__content" role="buttonContent">
-      {children}
-    </span>
-    {loading && <LoadingIndicator size="xs" />}
+    {loading ? (
+      <React.Fragment>
+        <span className="rvt-button__content" role="buttonContent">
+          {children}
+        </span>
+        <LoadingIndicator size="xs" />
+      </React.Fragment>
+    ) : (
+      <React.Fragment>{children}</React.Fragment>
+    )}
   </button>
 );
 

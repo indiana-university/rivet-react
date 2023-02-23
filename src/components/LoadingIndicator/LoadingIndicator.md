@@ -20,8 +20,6 @@ View the [Rivet documentation for Loading indicator](https://rivet.iu.edu/compon
   <LoadingIndicator size="lg"/>
 </div>
 
-<Button loading>
-  Update settings
-</Button>
+<Button loading>Update settings</Button>
 ```
 <!-- prettier-ignore-end -->

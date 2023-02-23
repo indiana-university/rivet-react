@@ -96,7 +96,7 @@ describe("<Button />", () => {
       expect(button).toHaveClass("rvt-dropdown__toggle");
     });
 
-    it("should apply appropriate loading styling", () => {
+    it("should apply loading styling", () => {
       render(<Button loading>Update settings</Button>);
       const button = screen.getByRole("button", {});
       expect(button).toBeVisible();
@@ -108,6 +108,13 @@ describe("<Button />", () => {
         "rvt-button__content"
       );
       expect(screen.getByRole("loadingIndicator", {})).toBeVisible();
+    });
+
+    it("should not apply loading styling when loading not true", () => {
+      render(<Button>Update settings</Button>);
+      expect(
+        screen.getByRole("button", { name: /Update settings/ }).innerHTML
+      ).not.toContain("span");
     });
   });
 
