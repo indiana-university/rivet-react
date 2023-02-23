@@ -33,6 +33,7 @@ const HeaderMenu = ({
   const menuItemsRef = useRef(null);
   const wrapperDivRef = useRef(null);
   const toggleButtonRef = useRef(null);
+  const menuAnchorRef = useRef(null);
 
   useEffect(() => {
     handleEventRegistration();
@@ -99,8 +100,18 @@ const HeaderMenu = ({
   };
 
   const handleArrowKeyPress = (event) => {
-    if (event.type === "keyup") {
-      event.preventDefault();
+    // no need to do anything if menu is closed
+    if (!isMenuOpen) {
+      return;
+    }
+    // if ArrowDown is pressed while focus is on anchor or toggle button, put focus on first menu item
+    if (
+      (event.target === toggleButtonRef.current ||
+        event.target === menuAnchorRef.current) &&
+      isArrowDownKeyPress(event)
+    ) {
+      focusMenuItem(0);
+      return;
     }
     if (isArrowDownKeyPress(event)) {
       focusMenuItem(
@@ -148,6 +159,8 @@ const HeaderMenu = ({
         <a
           className="rvt-header-menu__link"
           href={href}
+          ref={menuAnchorRef}
+          data-testid={TestUtils.Header.menuAnchorTestId}
           {...(current && { "aria-current": "page" })}
         >
           {label}

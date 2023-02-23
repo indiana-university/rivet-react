@@ -9,6 +9,7 @@ export const TestUtils = {
     searchWrapperTestId: "search-wrapper__testid",
     navButtonToggleTestId: "nav-button-toggle__testid",
     menuButtonToggleTestId: "menu-button-toggle__testid",
+    menuAnchorTestId: "menu-anchor-toggle__testid",
     menuContainerTestId: "menu-container__testid",
     menuItemsContainerTestId: "menu-items-container__testid",
     navListItemTestId: "nav-list-item__testid",

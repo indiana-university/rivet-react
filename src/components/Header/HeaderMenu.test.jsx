@@ -242,6 +242,24 @@ describe("<HeaderMenu/>", () => {
       expect(screen.getByText("Sub item one")).toHaveFocus();
     });
 
+    it("should move focus to the first menu item, if ArrowDown is pressed while the menu is open and the toggle button has focus", async () => {
+      await toggleMenuThroughClick(); // open the menu
+      // move focus to toggle button
+      screen.getByTestId(TestUtils.Header.menuButtonToggleTestId).focus();
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      expect(screen.getByText("Sub item one")).toHaveFocus();
+    });
+
+    it("should move focus to the first menu item, if ArrowDown is pressed while the menu is open and the menu anchor has focus", async () => {
+      await toggleMenuThroughClick(); // open the menu
+      // move focus to menu anchor
+      screen.getByTestId(TestUtils.Header.menuAnchorTestId).focus();
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      expect(screen.getByText("Sub item one")).toHaveFocus();
+    });
+
     it("should move focus to the next menu item when Arrow Up is pressed, and to the previous menu item when Arrow Down is pressed", async () => {
       await toggleMenuThroughClick(); // open the menu
       await user.keyboard("{ArrowDown}");
