@@ -112,6 +112,23 @@ describe("<SocialMediaFooter />", () => {
       );
     });
   });
+
+  describe("SocialMediaFooter_NoChildren", () => {
+    it("should render without error", async () => {
+      render(
+        <SocialMediaFooter data-testid="test" />
+      );
+
+      const component = await screen.findByTestId("test");
+      const container = component.children[0];
+      const header = container.children[0];
+      const list = container.children[1];
+
+      expect(header.nodeName).toBe("H2");
+      expect(header.innerHTML).toBe("Social media");
+      expect(list.children.length).toBe(0);
+    });
+  });
 });
 
 function checkBaseItem(component, id) {
