@@ -77,7 +77,7 @@ describe("<SocialMediaFooter />", () => {
   describe("SocialMediaFooter_MixListContent", () => {
     it("should render without error", async () => {
       render(
-        <SocialMediaFooter data-testid="test" id="testid" label="Test Links">
+        <SocialMediaFooter data-testid="test">
           Example Link 1<span>Example Link 2</span>
           {3}
           <SocialMediaFooterLink label="test" url="#">
@@ -92,11 +92,8 @@ describe("<SocialMediaFooter />", () => {
       const header = container.children[0];
       const list = container.children[1];
 
-      expect(component).toHaveAttribute("aria-labelledby", headerId);
-
       expect(header.nodeName).toBe("H2");
-      expect(header.id).toBe(headerId);
-      expect(header.innerHTML).toBe("Test Links");
+      expect(header.innerHTML).toBe("Social media");
 
       expect(list.children[0].nodeName).toBe("LI");
       expect(list.children[0].innerHTML).toBe("Example Link 1");

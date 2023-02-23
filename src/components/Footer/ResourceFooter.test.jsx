@@ -13,7 +13,7 @@ describe("<ResourceFooter />", () => {
   describe("ResourceFooter", () => {
     it("should render without error", async () => {
       render(
-        <ResourceFooter data-testid="test" id="testid">
+        <ResourceFooter data-testid="test">
           This is a block of example text
         </ResourceFooter>
       );

@@ -54,12 +54,30 @@ describe("<ResourceFooterLinkBlock />", () => {
           <li className="rvt-footer-resources__list-item">
             <a href="#">Example Link 2</a>
           </li>
-          <a href="#">Example Link 3</a>
+          <li>
+            <a href="#">Example Link 3</a>
+          </li>
         </ResourceFooterLinkBlock>
       );
 
       const component = await screen.findByTestId("test");
       checkBaseItem(component);
+    });
+  });
+
+  describe("ResourceFooterLinkBlock_NoChildren", () => {
+    it("should render without error", async () => {
+      render(
+        <ResourceFooterLinkBlock data-testid="test" label="Test Links" />
+      );
+
+      const component = await screen.findByTestId("test");
+      const header = component.children[0];
+      const list = component.children[1];
+
+      expect(header.nodeName).toBe("H3");
+      expect(header.innerHTML).toBe("Test Links");
+      expect(list.children.length).toBe(0);
     });
   });
 
