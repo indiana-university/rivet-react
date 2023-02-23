@@ -100,7 +100,7 @@ const HeaderMenu = ({
 
   const handleArrowKeyPress = (event) => {
     if (event.type === "keyup") {
-      return;
+      event.preventDefault();
     }
     if (isArrowDownKeyPress(event)) {
       focusMenuItem(
