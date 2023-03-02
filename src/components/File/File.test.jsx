@@ -10,10 +10,8 @@ import {
   waitFor,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import user from "@testing-library/user-event";
 import React from "react";
-import MyFile from "./File"; // Need to rename File component as we use native File object
-import { useReducer } from "react";
+import MyFile from "./File";
 
 describe("<File />", () => {
   const testId = "test-id";
@@ -88,8 +86,7 @@ describe("<File />", () => {
       expect(description.innerHTML).toBe("2 files selected");
     });
 
-    // TODO: Cannot get test to work, but works in browser
-    it.skip("should allow resetting if embedded in a form", async () => {
+    it("should allow resetting if embedded in a form", async () => {
       const fileName = "foo.txt";
       let fileObject = new File(["foo"], fileName, { type: "text/plain" });
       render(
@@ -115,7 +112,10 @@ describe("<File />", () => {
       const resetButton = await screen.findByTestId("reset-id");
       await waitFor(() => fireEvent.click(resetButton));
 
-      expect(description.innerHTML).toBe("No file selected");
+      setTimeout(function () {
+        expect(file.files.length).toBe(0);
+        expect(description.innerHTML).toBe("No file selected");
+      }, 1000);
     });
 
     it("calls the user defined onchange function if one is defined", async () => {
