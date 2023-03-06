@@ -101,21 +101,20 @@ describe("<File />", () => {
 
       expect(description.innerHTML).toBe("No file selected");
 
-      await waitFor(() =>
-        fireEvent.input(file, {
-          target: { files: [fileObject] },
-        })
-      );
+      fireEvent.input(file, {
+        target: { files: [fileObject] },
+      });
 
       expect(description.innerHTML).toBe(fileName);
 
       const resetButton = await screen.findByTestId("reset-id");
-      await waitFor(() => fireEvent.click(resetButton));
+      fireEvent.click(resetButton);
 
+      // setTimeout for React to do the extra rendering that we dispatched with forceUpdate in File.jsx
       setTimeout(function () {
         expect(file.files.length).toBe(0);
         expect(description.innerHTML).toBe("No file selected");
-      }, 1000);
+      }, 10);
     });
 
     it("calls the user defined onchange function if one is defined", async () => {

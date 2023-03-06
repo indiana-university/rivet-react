@@ -7,15 +7,9 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
 import Icon from "../util/RivetIcons";
+import { useReducer } from "react";
 
 const classPrefix = "rvt-file";
-
-function useForceUpdate() {
-  const [value, setValue] = React.useState(0); // integer state
-  return () => setValue((value) => value + 1); // update state to force render
-  // A function that increment 👆🏻 the previous state like here
-  // is better than directly setting `setValue(value + 1)`
-}
 
 const handleFileChange = (onChange, forceUpdate) => (changeEvent) => {
   if (onChange) {
@@ -34,14 +28,15 @@ const File = ({
   secondary,
   ...attrs
 }) => {
-  const forceUpdate = useForceUpdate();
+  // forceUpdate is used to force a rerender when the form is reset, which React won't
+  // do automatically since the HTML markup returned is not changing after the reset event
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
 
-  const fileInput = React.useRef(innerRef);
+  const fileInput = innerRef ? React.useRef(innerRef) : React.useRef(null);
 
   const form = fileInput.current && fileInput.current.form;
   if (form) {
     form.onreset = () => {
-      fileInput.current.value = "";
       forceUpdate();
     };
   }
@@ -72,7 +67,6 @@ const File = ({
         type="file"
         id={id}
         multiple={multiple}
-        data-rvt-file-input-button={id}
         aria-describedby={id + "-file-description"}
       />
       <label
