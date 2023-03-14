@@ -7,7 +7,6 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 
 import Icon, { IconNames } from "../util/RivetIcons";
-import { findFirstChildOfType } from "../util/childUtils";
 import * as Rivet from "../util/Rivet";
 import HeaderNavigationSecondary from "./HeaderNavigationSecondary";
 import HeaderNavigation from "./HeaderNavigation";
@@ -25,21 +24,11 @@ const Header = ({
   subtitle,
   headerWidth = "xl",
   href = "#",
+  navigation,
+  search,
+  secondaryNavigation,
   ...attrs
 }) => {
-  const headerSearchChild = findFirstChildOfType(
-    children,
-    HeaderSearch.displayName
-  );
-  const headerNavChild = findFirstChildOfType(
-    children,
-    HeaderNavigation.displayName
-  );
-  const secondaryNavChild = findFirstChildOfType(
-    children,
-    HeaderNavigationSecondary.displayName
-  );
-
   return (
     <header {...attrs} className={classNames(componentClass, className)}>
       <a
@@ -70,14 +59,16 @@ const Header = ({
                 </div>
               </a>
             </div>
-            <div className="rvt-header-global__controls">
-              <>{headerNavChild}</>
-              <>{headerSearchChild}</>
-            </div>
+            {(navigation || search) && (
+              <div className="rvt-header-global__controls">
+                <>{navigation}</>
+                <>{search}</>
+              </div>
+            )}
           </div>
         </div>
       </div>
-      {secondaryNavChild}
+      {secondaryNavigation}
     </header>
   );
 };
@@ -108,6 +99,12 @@ Header.propTypes = {
     "3-xl",
     "4-xl",
   ]),
+  /** The primary navigation component */
+  navigation: PropTypes.node,
+  /** The search component */
+  search: PropTypes.node,
+  /** The secondary navigation component */
+  secondaryNavigation: PropTypes.node,
 };
 
 export default Rivet.rivetize(Header);

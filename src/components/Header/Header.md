@@ -35,27 +35,27 @@ The width prop can be used to constrain the width of the header.
 ```
 <!-- prettier-ignore-end -->
 
-Header can also be provided the following components as children - [Header.Navigation](#/Navigation?id=headernavigation) which serves as the primary navigation for your site, [Header.Search](#/Navigation?id=headersearch) which provides a search functionality, and [Header.NavigationSecondary](#/Navigation?id=headernavigationsecondary) which serves as the secondary navigation.
+Header can also be provided the following components as props - [Header.Navigation](#/Navigation?id=headernavigation) which serves as the primary navigation for your site, [Header.Search](#/Navigation?id=headersearch) which provides a search functionality, and [Header.NavigationSecondary](#/Navigation?id=headernavigationsecondary) which serves as the secondary navigation.
 
 Header with Primary Navigation:
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title">
-  <Header.Navigation>
-    <ul>
-      <li><a href={"#"}>Nav item one</a></li>
-      <li data-rvt-c-header-nav-item__current><a href={"#"}>Nav item two</a></li>
-      <li>
-        <Header.Menu label="Nav item three">
-          <a href={"#"}>Sub item one</a>
-          <a href={"#"}>Sub item two</a>
-          <a href={"#"}>Sub item three</a>
-        </Header.Menu>
-      </li>
-    </ul>
-  </Header.Navigation>
-</Header>
+const navigation = <Header.Navigation>
+  <ul>
+    <li><a href={"#"}>Nav item one</a></li>
+    <li data-rvt-c-header-nav-item__current><a href={"#"}>Nav item two</a></li>
+    <li>
+      <Header.Menu label="Nav item three">
+        <a href={"#"}>Sub item one</a>
+        <a href={"#"}>Sub item two</a>
+        <a href={"#"}>Sub item three</a>
+      </Header.Menu>
+    </li>
+  </ul>
+</Header.Navigation>;
+
+<Header title="Application Title" navigation={navigation} />
 ```
 <!-- prettier-ignore-end -->
 
@@ -63,22 +63,22 @@ Header with Primary Navigation and Avatar:
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title">
-  <Header.Navigation>
-    <ul>
-      <li><a href="#">Nav item one</a></li>
-      <li><a href="#">Nav item two</a></li>
-      <li data-rvt-c-header-nav-item__current>
-        <Header.Menu label="Nav item three">
-          <a href="#">Sub item one</a>
-          <a href="#">Sub item two</a>
-          <a href="#">Sub item three</a>
-        </Header.Menu>
-      </li>
-    </ul>
-    <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"} />
-  </Header.Navigation>
-</Header>
+const avatar = <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"}/>
+const navigation = <Header.Navigation avatar={avatar}>
+  <ul>
+    <li><a href="#">Nav item one</a></li>
+    <li><a href="#">Nav item two</a></li>
+    <li data-rvt-c-header-nav-item__current>
+      <Header.Menu label="Nav item three">
+        <a href="#">Sub item one</a>
+        <a href="#">Sub item two</a>
+        <a href="#">Sub item three</a>
+      </Header.Menu>
+    </li>
+  </ul>
+</Header.Navigation>;
+
+<Header title="Application Title" navigation={navigation}/>
 ```
 <!-- prettier-ignore-end -->
 
@@ -86,9 +86,8 @@ Header with Search:
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title">
-  <Header.Search action={"/mySearchURL"} method={"post"}/>
-</Header>
+const search = <Header.Search action={"/mySearchURL"} method={"post"}/>;
+<Header title="Application Title" search={search} />
 ```
 <!-- prettier-ignore-end -->
 
@@ -96,22 +95,22 @@ Header with Primary Navigation and Search:
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title">
-  <Header.Navigation>
-    <ul>
-      <li><a href="#">Nav item one</a></li>
-      <li><a href="#">Nav item two</a></li>
-      <li data-rvt-c-header-nav-item__current>
-        <Header.Menu label="Nav item three">
-          <a href="#">Sub item one</a>
-          <a href="#">Sub item two</a>
-          <a href="#">Sub item three</a>
-        </Header.Menu>
-      </li>
-    </ul>
-  </Header.Navigation>
-  <Header.Search action={"/mySearchURL"} method={"post"}/>
-</Header>
+const navigation = <Header.Navigation>
+  <ul>
+    <li><a href="#">Nav item one</a></li>
+    <li><a href="#">Nav item two</a></li>
+    <li data-rvt-c-header-nav-item__current>
+      <Header.Menu label="Nav item three">
+        <a href="#">Sub item one</a>
+        <a href="#">Sub item two</a>
+        <a href="#">Sub item three</a>
+      </Header.Menu>
+    </li>
+  </ul>
+</Header.Navigation>;
+const search = <Header.Search action={"/mySearchURL"} method={"post"}/>;
+
+<Header title="Application Title" navigation={navigation} search={search} />
 ```
 <!-- prettier-ignore-end -->
 
@@ -119,34 +118,35 @@ Header with Primary Navigation, Search, Avatar and Secondary Navigation:
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title">
-  <Header.Navigation>
-    <ul>
-      <li><a href="#">Nav item one</a></li>
-      <li><a href="#">Nav item two</a></li>
-      <li data-rvt-c-header-nav-item__current>
-        <Header.Menu label="Nav item three">
-          <a href="#">Sub item one</a>
-          <a href="#">Sub item two</a>
-          <a href="#">Sub item three</a>
-        </Header.Menu>
-      </li>
-    </ul>
-    <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"} />
-  </Header.Navigation>
-  <Header.Search action={"/mySearchURL"} method={"post"}/>
-  <Header.NavigationSecondary title={"Component Library"}>
-    <ul>
-      <li><a href="#">Section item one</a></li>
-      <li data-rvt-c-header-nav-item__current>
-        <Header.Menu label="Section item two">
-          <a href="#">Sub tem one</a>
-          <a href="#">Sub item two</a>
-          <a href="#">Sub item three</a>
-        </Header.Menu>
-      </li>
-    </ul>
-  </Header.NavigationSecondary>
-</Header>
+const avatar = <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"}/>;
+const navigation = <Header.Navigation avatar={avatar}>
+  <ul>
+    <li><a href="#">Nav item one</a></li>
+    <li><a href="#">Nav item two</a></li>
+    <li data-rvt-c-header-nav-item__current>
+      <Header.Menu label="Nav item three">
+        <a href="#">Sub item one</a>
+        <a href="#">Sub item two</a>
+        <a href="#">Sub item three</a>
+      </Header.Menu>
+    </li>
+  </ul>
+</Header.Navigation>;
+const search = <Header.Search action={"/mySearchURL"} method={"post"}/>;
+const secondaryNavigation = <Header.NavigationSecondary title={"Component Library"}>
+  <ul>
+    <li><a href="#">Section item one</a></li>
+    <li data-rvt-c-header-nav-item__current>
+      <Header.Menu label="Section item two">
+        <a href="#">Sub tem one</a>
+        <a href="#">Sub item two</a>
+        <a href="#">Sub item three</a>
+      </Header.Menu>
+    </li>
+  </ul>
+</Header.NavigationSecondary>;
+
+<Header title="Application Title" navigation={navigation} search={search} secondaryNavigation={secondaryNavigation}/>
+
 ```
 <!-- prettier-ignore-end -->

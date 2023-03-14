@@ -16,10 +16,9 @@ import {
 } from "../util/EventUtils";
 import { TestUtils } from "../util/TestUtils";
 import { renderHeaderNavUnorderedList } from "./childUtils";
-import { findFirstChildOfType } from "../util/childUtils";
-import HeaderAvatar from "./HeaderAvatar";
+import PropTypes from "prop-types";
 
-const HeaderNavigation = ({ children, ...attrs }) => {
+const HeaderNavigation = ({ avatar, children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
   const wrapperDivRef = useRef(null);
@@ -31,8 +30,6 @@ const HeaderNavigation = ({ children, ...attrs }) => {
       eventHandler.deregister();
     };
   });
-
-  const avatarChild = findFirstChildOfType(children, HeaderAvatar.displayName);
 
   const toggleNavigation = () => {
     setIsNavMenuOpen(!isNavMenuOpen);
@@ -89,12 +86,17 @@ const HeaderNavigation = ({ children, ...attrs }) => {
         data-testid={TestUtils.Header.headerNavTestId}
       >
         {React.Children.map(children, renderHeaderNavUnorderedList)}
-        {avatarChild}
+        {avatar}
       </nav>
     </div>
   );
 };
 
 HeaderNavigation.displayName = "Header.Navigation";
+
+HeaderNavigation.propTypes = {
+  /** The Avatar component */
+  avatar: PropTypes.node,
+};
 
 export default Rivet.rivetize(HeaderNavigation);

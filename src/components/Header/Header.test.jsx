@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { prettyDOM, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import Header from "./Header";
@@ -67,42 +67,52 @@ describe("<Header />", () => {
     });
 
     it("should render all provided children", () => {
-      render(
-        <Header>
-          <Header.Navigation>
-            <ul>
-              <li>
-                <a href={"#"}>Nav item one</a>
-              </li>
-              <li data-rvt-c-header-nav-item__current>
-                <a href={"#"}>Nav item two</a>
-              </li>
-              <li>
-                <Header.Menu label="Nav item three">
-                  <a href={"#"}>Sub item one</a>
-                  <a href={"#"}>Sub item two</a>
-                  <a href={"#"}>Sub item three</a>
-                </Header.Menu>
-              </li>
-            </ul>
-          </Header.Navigation>
-          <Header.Search action={"/mySearchURL"} method={"post"} />
-          <Header.NavigationSecondary title={"Component Library"}>
-            <ul>
-              <li>
-                <a href="#">Section item one</a>
-              </li>
-              <li data-rvt-c-header-nav-item__current>
-                <Header.Menu label="Section item two">
-                  <a href="#">Secondary nav sub item one</a>
-                  <a href="#">Secondary nav sub item two</a>
-                  <a href="#">Secondary nav sub item three</a>
-                </Header.Menu>
-              </li>
-            </ul>
-          </Header.NavigationSecondary>
-        </Header>
+      const navigation = (
+        <Header.Navigation>
+          <ul>
+            <li>
+              <a href={"#"}>Nav item one</a>
+            </li>
+            <li data-rvt-c-header-nav-item__current>
+              <a href={"#"}>Nav item two</a>
+            </li>
+            <li>
+              <Header.Menu label="Nav item three">
+                <a href={"#"}>Sub item one</a>
+                <a href={"#"}>Sub item two</a>
+                <a href={"#"}>Sub item three</a>
+              </Header.Menu>
+            </li>
+          </ul>
+        </Header.Navigation>
       );
+      const search = <Header.Search action={"/mySearchURL"} method={"post"} />;
+      const secondaryNavigation = (
+        <Header.NavigationSecondary title={"Component Library"}>
+          <ul>
+            <li>
+              <a href="#">Section item one</a>
+            </li>
+            <li data-rvt-c-header-nav-item__current>
+              <Header.Menu label="Section item two">
+                <a href="#">Secondary nav sub item one</a>
+                <a href="#">Secondary nav sub item two</a>
+                <a href="#">Secondary nav sub item three</a>
+              </Header.Menu>
+            </li>
+          </ul>
+        </Header.NavigationSecondary>
+      );
+
+      render(
+        <Header
+          navigation={navigation}
+          search={search}
+          secondaryNavigation={secondaryNavigation}
+        />
+      );
+
+      console.log(prettyDOM(document.body));
 
       // assert Header Navigation elements are present in the DOM
       expect(screen.getByText("Nav item one")).toBeInTheDocument();
