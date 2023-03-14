@@ -14,9 +14,19 @@ const toggleNavThroughClick = async () => {
 
 describe("<HeaderNavigation />", () => {
   describe("Rendering and styling", () => {
+    const avatarUsername = "johndoe";
+    const avatarShortName = "jd";
+
     beforeEach(() => {
+      const avatar = (
+        <Header.Avatar
+          username={avatarUsername}
+          shortName={avatarShortName}
+          logoutURL={"/logout"}
+        />
+      );
       render(
-        <Header.Navigation>
+        <Header.Navigation avatar={avatar}>
           <ul>
             <li>
               <a href={"#"}>Nav item one</a>
@@ -43,6 +53,8 @@ describe("<HeaderNavigation />", () => {
       expect(screen.getByText("Sub item one")).toBeInTheDocument();
       expect(screen.getByText("Sub item two")).toBeInTheDocument();
       expect(screen.getByText("Sub item three")).toBeInTheDocument();
+      expect(screen.getByText(avatarUsername)).toBeInTheDocument();
+      expect(screen.getByText(avatarShortName)).toBeInTheDocument();
     });
 
     it("should apply appropriate styles on the nav item that is wrapped in an <li> with the data-rvt-c-header-nav-item__current attribute", () => {
