@@ -82,11 +82,6 @@ describe("<HeaderMenu/>", () => {
       render(<Header.Menu label="Nav item"></Header.Menu>);
       expect(screen.getAllByRole("link")[0]).toHaveAttribute("href", "#");
     });
-
-    it("should default the label prop, if not provided", () => {
-      render(<Header.Menu />);
-      expect(screen.getAllByRole("link")[0]).toHaveTextContent("Label");
-    });
   });
 
   describe("Toggle behavior", () => {

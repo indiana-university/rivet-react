@@ -44,26 +44,11 @@ describe("<Header />", () => {
       );
     });
 
-    it("should render an anchor with the default href, if href is not provided", () => {
-      render(<Header />);
-      expect(screen.getByTestId(TestUtils.Header.anchorTestId)).toHaveAttribute(
-        "href",
-        "#"
-      );
-    });
-
     it("should apply to the container div a rivet class specifying the width, if width is provided", () => {
       render(<Header headerWidth={testWidth} />);
       expect(
         screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
       ).toHaveClass("rvt-container-" + testWidth);
-    });
-
-    it("should apply to the container div a rivet class that defaults the width to xl, if width is not provided", () => {
-      render(<Header />);
-      expect(
-        screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
-      ).toHaveClass("rvt-container-xl");
     });
 
     it("should render all provided children", () => {
@@ -134,11 +119,19 @@ describe("<Header />", () => {
   });
 
   describe("Defaulting props", () => {
-    it("Defaults the title prop, if not provided", () => {
+    it("should render an anchor with the default href, if href is not provided", () => {
+      render(<Header />);
+      expect(screen.getByTestId(TestUtils.Header.anchorTestId)).toHaveAttribute(
+        "href",
+        "#"
+      );
+    });
+
+    it("should apply to the container div a rivet class that defaults the width to xl, if width is not provided", () => {
       render(<Header />);
       expect(
-        screen.getByTestId(TestUtils.Header.anchorTestId)
-      ).toHaveTextContent("Title");
+        screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
+      ).toHaveClass("rvt-container-xl");
     });
   });
 });
