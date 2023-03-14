@@ -106,7 +106,6 @@ describe("<Header />", () => {
 
       // assert Header Navigation elements are present in the DOM
       expect(screen.getByText("Nav item one")).toBeInTheDocument();
-      expect(screen.getByText("Nav item one")).toBeInTheDocument();
       expect(screen.getByText("Nav item three")).toBeInTheDocument();
       expect(screen.getByText("Sub item one")).toBeInTheDocument();
       expect(screen.getByText("Sub item two")).toBeInTheDocument();
