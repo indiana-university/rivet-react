@@ -41,9 +41,9 @@ const HeaderAvatar = ({ username, shortName, logoutURL }) => {
 HeaderAvatar.displayName = "Header.Avatar";
 HeaderAvatar.propTypes = {
   /** The user's username */
-  username: PropTypes.string,
+  username: PropTypes.string.isRequired,
   /** The user's initials */
-  shortName: PropTypes.string,
+  shortName: PropTypes.string.isRequired,
   /** The URL for the logout action */
   logoutURL: PropTypes.string,
 };
