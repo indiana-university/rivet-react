@@ -96,7 +96,7 @@ HeaderNavigation.displayName = "Header.Navigation";
 
 HeaderNavigation.propTypes = {
   /** The Avatar component */
-  avatar: PropTypes.node,
+  avatar: PropTypes.element,
 };
 
 export default Rivet.rivetize(HeaderNavigation);

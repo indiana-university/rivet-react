@@ -100,11 +100,11 @@ Header.propTypes = {
     "4-xl",
   ]),
   /** The primary navigation component */
-  navigation: PropTypes.node,
+  navigation: PropTypes.element,
   /** The search component */
-  search: PropTypes.node,
+  search: PropTypes.element,
   /** The secondary navigation component */
-  secondaryNavigation: PropTypes.node,
+  secondaryNavigation: PropTypes.element,
 };
 
 export default Rivet.rivetize(Header);
