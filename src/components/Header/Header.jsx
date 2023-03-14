@@ -20,7 +20,7 @@ const componentClass = "rvt-header-wrapper";
 const Header = ({
   children,
   className,
-  title = "Title",
+  title,
   subtitle,
   headerWidth = "xl",
   href = "#",

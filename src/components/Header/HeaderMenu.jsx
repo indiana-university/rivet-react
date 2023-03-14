@@ -20,13 +20,7 @@ import {
 import { isUnhandledKeyPress } from "../Header/HeaderEventUtils.js";
 import { TestUtils } from "../util/TestUtils";
 
-const HeaderMenu = ({
-  children,
-  label = "Label",
-  href = "#",
-  current,
-  ...attrs
-}) => {
+const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [focusedItemIndex, setFocusedItemIndex] = useState(null);
 
