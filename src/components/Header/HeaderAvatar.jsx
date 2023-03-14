@@ -8,7 +8,7 @@ import * as Rivet from "../util/Rivet";
 import PropTypes from "prop-types";
 import { TestUtils } from "../util/TestUtils";
 
-const HeaderAvatar = ({ username, shortName, logoutURL = "#0" }) => {
+const HeaderAvatar = ({ username, shortName, logoutURL }) => {
   return (
     <div className="rvt-flex rvt-items-center rvt-m-left-md rvt-p-bottom-md rvt-p-bottom-none-lg-up">
       <div className="rvt-avatar rvt-avatar--xs">
@@ -25,9 +25,15 @@ const HeaderAvatar = ({ username, shortName, logoutURL = "#0" }) => {
       >
         {username}
       </div>
-      <a href={logoutURL} className="rvt-ts-14">
-        Log out
-      </a>
+      {logoutURL && (
+        <a
+          href={logoutURL}
+          className="rvt-ts-14"
+          data-testid={"header-logout-link"}
+        >
+          Log out
+        </a>
+      )}
     </div>
   );
 };

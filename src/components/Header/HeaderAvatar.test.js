@@ -7,9 +7,10 @@ import { TestUtils } from "../util/TestUtils";
 
 describe("<HeaderAvatar/>", () => {
   describe("Rendering and styling", () => {
+    const username = "johndoe";
+    const shortName = "jd";
+
     it("should render the provided username, short name, and logout link", () => {
-      const username = "johndoe";
-      const shortName = "jd";
       const link = "/logout";
       render(
         <Header.Avatar
@@ -26,6 +27,12 @@ describe("<HeaderAvatar/>", () => {
         screen.getByTestId(TestUtils.Header.avatarShortNameTestId)
       ).toHaveTextContent(shortName);
       expect(screen.getByRole("link")).toHaveAttribute("href", link);
+    });
+
+    it("does not show logout anchor if logoutURL is not provided", () => {
+      render(<Header.Avatar username={username} shortName={shortName} />);
+
+      expect(screen.queryAllByRole("link")).toHaveLength(0);
     });
   });
 });
