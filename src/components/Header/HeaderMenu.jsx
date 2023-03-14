@@ -20,6 +20,18 @@ import {
 import { isUnhandledKeyPress } from "../Header/HeaderEventUtils.js";
 import { TestUtils } from "../util/TestUtils";
 
+const shouldToggleMenu = (event, wrapperDivRef) => {
+  if (
+    isArrowKeyPress(event) ||
+    isUnhandledKeyPress(event) ||
+    isTabKeyPress(event) ||
+    (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
+  ) {
+    return false;
+  }
+  return true;
+};
+
 const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [focusedItemIndex, setFocusedItemIndex] = useState(null);
@@ -60,7 +72,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   };
 
   const handleEvent = (event) => {
-    if (shouldToggleMenu(event)) {
+    if (shouldToggleMenu(event, wrapperDivRef)) {
       toggleMenu(event);
       // if menu is being closed through an escape key press, put focus back on the toggle button
       if (isEscapeKeyPress(event)) {
@@ -72,18 +84,6 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   };
 
   const eventHandler = handler(handleEvent);
-
-  const shouldToggleMenu = (event) => {
-    if (
-      isArrowKeyPress(event) ||
-      isUnhandledKeyPress(event) ||
-      isTabKeyPress(event) ||
-      (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
-    ) {
-      return false;
-    }
-    return true;
-  };
 
   const handleEventRegistration = () => {
     if (isMenuOpen) {

@@ -12,6 +12,17 @@ import { isEscapeKeyPress, isTabKeyPress, targets } from "../util/EventUtils";
 import { useEffect, useRef, useState } from "react";
 import { TestUtils } from "../util/TestUtils";
 
+const shouldToggleSearch = (event, wrapperDivRef) => {
+  if (
+    isUnhandledKeyPress(event) ||
+    isTabKeyPress(event) ||
+    (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
+  ) {
+    return false;
+  }
+  return true;
+};
+
 const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -28,19 +39,8 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
     setIsSearchOpen(!isSearchOpen);
   };
 
-  const shouldToggleSearch = (event) => {
-    if (
-      isUnhandledKeyPress(event) ||
-      isTabKeyPress(event) ||
-      (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
-    ) {
-      return false;
-    }
-    return true;
-  };
-
   const handleEvent = (event) => {
-    if (event && shouldToggleSearch(event)) {
+    if (event && shouldToggleSearch(event, wrapperDivRef)) {
       toggleSearch(event);
     }
   };

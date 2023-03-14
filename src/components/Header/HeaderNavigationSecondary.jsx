@@ -13,6 +13,18 @@ import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import { TestUtils } from "../util/TestUtils";
 import { renderHeaderNavUnorderedList } from "./childUtils";
 
+const shouldToggleNavigation = (event, wrapperDivRef) => {
+  if (
+    isUnhandledKeyPress(event) ||
+    isTabKeyPress(event) ||
+    (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event)) ||
+    (isMouseEvent(event) && targets(wrapperDivRef.current, event))
+  ) {
+    return false;
+  }
+  return true;
+};
+
 const HeaderNavigationSecondary = ({
   navWidth = "xl",
   title,
@@ -36,24 +48,12 @@ const HeaderNavigationSecondary = ({
   };
 
   const handleEvent = (event) => {
-    if (event && shouldToggleNavigation(event)) {
+    if (event && shouldToggleNavigation(event, wrapperDivRef)) {
       toggleNavigation(event);
     }
   };
 
   const eventHandler = handler(handleEvent);
-
-  const shouldToggleNavigation = (event) => {
-    if (
-      isUnhandledKeyPress(event) ||
-      isTabKeyPress(event) ||
-      (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event)) ||
-      (isMouseEvent(event) && targets(wrapperDivRef.current, event))
-    ) {
-      return false;
-    }
-    return true;
-  };
 
   const handleEventRegistration = () => {
     if (isExpanded) {

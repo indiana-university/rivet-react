@@ -18,6 +18,18 @@ import { TestUtils } from "../util/TestUtils";
 import { renderHeaderNavUnorderedList } from "./childUtils";
 import PropTypes from "prop-types";
 
+const shouldToggleNavigation = (event, wrapperDivRef) => {
+  if (
+    isUnhandledKeyPress(event) ||
+    isTabKeyPress(event) ||
+    (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event)) ||
+    (isMouseEvent(event) && targets(wrapperDivRef.current, event))
+  ) {
+    return false;
+  }
+  return true;
+};
+
 const HeaderNavigation = ({ avatar, children, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
@@ -36,7 +48,7 @@ const HeaderNavigation = ({ avatar, children, ...attrs }) => {
   };
 
   const handleEvent = (event) => {
-    if (event && shouldToggleNavigation(event)) {
+    if (event && shouldToggleNavigation(event, wrapperDivRef)) {
       toggleNavigation(event);
       if (isEscapeKeyPress(event)) {
         toggleButtonRef.current.focus();
@@ -45,18 +57,6 @@ const HeaderNavigation = ({ avatar, children, ...attrs }) => {
   };
 
   const eventHandler = handler(handleEvent);
-
-  const shouldToggleNavigation = (event) => {
-    if (
-      isUnhandledKeyPress(event) ||
-      isTabKeyPress(event) ||
-      (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event)) ||
-      (isMouseEvent(event) && targets(wrapperDivRef.current, event))
-    ) {
-      return false;
-    }
-    return true;
-  };
 
   const handleEventRegistration = () => {
     if (isNavMenuOpen) {
