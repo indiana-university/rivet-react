@@ -286,6 +286,26 @@ describe("<HeaderMenu/>", () => {
       await user.keyboard("{ArrowUp}");
       expect(screen.getByText("Sub item two")).toHaveFocus();
     });
+
+    it("should not move focus, if Arrow Up or Arrow Down are pressed while the menu is closed", async () => {
+      async function makeAssertion(arrowKey) {
+        // move focus to anchor
+        screen.getByText("Nav item three").focus();
+        // verify that focus is on anchor
+        expect(screen.getByText("Nav item three")).toHaveFocus();
+        // verify that menu is closed
+        expect(
+          screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        ).toHaveAttribute("hidden", ""); // testing-library assumes the value of a custom HTML attribute to be "".
+        // press Arrow key
+        await user.keyboard(arrowKey);
+        // verify that focus is still on anchor
+        expect(screen.getByText("Nav item three")).toHaveFocus();
+      }
+
+      await makeAssertion("{ArrowUp}");
+      await makeAssertion("{ArrowDown}");
+    });
   });
 
   describe("Accessibility", () => {
