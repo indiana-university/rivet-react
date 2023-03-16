@@ -10,5 +10,6 @@ export * from "./Dropdown/index.jsx";
 export * from "./Footer/index.jsx";
 export * from "./Grid/index.jsx";
 export * from "./Input/index.jsx";
+export { default as Icon } from "./util/RivetIcons.jsx";
 export * from "./RadioButton/index.jsx";
 export * from "./Table/index.jsx";
