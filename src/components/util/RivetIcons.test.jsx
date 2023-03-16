@@ -9,10 +9,7 @@ import Icon from "./RivetIcons.jsx";
 import { TestUtils } from "./TestUtils.js";
 
 describe("<Icon>", () => {
-  it("should render without crashing", () => {
-    render(<Icon name="caret-down" />);
-    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
-  });
+  describe("Icon list check", iconListTests);
   it("should have a default height of 16", () => {
     render(<Icon name="caret-down" />);
     expect(
@@ -32,3 +29,37 @@ describe("<Icon>", () => {
     );
   });
 });
+
+function iconListTests() {
+  it("should render caret-down without crashing", () => {
+    render(<Icon name="caret-down" />);
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
+  });
+  it("should render facebook without crashing", () => {
+    render(<Icon data-testid="test" name="facebook" />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render file without crashing", () => {
+    render(<Icon data-testid="test" name="file" />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render instagram without crashing", () => {
+    render(<Icon data-testid="test" name="instagram" />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });it("should render linkedin without crashing", () => {
+    render(<Icon data-testid="test" name="linkedin" />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render logo without crashing", () => {
+    render(<Icon data-testid="test" name="logo" />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render twitter without crashing", () => {
+    render(<Icon data-testid="test" name="twitter" />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render youtube without crashing", () => {
+    render(<Icon data-testid="test" name="youtube" />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+}
