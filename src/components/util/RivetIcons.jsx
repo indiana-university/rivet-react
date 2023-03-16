@@ -15,9 +15,9 @@ const DefaultIconProps = {
 };
 
 const IconCore = ({ children, ...attrs }) => (
-  <IconCore {...attrs}>
+  <svg {...attrs}>
     {children}
-  </IconCore>
+  </svg>
 );
 
 const icoCaretDown = (attrs) => (
