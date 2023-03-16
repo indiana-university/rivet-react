@@ -30,12 +30,7 @@ const BaseFooter = ({
       <div className={`rvt-container-${size}`}>
         <div className="rvt-footer-base__inner">
           <div className="rvt-footer-base__logo">
-            <Icon
-              height="24"
-              name="logo"
-              viewBox="0 0 24 24"
-              width="24"
-            />
+            <Icon height="24" name="logo" viewBox="0 0 24 24" width="24" />
           </div>
           <ul className="rvt-footer-base__list">
             <BaseFooterLink url="https://accessibility.iu.edu/assistance/">

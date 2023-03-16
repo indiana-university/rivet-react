@@ -115,9 +115,7 @@ describe("<SocialMediaFooter />", () => {
 
   describe("SocialMediaFooter_NoChildren", () => {
     it("should render without error", async () => {
-      render(
-        <SocialMediaFooter data-testid="test" />
-      );
+      render(<SocialMediaFooter data-testid="test" />);
 
       const component = await screen.findByTestId("test");
       const container = component.children[0];

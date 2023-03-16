@@ -67,9 +67,7 @@ describe("<ResourceFooterLinkBlock />", () => {
 
   describe("ResourceFooterLinkBlock_NoChildren", () => {
     it("should render without error", async () => {
-      render(
-        <ResourceFooterLinkBlock data-testid="test" label="Test Links" />
-      );
+      render(<ResourceFooterLinkBlock data-testid="test" label="Test Links" />);
 
       const component = await screen.findByTestId("test");
       const header = component.children[0];
