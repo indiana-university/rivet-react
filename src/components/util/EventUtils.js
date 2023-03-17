@@ -8,18 +8,24 @@ export const keys = {
   escape: "Escape",
 };
 
-export const handler = (callback, InstantiatingClass) => {
+export const handler = (callback) => {
   const eventHandler = (event) => {
-    callback(new InstantiatingClass(event));
+    callback(event);
   };
   return {
     register: () => {
-      ["click", "touchstart", "keyup"].forEach((event) =>
+      ["click"].forEach((event) =>
+        document.addEventListener(event, eventHandler, false)
+      );
+      ["touchstart", "keyup"].forEach((event) =>
         document.addEventListener(event, eventHandler, true)
       );
     },
     deregister: () => {
-      ["click", "touchstart", "keyup"].forEach((event) =>
+      ["click"].forEach((event) =>
+        document.removeEventListener(event, eventHandler, false)
+      );
+      ["touchstart", "keyup"].forEach((event) =>
         document.removeEventListener(event, eventHandler, true)
       );
     },
@@ -37,6 +43,9 @@ export const isTabKeyPress = (event) => {
 export const isEscapeKeyPress = (event) => {
   return isKeyEvent(event) && event.key === keys.escape;
 };
+
+export const isUnhandledKeyPress = (event) =>
+  isKeyEvent(event) && !isTabKeyPress(event) && !isEscapeKeyPress(event);
 
 export const isMouseEvent = (event) => {
   return event.type === "click";

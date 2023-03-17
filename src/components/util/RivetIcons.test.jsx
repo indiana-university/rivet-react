@@ -9,8 +9,12 @@ import Icon from "./RivetIcons.jsx";
 import { TestUtils } from "./TestUtils.js";
 
 describe("<Icon>", () => {
-  it("should render without crashing", () => {
+  it("should render caret-down without crashing", () => {
     render(<Icon name="caret-down" />);
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
+  });
+  it("should render close without crashing", () => {
+    render(<Icon name="close" />);
     expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
   });
   it("should have a default height of 16", () => {
