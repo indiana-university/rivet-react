@@ -23,6 +23,15 @@ const icoCaretDown = (attrs) => (
   </svg>
 );
 
+const icoFile = (attrs) => (
+  <svg aria-hidden="true" {...attrs}>
+    <path
+      fill="currentColor"
+      d="M10.41,1H3.5A1.3,1.3,0,0,0,2.2,2.3V13.7A1.3,1.3,0,0,0,3.5,15h9a1.3,1.3,0,0,0,1.3-1.3V4.39ZM11.8,5.21V6H9.25V3h.34ZM4.2,13V3h3V6.75A1.25,1.25,0,0,0,8.5,8h3.3v5Z"
+    />
+  </svg>
+);
+
 const icoClose = (attrs) => (
   <svg aria-hidden="true" data-testid={TestUtils.RivetIcons.testId} {...attrs}>
     <path
@@ -36,6 +45,8 @@ const Icon = ({ name, ...attrs }) => {
   switch (name) {
     case "caret-down":
       return icoCaretDown(attrs);
+    case "file":
+      return icoFile(attrs);
     case "close":
       return icoClose(attrs);
   }
@@ -44,7 +55,7 @@ const Icon = ({ name, ...attrs }) => {
 Icon.displayName = "Icon";
 Icon.defaultProps = DefaultIconProps;
 Icon.propTypes = {
-  name: PropTypes.oneOf(["caret-down", "close"]),
+  name: PropTypes.oneOf(["caret-down", "file", "close"]),
 };
 
 export default Icon;
