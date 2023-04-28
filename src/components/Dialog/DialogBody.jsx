@@ -8,7 +8,7 @@ import * as React from "react";
 const DialogBody = ({ children, className, ...attrs }) => (
   <div
     className={classNames(["rvt-dialog__body", className])}
-    role="dialogBody"
+    data-testid="dialogBody"
     {...attrs}
   >
     {children}

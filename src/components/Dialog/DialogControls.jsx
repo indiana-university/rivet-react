@@ -8,7 +8,7 @@ import * as React from "react";
 const DialogControls = ({ children, className }) => (
   <div
     className={classNames(["rvt-dialog__controls", className])}
-    role="dialogControls"
+    data-testid="dialogControls"
   >
     {children}
   </div>

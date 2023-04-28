@@ -18,7 +18,7 @@ describe("<DialogBody />", () => {
       </Dialog>
     );
 
-    const dialogBody = screen.getByRole("dialogBody", {});
+    const dialogBody = screen.getByTestId("dialogBody", {});
     expect(dialogBody).toBeVisible();
     expect(dialogBody).toHaveClass("rvt-dialog__body");
     expect(dialogBody.innerHTML).toBe(children);

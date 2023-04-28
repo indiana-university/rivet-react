@@ -93,7 +93,7 @@ const Dialog = ({
         {...attrs}
       >
         {title && (
-          <header className="rvt-dialog__header" role="dialogHeader">
+          <header className="rvt-dialog__header" data-testid="dialogHeader">
             <h1 className="rvt-dialog__title" id={`${id}-title`}>
               {title}
             </h1>

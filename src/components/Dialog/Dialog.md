@@ -105,51 +105,53 @@ const DialogExample = () => {
         modal={true}
         title="Dialog Title"
       >
-        <DialogBody>
-          <div class="m-bottom-sm">
-            <label class="rvt-label" for="the-title">Title</label>
-            <input class="rvt-text-input" type="text" id="the-title"/>
-          </div>
-          <label class="rvt-label" for="description">Description</label>
-          <textarea class="rvt-textarea" id="description"></textarea>
-          <fieldset class="rvt-fieldset">
-            <legend class="rvt-ts-20 rvt-m-bottom-sm"><strong>Select dropdown</strong> default</legend>
-            <label class="rvt-label" for="select-demo">Select input:</label>
-            <select class="rvt-select m-bottom-md" id="select-demo">
-              <option value="">Option One</option>
-              <option value="">Option Two</option>
-              <option value="">Option Three</option>
-              <option value="">Option Four</option>
-            </select>
-          </fieldset>
-          <fieldset class="rvt-fieldset rvt-m-top-xl">
-            <legend class="rvt-ts-20 rvt-text-bold">Category</legend>
-            <ul class="rvt-list-inline">
-              <li>
-                <div class="rvt-checkbox">
-                  <input type="checkbox" name="checkbox-demo" id="checkbox-1" checked/>
-                  <label for="checkbox-1">Option one</label>
-                </div>
-              </li>
-              <li>
-                <div class="rvt-checkbox">
-                  <input type="checkbox" name="checkbox-demo" id="checkbox-2"/>
-                  <label for="checkbox-2">Option two</label>
-                </div>
-              </li>
-              <li>
-                <div class="rvt-checkbox">
-                  <input type="checkbox" name="checkbox-demo" id="checkbox-3"/>
-                  <label for="checkbox-3">Option three</label>
-                </div>
-              </li>
-            </ul>
-          </fieldset>
-        </DialogBody>
-        <DialogControls>
-          <Button>Submit</Button>
-          <Button onClick={handleDismiss}>Cancel</Button>
-        </DialogControls>
+        <form>
+          <DialogBody>
+            <div class="m-bottom-sm">
+              <label class="rvt-label" for="the-title">Title</label>
+              <input class="rvt-text-input" type="text" id="the-title"/>
+            </div>
+            <label class="rvt-label" for="description">Description</label>
+            <textarea class="rvt-textarea" id="description"></textarea>
+            <fieldset class="rvt-fieldset">
+              <legend class="rvt-ts-20 rvt-m-bottom-sm"><strong>Select dropdown</strong> default</legend>
+              <label class="rvt-label" for="select-demo">Select input:</label>
+              <select class="rvt-select m-bottom-md" id="select-demo">
+                <option value="">Option One</option>
+                <option value="">Option Two</option>
+                <option value="">Option Three</option>
+                <option value="">Option Four</option>
+              </select>
+            </fieldset>
+            <fieldset class="rvt-fieldset rvt-m-top-xl">
+              <legend class="rvt-ts-20 rvt-text-bold">Category</legend>
+              <ul class="rvt-list-inline">
+                <li>
+                  <div class="rvt-checkbox">
+                    <input type="checkbox" name="checkbox-demo" id="checkbox-1" checked/>
+                    <label for="checkbox-1">Option one</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="rvt-checkbox">
+                    <input type="checkbox" name="checkbox-demo" id="checkbox-2"/>
+                    <label for="checkbox-2">Option two</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="rvt-checkbox">
+                    <input type="checkbox" name="checkbox-demo" id="checkbox-3"/>
+                    <label for="checkbox-3">Option three</label>
+                  </div>
+                </li>
+              </ul>
+            </fieldset>
+          </DialogBody>
+          <DialogControls>
+            <Button type="submit">Submit</Button>
+            <Button onClick={handleDismiss}>Cancel</Button>
+          </DialogControls>
+        </form>
       </Dialog>
       
       <Button onClick={() => setDialogOpen("notification")}>Notification</Button>

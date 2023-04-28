@@ -59,7 +59,7 @@ describe("<Dialog />", () => {
     it("should have the correct structure", async () => {
       render(component());
       expect(screen.getByRole("dialog", {})).toHaveClass("rvt-dialog");
-      expect(screen.getByRole("dialogHeader", {})).toHaveClass(
+      expect(screen.getByTestId("dialogHeader", {})).toHaveClass(
         "rvt-dialog__header"
       );
       expect(await screen.findByText(defaultTitle, {})).toHaveClass(
@@ -121,15 +121,9 @@ describe("<Dialog />", () => {
       render(component());
       const dialog = screen.getByRole("dialog", {});
       expect(dialog.children.length).toBe(3);
-      expect(dialog.children[0].attributes.getNamedItem("role").value).toBe(
-        "dialogHeader"
-      );
-      expect(dialog.children[1].attributes.getNamedItem("role").value).toBe(
-        "dialogBody"
-      );
-      expect(dialog.children[2].attributes.getNamedItem("role").value).toBe(
-        "dialogControls"
-      );
+      expect(dialog.children[0].nodeName).toBe("HEADER");
+      expect(dialog.children[1].className).toBe("rvt-dialog__body");
+      expect(dialog.children[2].className).toBe("rvt-dialog__controls");
     });
 
     it("should have a close button if an onDismiss prop is provided", () => {

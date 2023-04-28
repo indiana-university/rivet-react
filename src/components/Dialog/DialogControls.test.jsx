@@ -20,7 +20,7 @@ describe("<DialogControls />", () => {
       </Dialog>
     );
 
-    const dialogControls = screen.getByRole("dialogControls", {});
+    const dialogControls = screen.getByTestId("dialogControls", {});
     expect(dialogControls).toBeVisible();
     expect(dialogControls).toHaveClass("rvt-dialog__controls");
     expect(screen.getByRole("button", { name: /The text/ })).toBeVisible();
