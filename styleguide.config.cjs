@@ -34,6 +34,12 @@ module.exports = {
         "src/components/Breadcrumbs/[A-Z]*.jsx",
         "src/components/Dropdown/[A-Z]*.jsx",
         "src/components/LoadingIndicator/[A-Z]*.jsx",
+        "src/components/Header/Header.jsx",
+        "src/components/Header/HeaderNavigation.jsx",
+        "src/components/Header/HeaderAvatar.jsx",
+        "src/components/Header/HeaderMenu.jsx",
+        "src/components/Header/HeaderSearch.jsx",
+        "src/components/Header/HeaderNavigationSecondary.jsx",
       ],
     },
     {

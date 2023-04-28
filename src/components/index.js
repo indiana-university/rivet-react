@@ -10,6 +10,7 @@ export * from "./Dropdown/index.jsx";
 export * from "./File/index.jsx";
 export * from "./Grid/index.jsx";
 export * from "./Input/index.jsx";
+export * from "./Header/index.jsx";
 export * from "./LoadingIndicator/index.jsx";
 export * from "./Dialog/index.jsx";
 export * from "./RadioButton/index.jsx";
