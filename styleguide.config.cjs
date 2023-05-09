@@ -15,6 +15,18 @@ module.exports = {
   usageMode: "expand",
   sections: [
     {
+      name: "Footer",
+      components: () => [
+        "src/components/Footer/StandardFooter.jsx",
+        "src/components/Footer/BaseFooter.jsx",
+        "src/components/Footer/ResourceFooter.jsx",
+        "src/components/Footer/SocialMediaFooter.jsx",
+        "src/components/Footer/ResourceFooterLinkBlock.jsx",
+        "src/components/Footer/ResourceFooterTextBlock.jsx",
+        "src/components/Footer/SocialMediaFooterLink.jsx",
+      ],
+    },
+    {
       name: "Forms",
       components: () => [
         "src/components/Checkbox/[A-Z]*.jsx",
