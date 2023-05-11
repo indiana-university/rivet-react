@@ -2,8 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Header from "./Header";
-
+import HeaderSearch from "./HeaderSearch";
 import { TestUtils } from "../util/TestUtils";
 import userEvent from "@testing-library/user-event";
 
@@ -18,7 +17,7 @@ const toggleSearchThroughClick = async () => {
 describe("<HeaderSearch/>", () => {
   describe("Rendering and styling", () => {
     it("should render a toggle button, an input and a search button", async () => {
-      render(<Header.Search />);
+      render(<HeaderSearch />);
       expect(
         screen.getByTestId(TestUtils.Header.searchToggleButtonTestId)
       ).toBeInTheDocument();
@@ -33,7 +32,7 @@ describe("<HeaderSearch/>", () => {
     it("should apply to the form the provided values of the action and method props", async () => {
       const action = "action";
       const method = "post";
-      render(<Header.Search action={action} method={method} />);
+      render(<HeaderSearch action={action} method={method} />);
 
       expect(
         screen.getByTestId(TestUtils.Header.searchFormTestId)
@@ -46,7 +45,7 @@ describe("<HeaderSearch/>", () => {
 
   describe("Toggle behavior", () => {
     beforeEach(() => {
-      render(<Header.Search />);
+      render(<HeaderSearch />);
     });
 
     it("should show the search form when the toggle button is clicked", async () => {
@@ -137,7 +136,7 @@ describe("<HeaderSearch/>", () => {
 
   describe("Accessibility", () => {
     beforeEach(() => {
-      render(<Header.Search />);
+      render(<HeaderSearch />);
     });
 
     it("should default the aria-expanded attribute to false", () => {

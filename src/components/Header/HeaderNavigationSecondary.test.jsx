@@ -2,8 +2,8 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Header from "./Header";
-
+import HeaderMenu from "./HeaderMenu";
+import HeaderNavigationSecondary from "./HeaderNavigationSecondary";
 import { TestUtils } from "../util/TestUtils";
 import userEvent from "@testing-library/user-event";
 
@@ -23,7 +23,7 @@ describe("<HeaderNavigationSecondary/>", () => {
   describe("Rendering and styling", () => {
     beforeEach(() => {
       render(
-        <Header.NavigationSecondary
+        <HeaderNavigationSecondary
           title={testTitle}
           href={testHref}
           navWidth={"md"}
@@ -33,12 +33,12 @@ describe("<HeaderNavigationSecondary/>", () => {
               <a href="#">Section item one</a>
             </li>
             <li data-rvt-c-header-nav-item__current>
-              <Header.Menu label="Section item two">
+              <HeaderMenu label="Section item two">
                 <a href="#">Sub item one</a>
-              </Header.Menu>
+              </HeaderMenu>
             </li>
           </ul>
-        </Header.NavigationSecondary>
+        </HeaderNavigationSecondary>
       );
     });
 
@@ -63,18 +63,18 @@ describe("<HeaderNavigationSecondary/>", () => {
   describe("Defaulting props", () => {
     beforeEach(() => {
       render(
-        <Header.NavigationSecondary title={"Title"}>
+        <HeaderNavigationSecondary title={"Title"}>
           <ul>
             <li>
               <a href="#">Section item one</a>
             </li>
             <li data-rvt-c-header-nav-item__current>
-              <Header.Menu label="Section item two">
+              <HeaderMenu label="Section item two">
                 <a href="#">Sub item one</a>
-              </Header.Menu>
+              </HeaderMenu>
             </li>
           </ul>
-        </Header.NavigationSecondary>
+        </HeaderNavigationSecondary>
       );
     });
 
@@ -96,18 +96,18 @@ describe("<HeaderNavigationSecondary/>", () => {
   describe("Toggle behavior", () => {
     beforeEach(() => {
       render(
-        <Header.NavigationSecondary title={"Title"}>
+        <HeaderNavigationSecondary title={"Title"}>
           <ul>
             <li>
               <a href="#">Section item one</a>
             </li>
             <li data-rvt-c-header-nav-item__current>
-              <Header.Menu label="Section item two">
+              <HeaderMenu label="Section item two">
                 <a href="#">Sub item one</a>
-              </Header.Menu>
+              </HeaderMenu>
             </li>
           </ul>
-        </Header.NavigationSecondary>
+        </HeaderNavigationSecondary>
       );
     });
 
@@ -214,18 +214,18 @@ describe("<HeaderNavigationSecondary/>", () => {
   describe("Accessibility", () => {
     beforeEach(() => {
       render(
-        <Header.NavigationSecondary title={"Title"}>
+        <HeaderNavigationSecondary title={"Title"}>
           <ul>
             <li>
               <a href="#">Section item one</a>
             </li>
             <li data-rvt-c-header-nav-item__current>
-              <Header.Menu label="Section item two">
+              <HeaderMenu label="Section item two">
                 <a href="#">Sub item one</a>
-              </Header.Menu>
+              </HeaderMenu>
             </li>
           </ul>
-        </Header.NavigationSecondary>
+        </HeaderNavigationSecondary>
       );
     });
 

@@ -38,7 +38,7 @@ const HeaderAvatar = ({ username, shortName, logoutURL }) => {
   );
 };
 
-HeaderAvatar.displayName = "Header.Avatar";
+HeaderAvatar.displayName = "HeaderAvatar";
 HeaderAvatar.propTypes = {
   /** The user's username */
   username: PropTypes.string.isRequired,

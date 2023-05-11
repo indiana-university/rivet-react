@@ -186,7 +186,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
   );
 };
 
-HeaderMenu.displayName = "Header.Menu";
+HeaderMenu.displayName = "HeaderMenu";
 HeaderMenu.propTypes = {
   /** The label of the menu */
   label: PropTypes.string.isRequired,

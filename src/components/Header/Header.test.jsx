@@ -3,6 +3,10 @@ import { prettyDOM, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import Header from "./Header";
+import HeaderMenu from "./HeaderMenu";
+import HeaderNavigation from "./HeaderNavigation";
+import HeaderNavigationSecondary from "./HeaderNavigationSecondary";
+import HeaderSearch from "./HeaderSearch";
 import { TestUtils } from "../util/TestUtils";
 
 const testTitle = "Test title";
@@ -53,7 +57,7 @@ describe("<Header />", () => {
 
     it("should render all provided children", () => {
       const navigation = (
-        <Header.Navigation>
+        <HeaderNavigation>
           <ul>
             <li>
               <a href={"#"}>Nav item one</a>
@@ -62,31 +66,31 @@ describe("<Header />", () => {
               <a href={"#"}>Nav item two</a>
             </li>
             <li>
-              <Header.Menu label="Nav item three">
+              <HeaderMenu label="Nav item three">
                 <a href={"#"}>Sub item one</a>
                 <a href={"#"}>Sub item two</a>
                 <a href={"#"}>Sub item three</a>
-              </Header.Menu>
+              </HeaderMenu>
             </li>
           </ul>
-        </Header.Navigation>
+        </HeaderNavigation>
       );
-      const search = <Header.Search action={"/mySearchURL"} method={"post"} />;
+      const search = <HeaderSearch action={"/mySearchURL"} method={"post"} />;
       const secondaryNavigation = (
-        <Header.NavigationSecondary title={"Component Library"}>
+        <HeaderNavigationSecondary title={"Component Library"}>
           <ul>
             <li>
               <a href="#">Section item one</a>
             </li>
             <li data-rvt-c-header-nav-item__current>
-              <Header.Menu label="Section item two">
+              <HeaderMenu label="Section item two">
                 <a href="#">Secondary nav sub item one</a>
                 <a href="#">Secondary nav sub item two</a>
                 <a href="#">Secondary nav sub item three</a>
-              </Header.Menu>
+              </HeaderMenu>
             </li>
           </ul>
-        </Header.NavigationSecondary>
+        </HeaderNavigationSecondary>
       );
 
       render(

@@ -10,7 +10,7 @@ const renderHeaderNavListItem = (child) => {
 
   let childrenWithProps = React.Children.map(child.props.children, (child) => {
     const childType = child && child["type"];
-    const isHeaderMenu = getDisplayName(childType) === HeaderMenu.displayName;
+    const isHeaderMenu = getDisplayName(childType) === "rivetizedComponent";
     const isAnchor = childType === "a";
 
     const headerMenuProps = { ...(isListItemCurrent && { current: true }) };

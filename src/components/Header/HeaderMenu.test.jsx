@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Header from "./Header";
+import HeaderMenu from "./HeaderMenu";
 
 import { TestUtils } from "../util/TestUtils";
 import userEvent from "@testing-library/user-event";
@@ -19,10 +19,10 @@ describe("<HeaderMenu/>", () => {
   describe("Rendering and styling", () => {
     it("should render all the provided children", () => {
       render(
-        <Header.Menu label="Nav item three">
+        <HeaderMenu label="Nav item three">
           <a href="#">Sub item one</a>
           <a href={testHref}>Sub item two</a>
-        </Header.Menu>
+        </HeaderMenu>
       );
       expect(screen.getByText("Sub item one")).toBeInTheDocument();
       expect(screen.getByText("Sub item two")).toBeInTheDocument();
@@ -30,10 +30,10 @@ describe("<HeaderMenu/>", () => {
 
     it("should retain any attributes provided to the children", () => {
       render(
-        <Header.Menu label="Nav item three">
+        <HeaderMenu label="Nav item three">
           <a href="#">Sub item one</a>
           <a href={testHref}>Sub item two</a>
-        </Header.Menu>
+        </HeaderMenu>
       );
       expect(screen.getByText("Sub item one")).toHaveAttribute("href", "#");
       expect(screen.getByText("Sub item two")).toHaveAttribute(
@@ -45,9 +45,9 @@ describe("<HeaderMenu/>", () => {
     it("should allow providing non-anchor elements as children", () => {
       const testId = "testButton";
       render(
-        <Header.Menu label="Nav item three">
+        <HeaderMenu label="Nav item three">
           <button data-testid={testId}>test button</button>
-        </Header.Menu>
+        </HeaderMenu>
       );
       expect(
         screen.getByTestId(TestUtils.Header.menuContainerTestId)
@@ -57,9 +57,9 @@ describe("<HeaderMenu/>", () => {
     it("should provide the label and href props to the label anchor", () => {
       const testLabel = "Nav item";
       render(
-        <Header.Menu label={testLabel} href={testHref}>
+        <HeaderMenu label={testLabel} href={testHref}>
           <a href="#">Sub item</a>
-        </Header.Menu>
+        </HeaderMenu>
       );
       expect(screen.getAllByRole("link")[0]).toHaveTextContent(testLabel);
       expect(screen.getAllByRole("link")[0]).toHaveAttribute("href", testHref);
@@ -67,9 +67,9 @@ describe("<HeaderMenu/>", () => {
 
     it("should hide the menu items by default", () => {
       render(
-        <Header.Menu label="Label">
+        <HeaderMenu label="Label">
           <a href="#">Sub item</a>
-        </Header.Menu>
+        </HeaderMenu>
       );
       expect(
         screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
@@ -79,7 +79,7 @@ describe("<HeaderMenu/>", () => {
 
   describe("Defaulting props", () => {
     it("should default the label anchor's href prop to #, if not provided", () => {
-      render(<Header.Menu label="Nav item"></Header.Menu>);
+      render(<HeaderMenu label="Nav item"></HeaderMenu>);
       expect(screen.getAllByRole("link")[0]).toHaveAttribute("href", "#");
     });
   });
@@ -87,10 +87,10 @@ describe("<HeaderMenu/>", () => {
   describe("Toggle behavior", () => {
     beforeEach(() => {
       render(
-        <Header.Menu label="Nav item three">
+        <HeaderMenu label="Nav item three">
           <a href="#">Sub item one</a>
           <a href="#">Sub item two</a>
-        </Header.Menu>
+        </HeaderMenu>
       );
     });
 
@@ -213,10 +213,10 @@ describe("<HeaderMenu/>", () => {
   describe("Focus behavior", () => {
     beforeEach(() => {
       render(
-        <Header.Menu label="Nav item three">
+        <HeaderMenu label="Nav item three">
           <a href="#">Sub item one</a>
           <a href="#">Sub item two</a>
-        </Header.Menu>
+        </HeaderMenu>
       );
     });
 
@@ -306,9 +306,9 @@ describe("<HeaderMenu/>", () => {
   describe("Accessibility", () => {
     beforeEach(() => {
       render(
-        <Header.Menu label="Nav item three">
+        <HeaderMenu label="Nav item three">
           <a href="#">Sub item one</a>
-        </Header.Menu>
+        </HeaderMenu>
       );
     });
 

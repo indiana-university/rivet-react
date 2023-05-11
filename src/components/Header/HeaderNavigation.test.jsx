@@ -2,7 +2,9 @@ import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Header from "./Header";
+import HeaderAvatar from "./HeaderAvatar";
+import HeaderMenu from "./HeaderMenu";
+import HeaderNavigation from "./HeaderNavigation";
 import { TestUtils } from "../util/TestUtils";
 import userEvent from "@testing-library/user-event";
 
@@ -19,14 +21,14 @@ describe("<HeaderNavigation />", () => {
 
     beforeEach(() => {
       const avatar = (
-        <Header.Avatar
+        <HeaderAvatar
           username={avatarUsername}
           shortName={avatarShortName}
           logoutURL={"/logout"}
         />
       );
       render(
-        <Header.Navigation avatar={avatar}>
+        <HeaderNavigation avatar={avatar}>
           <ul>
             <li>
               <a href={"#"}>Nav item one</a>
@@ -35,14 +37,14 @@ describe("<HeaderNavigation />", () => {
               <a href={"#"}>Nav item two</a>
             </li>
             <li>
-              <Header.Menu label="Nav item three">
+              <HeaderMenu label="Nav item three">
                 <a href={"#"}>Sub item one</a>
                 <a href={"#"}>Sub item two</a>
                 <a href={"#"}>Sub item three</a>
-              </Header.Menu>
+              </HeaderMenu>
             </li>
           </ul>
-        </Header.Navigation>
+        </HeaderNavigation>
       );
     });
 
@@ -73,13 +75,13 @@ describe("<HeaderNavigation />", () => {
   describe("Toggle behavior", () => {
     beforeEach(() => {
       render(
-        <Header.Navigation>
+        <HeaderNavigation>
           <ul>
             <li>
               <a href={"#"}>Nav item one</a>
             </li>
           </ul>
-        </Header.Navigation>
+        </HeaderNavigation>
       );
     });
 
@@ -187,13 +189,13 @@ describe("<HeaderNavigation />", () => {
   describe("Focus behavior", () => {
     beforeEach(() => {
       render(
-        <Header.Navigation>
+        <HeaderNavigation>
           <ul>
             <li>
               <a href={"#"}>Nav item one</a>
             </li>
           </ul>
-        </Header.Navigation>
+        </HeaderNavigation>
       );
     });
 
@@ -218,7 +220,7 @@ describe("<HeaderNavigation />", () => {
   describe("Accessibility", () => {
     it("should apply the aria-current attribute with value 'page' on an anchor nav item that is wrapped in an <li> with the data-rvt-c-header-nav-item__current attribute", () => {
       render(
-        <Header.Navigation>
+        <HeaderNavigation>
           <ul>
             <li>
               <a href={"#"}>Nav item one</a>
@@ -227,7 +229,7 @@ describe("<HeaderNavigation />", () => {
               <a href={"#"}>Nav item two</a>
             </li>
           </ul>
-        </Header.Navigation>
+        </HeaderNavigation>
       );
       expect(screen.getByText("Nav item two")).toHaveAttribute(
         "aria-current",
@@ -237,18 +239,18 @@ describe("<HeaderNavigation />", () => {
 
     it("should apply the aria-current attribute with value 'page' on a HeaderMenu nav item that is wrapped in an <li> with the data-rvt-c-header-nav-item__current attribute", () => {
       render(
-        <Header.Navigation>
+        <HeaderNavigation>
           <ul>
             <li>
               <a href={"#"}>Nav item one</a>
             </li>
             <li data-rvt-c-header-nav-item__current>
-              <Header.Menu label="Nav item two">
+              <HeaderMenu label="Nav item two">
                 <a href={"#"}>Sub item one</a>
-              </Header.Menu>
+              </HeaderMenu>
             </li>
           </ul>
-        </Header.Navigation>
+        </HeaderNavigation>
       );
       expect(screen.getByText("Nav item two")).toHaveAttribute(
         "aria-current",
@@ -258,13 +260,13 @@ describe("<HeaderNavigation />", () => {
 
     it("should default the aria-expanded attribute to false", () => {
       render(
-        <Header.Navigation>
+        <HeaderNavigation>
           <ul>
             <li>
               <a href={"#"}>Nav item one</a>
             </li>
           </ul>
-        </Header.Navigation>
+        </HeaderNavigation>
       );
       expect(
         screen.getByTestId(TestUtils.Header.navButtonToggleTestId)
@@ -273,13 +275,13 @@ describe("<HeaderNavigation />", () => {
 
     it("should change the aria-expanded attribute to true when the nav is opened", async () => {
       render(
-        <Header.Navigation>
+        <HeaderNavigation>
           <ul>
             <li>
               <a href={"#"}>Nav item one</a>
             </li>
           </ul>
-        </Header.Navigation>
+        </HeaderNavigation>
       );
       await toggleNavThroughClick(); // open the nav
       expect(

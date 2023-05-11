@@ -27,7 +27,7 @@ export const IconNames = {
   TOGGLE_CLOSE: "toggle-close",
   TOGGLE_SEARCH: "toggle-search",
   TWITTER: "twitter",
-  YOUTUBE: "youtube"
+  YOUTUBE: "youtube",
 };
 
 const IconCore = ({ children, ...attrs }) => (
@@ -166,7 +166,11 @@ const icoToggleOpen = (attrs) => (
 );
 
 const icoToggleSearch = (attrs) => (
-  <IconCore {...attrs} className="rvt-global-toggle__search" fill="currentColor">
+  <IconCore
+    {...attrs}
+    className="rvt-global-toggle__search"
+    fill="currentColor"
+  >
     <path
       d="M15.71,14.29,10.89,9.47a6,6,0,1,0-1.42,1.42l4.82,4.82a1,1,0,0,0,1.42,0A1,1,0,0,0,15.71,14.29ZM6,10a4,4,0,1,1,4-4A4,4,0,0,1,6,10Z"
       fill="currentColor"
@@ -207,7 +211,7 @@ Icon.displayName = "Icon";
 Icon.defaultProps = DefaultIconProps;
 Icon.propTypes = {
   name: PropTypes.oneOf([
-		IconNames.CARET_DOWN,
+    IconNames.CARET_DOWN,
     IconNames.FACEBOOK,
     IconNames.FILE,
     IconNames.INSTAGRAM,
@@ -218,7 +222,7 @@ Icon.propTypes = {
     IconNames.TRIDENT_HEADER,
     IconNames.TOGGLE_SEARCH,
     IconNames.TWITTER,
-    IconNames.YOUTUBE
+    IconNames.YOUTUBE,
   ]),
 };
 

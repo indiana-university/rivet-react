@@ -8,12 +8,7 @@ import PropTypes from "prop-types";
 
 import Icon, { IconNames } from "../util/RivetIcons";
 import * as Rivet from "../util/Rivet";
-import HeaderNavigationSecondary from "./HeaderNavigationSecondary";
-import HeaderNavigation from "./HeaderNavigation";
-import HeaderSearch from "./HeaderSearch";
-import HeaderMenu from "./HeaderMenu";
 import { TestUtils } from "../util/TestUtils";
-import HeaderAvatar from "./HeaderAvatar";
 
 const componentClass = "rvt-header-wrapper";
 
@@ -72,12 +67,6 @@ const Header = ({
     </header>
   );
 };
-
-Header.Navigation = HeaderNavigation;
-Header.Avatar = HeaderAvatar;
-Header.Menu = HeaderMenu;
-Header.Search = HeaderSearch;
-Header.NavigationSecondary = HeaderNavigationSecondary;
 
 Header.displayName = "Header";
 Header.propTypes = {

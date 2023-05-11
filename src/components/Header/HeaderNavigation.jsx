@@ -92,7 +92,7 @@ const HeaderNavigation = ({ avatar, children, ...attrs }) => {
   );
 };
 
-HeaderNavigation.displayName = "Header.Navigation";
+HeaderNavigation.displayName = "HeaderNavigation";
 
 HeaderNavigation.propTypes = {
   /** The Avatar component */

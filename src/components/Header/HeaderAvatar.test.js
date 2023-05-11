@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Header from "./Header";
+import HeaderAvatar from "./HeaderAvatar";
 import { TestUtils } from "../util/TestUtils";
 
 describe("<HeaderAvatar/>", () => {
@@ -13,7 +13,7 @@ describe("<HeaderAvatar/>", () => {
     it("should render the provided username, short name, and logout link", () => {
       const link = "/logout";
       render(
-        <Header.Avatar
+        <HeaderAvatar
           username={username}
           shortName={shortName}
           logoutURL={link}
@@ -30,7 +30,7 @@ describe("<HeaderAvatar/>", () => {
     });
 
     it("does not show logout anchor if logoutURL is not provided", () => {
-      render(<Header.Avatar username={username} shortName={shortName} />);
+      render(<HeaderAvatar username={username} shortName={shortName} />);
 
       expect(screen.queryAllByRole("link")).toHaveLength(0);
     });

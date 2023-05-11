@@ -103,7 +103,7 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
   );
 };
 
-HeaderSearch.displayName = "Header.Search";
+HeaderSearch.displayName = "HeaderSearch";
 HeaderSearch.propTypes = {
   /** The path that the form data is submitted to */
   action: PropTypes.string,
