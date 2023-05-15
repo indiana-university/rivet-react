@@ -9,10 +9,7 @@ import Icon, { IconNames } from "./RivetIcons.jsx";
 import { TestUtils } from "./TestUtils.js";
 
 describe("<Icon>", () => {
-  it("should render caret-down without crashing", () => {
-    render(<Icon name={IconNames.CARET_DOWN} />);
-    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
-  });
+  describe("Icon list check", iconListTests);
   it("should render close without crashing", () => {
     render(<Icon name="close" />);
     expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
@@ -36,3 +33,38 @@ describe("<Icon>", () => {
     );
   });
 });
+
+function iconListTests() {
+  it("should render caret-down without crashing", () => {
+    render(<Icon name={IconNames.CARET_DOWN} />);
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
+  });
+  it("should render facebook without crashing", () => {
+    render(<Icon data-testid="test" name={IconNames.FACEBOOK} />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render file without crashing", () => {
+    render(<Icon data-testid="test" name={IconNames.FILE} />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render instagram without crashing", () => {
+    render(<Icon data-testid="test" name={IconNames.INSTAGRAM} />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render linkedin without crashing", () => {
+    render(<Icon data-testid="test" name={IconNames.LINKEDIN} />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render logo without crashing", () => {
+    render(<Icon data-testid="test" name={IconNames.LOGO} />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render twitter without crashing", () => {
+    render(<Icon data-testid="test" name={IconNames.TWITTER} />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+  it("should render youtube without crashing", () => {
+    render(<Icon data-testid="test" name={IconNames.YOUTUBE} />);
+    expect(screen.queryByTestId("test", {})).toBeVisible();
+  });
+}
