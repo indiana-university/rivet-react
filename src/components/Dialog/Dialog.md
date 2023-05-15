@@ -68,7 +68,7 @@ const DialogExample = () => {
         darkenPage={true}
         disablePageInteraction={true}
         onDismiss={handleDismiss}
-        modal={true}
+        closeOnOutsideClick={true}
         title="Dialog title"
       >
         <DialogBody>
@@ -84,11 +84,14 @@ const DialogExample = () => {
       <Dialog
         isOpen={dialogOpen === "confirmation-dialog"}
         disablePageInteraction={true}
+        onDismiss={handleDismiss}
+        showCloseButton={false}
         darkenPage={true}
+        closeOnOutsideClick={true}
         title="Delete Files"
       >
         <DialogBody>
-          <p>Are you sure you want to delete your files? This action cannot be undone.</p>
+          <p>Are you sure you want <strong>delete your files</strong>? This action cannot be undone.</p>
         </DialogBody>
         <DialogControls>
           <Button variant="danger">Delete my files</Button>
@@ -102,46 +105,46 @@ const DialogExample = () => {
         darkenPage={true}
         disablePageInteraction={true}
         onDismiss={handleDismiss}
-        modal={true}
-        title="Dialog Title"
+        closeOnOutsideClick={true}
+        title="Dialog title"
       >
         <form>
           <DialogBody>
-            <div class="m-bottom-sm">
-              <label class="rvt-label" for="the-title">Title</label>
-              <input class="rvt-text-input" type="text" id="the-title"/>
+            <div className="m-bottom-sm">
+              <label className="rvt-label" htmlFor="the-title">Title</label>
+              <input className="rvt-text-input" type="text" id="the-title"/>
             </div>
-            <label class="rvt-label" for="description">Description</label>
-            <textarea class="rvt-textarea" id="description"></textarea>
-            <fieldset class="rvt-fieldset">
-              <legend class="rvt-ts-20 rvt-m-bottom-sm"><strong>Select dropdown</strong> default</legend>
-              <label class="rvt-label" for="select-demo">Select input:</label>
-              <select class="rvt-select m-bottom-md" id="select-demo">
+            <label className="rvt-label" htmlFor="description">Description</label>
+            <textarea className="rvt-textarea" id="description"></textarea>
+            <fieldset className="rvt-fieldset">
+              <legend className="rvt-ts-20 rvt-m-bottom-sm"><strong>Select dropdown</strong> default</legend>
+              <label className="rvt-label" htmlFor="select-demo">Select input:</label>
+              <select className="rvt-select m-bottom-md" id="select-demo">
                 <option value="">Option One</option>
                 <option value="">Option Two</option>
                 <option value="">Option Three</option>
                 <option value="">Option Four</option>
               </select>
             </fieldset>
-            <fieldset class="rvt-fieldset rvt-m-top-xl">
-              <legend class="rvt-ts-20 rvt-text-bold">Category</legend>
-              <ul class="rvt-list-inline">
+            <fieldset className="rvt-fieldset rvt-m-top-xl">
+              <legend className="rvt-ts-20 rvt-text-bold">Category</legend>
+              <ul className="rvt-list-inline">
                 <li>
-                  <div class="rvt-checkbox">
+                  <div className="rvt-checkbox">
                     <input type="checkbox" name="checkbox-demo" id="checkbox-1" checked/>
-                    <label for="checkbox-1">Option one</label>
+                    <label htmlFor="checkbox-1">Option one</label>
                   </div>
                 </li>
                 <li>
-                  <div class="rvt-checkbox">
+                  <div className="rvt-checkbox">
                     <input type="checkbox" name="checkbox-demo" id="checkbox-2"/>
-                    <label for="checkbox-2">Option two</label>
+                    <label htmlFor="checkbox-2">Option two</label>
                   </div>
                 </li>
                 <li>
-                  <div class="rvt-checkbox">
+                  <div className="rvt-checkbox">
                     <input type="checkbox" name="checkbox-demo" id="checkbox-3"/>
-                    <label for="checkbox-3">Option three</label>
+                    <label htmlFor="checkbox-3">Option three</label>
                   </div>
                 </li>
               </ul>
@@ -162,7 +165,7 @@ const DialogExample = () => {
         title="New version available"
       >
         <DialogBody>
-          <p class="rvt-m-all-none">A new version of this application is available. Refresh the page to apply the update.</p>
+          <p className="rvt-m-all-none">A new version of this application is available. Refresh the page to apply the update.</p>
         </DialogBody>
       </Dialog>
       
@@ -172,7 +175,7 @@ const DialogExample = () => {
         align="bottom-right"
       >
         <DialogBody>
-          <p class="rvt-m-all-none">Do you need help with your task? Support center technicians are available over chat to provide live assistance.</p>
+          <p className="rvt-m-all-none">Do you need help with your task? Support center technicians are available over chat to provide live assistance.</p>
         </DialogBody>
         <DialogControls>
           <Button>Chat</Button>

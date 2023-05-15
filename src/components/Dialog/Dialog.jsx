@@ -5,8 +5,10 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import { createRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import * as Rivet from "../util/Rivet";
+import Button from "../Button/Button.jsx";
+import Icon from "../util/RivetIcons.jsx";
 import {
   handler,
   isRightMouseClick,
@@ -14,28 +16,39 @@ import {
   isUnhandledKeyPress,
   targets,
 } from "../util/EventUtils.js";
-import Button from "../Button/Button.jsx";
-import Icon from "../util/RivetIcons.jsx";
 
 const Dialog = ({
   children,
   className,
   id = Rivet.shortuid(),
   align,
+  closeOnOutsideClick,
   darkenPage,
   disablePageInteraction,
   isOpen,
   onDismiss,
-  modal,
+  showCloseButton = true,
   title,
   ...attrs
 }) => {
+  const ref = React.useRef(null);
+
   useEffect(() => {
+    if (isOpen) {
+      if (disablePageInteraction) {
+        ref.current && ref.current.showModal();
+      } else {
+        ref.current && ref.current.show();
+      }
+    } else {
+      ref.current && ref.current.close();
+    }
+
     handleEventRegistration();
     return () => {
       clickOutsideOrEscapeEventHandler.deregister();
     };
-  });
+  }, [isOpen]);
 
   const handleClickOutsideOrEscape = (event) => {
     if (event && shouldCloseDialog(event)) {
@@ -44,7 +57,6 @@ const Dialog = ({
     }
   };
 
-  const dialogWrapDiv = createRef();
   const clickOutsideOrEscapeEventHandler = handler(handleClickOutsideOrEscape);
 
   const shouldCloseDialog = (event) => {
@@ -53,12 +65,12 @@ const Dialog = ({
       isRightMouseClick(event) ||
       isUnhandledKeyPress(event) ||
       isTabKeyPress(event) ||
-      targets(dialogWrapDiv.current, event)
+      targets(ref.current, event)
     );
   };
 
   const handleEventRegistration = () => {
-    if (isOpen && onDismiss && modal) {
+    if (isOpen && closeOnOutsideClick) {
       clickOutsideOrEscapeEventHandler.register();
     } else {
       clickOutsideOrEscapeEventHandler.deregister();
@@ -68,11 +80,6 @@ const Dialog = ({
   const dataRvt = {
     ...{ ...(align && { [`data-rvt-dialog-${align}`]: "" }) },
     ...{ ...(darkenPage && { ["data-rvt-dialog-darken-page"]: "" }) },
-    ...{
-      ...(disablePageInteraction && {
-        ["data-rvt-dialog-disable-page-interaction"]: "",
-      }),
-    },
   };
 
   const handleDismiss = () => {
@@ -80,29 +87,29 @@ const Dialog = ({
   };
 
   return (
-    isOpen && (
-      <div
-        className={classNames("rvt-dialog", className)}
-        id={id}
-        aria-labelledby={`${id}-title`}
-        aria-hidden={!isOpen}
-        ref={dialogWrapDiv}
-        role="dialog"
-        tabIndex={-1}
-        {...dataRvt}
-        {...attrs}
-      >
-        {title && (
-          <header className="rvt-dialog__header" data-testid="dialogHeader">
-            <h1 className="rvt-dialog__title" id={`${id}-title`}>
-              {title}
-            </h1>
-          </header>
-        )}
-        {children}
-        {onDismiss && <DialogCloseButton onDismiss={handleDismiss} />}
-      </div>
-    )
+    <dialog
+      className={classNames("rvt-dialog", className)}
+      id={id}
+      aria-labelledby={`${id}-title`}
+      aria-hidden={!isOpen}
+      hidden={!isOpen}
+      ref={ref}
+      role="dialog"
+      {...dataRvt}
+      {...attrs}
+    >
+      {title && (
+        <header className="rvt-dialog__header" data-testid="dialogHeader">
+          <h1 className="rvt-dialog__title" id={`${id}-title`}>
+            {title}
+          </h1>
+        </header>
+      )}
+      {children}
+      {onDismiss && showCloseButton && (
+        <DialogCloseButton onDismiss={handleDismiss} />
+      )}
+    </dialog>
   );
 };
 
@@ -123,16 +130,18 @@ Dialog.propTypes = {
     "bottom-left",
     "bottom-right",
   ]),
+  /** Whether clicking outside the dialog causes it to dismiss. This requires onDismiss to be passed */
+  closeOnOutsideClick: PropTypes.bool,
   /** Darken the page behind the dialog when it is opened */
   darkenPage: PropTypes.bool,
-  /** Disable interaction with the rest of the page while the dialog is open TODO THIS IS NOT IMPLEMENTED YET IN RIVET */
+  /** Disable interaction with the rest of the page while the dialog is open */
   disablePageInteraction: PropTypes.bool,
   /** Determines whether the dialog is shown or not */
   isOpen: PropTypes.bool,
-  /** Function to call to raise when the alert is dismissed. If undefined, no close button will be rendered */
+  /** Function to call to raise when the dialog is dismissed. If undefined, no close button will be rendered */
   onDismiss: PropTypes.func,
-  /** A modal dialog closes when the user clicks outside the dialog or presses the escape key. This requires onDismiss to be defined, otherwise this does nothing */
-  modal: PropTypes.bool,
+  /** Whether or not to render a close button. Note that regardless of this property the close button requires an onDismiss */
+  showCloseButton: PropTypes.bool,
   /** The content of the dialog's header */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
