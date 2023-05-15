@@ -24,6 +24,8 @@
     "pretty-quick": "pretty-quick"
   },
   "dependencies": {
+    "@react-aria/dialog": "3.5.1",
+    "@react-aria/overlays": "3.14.0",
     "classnames": "2.3.1",
     "rivet-core": "2.1.0"
   },

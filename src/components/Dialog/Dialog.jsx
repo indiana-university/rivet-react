@@ -5,7 +5,7 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import * as Rivet from "../util/Rivet";
 import Button from "../Button/Button.jsx";
 import Icon from "../util/RivetIcons.jsx";
@@ -16,6 +16,8 @@ import {
   isUnhandledKeyPress,
   targets,
 } from "../util/EventUtils.js";
+import { useDialog } from "@react-aria/dialog";
+import { useModalOverlay } from "@react-aria/overlays";
 
 const Dialog = ({
   children,
@@ -34,21 +36,26 @@ const Dialog = ({
   const ref = React.useRef(null);
 
   useEffect(() => {
-    if (isOpen) {
-      if (disablePageInteraction) {
-        ref.current && ref.current.showModal();
-      } else {
-        ref.current && ref.current.show();
-      }
-    } else {
-      ref.current && ref.current.close();
-    }
-
     handleEventRegistration();
     return () => {
       clickOutsideOrEscapeEventHandler.deregister();
     };
   }, [isOpen]);
+
+  const { dialogProps, titleProps } = useDialog(
+    { id, ["aria-labelledby"]: `${id}-title`, role: "dialog", ...attrs },
+    ref
+  );
+
+  const { modalProps, underlayProps } = useModalOverlay(
+    {
+      isDismissable: closeOnOutsideClick,
+      isKeyboardDismissDisabled: false,
+      attrs,
+    },
+    { isOpen: isOpen, close: onDismiss },
+    ref
+  );
 
   const handleClickOutsideOrEscape = (event) => {
     if (event && shouldCloseDialog(event)) {
@@ -86,21 +93,18 @@ const Dialog = ({
     onDismiss && onDismiss();
   };
 
-  return (
-    <dialog
+  const dialogContent = (overlayProps) => (
+    <div
       className={classNames("rvt-dialog", className)}
-      id={id}
-      aria-labelledby={`${id}-title`}
       aria-hidden={!isOpen}
       hidden={!isOpen}
       ref={ref}
-      role="dialog"
       {...dataRvt}
-      {...attrs}
+      {...overlayProps}
     >
       {title && (
         <header className="rvt-dialog__header" data-testid="dialogHeader">
-          <h1 className="rvt-dialog__title" id={`${id}-title`}>
+          <h1 className="rvt-dialog__title" id={`${id}-title`} {...titleProps}>
             {title}
           </h1>
         </header>
@@ -109,8 +113,34 @@ const Dialog = ({
       {onDismiss && showCloseButton && (
         <DialogCloseButton onDismiss={handleDismiss} />
       )}
-    </dialog>
+    </div>
   );
+
+  if (isOpen) {
+    if (disablePageInteraction) {
+      return (
+        <span>
+          <div
+            style={{
+              position: "fixed",
+              zIndex: 100,
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+              background: "rgba(0, 0, 0, 0.5)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            {...underlayProps}
+          >
+            {dialogContent(modalProps)}
+          </div>
+        </span>
+      );
+    } else return dialogContent(dialogProps);
+  }
 };
 
 const DialogCloseButton = ({ onDismiss }) => (
