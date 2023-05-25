@@ -93,12 +93,12 @@ describe("<Dialog />", () => {
 
     it("should have an aria-labelledby that matches the h1 id", async () => {
       render(component());
-      const ariaLabelleby = screen
+      const ariaLabelledby = screen
         .getByRole("dialog", {})
         .getAttribute("aria-labelledby");
       expect(await screen.findByText(defaultTitle, {})).toHaveProperty(
         "id",
-        ariaLabelleby
+        ariaLabelledby
       );
     });
 
@@ -134,6 +134,24 @@ describe("<Dialog />", () => {
     });
 
     it("should not have a close button if an onDismiss prop is not provided", () => {
+      render(component());
+      expect(screen.queryByText("Close", {})).toBeNull();
+    });
+
+    it("should have a close button if an onDismiss prop is and showCloseButton is true", () => {
+      render(component({ onDismiss: () => {}, showCloseButton: true }));
+      const button = screen.queryByText("Close", {}).parentNode;
+      expect(button).toBeVisible();
+      expect(button).toHaveClass("rvt-dialog__close");
+    });
+
+    it("should not have a close button if an onDismiss prop is not provided and showCloseButton is false", () => {
+      render(component({ showCloseButton: false }));
+      expect(screen.queryByText("Close", {})).toBeNull();
+    });
+
+    it("should not have a close button if an onDismiss prop is provided but showCloseButton is false", () => {
+      render(component({ onDismiss: () => {}, showCloseButton: false }));
       expect(screen.queryByText("Close", {})).toBeNull();
     });
   });
@@ -179,20 +197,16 @@ describe("<Dialog />", () => {
   describe("disablePageInteraction Behavior", () => {
     it("should not disable page interaction if property not true", () => {
       render(component());
-      expect(screen.getByRole("dialog", {})).not.toHaveAttribute(
-        "data-rvt-dialog-disable-page-interaction"
-      );
+      expect(screen.queryByTestId("underlayDiv", {})).toBeNull();
     });
 
     it("should disable page interaction if property true", () => {
       render(component({ disablePageInteraction: true }));
-      expect(screen.getByRole("dialog", {})).toHaveAttribute(
-        "data-rvt-dialog-disable-page-interaction"
-      );
+      expect(screen.getByTestId("underlayDiv", {})).toBeDefined();
     });
   });
 
-  describe("onDismiss and modal Behavior", () => {
+  describe("onDismiss and closeOnOutsideClickOrEscape Behavior", () => {
     it("should call the onDismiss function if the close button is clicked", () => {
       const onDismiss = jest.fn();
       render(component({ onDismiss }));
@@ -201,37 +215,43 @@ describe("<Dialog />", () => {
       expect(onDismiss).toHaveBeenCalledTimes(1);
     });
 
-    it("should call onDismiss function if the dialog is a modal, user hits the escape key and the dialog is open", () => {
+    it("should call onDismiss function if closeOnOutsideClickOrEscape is true, user hits the escape key and the dialog is open", () => {
       const onDismiss = jest.fn();
-      render(component({ onDismiss, modal: true }));
+      render(component({ onDismiss, closeOnOutsideClickOrEscape: true }));
       pressEscapeKey();
       expect(onDismiss).toHaveBeenCalledTimes(1);
     });
 
-    it("should not call onDismiss function if the user hits the escape key and the dialog is not a modal", () => {
+    it("should not call onDismiss function if the user hits the escape key and closeOnOutsideClickOrEscape is false", () => {
       const onDismiss = jest.fn();
-      render(component({ onDismiss, modal: false }));
+      render(component({ onDismiss, closeOnOutsideClickOrEscape: false }));
       pressEscapeKey();
       expect(onDismiss).toHaveBeenCalledTimes(0);
     });
 
     it("should not call onDismiss function if the user hits the escape key and the dialog is not open", () => {
       const onDismiss = jest.fn();
-      render(component({ onDismiss, modal: true, isOpen: false }));
+      render(
+        component({
+          onDismiss,
+          closeOnOutsideClickOrEscape: true,
+          isOpen: false,
+        })
+      );
       pressEscapeKey();
       expect(onDismiss).toHaveBeenCalledTimes(0);
     });
 
     it("should call onDismiss if the dialog is open and the user clicks outside of the dialog", () => {
       const onDismiss = jest.fn();
-      render(component({ onDismiss, modal: true }));
+      render(component({ onDismiss, closeOnOutsideClickOrEscape: true }));
       document.body.click();
       expect(onDismiss).toHaveBeenCalledTimes(1);
     });
 
     it("should not call onDismiss if the user taps an unhandled key", () => {
       const onDismiss = jest.fn();
-      render(component({ onDismiss, modal: true }));
+      render(component({ onDismiss, closeOnOutsideClickOrEscape: true }));
       fireEvent.keyUp(document.body, {
         key: "a",
       });
@@ -241,7 +261,7 @@ describe("<Dialog />", () => {
 
     it("should not call onDismiss if the user clicks inside the dialog", () => {
       const onDismiss = jest.fn();
-      render(component({ onDismiss, modal: true }));
+      render(component({ onDismiss, closeOnOutsideClickOrEscape: true }));
       screen.queryByText(defaultTitle, {}).click();
       expect(onDismiss).toHaveBeenCalledTimes(0);
     });
@@ -257,10 +277,10 @@ describe("<Dialog />", () => {
       jest.restoreAllMocks();
     });
 
-    it("should register event handlers when it is mounted if there is an onDismiss, a modal and the dialog is open", () => {
+    it("should register event handlers when it is mounted if there is an onDismiss, closeOnOutsideClickOrEscape=true and the dialog is open", () => {
       const onDismiss = () => {};
       expect(document.addEventListener).toHaveBeenCalledTimes(0);
-      render(component({ onDismiss, modal: true }));
+      render(component({ onDismiss, closeOnOutsideClickOrEscape: true }));
       expect(document.addEventListener).toHaveBeenCalled();
     });
 
@@ -273,11 +293,11 @@ describe("<Dialog />", () => {
 
     it("should not register event handlers when it is mounted if there is no onDismiss", () => {
       expect(document.addEventListener).toHaveBeenCalledTimes(0);
-      render(component({ modal: true }));
+      render(component({ closeOnOutsideClickOrEscape: true }));
       expect(document.addEventListener).toHaveBeenCalledTimes(0);
     });
 
-    it("should not register event handlers when it is mounted if there is no modal", () => {
+    it("should not register event handlers when it is mounted if closeOnOutsideClickOrEscape=false", () => {
       const onDismiss = () => {};
       expect(document.addEventListener).toHaveBeenCalledTimes(0);
       render(component({ onDismiss }));
@@ -287,7 +307,7 @@ describe("<Dialog />", () => {
     it("should register and unregister event handlers as isOpen changes", () => {
       const onDismiss = () => {};
       expect(document.addEventListener).toHaveBeenCalledTimes(0);
-      render(component({ onDismiss, modal: true }));
+      render(component({ onDismiss, closeOnOutsideClickOrEscape: true }));
       expect(document.addEventListener).toHaveBeenCalledTimes(3);
       const button = screen.queryByText("Close", {}).parentNode;
       button.click();

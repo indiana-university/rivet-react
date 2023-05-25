@@ -36,6 +36,7 @@ const DialogExample = () => {
 ### React Documentation Dialog Examples
 
 <!-- prettier-ignore-start -->
+
 ```jsx
 import { useState } from "react";
 
@@ -54,7 +55,9 @@ const DialogExample = () => {
         title="Dialog title"
       >
         <DialogBody>
-          <p>The default dialog appears near the middle of the screen. It does not darken the page behind it and does not close when the user clicks outside of it. You can use data attributes to configure the appearance and behavior of the dialog.</p>
+          <p>The default dialog appears near the middle of the screen. It does not darken the page behind it and does
+            not close when the user clicks outside of it. You can use data attributes to configure the appearance and
+            behavior of the dialog.</p>
         </DialogBody>
         <DialogControls>
           <Button>OK</Button>
@@ -68,11 +71,12 @@ const DialogExample = () => {
         darkenPage={true}
         disablePageInteraction={true}
         onDismiss={handleDismiss}
-        closeOnOutsideClick={true}
+        closeOnOutsideClickOrEscape={true}
         title="Dialog title"
       >
         <DialogBody>
-          <p>This dialog darkens the background, disables interaction with the page behind it, and closes when the user clicks outside of it.</p>
+          <p>This dialog darkens the background, disables interaction with the page behind it, and closes when the user
+            clicks outside of it.</p>
         </DialogBody>
         <DialogControls>
           <Button>OK</Button>
@@ -87,7 +91,7 @@ const DialogExample = () => {
         onDismiss={handleDismiss}
         showCloseButton={false}
         darkenPage={true}
-        closeOnOutsideClick={true}
+        closeOnOutsideClickOrEscape={true}
         title="Delete Files"
       >
         <DialogBody>
@@ -98,21 +102,21 @@ const DialogExample = () => {
           <Button onClick={handleDismiss} modifier="secondary">Cancel</Button>
         </DialogControls>
       </Dialog>
-      
+
       <Button onClick={() => setDialogOpen("dialog-with-form")}>Dialog with form</Button>
       <Dialog
         isOpen={dialogOpen === "dialog-with-form"}
         darkenPage={true}
         disablePageInteraction={true}
         onDismiss={handleDismiss}
-        closeOnOutsideClick={true}
+        closeOnOutsideClickOrEscape={true}
         title="Dialog title"
       >
         <form>
           <DialogBody>
             <div className="m-bottom-sm">
               <label className="rvt-label" htmlFor="the-title">Title</label>
-              <input className="rvt-text-input" type="text" id="the-title"/>
+              <input className="rvt-text-input" type="text" id="the-title" />
             </div>
             <label className="rvt-label" htmlFor="description">Description</label>
             <textarea className="rvt-textarea" id="description"></textarea>
@@ -131,19 +135,19 @@ const DialogExample = () => {
               <ul className="rvt-list-inline">
                 <li>
                   <div className="rvt-checkbox">
-                    <input type="checkbox" name="checkbox-demo" id="checkbox-1" checked/>
+                    <input type="checkbox" name="checkbox-demo" id="checkbox-1" checked />
                     <label htmlFor="checkbox-1">Option one</label>
                   </div>
                 </li>
                 <li>
                   <div className="rvt-checkbox">
-                    <input type="checkbox" name="checkbox-demo" id="checkbox-2"/>
+                    <input type="checkbox" name="checkbox-demo" id="checkbox-2" />
                     <label htmlFor="checkbox-2">Option two</label>
                   </div>
                 </li>
                 <li>
                   <div className="rvt-checkbox">
-                    <input type="checkbox" name="checkbox-demo" id="checkbox-3"/>
+                    <input type="checkbox" name="checkbox-demo" id="checkbox-3" />
                     <label htmlFor="checkbox-3">Option three</label>
                   </div>
                 </li>
@@ -156,7 +160,7 @@ const DialogExample = () => {
           </DialogControls>
         </form>
       </Dialog>
-      
+
       <Button onClick={() => setDialogOpen("notification")}>Notification</Button>
       <Dialog
         isOpen={dialogOpen === "notification"}
@@ -165,17 +169,19 @@ const DialogExample = () => {
         title="New version available"
       >
         <DialogBody>
-          <p className="rvt-m-all-none">A new version of this application is available. Refresh the page to apply the update.</p>
+          <p className="rvt-m-all-none">A new version of this application is available. Refresh the page to apply the
+            update.</p>
         </DialogBody>
       </Dialog>
-      
+
       <Button onClick={() => setDialogOpen("help-widget")}>Help widget</Button>
       <Dialog
         isOpen={dialogOpen === "help-widget"}
         align="bottom-right"
       >
         <DialogBody>
-          <p className="rvt-m-all-none">Do you need help with your task? Support center technicians are available over chat to provide live assistance.</p>
+          <p className="rvt-m-all-none">Do you need help with your task? Support center technicians are available over
+            chat to provide live assistance.</p>
         </DialogBody>
         <DialogControls>
           <Button>Chat</Button>

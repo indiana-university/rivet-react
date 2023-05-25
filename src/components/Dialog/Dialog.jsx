@@ -17,14 +17,15 @@ import {
   targets,
 } from "../util/EventUtils.js";
 import { useDialog } from "@react-aria/dialog";
-import { useModalOverlay } from "@react-aria/overlays";
+import { useModalOverlay } from "../../hooks/UseModalOverlay.js";
+import { removeProperty } from "../util/RemoveProperty.js";
 
 const Dialog = ({
   children,
   className,
   id = Rivet.shortuid(),
   align,
-  closeOnOutsideClick,
+  closeOnOutsideClickOrEscape,
   darkenPage,
   disablePageInteraction,
   isOpen,
@@ -49,11 +50,15 @@ const Dialog = ({
 
   const { modalProps, underlayProps } = useModalOverlay(
     {
-      isDismissable: closeOnOutsideClick,
-      isKeyboardDismissDisabled: false,
+      isDismissable: false, // due to lack of onDismiss callback, use clickOutsideOrEscapeEventHandler
+      isKeyboardDismissDisabled: false, // due to lack of onDismiss callback, use clickOutsideOrEscapeEventHandler
       attrs,
     },
-    { isOpen: isOpen, close: onDismiss },
+    {
+      isOpen: isOpen,
+      close: onDismiss,
+      disablePageInteraction: disablePageInteraction,
+    },
     ref
   );
 
@@ -77,7 +82,7 @@ const Dialog = ({
   };
 
   const handleEventRegistration = () => {
-    if (isOpen && closeOnOutsideClick) {
+    if (isOpen && closeOnOutsideClickOrEscape) {
       clickOutsideOrEscapeEventHandler.register();
     } else {
       clickOutsideOrEscapeEventHandler.deregister();
@@ -104,7 +109,11 @@ const Dialog = ({
     >
       {title && (
         <header className="rvt-dialog__header" data-testid="dialogHeader">
-          <h1 className="rvt-dialog__title" id={`${id}-title`} {...titleProps}>
+          <h1
+            className="rvt-dialog__title"
+            id={`${id}-title`}
+            {...removeProperty(titleProps, "id")}
+          >
             {title}
           </h1>
         </header>
@@ -119,25 +128,24 @@ const Dialog = ({
   if (isOpen) {
     if (disablePageInteraction) {
       return (
-        <span>
-          <div
-            style={{
-              position: "fixed",
-              zIndex: 100,
-              top: 0,
-              left: 0,
-              bottom: 0,
-              right: 0,
-              background: "rgba(0, 0, 0, 0.5)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            {...underlayProps}
-          >
-            {dialogContent(modalProps)}
-          </div>
-        </span>
+        <div
+          style={{
+            position: "fixed",
+            zIndex: 100,
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+            background: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          data-testid="underlayDiv"
+          {...underlayProps}
+        >
+          {dialogContent(modalProps)}
+        </div>
       );
     } else return dialogContent(dialogProps);
   }
@@ -161,7 +169,7 @@ Dialog.propTypes = {
     "bottom-right",
   ]),
   /** Whether clicking outside the dialog causes it to dismiss. This requires onDismiss to be passed */
-  closeOnOutsideClick: PropTypes.bool,
+  closeOnOutsideClickOrEscape: PropTypes.bool,
   /** Darken the page behind the dialog when it is opened */
   darkenPage: PropTypes.bool,
   /** Disable interaction with the rest of the page while the dialog is open */
