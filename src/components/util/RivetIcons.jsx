@@ -28,6 +28,7 @@ export const IconNames = {
   TOGGLE_SEARCH: "toggle-search",
   TWITTER: "twitter",
   YOUTUBE: "youtube",
+  CLOSE: "close",
 };
 
 const IconCore = ({ children, ...attrs }) => (
@@ -213,7 +214,7 @@ const Icon = ({ name, ...attrs }) => {
       return icoTwitter(attrs);
     case IconNames.YOUTUBE:
       return icoYoutube(attrs);
-    case "close":
+    case IconNames.CLOSE:
       return icoClose(attrs);
   }
 };
@@ -232,7 +233,7 @@ Icon.propTypes = {
     IconNames.TOGGLE_CLOSE,
     IconNames.TRIDENT_HEADER,
     IconNames.TOGGLE_SEARCH,
-    "close",
+    IconNames.CLOSE,
     IconNames.TWITTER,
     IconNames.YOUTUBE,
   ]),

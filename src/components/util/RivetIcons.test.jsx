@@ -11,7 +11,7 @@ import { TestUtils } from "./TestUtils.js";
 describe("<Icon>", () => {
   describe("Icon list check", iconListTests);
   it("should render close without crashing", () => {
-    render(<Icon name="close" />);
+    render(<Icon name={IconNames.CLOSE} />);
     expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
   });
   it("should have a default height of 16", () => {
