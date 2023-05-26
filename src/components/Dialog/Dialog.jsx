@@ -50,13 +50,12 @@ const Dialog = ({
 
   const { modalProps, underlayProps } = useModalOverlay(
     {
-      isDismissable: false, // due to lack of onDismiss callback, use clickOutsideOrEscapeEventHandler
-      isKeyboardDismissDisabled: false, // due to lack of onDismiss callback, use clickOutsideOrEscapeEventHandler
+      isDismissable: false, // using clickOutsideOrEscapeEventHandler
+      isKeyboardDismissDisabled: false, // using clickOutsideOrEscapeEventHandler
       attrs,
     },
     {
       isOpen: isOpen,
-      close: onDismiss,
       disablePageInteraction: disablePageInteraction,
     },
     ref
@@ -168,7 +167,7 @@ Dialog.propTypes = {
     "bottom-left",
     "bottom-right",
   ]),
-  /** Whether clicking outside the dialog causes it to dismiss. This requires onDismiss to be passed */
+  /** Whether clicking outside the dialog or pressing escape causes it to dismiss. Setting this value to true requires onDismiss to be passed */
   closeOnOutsideClickOrEscape: PropTypes.bool,
   /** Darken the page behind the dialog when it is opened */
   darkenPage: PropTypes.bool,
@@ -176,9 +175,9 @@ Dialog.propTypes = {
   disablePageInteraction: PropTypes.bool,
   /** Determines whether the dialog is shown or not */
   isOpen: PropTypes.bool,
-  /** Function to call to raise when the dialog is dismissed. If undefined, no close button will be rendered */
+  /** Function to call to raise when the dialog is dismissed */
   onDismiss: PropTypes.func,
-  /** Whether or not to render a close button. Note that regardless of this property the close button requires an onDismiss */
+  /** Whether or not to render a close button. Setting this value to true requires onDismiss to be passed */
   showCloseButton: PropTypes.bool,
   /** The content of the dialog's header */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),

@@ -7,7 +7,7 @@ import {
 import { useEffect } from "react";
 import { mergeProps } from "@react-aria/utils";
 
-// copied from @react-aria/overlays
+// copied from @react-aria/overlays for use of the Dialog component
 export function useModalOverlay(props, state, ref) {
   let { overlayProps, underlayProps } = useOverlay(
     {
