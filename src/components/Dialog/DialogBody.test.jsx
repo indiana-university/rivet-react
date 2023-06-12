@@ -8,6 +8,7 @@ import Dialog from "./Dialog.jsx";
 import DialogBody from "./DialogBody.jsx";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<DialogBody />", () => {
   it("renders without error", () => {
@@ -18,7 +19,10 @@ describe("<DialogBody />", () => {
       </Dialog>
     );
 
-    const dialogBody = screen.getByTestId("dialogBody", {});
+    const dialogBody = screen.getByTestId(
+      TestUtils.Dialog.dialogBodyTestId,
+      {}
+    );
     expect(dialogBody).toBeVisible();
     expect(dialogBody).toHaveClass("rvt-dialog__body");
     expect(dialogBody.innerHTML).toBe(children);

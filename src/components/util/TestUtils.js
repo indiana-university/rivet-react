@@ -2,6 +2,12 @@ export const TestUtils = {
   ButtonGroup: { testId: "buttonGroup_testId" },
   SegmentedButton: { testId: "segmentedButton_testId" },
   RivetIcons: { testId: "rivetIcon_testId" },
+  Dialog: {
+    dialogHeaderTestId: "dialogHeader__testId",
+    underlayDivTestId: "underlayDiv__testId",
+    dialogBodyTestId: "dialogBody__testId",
+    dialogControlsTestId: "dialogControlsTestId__testId",
+  },
   Dropdown: { testId: "testId" },
   Header: {
     skipLinkTestId: "skip-link__testid",

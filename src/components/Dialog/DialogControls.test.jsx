@@ -9,6 +9,7 @@ import Dialog from "./Dialog.jsx";
 import { DialogControls } from "./index.jsx";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<DialogControls />", () => {
   it("renders without error", () => {
@@ -20,7 +21,10 @@ describe("<DialogControls />", () => {
       </Dialog>
     );
 
-    const dialogControls = screen.getByTestId("dialogControls", {});
+    const dialogControls = screen.getByTestId(
+      TestUtils.Dialog.dialogControlsTestId,
+      {}
+    );
     expect(dialogControls).toBeVisible();
     expect(dialogControls).toHaveClass("rvt-dialog__controls");
     expect(screen.getByRole("button", { name: /The text/ })).toBeVisible();

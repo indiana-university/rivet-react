@@ -10,6 +10,7 @@ import DialogBody from "./DialogBody";
 import DialogControls from "./DialogControls";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<Dialog />", () => {
   const defaultTitle = "dialog title";
@@ -59,9 +60,9 @@ describe("<Dialog />", () => {
     it("should have the correct structure", async () => {
       render(component());
       expect(screen.getByRole("dialog", {})).toHaveClass("rvt-dialog");
-      expect(screen.getByTestId("dialogHeader", {})).toHaveClass(
-        "rvt-dialog__header"
-      );
+      expect(
+        screen.getByTestId(TestUtils.Dialog.dialogHeaderTestId, {})
+      ).toHaveClass("rvt-dialog__header");
       expect(await screen.findByText(defaultTitle, {})).toHaveClass(
         "rvt-dialog__title"
       );
@@ -197,12 +198,16 @@ describe("<Dialog />", () => {
   describe("disablePageInteraction Behavior", () => {
     it("should not disable page interaction if property not true", () => {
       render(component());
-      expect(screen.queryByTestId("underlayDiv", {})).toBeNull();
+      expect(
+        screen.queryByTestId(TestUtils.Dialog.underlayDivTestId, {})
+      ).toBeNull();
     });
 
     it("should disable page interaction if property true", () => {
       render(component({ disablePageInteraction: true }));
-      expect(screen.getByTestId("underlayDiv", {})).toBeDefined();
+      expect(
+        screen.getByTestId(TestUtils.Dialog.underlayDivTestId, {})
+      ).toBeDefined();
     });
   });
 

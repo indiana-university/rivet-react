@@ -4,11 +4,12 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from "classnames";
 import * as React from "react";
+import { TestUtils } from "../util/TestUtils.js";
 
 const DialogControls = ({ children, className }) => (
   <div
     className={classNames(["rvt-dialog__controls", className])}
-    data-testid="dialogControls"
+    data-testid={TestUtils.Dialog.dialogControlsTestId}
   >
     {children}
   </div>

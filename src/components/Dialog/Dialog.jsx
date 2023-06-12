@@ -19,6 +19,7 @@ import {
 import { useDialog } from "@react-aria/dialog";
 import { useModalOverlay } from "../../hooks/UseModalOverlay.js";
 import { removeProperty } from "../util/RemoveProperty.js";
+import { TestUtils } from "../util/TestUtils.js";
 
 const Dialog = ({
   children,
@@ -107,7 +108,10 @@ const Dialog = ({
       {...overlayProps}
     >
       {title && (
-        <header className="rvt-dialog__header" data-testid="dialogHeader">
+        <header
+          className="rvt-dialog__header"
+          data-testid={TestUtils.Dialog.dialogHeaderTestId}
+        >
           <h1
             className="rvt-dialog__title"
             id={`${id}-title`}
@@ -140,7 +144,7 @@ const Dialog = ({
             alignItems: "center",
             justifyContent: "center",
           }}
-          data-testid="underlayDiv"
+          data-testid={TestUtils.Dialog.underlayDivTestId}
           {...underlayProps}
         >
           {dialogContent(modalProps)}
