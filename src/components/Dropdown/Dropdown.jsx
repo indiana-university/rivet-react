@@ -11,7 +11,7 @@ import {
   isTabKeyPress,
   targets,
 } from "../util/EventUtils.js";
-import { handler, isUnhandledKeyPress } from "./DropdownEventUtils.js";
+import { handler, isUnhandledKeyPress } from "../util/EventUtils.js";
 import { Button } from "../Button";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";

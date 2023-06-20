@@ -10,6 +10,30 @@ export const keys = {
   arrowDown: "ArrowDown",
 };
 
+export const handler = (callback) => {
+  const eventHandler = (event) => {
+    callback(event);
+  };
+  return {
+    register: () => {
+      ["click"].forEach((event) =>
+        document.addEventListener(event, eventHandler, false)
+      );
+      ["touchstart", "keyup"].forEach((event) =>
+        document.addEventListener(event, eventHandler, true)
+      );
+    },
+    deregister: () => {
+      ["click"].forEach((event) =>
+        document.removeEventListener(event, eventHandler, false)
+      );
+      ["touchstart", "keyup"].forEach((event) =>
+        document.removeEventListener(event, eventHandler, true)
+      );
+    },
+  };
+};
+
 export const isKeyEvent = (event) =>
   event.type === "keydown" || event.type === "keyup";
 
@@ -27,6 +51,9 @@ export const isArrowUpKeyPress = (event) =>
 
 export const isArrowDownKeyPress = (event) =>
   isKeyEvent(event) && event.key === keys.arrowDown;
+
+export const isUnhandledKeyPress = (event) =>
+  isKeyEvent(event) && !isTabKeyPress(event) && !isEscapeKeyPress(event);
 
 export const isMouseEvent = (event) => event.type === "click";
 

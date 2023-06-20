@@ -56,7 +56,10 @@ module.exports = {
     },
     {
       name: "Overlays",
-      components: "src/components/Alert/[A-Z]*.jsx",
+      components: () => [
+        "src/components/Alert/[A-Z]*.jsx",
+        "src/components/Dialog/[A-Z]*.jsx",
+      ],
     },
     {
       name: "Tables",
