@@ -54,6 +54,7 @@ const Dialog = ({
   const { modalProps, underlayProps } = useModalOverlay(
     // The props provided to useModalOverlay are specified by this type:
     // https://github.com/adobe/react-spectrum/blob/98cad3f064c5302c04a1140d12a2cacc3ee921a2/packages/%40react-types/dialog/src/index.d.ts#L41
+    // with a rivet-react2 tweak, isDisabled should respect state.disablePageInteraction. See ../../hooks/UseModalOverlay.js
     {
       isDismissable: false, // using clickOutsideOrEscapeEventHandler
       isKeyboardDismissDisabled: false, // using clickOutsideOrEscapeEventHandler
