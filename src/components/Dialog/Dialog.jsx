@@ -45,11 +45,15 @@ const Dialog = ({
   }, [isOpen]);
 
   const { dialogProps, titleProps } = useDialog(
+    // The props provided to useDialog are specified by this type:
+    // https://github.com/adobe/react-spectrum/blob/98cad3f064c5302c04a1140d12a2cacc3ee921a2/packages/%40react-types/dialog/src/index.d.ts#L57
     { id, ["aria-labelledby"]: `${id}-title`, role: "dialog", ...attrs },
     ref
   );
 
   const { modalProps, underlayProps } = useModalOverlay(
+    // The props provided to useModalOverlay are specified by this type:
+    // https://github.com/adobe/react-spectrum/blob/98cad3f064c5302c04a1140d12a2cacc3ee921a2/packages/%40react-types/dialog/src/index.d.ts#L41
     {
       isDismissable: false, // using clickOutsideOrEscapeEventHandler
       isKeyboardDismissDisabled: false, // using clickOutsideOrEscapeEventHandler
@@ -89,6 +93,7 @@ const Dialog = ({
     }
   };
 
+  // data rivet elements that add CSS styling
   const dataRvt = {
     ...{ ...(align && { [`data-rvt-dialog-${align}`]: "" }) },
     ...{ ...(darkenPage && { ["data-rvt-dialog-darken-page"]: "" }) },
@@ -98,6 +103,7 @@ const Dialog = ({
     onDismiss && onDismiss();
   };
 
+  // helper that takes either the react-spectrum modal or dialog props as defined per useDialog and useModalOverlay above
   const dialogContent = (overlayProps) => (
     <div
       className={classNames("rvt-dialog", className)}
@@ -115,6 +121,7 @@ const Dialog = ({
           <h1
             className="rvt-dialog__title"
             id={`${id}-title`}
+            // don't want the id from react-spectrum Dialog, use rivet format
             {...removeProperty(titleProps, "id")}
           >
             {title}
@@ -129,6 +136,8 @@ const Dialog = ({
   );
 
   if (isOpen) {
+    // If page interaction is disabled, we need to render the modal dialog content inside a fixed div which takes up the
+    // entire screen, otherwise just render the dialog content
     if (disablePageInteraction) {
       return (
         <div
