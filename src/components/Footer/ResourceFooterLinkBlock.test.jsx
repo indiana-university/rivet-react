@@ -7,13 +7,16 @@ import "@testing-library/jest-dom";
 import React from "react";
 
 import ResourceFooterLinkBlock from "./ResourceFooterLinkBlock";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<ResourceFooterLinkBlock />", () => {
-  const id = "test";
   describe("ResourceFooterLinkBlock", () => {
     it("should render without error", async () => {
       render(
-        <ResourceFooterLinkBlock data-testid="test" label="Test Links">
+        <ResourceFooterLinkBlock
+          data-testid={TestUtils.Footer.testId}
+          label="Test Links"
+        >
           <li className="rvt-footer-resources__list-item">
             <a href="#">Example Link 1</a>
           </li>
@@ -26,7 +29,7 @@ describe("<ResourceFooterLinkBlock />", () => {
         </ResourceFooterLinkBlock>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       checkBaseItem(component);
     });
   });
@@ -34,14 +37,17 @@ describe("<ResourceFooterLinkBlock />", () => {
   describe("ResourceFooterLinkBlock_NoListItem", () => {
     it("should render without error", async () => {
       render(
-        <ResourceFooterLinkBlock data-testid="test" label="Test Links">
+        <ResourceFooterLinkBlock
+          data-testid={TestUtils.Footer.testId}
+          label="Test Links"
+        >
           <a href="#">Example Link 1</a>
           <a href="#">Example Link 2</a>
           <a href="#">Example Link 3</a>
         </ResourceFooterLinkBlock>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       checkBaseItem(component);
     });
   });
@@ -49,7 +55,10 @@ describe("<ResourceFooterLinkBlock />", () => {
   describe("ResourceFooterLinkBlock_MixListItem", () => {
     it("should render without error", async () => {
       render(
-        <ResourceFooterLinkBlock data-testid="test" label="Test Links">
+        <ResourceFooterLinkBlock
+          data-testid={TestUtils.Footer.testId}
+          label="Test Links"
+        >
           <a href="#">Example Link 1</a>
           <li className="rvt-footer-resources__list-item">
             <a href="#">Example Link 2</a>
@@ -60,16 +69,21 @@ describe("<ResourceFooterLinkBlock />", () => {
         </ResourceFooterLinkBlock>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       checkBaseItem(component);
     });
   });
 
   describe("ResourceFooterLinkBlock_NoChildren", () => {
     it("should render without error", async () => {
-      render(<ResourceFooterLinkBlock data-testid="test" label="Test Links" />);
+      render(
+        <ResourceFooterLinkBlock
+          data-testid={TestUtils.Footer.testId}
+          label="Test Links"
+        />
+      );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const header = component.children[0];
       const list = component.children[1];
 
@@ -82,13 +96,16 @@ describe("<ResourceFooterLinkBlock />", () => {
   describe("ResourceFooterLinkBlock_MixListContent", () => {
     it("should render without error", async () => {
       render(
-        <ResourceFooterLinkBlock data-testid="test" label="Test Links">
+        <ResourceFooterLinkBlock
+          data-testid={TestUtils.Footer.testId}
+          label="Test Links"
+        >
           Example Link 1<span>Example Link 2</span>
           {3}
         </ResourceFooterLinkBlock>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const header = component.children[0];
       const list = component.children[1];
 

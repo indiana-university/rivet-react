@@ -12,14 +12,14 @@ import {
 import "@testing-library/jest-dom";
 import React from "react";
 import MyFile from "./File";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<File />", () => {
-  const testId = "test-id";
   describe("Rendering and text", () => {
     it("should render successfully", async () => {
-      render(<MyFile data-testid={testId} />);
+      render(<MyFile data-testid={TestUtils.File.testId} />);
 
-      const file = await screen.findByTestId(testId);
+      const file = await screen.findByTestId(TestUtils.File.testId);
 
       expect(file.nodeName).toBe("INPUT");
       expect(file.type).toBe("file");
@@ -56,9 +56,9 @@ describe("<File />", () => {
           },
         ],
       };
-      render(<MyFile data-testid={testId} innerRef={ref} />);
+      render(<MyFile data-testid={TestUtils.File.testId} innerRef={ref} />);
 
-      const file = await screen.findByTestId(testId);
+      const file = await screen.findByTestId(TestUtils.File.testId);
 
       // get the description
       const description = file.parentNode.children[2];
@@ -77,9 +77,11 @@ describe("<File />", () => {
           },
         ],
       };
-      render(<MyFile data-testid={testId} innerRef={ref} multiple />);
+      render(
+        <MyFile data-testid={TestUtils.File.testId} innerRef={ref} multiple />
+      );
 
-      const file = await screen.findByTestId(testId);
+      const file = await screen.findByTestId(TestUtils.File.testId);
 
       // get the description
       const description = file.parentNode.children[2];
@@ -91,12 +93,15 @@ describe("<File />", () => {
       let fileObject = new File(["foo"], fileName, { type: "text/plain" });
       render(
         <form>
-          <MyFile id={testId} data-testid={testId} />
+          <MyFile
+            id={TestUtils.File.testId}
+            data-testid={TestUtils.File.testId}
+          />
           <input type="reset" data-testid="reset-id" value="Reset" />
         </form>
       );
 
-      let file = await screen.findByTestId(testId);
+      let file = await screen.findByTestId(TestUtils.File.testId);
       let description = file.parentNode.children[2];
 
       expect(description.innerHTML).toBe("No file selected");
@@ -119,9 +124,11 @@ describe("<File />", () => {
 
     it("calls the user defined onchange function if one is defined", async () => {
       const onchange = jest.fn();
-      render(<MyFile onChange={onchange} data-testid={testId} />);
+      render(
+        <MyFile onChange={onchange} data-testid={TestUtils.File.testId} />
+      );
 
-      const file = await screen.findByTestId(testId);
+      const file = await screen.findByTestId(TestUtils.File.testId);
 
       var event = new Event("input", {
         bubbles: true,

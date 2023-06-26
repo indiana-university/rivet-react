@@ -31,4 +31,9 @@ export const TestUtils = {
     avatarUsernameTestId: "avatar-username__testid",
     headerWidthDivTestId: "header-width__testid",
   },
+  Checkbox: { testId: "testId" },
+  File: { testId: "testId" },
+  RadioButton: { testId: "testId" },
+  Table: { testId: "testId" },
+  Footer: { testId: "testId" },
 };
