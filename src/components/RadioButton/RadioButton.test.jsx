@@ -7,21 +7,25 @@ import "@testing-library/jest-dom";
 import React from "react";
 
 import RadioButton from "./RadioButton";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<RadioButton />", () => {
-  const label = "label",
-    testId = "test-id";
+  const label = "label";
   describe("Rendering and text", () => {
     it("should render a checkbox", async () => {
-      render(<RadioButton data-testid={testId} label={label} />);
-      const input = await screen.findByTestId(testId);
+      render(
+        <RadioButton data-testid={TestUtils.RadioButton.testId} label={label} />
+      );
+      const input = await screen.findByTestId(TestUtils.RadioButton.testId);
       expect(input.nodeName).toBe("INPUT");
       expect(input.type).toBe("radio");
     });
 
     it("should have a parent with the correct class", async () => {
-      render(<RadioButton data-testid={testId} label={label} />);
-      const input = await screen.findByTestId(testId);
+      render(
+        <RadioButton data-testid={TestUtils.RadioButton.testId} label={label} />
+      );
+      const input = await screen.findByTestId(TestUtils.RadioButton.testId);
       const parent = input.parentNode;
       expect(parent).toHaveClass("rvt-radio");
       expect(parent).not.toHaveClass("rvt-radio--sr-only-label");
@@ -29,8 +33,14 @@ describe("<RadioButton />", () => {
 
     it("should render a label linked to the radio", async () => {
       const id = "id";
-      render(<RadioButton id={id} data-testid={testId} label={label} />);
-      const input = await screen.findByTestId(testId);
+      render(
+        <RadioButton
+          id={id}
+          data-testid={TestUtils.RadioButton.testId}
+          label={label}
+        />
+      );
+      const input = await screen.findByTestId(TestUtils.RadioButton.testId);
       expect(input.id).toBe(id);
       const labelElement = await screen.findByText(label);
       expect(labelElement.nodeName).toBe("LABEL");
@@ -44,12 +54,12 @@ describe("<RadioButton />", () => {
       render(
         <RadioButton
           id={id}
-          data-testid={testId}
+          data-testid={TestUtils.RadioButton.testId}
           label={label}
           description={description}
         />
       );
-      const input = await screen.findByTestId(testId);
+      const input = await screen.findByTestId(TestUtils.RadioButton.testId);
       const parent = input.parentNode;
       expect(parent.attributes.getNamedItem("aria-describedby").value).toBe(
         descriptionId

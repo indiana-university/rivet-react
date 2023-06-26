@@ -7,18 +7,19 @@ import "@testing-library/jest-dom";
 import React from "react";
 
 import ResourceFooter from "./ResourceFooter";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<ResourceFooter />", () => {
   const id = "test";
   describe("ResourceFooter", () => {
     it("should render without error", async () => {
       render(
-        <ResourceFooter data-testid="test">
+        <ResourceFooter data-testid={TestUtils.Footer.testId}>
           This is a block of example text
         </ResourceFooter>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const header = component.children[0];
       const content = component.children[1];
 
@@ -35,7 +36,7 @@ describe("<ResourceFooter />", () => {
     it("should render without error", async () => {
       render(
         <ResourceFooter
-          data-testid="test"
+          data-testid={TestUtils.Footer.testId}
           containerClass="test-container-class"
           id="testid"
           label="Test Links"
@@ -45,7 +46,7 @@ describe("<ResourceFooter />", () => {
         </ResourceFooter>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const header = component.children[0];
       const content = component.children[1];
 

@@ -40,31 +40,60 @@ function iconListTests() {
     expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
   });
   it("should render facebook without crashing", () => {
-    render(<Icon data-testid="test" name={IconNames.FACEBOOK} />);
-    expect(screen.queryByTestId("test", {})).toBeVisible();
+    render(
+      <Icon
+        data-testid={TestUtils.RivetIcons.testId}
+        name={IconNames.FACEBOOK}
+      />
+    );
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
   });
   it("should render file without crashing", () => {
-    render(<Icon data-testid="test" name={IconNames.FILE} />);
-    expect(screen.queryByTestId("test", {})).toBeVisible();
+    render(
+      <Icon data-testid={TestUtils.RivetIcons.testId} name={IconNames.FILE} />
+    );
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
   });
   it("should render instagram without crashing", () => {
-    render(<Icon data-testid="test" name={IconNames.INSTAGRAM} />);
-    expect(screen.queryByTestId("test", {})).toBeVisible();
+    render(
+      <Icon
+        data-testid={TestUtils.RivetIcons.testId}
+        name={IconNames.INSTAGRAM}
+      />
+    );
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
   });
   it("should render linkedin without crashing", () => {
-    render(<Icon data-testid="test" name={IconNames.LINKEDIN} />);
-    expect(screen.queryByTestId("test", {})).toBeVisible();
+    render(
+      <Icon
+        data-testid={TestUtils.RivetIcons.testId}
+        name={IconNames.LINKEDIN}
+      />
+    );
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
   });
   it("should render logo without crashing", () => {
-    render(<Icon data-testid="test" name={IconNames.LOGO} />);
-    expect(screen.queryByTestId("test", {})).toBeVisible();
+    render(
+      <Icon data-testid={TestUtils.RivetIcons.testId} name={IconNames.LOGO} />
+    );
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
   });
   it("should render twitter without crashing", () => {
-    render(<Icon data-testid="test" name={IconNames.TWITTER} />);
-    expect(screen.queryByTestId("test", {})).toBeVisible();
+    render(
+      <Icon
+        data-testid={TestUtils.RivetIcons.testId}
+        name={IconNames.TWITTER}
+      />
+    );
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
   });
   it("should render youtube without crashing", () => {
-    render(<Icon data-testid="test" name={IconNames.YOUTUBE} />);
-    expect(screen.queryByTestId("test", {})).toBeVisible();
+    render(
+      <Icon
+        data-testid={TestUtils.RivetIcons.testId}
+        name={IconNames.YOUTUBE}
+      />
+    );
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
   });
 }

@@ -26,11 +26,7 @@ const HeaderAvatar = ({ username, shortName, logoutURL }) => {
         {username}
       </div>
       {logoutURL && (
-        <a
-          href={logoutURL}
-          className="rvt-ts-14"
-          data-testid={"header-logout-link"}
-        >
+        <a href={logoutURL} className="rvt-ts-14">
           Log out
         </a>
       )}

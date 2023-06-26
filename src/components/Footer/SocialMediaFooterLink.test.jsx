@@ -7,14 +7,14 @@ import "@testing-library/jest-dom";
 import React from "react";
 
 import SocialMediaFooterLink from "./SocialMediaFooterLink";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<SocialMediaFooterLink />", () => {
-  const id = "test";
   describe("SocialMediaFooterLink", () => {
     it("should render without error", async () => {
       render(
         <SocialMediaFooterLink
-          data-testid="test"
+          data-testid={TestUtils.Footer.testId}
           label="Test Link"
           url="https://www.facebook.com/IndianaUniversity"
         >
@@ -37,7 +37,7 @@ describe("<SocialMediaFooterLink />", () => {
         </SocialMediaFooterLink>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const link = component.children[0];
       const label = link.children[0];
       const content = link.children[1];
@@ -55,7 +55,10 @@ describe("<SocialMediaFooterLink />", () => {
   describe("SocialMediaFooterLink_MissingUrl", () => {
     it("should render without error", async () => {
       render(
-        <SocialMediaFooterLink data-testid="test" label="Test Link">
+        <SocialMediaFooterLink
+          data-testid={TestUtils.Footer.testId}
+          label="Test Link"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -75,7 +78,9 @@ describe("<SocialMediaFooterLink />", () => {
         </SocialMediaFooterLink>
       );
 
-      expect(screen.queryByTestId("test")).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId(TestUtils.Footer.testId)
+      ).not.toBeInTheDocument();
     });
   });
 
@@ -83,7 +88,7 @@ describe("<SocialMediaFooterLink />", () => {
     it("should render without error", async () => {
       render(
         <SocialMediaFooterLink
-          data-testid="test"
+          data-testid={TestUtils.Footer.testId}
           label="Test Link"
           url="https://www.facebook.com/IndianaUniversity"
         >
@@ -92,7 +97,7 @@ describe("<SocialMediaFooterLink />", () => {
         </SocialMediaFooterLink>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const link = component.children[0];
       const label = link.children[0];
       const content1 = link.children[1];

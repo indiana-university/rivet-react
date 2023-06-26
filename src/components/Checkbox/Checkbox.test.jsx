@@ -7,21 +7,25 @@ import "@testing-library/jest-dom";
 import React from "react";
 
 import Checkbox from "./Checkbox";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<Checkbox />", () => {
-  const label = "label",
-    testId = "test-id";
+  const label = "label";
   describe("Rendering and text", () => {
     it("should render a checkbox", async () => {
-      render(<Checkbox data-testid={testId} label={label} />);
-      const input = await screen.findByTestId(testId);
+      render(
+        <Checkbox data-testid={TestUtils.Checkbox.testId} label={label} />
+      );
+      const input = await screen.findByTestId(TestUtils.Checkbox.testId);
       expect(input.nodeName).toBe("INPUT");
       expect(input.type).toBe("checkbox");
     });
 
     it("should have a parent with the correct class", async () => {
-      render(<Checkbox data-testid={testId} label={label} />);
-      const input = await screen.findByTestId(testId);
+      render(
+        <Checkbox data-testid={TestUtils.Checkbox.testId} label={label} />
+      );
+      const input = await screen.findByTestId(TestUtils.Checkbox.testId);
       const parent = input.parentNode;
       expect(parent).toHaveClass("rvt-checkbox");
       expect(parent).not.toHaveClass("rvt-checkbox--sr-only-label");
@@ -29,8 +33,14 @@ describe("<Checkbox />", () => {
 
     it("should render a label linked to the checkbox", async () => {
       const id = "id";
-      render(<Checkbox id={id} data-testid={testId} label={label} />);
-      const input = await screen.findByTestId(testId);
+      render(
+        <Checkbox
+          id={id}
+          data-testid={TestUtils.Checkbox.testId}
+          label={label}
+        />
+      );
+      const input = await screen.findByTestId(TestUtils.Checkbox.testId);
       expect(input.id).toBe(id);
       const labelElement = await screen.findByText(label);
       expect(labelElement.nodeName).toBe("LABEL");
@@ -39,9 +49,13 @@ describe("<Checkbox />", () => {
 
     it("hides the label if labelVisibility is false", async () => {
       render(
-        <Checkbox labelVisibility={false} data-testid={testId} label={label} />
+        <Checkbox
+          labelVisibility={false}
+          data-testid={TestUtils.Checkbox.testId}
+          label={label}
+        />
       );
-      const input = await screen.findByTestId(testId);
+      const input = await screen.findByTestId(TestUtils.Checkbox.testId);
       const parent = input.parentNode;
       expect(parent).toHaveClass("rvt-checkbox");
       expect(parent).toHaveClass("rvt-checkbox--sr-only-label");
@@ -54,12 +68,12 @@ describe("<Checkbox />", () => {
       render(
         <Checkbox
           id={id}
-          data-testid={testId}
+          data-testid={TestUtils.Checkbox.testId}
           label={label}
           description={description}
         />
       );
-      const input = await screen.findByTestId(testId);
+      const input = await screen.findByTestId(TestUtils.Checkbox.testId);
       const parent = input.parentNode;
       expect(parent.attributes.getNamedItem("aria-describedby").value).toBe(
         descriptionId

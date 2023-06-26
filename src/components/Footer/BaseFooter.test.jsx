@@ -7,14 +7,19 @@ import "@testing-library/jest-dom";
 import React from "react";
 
 import BaseFooter from "./BaseFooter";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<BaseFooter />", () => {
-  const id = "test";
   describe("BaseFooter with privacy", () => {
     it("should render without error", async () => {
-      render(<BaseFooter data-testid="test" privacyUrl="test.test.test" />);
+      render(
+        <BaseFooter
+          data-testid={TestUtils.Footer.testId}
+          privacyUrl="test.test.test"
+        />
+      );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const privacy = screen.queryByText("Privacy Notice");
       expect(component).toHaveClass("rvt-footer-base");
       expect(component).toContainElement(privacy);
@@ -23,9 +28,9 @@ describe("<BaseFooter />", () => {
 
   describe("BaseFooter without privacy", () => {
     it("should render without error", async () => {
-      render(<BaseFooter data-testid="test" />);
+      render(<BaseFooter data-testid={TestUtils.Footer.testId} />);
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const privacy = screen.queryByText("Privacy Notice");
       expect(component).toHaveClass("rvt-footer-base");
       expect(component).not.toContainElement(privacy);
@@ -34,9 +39,11 @@ describe("<BaseFooter />", () => {
 
   describe("BaseFooter light variant", () => {
     it("should render without error", async () => {
-      render(<BaseFooter data-testid="test" variant="light" />);
+      render(
+        <BaseFooter data-testid={TestUtils.Footer.testId} variant="light" />
+      );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       expect(component).toHaveClass("rvt-footer-base");
       expect(component).toHaveClass("rvt-footer-base--light");
     });

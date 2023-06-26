@@ -8,14 +8,14 @@ import React from "react";
 
 import SocialMediaFooter from "./SocialMediaFooter";
 import SocialMediaFooterLink from "./SocialMediaFooterLink";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<SocialMediaFooter />", () => {
-  const id = "test";
   describe("SocialMediaFooter", () => {
     it("should render without error", async () => {
       render(
         <SocialMediaFooter
-          data-testid="test"
+          data-testid={TestUtils.Footer.testId}
           containerClass="test-container-class"
           id="testid"
           label="Test Links"
@@ -33,7 +33,7 @@ describe("<SocialMediaFooter />", () => {
         </SocialMediaFooter>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       checkBaseItem(component, "testid");
       expect(component.children[0]).toHaveClass("rvt-container-lg");
       expect(component.children[0]).toHaveClass("test-container-class");
@@ -43,14 +43,18 @@ describe("<SocialMediaFooter />", () => {
   describe("SocialMediaFooter_NoListItem", () => {
     it("should render without error", async () => {
       render(
-        <SocialMediaFooter data-testid="test" id="testid" label="Test Links">
+        <SocialMediaFooter
+          data-testid={TestUtils.Footer.testId}
+          id="testid"
+          label="Test Links"
+        >
           <a href="#">Example Link 1</a>
           <a href="#">Example Link 2</a>
           <a href="#">Example Link 3</a>
         </SocialMediaFooter>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       checkBaseItem(component, "testid");
       expect(component.children[0]).toHaveClass("rvt-container-sm");
     });
@@ -59,7 +63,11 @@ describe("<SocialMediaFooter />", () => {
   describe("SocialMediaFooter_MixListItem", () => {
     it("should render without error", async () => {
       render(
-        <SocialMediaFooter data-testid="test" id="testid" label="Test Links">
+        <SocialMediaFooter
+          data-testid={TestUtils.Footer.testId}
+          id="testid"
+          label="Test Links"
+        >
           <a href="#">Example Link 1</a>
           <li>
             <a href="#">Example Link 2</a>
@@ -68,7 +76,7 @@ describe("<SocialMediaFooter />", () => {
         </SocialMediaFooter>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       checkBaseItem(component, "testid");
       expect(component.children[0]).toHaveClass("rvt-container-sm");
     });
@@ -77,7 +85,7 @@ describe("<SocialMediaFooter />", () => {
   describe("SocialMediaFooter_MixListContent", () => {
     it("should render without error", async () => {
       render(
-        <SocialMediaFooter data-testid="test">
+        <SocialMediaFooter data-testid={TestUtils.Footer.testId}>
           Example Link 1<span>Example Link 2</span>
           {3}
           <SocialMediaFooterLink label="test" url="#">
@@ -87,7 +95,7 @@ describe("<SocialMediaFooter />", () => {
       );
 
       const headerId = "testid-header";
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const container = component.children[0];
       const header = container.children[0];
       const list = container.children[1];
@@ -115,9 +123,9 @@ describe("<SocialMediaFooter />", () => {
 
   describe("SocialMediaFooter_NoChildren", () => {
     it("should render without error", async () => {
-      render(<SocialMediaFooter data-testid="test" />);
+      render(<SocialMediaFooter data-testid={TestUtils.Footer.testId} />);
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const container = component.children[0];
       const header = container.children[0];
       const list = container.children[1];

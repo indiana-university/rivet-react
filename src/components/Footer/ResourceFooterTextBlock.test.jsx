@@ -7,18 +7,21 @@ import "@testing-library/jest-dom";
 import React from "react";
 
 import ResourceFooterTextBlock from "./ResourceFooterTextBlock";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<ResourceFooterTextBlock />", () => {
-  const id = "test";
   describe("ResourceFooterTextBlock", () => {
     it("should render without error", async () => {
       render(
-        <ResourceFooterTextBlock data-testid="test" label="Test Links">
+        <ResourceFooterTextBlock
+          data-testid={TestUtils.Footer.testId}
+          label="Test Links"
+        >
           This is a block of example text
         </ResourceFooterTextBlock>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const header = component.children[0];
       const content = component.children[1];
 
@@ -32,13 +35,16 @@ describe("<ResourceFooterTextBlock />", () => {
   describe("ResourceFooterTextBlock_MixContent", () => {
     it("should render without error", async () => {
       render(
-        <ResourceFooterTextBlock data-testid="test" label="Test Links">
+        <ResourceFooterTextBlock
+          data-testid={TestUtils.Footer.testId}
+          label="Test Links"
+        >
           Example Link 1<span>Example Link 2</span>
           {3}
         </ResourceFooterTextBlock>
       );
 
-      const component = await screen.findByTestId("test");
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
       const header = component.children[0];
       const content = component.children[1];
 
