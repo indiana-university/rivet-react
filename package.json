@@ -24,6 +24,9 @@
     "pretty-quick": "pretty-quick"
   },
   "dependencies": {
+    "@react-aria/dialog": "3.5.1",
+    "@react-aria/overlays": "3.14.0",
+    "@react-aria/utils": "3.17.0",
     "classnames": "2.3.1",
     "rivet-core": "2.1.0"
   },
@@ -53,6 +56,7 @@
     "prettier": "2.7.1",
     "pretty-quick": "3.1.3",
     "prop-types": "15.8.1",
+    "react-display-name": "0.2.5",
     "react-docgen": "5.4.3",
     "react-scripts": "5.0.1",
     "react-styleguidist": "13.0.0",
