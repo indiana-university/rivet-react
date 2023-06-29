@@ -11,12 +11,12 @@ import {
   isTabKeyPress,
   targets,
 } from "../util/EventUtils.js";
-import { handler, isUnhandledKeyPress } from "./DropdownEventUtils.js";
+import { handler, isUnhandledKeyPress } from "../util/EventUtils.js";
 import { Button } from "../Button";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import { TestUtils } from "../util/TestUtils";
-import Icon from "../util/RivetIcons";
+import Icon, { IconNames } from "../util/RivetIcons";
 
 export const Dropdown = ({
   toggleDropdownOnClickInside = false,
@@ -97,11 +97,7 @@ export const Dropdown = ({
   };
 
   return (
-    <div
-      className="rvt-dropdown"
-      data-rvt-dropdown="dropdownNavigation"
-      ref={dropdownWrapDiv}
-    >
+    <div className="rvt-dropdown" ref={dropdownWrapDiv}>
       <Button
         type="button"
         {...attrs}
@@ -119,7 +115,7 @@ export const Dropdown = ({
             {label}
           </span>
         )}
-        <Icon name="caret-down" />
+        <Icon name={IconNames.CARET_DOWN} />
       </Button>
       {isOpen && (
         <div className={menuClasses} aria-hidden={!isOpen} role="menu">

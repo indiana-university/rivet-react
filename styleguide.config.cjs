@@ -15,10 +15,23 @@ module.exports = {
   usageMode: "expand",
   sections: [
     {
+      name: "Footer",
+      components: () => [
+        "src/components/Footer/StandardFooter.jsx",
+        "src/components/Footer/BaseFooter.jsx",
+        "src/components/Footer/ResourceFooter.jsx",
+        "src/components/Footer/SocialMediaFooter.jsx",
+        "src/components/Footer/ResourceFooterLinkBlock.jsx",
+        "src/components/Footer/ResourceFooterTextBlock.jsx",
+        "src/components/Footer/SocialMediaFooterLink.jsx",
+      ],
+    },
+    {
       name: "Forms",
       components: () => [
         "src/components/Checkbox/[A-Z]*.jsx",
         "src/components/Button/[A-Z]*.jsx",
+        "src/components/File/[A-Z]*.jsx",
         "src/components/Input/[A-Z]*.jsx",
         "src/components/RadioButton/[A-Z]*.jsx",
       ],
@@ -36,11 +49,21 @@ module.exports = {
       components: () => [
         "src/components/Breadcrumbs/[A-Z]*.jsx",
         "src/components/Dropdown/[A-Z]*.jsx",
+        "src/components/LoadingIndicator/[A-Z]*.jsx",
+        "src/components/Header/Header.jsx",
+        "src/components/Header/HeaderNavigation.jsx",
+        "src/components/Header/HeaderAvatar.jsx",
+        "src/components/Header/HeaderMenu.jsx",
+        "src/components/Header/HeaderSearch.jsx",
+        "src/components/Header/HeaderNavigationSecondary.jsx",
       ],
     },
     {
       name: "Overlays",
-      components: "src/components/Alert/[A-Z]*.jsx",
+      components: () => [
+        "src/components/Alert/[A-Z]*.jsx",
+        "src/components/Dialog/[A-Z]*.jsx",
+      ],
     },
     {
       name: "Tables",

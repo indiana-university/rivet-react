@@ -6,45 +6,59 @@ SPDX-License-Identifier: BSD-3-Clause
 export const keys = {
   tab: "Tab",
   escape: "Escape",
+  arrowUp: "ArrowUp",
+  arrowDown: "ArrowDown",
 };
 
-export const handler = (callback, InstantiatingClass) => {
+export const handler = (callback) => {
   const eventHandler = (event) => {
-    callback(new InstantiatingClass(event));
+    callback(event);
   };
   return {
     register: () => {
-      ["click", "touchstart", "keyup"].forEach((event) =>
+      ["click"].forEach((event) =>
+        document.addEventListener(event, eventHandler, false)
+      );
+      ["touchstart", "keyup"].forEach((event) =>
         document.addEventListener(event, eventHandler, true)
       );
     },
     deregister: () => {
-      ["click", "touchstart", "keyup"].forEach((event) =>
+      ["click"].forEach((event) =>
+        document.removeEventListener(event, eventHandler, false)
+      );
+      ["touchstart", "keyup"].forEach((event) =>
         document.removeEventListener(event, eventHandler, true)
       );
     },
   };
 };
 
-export const isKeyEvent = (event) => {
-  return event.type === "keyup";
-};
+export const isKeyEvent = (event) =>
+  event.type === "keydown" || event.type === "keyup";
 
-export const isTabKeyPress = (event) => {
-  return isKeyEvent(event) && event.key === keys.tab;
-};
+export const isTabKeyPress = (event) =>
+  isKeyEvent(event) && event.key === keys.tab;
 
-export const isEscapeKeyPress = (event) => {
-  return isKeyEvent(event) && event.key === keys.escape;
-};
+export const isEscapeKeyPress = (event) =>
+  isKeyEvent(event) && event.key === keys.escape;
 
-export const isMouseEvent = (event) => {
-  return event.type === "click";
-};
+export const isArrowKeyPress = (event) =>
+  isArrowUpKeyPress(event) || isArrowDownKeyPress(event);
 
-export const isRightMouseClick = (event) => {
-  return isMouseEvent(event) && event.button === 2;
-};
+export const isArrowUpKeyPress = (event) =>
+  isKeyEvent(event) && event.key === keys.arrowUp;
+
+export const isArrowDownKeyPress = (event) =>
+  isKeyEvent(event) && event.key === keys.arrowDown;
+
+export const isUnhandledKeyPress = (event) =>
+  isKeyEvent(event) && !isTabKeyPress(event) && !isEscapeKeyPress(event);
+
+export const isMouseEvent = (event) => event.type === "click";
+
+export const isRightMouseClick = (event) =>
+  isMouseEvent(event) && event.button === 2;
 
 export const targets = (container, event) =>
   container && container.contains(event.target) && container !== event.target;

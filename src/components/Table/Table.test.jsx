@@ -7,9 +7,9 @@ import "@testing-library/jest-dom";
 import React from "react";
 
 import Table from "./Table";
+import { TestUtils } from "../util/TestUtils.js";
 
 describe("<Table />", () => {
-  const testId = "test-id";
   const TableContent = () => (
     <>
       <caption id="responsive-table" className="rvt-sr-only">
@@ -61,56 +61,56 @@ describe("<Table />", () => {
   describe("Rendering and text", () => {
     it("should render without error", async () => {
       render(
-        <Table data-testid={testId}>
+        <Table data-testid={TestUtils.Table.testId}>
           <TableContent />
         </Table>
       );
 
-      const table = await screen.findByTestId(testId);
+      const table = await screen.findByTestId(TestUtils.Table.testId);
       expect(table).toHaveClass("rvt-table");
     });
 
     it("should render a striped table", async () => {
       render(
-        <Table variant="stripes" data-testid={testId}>
+        <Table variant="stripes" data-testid={TestUtils.Table.testId}>
           <TableContent />
         </Table>
       );
 
-      const table = await screen.findByTestId(testId);
+      const table = await screen.findByTestId(TestUtils.Table.testId);
       expect(table).toHaveClass("rvt-table-stripes");
     });
 
     it("should render a plain table", async () => {
       render(
-        <Table variant="plain" data-testid={testId}>
+        <Table variant="plain" data-testid={TestUtils.Table.testId}>
           <TableContent />
         </Table>
       );
 
-      const table = await screen.findByTestId(testId);
+      const table = await screen.findByTestId(TestUtils.Table.testId);
       expect(table).toHaveClass("rvt-table-plain");
     });
 
     it("should render a table with cell borders", async () => {
       render(
-        <Table cells data-testid={testId}>
+        <Table cells data-testid={TestUtils.Table.testId}>
           <TableContent />
         </Table>
       );
 
-      const table = await screen.findByTestId(testId);
+      const table = await screen.findByTestId(TestUtils.Table.testId);
       expect(table).toHaveClass("rvt-table-cells");
     });
 
     it("should render a compact table", async () => {
       render(
-        <Table compact data-testid={testId}>
+        <Table compact data-testid={TestUtils.Table.testId}>
           <TableContent />
         </Table>
       );
 
-      const table = await screen.findByTestId(testId);
+      const table = await screen.findByTestId(TestUtils.Table.testId);
       expect(table).toHaveClass("rvt-table-compact");
     });
   });
