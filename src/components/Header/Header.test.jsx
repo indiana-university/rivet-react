@@ -37,7 +37,7 @@ describe("<Header />", () => {
     });
 
     it("should render an anchor with the provided href, if href is provided", () => {
-      render(<Header href={testHref} />);
+      render(<Header title={testTitle} href={testHref} />);
       expect(screen.getByTestId(TestUtils.Header.anchorTestId)).toHaveAttribute(
         "href",
         testHref
@@ -45,7 +45,7 @@ describe("<Header />", () => {
     });
 
     it("should apply to the container div a rivet class specifying the width, if width is provided", () => {
-      render(<Header headerWidth={testWidth} />);
+      render(<Header title={testTitle} headerWidth={testWidth} />);
       expect(
         screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
       ).toHaveClass("rvt-container-" + testWidth);
@@ -91,13 +91,12 @@ describe("<Header />", () => {
 
       render(
         <Header
+          title={testTitle}
           navigation={navigation}
           search={search}
           secondaryNavigation={secondaryNavigation}
         />
       );
-
-      console.log(prettyDOM(document.body));
 
       // assert Header Navigation elements are present in the DOM
       expect(screen.getByText("Nav item one")).toBeInTheDocument();
@@ -120,7 +119,7 @@ describe("<Header />", () => {
 
   describe("Defaulting props", () => {
     it("should render an anchor with the default href, if href is not provided", () => {
-      render(<Header />);
+      render(<Header title={testTitle} />);
       expect(screen.getByTestId(TestUtils.Header.anchorTestId)).toHaveAttribute(
         "href",
         "#"
@@ -128,7 +127,7 @@ describe("<Header />", () => {
     });
 
     it("should apply to the container div a rivet class that defaults the width to xl, if width is not provided", () => {
-      render(<Header />);
+      render(<Header title={testTitle} />);
       expect(
         screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
       ).toHaveClass("rvt-container-xl");
