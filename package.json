@@ -29,7 +29,7 @@
     "@react-aria/overlays": "3.14.0",
     "@react-aria/utils": "3.17.0",
     "classnames": "2.3.1",
-    "rivet-core": "2.1.0"
+    "rivet-core": "2.5.0"
   },
   "peerDependencies": {
     "react": ">= 16",
@@ -45,9 +45,8 @@
     "@testing-library/user-event": "14.4.3",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
-    "@vitejs/plugin-react": "2.1.0",
+    "@vitejs/plugin-react": "4.0.3",
     "babel-loader": "8.2.5",
-    "codecov.io": "0.1.6",
     "core-js": "3.25.5",
     "css-loader": "6.7.1",
     "husky": "8.0.0",
@@ -60,10 +59,9 @@
     "prop-types": "15.8.1",
     "react-display-name": "0.2.5",
     "react-docgen": "5.4.3",
-    "react-scripts": "5.0.1",
     "react-styleguidist": "13.0.0",
     "style-loader": "3.3.1",
-    "vite": "3.1.0",
+    "vite": "4.4.3",
     "vite-plugin-externalize-deps": "0.1.5"
   },
   "browserslist": [
