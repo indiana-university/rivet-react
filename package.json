@@ -17,6 +17,7 @@
   "scripts": {
     "start": "styleguidist server --config styleguide.config.cjs",
     "dev": "vite",
+    "license": "license-check-and-add add -f ./license-check-and-add-config.json",
     "test": "NODE_ENV=test jest",
     "build": "vite build",
     "preview": "vite preview",
@@ -51,6 +52,7 @@
     "husky": "8.0.0",
     "jest": "27.5.1",
     "jest-junit": "15.0.0",
+    "license-check-and-add": "4.0.5",
     "path": "0.12.7",
     "prettier": "2.7.1",
     "pretty-quick": "3.1.3",
@@ -70,7 +72,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged && license"
     }
   }
 }

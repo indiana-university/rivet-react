@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 const FlexResp = ["sm-up", "md-up", "lg-up", "xl-up", "xxl-up"];
 
 const AlignBase = ["start", "end", "center", "stretch", "baseline"];

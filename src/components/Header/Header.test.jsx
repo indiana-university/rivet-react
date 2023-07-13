@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import React from "react";
 import { prettyDOM, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
