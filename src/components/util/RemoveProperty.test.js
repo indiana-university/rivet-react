@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import "@testing-library/jest-dom";
 import React from "react";
 import { removeProperty } from "./RemoveProperty.js";
