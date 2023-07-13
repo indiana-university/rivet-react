@@ -2,13 +2,13 @@
   "ignore": [
     ".git/**",
     ".circleci/**",
+    "./coverage/**",
     ".husky/**",
     "**/.*",
     "**/*.md",
     "build/**",
-    "babel.config.cjs",
-    "./coverage/**",
-    "vite.config.js"
+    "*.config.cjs",
+    "*.config.js"
   ],
   "license": "license-header.txt",
   "licenseFormats": {
