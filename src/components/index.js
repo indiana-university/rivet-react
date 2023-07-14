@@ -15,5 +15,6 @@ export * from "./Header/index.jsx";
 export * from "./LoadingIndicator/index.jsx";
 export { default as Icon } from "./util/RivetIcons.jsx";
 export * from "./Dialog/index.jsx";
+export * from "./PageContent/index.jsx";
 export * from "./RadioButton/index.jsx";
 export * from "./Table/index.jsx";
