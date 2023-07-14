@@ -1,17 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-const classPrefix = "rvt-empty-state";
+import * as Rivet from "../util/Rivet";
 
-const Content = ({ children, classPrefix = classPrefix, ...attrs }) => (
-  <div className={`${classPrefix}__content`}>{children}</div>
+const Content = ({ children, ...attrs }) => (
+  <div {...attrs} className="rvt-empty-state__content">
+    {children}
+  </div>
 );
-
 Content.displayName = "EmptyState.Content";
 
-Content.propTypes = {
-  /** Test description for classPrefix prop */
-  classPrefix: PropTypes.string,
-};
-
-export default Content;
+export default Rivet.rivetize(Content);

@@ -74,7 +74,7 @@ module.exports = {
       sections: [
         {
           name: "EmptyState",
-          components: () => ["src/components/EmptyState/[A-Z]*.jsx"],
+          components: () => ["src/components/EmptyState/EmptyState.jsx"],
         },
       ],
     },

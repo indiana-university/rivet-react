@@ -1,17 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-const classPrefix = "rvt-empty-state";
+import * as Rivet from "../util/Rivet";
 
-const Actions = ({ children, classPrefix = classPrefix, ...attrs }) => (
-  <div className={`${classPrefix}__actions`}>{children}</div>
+const Actions = ({ children, ...attrs }) => (
+  <div {...attrs} className="rvt-empty-state__actions">
+    {children}
+  </div>
 );
 
 Actions.displayName = "EmptyState.Actions";
 
-Actions.propTypes = {
-  /** Test description for classPrefix prop */
-  classPrefix: PropTypes.string,
-};
-
-export default Actions;
+export default Rivet.rivetize(Actions);

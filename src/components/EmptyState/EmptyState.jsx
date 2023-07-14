@@ -6,27 +6,19 @@ import * as React from "react";
 import Actions from "./Actions";
 import Content from "./Content";
 
-const classPrefix = "rvt-empty-state";
+import * as Rivet from "../util/Rivet";
 
 // https://dev.to/hey_yogini/create-react-subcomponents-in-a-simple-way-5h1f
 
-const EmptyState = ({ children, ...attrs }) => {
-  let subComponentList = Object.keys(EmptyState);
-
-  let subComponents = React.Children.map(children, (child) =>
-    subComponentList.includes(child.type.name) ? child : null
-  );
-
-  return (
-    <div className={classPrefix} {...attrs}>
-      {subComponents}
-    </div>
-  );
-};
+const EmptyState = ({ children, ...attrs }) => (
+  <div {...attrs} className="rvt-empty-state">
+    {children}
+  </div>
+);
 EmptyState.displayName = "EmptyState";
 
 EmptyState.Content = Content;
 
 EmptyState.Actions = Actions;
 
-export default EmptyState;
+export default Rivet.rivetize(EmptyState);
