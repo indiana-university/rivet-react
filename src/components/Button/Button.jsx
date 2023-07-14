@@ -6,6 +6,7 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
+import { LoadingIndicator } from "../LoadingIndicator/index.jsx";
 
 const buttonClass = "rvt-button";
 
@@ -13,10 +14,14 @@ const buttonClass = "rvt-button";
  * Generate the combined modifier and variation class for this button, if applicable.
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#secondary-variations
  */
-const buttonStyle = (variant, modifier) => {
+const buttonStyle = (variant, loading, modifier) => {
   // special case for navigation variant
   if (variant === "navigation") {
     return "rvt-dropdown__toggle";
+  }
+  // special case for loading variant
+  if (loading === true) {
+    return "rvt-button rvt-button--loading";
   }
   // combine variation and modifier, if provided.
   const classParts = [variant, modifier].filter((x) => x).join("-");
@@ -35,6 +40,7 @@ const Button = ({
   className,
   children,
   id = Rivet.shortuid(),
+  loading,
   innerRef,
   modifier,
   onClick,
@@ -45,15 +51,26 @@ const Button = ({
   <button
     id={id}
     className={classNames(
-      buttonStyle(variant, modifier),
+      buttonStyle(variant, loading, modifier),
       buttonSize(size),
       className
     )}
     onClick={onClick}
     ref={innerRef}
+    disabled={loading}
+    aria-busy={loading}
     {...attrs}
   >
-    {children}
+    {loading ? (
+      <React.Fragment>
+        <span className="rvt-button__content" role="buttonContent">
+          {children}
+        </span>
+        <LoadingIndicator size="xs" />
+      </React.Fragment>
+    ) : (
+      <React.Fragment>{children}</React.Fragment>
+    )}
   </button>
 );
 
@@ -68,6 +85,7 @@ Button.propTypes = {
   innerRef: PropTypes.any,
   /** A unique identifier for the button */
   id: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 export default Rivet.rivetize(Button);

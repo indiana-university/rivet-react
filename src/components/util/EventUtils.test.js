@@ -8,6 +8,7 @@ import {
   isMouseEvent,
   isRightMouseClick,
   isTabKeyPress,
+  isUnhandledKeyPress,
   keys,
 } from "./EventUtils";
 
@@ -49,6 +50,17 @@ describe("Event", () => {
       expect(isTabKeyPress(createKeyboardEvent("a".charCodeAt(0)))).toBe(false);
       expect(isTabKeyPress(createMouseEvent())).toBe(false);
       expect(isTabKeyPress(createTouchEvent())).toBe(false);
+    });
+    describe("Keyboard Events", () => {
+      it("detects if the event is an unhandled key press", () => {
+        expect(isUnhandledKeyPress(createKeyboardEvent(keys.escape))).toBe(
+          false
+        );
+        expect(isUnhandledKeyPress(createKeyboardEvent(keys.tab))).toBe(false);
+        expect(isUnhandledKeyPress(createKeyboardEvent("a"))).toBe(true);
+        expect(isUnhandledKeyPress(createMouseEvent())).toBe(false);
+        expect(isUnhandledKeyPress(createTouchEvent())).toBe(false);
+      });
     });
   });
 
