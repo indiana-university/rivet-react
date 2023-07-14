@@ -35,6 +35,10 @@ describe("<Icon>", () => {
 });
 
 function iconListTests() {
+  it("should render bell without crashing", () => {
+    render(<Icon name={IconNames.BELL} />);
+    expect(screen.queryByTestId(TestUtils.RivetIcons.testId)).toBeVisible();
+  });
   it("should render caret-down without crashing", () => {
     render(<Icon name={IconNames.CARET_DOWN} />);
     expect(screen.queryByTestId(TestUtils.RivetIcons.testId, {})).toBeVisible();
