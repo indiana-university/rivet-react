@@ -47,11 +47,11 @@ jobs:
           command: npm run build
       - run:
           name: Test components
-          command: npm test -- -w 1 --coverage --reporters=jest-junit
+          command: npm test -- -w 1 --collectCoverage=true --reporters=jest-junit
       - store_test_results:
           path: ./junit.xml
       - codecov/upload:
-          file: ./junit.xml
+          file: ./coverage/lcov-report/cobertura-coverage.xml
 
 # Job orchestration
 workflows:
