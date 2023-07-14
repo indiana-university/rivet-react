@@ -51,7 +51,7 @@ jobs:
       - store_test_results:
           path: ./junit.xml
       - codecov/upload:
-          file: ./coverage/lcov-report/cobertura-coverage.xml
+          file: ./coverage/cobertura-coverage.xml
 
 # Job orchestration
 workflows:
