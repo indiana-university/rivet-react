@@ -9,6 +9,23 @@ import * as Rivet from "../../util/Rivet";
 
 const badgeClass = "rvt-badge";
 
+const computeStyle = (variant, role) => {
+  if (!variant || variant === "plain") {
+    if (role) {
+      return `${badgeClass}--${role}`;
+    } else {
+      return null;
+    }
+  } else {
+    let variantClass = `${badgeClass}--${variant}`;
+    if (role) {
+      variantClass += `-${role}`;
+    }
+
+    return variantClass;
+  }
+};
+
 const Badge = ({
   children,
   className,
@@ -19,12 +36,7 @@ const Badge = ({
 }) => (
   <span
     id={id}
-    className={classNames(
-      badgeClass,
-      { [`${badgeClass}--secondary`]: role },
-      { [`${badgeClass}--${variant}`]: variant && variant !== "plain" },
-      className
-    )}
+    className={classNames(badgeClass, computeStyle(variant, role), className)}
     {...attrs}
   >
     {children}
