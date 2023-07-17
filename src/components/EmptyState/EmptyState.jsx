@@ -10,8 +10,6 @@ import Content from "./Content";
 
 import * as Rivet from "../util/Rivet";
 
-// https://dev.to/hey_yogini/create-react-subcomponents-in-a-simple-way-5h1f
-
 const EmptyState = ({ children, className, ...attrs }) => (
   <div {...attrs} className={classNames("rvt-empty-state", className)}>
     {children}
