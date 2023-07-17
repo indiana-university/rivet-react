@@ -76,10 +76,14 @@ const Button = ({
 
 Button.displayName = "Button";
 Button.propTypes = {
+  /* The variant determines the style of the button */
   variant: PropTypes.oneOf(["success", "danger", "plain", "navigation"]),
+  /* Buttons can be either default or small, which affects their styling */
   size: PropTypes.oneOf(["small"]),
+  /* Buttons can be either default or secondary, which affects their styling */
   role: PropTypes.oneOf(["secondary"]),
   innerRef: PropTypes.any,
+  /** A unique identifier for the button */
   id: PropTypes.string,
   loading: PropTypes.bool,
 };

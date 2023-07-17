@@ -2,7 +2,11 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
+
+orbs:
+  node: circleci/node@5.1.0
+  codecov: codecov/codecov@3.2.5
 
 # Aliases are shorthand references for common settings.
 aliases:
@@ -43,15 +47,14 @@ jobs:
           command: npm run build
       - run:
           name: Test components
-          command: |
-            npm test -- -w 1 --coverage --reporters=jest-junit
-            cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+          command: npm test -- -w 1 --coverage --reporters=jest-junit
       - store_test_results:
           path: ./junit.xml
+      - codecov/upload:
+          file: ./coverage/cobertura-coverage.xml
 
 # Job orchestration
 workflows:
-  version: 2
   # Build and test the code on every commit.
   # Publish the style guide on successful build/test of master.
   build-test-and-publish:
