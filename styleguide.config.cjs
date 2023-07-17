@@ -69,6 +69,15 @@ module.exports = {
       name: "Tables",
       components: "src/components/Table/[A-Z]*.jsx",
     },
+    {
+      name: "Miscellaneous",
+      sections: [
+        {
+          name: "EmptyState",
+          components: () => ["src/components/EmptyState/EmptyState.jsx"],
+        },
+      ],
+    },
   ],
   webpackConfig: {
     module: {

@@ -7,6 +7,7 @@ export * from "./Breadcrumbs/index.jsx";
 export * from "./Button/index.jsx";
 export * from "./Checkbox/index.jsx";
 export * from "./Dropdown/index.jsx";
+export * from "./EmptyState/index.jsx";
 export * from "./File/index.jsx";
 export * from "./Footer/index.jsx";
 export * from "./Grid/index.jsx";

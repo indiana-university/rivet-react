@@ -16,6 +16,7 @@ const DefaultIconProps = {
 };
 
 export const IconNames = {
+  BELL: "bell",
   CARET_DOWN: "caret-down",
   FACEBOOK: "facebook",
   FILE: "file",
@@ -35,6 +36,15 @@ const IconCore = ({ children, ...attrs }) => (
   <svg aria-hidden="true" {...attrs}>
     {children}
   </svg>
+);
+
+const icoBell = (attrs) => (
+  <IconCore data-testid={TestUtils.RivetIcons.testId} {...attrs}>
+    <path
+      fill="currentColor"
+      d="M14.57,12.06,13,9.7V6A5,5,0,0,0,3,6V9.7L1.43,12.06a1.25,1.25,0,0,0,1,1.94H6a2,2,0,0,0,4,0h3.53a1.25,1.25,0,0,0,1-1.94ZM8,12H3.87L5,10.3V6a3,3,0,0,1,6,0v4.3L12.13,12Z"
+    />
+  </IconCore>
 );
 
 const icoCaretDown = (attrs) => (
@@ -190,6 +200,8 @@ const icoToggleSearch = (attrs) => (
 
 const Icon = ({ name, ...attrs }) => {
   switch (name) {
+    case IconNames.BELL:
+      return icoBell(attrs);
     case IconNames.CARET_DOWN:
       return icoCaretDown(attrs);
     case IconNames.FACEBOOK:
