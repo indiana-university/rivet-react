@@ -26,11 +26,10 @@ const List = ({
     variant === "plain" && `${classPrefix}-plain`,
     className
   );
-  const listItems = asListItems(children);
   const ListTag = variant === "ordered" ? "ol" : "ul";
   return (
     <ListTag id={id} className={classes} {...attrs}>
-      {listItems}
+      {children}
     </ListTag>
   );
 };
@@ -44,19 +43,5 @@ List.propTypes = {
   /** The variant type which determines how the list is styled */
   variant: PropTypes.oneOf(["plain", "ordered", "unordered"]),
 };
-
-/* Return any <li> children unchanged; otherwise wrap child in an <li> */
-const asListItem = (child) =>
-  typeof child === "string" ||
-  typeof child === "number" ||
-  child.type !== "li" ? (
-    <li>{child}</li>
-  ) : (
-    child
-  );
-
-/* Ensure all children are <li> elements. */
-const asListItems = (children) =>
-  children ? React.Children.map(children, asListItem) : [];
 
 export default Rivet.rivetize(List);

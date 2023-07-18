@@ -16,18 +16,3 @@ View the [Rivet documentation for DescriptionLists](https://rivet.iu.edu/compone
 </DescriptionList>
 ```
 <!-- prettier-ignore-end -->
-
-### DescriptionList with an Array
-
-<!-- prettier-ignore-start -->
-```jsx
-<DescriptionList>
-    {[
-        "Description list item one", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "Description list item two", "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "Description list item three", "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-
-    ]}
-</DescriptionList>
-```
-<!-- prettier-ignore-end -->

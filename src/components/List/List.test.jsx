@@ -70,17 +70,5 @@ describe("<List />", () => {
       const list = await screen.findByTestId(testId);
       expect(list).toHaveClass("rvt-list-inline");
     });
-
-    it("should render a child array as list items", async () => {
-      const items = ["One", "Two", "Three"];
-      render(<List data-testid={testId}>{items}</List>);
-      const list = await screen.findByTestId(testId);
-      expect(list.children[0].nodeName).toBe("LI");
-      expect(list.children[0].innerHTML).toBe(items[0]);
-      expect(list.children[1].nodeName).toBe("LI");
-      expect(list.children[1].innerHTML).toBe(items[1]);
-      expect(list.children[2].nodeName).toBe("LI");
-      expect(list.children[2].innerHTML).toBe(items[2]);
-    });
   });
 });

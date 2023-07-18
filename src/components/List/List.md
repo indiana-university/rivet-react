@@ -67,11 +67,3 @@ View the [Rivet documentation for Lists](https://rivet.uits.iu.edu/components/li
 </List>
 ```
 <!-- prettier-ignore-end -->
-
-### List from Array
-
-<!-- prettier-ignore-start -->
-```jsx
-<List>{["Item 1", "Item 2", "Item 3"]}</List>
-```
-<!-- prettier-ignore-end -->

@@ -11,7 +11,7 @@ import * as Rivet from "../util/Rivet";
 const classPrefix = "rvt-list-description";
 
 /**
- * Use the decription list show a set of terms and descriptions.
+ * Use the description list show a set of terms and descriptions.
  */
 const DescriptionList = ({
   id = Rivet.shortuid(),
@@ -21,7 +21,7 @@ const DescriptionList = ({
 }) => {
   return (
     <dl className={classNames(classPrefix, className)} id={id} {...attrs}>
-      {asListItems(children)}
+      {children}
     </dl>
   );
 };
@@ -30,19 +30,5 @@ DescriptionList.propTypes = {
   /** A unique identifier for the description list */
   id: PropTypes.string,
 };
-
-const asListItems = (children) =>
-  children
-    ? React.Children.map(children, (child, index) => {
-        if (
-          typeof child === "string" ||
-          typeof child === "number" ||
-          !["dd", "dt"].includes(child.type)
-        ) {
-          return index % 2 === 0 ? <dt>{child}</dt> : <dd>{child}</dd>;
-        }
-        return child;
-      })
-    : [];
 
 export default Rivet.rivetize(DescriptionList);

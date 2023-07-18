@@ -23,19 +23,5 @@ describe("<DescriptionList />", () => {
       const list = await screen.findByTestId(testId);
       expect(list.nodeName).toBe("DL");
     });
-
-    it("should render a child array as list items", async () => {
-      const items = ["term 1", "description 1", "term 2", "description 2"];
-      render(<DescriptionList data-testid={testId}>{items}</DescriptionList>);
-      const list = await screen.findByTestId(testId);
-      expect(list.children[0].nodeName).toBe("DT");
-      expect(list.children[0].innerHTML).toBe(items[0]);
-      expect(list.children[1].nodeName).toBe("DD");
-      expect(list.children[1].innerHTML).toBe(items[1]);
-      expect(list.children[2].nodeName).toBe("DT");
-      expect(list.children[2].innerHTML).toBe(items[2]);
-      expect(list.children[3].nodeName).toBe("DD");
-      expect(list.children[3].innerHTML).toBe(items[3]);
-    });
   });
 });
