@@ -37,6 +37,10 @@ module.exports = {
       ],
     },
     {
+      name: "Lists",
+      components: "src/components/List/[A-Z]*.jsx",
+    },
+    {
       name: "Grid",
       components: "src/components/Grid/[A-Z]*.jsx",
     },
