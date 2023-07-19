@@ -3,6 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "Rivet React components",
+  "author": "",
+  "license": "BSD-3-Clause",
+  "homepage": "http://indiana-university.github.io/rivet-react",
+  "repository": "https://github.com/indiana-university/rivet-react",
+  "keywords": [
+    "react-component"
+  ],
   "files": [
     "dist"
   ],
@@ -22,7 +30,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
-    "pretty-quick": "pretty-quick"
+    "pretty-quick": "pretty-quick",
+    "publish-guide": "npx styleguidist build --config styleguide.config.cjs && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles"
   },
   "dependencies": {
     "@react-aria/dialog": "3.5.1",
@@ -49,6 +58,7 @@
     "babel-loader": "8.2.5",
     "core-js": "3.25.5",
     "css-loader": "6.7.1",
+    "gh-pages": "5.0.0",
     "husky": "8.0.0",
     "jest": "27.5.1",
     "jest-junit": "15.0.0",
@@ -60,9 +70,27 @@
     "react-display-name": "0.2.5",
     "react-docgen": "5.4.3",
     "react-styleguidist": "13.0.0",
+    "semantic-release": "21.0.7",
     "style-loader": "3.3.1",
     "vite": "4.4.3",
     "vite-plugin-externalize-deps": "0.1.5"
+  },
+  "release": {
+    "branches": [
+      {
+        "name": "master"
+      },
+      {
+        "name": "alpha",
+        "channel": "alpha",
+        "prerelease": true
+      },
+      {
+        "name": "beta",
+        "channel": "beta",
+        "prerelease": true
+      }
+    ]
   },
   "browserslist": [
     ">1%",

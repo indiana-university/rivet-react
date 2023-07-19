@@ -52,6 +52,30 @@ jobs:
           path: ./junit.xml
       - codecov/upload:
           file: ./coverage/cobertura-coverage.xml
+  # Publish the style guide to gh-pages
+  publish_guide:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore-node-modules
+      - run:
+          name: Publish style guide to gh-pages
+          command: |
+            git config --global user.email "$GIT_COMMITTER_EMAIL"
+            git config --global user.name "$GIT_COMMITTER_NAME"
+            npm run publish-guide
+  # Publish the package to NPM and tag GitHub releases
+  publish_package:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache: *restore-node-modules
+      - run:
+          name: Build components
+          command: npm run build
+      - run:
+          name: Publish package
+          command: npx semantic-release
 
 # Job orchestration
 workflows:
@@ -64,3 +88,20 @@ workflows:
             branches:
               ignore:
                 - gh-pages
+      - publish_guide:
+          requires:
+            - build_test
+          filters:
+            branches:
+              only:
+                - master
+      - publish_package:
+          requires:
+            - build_test
+          context: rivet-react
+          filters:
+            branches:
+              only:
+                - master
+                - alpha
+                - beta

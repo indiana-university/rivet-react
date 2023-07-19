@@ -26,3 +26,4 @@ dist-ssr
 # Testing and Code coverage
 coverage
 junit.xml
+styleguide

@@ -10,6 +10,17 @@ module.exports = {
   propsParser: (filePath, source, resolver, handlers) => {
     return require("react-docgen").parse(source, resolver, handlers);
   },
+  webpackConfig: {
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loader: "babel-loader",
+        },
+      ],
+    },
+  },
   pagePerSection: true,
   exampleMode: "expand",
   usageMode: "expand",
