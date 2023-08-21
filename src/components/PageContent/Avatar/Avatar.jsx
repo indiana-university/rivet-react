@@ -21,15 +21,12 @@ const Avatar = ({
   ...attrs
 }) => {
   const classNameArr = [
-    "rvt-avatar"
+    "rvt-avatar",
+    className
   ]
 
   if (size) {    
-    classNameArr.push(parseRivetMultiListUtility(size, Sizes, 'rvt-avatar-'))
-  }
-
-  if (className) {
-    classNameArr.push(className)
+    classNameArr.push(parseRivetMultiListUtility(size, sizes, 'rvt-avatar-'))
   }
 
   return (
@@ -43,24 +40,24 @@ const Avatar = ({
   )
 };
 
-const AvatarSize = [
+const avatarSize = [
   "xs",
   "sm",
   "md",
   "lg",
   "xl"
 ];
-const AvatarResp = ["sm-up", "md-up", "lg-up", "xl-up", "xxl-up"]
-  .map((r) => AvatarSize.map((s) => `${s}-${r}`))
+const avatarResp = ["sm-up", "md-up", "lg-up", "xl-up", "xxl-up"]
+  .map((r) => avatarSize.map((s) => `${s}-${r}`))
   .flat(1);
-export const Sizes = [...AvatarSize, ...AvatarResp];
+const sizes = [...avatarSize, ...avatarResp];
 
 Avatar.displayName = "Avatar";
 Avatar.propTypes = {
   /** Text content display in avatar (not displayed if src provided)*/
   initials: PropTypes.string,
   /** The static and responsive size options for the avatar */
-  size: PropTypes.oneOfType([PropTypes.array, PropTypes.oneOf([...Sizes])]),
+  size: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOf(sizes)), PropTypes.oneOf(sizes)]),
   /** Source url for image content display in avatar */
   src: PropTypes.string,
 };
