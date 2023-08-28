@@ -20,9 +20,13 @@ export const IconNames = {
   CARET_DOWN: "caret-down",
   FACEBOOK: "facebook",
   FILE: "file",
+  FIRST: "first",
   INSTAGRAM: "instagram",
+  LAST: "last",
   LINKEDIN: "linkedin",
   LOGO: "logo",
+  NEXT: "next",
+  PREVIOUS: "previous",
   TRIDENT_HEADER: "trident-header",
   TOGGLE_OPEN: "toggle-open",
   TOGGLE_CLOSE: "toggle-close",
@@ -198,36 +202,81 @@ const icoToggleSearch = (attrs) => (
   </IconCore>
 );
 
+const icoFirst = (attrs) => (
+  <IconCore {...attrs}>
+    <g fill="currentColor">
+      <path d="M13,13.8a1,1,0,0,1-.77-.36L8.37,8.8a1.25,1.25,0,0,1,0-1.61l3.86-4.64a1,1,0,0,1,1.54,1.28L10.3,8l3.47,4.16A1,1,0,0,1,13,13.8ZM9.91,8.47h0Zm0-1h0Z" />
+      <path d="M7,13.8a1,1,0,0,1-.77-.36L2.37,8.8a1.25,1.25,0,0,1,0-1.61L6.23,2.56A1,1,0,0,1,7.77,3.84L4.3,8l3.47,4.16A1,1,0,0,1,7,13.8ZM3.91,8.47h0Zm0-1h0Z" />
+    </g>
+  </IconCore>
+);
+
+const icoPrevious = (attrs) => (
+  <IconCore {...attrs}>
+    <path
+      fill="currentColor"
+      d="M10.5,15a1,1,0,0,1-.77-.36L4.87,8.8a1.25,1.25,0,0,1,0-1.61L9.73,1.36a1,1,0,0,1,1.54,1.28L6.8,8l4.47,5.36A1,1,0,0,1,10.5,15ZM6.41,8.47h0Zm0-1h0Z"
+    />
+  </IconCore>
+);
+
+const icoNext = (attrs) => (
+  <IconCore {...attrs}>
+    <path
+      fill="currentColor"
+      d="M5.5,15a1,1,0,0,1-.77-1.64L9.2,8,4.73,2.64A1,1,0,0,1,6.27,1.36L11.13,7.2a1.25,1.25,0,0,1,0,1.61L6.27,14.64A1,1,0,0,1,5.5,15ZM9.6,8.48h0Zm0-1h0Z"
+    />
+  </IconCore>
+);
+
+const icoLast = (attrs) => (
+  <IconCore {...attrs}>
+    <g fill="currentColor">
+      <path d="M3,13.8a1,1,0,0,1-.77-1.64L5.7,8,2.23,3.84A1,1,0,0,1,3.77,2.56L7.63,7.2a1.25,1.25,0,0,1,0,1.61L3.77,13.44A1,1,0,0,1,3,13.8ZM6.1,8.48h0Zm0-1h0Z" />
+      <path d="M9,13.8a1,1,0,0,1-.77-1.64L11.7,8,8.23,3.84A1,1,0,0,1,9.77,2.56L13.63,7.2a1.25,1.25,0,0,1,0,1.61L9.77,13.44A1,1,0,0,1,9,13.8Zm3.1-5.32h0Zm0-1h0Z" />
+    </g>
+  </IconCore>
+);
+
+
 const Icon = ({ name, ...attrs }) => {
   switch (name) {
     case IconNames.BELL:
       return icoBell(attrs);
     case IconNames.CARET_DOWN:
       return icoCaretDown(attrs);
+    case IconNames.CLOSE:
+      return icoClose(attrs);
     case IconNames.FACEBOOK:
       return icoFacebook(attrs);
     case IconNames.FILE:
       return icoFile(attrs);
+    case IconNames.FIRST:
+      return icoFirst(attrs);
     case IconNames.INSTAGRAM:
       return icoInstagram(attrs);
+    case IconNames.LAST:
+      return icoLast(attrs);
     case IconNames.LINKEDIN:
       return icoLinkedin(attrs);
     case IconNames.LOGO:
       return icoLogo(attrs);
-    case IconNames.TRIDENT_HEADER:
-      return icoTrident(attrs);
+    case IconNames.NEXT:
+      return icoNext(attrs);
+    case IconNames.PREVIOUS:
+      return icoPrevious(attrs);
     case IconNames.TOGGLE_OPEN:
       return icoToggleOpen(attrs);
     case IconNames.TOGGLE_CLOSE:
       return icoToggleClose(attrs);
     case IconNames.TOGGLE_SEARCH:
       return icoToggleSearch(attrs);
+    case IconNames.TRIDENT_HEADER:
+      return icoTrident(attrs);
     case IconNames.TWITTER:
       return icoTwitter(attrs);
     case IconNames.YOUTUBE:
       return icoYoutube(attrs);
-    case IconNames.CLOSE:
-      return icoClose(attrs);
   }
 };
 
@@ -236,16 +285,20 @@ Icon.defaultProps = DefaultIconProps;
 Icon.propTypes = {
   name: PropTypes.oneOf([
     IconNames.CARET_DOWN,
+    IconNames.CLOSE,
     IconNames.FACEBOOK,
     IconNames.FILE,
+    IconNames.FIRST,
     IconNames.INSTAGRAM,
+    IconNames.LAST,
     IconNames.LINKEDIN,
     IconNames.LOGO,
-    IconNames.TOGGLE_OPEN,
+    IconNames.NEXT,
+    IconNames.PREVIOUS,
     IconNames.TOGGLE_CLOSE,
-    IconNames.TRIDENT_HEADER,
+    IconNames.TOGGLE_OPEN,
     IconNames.TOGGLE_SEARCH,
-    IconNames.CLOSE,
+    IconNames.TRIDENT_HEADER,
     IconNames.TWITTER,
     IconNames.YOUTUBE,
   ]),
