@@ -102,7 +102,7 @@ const PaginationItem =({
   const Next = ({ ...attrs }) => (
     <PaginationItem
       {...attrs}
-      ariaLabel={attrs.disabled ? "No next page" : "Go to next page"}
+      ariaLabel={attrs.disabled ? "No next pages" : "Go to next page"}
     >
       <Icon name="next" />
     </PaginationItem>
@@ -113,7 +113,7 @@ const PaginationItem =({
   const Last = ({ ...attrs }) => (
     <PaginationItem
       {...attrs}
-      ariaLabel={attrs.disabled ? "No next page" : "Go to last page"}
+      ariaLabel={attrs.disabled ? "No next pages" : "Go to last page"}
     >
       <Icon name="last" />
     </PaginationItem>
