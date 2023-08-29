@@ -48,4 +48,19 @@ describe("<BaseFooter />", () => {
       expect(component).toHaveClass("rvt-footer-base--light");
     });
   });
+
+  describe("BaseFooter size full", () => {
+    it("should render without error", async () => {
+      render(
+        <BaseFooter data-testid={TestUtils.Footer.testId} size="full" />
+      );
+
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
+      expect(component).toHaveClass("rvt-footer-base");
+      const container = component.children[0]
+      expect(container).not.toHaveClass();
+      expect(container.children[0].children[1]).toHaveClass("rvt-m-lr-sm");
+      container.children[0].children[1]
+    });
+  });
 });

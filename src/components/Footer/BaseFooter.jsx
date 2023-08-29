@@ -8,6 +8,7 @@ import * as PropTypes from "prop-types";
 
 import Icon from "../util/RivetIcons";
 import * as Rivet from "../util/Rivet";
+import { parseRivetMultiListUtility }from "../util/RivetizeAux";
 
 /**
  * Use the Base Footer component at the bottom of all pages
@@ -27,12 +28,12 @@ const BaseFooter = ({
   );
   return (
     <footer className={classes} {...attrs}>
-      <div className={`rvt-container-${size}`}>
+      <div className={parseRivetMultiListUtility(size, SIZES, "rvt-container")}>
         <div className="rvt-footer-base__inner">
           <div className="rvt-footer-base__logo">
             <Icon height="24" name="logo" viewBox="0 0 24 24" width="24" />
           </div>
-          <ul className="rvt-footer-base__list">
+          <ul className={`rvt-footer-base__list ${"full" === size ? "rvt-m-lr-sm" : ''}`}>
             <BaseFooterLink url="https://accessibility.iu.edu/assistance/">
               Accessibility
             </BaseFooterLink>
@@ -69,12 +70,14 @@ const BaseFooterLink = ({ children, url }) => {
   );
 };
 
+const SIZES = ["sm", "md", "lg", "xl"]
+
 BaseFooter.displayName = "BaseFooter";
 BaseFooter.propTypes = {
   /** The url for privay link, if no provided url link will not display*/
   privacyUrl: PropTypes.string,
   /** The container size for content */
-  size: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
+  size:PropTypes.oneOf([...SIZES, "full"]),
   /** The variant type which determines how the footer is styled */
   variant: PropTypes.oneOf(["light"]),
 };
