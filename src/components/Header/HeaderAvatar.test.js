@@ -33,10 +33,16 @@ describe("<HeaderAvatar/>", () => {
       expect(screen.getByRole("link")).toHaveAttribute("href", link);
     });
 
-    it("does not show logout anchor if logoutURL is not provided", () => {
+    it("does not show logout anchor if logoutURL/Click is not provided", () => {
       render(<Header.Avatar username={username} shortName={shortName} />);
 
       expect(screen.queryAllByRole("link")).toHaveLength(0);
+    });
+
+    it("Show logout button if logoutURL is not provided and logoutClick is", () => {
+      render(<Header.Avatar username={username} shortName={shortName} logoutClick={() => console.log("logout")}/>);
+
+      expect(screen.getByRole("button", { name: /Log out/ })).toBeVisible();
     });
   });
 });

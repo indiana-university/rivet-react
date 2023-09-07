@@ -7,8 +7,9 @@ import * as React from "react";
 import * as Rivet from "../util/Rivet";
 import PropTypes from "prop-types";
 import { TestUtils } from "../util/TestUtils";
+import { Button } from "../Button"
 
-const HeaderAvatar = ({ username, shortName, logoutURL }) => {
+const HeaderAvatar = ({ username, shortName, logoutClick, logoutURL, ...attr }) => {
   return (
     <div className="rvt-flex rvt-items-center rvt-m-left-md rvt-p-bottom-md rvt-p-bottom-none-lg-up">
       <div className="rvt-avatar rvt-avatar--xs">
@@ -25,11 +26,30 @@ const HeaderAvatar = ({ username, shortName, logoutURL }) => {
       >
         {username}
       </div>
-      {logoutURL && (
-        <a href={logoutURL} className="rvt-ts-14">
-          Log out
-        </a>
-      )}
+      {
+        logoutURL &&
+          (
+            <a
+              className="rvt-ts-14"
+              href={logoutURL}
+              onClick={logoutClick}
+            >
+              Log out
+            </a>
+          )
+      }
+      {
+        !logoutURL && logoutClick &&
+          (
+            <Button
+              onClick={logoutClick}
+              size="small"
+              variant="plain"
+            >
+              Log out
+            </Button>
+          )
+      }
     </div>
   );
 };
@@ -42,6 +62,8 @@ HeaderAvatar.propTypes = {
   shortName: PropTypes.string.isRequired,
   /** The URL for the logout action */
   logoutURL: PropTypes.string,
+  /** The onClick for the logout action*/
+  logoutClick: PropTypes.function,
 };
 
 export default Rivet.rivetize(HeaderAvatar);
