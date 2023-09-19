@@ -26,6 +26,7 @@
     "dev": "vite",
     "license": "license-check-and-add add -f ./license-check-and-add-config.json",
     "test": "NODE_ENV=test jest",
+    "test-win": "jest",
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
