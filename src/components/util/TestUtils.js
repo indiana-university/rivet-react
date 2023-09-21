@@ -40,4 +40,5 @@ export const TestUtils = {
   RadioButton: { testId: "testId" },
   Table: { testId: "testId" },
   Footer: { testId: "testId" },
+  Disclosure: { testId: "disclosure__testId" },
 };
