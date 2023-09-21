@@ -20,7 +20,7 @@ const HeaderAvatar = ({ username, shortName, logoutURL }) => {
         </span>
       </div>
       <div
-        className="rvt-ts-14 rvt-m-left-xs rvt-p-right-xs rvt-m-right-xs rvt-border-right"
+        className={`rvt-ts-14 rvt-m-left-xs rvt-p-right-xs rvt-m-right-xs${logoutURL ? " rvt-border-right" : ""}`}
         data-testid={TestUtils.Header.avatarUsernameTestId}
       >
         {username}

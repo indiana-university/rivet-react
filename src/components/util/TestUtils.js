@@ -34,6 +34,8 @@ export const TestUtils = {
     avatarShortNameTestId: "avatar-short-name__testid",
     avatarUsernameTestId: "avatar-username__testid",
     headerWidthDivTestId: "header-width__testid",
+    headerMenuItemContainer: "header-menuitem__container",
+    headerMenuItemAnchor: "header-menuitem__anchor"
   },
   Checkbox: { testId: "testId" },
   File: { testId: "testId" },
