@@ -23,6 +23,7 @@ describe("<BaseFooter />", () => {
       const privacy = screen.queryByText("Privacy Notice");
       expect(component).toHaveClass("rvt-footer-base");
       expect(component).toContainElement(privacy);
+      expect(component).toHaveTextContent(`© ${(new Date()).getFullYear()}`)
     });
   });
 
@@ -61,6 +62,18 @@ describe("<BaseFooter />", () => {
       expect(container).not.toHaveClass();
       expect(container.children[0].children[1]).toHaveClass("rvt-m-lr-sm");
       container.children[0].children[1]
+    });
+  });
+
+  describe("BaseFooter with copyright", () => {
+    it("should render without error", async () => {
+      render(
+        <BaseFooter data-testid={TestUtils.Footer.testId} copyrightYear="2021" />
+      );
+
+      const component = await screen.findByTestId(TestUtils.Footer.testId);
+      expect(component).toHaveClass("rvt-footer-base");
+      expect(component).toHaveTextContent("© 2021")
     });
   });
 });

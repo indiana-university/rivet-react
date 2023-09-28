@@ -16,6 +16,7 @@ import { parseRivetMultiListUtility }from "../util/RivetizeAux";
 const BaseFooter = ({
   children,
   className,
+  copyrightYear,
   privacyUrl,
   size = "sm",
   variant,
@@ -26,6 +27,7 @@ const BaseFooter = ({
     variant ? `rvt-footer-base--${variant}` : "",
     className
   );
+  const year = !copyrightYear ? (new Date()).getFullYear() : copyrightYear
   return (
     <footer className={classes} {...attrs}>
       <div className={parseRivetMultiListUtility(size, SIZES, "rvt-container")}>
@@ -45,7 +47,7 @@ const BaseFooter = ({
               >
                 Copyright
               </a>{" "}
-              © 2021 The Trustees of{" "}
+              © {year} The Trustees of{" "}
               <a className="rvt-footer-base__link" href="https://www.iu.edu">
                 Indiana University
               </a>
@@ -74,6 +76,8 @@ const SIZES = ["sm", "md", "lg", "xl"]
 
 BaseFooter.displayName = "BaseFooter";
 BaseFooter.propTypes = {
+  /** The year of the page copyright */
+  copyrightYear: PropTypes.string,
   /** The url for privay link, if no provided url link will not display*/
   privacyUrl: PropTypes.string,
   /** The container size for content */

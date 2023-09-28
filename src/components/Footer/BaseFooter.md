@@ -2,7 +2,7 @@
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseFooter />
+<BaseFooter copyrightYear="2021" />
 ```
 <!-- prettier-ignore-end -->
 
