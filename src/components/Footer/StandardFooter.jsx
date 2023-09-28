@@ -2,7 +2,6 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import classNames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import * as Rivet from "../util/Rivet";
@@ -31,7 +30,7 @@ StandardFooter.propTypes = {
   /** The url for privay link, if no provided url link will not display */
   privacyUrl: PropTypes.string,
   /** The container size for content */
-  size: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
+  size: PropTypes.oneOf(["sm", "md", "lg", "xl", "full"]),
   /** The variant type which determines how the footer is styled */
   variant: PropTypes.oneOf(["light"]),
 };
