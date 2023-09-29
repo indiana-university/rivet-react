@@ -6,6 +6,7 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import * as Rivet from "../util/Rivet";
 import Button from "../Button/Button.jsx";
 import Icon from "../util/RivetIcons.jsx";
@@ -37,6 +38,34 @@ const Dialog = ({
 }) => {
   const ref = React.useRef(null);
 
+  const handleDismiss = () => {
+    onDismiss && onDismiss();
+  };
+
+  const clickBackdropToDismiss = (event) => {
+    if (!ref.current.querySelector(".rvt-dialog").contains(event.target)) {
+      ref.current.close();
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      ref.current.showModal();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    ref.current.addEventListener("close", handleDismiss);
+    return () => ref.current.removeEventListener("close", handleDismiss);
+  }, []);
+
+  useEffect(() => {
+    ref.current.addEventListener("click", clickBackdropToDismiss);
+    return () =>
+      ref.current.removeEventListener("click", clickBackdropToDismiss);
+  }, []);
+
+  /*
   useEffect(() => {
     handleEventRegistration();
     return () => {
@@ -99,46 +128,40 @@ const Dialog = ({
     ...{ ...(align && { [`data-rvt-dialog-${align}`]: "" }) },
     ...{ ...(darkenPage && { ["data-rvt-dialog-darken-page"]: "" }) },
   };
-
-  const handleDismiss = () => {
-    onDismiss && onDismiss();
-  };
+*/
 
   // helper that takes either the react-spectrum modal or dialog props as defined per useDialog and useModalOverlay above
-  const dialogContent = (overlayProps) => (
-    <div
-      className={classNames("rvt-dialog", className)}
-      aria-hidden={!isOpen}
-      hidden={!isOpen}
-      ref={ref}
-      {...dataRvt}
-      {...overlayProps}
-    >
-      {title && (
-        <header
-          className="rvt-dialog__header"
-          data-testid={TestUtils.Dialog.dialogHeaderTestId}
-        >
-          <h1
-            className="rvt-dialog__title"
-            id={`${id}-title`}
-            // don't want the id from react-spectrum Dialog, use rivet format
-            {...removeProperty(titleProps, "id")}
+  return (
+    <dialog aria-labelledby={title ? `${id}-title` : null} ref={ref}>
+      <style>{`
+        dialog::backdrop {
+          background-color: rgba(36, 49, 66, .85);
+        }
+      `}</style>
+      <div className={classNames("rvt-dialog", className)}>
+        {title && (
+          <header
+            className="rvt-dialog__header"
+            data-testid={TestUtils.Dialog.dialogHeaderTestId}
           >
-            {title}
-          </h1>
-        </header>
-      )}
-      {children}
-      {onDismiss && showCloseButton && (
-        <DialogCloseButton onDismiss={handleDismiss} />
-      )}
-    </div>
+            <h1 className="rvt-dialog__title" id={`${id}-title`}>
+              {title}
+            </h1>
+          </header>
+        )}
+        {children}
+        {onDismiss && showCloseButton && (
+          <DialogCloseButton onDismiss={handleDismiss} />
+        )}
+      </div>
+    </dialog>
   );
 
+  /*
   if (isOpen) {
     // If page interaction is disabled, we need to render the modal dialog content inside a fixed div which takes up the
     // entire screen, otherwise just render the dialog content
+
     if (disablePageInteraction) {
       return (
         <div
@@ -153,6 +176,7 @@ const Dialog = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            pointerEvents: 'none'
           }}
           data-testid={TestUtils.Dialog.underlayDivTestId}
           {...underlayProps}
@@ -161,13 +185,19 @@ const Dialog = ({
         </div>
       );
     } else return dialogContent(dialogProps);
+
+    return createPortal(
+      dialogContent(dialogProps),
+      document.body
+    );
   }
+  */
 };
 
 const DialogCloseButton = ({ onDismiss }) => (
   <Button className="rvt-button--plain rvt-dialog__close" onClick={onDismiss}>
-    <span className="rvt-sr-only">Close</span>
     <Icon name="close" />
+    <span className="rvt-sr-only">Close</span>
   </Button>
 );
 
