@@ -52,12 +52,15 @@ describe("<Disclosure />", () => {
       render(<Disclosure title={title}>{child}</Disclosure>);
 
       await user.click(screen.getByRole("button", {}));
+      const button = screen.getByRole("button", {});
       const children = screen.queryByTestId(TestUtils.Disclosure.testId, {});
       expect(children).toBeVisible();
       expect(children).toHaveClass("rvt-disclosure__content");
+      expect(button).toHaveAttribute("aria-expanded", "true");
       expect(screen.queryByText(child, {})).toBeVisible();
 
       await user.click(screen.getByRole("button", {}));
+      expect(button).toHaveAttribute("aria-expanded", "false");
       expect(
         screen.queryByTestId(TestUtils.Disclosure.testId, {})
       ).not.toBeInTheDocument();

@@ -84,7 +84,7 @@ const Disclosure = ({
       <button
         className="rvt-disclosure__toggle"
         onClick={toggleDisclosure}
-        aria-expanded="false"
+        aria-expanded={isOpenState ? "true" : "false"}
       >
         {title}
       </button>
