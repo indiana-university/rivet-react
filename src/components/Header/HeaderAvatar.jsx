@@ -62,7 +62,7 @@ HeaderAvatar.propTypes = {
   shortName: PropTypes.string.isRequired,
   /** The URL for the logout action */
   logoutURL: PropTypes.string,
-  /** The onClick for the logout action*/
+  /** The onClick for the logout action. This value will be overriden by logoutUrl if it is provided  */
   logoutClick: PropTypes.function,
 };
 
