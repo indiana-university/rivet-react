@@ -76,4 +76,20 @@ describe("<BaseFooter />", () => {
       expect(component).toHaveTextContent("© 2021")
     });
   });
+
+  describe("BaseFooter with links in new window", () => {
+    it("should render without error", async () => {
+      render(
+        <BaseFooter
+          data-testid={TestUtils.Footer.testId}
+          copyrightYear="2021"
+          openInNewWindow
+          privacyUrl="test.test.test"
+        />
+      );
+
+      const components = await screen.findAllByRole("link");
+      components.map(component => expect(component).toHaveAttribute("target", "_blank"));
+    });
+  });
 });
