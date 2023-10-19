@@ -9,9 +9,9 @@ import * as Rivet from "../util/Rivet";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 
-const inputClassName = (elementName, variant, groupped) => {
+const inputClassName = (elementName, variant, grouped) => {
   const validationVariant = variant ? `rvt-validation-${variant}` : "";
-  const grouppedClassName = groupped ? 'rvt-input-group__input' : "";
+  const groupedClassName = grouped ? 'rvt-input-group__input' : "";
 
   let elementClassName = ''
   switch (elementName) {
@@ -21,7 +21,7 @@ const inputClassName = (elementName, variant, groupped) => {
       elementClassName = `rvt-${elementName}`;
   }
 
-  return classNames(elementClassName, validationVariant, grouppedClassName);
+  return classNames(elementClassName, validationVariant, groupedClassName);
 };
 
 const noteFragment = (id, variant, note) =>
@@ -65,11 +65,11 @@ export const renderInput = (
   }
 ) => {
   const noteId = `${id}_note`;
-  const groupped = appendment ||  prependment;
+  const grouped = appendment ||  prependment;
 
   const inputProps = {
     id,
-    className: inputClassName(elementName, variant, groupped),
+    className: inputClassName(elementName, variant, grouped),
     "aria-describedby": note ? noteId : "",
     "aria-invalid": variant === "danger",
     ...attrs,
@@ -88,9 +88,9 @@ export const renderInput = (
       >
         {label}
       </label>
-      {!groupped && inputElement}
+      {!grouped && inputElement}
       {
-        groupped &&
+        grouped &&
           <div className='rvt-input-group'>
             {prependment && <div className='rvt-input-group__prepend'>{prependment}</div>}
             {inputElement}
