@@ -130,4 +130,37 @@ describe("<Select />", () => {
       );
     });
   });
+  describe("Input Group", () => {
+    it("should not group", () => {
+      render(
+        <Select
+          label="Label"
+          data-testid="test"
+        />
+      );
+      expect(screen.getByTestId("test", {}).parentElement).not.toHaveClass("rvt-input-group");
+    });
+    it("should group with a prepended element", () => {
+      render(
+        <Select
+          prependment={"Prependment"}
+          label="Label"
+          data-testid="test"
+        />
+      );
+      expect(screen.getByTestId("test", {}).parentElement).toHaveClass("rvt-input-group");
+      expect(screen.getByText("Prependment", {})).toHaveClass("rvt-input-group__prepend");
+    });
+    it("should group with an appended element", () => {
+      render(
+        <Select
+          appendment={"Appendment"}
+          label="Label"
+          data-testid="test"
+        />
+      );
+      expect(screen.getByTestId("test", {}).parentElement).toHaveClass("rvt-input-group");
+      expect(screen.getByText("Appendment", {})).toHaveClass("rvt-input-group__append");
+    });
+  });
 });

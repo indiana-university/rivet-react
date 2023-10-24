@@ -124,4 +124,37 @@ describe("<Input />", () => {
       );
     });
   });
+  describe("Input Group", () => {
+    it("should not group", () => {
+      render(
+        <Input
+          label="Label"
+          data-testid="test"
+        />
+      );
+      expect(screen.getByTestId("test", {}).parentElement).not.toHaveClass("rvt-input-group");
+    });
+    it("should group with a prepended element", () => {
+      render(
+        <Input
+          prependment={"Prependment"}
+          label="Label"
+          data-testid="test"
+        />
+      );
+      expect(screen.getByTestId("test", {}).parentElement).toHaveClass("rvt-input-group");
+      expect(screen.getByText("Prependment", {})).toHaveClass("rvt-input-group__prepend");
+    });
+    it("should group with an appended element", () => {
+      render(
+        <Input
+          appendment={"Appendment"}
+          label="Label"
+          data-testid="test"
+        />
+      );
+      expect(screen.getByTestId("test", {}).parentElement).toHaveClass("rvt-input-group");
+      expect(screen.getByText("Appendment", {})).toHaveClass("rvt-input-group__append");
+    });
+  });
 });
