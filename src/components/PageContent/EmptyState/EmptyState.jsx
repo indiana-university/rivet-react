@@ -8,7 +8,7 @@ import classNames from "classnames";
 import Actions from "./Actions";
 import Content from "./Content";
 
-import * as Rivet from "../util/Rivet";
+import * as Rivet from "../../util/Rivet";
 
 const EmptyState = ({ children, className, ...attrs }) => (
   <div {...attrs} className={classNames("rvt-empty-state", className)}>
