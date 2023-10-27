@@ -17,6 +17,7 @@ const BaseFooter = ({
   children,
   className,
   copyrightYear,
+  openInNewWindow = false,
   privacyUrl,
   size = "sm",
   variant,
@@ -36,19 +37,32 @@ const BaseFooter = ({
             <Icon height="24" name="logo" viewBox="0 0 24 24" width="24" />
           </div>
           <ul className={`rvt-footer-base__list ${"full" === size ? "rvt-m-lr-sm" : ''}`}>
-            <BaseFooterLink url="https://accessibility.iu.edu/assistance/">
+            <BaseFooterLink
+              openInNewWindow={openInNewWindow}
+              url="https://accessibility.iu.edu/assistance/"
+            >
               Accessibility
             </BaseFooterLink>
-            <BaseFooterLink url={privacyUrl}>Privacy Notice</BaseFooterLink>
+            <BaseFooterLink
+              openInNewWindow={openInNewWindow}
+              url={privacyUrl}
+            >
+              Privacy Notice
+            </BaseFooterLink>
             <li className="rvt-footer-base__item">
               <a
                 className="rvt-footer-base__link"
                 href="https://www.iu.edu/copyright/index.html"
+                {...(openInNewWindow && {target: "_blank" })}
               >
                 Copyright
               </a>{" "}
               © {year} The Trustees of{" "}
-              <a className="rvt-footer-base__link" href="https://www.iu.edu">
+              <a
+                className="rvt-footer-base__link"
+                href="https://www.iu.edu"
+                {...(openInNewWindow && {target: "_blank" })}
+              >
                 Indiana University
               </a>
             </li>
@@ -59,13 +73,17 @@ const BaseFooter = ({
   );
 };
 
-const BaseFooterLink = ({ children, url }) => {
+const BaseFooterLink = ({ children, openInNewWindow, url }) => {
   if (!url) {
     return null;
   }
   return (
     <li className="rvt-footer-base__item">
-      <a className="rvt-footer-base__link" href={url}>
+      <a
+        className="rvt-footer-base__link"
+        href={url}
+        {...(openInNewWindow && {target: "_blank" })}
+      >
         {children}
       </a>
     </li>
