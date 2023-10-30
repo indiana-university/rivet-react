@@ -41,4 +41,5 @@ export const TestUtils = {
   Table: { testId: "testId" },
   Footer: { testId: "testId" },
   Disclosure: { testId: "disclosure__testId" },
+  Timeline: { testId: "timeline__testId" },
 };
