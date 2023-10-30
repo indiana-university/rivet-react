@@ -50,6 +50,6 @@ export const TestUtils = {
     group: "stat-group",
     image: "stat-image",
     number: "stat-number"
-  }
-  Timeline: { testId: "timeline__testId" },
+  },
+  Timeline: { testId: "timeline__testId" }
 };
