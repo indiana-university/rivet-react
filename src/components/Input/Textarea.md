@@ -40,3 +40,20 @@ Use the `variant` property along with a `note` to provide validation feedback to
           margin={{bottom: "md"}} />
 ```
 <!-- prettier-ignore-end -->
+
+### Group Input
+
+Use the `prependment` and `appendment` properties to group an element before or after the textarea.
+
+<!-- prettier-ignore-start -->
+```jsx
+<Textarea
+       prependment={<div class="rvt-input-group__text">Short</div>}
+       appendment={<div class="rvt-input-group__text">100 characters</div>}
+       type="text"
+       label="Description"
+       note="Enter a description for the website" 
+       margin={{bottom: 'md'}}
+/>
+```
+<!-- prettier-ignore-end -->

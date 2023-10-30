@@ -83,3 +83,61 @@ Use the `variant` property along with a `note` to provide validation feedback to
 </Select>
 ```
 <!-- prettier-ignore-end -->
+
+### Group Input
+
+Use the `prependment` and `appendment` properties to group an element before or after the select
+
+<!-- prettier-ignore-start -->
+```jsx
+<Select
+       prependment={<div class="rvt-input-group__text">Dinner:</div>}
+       appendment={<div class="rvt-input-group__text">meal</div>}
+       type="text"
+       label="RSVP"
+       note="Select you perferred food option" 
+       margin={{bottom: 'md'}}
+>
+  <option value="">Choose an option...</option>
+  <option value="Steak">Steak</option>
+  <option value="Chops">Chops</option>
+  <option value="Ribs">Ribs</option>
+  <option value="Brisket">Brisket</option>
+</Select>
+
+<Select
+       prependment={<button type="button" class="rvt-button">Check Availability</button>}
+       type="text"
+       label="Search Username"
+       labelVisibility="screen-reader-only"
+       margin={{bottom: 'md'}}
+>
+  <option value="">Choose an option...</option>
+  <option value="Steak">Steak</option>
+  <option value="Chops">Chops</option>
+  <option value="Ribs">Ribs</option>
+  <option value="Brisket">Brisket</option>
+</Select>
+
+<Select
+       appendment={
+              <Dropdown
+                     alignRight
+                     label="Actions"
+              >
+                     <Button onClick={() => alert('Selection Saved')}>Save</Button>
+                     <Button onClick={() => alert('Selection Submitted')}>Submit</Button>
+              </Dropdown>
+       }
+       type="text"
+       label="Main Course Selection"
+       margin={{bottom: 'md'}}
+>
+  <option value="">Choose an option...</option>
+  <option value="Steak">Steak</option>
+  <option value="Chops">Chops</option>
+  <option value="Ribs">Ribs</option>
+  <option value="Brisket">Brisket</option>
+</Select>
+```
+<!-- prettier-ignore-end -->
