@@ -44,5 +44,12 @@ export const TestUtils = {
   Table: { testId: "testId" },
   Footer: { testId: "testId" },
   Disclosure: { testId: "disclosure__testId" },
-  Timeline: { testId: "timeline__testId" },
+  Stat: {
+    container: "stat-container",
+    description: "stat-description",
+    group: "stat-group",
+    image: "stat-image",
+    number: "stat-number"
+  },
+  Timeline: { testId: "timeline__testId" }
 };
