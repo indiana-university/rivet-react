@@ -3,6 +3,9 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 export const TestUtils = {
+  CallToAction: {
+    link: "cta-link"
+  },
   ButtonGroup: { testId: "buttonGroup_testId" },
   SegmentedButton: { testId: "segmentedButton_testId" },
   RivetIcons: { testId: "rivetIcon_testId" },
@@ -41,10 +44,12 @@ export const TestUtils = {
   Table: { testId: "testId" },
   Footer: { testId: "testId" },
   Disclosure: { testId: "disclosure__testId" },
-  Billboard: {
-    container: "billboard-container",
-    content: "billboard-content",
-    image: "billboard-image",
-    title: "billboard-title"
-  }
+  Stat: {
+    container: "stat-container",
+    description: "stat-description",
+    group: "stat-group",
+    image: "stat-image",
+    number: "stat-number"
+  },
+  Timeline: { testId: "timeline__testId" }
 };

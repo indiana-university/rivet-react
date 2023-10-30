@@ -9,15 +9,19 @@ import * as Rivet from "../util/Rivet";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 
-const inputClassName = (elementName, variant) => {
+const inputClassName = (elementName, variant, grouped) => {
   const validationVariant = variant ? `rvt-validation-${variant}` : "";
+  const groupedClassName = grouped ? 'rvt-input-group__input' : "";
 
+  let elementClassName = ''
   switch (elementName) {
     case "input":
-      return classNames("rvt-text-input", validationVariant);
+      elementClassName = "rvt-text-input";
     default:
-      return classNames(`rvt-${elementName}`, validationVariant);
+      elementClassName = `rvt-${elementName}`;
   }
+
+  return classNames(elementClassName, validationVariant, groupedClassName);
 };
 
 const noteFragment = (id, variant, note) =>
@@ -32,12 +36,16 @@ const noteFragment = (id, variant, note) =>
   );
 
 export const propTypes = {
+  /** Element to group at the end of the input */
+  appendment: PropTypes.element,
   /** The label for the input */
   label: PropTypes.string.isRequired,
   /** Visibility modifier for the input's label */
   labelVisibility: PropTypes.oneOf(["screen-reader-only"]),
   /** An optional note that will be displayed below the input */
   note: PropTypes.node,
+  /** Element to group at the start of the input */
+  prependment: PropTypes.element,
   /** Rivet style for inline validation */
   variant: PropTypes.oneOf(["success", "danger", "info", "warning"]),
 };
@@ -46,22 +54,29 @@ export const renderInput = (
   elementName,
   {
     id = Rivet.shortuid(),
+    appendment,
     label,
     labelVisibility,
     note,
+    prependment,
     variant,
     className,
     ...attrs
   }
 ) => {
   const noteId = `${id}_note`;
+  const grouped = appendment ||  prependment;
+
   const inputProps = {
     id,
-    className: inputClassName(elementName, variant),
+    className: inputClassName(elementName, variant, grouped),
     "aria-describedby": note ? noteId : "",
     "aria-invalid": variant === "danger",
     ...attrs,
   };
+
+  const inputElement = React.createElement(elementName, inputProps);
+
   return (
     <div className={classNames(className)}>
       <label
@@ -73,7 +88,15 @@ export const renderInput = (
       >
         {label}
       </label>
-      {React.createElement(elementName, inputProps)}
+      {!grouped && inputElement}
+      {
+        grouped &&
+          <div className='rvt-input-group'>
+            {prependment && <div className='rvt-input-group__prepend'>{prependment}</div>}
+            {inputElement}
+            {appendment && <div className='rvt-input-group__append'>{appendment}</div>}
+          </div>
+      }
       {note && noteFragment(noteId, variant, note)}
     </div>
   );
