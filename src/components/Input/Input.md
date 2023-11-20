@@ -48,3 +48,43 @@ Use the `variant` property along with a `note` to provide validation feedback to
        margin={{bottom: 'md'}} />
 ```
 <!-- prettier-ignore-end -->
+
+### Group Input
+
+Use the `prependment` and `appendment` properties to group an element before or after the input
+
+<!-- prettier-ignore-start -->
+```jsx
+<Input
+       prependment={<div class="rvt-input-group__text">https://</div>}
+       appendment={<div class="rvt-input-group__text">.iu.edu</div>}
+       type="text"
+       label="Website"
+       note="Enter your website name" 
+       margin={{bottom: 'md'}}
+/>
+
+<Input
+       prependment={<button type="button" class="rvt-button">Search</button>}
+       type="text"
+       label="Search Username"
+       labelVisibility="screen-reader-only"
+       margin={{bottom: 'md'}}
+/>
+
+<Input
+       appendment={
+              <Dropdown
+                     alignRight
+                     label="Actions"
+              >
+                     <Button onClick={() => alert('Website Name Saved')}>Save</Button>
+                     <Button onClick={() => alert('Website Name Submitted')}>Submit</Button>
+              </Dropdown>
+       }
+       type="text"
+       label="Website Name "
+       margin={{bottom: 'md'}}
+/>
+```
+<!-- prettier-ignore-end -->

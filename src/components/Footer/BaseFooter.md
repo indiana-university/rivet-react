@@ -2,15 +2,15 @@
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseFooter />
+<BaseFooter copyrightYear="2021" />
 ```
 <!-- prettier-ignore-end -->
 
-### Base Footer with privacy link
+### Base Footer with privacy link and all links in new window
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseFooter privacyUrl='#'/>
+<BaseFooter privacyUrl='#' openInNewWindow/>
 ```
 <!-- prettier-ignore-end -->
 
