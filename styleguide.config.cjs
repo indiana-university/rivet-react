@@ -67,6 +67,7 @@ module.exports = {
         "src/components/Header/HeaderMenu.jsx",
         "src/components/Header/HeaderSearch.jsx",
         "src/components/Header/HeaderNavigationSecondary.jsx",
+        "src/components/Pagination/[A-Z]*.jsx"
       ],
     },
     {
