@@ -72,6 +72,7 @@ module.exports = {
         "src/components/Header/BaseHeaderMenu.jsx",
         "src/components/Header/BaseHeaderMenuItem.jsx",
         "src/components/Header/BaseHeaderNavigationSecondary.jsx",
+        "src/components/Pagination/[A-Z]*.jsx"
       ],
     },
     {
@@ -88,16 +89,7 @@ module.exports = {
     {
       name: "Tables",
       components: "src/components/Table/[A-Z]*.jsx",
-    },
-    {
-      name: "Miscellaneous",
-      sections: [
-        {
-          name: "EmptyState",
-          components: () => ["src/components/EmptyState/EmptyState.jsx"],
-        },
-      ],
-    },
+    }
   ],
   webpackConfig: {
     module: {
