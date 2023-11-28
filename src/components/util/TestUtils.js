@@ -50,6 +50,12 @@ export const TestUtils = {
     image: "billboard-image",
     title: "billboard-title"
   },
+  CalendarTile: {
+    container: "calendartile-container",
+    day: "calendartile-day",
+    month: "calendartile-month",
+    year: "calendartile-year"
+  },
   Stat: {
     container: "stat-container",
     description: "stat-description",
