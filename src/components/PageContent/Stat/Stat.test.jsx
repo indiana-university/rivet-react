@@ -34,7 +34,7 @@ describe("<Stat />", () => {
       checkRenderDescription()
       checkRenderNumber()
     });
-    it("without image hould render without throwing an error", () => {
+    it("without image should render without throwing an error", () => {
       render(
         <Stat
           className={customClassName}
