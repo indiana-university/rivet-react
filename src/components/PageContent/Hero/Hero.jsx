@@ -98,7 +98,7 @@ Hero.propTypes = {
   id: PropTypes.string,
   /** Image or media element to display  */
   media: PropTypes.element,
-  /** Text to accompany a provided media */
+  /** Text to accompany and displayed below a provided media (media must be provided for text to display)*/
   mediaCaption: PropTypes.string,
   /** Container size of the element */
   size: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
