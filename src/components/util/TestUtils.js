@@ -50,6 +50,12 @@ export const TestUtils = {
     image: "billboard-image",
     title: "billboard-title"
   },
+  Quote: {
+    container: "quote-container",
+    content: "quote-content",
+    avatar: "quote-avatar",
+    citation: "quote-citation"
+  },
   Stat: {
     container: "stat-container",
     description: "stat-description",

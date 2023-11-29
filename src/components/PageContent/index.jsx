@@ -7,5 +7,6 @@ export { default as Billboard } from "./Billboard/Billboard";
 export { default as CallToAction } from "./CallToAction/CallToAction";
 export { default as Disclosure } from "./Disclosure/Disclosure";
 export { default as EmptyState } from "./EmptyState/EmptyState";
+export { default as Quote } from "./Quote/Quote";
 export { default as Timeline } from "./Timeline/Timeline";
 export { default as TimelineItem } from "./Timeline/TimelineItem";
