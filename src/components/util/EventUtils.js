@@ -62,3 +62,14 @@ export const isRightMouseClick = (event) =>
 
 export const targets = (container, event) =>
   container && container.contains(event.target) && container !== event.target;
+
+const focusableElementList = 'button, a[href], input[type="radio"]:checked, input:not([type="radio"]), select, textarea, [tabindex]:not([tabindex="-1"])'
+
+export function getFocusableElements (element) {
+  const focusable = element.querySelectorAll(focusableElementList)
+  const focusableArray = Array.prototype.slice.call(focusable)
+  const enabledFocusable = focusableArray.filter(el => {
+    return !el.disabled
+  })
+  return enabledFocusable
+}

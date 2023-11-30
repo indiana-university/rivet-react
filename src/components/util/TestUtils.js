@@ -37,6 +37,18 @@ export const TestUtils = {
     avatarShortNameTestId: "avatar-short-name__testid",
     avatarUsernameTestId: "avatar-username__testid",
     headerWidthDivTestId: "header-width__testid",
+    headerMenuItemContainer: "header-menuitem__container",
+    headerMenuItemAnchor: "header-menuitem__anchor"
+  },
+  Hero: {
+    container: "hero-container",
+    innerContainer: "hero-inner",
+    eyebrow: "hero-eyebrow",
+    title: "hero-title",
+    content: "hero-content",
+    actions: "hero-actions",
+    media: "hero-media",
+    mediaCaption: "hero-mediaCaption",
   },
   Checkbox: { testId: "testId" },
   File: { testId: "testId" },
@@ -55,6 +67,12 @@ export const TestUtils = {
     day: "calendartile-day",
     month: "calendartile-month",
     year: "calendartile-year"
+  },
+  Quote: {
+    container: "quote-container",
+    content: "quote-content",
+    avatar: "quote-avatar",
+    citation: "quote-citation"
   },
   Stat: {
     container: "stat-container",
