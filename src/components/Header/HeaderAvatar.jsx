@@ -3,7 +3,7 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import * as React from "react";
-
+import classNames from "classnames";
 import * as Rivet from "../util/Rivet";
 import PropTypes from "prop-types";
 import { TestUtils } from "../util/TestUtils";
@@ -11,6 +11,13 @@ import { Button } from "../Button"
 import Avatar from "../PageContent/Avatar/Avatar";
 
 const HeaderAvatar = ({ username, shortName, logoutClick, logoutURL, ...attr }) => {
+  const classes = classNames(
+    "rvt-ts-14",
+    "rvt-m-left-xs",
+    "rvt-p-right-xs",
+    "rvt-m-right-xs",
+    (logoutClick || logoutURL) && "rvt-border-right"
+  );
   return (
     <div className="rvt-flex rvt-items-center rvt-m-left-md rvt-p-bottom-md rvt-p-bottom-none-lg-up">
       <Avatar
@@ -19,7 +26,7 @@ const HeaderAvatar = ({ username, shortName, logoutClick, logoutURL, ...attr }) 
         data-testid={TestUtils.Header.avatarShortNameTestId}
       />
       <div
-        className="rvt-ts-14 rvt-m-left-xs rvt-p-right-xs rvt-m-right-xs rvt-border-right"
+        className={classes}
         data-testid={TestUtils.Header.avatarUsernameTestId}
       >
         {username}

@@ -8,3 +8,9 @@ export { default as HeaderMenu } from "./HeaderMenu";
 export { default as HeaderSearch } from "./HeaderSearch";
 export { default as HeaderNavigationSecondary } from "./HeaderNavigationSecondary";
 export { default as HeaderAvatar } from "./HeaderAvatar";
+
+export { default as BaseHeader } from "./BaseHeader";
+export { default as BaseHeaderNavigation } from "./BaseHeaderNavigation";
+export { default as BaseHeaderMenu } from "./BaseHeaderMenu";
+export { default as BaseHeaderMenuItem } from "./BaseHeaderMenuItem";
+export { default as BaseHeaderNavigationSecondary } from "./BaseHeaderNavigationSecondary";
