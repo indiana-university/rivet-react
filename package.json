@@ -13,12 +13,80 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/rivet-react.umd.cjs",
+  "main": "./dist/rivet-react.cjs",
   "module": "./dist/rivet-react.js",
   "exports": {
     ".": {
       "import": "./dist/rivet-react.js",
-      "require": "./dist/rivet-react.umd.cjs"
+      "require": "./dist/rivet-react.cjs"
+    },
+    "./Alerts": {
+      "import": "./dist/rivet-react-alert.js",
+      "require": "./dist/rivet-react-alert.cjs"
+    },
+    "./Breadcrumbs": {
+      "import": "./dist/rivet-react-breadcrumbs.js",
+      "require": "./dist/rivet-react-breadcrumbs.cjs"
+    },
+    "./Buttons": {
+      "import": "./dist/rivet-react-button.js",
+      "require": "./dist/rivet-react-button.cjs"
+    },
+    "./Checkbox": {
+      "import": "./dist/rivet-react-checkbox.js",
+      "require": "./dist/rivet-react-checkbox.cjs"
+    },
+    "./Dialog": {
+      "import": "./dist/rivet-react-dialog.js",
+      "require": "./dist/rivet-react-dialog.cjs"
+    },
+    "./Dropdown": {
+      "import": "./dist/rivet-react-dropdown.js",
+      "require": "./dist/rivet-react-dropdown.cjs"
+    },
+    "./File": {
+      "import": "./dist/rivet-react-file.js",
+      "require": "./dist/rivet-react-file.cjs"
+    },
+    "./Footer": {
+      "import": "./dist/rivet-react-footer.js",
+      "require": "./dist/rivet-react-footer.cjs"
+    },
+    "./Grid": {
+      "import": "./dist/rivet-react-grid.js",
+      "require": "./dist/rivet-react-grid.cjs"
+    },
+    "./Header": {
+      "import": "./dist/rivet-react-header.js",
+      "require": "./dist/rivet-react-header.cjs"
+    },
+    "./Input": {
+      "import": "./dist/rivet-react-input.js",
+      "require": "./dist/rivet-react-input.cjs"
+    },
+    "./List": {
+      "import": "./dist/rivet-react-list.js",
+      "require": "./dist/rivet-react-list.cjs"
+    },
+    "./LoadingIndicator": {
+      "import": "./dist/rivet-react-loadingindicator.js",
+      "require": "./dist/rivet-react-loadingindicator.cjs"
+    },
+    "./PageContent": {
+      "import": "./dist/rivet-react-pagecontent.js",
+      "require": "./dist/rivet-react-pagecontent.cjs"
+    },
+    "./Pagination": {
+      "import": "./dist/rivet-react-pagination.js",
+      "require": "./dist/rivet-react-pagination.cjs"
+    },
+    "./RadioButton": {
+      "import": "./dist/rivet-react-radiobutton.js",
+      "require": "./dist/rivet-react-radiobutton.cjs"
+    },
+    "./Table": {
+      "import": "./dist/rivet-react-table.js",
+      "require": "./dist/rivet-react-table.cjs"
     }
   },
   "scripts": {

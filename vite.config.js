@@ -8,9 +8,27 @@ import classNames from "classnames";
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "lib/main.js"),
-      name: "Rivet React",
-      fileName: "rivet-react",
+      entry: {
+        "rivet-react": resolve(__dirname, "lib/main.js"),
+        "rivet-react-alert": resolve(__dirname, "lib/Alert.js"),
+        "rivet-react-breadcrumbs": resolve(__dirname, "lib/Breadcrumbs.js"),
+        "rivet-react-button": resolve(__dirname, "lib/Button.js"),
+        "rivet-react-checkbox": resolve(__dirname, "lib/Checkbox.js"),
+        "rivet-react-dialog": resolve(__dirname, "lib/Dialog.js"),
+        "rivet-react-dropdown": resolve(__dirname, "lib/Dropdown.js"),
+        "rivet-react-file": resolve(__dirname, "lib/File.js"),
+        "rivet-react-footer": resolve(__dirname, "lib/Footer.js"),
+        "rivet-react-grid": resolve(__dirname, "lib/Grid.js"),
+        "rivet-react-header": resolve(__dirname, "lib/Header.js"),
+        "rivet-react-input": resolve(__dirname, "lib/Input.js"),
+        "rivet-react-list": resolve(__dirname, "lib/List.js"),
+        "rivet-react-loadingindicator": resolve(__dirname, "lib/LoadingIndicator.js"),
+        "rivet-react-pagecontent": resolve(__dirname, "lib/PageContent.js"),
+        "rivet-react-pagination": resolve(__dirname, "lib/Pagination.js"),
+        "rivet-react-radiobutton": resolve(__dirname, "lib/RadioButton.js"),
+        "rivet-react-table": resolve(__dirname, "lib/Table.js"),
+      },
+      formats: ['es', 'cjs']
     },
     rollupOptions: {
       external: ["react", "react-dom", "classNames"],
