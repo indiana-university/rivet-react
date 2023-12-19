@@ -10,6 +10,7 @@ export { default as CallToAction } from "./CallToAction/CallToAction";
 export { default as Disclosure } from "./Disclosure/Disclosure";
 export { default as EmptyState } from "./EmptyState/EmptyState";
 export { default as Hero } from "./Hero/Hero";
+export { default as LinkHub } from "./LinkHub/LinkHub";
 export { default as Quote } from "./Quote/Quote";
 export { default as Stat } from "./Stat/Stat";
 export { default as StatGroup } from "./Stat/StatGroup";
