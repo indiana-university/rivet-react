@@ -81,5 +81,13 @@ export const TestUtils = {
     image: "stat-image",
     number: "stat-number"
   },
-  Timeline: { testId: "timeline__testId" }
+  Timeline: { testId: "timeline__testId" },
+  SeriesNav: {
+    container: "seriesNav-container",
+    controlIcon: "seriesNav-icon",
+    controlLabel: "seriesNav-label",
+    controlText: "seriesNav-text",
+    previous: "seriesNav-previous",
+    next: "seriesNav-next"
+  },
 };
