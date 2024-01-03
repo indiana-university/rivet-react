@@ -82,9 +82,14 @@ export const TestUtils = {
     number: "stat-number"
   },
   Timeline: { testId: "timeline__testId" },
+  Subnav: {
+    container: "subnav-container",
+    itemContainer: "subnav-item",
+    itemLink: "subnav-item-link"
+  },
   LinkHub: {
     container: "linkhub-container",
     itemContainer: "linkhub-description",
     itemLink: "linkhub-group"
-  },
+  }
 };
