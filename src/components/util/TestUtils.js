@@ -81,5 +81,10 @@ export const TestUtils = {
     image: "stat-image",
     number: "stat-number"
   },
-  Timeline: { testId: "timeline__testId" }
+  Timeline: { testId: "timeline__testId" },
+  LinkHub: {
+    container: "linkhub-container",
+    itemContainer: "linkhub-description",
+    itemLink: "linkhub-group"
+  },
 };
