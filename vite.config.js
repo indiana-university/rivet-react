@@ -26,7 +26,8 @@ export default defineConfig({
         "rivet-react-pagecontent": resolve(__dirname, "lib/PageContent.js"),
         "rivet-react-pagination": resolve(__dirname, "lib/Pagination.js"),
         "rivet-react-radiobutton": resolve(__dirname, "lib/RadioButton.js"),
-        "rivet-react-table": resolve(__dirname, "lib/Table.js"),
+        "rivet-react-sidenav": resolve(__dirname, "lib/Sidenav.js"),
+        "rivet-react-table": resolve(__dirname, "lib/Table.js")
       },
       formats: ['es', 'cjs']
     },

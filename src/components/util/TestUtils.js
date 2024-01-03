@@ -81,5 +81,13 @@ export const TestUtils = {
     image: "stat-image",
     number: "stat-number"
   },
-  Timeline: { testId: "timeline__testId" }
+  Timeline: { testId: "timeline__testId" },
+  Sidenav: {
+    container: "sidenav-container",
+    item: "sidenav-item",
+    menu: "sidenav-menu",
+    menuButton: "sidenav-menu-button",
+    menuContent: "sidenav-menu-content",
+    menuLabel: "sidenav-menu-label"
+  },
 };

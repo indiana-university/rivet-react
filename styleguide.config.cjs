@@ -72,7 +72,8 @@ module.exports = {
         "src/components/Header/BaseHeaderMenu.jsx",
         "src/components/Header/BaseHeaderMenuItem.jsx",
         "src/components/Header/BaseHeaderNavigationSecondary.jsx",
-        "src/components/Pagination/[A-Z]*.jsx"
+        "src/components/Pagination/[A-Z]*.jsx",
+        "src/components/Sidenav/[A-Z]*.jsx"
       ],
     },
     {

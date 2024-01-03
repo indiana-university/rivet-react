@@ -20,3 +20,4 @@ export * from "./PageContent/index.jsx";
 export * from "./Pagination/index.jsx";
 export * from "./RadioButton/index.jsx";
 export * from "./Table/index.jsx";
+export * from "./Sidenav/index.jsx";
