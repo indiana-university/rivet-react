@@ -90,4 +90,9 @@ export const TestUtils = {
     menuContent: "sidenav-menu-content",
     menuLabel: "sidenav-menu-label"
   },
+  LinkHub: {
+    container: "linkhub-container",
+    itemContainer: "linkhub-description",
+    itemLink: "linkhub-group"
+  }
 };
