@@ -90,6 +90,11 @@ export const TestUtils = {
     menuContent: "sidenav-menu-content",
     menuLabel: "sidenav-menu-label"
   },
+  Subnav: {
+    container: "subnav-container",
+    itemContainer: "subnav-item",
+    itemLink: "subnav-item-link"
+  },
   LinkHub: {
     container: "linkhub-container",
     itemContainer: "linkhub-description",
