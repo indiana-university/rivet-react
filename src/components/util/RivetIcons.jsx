@@ -16,6 +16,8 @@ const DefaultIconProps = {
 };
 
 export const IconNames = {
+  ARROW_LEFT: "arrow-left",
+  ARROW_RIGHT: "arrow-right",
   BELL: "bell",
   CARET_DOWN: "caret-down",
   FACEBOOK: "facebook",
@@ -238,9 +240,25 @@ const icoLast = (attrs) => (
   </IconCore>
 );
 
+const icoArrowRight= (attrs) => (
+  <IconCore {...attrs}>
+    <path fill="currentColor" d="M1 7h10.844L7.737 2.146 9.263.854 15.31 8l-6.047 7.146-1.526-1.292L11.844 9H1V7Z"></path>
+  </IconCore>
+);
+
+const icoArrowLeft = (attrs) => (
+  <IconCore {...attrs}>
+    <path fill="currentColor" d="M15 7H4.156l4.107-4.854L6.737.854.69 8l6.047 7.146 1.526-1.292L4.156 9H15V7Z"></path>
+  </IconCore>
+);
+
 
 const Icon = ({ name, ...attrs }) => {
   switch (name) {
+    case IconNames.ARROW_LEFT:
+      return icoArrowLeft(attrs);
+    case IconNames.ARROW_RIGHT:
+      return icoArrowRight(attrs);
     case IconNames.BELL:
       return icoBell(attrs);
     case IconNames.CARET_DOWN:

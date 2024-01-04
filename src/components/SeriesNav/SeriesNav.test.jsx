@@ -14,12 +14,12 @@ const testIds = TestUtils.SeriesNav
 const customClassName = "custom-style"
 
 const nextClick = jest.fn();
-const nextIcon = '<svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16"><path d="M1 7h10.844L7.737 2.146 9.263.854 15.31 8l-6.047 7.146-1.526-1.292L11.844 9H1V7Z"></path></svg>'
+const nextIcon = '<path fill="currentColor" d="M1 7h10.844L7.737 2.146 9.263.854 15.31 8l-6.047 7.146-1.526-1.292L11.844 9H1V7Z"></path>'
 const nextLabel = "next label"
 const nextUrl = "/next"
 
 const previousClick = jest.fn();
-const previousIcon = '<svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16"><path d="M15 7H4.156l4.107-4.854L6.737.854.69 8l6.047 7.146 1.526-1.292L4.156 9H15V7Z"></path></svg>'
+const previousIcon = '<path fill="currentColor" d="M15 7H4.156l4.107-4.854L6.737.854.69 8l6.047 7.146 1.526-1.292L4.156 9H15V7Z"></path>'
 const previousLabel = "previous label"
 const previousUrl = "/previous"
 
@@ -124,7 +124,7 @@ const checkRenderSeriesControlNext = () => {
   const text = within(element).getByTestId(testIds.controlText)
   expect(text.innerHTML).toBe(nextLabel);
 
-  const icon = within(element).getByTestId(testIds.controlIcon)
+  const icon = within(element).getByTestId(TestUtils.RivetIcons.testId)
   expect(icon.innerHTML).toBe(nextIcon);
 
   fireEvent.click(element);
@@ -143,7 +143,7 @@ const checkRenderSeriesControlPrevious = () => {
   const text = within(element).getByTestId(testIds.controlText)
   expect(text.innerHTML).toBe(previousLabel);
   
-  const icon = within(element).getByTestId(testIds.controlIcon)
+  const icon = within(element).getByTestId(TestUtils.RivetIcons.testId)
   expect(icon.innerHTML).toBe(previousIcon);
 
   fireEvent.click(element);

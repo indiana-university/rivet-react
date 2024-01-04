@@ -6,6 +6,7 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
+import Icon, { IconNames } from "../util/RivetIcons.jsx";
 import { TestUtils } from "../util/TestUtils";
 
 /**
@@ -60,9 +61,6 @@ const SeriesNav = ({
   )
 };
 
-const nextIcon = <svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16"><path d="M1 7h10.844L7.737 2.146 9.263.854 15.31 8l-6.047 7.146-1.526-1.292L11.844 9H1V7Z"></path></svg>
-const previousIcon = <svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16"><path d="M15 7H4.156l4.107-4.854L6.737.854.69 8l6.047 7.146 1.526-1.292L4.156 9H15V7Z"></path></svg>
-
 const SeriesControl = ({
   className,
   children,
@@ -96,12 +94,8 @@ const SeriesControl = ({
           {label}
         </span>
       </div>
-      <span 
-        aria-hidden="true"
-        className="rvt-seriesnav__icon"
-        {...(testMode && { "data-testid": TestUtils.SeriesNav.controlIcon })}
-      >
-        {previous ? previousIcon :  nextIcon}
+      <span className="rvt-seriesnav__icon">
+        <Icon name={previous ? IconNames.ARROW_LEFT :  IconNames.ARROW_RIGHT} />
       </span>
     </a>
   )
@@ -114,17 +108,17 @@ SeriesNav.propTypes = {
   /** Whether the next component should be disabled */
   nextDisabled: PropTypes.bool,
   /** The label for the next component */
-  nextLabel: PropTypes.string.isRequired,
+  nextLabel: PropTypes.string,
   /** The navigation url for the next component */
-  nextUrl: PropTypes.string.isRequired,
-  /** The on click function for the next component */
+  nextUrl: PropTypes.string,
+  /** The on click function for the previous component */
   previousClick: PropTypes.func,
-  /** Whether the next component should be disabled */
+  /** Whether the previous component should be disabled */
   previousDisabled: PropTypes.bool,
-  /** The label for the next component */
-  previousLabel: PropTypes.string.isRequired,
-  /** The navigation url for the next component */
-  preivousUrl: PropTypes.string.isRequired,
+  /** The label for the previous component */
+  previousLabel: PropTypes.string,
+  /** The navigation url for the previous component */
+  preivousUrl: PropTypes.string,
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool
 };

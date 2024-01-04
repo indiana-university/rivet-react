@@ -84,7 +84,6 @@ export const TestUtils = {
   Timeline: { testId: "timeline__testId" },
   SeriesNav: {
     container: "seriesNav-container",
-    controlIcon: "seriesNav-icon",
     controlLabel: "seriesNav-label",
     controlText: "seriesNav-text",
     previous: "seriesNav-previous",
