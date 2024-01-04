@@ -89,4 +89,14 @@ export const TestUtils = {
     previous: "seriesNav-previous",
     next: "seriesNav-next"
   },
+  Subnav: {
+    container: "subnav-container",
+    itemContainer: "subnav-item",
+    itemLink: "subnav-item-link"
+  },
+  LinkHub: {
+    container: "linkhub-container",
+    itemContainer: "linkhub-description",
+    itemLink: "linkhub-group"
+  }
 };

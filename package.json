@@ -91,6 +91,10 @@
     "./Table": {
       "import": "./dist/rivet-react-table.js",
       "require": "./dist/rivet-react-table.cjs"
+    },
+    "./Subnav": {
+      "import": "./dist/rivet-react-subnav.js",
+      "require": "./dist/rivet-react-subnav.cjs"
     }
   },
   "scripts": {
