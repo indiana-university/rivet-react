@@ -21,3 +21,4 @@ export * from "./Pagination/index.jsx";
 export * from "./RadioButton/index.jsx";
 export * from "./Subnav/index.jsx";
 export * from "./Table/index.jsx";
+export * from "./Tabs/index.jsx";

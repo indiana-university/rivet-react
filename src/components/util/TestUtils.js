@@ -87,6 +87,11 @@ export const TestUtils = {
     itemContainer: "subnav-item",
     itemLink: "subnav-item-link"
   },
+  Tabs: {
+    container: "tabs-container",
+    controls: "tabs-controls",
+    panel: "tabs-panel"
+  },
   LinkHub: {
     container: "linkhub-container",
     itemContainer: "linkhub-description",
