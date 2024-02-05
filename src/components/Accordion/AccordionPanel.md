@@ -1,0 +1,1 @@
+Use the `Accordion.Panel` to add items to an `Accordion`. See `Accordion` for usage.
