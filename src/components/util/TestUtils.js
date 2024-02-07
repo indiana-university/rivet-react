@@ -94,6 +94,9 @@ export const TestUtils = {
     itemContainer: "subnav-item",
     itemLink: "subnav-item-link"
   },
+  Switch: {
+    container: "switch-container",
+  },
   LinkHub: {
     container: "linkhub-container",
     itemContainer: "linkhub-description",

@@ -14,5 +14,6 @@ export { default as LinkHub } from "./LinkHub/LinkHub";
 export { default as Quote } from "./Quote/Quote";
 export { default as Stat } from "./Stat/Stat";
 export { default as StatGroup } from "./Stat/StatGroup";
+export { default as Switch } from "./Switch/Switch";
 export { default as Timeline } from "./Timeline/Timeline";
 export { default as TimelineItem } from "./Timeline/TimelineItem";
