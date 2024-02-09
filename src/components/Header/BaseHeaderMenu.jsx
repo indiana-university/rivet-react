@@ -77,7 +77,9 @@ const BaseHeaderMenu = ({
     setFocusedItemIndex(index);
   };
 
-  const toggleMenu = () => {
+  const toggleMenu = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     setIsMenuOpen(!isMenuOpen);
   };
 
