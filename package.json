@@ -84,6 +84,10 @@
       "import": "./dist/rivet-react-radiobutton.js",
       "require": "./dist/rivet-react-radiobutton.cjs"
     },
+    "./SeriesNav": {
+      "import": "./dist/rivet-react-seriesnav.js",
+      "require": "./dist/rivet-react-seriesnav.cjs"
+    },
     "./Table": {
       "import": "./dist/rivet-react-table.js",
       "require": "./dist/rivet-react-table.cjs"

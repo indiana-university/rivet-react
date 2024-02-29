@@ -82,6 +82,13 @@ export const TestUtils = {
     number: "stat-number"
   },
   Timeline: { testId: "timeline__testId" },
+  SeriesNav: {
+    container: "seriesNav-container",
+    controlLabel: "seriesNav-label",
+    controlText: "seriesNav-text",
+    previous: "seriesNav-previous",
+    next: "seriesNav-next"
+  },
   Subnav: {
     container: "subnav-container",
     itemContainer: "subnav-item",
