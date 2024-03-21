@@ -89,6 +89,14 @@ export const TestUtils = {
     previous: "seriesNav-previous",
     next: "seriesNav-next"
   },
+  Sidenav: {
+    container: "sidenav-container",
+    item: "sidenav-item",
+    menu: "sidenav-menu",
+    menuButton: "sidenav-menu-button",
+    menuContent: "sidenav-menu-content",
+    menuLabel: "sidenav-menu-label"
+  },
   Subnav: {
     container: "subnav-container",
     itemContainer: "subnav-item",
