@@ -58,6 +58,7 @@ module.exports = {
     {
       name: "Navigation",
       components: () => [
+        "src/components/Accordion/[A-Z]*.jsx",
         "src/components/Breadcrumbs/[A-Z]*.jsx",
         "src/components/Dropdown/[A-Z]*.jsx",
         "src/components/LoadingIndicator/[A-Z]*.jsx",

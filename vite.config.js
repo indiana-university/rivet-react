@@ -10,6 +10,7 @@ export default defineConfig({
     lib: {
       entry: {
         "rivet-react": resolve(__dirname, "lib/main.js"),
+        "rivet-react-accordion": resolve(__dirname, "lib/Accordion.js"),
         "rivet-react-alert": resolve(__dirname, "lib/Alert.js"),
         "rivet-react-breadcrumbs": resolve(__dirname, "lib/Breadcrumbs.js"),
         "rivet-react-button": resolve(__dirname, "lib/Button.js"),

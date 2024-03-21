@@ -20,6 +20,10 @@
       "import": "./dist/rivet-react.js",
       "require": "./dist/rivet-react.cjs"
     },
+    "./Accordion": {
+      "import": "./dist/rivet-react-accordion.js",
+      "require": "./dist/rivet-react-accordion.cjs"
+    },
     "./Alerts": {
       "import": "./dist/rivet-react-alert.js",
       "require": "./dist/rivet-react-alert.cjs"

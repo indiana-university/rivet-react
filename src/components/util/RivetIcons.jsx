@@ -16,10 +16,12 @@ const DefaultIconProps = {
 };
 
 export const IconNames = {
+  ACCORDIAN_IND: "accordian-indicator",
   ARROW_LEFT: "arrow-left",
   ARROW_RIGHT: "arrow-right",
   BELL: "bell",
   CARET_DOWN: "caret-down",
+  CLOSE: "close",
   FACEBOOK: "facebook",
   FILE: "file",
   FIRST: "first",
@@ -29,13 +31,12 @@ export const IconNames = {
   LOGO: "logo",
   NEXT: "next",
   PREVIOUS: "previous",
-  TRIDENT_HEADER: "trident-header",
   TOGGLE_OPEN: "toggle-open",
   TOGGLE_CLOSE: "toggle-close",
   TOGGLE_SEARCH: "toggle-search",
+  TRIDENT_HEADER: "trident-header",
   TWITTER: "twitter",
   YOUTUBE: "youtube",
-  CLOSE: "close",
 };
 
 const IconCore = ({ children, ...attrs }) => (
@@ -252,9 +253,20 @@ const icoArrowLeft = (attrs) => (
   </IconCore>
 );
 
+const icoAccordianIndicator = (attrs) => (
+  <IconCore {...attrs}>
+    <g fill="currentColor">
+      <path className="rvt-accordion__icon-bar" d="M8,15a1,1,0,0,1-1-1V2A1,1,0,0,1,9,2V14A1,1,0,0,1,8,15Z"></path>
+      <path d="M14,9H2A1,1,0,0,1,2,7H14a1,1,0,0,1,0,2Z"></path>
+    </g>
+  </IconCore>
+);
+
 
 const Icon = ({ name, ...attrs }) => {
   switch (name) {
+    case IconNames.ACCORDIAN_IND:
+      return icoAccordianIndicator(attrs);
     case IconNames.ARROW_LEFT:
       return icoArrowLeft(attrs);
     case IconNames.ARROW_RIGHT:
@@ -302,6 +314,10 @@ Icon.displayName = "Icon";
 Icon.defaultProps = DefaultIconProps;
 Icon.propTypes = {
   name: PropTypes.oneOf([
+    IconNames.ACCORDIAN_IND,
+    IconNames.ARROW_LEFT,
+    IconNames.ARROW_RIGHT,
+    IconNames.BELL,
     IconNames.CARET_DOWN,
     IconNames.CLOSE,
     IconNames.FACEBOOK,
