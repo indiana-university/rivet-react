@@ -1,0 +1,1 @@
+Use the `Tabs.Panel` to add a panel to `Tabs` list. See `Tabs` for usage.
