@@ -82,7 +82,7 @@ Tabs.propTypes = {
   id: PropTypes.string,
   /** An unseen label for the menu to help with accessibility */
   label: PropTypes.string.isRequired,
-  /** Index of initially opened tab */
+  /** Index of initially opened tab starting at index 0 */
   initialTab: PropTypes.number,
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool
