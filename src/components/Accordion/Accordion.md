@@ -30,7 +30,7 @@ View the [Rivet documentation for Accordion](https://rivet.uits.iu.edu/component
     </Accordion.Panel>
     <Accordion.Panel title="Section Two">
         <p>Panel starts open as indicated by initial property.</p>
-        <p>Additionally the icons in the headers are set in the propertys rather than the default option
+        <p>Additionally the icons in the headers are set in the propertys rather than the default option</p>
     </Accordion.Panel>
     <Accordion.Panel title="Section Three">
         <p>Some content text</p>
