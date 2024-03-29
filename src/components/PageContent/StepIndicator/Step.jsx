@@ -27,9 +27,7 @@ const Step = ({
   ]
   const indicatorClassNameArr = [
     "rvt-steps__indicator",
-    variant === "success" ? "rvt-steps__indicator--success" : "",
-    variant === "warning" ? "rvt-steps__indicator--warning" : "",
-    variant === "danger" ? "rvt-steps__indicator--danger" : ""
+    variant ? `rvt-steps__indicator--${variant}` : ""
   ]
   return (
     <li
