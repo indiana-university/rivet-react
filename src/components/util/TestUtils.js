@@ -68,6 +68,14 @@ export const TestUtils = {
     month: "calendartile-month",
     year: "calendartile-year"
   },
+  Card: {
+    container: "card-container",
+    content: "card-content",
+    eyebrow: "card-eyebrow",
+    image: "card-image",
+    meta: "card-meta",
+    title: "card-title"
+  },
   Quote: {
     container: "quote-container",
     content: "quote-content",
