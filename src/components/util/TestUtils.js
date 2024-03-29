@@ -94,6 +94,10 @@ export const TestUtils = {
     image: "stat-image",
     number: "stat-number"
   },
+  StepIndicator: {
+    container: "stepIndicator-container",
+    step: "stepIndicator-step"
+  },
   Timeline: { testId: "timeline__testId" },
   SeriesNav: {
     container: "seriesNav-container",
