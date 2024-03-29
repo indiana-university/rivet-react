@@ -76,7 +76,8 @@ module.exports = {
         "src/components/Pagination/[A-Z]*.jsx",
         "src/components/Sidenav/[A-Z]*.jsx",
         "src/components/SeriesNav/[A-Z]*.jsx",
-        "src/components/Subnav/[A-Z]*.jsx"
+        "src/components/Subnav/[A-Z]*.jsx",
+        "src/components/Tabs/[A-Z]*.jsx"
       ],
     },
     {

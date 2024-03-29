@@ -30,7 +30,8 @@ export default defineConfig({
         "rivet-react-seriesnav": resolve(__dirname, "lib/SeriesNav.js"),
         "rivet-react-sidenav": resolve(__dirname, "lib/Sidenav.js"),
         "rivet-react-subnav": resolve(__dirname, "lib/Subnav.js"),
-        "rivet-react-table": resolve(__dirname, "lib/Table.js")
+        "rivet-react-table": resolve(__dirname, "lib/Table.js"),
+        "rivet-react-tabs": resolve(__dirname, "lib/Tabs.js")
       },
       formats: ['es', 'cjs']
     },

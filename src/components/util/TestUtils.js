@@ -122,6 +122,12 @@ export const TestUtils = {
   Switch: {
     container: "switch-container",
   },
+  Tabs: {
+    container: "tabs-container",
+    controls: "tabs-controls",
+    panel: "tabs-panel"
+  },
+
   LinkHub: {
     container: "linkhub-container",
     itemContainer: "linkhub-description",
