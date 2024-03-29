@@ -3,6 +3,11 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 export const TestUtils = {
+  Accordion: {
+    container: "accordion-container",
+    header: "accordion-header",
+    panel: "accordion-panel"
+  },
   CallToAction: {
     link: "cta-link"
   },
@@ -68,6 +73,14 @@ export const TestUtils = {
     month: "calendartile-month",
     year: "calendartile-year"
   },
+  Card: {
+    container: "card-container",
+    content: "card-content",
+    eyebrow: "card-eyebrow",
+    image: "card-image",
+    meta: "card-meta",
+    title: "card-title"
+  },
   Quote: {
     container: "quote-container",
     content: "quote-content",
@@ -93,10 +106,21 @@ export const TestUtils = {
     previous: "seriesNav-previous",
     next: "seriesNav-next"
   },
+  Sidenav: {
+    container: "sidenav-container",
+    item: "sidenav-item",
+    menu: "sidenav-menu",
+    menuButton: "sidenav-menu-button",
+    menuContent: "sidenav-menu-content",
+    menuLabel: "sidenav-menu-label"
+  },
   Subnav: {
     container: "subnav-container",
     itemContainer: "subnav-item",
     itemLink: "subnav-item-link"
+  },
+  Switch: {
+    container: "switch-container",
   },
   LinkHub: {
     container: "linkhub-container",

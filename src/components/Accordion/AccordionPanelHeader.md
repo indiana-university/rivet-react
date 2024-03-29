@@ -1,0 +1,1 @@
+Use the `Accordion.Header` to add panel headers if making a custom accordion without the use of an `Accordion` .

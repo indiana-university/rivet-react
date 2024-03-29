@@ -58,6 +58,7 @@ module.exports = {
     {
       name: "Navigation",
       components: () => [
+        "src/components/Accordion/[A-Z]*.jsx",
         "src/components/Breadcrumbs/[A-Z]*.jsx",
         "src/components/Dropdown/[A-Z]*.jsx",
         "src/components/LoadingIndicator/[A-Z]*.jsx",
@@ -73,6 +74,7 @@ module.exports = {
         "src/components/Header/BaseHeaderMenuItem.jsx",
         "src/components/Header/BaseHeaderNavigationSecondary.jsx",
         "src/components/Pagination/[A-Z]*.jsx",
+        "src/components/Sidenav/[A-Z]*.jsx",
         "src/components/SeriesNav/[A-Z]*.jsx",
         "src/components/Subnav/[A-Z]*.jsx"
       ],
