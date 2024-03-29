@@ -131,7 +131,7 @@ describe("<Switch />", () => {
       expect(element).toHaveClass("rvt-switch--danger");
       expect(element).toHaveClass("rvt-switch--small");
     });
-    it("if variant is set to invalid value, should render as normal ", () => {
+    it("if variant is set to unknown value, should render with it on clase ", () => {
       render(
         <Switch
           className={customClassName}
@@ -144,6 +144,20 @@ describe("<Switch />", () => {
       const element = screen.getByTestId(testIds.container);
       expect(element).not.toHaveClass("rvt-switch--danger");
       expect(element).not.toHaveClass("rvt-switch--small");
+      expect(element).toHaveClass("rvt-switch--invalid");
+    });
+    it("if variant is set to null value, should not render with it on clase ", () => {
+      render(
+        <Switch
+          className={customClassName}
+          label={label}
+          testMode
+          variant={[null, ""]}
+        />
+      );
+      checkRenderContainer("false")
+      const element = screen.getByTestId(testIds.container);
+      expect(element.classList.length).toBe(2);
     });
     it("default is test mode off", () => {
       render(

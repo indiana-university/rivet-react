@@ -32,14 +32,7 @@ const Switch = ({
   }
   const variantOptions = variant ? Array.isArray(variant) ? variant : [variant] : []
   const variantClasses = variantOptions.map(value => {
-    switch(value) {
-      case "danger":
-        return "rvt-switch--danger"
-      case "small":
-        return "rvt-switch--small"
-      default:
-        return ""
-    }
+    return value ? `rvt-switch--${value}` : ""
   })
   const classNameArr = [
     "rvt-switch",
@@ -57,8 +50,8 @@ const Switch = ({
       {...(testMode && { "data-testid": TestUtils.Switch.container })}
       {...attrs}
     >
-      <span class="rvt-switch__on">On</span>
-      <span class="rvt-switch__off">Off</span>
+      <span className="rvt-switch__on">On</span>
+      <span className="rvt-switch__off">Off</span>
     </button>
   );
 };
