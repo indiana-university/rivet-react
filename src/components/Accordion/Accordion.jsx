@@ -94,7 +94,7 @@ Accordion.propTypes = {
   /** A unique identifier for the accordian */
   id: PropTypes.string.isRequired,
   /** Index of initially opened tab */
-  initialTab: PropTypes.oneOfType(["all", PropTypes.number]),
+  initialTab: PropTypes.oneOfType([PropTypes.oneOf(["all"]), PropTypes.number]),
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool
 };

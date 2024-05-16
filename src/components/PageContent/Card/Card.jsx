@@ -66,13 +66,13 @@ Card.propTypes = {
   /** Allows setting of container element */
   Component: PropTypes.string,
   /** Optional eyebrow to display */
-  eyebrow: PropTypes.oneOfType(PropTypes.element),
+  eyebrow: PropTypes.oneOfType([PropTypes.element]),
   /** Display card in horizontal format */
   horizontal: PropTypes.bool,
   /** Optional image to display */
-  image: PropTypes.oneOfType(PropTypes.element),
+  image: PropTypes.oneOfType([PropTypes.element]),
   /** Optional meta information */
-  meta: PropTypes.oneOfType(PropTypes.element),
+  meta: PropTypes.oneOfType([PropTypes.element]),
   /** Add a box shadow to the card */
   raised: PropTypes.bool,
   /** [Developer] Adds data-testId attributes for component testing */
