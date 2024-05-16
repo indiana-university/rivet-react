@@ -55,7 +55,7 @@ Stat.propTypes = {
   value: PropTypes.string.isRequired
 };
 
-const StatImage = ({ children, testMode = false}) => {
+const StatImage = ({ children, testMode}) => {
   return (
     <div
       className="rvt-stat__image"

@@ -139,4 +139,95 @@ describe("<File />", () => {
       expect(onchange.mock.calls.length).toBe(1);
     });
   });
+  describe("Options", () => {
+    const testLabel = "test label"
+    it("if label is set, should use label", async () => {
+      render(<MyFile data-testid={TestUtils.File.testId} label={testLabel}/>);
+
+      const file = await screen.findByTestId(TestUtils.File.testId);
+
+      expect(file.nodeName).toBe("INPUT");
+      expect(file.type).toBe("file");
+
+      const parent = file.parentNode;
+      expect(parent.nodeName).toBe("DIV");
+      expect(parent).toHaveClass("rvt-file");
+
+      const children = parent.children;
+
+      expect(children.length).toBe(3);
+
+      const label = children[1];
+      expect(label.nodeName).toBe("LABEL");
+      expect(label).toHaveClass("rvt-button");
+      expect(label.children.length).toBe(2);
+      expect(label.children[0].nodeName).toBe("SPAN");
+      expect(label.children[0].innerHTML).toBe(testLabel);
+    });
+    it("if label is set and multiple, should use label", async () => {
+      render(<MyFile data-testid={TestUtils.File.testId} label={testLabel} multiple/>);
+
+      const file = await screen.findByTestId(TestUtils.File.testId);
+
+      expect(file.nodeName).toBe("INPUT");
+      expect(file.type).toBe("file");
+
+      const parent = file.parentNode;
+      expect(parent.nodeName).toBe("DIV");
+      expect(parent).toHaveClass("rvt-file");
+
+      const children = parent.children;
+
+      expect(children.length).toBe(3);
+
+      const label = children[1];
+      expect(label.nodeName).toBe("LABEL");
+      expect(label).toHaveClass("rvt-button");
+      expect(label.children.length).toBe(2);
+      expect(label.children[0].nodeName).toBe("SPAN");
+      expect(label.children[0].innerHTML).toBe(testLabel);
+    });
+    it("if secondary is set, should display as secondary", async () => {
+      render(<MyFile data-testid={TestUtils.File.testId} secondary/>);
+
+      const file = await screen.findByTestId(TestUtils.File.testId);
+
+      expect(file.nodeName).toBe("INPUT");
+      expect(file.type).toBe("file");
+
+      const parent = file.parentNode;
+      expect(parent.nodeName).toBe("DIV");
+      expect(parent).toHaveClass("rvt-file");
+
+      const children = parent.children;
+
+      expect(children.length).toBe(3);
+
+      const label = children[1];
+      expect(label.nodeName).toBe("LABEL");
+      expect(label).toHaveClass("rvt-button");
+      expect(label).toHaveClass("rvt-button--secondary");
+    });
+    it("if secondary is not set, should not display as secondary", async () => {
+      render(<MyFile data-testid={TestUtils.File.testId}/>);
+
+      const file = await screen.findByTestId(TestUtils.File.testId);
+
+      expect(file.nodeName).toBe("INPUT");
+      expect(file.type).toBe("file");
+
+      const parent = file.parentNode;
+      expect(parent.nodeName).toBe("DIV");
+      expect(parent).toHaveClass("rvt-file");
+
+      const children = parent.children;
+
+      expect(children.length).toBe(3);
+
+      const label = children[1];
+      expect(label.nodeName).toBe("LABEL");
+      expect(label).toHaveClass("rvt-button");
+      expect(label).not.toHaveClass("rvt-button--secondary");
+    });
+  });
 });

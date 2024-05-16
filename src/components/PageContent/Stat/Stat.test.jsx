@@ -51,7 +51,25 @@ describe("<Stat />", () => {
       expect(image).not.toBeInTheDocument();
     });
   });
-  describe("Rendering StatGroup", () => {
+  describe("Options", () => {
+    it("default is test mode off", () => {
+      render(
+        <Stat
+          className={customClassName}
+          image={image}
+          value={value}
+        >
+          {content}
+        </Stat>
+      );
+      const element = screen.queryByTestId(testIds.container);
+      expect(element).not.toBeInTheDocument();
+    });
+  });
+});
+
+describe("<StatGroup />", () => {
+  describe("Rendering", () => {
     it("should render without throwing an error", () => {
       render(
         <StatGroup className={customClassName} testMode>
@@ -65,6 +83,20 @@ describe("<Stat />", () => {
       checkRenderGroup()
       const container = screen.getByTestId(testIds.group);
       expect(container.children.length).toBe(4);
+    });
+  });
+  describe("Options", () => {
+    it("default is test mode off", () => {
+      render(
+        <StatGroup className={customClassName}>
+          <Stat value="100">Sample 1</Stat>
+          <Stat value="75">Sample 2</Stat>
+          <Stat value="50">Sample 3</Stat>
+          <Stat value="0">Sample 4</Stat>
+        </StatGroup>
+      );
+      const element = screen.queryByTestId(testIds.group);
+      expect(element).not.toBeInTheDocument();
     });
   });
 });

@@ -56,8 +56,7 @@ const Disclosure = ({
       // If the user right clicks anywhere on the screen or they press an unhandled key do not close the menu
       return false;
     } else if (
-      targets(disclosureWrapDiv.current, event) &&
-      (!isKeyEvent(event) || isTabKeyPress(event))
+      targets(disclosureWrapDiv.current, event)
     ) {
       // If the user clicks, touches or tabs inside the disclosure do not close the menu
       return false;
