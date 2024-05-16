@@ -47,7 +47,7 @@ const Billboard = ({
 Billboard.displayName = "Billboard";
 Billboard.propTypes = {
   /** Optional image to display */
-  image: PropTypes.oneOfType(PropTypes.element),
+  image: PropTypes.oneOfType([PropTypes.element]),
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
   /** The title of the billboard */

@@ -187,7 +187,7 @@ BaseHeaderMenu.propTypes = {
   /** Indicates item is current page if link with url */
   current: PropTypes.bool,
   /** The label of the menu */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   /** The navigation url for the menu label */
   menuUrl: PropTypes.string,
 };
