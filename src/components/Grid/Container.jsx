@@ -22,7 +22,7 @@ const Container = ({
   className,
   children,
   id = Rivet.shortuid(),
-  size,
+  size = "md",
   ...attrs
 }) => (
   <div

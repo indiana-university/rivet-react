@@ -11,8 +11,9 @@ describe("<Container />", () => {
   describe("Rendering and text", () => {
     const content = "content";
 
+    
     it("should render without throwing an error", async () => {
-      render(<Container size="md">{content}</Container>);
+      render(<Container>{content}</Container>);
 
       const container = await screen.findByText(content);
       expect(container).toHaveClass("rvt-container-md");
@@ -25,6 +26,7 @@ describe("<Container />", () => {
       const container = await screen.findByText(content);
       expect(container).toHaveClass(`rvt-container-${size}`);
     });
+    
 
     it("should render the md class if size is md", async () => {
       const size = "md";
