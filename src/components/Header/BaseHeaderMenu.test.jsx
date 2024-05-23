@@ -230,12 +230,16 @@ describe("<BaseHeaderMenu/>", () => {
   });
 
   describe("Focus behavior", () => {
+    const outsideId = "outsideId"
     beforeEach(() => {
       render(
-        <BaseHeaderMenu testMode menuUrl="#" label="Nav item three">
-          <a href="#">Sub item one</a>
-          <a href="#">Sub item two</a>
-        </BaseHeaderMenu>
+        <>
+          <button data-testid={outsideId}>Outside</button>
+          <BaseHeaderMenu testMode menuUrl="#" label="Nav item three">
+            <a href="#">Sub item one</a>
+            <a href="#">Sub item two</a>
+          </BaseHeaderMenu>
+        </>
       );
     });
 
@@ -265,12 +269,36 @@ describe("<BaseHeaderMenu/>", () => {
       expect(screen.getByText("Sub item one")).toHaveFocus();
     });
 
+    it("should open and move focus to the first menu item, if ArrowDown is pressed while the menu is open and the toggle button has focus", async () => {
+      // move focus to toggle button
+      screen.getByTestId(TestUtils.Header.menuButtonToggleTestId).focus();
+
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+      ).not.toHaveAttribute("hidden", "");
+      expect(screen.getByText("Sub item one")).toHaveFocus();
+    });
+
     it("should move focus to the first menu item, if ArrowDown is pressed while the menu is open and the menu anchor has focus", async () => {
       await toggleMenuThroughClick(); // open the menu
       // move focus to menu anchor
       screen.getByTestId(TestUtils.Header.menuAnchorTestId).focus();
       // press ArrowDown
       await user.keyboard("{ArrowDown}");
+      expect(screen.getByText("Sub item one")).toHaveFocus();
+    });
+
+    it("should open and move focus to the first menu item, if ArrowDown is pressed while the menu is closed and the menu anchor has focus", async () => {
+      // move focus to menu anchor
+      screen.getByTestId(TestUtils.Header.menuAnchorTestId).focus();
+
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      expect(
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+      ).not.toHaveAttribute("hidden", "");
       expect(screen.getByText("Sub item one")).toHaveFocus();
     });
 
@@ -303,10 +331,10 @@ describe("<BaseHeaderMenu/>", () => {
 
     it("should not move focus, if Arrow Up or Arrow Down are pressed while the menu is closed", async () => {
       async function makeAssertion(arrowKey) {
-        // move focus to anchor
-        screen.getByText("Nav item three").focus();
-        // verify that focus is on anchor
-        expect(screen.getByText("Nav item three")).toHaveFocus();
+        // move focus off menu
+        screen.getByTestId(outsideId).focus();
+        // verify that focus is on outer button
+        expect(screen.getByTestId(outsideId)).toHaveFocus();
         // verify that menu is closed
         expect(
           screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
@@ -314,7 +342,7 @@ describe("<BaseHeaderMenu/>", () => {
         // press Arrow key
         await user.keyboard(arrowKey);
         // verify that focus is still on anchor
-        expect(screen.getByText("Nav item three")).toHaveFocus();
+        expect(screen.getByTestId(outsideId)).toHaveFocus();
       }
 
       await makeAssertion("{ArrowUp}");
