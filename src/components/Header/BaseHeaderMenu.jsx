@@ -16,9 +16,10 @@ import { TestUtils } from "../util/TestUtils";
  */
 const BaseHeaderMenu = ({
   children,
-  label,
-  menuUrl,
   current, 
+  label,
+  menuButtonAttrs = {},
+  menuUrl,
   testMode = false,
   ...attrs
 }) => {
@@ -120,6 +121,7 @@ const BaseHeaderMenu = ({
           aria-expanded={isMenuOpen}
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
           onClick={toggleMenu}
+          {...menuButtonAttrs}
           {...(testMode && { "data-testid": TestUtils.Header.menuButtonToggleTestId })}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
@@ -149,8 +151,10 @@ BaseHeaderMenu.propTypes = {
   current: PropTypes.bool,
   /** The label of the menu */
   label: PropTypes.string.isRequired,
+  /** Attributes added to the menu's toggle button  */
+  menuButtonAttrs: PropTypes.object,
   /** The navigation url for the menu label */
-  menuUrl: PropTypes.string,
+  menuUrl: PropTypes.string
 };
 
 export default Rivet.rivetize(BaseHeaderMenu);
