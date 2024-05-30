@@ -130,6 +130,25 @@ describe("<Billboard />", () => {
       expect(billboardContainer).toHaveClass("rvt-billboard--center");
     });
   });
+  describe("Options", () => {
+    it("default is test mode off", () => {
+      render(
+        <Billboard
+          className={customClassName}
+          image={image}
+          title={title}
+        >
+          {content}
+        </Billboard>
+      );
+      const element = screen.queryByTestId(testIds.container);
+      expect(element).not.toBeInTheDocument();
+      const billboardImage = screen.queryByTestId(testIds.image);
+      expect(billboardImage).not.toBeInTheDocument();
+      const billboardContent = screen.queryByTestId(testIds.content);
+      expect(billboardContent).not.toBeInTheDocument();
+    });
+  });
 });
 
 const checkRenderContainer = () => {

@@ -30,6 +30,17 @@ describe("<CallToAction />", () => {
       expect(link).toHaveClass("rvt-cta--button");
     });
   });
+  describe("Options", () => {
+    it("default is test mode off", () => {
+      render(
+        <CallToAction href={href}>
+          {content}
+        </CallToAction>
+      );
+      const element = screen.queryByTestId(testIds.link);
+      expect(element).not.toBeInTheDocument();
+    });
+  });
 });
 
 const renderCheck = () => {

@@ -10,6 +10,7 @@ import React from "react";
 import Alert from "./Alert";
 
 describe("<Alert />", () => {
+  const testId = "the_id";
   const titleText = "A Test Component";
 
   describe("Rendering and text", () => {
@@ -27,7 +28,6 @@ describe("<Alert />", () => {
       expect(screen.getByRole("alert")).toHaveTextContent(bodyText);
     });
     it("should apply the id", () => {
-      const testId = "the_id";
       const cut = render(
         <Alert title={titleText} variant="info" id={testId} />
       );
@@ -114,6 +114,23 @@ describe("<Alert />", () => {
       await user.click(screen.getByRole("button"));
 
       expect(screen.getByRole("alert")).toBeVisible();
+    });
+  });
+
+  describe("Options", () => {
+    it("if title set, should have label by id", () => {
+      render(
+        <Alert id={testId} title={titleText}  />
+      );
+      
+      expect(screen.getByRole("alert")).toHaveAttribute("aria-labelledby", `${testId}-title`);
+    });
+    it("if no title set, should not have label by id", () => {
+      render(
+        <Alert id={testId} />
+      );
+      
+      expect(screen.getByRole("alert")).not.toHaveAttribute("aria-labelledby");
     });
   });
 });

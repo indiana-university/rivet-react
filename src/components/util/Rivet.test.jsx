@@ -537,7 +537,7 @@ function marginTests() {
       expected: "rvt-m-all-md-lg-up",
     },
   ];
-  const invalid = ["BAD", null, ""];
+  const invalid = ["BAD", null, "", { tb: "-sm" }];
   describe("margin", () => {
     testPresent("margin", valid);
     testNotPresent("margin", invalid);

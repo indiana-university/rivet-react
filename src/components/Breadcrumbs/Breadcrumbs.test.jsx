@@ -32,6 +32,22 @@ describe("<Breadcrumbs />", () => {
       expect(ol).toHaveClass("rvt-breadcrumbs");
     });
 
+    it("if no children, should render without error", async () => {
+      render(
+        <Breadcrumbs />
+      );
+      const breadcrumbs = await screen.findByRole("navigation");
+      expect(breadcrumbs.nodeName).toBe("NAV");
+      expect(breadcrumbs.attributes.getNamedItem("aria-label").value).toBe(
+        "Breadcrumbs"
+      );
+
+      expect(breadcrumbs.children.length).toBe(1);
+      const ol = breadcrumbs.children[0];
+      expect(ol).toHaveClass("rvt-breadcrumbs");
+      expect(ol.children.length).toBe(0);
+    });
+
     it("should wrap children in list item tags", async () => {
       render(
         <Breadcrumbs>

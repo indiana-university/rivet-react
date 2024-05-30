@@ -33,7 +33,6 @@ Breadcrumbs.propTypes = {
 
 /* Ensure all children are <li> elements. */
 const asListItems = (children) => {
-  const length = children.length;
   return children
     ? React.Children.map(children, (child, index) => {
         if (
