@@ -73,3 +73,21 @@ export function getFocusableElements (element) {
   })
   return enabledFocusable
 }
+
+export function stillFocused (event) {
+  const { relatedTarget, currentTarget } = event
+  if (relatedTarget === null) {
+    return false
+  }
+
+  let node = relatedTarget
+
+  while (node !== null) {
+    if (node === currentTarget) {
+      return true
+    }
+    node = node.parentNode
+  }
+
+  return false
+}
