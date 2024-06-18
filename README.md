@@ -1,4 +1,4 @@
-# Rivet-React
+# Rivet-react
 
 [Rivet-react](https://github.com/indiana-university/rivet-react) is a library of React components that implement the [Rivet Software Design System](https://rivet.uits.iu.edu). The components are implemented in [TypeScript](http://www.typescriptlang.org/) and can be used by any Javascript application.
 
