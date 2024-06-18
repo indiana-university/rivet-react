@@ -1,7 +1,11 @@
+# Rivet-React
+
 [Rivet-react](https://github.com/indiana-university/rivet-react) is a library of React components that implement the [Rivet Software Design System](https://rivet.uits.iu.edu). The components are implemented in [TypeScript](http://www.typescriptlang.org/) and can be used by any Javascript application.
 
-Rivet-react resources:
+## Rivet-react resources:
+
 * [Component Documentation and Style Guide](https://indiana-university.github.io/rivet-react/)
+* [2.x Beta Component Documentation](https://indiana-university.github.io/rivet-react/beta)
 * [Contribution Guidelines](https://github.com/indiana-university/rivet-react/blob/master/CONTRIBUTING.md)
 * [GitHub repo](https://github.com/indiana-university/rivet-react)
 * [NPM package](https://www.npmjs.com/package/rivet-react)
@@ -36,7 +40,11 @@ import { Alert } from 'rivet-react'
 <Alert variant="info">A very important message for you!</Alert>
 ```
 
+## Documentation
+
 Check out the [Component Documentation and Style Guide](https://indiana-university.github.io/rivet-react/) for comprehensive component documentation and examples.
+
+You can also find [documentation for the 2.x beta components](https://indiana-university.github.io/rivet-react/beta).
 
 ## Issues and Contributions
 
