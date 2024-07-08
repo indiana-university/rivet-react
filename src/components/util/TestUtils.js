@@ -6,10 +6,14 @@ export const TestUtils = {
   Accordion: {
     container: "accordion-container",
     header: "accordion-header",
-    panel: "accordion-panel"
+    panel: "accordion-panel",
+  },
+  Alert: {
+    container: "Alert-container",
+    dismiss: "Alert-dismiss",
   },
   CallToAction: {
-    link: "cta-link"
+    link: "cta-link",
   },
   ButtonGroup: { testId: "buttonGroup_testId" },
   SegmentedButton: { testId: "segmentedButton_testId" },
@@ -43,7 +47,7 @@ export const TestUtils = {
     avatarUsernameTestId: "avatar-username__testid",
     headerWidthDivTestId: "header-width__testid",
     headerMenuItemContainer: "header-menuitem__container",
-    headerMenuItemAnchor: "header-menuitem__anchor"
+    headerMenuItemAnchor: "header-menuitem__anchor",
   },
   Hero: {
     container: "hero-container",
@@ -65,13 +69,13 @@ export const TestUtils = {
     container: "billboard-container",
     content: "billboard-content",
     image: "billboard-image",
-    title: "billboard-title"
+    title: "billboard-title",
   },
   CalendarTile: {
     container: "calendartile-container",
     day: "calendartile-day",
     month: "calendartile-month",
-    year: "calendartile-year"
+    year: "calendartile-year",
   },
   Card: {
     container: "card-container",
@@ -79,24 +83,24 @@ export const TestUtils = {
     eyebrow: "card-eyebrow",
     image: "card-image",
     meta: "card-meta",
-    title: "card-title"
+    title: "card-title",
   },
   Quote: {
     container: "quote-container",
     content: "quote-content",
     avatar: "quote-avatar",
-    citation: "quote-citation"
+    citation: "quote-citation",
   },
   Stat: {
     container: "stat-container",
     description: "stat-description",
     group: "stat-group",
     image: "stat-image",
-    number: "stat-number"
+    number: "stat-number",
   },
   StepIndicator: {
     container: "stepIndicator-container",
-    step: "stepIndicator-step"
+    step: "stepIndicator-step",
   },
   Timeline: { testId: "timeline__testId" },
   SeriesNav: {
@@ -104,7 +108,7 @@ export const TestUtils = {
     controlLabel: "seriesNav-label",
     controlText: "seriesNav-text",
     previous: "seriesNav-previous",
-    next: "seriesNav-next"
+    next: "seriesNav-next",
   },
   Sidenav: {
     container: "sidenav-container",
@@ -112,12 +116,12 @@ export const TestUtils = {
     menu: "sidenav-menu",
     menuButton: "sidenav-menu-button",
     menuContent: "sidenav-menu-content",
-    menuLabel: "sidenav-menu-label"
+    menuLabel: "sidenav-menu-label",
   },
   Subnav: {
     container: "subnav-container",
     itemContainer: "subnav-item",
-    itemLink: "subnav-item-link"
+    itemLink: "subnav-item-link",
   },
   Switch: {
     container: "switch-container",
@@ -125,12 +129,12 @@ export const TestUtils = {
   Tabs: {
     container: "tabs-container",
     controls: "tabs-controls",
-    panel: "tabs-panel"
+    panel: "tabs-panel",
   },
 
   LinkHub: {
     container: "linkhub-container",
     itemContainer: "linkhub-description",
-    itemLink: "linkhub-group"
-  }
+    itemLink: "linkhub-group",
+  },
 };
