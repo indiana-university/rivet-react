@@ -8,18 +8,20 @@ import user from "@testing-library/user-event";
 import React from "react";
 
 import DismissableAlert from "./DismissibleAlert";
+import { TestUtils } from "../util/TestUtils.js";
+
+const testIds = TestUtils.Alert;
 
 describe("<DismissableAlert />", () => {
   const titleText = "A Test Component";
-
+  const testDismissBehavior = jest.fn();
   describe("Dismiss behavior", () => {
     it("should include dismiss button", () => {
-      const customDismissBehavior = jest.fn();
       render(
         <DismissableAlert
           title={titleText}
           variant="info"
-          onDismiss={customDismissBehavior}
+          onDismiss={testDismissBehavior}
         />
       );
       expect(screen.getByRole("button")).toBeVisible();
@@ -50,6 +52,42 @@ describe("<DismissableAlert />", () => {
       await user.click(screen.getByRole("button"));
 
       expect(screen.queryByRole("alert")).toBeNull;
+    });
+  });
+  describe("Options", () => {
+    it("if an Id is set it is rendered on alert", () => {
+      const testId = "alert-test";
+      render(
+        <DismissableAlert
+          id={testId}
+          onDismiss={testDismissBehavior}
+          testMode
+          title={titleText}
+          variant="info"
+        />
+      );
+      const element = screen.queryByTestId(testIds.container);
+      expect(element).toHaveAttribute("id", testId);
+    });
+    it("if no on dismiss event is given, alert closes on dismiss", async () => {
+      render(<DismissableAlert testMode title={titleText} variant="info" />);
+      const element = screen.queryByTestId(testIds.container);
+      expect(element).toBeVisible();
+      const dismissElement = screen.queryByTestId(testIds.dismiss);
+      await user.click(dismissElement);
+
+      expect(element).not.toBeVisible();
+    });
+    it("default is test mode off", () => {
+      render(
+        <DismissableAlert
+          onDismiss={testDismissBehavior}
+          title={titleText}
+          variant="info"
+        />
+      );
+      const element = screen.queryByTestId(testIds.container);
+      expect(element).not.toBeInTheDocument();
     });
   });
 });

@@ -8,6 +8,9 @@ import user from "@testing-library/user-event";
 import React from "react";
 
 import Alert from "./Alert";
+import { TestUtils } from "../util/TestUtils.js";
+
+const testIds = TestUtils.Alert;
 
 describe("<Alert />", () => {
   const titleText = "A Test Component";
@@ -114,6 +117,13 @@ describe("<Alert />", () => {
       await user.click(screen.getByRole("button"));
 
       expect(screen.getByRole("alert")).toBeVisible();
+    });
+  });
+  describe("Options", () => {
+    it("default is test mode off", () => {
+      render(<Alert title={titleText} variant="info" />);
+      const element = screen.queryByTestId(testIds.container);
+      expect(element).not.toBeInTheDocument();
     });
   });
 });
