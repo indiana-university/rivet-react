@@ -40,7 +40,7 @@ const BaseHeaderMenu = ({
   children,
   label,
   menuUrl,
-  current, 
+  current,
   testMode = false,
   ...attrs
 }) => {
@@ -51,7 +51,6 @@ const BaseHeaderMenu = ({
   const toggleButtonRef = useRef(null);
   const menuAnchorRef = useRef(null);
   const dropdownRef = useRef(null);
-  
 
   useEffect(() => {
     handleEventRegistration();
@@ -68,8 +67,8 @@ const BaseHeaderMenu = ({
   }, [isMenuOpen]);
 
   const getRefsMap = () => {
-    const children = getFocusableElements(dropdownRef.current)
-    return getFocusableElements(dropdownRef.current)
+    const children = getFocusableElements(dropdownRef.current);
+    return getFocusableElements(dropdownRef.current);
   };
 
   const focusMenuItem = (index) => {
@@ -141,25 +140,36 @@ const BaseHeaderMenu = ({
       {...(testMode && { "data-testid": TestUtils.Header.menuContainerTestId })}
     >
       <div className="rvt-header-menu__group">
-        {
-          menuUrl &&
-            <a
-              className="rvt-header-menu__link"
-              href={menuUrl}
-              ref={menuAnchorRef}
-              {...(current && { "aria-current": "page" })}
-              {...(testMode && { "data-testid": TestUtils.Header.menuAnchorTestId })}
-            >
-              {label}
-            </a>
-        }
-        {!menuUrl && <span {...(testMode && { "data-testid": TestUtils.Header.menuAnchorTestId })}>{label}</span>}
+        {menuUrl && (
+          <a
+            className="rvt-header-menu__link"
+            href={menuUrl}
+            ref={menuAnchorRef}
+            {...(current && { "aria-current": "page" })}
+            {...(testMode && {
+              "data-testid": TestUtils.Header.menuAnchorTestId,
+            })}
+          >
+            {label}
+          </a>
+        )}
+        {!menuUrl && (
+          <span
+            {...(testMode && {
+              "data-testid": TestUtils.Header.menuAnchorTestId,
+            })}
+          >
+            {label}
+          </span>
+        )}
         <button
           ref={toggleButtonRef}
           aria-expanded={isMenuOpen}
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
           onClick={toggleMenu}
-          {...(testMode && { "data-testid": TestUtils.Header.menuButtonToggleTestId })}
+          {...(testMode && {
+            "data-testid": TestUtils.Header.menuButtonToggleTestId,
+          })}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
           <Icon
@@ -172,11 +182,11 @@ const BaseHeaderMenu = ({
         className="rvt-header-menu__submenu rvt-dropdown__menu rvt-dropdown__menu--right"
         hidden={!isMenuOpen}
         ref={dropdownRef}
-        {...(testMode && { "data-testid": TestUtils.Header.menuItemsContainerTestId })}
+        {...(testMode && {
+          "data-testid": TestUtils.Header.menuItemsContainerTestId,
+        })}
       >
-        <ul className="rvt-header-menu__submenu-list">
-          {children}
-        </ul>
+        <ul className="rvt-header-menu__submenu-list">{children}</ul>
       </div>
     </div>
   );
@@ -187,7 +197,7 @@ BaseHeaderMenu.propTypes = {
   /** Indicates item is current page if link with url */
   current: PropTypes.bool,
   /** The label of the menu */
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  label: PropTypes.node.isRequired,
   /** The navigation url for the menu label */
   menuUrl: PropTypes.string,
 };
