@@ -12,9 +12,9 @@ import { TestUtils } from "../util/TestUtils";
 import userEvent from "@testing-library/user-event";
 
 const user = userEvent.setup();
-
+const testIds = TestUtils.Header;
 const toggleMenuThroughClick = async () => {
-  await user.click(screen.getByTestId(TestUtils.Header.menuButtonToggleTestId));
+  await user.click(screen.getByTestId(testIds.menuButtonToggleTestId));
 };
 
 const testHref = "/testHref";
@@ -60,9 +60,9 @@ describe("<BaseHeaderMenu/>", () => {
           <button data-testid={testId}>test button</button>
         </BaseHeaderMenu>
       );
-      expect(
-        screen.getByTestId(TestUtils.Header.menuContainerTestId)
-      ).toContainElement(screen.getByTestId(testId));
+      expect(screen.getByTestId(testIds.menuContainerTestId)).toContainElement(
+        screen.getByTestId(testId)
+      );
     });
 
     it("should provide the label and href props to the label anchor", () => {
@@ -98,7 +98,7 @@ describe("<BaseHeaderMenu/>", () => {
         </BaseHeaderMenu>
       );
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).toHaveAttribute("hidden", ""); // testing-library assumes the value of a custom HTML attribute to be "".
     });
   });
@@ -117,7 +117,7 @@ describe("<BaseHeaderMenu/>", () => {
       // open the menu
       await toggleMenuThroughClick();
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -126,13 +126,13 @@ describe("<BaseHeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // press Tab
       await user.keyboard("{Tab}");
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -141,13 +141,13 @@ describe("<BaseHeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // press ArrowUp
       await user.keyboard("{ArrowUp}");
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -156,13 +156,13 @@ describe("<BaseHeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // press ArrowDown
       await user.keyboard("{ArrowDown}");
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -171,13 +171,13 @@ describe("<BaseHeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // press an unhandled key
       await user.keyboard("{a}");
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -186,7 +186,7 @@ describe("<BaseHeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // press Escape on a target that lies outside the HeaderMenu
       fireEvent.keyUp(document.body, {
@@ -194,7 +194,7 @@ describe("<BaseHeaderMenu/>", () => {
       });
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -203,13 +203,13 @@ describe("<BaseHeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // click outside the menu
       await user.click(document.body);
       // finally, verify that the menu is closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).toHaveAttribute("hidden", "");
     });
 
@@ -218,24 +218,28 @@ describe("<BaseHeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).not.toHaveAttribute("hidden", "");
       // click the toggle button again
       await toggleMenuThroughClick();
       // finally, verify that the menu is closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(testIds.menuItemsContainerTestId)
       ).toHaveAttribute("hidden", "");
     });
   });
 
   describe("Focus behavior", () => {
+    const outsideId = "outsideId";
     beforeEach(() => {
       render(
-        <BaseHeaderMenu testMode menuUrl="#" label="Nav item three">
-          <a href="#">Sub item one</a>
-          <a href="#">Sub item two</a>
-        </BaseHeaderMenu>
+        <>
+          <button data-testid={outsideId}>Outside</button>
+          <BaseHeaderMenu testMode menuUrl="#" label="Nav item three">
+            <a href="#">Sub item one</a>
+            <a href="#">Sub item two</a>
+          </BaseHeaderMenu>
+        </>
       );
     });
 
@@ -246,9 +250,7 @@ describe("<BaseHeaderMenu/>", () => {
       // press Escape
       await user.keyboard("{Escape}");
       // verify focus is now on the toggle button
-      expect(
-        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId)
-      ).toHaveFocus();
+      expect(screen.getByTestId(testIds.menuButtonToggleTestId)).toHaveFocus();
     });
 
     it("should move focus to the first menu item when the menu is opened", async () => {
@@ -259,18 +261,42 @@ describe("<BaseHeaderMenu/>", () => {
     it("should move focus to the first menu item, if ArrowDown is pressed while the menu is open and the toggle button has focus", async () => {
       await toggleMenuThroughClick(); // open the menu
       // move focus to toggle button
-      screen.getByTestId(TestUtils.Header.menuButtonToggleTestId).focus();
+      screen.getByTestId(testIds.menuButtonToggleTestId).focus();
       // press ArrowDown
       await user.keyboard("{ArrowDown}");
+      expect(screen.getByText("Sub item one")).toHaveFocus();
+    });
+
+    it("should open and move focus to the first menu item, if ArrowDown is pressed while the menu is open and the toggle button has focus", async () => {
+      // move focus to toggle button
+      screen.getByTestId(testIds.menuButtonToggleTestId).focus();
+
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      expect(
+        screen.getByTestId(testIds.menuItemsContainerTestId)
+      ).not.toHaveAttribute("hidden", "");
       expect(screen.getByText("Sub item one")).toHaveFocus();
     });
 
     it("should move focus to the first menu item, if ArrowDown is pressed while the menu is open and the menu anchor has focus", async () => {
       await toggleMenuThroughClick(); // open the menu
       // move focus to menu anchor
-      screen.getByTestId(TestUtils.Header.menuAnchorTestId).focus();
+      screen.getByTestId(testIds.menuAnchorTestId).focus();
       // press ArrowDown
       await user.keyboard("{ArrowDown}");
+      expect(screen.getByText("Sub item one")).toHaveFocus();
+    });
+
+    it("should open and move focus to the first menu item, if ArrowDown is pressed while the menu is closed and the menu anchor has focus", async () => {
+      // move focus to menu anchor
+      screen.getByTestId(testIds.menuAnchorTestId).focus();
+
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      expect(
+        screen.getByTestId(testIds.menuItemsContainerTestId)
+      ).not.toHaveAttribute("hidden", "");
       expect(screen.getByText("Sub item one")).toHaveFocus();
     });
 
@@ -303,18 +329,18 @@ describe("<BaseHeaderMenu/>", () => {
 
     it("should not move focus, if Arrow Up or Arrow Down are pressed while the menu is closed", async () => {
       async function makeAssertion(arrowKey) {
-        // move focus to anchor
-        screen.getByText("Nav item three").focus();
-        // verify that focus is on anchor
-        expect(screen.getByText("Nav item three")).toHaveFocus();
+        // move focus off menu
+        screen.getByTestId(outsideId).focus();
+        // verify that focus is on outer button
+        expect(screen.getByTestId(outsideId)).toHaveFocus();
         // verify that menu is closed
         expect(
-          screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+          screen.getByTestId(testIds.menuItemsContainerTestId)
         ).toHaveAttribute("hidden", ""); // testing-library assumes the value of a custom HTML attribute to be "".
         // press Arrow key
         await user.keyboard(arrowKey);
         // verify that focus is still on anchor
-        expect(screen.getByText("Nav item three")).toHaveFocus();
+        expect(screen.getByTestId(outsideId)).toHaveFocus();
       }
 
       await makeAssertion("{ArrowUp}");
@@ -333,15 +359,49 @@ describe("<BaseHeaderMenu/>", () => {
 
     it("should default the aria-expanded attribute on the toggle button to false", () => {
       expect(
-        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId)
+        screen.getByTestId(testIds.menuButtonToggleTestId)
       ).toHaveAttribute("aria-expanded", "false");
     });
 
     it("should change the aria-expanded attribute on the toggle button to true when the menu is opened", async () => {
       await toggleMenuThroughClick(); // open the menu
       expect(
-        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId)
+        screen.getByTestId(testIds.menuButtonToggleTestId)
       ).toHaveAttribute("aria-expanded", "true");
+    });
+  });
+
+  describe("Options", () => {
+    it("Attributes can be added to toggle button", () => {
+      const menuButtonAttrs = {
+        ["data-test1"]: true,
+        name: "test",
+        count: 1,
+      };
+      render(
+        <BaseHeaderMenu
+          label="Nav item three"
+          menuButtonAttrs={menuButtonAttrs}
+          testMode
+        >
+          <a href="#">Sub item one</a>
+          <a href={testHref}>Sub item two</a>
+        </BaseHeaderMenu>
+      );
+      const element = screen.getByTestId(testIds.menuButtonToggleTestId);
+      expect(element).toHaveAttribute("data-test1", "true");
+      expect(element).toHaveAttribute("name", "test");
+      expect(element).toHaveAttribute("count", "1");
+    });
+    it("default is test mode off", () => {
+      render(
+        <BaseHeaderMenu label="Nav item three">
+          <a href="#">Sub item one</a>
+          <a href={testHref}>Sub item two</a>
+        </BaseHeaderMenu>
+      );
+      const element = screen.queryByTestId(testIds.menuContainerTestId);
+      expect(element).not.toBeInTheDocument();
     });
   });
 });

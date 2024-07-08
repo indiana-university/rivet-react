@@ -2,6 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
+import React from "react";
 import {
   isEscapeKeyPress,
   isKeyEvent,
@@ -10,6 +11,7 @@ import {
   isTabKeyPress,
   isUnhandledKeyPress,
   keys,
+  stillFocused,
 } from "./EventUtils";
 
 export const createKeyboardEvent = (key) => ({
@@ -82,6 +84,16 @@ describe("Event", () => {
       expect(isRightMouseClick(createMouseEvent(1))).toBe(false);
       expect(isRightMouseClick(createMouseEvent(2))).toBe(true);
       expect(isEscapeKeyPress(createTouchEvent())).toBe(false);
+    });
+  });
+
+  describe("Focus Check", () => {
+    it("Still focus shoudl return false if if relative target is null", () => {
+      const event = {
+        currentTarget: <div class="">test</div>,
+        relatedTarget: null,
+      };
+      expect(stillFocused(event)).toBe(false);
     });
   });
 });

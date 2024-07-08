@@ -8,56 +8,27 @@ import PropTypes from "prop-types";
 import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
 import { useEffect, useRef, useState } from "react";
-import { handler } from "../Header/HeaderEventUtils.js";
-import {
-  getFocusableElements,
-  isArrowDownKeyPress,
-  isArrowKeyPress,
-  isArrowUpKeyPress,
-  isEscapeKeyPress,
-  isTabKeyPress,
-  targets,
-} from "../util/EventUtils.js";
-import { isUnhandledKeyPress } from "../Header/HeaderEventUtils.js";
+import { getFocusableElements, stillFocused } from "../util/EventUtils.js";
 import { TestUtils } from "../util/TestUtils";
-
-const shouldToggleMenu = (event, wrapperDivRef) => {
-  if (
-    isArrowKeyPress(event) ||
-    isUnhandledKeyPress(event) ||
-    isTabKeyPress(event) ||
-    (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event))
-  ) {
-    return false;
-  }
-  return true;
-};
 
 /**
  * Dropdown menu component for use primary/secondary header navigations.
  */
 const BaseHeaderMenu = ({
   children,
+  current,
   label,
+  menuButtonAttrs = {},
   menuUrl,
   current,
   testMode = false,
   ...attrs
 }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [focusedItemIndex, setFocusedItemIndex] = useState(null);
 
-  const wrapperDivRef = useRef(null);
   const toggleButtonRef = useRef(null);
   const menuAnchorRef = useRef(null);
   const dropdownRef = useRef(null);
-
-  useEffect(() => {
-    handleEventRegistration();
-    return () => {
-      eventHandler.deregister();
-    };
-  });
 
   useEffect(() => {
     // put focus on the first menu item when the menu opens
@@ -66,14 +37,9 @@ const BaseHeaderMenu = ({
     }
   }, [isMenuOpen]);
 
-  const getRefsMap = () => {
-    const children = getFocusableElements(dropdownRef.current);
-    return getFocusableElements(dropdownRef.current);
-  };
-
   const focusMenuItem = (index) => {
-    getRefsMap()[index].focus();
-    setFocusedItemIndex(index);
+    const children = getFocusableElements(dropdownRef.current);
+    children[index].focus();
   };
 
   const toggleMenu = (event) => {
@@ -82,62 +48,63 @@ const BaseHeaderMenu = ({
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleEvent = (event) => {
-    if (shouldToggleMenu(event, wrapperDivRef)) {
-      toggleMenu(event);
-      // if menu is being closed through an escape key press, put focus back on the toggle button
-      if (isEscapeKeyPress(event)) {
+  const handleBlur = (event) => {
+    if (!stillFocused(event)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    const children = getFocusableElements(dropdownRef.current);
+    switch (event.key) {
+      case "Escape":
+        event.preventDefault();
+        event.stopPropagation();
+        setIsMenuOpen(false);
         toggleButtonRef.current.focus();
-      }
-    } else if (isArrowKeyPress(event)) {
-      event.preventDefault();
-      event.stopPropagation();
-      handleArrowKeyPress(event);
-    }
-  };
-
-  const eventHandler = handler(handleEvent);
-
-  const handleEventRegistration = () => {
-    if (isMenuOpen) {
-      eventHandler.register();
-    } else {
-      eventHandler.deregister();
-    }
-  };
-
-  const handleArrowKeyPress = (event) => {
-    // no need to do anything if menu is closed
-    if (!isMenuOpen) {
-      return;
-    }
-    // if ArrowDown is pressed while focus is on anchor or toggle button, put focus on first menu item
-    if (
-      (event.target === toggleButtonRef.current ||
-        event.target === menuAnchorRef.current) &&
-      isArrowDownKeyPress(event)
-    ) {
-      focusMenuItem(0);
-      return;
-    }
-    if (isArrowDownKeyPress(event)) {
-      focusMenuItem(
-        focusedItemIndex === children.length - 1 ? 0 : focusedItemIndex + 1
-      );
-    }
-    if (isArrowUpKeyPress(event)) {
-      focusMenuItem(
-        focusedItemIndex === 0 ? children.length - 1 : focusedItemIndex - 1
-      );
+        break;
+      case "ArrowDown":
+        event.preventDefault();
+        event.stopPropagation();
+        if (
+          event.target === toggleButtonRef.current ||
+          event.target === menuAnchorRef.current
+        ) {
+          if (!isMenuOpen) {
+            setIsMenuOpen(true);
+          }
+          focusMenuItem(0);
+        } else {
+          for (let i = 0; i < children.length; i++) {
+            if (children[i] === document.activeElement) {
+              const next = i === children.length - 1 ? 0 : i + 1;
+              focusMenuItem(next);
+              break;
+            }
+          }
+        }
+        break;
+      case "ArrowUp":
+        event.preventDefault();
+        event.stopPropagation();
+        for (let i = 0; i < children.length; i++) {
+          if (children[i] === document.activeElement) {
+            const next = i === 0 ? children.length - 1 : i - 1;
+            focusMenuItem(next);
+            break;
+          }
+        }
+        break;
     }
   };
 
   return (
     <div
       className="rvt-header-menu__dropdown rvt-dropdown"
-      ref={wrapperDivRef}
-      onKeyDown={handleEvent}
+      onBlur={handleBlur}
+      onKeyDown={handleKeyDown}
       {...(testMode && { "data-testid": TestUtils.Header.menuContainerTestId })}
+      {...attrs}
     >
       <div className="rvt-header-menu__group">
         {menuUrl && (
@@ -167,6 +134,7 @@ const BaseHeaderMenu = ({
           aria-expanded={isMenuOpen}
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
           onClick={toggleMenu}
+          {...menuButtonAttrs}
           {...(testMode && {
             "data-testid": TestUtils.Header.menuButtonToggleTestId,
           })}
@@ -198,6 +166,8 @@ BaseHeaderMenu.propTypes = {
   current: PropTypes.bool,
   /** The label of the menu */
   label: PropTypes.node.isRequired,
+  /** Attributes added to the menu's toggle button  */
+  menuButtonAttrs: PropTypes.object,
   /** The navigation url for the menu label */
   menuUrl: PropTypes.string,
 };
