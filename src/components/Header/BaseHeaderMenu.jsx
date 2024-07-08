@@ -16,7 +16,6 @@ import { TestUtils } from "../util/TestUtils";
  */
 const BaseHeaderMenu = ({
   children,
-  current,
   label,
   menuButtonAttrs = {},
   menuUrl,
