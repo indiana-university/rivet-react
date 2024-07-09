@@ -16,10 +16,10 @@ import { TestUtils } from "../util/TestUtils";
  */
 const BaseHeaderMenu = ({
   children,
-  current, 
   label,
   menuButtonAttrs = {},
   menuUrl,
+  current,
   testMode = false,
   ...attrs
 }) => {
@@ -28,7 +28,7 @@ const BaseHeaderMenu = ({
   const toggleButtonRef = useRef(null);
   const menuAnchorRef = useRef(null);
   const dropdownRef = useRef(null);
-  
+
   useEffect(() => {
     // put focus on the first menu item when the menu opens
     if (isMenuOpen) {
@@ -37,7 +37,7 @@ const BaseHeaderMenu = ({
   }, [isMenuOpen]);
 
   const focusMenuItem = (index) => {
-    const children = getFocusableElements(dropdownRef.current)
+    const children = getFocusableElements(dropdownRef.current);
     children[index].focus();
   };
 
@@ -51,48 +51,51 @@ const BaseHeaderMenu = ({
     if (!stillFocused(event)) {
       setIsMenuOpen(false);
     }
-  }
+  };
 
   const handleKeyDown = (event) => {
-    const children = getFocusableElements(dropdownRef.current)
+    const children = getFocusableElements(dropdownRef.current);
     switch (event.key) {
-      case 'Escape':
-        event.preventDefault()
-        event.stopPropagation()
-        setIsMenuOpen(false)
-        toggleButtonRef.current.focus()
-        break
-      case 'ArrowDown':
-        event.preventDefault()
-        event.stopPropagation()
-        if ((event.target === toggleButtonRef.current || event.target === menuAnchorRef.current)) {
+      case "Escape":
+        event.preventDefault();
+        event.stopPropagation();
+        setIsMenuOpen(false);
+        toggleButtonRef.current.focus();
+        break;
+      case "ArrowDown":
+        event.preventDefault();
+        event.stopPropagation();
+        if (
+          event.target === toggleButtonRef.current ||
+          event.target === menuAnchorRef.current
+        ) {
           if (!isMenuOpen) {
-            setIsMenuOpen(true)
+            setIsMenuOpen(true);
           }
           focusMenuItem(0);
         } else {
           for (let i = 0; i < children.length; i++) {
             if (children[i] === document.activeElement) {
-              const next = i === (children.length - 1) ? 0 : i + 1
-              focusMenuItem(next)
-              break
+              const next = i === children.length - 1 ? 0 : i + 1;
+              focusMenuItem(next);
+              break;
             }
           }
         }
-        break
-      case 'ArrowUp':
-        event.preventDefault()
-        event.stopPropagation()
+        break;
+      case "ArrowUp":
+        event.preventDefault();
+        event.stopPropagation();
         for (let i = 0; i < children.length; i++) {
           if (children[i] === document.activeElement) {
-            const next = i === 0 ? children.length - 1 : i - 1
-            focusMenuItem(next)
-            break
+            const next = i === 0 ? children.length - 1 : i - 1;
+            focusMenuItem(next);
+            break;
           }
         }
-        break
+        break;
     }
-  }
+  };
 
   return (
     <div
@@ -103,26 +106,37 @@ const BaseHeaderMenu = ({
       {...attrs}
     >
       <div className="rvt-header-menu__group">
-        {
-          menuUrl &&
-            <a
-              className="rvt-header-menu__link"
-              href={menuUrl}
-              ref={menuAnchorRef}
-              {...(current && { "aria-current": "page" })}
-              {...(testMode && { "data-testid": TestUtils.Header.menuAnchorTestId })}
-            >
-              {label}
-            </a>
-        }
-        {!menuUrl && <span {...(testMode && { "data-testid": TestUtils.Header.menuAnchorTestId })}>{label}</span>}
+        {menuUrl && (
+          <a
+            className="rvt-header-menu__link"
+            href={menuUrl}
+            ref={menuAnchorRef}
+            {...(current && { "aria-current": "page" })}
+            {...(testMode && {
+              "data-testid": TestUtils.Header.menuAnchorTestId,
+            })}
+          >
+            {label}
+          </a>
+        )}
+        {!menuUrl && (
+          <span
+            {...(testMode && {
+              "data-testid": TestUtils.Header.menuAnchorTestId,
+            })}
+          >
+            {label}
+          </span>
+        )}
         <button
           ref={toggleButtonRef}
           aria-expanded={isMenuOpen}
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
           onClick={toggleMenu}
           {...menuButtonAttrs}
-          {...(testMode && { "data-testid": TestUtils.Header.menuButtonToggleTestId })}
+          {...(testMode && {
+            "data-testid": TestUtils.Header.menuButtonToggleTestId,
+          })}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
           <Icon
@@ -135,11 +149,11 @@ const BaseHeaderMenu = ({
         className="rvt-header-menu__submenu rvt-dropdown__menu rvt-dropdown__menu--right"
         hidden={!isMenuOpen}
         ref={dropdownRef}
-        {...(testMode && { "data-testid": TestUtils.Header.menuItemsContainerTestId })}
+        {...(testMode && {
+          "data-testid": TestUtils.Header.menuItemsContainerTestId,
+        })}
       >
-        <ul className="rvt-header-menu__submenu-list">
-          {children}
-        </ul>
+        <ul className="rvt-header-menu__submenu-list">{children}</ul>
       </div>
     </div>
   );
@@ -150,11 +164,11 @@ BaseHeaderMenu.propTypes = {
   /** Indicates item is current page if link with url */
   current: PropTypes.bool,
   /** The label of the menu */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /** Attributes added to the menu's toggle button  */
   menuButtonAttrs: PropTypes.object,
   /** The navigation url for the menu label */
-  menuUrl: PropTypes.string
+  menuUrl: PropTypes.string,
 };
 
 export default Rivet.rivetize(BaseHeaderMenu);

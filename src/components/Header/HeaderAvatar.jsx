@@ -10,7 +10,13 @@ import { TestUtils } from "../util/TestUtils";
 import { Button } from "../Button"
 import Avatar from "../PageContent/Avatar/Avatar";
 
-const HeaderAvatar = ({ username, shortName, logoutClick, logoutURL, ...attr }) => {
+const HeaderAvatar = ({
+  username,
+  shortName,
+  logoutClick,
+  logoutURL,
+  ...attr
+}) => {
   const classes = classNames(
     "rvt-ts-14",
     "rvt-m-left-xs",
@@ -19,7 +25,10 @@ const HeaderAvatar = ({ username, shortName, logoutClick, logoutURL, ...attr }) 
     (logoutClick || logoutURL) && "rvt-border-right"
   );
   return (
-    <div className="rvt-flex rvt-items-center rvt-m-left-md rvt-p-bottom-md rvt-p-bottom-none-lg-up">
+    <div
+      className="rvt-flex rvt-items-center rvt-m-left-md rvt-p-bottom-md rvt-p-bottom-none-lg-up"
+      {...attr}
+    >
       <Avatar
         initials={shortName}
         size="xs"
@@ -68,7 +77,7 @@ HeaderAvatar.propTypes = {
   /** The URL for the logout action */
   logoutURL: PropTypes.string,
   /** The onClick for the logout action. This value will be overriden by logoutUrl if it is provided  */
-  logoutClick: PropTypes.function,
+  logoutClick: PropTypes.func,
 };
 
 export default Rivet.rivetize(HeaderAvatar);

@@ -21,8 +21,8 @@ const Billboard = ({
     "rvt-billboard",
     variant === "center" ? "rvt-billboard--center" : "",
     variant === "reverse" ? "rvt-billboard--reverse" : "",
-    className
-  ]
+    className,
+  ];
 
   return (
     <div
@@ -38,22 +38,24 @@ const Billboard = ({
         >
           {title}
         </h2>
-        {children && <BillboardContent testMode={testMode}>{children}</BillboardContent>}
+        {children && (
+          <BillboardContent testMode={testMode}>{children}</BillboardContent>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 Billboard.displayName = "Billboard";
 Billboard.propTypes = {
   /** Optional image to display */
-  image: PropTypes.oneOfType(PropTypes.element),
+  image: PropTypes.element,
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
   /** The title of the billboard */
   title: PropTypes.string.isRequired,
   /* The variant determines the style of the billboard */
-  variant: PropTypes.oneOf(["center", "reverse", "standard"])
+  variant: PropTypes.oneOf(["center", "reverse", "standard"]),
 };
 
 const BillboardImage = ({ children, testMode = false }) => {
@@ -64,8 +66,8 @@ const BillboardImage = ({ children, testMode = false }) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 const BillboardContent = ({ children, testMode = false }) => {
   return (
@@ -75,7 +77,7 @@ const BillboardContent = ({ children, testMode = false }) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 export default Rivet.rivetize(Billboard);

@@ -12,7 +12,7 @@ import { TestUtils } from "../util/TestUtils";
 import userEvent from "@testing-library/user-event";
 
 const user = userEvent.setup();
-const testIds = TestUtils.Header
+const testIds = TestUtils.Header;
 const toggleMenuThroughClick = async () => {
   await user.click(screen.getByTestId(testIds.menuButtonToggleTestId));
 };
@@ -60,9 +60,9 @@ describe("<BaseHeaderMenu/>", () => {
           <button data-testid={testId}>test button</button>
         </BaseHeaderMenu>
       );
-      expect(
-        screen.getByTestId(testIds.menuContainerTestId)
-      ).toContainElement(screen.getByTestId(testId));
+      expect(screen.getByTestId(testIds.menuContainerTestId)).toContainElement(
+        screen.getByTestId(testId)
+      );
     });
 
     it("should provide the label and href props to the label anchor", () => {
@@ -230,7 +230,7 @@ describe("<BaseHeaderMenu/>", () => {
   });
 
   describe("Focus behavior", () => {
-    const outsideId = "outsideId"
+    const outsideId = "outsideId";
     beforeEach(() => {
       render(
         <>
@@ -250,9 +250,7 @@ describe("<BaseHeaderMenu/>", () => {
       // press Escape
       await user.keyboard("{Escape}");
       // verify focus is now on the toggle button
-      expect(
-        screen.getByTestId(testIds.menuButtonToggleTestId)
-      ).toHaveFocus();
+      expect(screen.getByTestId(testIds.menuButtonToggleTestId)).toHaveFocus();
     });
 
     it("should move focus to the first menu item when the menu is opened", async () => {
@@ -378,10 +376,14 @@ describe("<BaseHeaderMenu/>", () => {
       const menuButtonAttrs = {
         ["data-test1"]: true,
         name: "test",
-        count: 1
-      }
+        count: 1,
+      };
       render(
-        <BaseHeaderMenu label="Nav item three" menuButtonAttrs={menuButtonAttrs} testMode>
+        <BaseHeaderMenu
+          label="Nav item three"
+          menuButtonAttrs={menuButtonAttrs}
+          testMode
+        >
           <a href="#">Sub item one</a>
           <a href={testHref}>Sub item two</a>
         </BaseHeaderMenu>
