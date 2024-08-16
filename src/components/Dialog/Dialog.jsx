@@ -161,6 +161,8 @@ const Dialog = ({
         </div>
       );
     } else return dialogContent(dialogProps);
+  } else {
+    return null;
   }
 };
 
