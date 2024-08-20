@@ -11,8 +11,8 @@ import { TestUtils } from "../util/TestUtils";
 import AccordionPanel from "./AccordionPanel";
 import AccordionPanelHeader from "./AccordionPanelHeader";
 
-const createControlId = (id, index) => `accordian_${id}_control_${index}`
-const testIds = TestUtils.Accordion
+const createControlId = (id, index) => `accordian_${id}_control_${index}`;
+const testIds = TestUtils.Accordion;
 
 /**
  * Group content into sections that can be opened and closed
@@ -27,62 +27,65 @@ const Accordion = ({
   testMode = false,
   ...attrs
 }) => {
-  const numPanels = React.Children.count(children)
+  const numPanels = React.Children.count(children);
 
   const [accordianId] = useState(id);
-  const [panelsOpen, setPanelsOpen] = useState(getInitialOpen(initial, accordianId, numPanels))
+  const [panelsOpen, setPanelsOpen] = useState(
+    getInitialOpen(initial, accordianId, numPanels)
+  );
 
-  const accordianPanels = !children ? [] :  React.Children.map(children, (child, index) => {
-    const { title } = child.props
-    const controlId = createControlId(accordianId, index)
-    const onClick = () => {
-      const newPanelsOpen = panelsOpen.includes(controlId) ? panelsOpen.filter(v => v !== controlId) : [...panelsOpen, controlId]
-      setPanelsOpen(newPanelsOpen);
-    }
+  const accordianPanels = !children
+    ? []
+    : React.Children.map(children, (child, index) => {
+        const { title } = child.props;
+        const controlId = createControlId(accordianId, index);
+        const onClick = () => {
+          const newPanelsOpen = panelsOpen.includes(controlId)
+            ? panelsOpen.filter((v) => v !== controlId)
+            : [...panelsOpen, controlId];
+          setPanelsOpen(newPanelsOpen);
+        };
 
-    const extraProps = {
-      controlId
-    }
-    const isOpen = panelsOpen.includes(controlId)
-    if(!isOpen) {
-      extraProps.hidden = true
-    }
+        const extraProps = {
+          controlId,
+        };
+        const isOpen = panelsOpen.includes(controlId);
+        if (!isOpen) {
+          extraProps.hidden = true;
+        }
 
-    const panel = React.cloneElement(child, extraProps)  
+        const panel = React.cloneElement(child, extraProps);
 
-    return {
-      onClick,
-      controlId,
-      iconClosed,
-      iconOpened,
-      isOpen,
-      label: title,
-      panel,
-      testMode
-    }
-  })
+        return {
+          onClick,
+          controlId,
+          iconClosed,
+          iconOpened,
+          isOpen,
+          label: title,
+          panel,
+          testMode,
+        };
+      });
 
-  const classNameArr = [
-    "rvt-accordion",
-    className
-  ]
+  const classNameArr = ["rvt-accordion", className];
   return (
     <div
       className={classNames(classNameArr)}
       {...(testMode && { "data-testid": testIds.container })}
-      { ...attrs }
+      {...attrs}
     >
-        {accordianPanels.map((accordianPanel) => {
-          const { panel, ...otherProps } = accordianPanel
-          return (
-            <>
-              <AccordionPanelHeader {...otherProps} />
-              {panel}
-            </>
-          )
-        })}
+      {accordianPanels.map((accordianPanel, panelIndex) => {
+        const { panel, ...otherProps } = accordianPanel;
+        return (
+          <React.Fragment key={panelIndex}>
+            <AccordionPanelHeader {...otherProps} />
+            {panel}
+          </React.Fragment>
+        );
+      })}
     </div>
-  )
+  );
 };
 
 Accordion.displayName = "Accordion";
@@ -96,20 +99,20 @@ Accordion.propTypes = {
   /** Index of initially opened tab */
   initialTab: PropTypes.oneOfType([PropTypes.oneOf(["all"]), PropTypes.number]),
   /** [Developer] Adds data-testId attributes for component testing */
-  testMode: PropTypes.bool
+  testMode: PropTypes.bool,
 };
 
 Accordion.Panel = AccordionPanel;
 Accordion.Header = AccordionPanelHeader;
 
-function getInitialOpen (option, id, count) {
+function getInitialOpen(option, id, count) {
   if (!option) {
-    return []
+    return [];
   }
   if (option === "all") {
-    return range(0, count, 1).map(num => createControlId(id, num))
+    return range(0, count, 1).map((num) => createControlId(id, num));
   }
-  return [ createControlId(id, option) ]
+  return [createControlId(id, option)];
 }
 
 export default Rivet.rivetize(Accordion);

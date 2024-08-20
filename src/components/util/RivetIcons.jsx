@@ -6,15 +6,6 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { TestUtils } from "./TestUtils.js";
 
-const DefaultIconProps = {
-  role: "img",
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "16",
-  height: "16",
-  viewBox: "0 0 16 16",
-  "data-testid": TestUtils.RivetIcons.testId,
-};
-
 export const IconNames = {
   ACCORDIAN_IND: "accordian-indicator",
   ARROW_LEFT: "arrow-left",
@@ -39,11 +30,13 @@ export const IconNames = {
   YOUTUBE: "youtube",
 };
 
-const IconCore = ({ children, ...attrs }) => (
-  <svg aria-hidden="true" {...attrs}>
-    {children}
-  </svg>
-);
+const IconCore = ({ children, ...attrs }) => {
+  return (
+    <svg aria-hidden="true" {...attrs}>
+      {children}
+    </svg>
+  );
+};
 
 const icoBell = (attrs) => (
   <IconCore data-testid={TestUtils.RivetIcons.testId} {...attrs}>
@@ -241,77 +234,102 @@ const icoLast = (attrs) => (
   </IconCore>
 );
 
-const icoArrowRight= (attrs) => (
+const icoArrowRight = (attrs) => (
   <IconCore {...attrs}>
-    <path fill="currentColor" d="M1 7h10.844L7.737 2.146 9.263.854 15.31 8l-6.047 7.146-1.526-1.292L11.844 9H1V7Z"></path>
+    <path
+      fill="currentColor"
+      d="M1 7h10.844L7.737 2.146 9.263.854 15.31 8l-6.047 7.146-1.526-1.292L11.844 9H1V7Z"
+    ></path>
   </IconCore>
 );
 
 const icoArrowLeft = (attrs) => (
   <IconCore {...attrs}>
-    <path fill="currentColor" d="M15 7H4.156l4.107-4.854L6.737.854.69 8l6.047 7.146 1.526-1.292L4.156 9H15V7Z"></path>
+    <path
+      fill="currentColor"
+      d="M15 7H4.156l4.107-4.854L6.737.854.69 8l6.047 7.146 1.526-1.292L4.156 9H15V7Z"
+    ></path>
   </IconCore>
 );
 
 const icoAccordianIndicator = (attrs) => (
   <IconCore {...attrs}>
     <g fill="currentColor">
-      <path className="rvt-accordion__icon-bar" d="M8,15a1,1,0,0,1-1-1V2A1,1,0,0,1,9,2V14A1,1,0,0,1,8,15Z"></path>
+      <path
+        className="rvt-accordion__icon-bar"
+        d="M8,15a1,1,0,0,1-1-1V2A1,1,0,0,1,9,2V14A1,1,0,0,1,8,15Z"
+      ></path>
       <path d="M14,9H2A1,1,0,0,1,2,7H14a1,1,0,0,1,0,2Z"></path>
     </g>
   </IconCore>
 );
 
-
-const Icon = ({ name, ...attrs }) => {
+const Icon = ({
+  name,
+  role = "img",
+  xmlns = "http://www.w3.org/2000/svg",
+  width = "16",
+  height = "16",
+  viewBox = "0 0 16 16",
+  "data-testid": dataTestid = TestUtils.RivetIcons.testId,
+  ...attrs
+}) => {
+  const props = {
+    role,
+    xmlns,
+    width,
+    height,
+    viewBox,
+    "data-testid": dataTestid,
+    ...attrs,
+  };
   switch (name) {
     case IconNames.ACCORDIAN_IND:
-      return icoAccordianIndicator(attrs);
+      return icoAccordianIndicator(props);
     case IconNames.ARROW_LEFT:
-      return icoArrowLeft(attrs);
+      return icoArrowLeft(props);
     case IconNames.ARROW_RIGHT:
-      return icoArrowRight(attrs);
+      return icoArrowRight(props);
     case IconNames.BELL:
-      return icoBell(attrs);
+      return icoBell(props);
     case IconNames.CARET_DOWN:
-      return icoCaretDown(attrs);
+      return icoCaretDown(props);
     case IconNames.CLOSE:
-      return icoClose(attrs);
+      return icoClose(props);
     case IconNames.FACEBOOK:
-      return icoFacebook(attrs);
+      return icoFacebook(props);
     case IconNames.FILE:
-      return icoFile(attrs);
+      return icoFile(props);
     case IconNames.FIRST:
-      return icoFirst(attrs);
+      return icoFirst(props);
     case IconNames.INSTAGRAM:
-      return icoInstagram(attrs);
+      return icoInstagram(props);
     case IconNames.LAST:
-      return icoLast(attrs);
+      return icoLast(props);
     case IconNames.LINKEDIN:
-      return icoLinkedin(attrs);
+      return icoLinkedin(props);
     case IconNames.LOGO:
-      return icoLogo(attrs);
+      return icoLogo(props);
     case IconNames.NEXT:
-      return icoNext(attrs);
+      return icoNext(props);
     case IconNames.PREVIOUS:
-      return icoPrevious(attrs);
+      return icoPrevious(props);
     case IconNames.TOGGLE_OPEN:
-      return icoToggleOpen(attrs);
+      return icoToggleOpen(props);
     case IconNames.TOGGLE_CLOSE:
-      return icoToggleClose(attrs);
+      return icoToggleClose(props);
     case IconNames.TOGGLE_SEARCH:
-      return icoToggleSearch(attrs);
+      return icoToggleSearch(props);
     case IconNames.TRIDENT_HEADER:
-      return icoTrident(attrs);
+      return icoTrident(props);
     case IconNames.TWITTER:
-      return icoTwitter(attrs);
+      return icoTwitter(props);
     case IconNames.YOUTUBE:
-      return icoYoutube(attrs);
+      return icoYoutube(props);
   }
 };
 
 Icon.displayName = "Icon";
-Icon.defaultProps = DefaultIconProps;
 Icon.propTypes = {
   name: PropTypes.oneOf([
     IconNames.ACCORDIAN_IND,
