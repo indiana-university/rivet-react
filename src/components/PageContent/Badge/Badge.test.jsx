@@ -29,7 +29,7 @@ describe("<Badge />", () => {
 
     it("should render the appropriate role", () => {
       render(
-        <Badge role="secondary" data-testid={badgeTestId}>
+        <Badge type="secondary" data-testid={badgeTestId}>
           Secondary
         </Badge>
       );
@@ -40,7 +40,7 @@ describe("<Badge />", () => {
 
     it("should render combinations of variant and role", () => {
       render(
-        <Badge variant="success" role="secondary" data-testid={badgeTestId}>
+        <Badge variant="success" type="secondary" data-testid={badgeTestId}>
           Success secondary
         </Badge>
       );
