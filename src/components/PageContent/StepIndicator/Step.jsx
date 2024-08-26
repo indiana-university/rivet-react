@@ -8,7 +8,7 @@ import * as React from "react";
 import * as Rivet from "../../util/Rivet";
 import { TestUtils } from "../../util/TestUtils";
 
-const testIds = TestUtils.StepIndicator
+const testIds = TestUtils.StepIndicator;
 const Step = ({
   children,
   className,
@@ -21,14 +21,11 @@ const Step = ({
   variant,
   ...attrs
 }) => {
-  const classNameArr = [
-    "rvt-steps__item",
-    className
-  ]
+  const classNameArr = ["rvt-steps__item", className];
   const indicatorClassNameArr = [
     "rvt-steps__indicator",
-    variant ? `rvt-steps__indicator--${variant}` : ""
-  ]
+    variant ? `rvt-steps__indicator--${variant}` : "",
+  ];
   return (
     <li
       className={classNames(classNameArr)}
@@ -45,7 +42,7 @@ const Step = ({
         <span className={classNames(indicatorClassNameArr)}>{indicator}</span>
       </a>
     </li>
-  )
+  );
 };
 
 Step.displayName = "Step";
@@ -53,9 +50,10 @@ Step.propTypes = {
   /** Indicates item is current step */
   current: PropTypes.bool,
   /** An brief indicator for the step */
-  indicator: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  indicator: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   /** Label for the step */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /** A click event for step */
   onClick: PropTypes.func,
   /** [Developer] Adds data-testId attributes for component testing */
@@ -63,7 +61,7 @@ Step.propTypes = {
   /** A url for step */
   url: PropTypes.string.isRequired,
   /** The variant type which determines how the step is styled */
-  variant: PropTypes.oneOf(["success", "warning", "danger"])
+  variant: PropTypes.oneOf(["success", "warning", "danger"]),
 };
 
 export default Rivet.rivetize(Step);

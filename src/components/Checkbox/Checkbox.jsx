@@ -46,7 +46,7 @@ Checkbox.propTypes = {
   /** A unique identifier for the alert */
   id: PropTypes.string,
   /** Label for the checkbox */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /** Whether to display the label in non-screen-reader contexts */
   labelVisibility: PropTypes.bool,
 };

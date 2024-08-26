@@ -39,7 +39,7 @@ export const propTypes = {
   /** Element to group at the end of the input */
   appendment: PropTypes.node,
   /** The label for the input */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /** Visibility modifier for the input's label */
   labelVisibility: PropTypes.oneOf(["screen-reader-only"]),
   /** An optional note that will be displayed below the input */
