@@ -9,7 +9,7 @@ import Icon, { IconNames } from "../util/RivetIcons.jsx";
 import * as Rivet from "../util/Rivet";
 import { TestUtils } from "../util/TestUtils";
 
-const testIds = TestUtils.Accordion
+const testIds = TestUtils.Accordion;
 
 const AccordionPanelHeader = (props) => {
   const {
@@ -23,20 +23,17 @@ const AccordionPanelHeader = (props) => {
     onClick,
     testMode = false,
     ...attrs
-  } = props
-  const classNameArr = [
-    "rvt-accordion__summary",
-    className
-  ]
+  } = props;
+  const classNameArr = ["rvt-accordion__summary", className];
   const handleClick = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    onClick()
-  }
+    e.preventDefault();
+    e.stopPropagation();
+    onClick();
+  };
   return (
     <h3
-        className={classNames(classNameArr)}
-        {...(testMode && { "data-testid": `${testIds.header}-${controlId}` })}
+      className={classNames(classNameArr)}
+      {...(testMode && { "data-testid": `${testIds.header}-${controlId}` })}
     >
       <button
         aria-expanded={isOpen}
@@ -51,7 +48,7 @@ const AccordionPanelHeader = (props) => {
         </div>
       </button>
     </h3>
-  )
+  );
 };
 
 AccordionPanelHeader.displayName = "AccordionPanelHeader";
@@ -63,11 +60,11 @@ AccordionPanelHeader.propTypes = {
   /** Icon/Indicator for an open panel */
   iconOpened: PropTypes.element,
   /** Header label for the corresponding panel */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /** Handler for onClick event of the header */
   onClick: PropTypes.func.isRequired,
   /** [Developer] Adds data-testId attributes for component testing */
-  testMode: PropTypes.bool
+  testMode: PropTypes.bool,
 };
 
 export default Rivet.rivetize(AccordionPanelHeader);

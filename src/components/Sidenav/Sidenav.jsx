@@ -7,8 +7,8 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
 import { TestUtils } from "../util/TestUtils";
-import SidenavItem from "./SidenavItem"
-import SidenavMenu from "./SidenavMenu"
+import SidenavItem from "./SidenavItem";
+import SidenavMenu from "./SidenavMenu";
 /**
  * Create a vertical list of navigation links for use in a sidebar
  */
@@ -17,14 +17,11 @@ const Sidenav = ({
   children,
   id = Rivet.shortuid(),
   label,
-  testMode =  false,
+  testMode = false,
   ...attrs
-}) =>{
-  const classNameArr = [
-    "rvt-sidenav",
-    className
-  ]
-  const labelId = `${id}-sidenav-label`
+}) => {
+  const classNameArr = ["rvt-sidenav", className];
+  const labelId = `${id}-sidenav-label`;
   return (
     <nav
       aria-labelledby={labelId}
@@ -32,17 +29,12 @@ const Sidenav = ({
       {...(testMode && { "data-testid": TestUtils.Sidenav.container })}
       {...attrs}
     >
-      <span
-        className="rvt-sidenav__label"
-        id={labelId}
-      >
+      <span className="rvt-sidenav__label" id={labelId}>
         {label}
       </span>
-      <ul className="rvt-sidenav__list">
-        {children}
-      </ul>
+      <ul className="rvt-sidenav__list">{children}</ul>
     </nav>
-  )
+  );
 };
 
 Sidenav.displayName = "Sidenav";
@@ -50,9 +42,9 @@ Sidenav.propTypes = {
   /** A unique identifier for the component */
   id: PropTypes.string,
   /** The label for the navigation */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /** [Developer] Adds data-testId attributes for component testing */
-  testMode: PropTypes.bool
+  testMode: PropTypes.bool,
 };
 
 Sidenav.Item = SidenavItem;
