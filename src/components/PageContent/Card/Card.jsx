@@ -12,7 +12,7 @@ const Card = ({
   children,
   className,
   clickable = false,
-  Component = 'div',
+  Component = "div",
   eyebrow,
   horizontal = false,
   image,
@@ -28,8 +28,8 @@ const Card = ({
     clickable ? "rvt-card--clickable" : "",
     horizontal ? "rvt-card--horizontal" : "",
     raised ? "rvt-card--raised " : "",
-    className
-  ]
+    className,
+  ];
 
   return (
     <Component
@@ -56,8 +56,8 @@ const Card = ({
         {meta && <Meta testMode={testMode}>{meta}</Meta>}
       </div>
     </Component>
-  )
-}
+  );
+};
 
 Card.displayName = "Card";
 Card.propTypes = {
@@ -66,13 +66,13 @@ Card.propTypes = {
   /** Allows setting of container element */
   Component: PropTypes.string,
   /** Optional eyebrow to display */
-  eyebrow: PropTypes.oneOfType(PropTypes.element),
+  eyebrow: PropTypes.node,
   /** Display card in horizontal format */
   horizontal: PropTypes.bool,
   /** Optional image to display */
-  image: PropTypes.oneOfType(PropTypes.element),
+  image: PropTypes.element,
   /** Optional meta information */
-  meta: PropTypes.oneOfType(PropTypes.element),
+  meta: PropTypes.node,
   /** Add a box shadow to the card */
   raised: PropTypes.bool,
   /** [Developer] Adds data-testId attributes for component testing */
@@ -80,7 +80,7 @@ Card.propTypes = {
   /** The title of the Card */
   title: PropTypes.string.isRequired,
   /** Url for the title */
-  titleUrl: PropTypes.string
+  titleUrl: PropTypes.string,
 };
 
 const Eyebrow = ({ children, testMode }) => {
@@ -91,8 +91,8 @@ const Eyebrow = ({ children, testMode }) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 const Image = ({ children, testMode }) => {
   return (
@@ -102,8 +102,8 @@ const Image = ({ children, testMode }) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 const Meta = ({ children, testMode }) => {
   return (
@@ -113,7 +113,7 @@ const Meta = ({ children, testMode }) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 export default Rivet.rivetize(Card);

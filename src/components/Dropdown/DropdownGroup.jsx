@@ -23,7 +23,7 @@ DropdownGroup.propTypes = {
   /**
    * Optional header for a related group of menu items.
    */
-  label: PropTypes.string,
+  label: PropTypes.node,
 };
 
 export default DropdownGroup;

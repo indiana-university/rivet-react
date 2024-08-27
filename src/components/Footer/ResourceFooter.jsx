@@ -44,8 +44,8 @@ ResourceFooter.propTypes = {
   containerClas: PropTypes.string,
   /** A unique identifier for the resource footer */
   id: PropTypes.string,
-  /** The label for the resource footer (screen reader only) */
-  label: PropTypes.string,
+  /** The label for the resource footer */
+  label: PropTypes.node,
   /** The grid container size for content */
   size: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
 };

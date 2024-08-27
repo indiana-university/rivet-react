@@ -8,46 +8,46 @@ import * as React from "react";
 import * as Rivet from "../../util/Rivet";
 import { TestUtils } from "../../util/TestUtils";
 
-function getMonth (month, abbr){
-  switch(month) {
+function getMonth(month, abbr) {
+  switch (month) {
     case 1:
     case "1":
-      return abbr ? "Jan" : "January"
+      return abbr ? "Jan" : "January";
     case 2:
     case "2":
-      return abbr ? "Feb" : "Febuary"
+      return abbr ? "Feb" : "Febuary";
     case 3:
     case "3":
-      return abbr ? "Mar" : "March"
+      return abbr ? "Mar" : "March";
     case 4:
     case "4":
-      return abbr ? "Apr" : "April"
+      return abbr ? "Apr" : "April";
     case 5:
     case "5":
-      return "May"
+      return "May";
     case 6:
     case "6":
-      return "June"
+      return "June";
     case 7:
     case "7":
-      return "July"
+      return "July";
     case 8:
     case "8":
-      return abbr ? "Aug" : "August"
+      return abbr ? "Aug" : "August";
     case 9:
     case "9":
-      return abbr ? "Sept" : "September"
+      return abbr ? "Sept" : "September";
     case 10:
     case "10":
-      return abbr ? "Oct" : "October"
+      return abbr ? "Oct" : "October";
     case 11:
     case "11":
-      return abbr ? "Nov" : "November"
+      return abbr ? "Nov" : "November";
     case 12:
     case "12":
-      return abbr ? "Dec" : "December"
+      return abbr ? "Dec" : "December";
     default:
-      return month
+      return month;
   }
 }
 
@@ -61,12 +61,9 @@ const CalendarTile = ({
   year,
   ...attrs
 }) => {
-  const classNameArr = [
-    "rvt-cal",
-    className
-  ]
+  const classNameArr = ["rvt-cal", className];
   return (
-    <div 
+    <div
       className={classNames(classNameArr)}
       {...(testMode && { "data-testid": TestUtils.CalendarTile.container })}
       {...attrs}
@@ -84,18 +81,16 @@ const CalendarTile = ({
         {day}
         {children}
       </span>
-      {
-        year &&
-          <span
-            className="rvt-cal__year"
-            {...(testMode && { "data-testid": TestUtils.CalendarTile.year })}
-          >
-            {year}
-          </span>
-      }
-      
+      {year && (
+        <span
+          className="rvt-cal__year"
+          {...(testMode && { "data-testid": TestUtils.CalendarTile.year })}
+        >
+          {year}
+        </span>
+      )}
     </div>
-  )
+  );
 };
 
 CalendarTile.displayName = "CalendarTile";
@@ -106,11 +101,10 @@ CalendarTile.propTypes = {
   day: PropTypes.number,
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
-  /** The number of the month */
+  /** The number of the month or a textual representation of a month */
   month: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   /** The year */
-  year: PropTypes.string
+  year: PropTypes.number,
 };
-
 
 export default Rivet.rivetize(CalendarTile);

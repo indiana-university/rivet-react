@@ -11,9 +11,9 @@ import * as PropTypes from "prop-types";
 
 const inputClassName = (elementName, variant, grouped) => {
   const validationVariant = variant ? `rvt-validation-${variant}` : "";
-  const groupedClassName = grouped ? 'rvt-input-group__input' : "";
+  const groupedClassName = grouped ? "rvt-input-group__input" : "";
 
-  let elementClassName = ''
+  let elementClassName = "";
   switch (elementName) {
     case "input":
       elementClassName = "rvt-text-input";
@@ -37,15 +37,15 @@ const noteFragment = (id, variant, note) =>
 
 export const propTypes = {
   /** Element to group at the end of the input */
-  appendment: PropTypes.element,
+  appendment: PropTypes.node,
   /** The label for the input */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /** Visibility modifier for the input's label */
   labelVisibility: PropTypes.oneOf(["screen-reader-only"]),
   /** An optional note that will be displayed below the input */
   note: PropTypes.node,
   /** Element to group at the start of the input */
-  prependment: PropTypes.element,
+  prependment: PropTypes.node,
   /** Rivet style for inline validation */
   variant: PropTypes.oneOf(["success", "danger", "info", "warning"]),
 };
@@ -65,7 +65,7 @@ export const renderInput = (
   }
 ) => {
   const noteId = `${id}_note`;
-  const grouped = appendment ||  prependment;
+  const grouped = appendment || prependment;
 
   const inputProps = {
     id,
@@ -89,14 +89,17 @@ export const renderInput = (
         {label}
       </label>
       {!grouped && inputElement}
-      {
-        grouped &&
-          <div className='rvt-input-group'>
-            {prependment && <div className='rvt-input-group__prepend'>{prependment}</div>}
-            {inputElement}
-            {appendment && <div className='rvt-input-group__append'>{appendment}</div>}
-          </div>
-      }
+      {grouped && (
+        <div className="rvt-input-group">
+          {prependment && (
+            <div className="rvt-input-group__prepend">{prependment}</div>
+          )}
+          {inputElement}
+          {appendment && (
+            <div className="rvt-input-group__append">{appendment}</div>
+          )}
+        </div>
+      )}
       {note && noteFragment(noteId, variant, note)}
     </div>
   );

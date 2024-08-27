@@ -63,31 +63,32 @@ export const isRightMouseClick = (event) =>
 export const targets = (container, event) =>
   container && container.contains(event.target) && container !== event.target;
 
-const focusableElementList = 'button, a[href], input[type="radio"]:checked, input:not([type="radio"]), select, textarea, [tabindex]:not([tabindex="-1"])'
+const focusableElementList =
+  'button, a[href], input[type="radio"]:checked, input:not([type="radio"]), select, textarea, [tabindex]:not([tabindex="-1"])';
 
-export function getFocusableElements (element) {
-  const focusable = element.querySelectorAll(focusableElementList)
-  const focusableArray = Array.prototype.slice.call(focusable)
-  const enabledFocusable = focusableArray.filter(el => {
-    return !el.disabled
-  })
-  return enabledFocusable
+export function getFocusableElements(element) {
+  const focusable = element.querySelectorAll(focusableElementList);
+  const focusableArray = Array.prototype.slice.call(focusable);
+  const enabledFocusable = focusableArray.filter((el) => {
+    return !el.disabled;
+  });
+  return enabledFocusable;
 }
 
-export function stillFocused (event) {
-  const { relatedTarget, currentTarget } = event
+export function stillFocused(event) {
+  const { relatedTarget, currentTarget } = event;
   if (relatedTarget === null) {
-    return false
+    return false;
   }
 
-  let node = relatedTarget
+  let node = relatedTarget;
 
   while (node !== null) {
     if (node === currentTarget) {
-      return true
+      return true;
     }
-    node = node.parentNode
+    node = node.parentNode;
   }
 
-  return false
+  return false;
 }

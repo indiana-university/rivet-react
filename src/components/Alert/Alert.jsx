@@ -7,6 +7,7 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
+import { TestUtils } from "../util/TestUtils.js";
 
 /**
  * Use the alert component to show brief important messages to the user like errors, action confirmations, or system status.
@@ -19,6 +20,7 @@ const Alert = ({
   id = Rivet.shortuid(),
   className,
   children,
+  testMode = false,
   ...attrs
 }) => {
   const alertId = id;
@@ -36,6 +38,7 @@ const Alert = ({
         className="rvt-alert__dismiss"
         data-rvt-alert-close
         onClick={onDismiss}
+        {...(testMode && { "data-testid": TestUtils.Alert.dismiss })}
       >
         <span className="rvt-sr-only">Dismiss this alert</span>
         <svg
@@ -63,6 +66,7 @@ const Alert = ({
       className={classes}
       role="alert"
       data-rvt-alert={variant}
+      {...(testMode && { "data-testid": TestUtils.Alert.container })}
       {...ariaProps}
       {...attrs}
     >
@@ -81,6 +85,8 @@ Alert.propTypes = {
   isOpen: PropTypes.bool,
   /** A function that can be called to have side-effects when the alert dismissal button is selected */
   onDismiss: PropTypes.func,
+  /** [Developer] Adds data-testId attributes for component testing */
+  testMode: PropTypes.bool,
   /** An extremely brief title for the alert */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   /** The variant type which determines how the alert is styled */

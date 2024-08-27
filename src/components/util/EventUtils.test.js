@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import React from 'react';
+import React from "react";
 import {
   isEscapeKeyPress,
   isKeyEvent,
@@ -11,7 +11,7 @@ import {
   isTabKeyPress,
   isUnhandledKeyPress,
   keys,
-  stillFocused
+  stillFocused,
 } from "./EventUtils";
 
 export const createKeyboardEvent = (key) => ({
@@ -91,8 +91,8 @@ describe("Event", () => {
     it("Still focus shoudl return false if if relative target is null", () => {
       const event = {
         currentTarget: <div class="">test</div>,
-        relatedTarget: null
-      }
+        relatedTarget: null,
+      };
       expect(stillFocused(event)).toBe(false);
     });
   });

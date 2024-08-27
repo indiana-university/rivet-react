@@ -8,6 +8,9 @@ import user from "@testing-library/user-event";
 import React from "react";
 
 import Alert from "./Alert";
+import { TestUtils } from "../util/TestUtils.js";
+
+const testIds = TestUtils.Alert;
 
 describe("<Alert />", () => {
   const testId = "the_id";
@@ -118,18 +121,22 @@ describe("<Alert />", () => {
   });
 
   describe("Options", () => {
+    it("default is test mode off", () => {
+      render(<Alert title={titleText} variant="info" />);
+      const element = screen.queryByTestId(testIds.container);
+      expect(element).not.toBeInTheDocument();
+    });
     it("if title set, should have label by id", () => {
-      render(
-        <Alert id={testId} title={titleText}  />
+      render(<Alert id={testId} title={titleText} />);
+
+      expect(screen.getByRole("alert")).toHaveAttribute(
+        "aria-labelledby",
+        `${testId}-title`
       );
-      
-      expect(screen.getByRole("alert")).toHaveAttribute("aria-labelledby", `${testId}-title`);
     });
     it("if no title set, should not have label by id", () => {
-      render(
-        <Alert id={testId} />
-      );
-      
+      render(<Alert id={testId} />);
+
       expect(screen.getByRole("alert")).not.toHaveAttribute("aria-labelledby");
     });
   });

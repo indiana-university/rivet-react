@@ -100,7 +100,7 @@ File.propTypes = {
     PropTypes.object,
   ]),
   /** The text to display on the file selection button, by default this is 'Upload multiple files' for multiple selection component or 'Upload a file' */
-  label: PropTypes.string,
+  label: PropTypes.node,
   /** Whether to allow multiple files to be selected */
   multiple: PropTypes.bool,
   /** custom behavior when the file selection changes */

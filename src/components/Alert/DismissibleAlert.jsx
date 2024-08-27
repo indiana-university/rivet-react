@@ -9,13 +9,7 @@ import * as Rivet from "../util/Rivet";
 import Alert from "./Alert";
 
 /** The `DismissibleAlert` allows the user to remove the alert from view. This component provides a close button and implements visibility state management for a standard `Alert`. */
-const DismissibleAlert = ({
-  id = Rivet.shortuid(),
-  onDismiss,
-  title,
-  variant,
-  ...other
-}) => {
+const DismissibleAlert = ({ onDismiss, ...other }) => {
   const [isOpen, setOpen] = useState(true);
 
   const handleDismiss = () => {
@@ -23,15 +17,7 @@ const DismissibleAlert = ({
     onDismiss && onDismiss();
   };
 
-  return (
-    <Alert
-      title={title}
-      variant={variant}
-      onDismiss={handleDismiss}
-      isOpen={isOpen}
-      {...other}
-    />
-  );
+  return <Alert onDismiss={handleDismiss} isOpen={isOpen} {...other} />;
 };
 
 DismissibleAlert.displayName = "DismissableAlert";
@@ -40,6 +26,8 @@ DismissibleAlert.propTypes = {
   id: PropTypes.string,
   /** A function that can be called to have side-effects when the alert is dismissed */
   onDismiss: PropTypes.func,
+  /** [Developer] Adds data-testId attributes for component testing */
+  testMode: PropTypes.bool,
   /** An extremely brief title for the alert */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   /** The variant type which determines how the alert is styled */
