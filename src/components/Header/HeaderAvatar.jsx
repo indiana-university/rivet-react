@@ -7,10 +7,11 @@ import classNames from "classnames";
 import * as Rivet from "../util/Rivet";
 import PropTypes from "prop-types";
 import { TestUtils } from "../util/TestUtils";
-import { Button } from "../Button"
+import { Button } from "../Button";
 import Avatar from "../PageContent/Avatar/Avatar";
 
 const HeaderAvatar = ({
+  className,
   username,
   shortName,
   logoutClick,
@@ -26,7 +27,11 @@ const HeaderAvatar = ({
   );
   return (
     <div
-      className="rvt-flex rvt-items-center rvt-m-left-md rvt-p-bottom-md rvt-p-bottom-none-lg-up"
+      className={classNames(
+        "rvt-flex rvt-items-center rvt-m-left-md rvt-p-bottom-md rvt-p-bottom-none-lg-up",
+        className
+      )}
+      data-testid={TestUtils.Header.avatarOuterDivTestId}
       {...attr}
     >
       <Avatar
@@ -40,30 +45,16 @@ const HeaderAvatar = ({
       >
         {username}
       </div>
-      {
-        logoutURL &&
-          (
-            <a
-              className="rvt-ts-14"
-              href={logoutURL}
-              onClick={logoutClick}
-            >
-              Log out
-            </a>
-          )
-      }
-      {
-        !logoutURL && logoutClick &&
-          (
-            <Button
-              onClick={logoutClick}
-              size="small"
-              variant="plain"
-            >
-              Log out
-            </Button>
-          )
-      }
+      {logoutURL && (
+        <a className="rvt-ts-14" href={logoutURL} onClick={logoutClick}>
+          Log out
+        </a>
+      )}
+      {!logoutURL && logoutClick && (
+        <Button onClick={logoutClick} size="small" variant="plain">
+          Log out
+        </Button>
+      )}
     </div>
   );
 };
