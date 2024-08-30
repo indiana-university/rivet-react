@@ -37,6 +37,7 @@ const Card = ({
     <Component
       className={classNames(classNameArr)}
       onClick={clickable && onClick ? onClick : null}
+      style={clickable && onClick ? { cursor: "pointer" } : null}
       {...(testMode && { "data-testid": TestUtils.Card.container })}
       {...attrs}
     >
