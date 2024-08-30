@@ -43,6 +43,7 @@ export const TestUtils = {
     secondaryNavTestId: "secondary-nav__testid",
     secondaryNavContainerTestId: "nav-secondary-container__testid",
     secondaryNavToggleTestId: "secondary-nav-toggle__testid",
+    avatarOuterDivTestId: "avatar-outer-div__testid",
     avatarShortNameTestId: "avatar-short-name__testid",
     avatarUsernameTestId: "avatar-username__testid",
     headerWidthDivTestId: "header-width__testid",
