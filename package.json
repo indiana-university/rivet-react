@@ -138,7 +138,7 @@
     "@testing-library/user-event": "14.5.2",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
-    "@vitejs/plugin-react": "4.0.3",
+    "@vitejs/plugin-react": "4.3.1",
     "babel-loader": "8.2.5",
     "core-js": "3.25.5",
     "css-loader": "6.7.1",
@@ -154,9 +154,9 @@
     "react-display-name": "0.2.5",
     "react-docgen": "5.4.3",
     "react-styleguidist": "13.0.0",
-    "semantic-release": "21.0.7",
+    "semantic-release": "24.1.0",
     "style-loader": "3.3.1",
-    "vite": "4.4.3",
+    "vite": "5.3.4",
     "vite-plugin-externalize-deps": "0.1.5"
   },
   "release": {
