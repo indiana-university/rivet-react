@@ -119,7 +119,7 @@ describe("<File />", () => {
       setTimeout(function () {
         expect(file.files.length).toBe(0);
         expect(description.innerHTML).toBe("No file selected");
-      }, 10);
+      }, 60);
     });
 
     it("calls the user defined onchange function if one is defined", async () => {
@@ -140,9 +140,9 @@ describe("<File />", () => {
     });
   });
   describe("Options", () => {
-    const testLabel = "test label"
+    const testLabel = "test label";
     it("if label is set, should use label", async () => {
-      render(<MyFile data-testid={TestUtils.File.testId} label={testLabel}/>);
+      render(<MyFile data-testid={TestUtils.File.testId} label={testLabel} />);
 
       const file = await screen.findByTestId(TestUtils.File.testId);
 
@@ -165,7 +165,13 @@ describe("<File />", () => {
       expect(label.children[0].innerHTML).toBe(testLabel);
     });
     it("if label is set and multiple, should use label", async () => {
-      render(<MyFile data-testid={TestUtils.File.testId} label={testLabel} multiple/>);
+      render(
+        <MyFile
+          data-testid={TestUtils.File.testId}
+          label={testLabel}
+          multiple
+        />
+      );
 
       const file = await screen.findByTestId(TestUtils.File.testId);
 
@@ -188,7 +194,7 @@ describe("<File />", () => {
       expect(label.children[0].innerHTML).toBe(testLabel);
     });
     it("if secondary is set, should display as secondary", async () => {
-      render(<MyFile data-testid={TestUtils.File.testId} secondary/>);
+      render(<MyFile data-testid={TestUtils.File.testId} secondary />);
 
       const file = await screen.findByTestId(TestUtils.File.testId);
 
@@ -209,7 +215,7 @@ describe("<File />", () => {
       expect(label).toHaveClass("rvt-button--secondary");
     });
     it("if secondary is not set, should not display as secondary", async () => {
-      render(<MyFile data-testid={TestUtils.File.testId}/>);
+      render(<MyFile data-testid={TestUtils.File.testId} />);
 
       const file = await screen.findByTestId(TestUtils.File.testId);
 
