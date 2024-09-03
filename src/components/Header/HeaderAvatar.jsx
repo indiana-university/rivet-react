@@ -11,6 +11,7 @@ import { Button } from "../Button";
 import Avatar from "../PageContent/Avatar/Avatar";
 
 const HeaderAvatar = ({
+  className,
   username,
   shortName,
   logoutClick,
@@ -26,7 +27,11 @@ const HeaderAvatar = ({
   );
   return (
     <div
-      className="rvt-flex rvt-items-center rvt-m-left-md rvt-p-bottom-md rvt-p-bottom-none-lg-up"
+      className={classNames(
+        "rvt-flex rvt-items-center rvt-m-left-md rvt-p-bottom-md rvt-p-bottom-none-lg-up",
+        className
+      )}
+      data-testid={TestUtils.Header.avatarOuterDivTestId}
       {...attr}
     >
       <Avatar
