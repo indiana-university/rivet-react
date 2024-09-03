@@ -3,6 +3,7 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import classNames from "classnames";
+import { Button } from "../../Button";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
@@ -16,6 +17,7 @@ const Card = ({
   eyebrow,
   horizontal = false,
   image,
+  onClick,
   meta,
   raised = false,
   testMode = false,
@@ -34,6 +36,8 @@ const Card = ({
   return (
     <Component
       className={classNames(classNameArr)}
+      onClick={clickable && onClick ? onClick : null}
+      style={clickable && onClick ? { cursor: "pointer" } : null}
       {...(testMode && { "data-testid": TestUtils.Card.container })}
       {...attrs}
     >
@@ -44,8 +48,17 @@ const Card = ({
           className="rvt-card__title"
           {...(testMode && { "data-testid": TestUtils.Card.title })}
         >
-          {titleUrl && <a href={titleUrl}>{title}</a>}
-          {!titleUrl && <span>{title}</span>}
+          {titleUrl ? (
+            <a href={titleUrl} onClick={onClick}>
+              {title}
+            </a>
+          ) : onClick ? (
+            <Button onClick={onClick} variant="plain">
+              {title}
+            </Button>
+          ) : (
+            <span>{title}</span>
+          )}
         </h2>
         <div
           className="rvt-card__content"
@@ -73,6 +86,8 @@ Card.propTypes = {
   image: PropTypes.element,
   /** Optional meta information */
   meta: PropTypes.node,
+  /** Optional onClick function (applied to title or to entire card if clickable) */
+  onClick: PropTypes.func,
   /** Add a box shadow to the card */
   raised: PropTypes.bool,
   /** [Developer] Adds data-testId attributes for component testing */

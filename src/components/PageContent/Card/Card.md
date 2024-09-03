@@ -31,6 +31,7 @@ View the [Rivet documentation for Card](https://rivet.uits.iu.edu/components/car
     </Card>
 ```
 <!-- prettier-ignore-end -->
+
 <!-- prettier-ignore-start -->
 ```jsx
     const image = <img class="rvt-width-sm" src="https://rivet.iu.edu/img/placeholder/list-card-3.webp" alt="Smiling students sitting outside on a bench" />;
@@ -46,6 +47,7 @@ View the [Rivet documentation for Card](https://rivet.uits.iu.edu/components/car
     </Card>
 ```
 <!-- prettier-ignore-end -->
+
 <!-- prettier-ignore-start -->
 ```jsx
     const image = <img class="rvt-width-sm" src="https://rivet.iu.edu/img/placeholder/list-card-3.webp" alt="Smiling students sitting outside on a bench" />;
@@ -62,6 +64,7 @@ View the [Rivet documentation for Card](https://rivet.uits.iu.edu/components/car
     </Card>
 ```
 <!-- prettier-ignore-end -->
+
 <!-- prettier-ignore-start -->
 ```jsx
     const image = <img class="rvt-width-sm" src="https://rivet.iu.edu/img/placeholder/list-card-3.webp" alt="Smiling students sitting outside on a bench" />;
@@ -77,6 +80,22 @@ View the [Rivet documentation for Card](https://rivet.uits.iu.edu/components/car
     </Card>
 ```
 <!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
+```jsx
+    const image = <img class="rvt-width-sm" src="https://rivet.iu.edu/img/placeholder/list-card-3.webp" alt="Smiling students sitting outside on a bench" />;
+    const meta = <time>November 5, 1955</time>;
+    <Card
+        image={image}
+        title="Card with onClick handler"
+        onClick={e => {e.preventDefault(); alert('clicked');}}
+        meta={meta}
+    >
+        <p>Using an onClick handler. This can be used with things such as react-router's navigate function.</p>
+    </Card>
+```
+<!-- prettier-ignore-end -->
+
 <!-- prettier-ignore-start -->
 ```jsx
     <ul class="rvt-list-plain rvt-flow">
@@ -110,6 +129,7 @@ View the [Rivet documentation for Card](https://rivet.uits.iu.edu/components/car
     </ul>
 ```
 <!-- prettier-ignore-end -->
+
 <!-- prettier-ignore-start -->
 ```jsx
     <div class="rvt-row">
