@@ -8,7 +8,6 @@ import React from "react";
 
 import Table from "./Table";
 import { TestUtils } from "../util/TestUtils.js";
-import Input from "../Input/Input.jsx";
 
 describe("<Table />", () => {
   const TableContent = () => (
