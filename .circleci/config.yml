@@ -5,8 +5,8 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@5.1.0
-  codecov: codecov/codecov@3.2.5
+  node: circleci/node@6.1.0
+  codecov: codecov/codecov@4.1.0
 
 # Aliases are shorthand references for common settings.
 aliases:
@@ -22,7 +22,7 @@ aliases:
 # Default settings for all jobs
 defaults: &defaults
   docker:
-    - image: cimg/node:18.12.1
+    - image: cimg/node:20.17.0
       environment:
         GIT_AUTHOR_NAME: iubot
         GIT_AUTHOR_EMAIL: iubot@iu.edu
