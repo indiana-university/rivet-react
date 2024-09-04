@@ -58,7 +58,7 @@ Billboard.propTypes = {
   variant: PropTypes.oneOf(["center", "reverse", "standard"]),
 };
 
-const BillboardImage = ({ children, testMode = false }) => {
+const BillboardImage = ({ children, testMode }) => {
   return (
     <div
       className="rvt-billboard__image"
@@ -69,7 +69,7 @@ const BillboardImage = ({ children, testMode = false }) => {
   );
 };
 
-const BillboardContent = ({ children, testMode = false }) => {
+const BillboardContent = ({ children, testMode }) => {
   return (
     <div
       className="rvt-billboard__content rvt-flow"

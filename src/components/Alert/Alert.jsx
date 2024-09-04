@@ -65,7 +65,6 @@ const Alert = ({
       id={alertId}
       className={classes}
       role="alert"
-      aria-labelledby={titleId}
       data-rvt-alert={variant}
       {...(testMode && { "data-testid": TestUtils.Alert.container })}
       {...ariaProps}

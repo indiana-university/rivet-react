@@ -74,6 +74,28 @@ describe("<HeaderNavigation />", () => {
     });
   });
 
+  describe("Rendering", () => {
+    const avatarUsername = "johndoe";
+    const avatarShortName = "jd";
+    it("if avater is child should not render", () => {
+      const avatar = (
+        <Header.Avatar
+          username={avatarUsername}
+          shortName={avatarShortName}
+          logoutURL={"/logout"}
+        />
+      );
+      render(
+        <Header.Navigation>
+          {avatar}
+        </Header.Navigation>
+      );
+
+      expect(screen.queryByText(avatarUsername)).not.toBeInTheDocument();
+      expect(screen.queryByText(avatarShortName)).not.toBeInTheDocument();
+    });
+  });
+
   describe("Toggle behavior", () => {
     beforeEach(() => {
       render(

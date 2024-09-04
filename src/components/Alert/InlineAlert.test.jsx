@@ -33,6 +33,12 @@ describe("<InlineAlert />", () => {
   });
 
   describe("Styling", () => {
+    it("default should specify style: info", () => {
+      render(<InlineAlert>{bodyText}</InlineAlert>);
+      const element = screen.getByText(bodyText).closest("div");
+      expect(element).toHaveClass("rvt-inline-alert--info");
+      expect(element).not.toHaveClass(standaloneClassName);
+    });
     it("should specify style: error", () => {
       render(<InlineAlert variant="danger">{bodyText}</InlineAlert>);
       const element = screen.getByText(bodyText).closest("div");

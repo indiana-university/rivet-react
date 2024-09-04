@@ -9,7 +9,7 @@ import * as Rivet from "../util/Rivet";
 import Alert from "./Alert";
 
 /** The `DismissibleAlert` allows the user to remove the alert from view. This component provides a close button and implements visibility state management for a standard `Alert`. */
-const DismissibleAlert = ({ onDismiss = () => {}, ...other }) => {
+const DismissibleAlert = ({ onDismiss, ...other }) => {
   const [isOpen, setOpen] = useState(true);
 
   const handleDismiss = () => {

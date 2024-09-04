@@ -63,9 +63,9 @@ const Col = ({
 );
 
 Col.displayName = "Col";
-const validInts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-const validStrs = validInts.map(i => i + "")
-const validWidths = [...validInts, ...validStrs]
+const validInts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const validStrs = validInts.map((i) => i + "");
+const validWidths = [...validInts, ...validStrs];
 Col.propTypes = {
   /** A unique identifier for the column */
   id: PropTypes.string,
