@@ -8,6 +8,7 @@ import React from "react";
 
 import Table from "./Table";
 import { TestUtils } from "../util/TestUtils.js";
+import Input from "../Input/Input.jsx";
 
 describe("<Table />", () => {
   const TableContent = () => (
@@ -68,6 +69,15 @@ describe("<Table />", () => {
 
       const table = await screen.findByTestId(TestUtils.Table.testId);
       expect(table).toHaveClass("rvt-table");
+    });
+
+    it("should render with id", () => {
+      render(
+        <Table id="the_id">
+          <TableContent />
+        </Table>
+      );
+      expect(screen.getByRole("table", {})).toHaveAttribute("id", "the_id");
     });
 
     it("should render a striped table", async () => {
