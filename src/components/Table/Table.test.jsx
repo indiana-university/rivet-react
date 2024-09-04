@@ -70,6 +70,15 @@ describe("<Table />", () => {
       expect(table).toHaveClass("rvt-table");
     });
 
+    it("should render with id", () => {
+      render(
+        <Table id="the_id">
+          <TableContent />
+        </Table>
+      );
+      expect(screen.getByRole("table", {})).toHaveAttribute("id", "the_id");
+    });
+
     it("should render a striped table", async () => {
       render(
         <Table variant="stripes" data-testid={TestUtils.Table.testId}>

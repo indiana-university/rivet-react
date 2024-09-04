@@ -122,7 +122,7 @@
     "@react-aria/overlays": "3.14.0",
     "@react-aria/utils": "3.17.0",
     "classnames": "2.3.1",
-    "rivet-core": "2.5.0"
+    "rivet-core": "2.8.1"
   },
   "peerDependencies": {
     "react": ">= 16",
