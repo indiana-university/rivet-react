@@ -29,7 +29,7 @@ const Table = ({
     className
   );
   return (
-    <table className={classes} {...attrs}>
+    <table id={id} className={classes} {...attrs}>
       {children}
     </table>
   );
