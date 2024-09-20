@@ -3,13 +3,15 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import BaseHeaderNavigation from "./BaseHeaderNavigation";
 import BaseHeaderMenu from "./BaseHeaderMenu";
 import { TestUtils } from "../util/TestUtils";
 import userEvent from "@testing-library/user-event";
+import BaseHeaderMenuItem from "./BaseHeaderMenuItem";
+import Header from "./Header";
 
 const user = userEvent.setup();
 
@@ -22,21 +24,15 @@ describe("<BaseHeaderNavigation />", () => {
     beforeEach(() => {
       render(
         <BaseHeaderNavigation testMode>
-          <ul>
-            <li>
-              <a href={"#"}>Nav item one</a>
-            </li>
-            <li>
-              <a href={"#"}>Nav item two</a>
-            </li>
-            <li>
-              <BaseHeaderMenu label="Nav item three">
-                <a href={"#"}>Sub item one</a>
-                <a href={"#"}>Sub item two</a>
-                <a href={"#"}>Sub item three</a>
-              </BaseHeaderMenu>
-            </li>
-          </ul>
+          <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
+          <BaseHeaderMenuItem itemUrl="#">Nav item two</BaseHeaderMenuItem>
+          <BaseHeaderMenuItem>
+            <BaseHeaderMenu label="Nav item three">
+              <a href={"#"}>Sub item one</a>
+              <a href={"#"}>Sub item two</a>
+              <a href={"#"}>Sub item three</a>
+            </BaseHeaderMenu>
+          </BaseHeaderMenuItem>
         </BaseHeaderNavigation>
       );
     });
@@ -55,17 +51,42 @@ describe("<BaseHeaderNavigation />", () => {
         screen.getByTestId(TestUtils.Header.headerNavTestId)
       ).toHaveAttribute("hidden", ""); // testing-library assumes the value of a custom HTML attribute to be "".
     });
+
+    it("should hoist search and avatar components", () => {
+      cleanup();
+      const { container } = render(
+        <BaseHeaderNavigation testMode>
+          <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
+          <Header.Search action={"/mySearchURL"} method={"post"} />
+          <Header.Avatar
+            username={"johndoe"}
+            shortName={"jd"}
+            logoutURL={"/logout"}
+          />
+        </BaseHeaderNavigation>
+      );
+
+      // get the navigation element
+      const nav = container.querySelector("nav");
+      // nav tag should contain a ul, a div for search, and a div for the avatar
+      expect(nav.children.length).toBe(3);
+      const ul = nav.querySelector("ul");
+      // one item in the list
+      expect(ul.children.length).toBe(1);
+      // search is outside list
+      expect(ul.querySelector("#search")).toBe(null);
+      expect(nav.querySelector("#search")).not.toBe(null);
+      // avatar is outside the list
+      expect(ul.querySelector(".rvt-avatar")).toBe(null);
+      expect(nav.querySelector(".rvt-avatar")).not.toBe(null);
+    });
   });
 
   describe("Toggle behavior", () => {
     beforeEach(() => {
       render(
         <BaseHeaderNavigation testMode>
-          <ul>
-            <li>
-              <a href={"#"}>Nav item one</a>
-            </li>
-          </ul>
+          <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
         </BaseHeaderNavigation>
       );
     });
@@ -175,11 +196,7 @@ describe("<BaseHeaderNavigation />", () => {
     beforeEach(() => {
       render(
         <BaseHeaderNavigation testMode>
-          <ul>
-            <li>
-              <a href={"#"}>Nav item one</a>
-            </li>
-          </ul>
+          <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
         </BaseHeaderNavigation>
       );
     });
@@ -206,11 +223,7 @@ describe("<BaseHeaderNavigation />", () => {
     it("should default the aria-expanded attribute to false", () => {
       render(
         <BaseHeaderNavigation testMode>
-          <ul>
-            <li>
-              <a href={"#"}>Nav item one</a>
-            </li>
-          </ul>
+          <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
         </BaseHeaderNavigation>
       );
       expect(
@@ -221,11 +234,7 @@ describe("<BaseHeaderNavigation />", () => {
     it("should change the aria-expanded attribute to true when the nav is opened", async () => {
       render(
         <BaseHeaderNavigation testMode>
-          <ul>
-            <li>
-              <a href={"#"}>Nav item one</a>
-            </li>
-          </ul>
+          <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
         </BaseHeaderNavigation>
       );
       await toggleNavThroughClick(); // open the nav

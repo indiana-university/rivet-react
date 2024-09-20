@@ -9,6 +9,8 @@ import * as Rivet from "../util/Rivet";
 import Icon, { IconNames } from "../util/RivetIcons";
 import { useEffect, useRef } from "react";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
+import Header from "./Header";
+import BaseHeaderMenuItem from "./BaseHeaderMenuItem";
 import {
   isEscapeKeyPress,
   isMouseEvent,
@@ -65,6 +67,17 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
     }
   };
 
+  // Avatar and Search components need to be rendered inside the nav tag, but outside of the list
+  const listItems = [];
+  const otherHeaderMenuItems = [];
+  React.Children.forEach(children, (child) => {
+    if ([Header.Avatar, Header.Search].includes(child.type)) {
+      otherHeaderMenuItems.push(child);
+    } else {
+      listItems.push(child);
+    }
+  });
+
   return (
     <div ref={wrapperDivRef} onKeyDown={handleEvent}>
       <button
@@ -72,7 +85,9 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
         onClick={toggleNavigation}
         ref={toggleButtonRef}
-        {...(testMode && { "data-testid": TestUtils.Header.navButtonToggleTestId })}
+        {...(testMode && {
+          "data-testid": TestUtils.Header.navButtonToggleTestId,
+        })}
       >
         <span className="rvt-sr-only">Menu</span>
         <Icon name={IconNames.TOGGLE_OPEN} />
@@ -84,9 +99,8 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
         hidden={!isNavMenuOpen}
         {...(testMode && { "data-testid": TestUtils.Header.headerNavTestId })}
       >
-        <ul className={"rvt-header-menu__list"}>
-          {children}
-        </ul>
+        <ul className={"rvt-header-menu__list"}>{listItems}</ul>
+        {otherHeaderMenuItems}
       </nav>
     </div>
   );
@@ -95,8 +109,23 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
 BaseHeaderNavigation.displayName = "BaseHeaderNavigation";
 
 BaseHeaderNavigation.propTypes = {
+  /** All children must be BaseHeaderMenuItem, Header.Avatar, or Header.Search */
+  children: (props, propName) => {
+    let propValue = props[propName];
+    if (!Array.isArray(propValue)) {
+      propValue = [propValue];
+    }
+    const validChildren = [BaseHeaderMenuItem, Header.Avatar, Header.Search];
+    propValue.forEach((value) => {
+      if (!validChildren.includes(value.type)) {
+        throw new Error(
+          `children must only contain ${validChildren} components`
+        );
+      }
+    });
+  },
   /** [Developer] Adds data-testId attributes for component testing */
-  testMode: PropTypes.bool
+  testMode: PropTypes.bool,
 };
 
 export default Rivet.rivetize(BaseHeaderNavigation);
