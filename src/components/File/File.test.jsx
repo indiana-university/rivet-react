@@ -116,10 +116,10 @@ describe("<File />", () => {
       fireEvent.click(resetButton);
 
       // setTimeout for React to do the extra rendering that we dispatched with forceUpdate in File.jsx
-      setTimeout(function () {
-        expect(file.files.length).toBe(0);
-        expect(description.innerHTML).toBe("No file selected");
-      }, 60);
+      await new Promise((r) => setTimeout(r, 120));
+
+      expect(file.files.length).toBe(0);
+      expect(description.innerHTML).toBe("No file selected");
     });
 
     it("calls the user defined onchange function if one is defined", async () => {
