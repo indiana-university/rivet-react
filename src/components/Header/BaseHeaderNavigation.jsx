@@ -99,7 +99,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
         hidden={!isNavMenuOpen}
         {...(testMode && { "data-testid": TestUtils.Header.headerNavTestId })}
       >
-        <ul className={"rvt-header-menu__list"}>{listItems}</ul>
+        <ul className="rvt-header-menu__list">{listItems}</ul>
         {otherHeaderMenuItems}
       </nav>
     </div>
