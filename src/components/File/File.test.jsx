@@ -91,13 +91,14 @@ describe("<File />", () => {
     it("should allow resetting if embedded in a form", async () => {
       const fileName = "foo.txt";
       let fileObject = new File(["foo"], fileName, { type: "text/plain" });
+      const resetId = "reset-id";
       render(
         <form>
           <MyFile
             id={TestUtils.File.testId}
             data-testid={TestUtils.File.testId}
           />
-          <input type="reset" data-testid="reset-id" value="Reset" />
+          <input type="reset" data-testid={resetId} value="Reset" />
         </form>
       );
 
@@ -112,14 +113,14 @@ describe("<File />", () => {
 
       expect(description.innerHTML).toBe(fileName);
 
-      const resetButton = await screen.findByTestId("reset-id");
+      const resetButton = await screen.findByTestId(resetId);
       fireEvent.click(resetButton);
 
       // setTimeout for React to do the extra rendering that we dispatched with forceUpdate in File.jsx
-      await new Promise((r) => setTimeout(r, 120));
-
-      expect(file.files.length).toBe(0);
-      expect(description.innerHTML).toBe("No file selected");
+      setTimeout(function () {
+        expect(file.files.length).toBe(0);
+        expect(description.innerHTML).toBe("No file selected");
+      }, 60);
     });
 
     it("calls the user defined onchange function if one is defined", async () => {
