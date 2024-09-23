@@ -71,10 +71,10 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
   const listItems = [];
   const otherHeaderMenuItems = [];
   React.Children.forEach(children, (child) => {
-    if ([Header.Avatar, Header.Search].includes(child.type)) {
-      otherHeaderMenuItems.push(child);
-    } else {
+    if ([BaseHeaderMenuItem].includes(child.type)) {
       listItems.push(child);
+    } else {
+      otherHeaderMenuItems.push(child);
     }
   });
 
