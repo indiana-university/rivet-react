@@ -62,24 +62,29 @@ describe("<BaseHeader />", () => {
     it("should render all provided children", () => {
       const secondaryNavigation = (
         <BaseHeaderNavigationSecondary title={"Component Library"}>
-          <BaseHeaderMenuItem itemUrl="#">Secondary nav sub item one</BaseHeaderMenuItem>
-          <BaseHeaderMenuItem itemUrl="#">Secondary nav sub item two</BaseHeaderMenuItem>
+          <BaseHeaderMenuItem itemUrl="#">
+            Secondary nav sub item one
+          </BaseHeaderMenuItem>
+          <BaseHeaderMenuItem itemUrl="#">
+            Secondary nav sub item two
+          </BaseHeaderMenuItem>
         </BaseHeaderNavigationSecondary>
       );
 
       render(
-        <BaseHeader
-          title={testTitle}
-          secondaryNavigation={secondaryNavigation}
-        >
+        <BaseHeader title={testTitle} secondaryNavigation={secondaryNavigation}>
           <BaseHeaderNavigation>
             <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
             <BaseHeaderMenuItem itemUrl="#">Nav item two</BaseHeaderMenuItem>
-            <BaseHeaderMenu label="Nav item three">
-              <BaseHeaderMenuItem href={"#"}>Sub item one</BaseHeaderMenuItem>
-              <BaseHeaderMenuItem href={"#"}>Sub item two</BaseHeaderMenuItem>
-              <BaseHeaderMenuItem href={"#"}>Sub item three</BaseHeaderMenuItem>
-            </BaseHeaderMenu>
+            <BaseHeaderMenuItem>
+              <BaseHeaderMenu label="Nav item three">
+                <BaseHeaderMenuItem href={"#"}>Sub item one</BaseHeaderMenuItem>
+                <BaseHeaderMenuItem href={"#"}>Sub item two</BaseHeaderMenuItem>
+                <BaseHeaderMenuItem href={"#"}>
+                  Sub item three
+                </BaseHeaderMenuItem>
+              </BaseHeaderMenu>
+            </BaseHeaderMenuItem>
           </BaseHeaderNavigation>
         </BaseHeader>
       );

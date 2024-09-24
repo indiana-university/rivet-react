@@ -34,9 +34,11 @@ const File = ({
 
   const fileInput = innerRef ? React.useRef(innerRef) : React.useRef(null);
 
-  const form = fileInput.current && fileInput.current.form;
+  let form = fileInput.current?.form;
+
   if (form) {
     form.onreset = () => {
+      fileInput.current.value = null;
       forceUpdate();
     };
   }

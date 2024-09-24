@@ -79,7 +79,7 @@ InlineAlert.propTypes = {
   /** A unique identifier for the inline alert */
   id: PropTypes.string,
   /** The variant type which determines how the alert is styled */
-  variant: PropTypes.oneOf(["info", "success", "warning", "danger"]).isRequired,
+  variant: PropTypes.oneOf(["info", "success", "warning", "danger"]),
   /** If set, a standalone inline alert has a background, otherwise it does not */
   standalone: PropTypes.bool,
 };

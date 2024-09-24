@@ -15,7 +15,7 @@ import { TestUtils } from "../util/TestUtils.js";
 const Alert = ({
   title,
   onDismiss,
-  variant,
+  variant = "info",
   isOpen = true,
   id = Rivet.shortuid(),
   className,
@@ -88,9 +88,9 @@ Alert.propTypes = {
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
   /** An extremely brief title for the alert */
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /** The variant type which determines how the alert is styled */
-  variant: PropTypes.oneOf(["info", "success", "warning", "danger"]).isRequired,
+  variant: PropTypes.oneOf(["info", "success", "warning", "danger"]),
 };
 
 export default Rivet.rivetize(Alert);

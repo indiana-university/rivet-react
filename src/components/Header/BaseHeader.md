@@ -62,9 +62,9 @@ const secondaryNavigation = <BaseHeaderNavigationSecondary title="Component Libr
                     <BaseHeaderMenuItem itemUrl="#" subMenu>Sub item three</BaseHeaderMenuItem>
                 </BaseHeaderMenu>
             </BaseHeaderMenuItem>
+            <Header.Search action={"/mySearchURL"} method={"post"} />
+            <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"} />
     </BaseHeaderNavigation>
-    <Header.Search action={"/mySearchURL"} method={"post"} />
-    <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"} />
 </BaseHeader>
 
 ```
