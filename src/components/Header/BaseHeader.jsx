@@ -15,12 +15,14 @@ const BaseHeader = ({
   className,
   title,
   subtitle,
-  headerWidth = "xl",
+  headerWidth = "fluid",
   homeUrl,
   secondaryNavigation,
   testMode = false,
   ...attrs
 }) => {
+  const widthClass =
+    headerWidth === "fluid" ? "rvt-p-lr-md" : "rvt-container-" + headerWidth;
   const titleBlock = (
     <>
       <div className="rvt-lockup__tab">
@@ -31,7 +33,7 @@ const BaseHeader = ({
         <span className="rvt-lockup__subtitle">{subtitle}</span>
       </div>
     </>
-  )
+  );
   return (
     <header {...attrs} className={classNames("rvt-header-wrapper", className)}>
       <a
@@ -43,35 +45,37 @@ const BaseHeader = ({
       </a>
       <div className="rvt-header-global">
         <div
-          className={"rvt-container-" + headerWidth}
-          {...(testMode && { "data-testid": TestUtils.Header.headerWidthDivTestId })}
+          className={widthClass}
+          {...(testMode && {
+            "data-testid": TestUtils.Header.headerWidthDivTestId,
+          })}
         >
           <div className="rvt-header-global__inner">
             <div className="rvt-header-global__logo-slot">
-              {
-                homeUrl &&
-                  <a
-                    className="rvt-lockup"
-                    href={homeUrl}
-                    {...(testMode && { "data-testid": TestUtils.Header.anchorTestId })}
-                  >
-                    {titleBlock}
-                  </a>
-              }
-              {
-                !homeUrl &&
-                  <div
-                    className="rvt-lockup"
-                    {...(testMode && { "data-testid": TestUtils.Header.anchorTestId })}
-                  >
-                    {titleBlock}
-                  </div>
-                }
+              {homeUrl && (
+                <a
+                  className="rvt-lockup"
+                  href={homeUrl}
+                  {...(testMode && {
+                    "data-testid": TestUtils.Header.anchorTestId,
+                  })}
+                >
+                  {titleBlock}
+                </a>
+              )}
+              {!homeUrl && (
+                <div
+                  className="rvt-lockup"
+                  {...(testMode && {
+                    "data-testid": TestUtils.Header.anchorTestId,
+                  })}
+                >
+                  {titleBlock}
+                </div>
+              )}
             </div>
             {children && (
-              <div className="rvt-header-global__controls">
-                {children}
-              </div>
+              <div className="rvt-header-global__controls">{children}</div>
             )}
           </div>
         </div>
@@ -80,7 +84,6 @@ const BaseHeader = ({
     </header>
   );
 };
-
 
 BaseHeader.displayName = "BaseHeader";
 BaseHeader.propTypes = {
@@ -101,11 +104,12 @@ BaseHeader.propTypes = {
     "xxl",
     "3-xl",
     "4-xl",
+    "fluid",
   ]),
   /** The secondary navigation component */
   secondaryNavigation: PropTypes.element,
   /** [Developer] Adds data-testId attributes for component testing */
-  testMode: PropTypes.bool
+  testMode: PropTypes.bool,
 };
 
 export default Rivet.rivetize(BaseHeader);
