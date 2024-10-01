@@ -22,13 +22,15 @@ const Header = ({
   className,
   title,
   subtitle,
-  headerWidth = "xl",
+  headerWidth = "fluid",
   href = "#",
   navigation,
   search,
   secondaryNavigation,
   ...attrs
 }) => {
+  const widthClass =
+    headerWidth === "fluid" ? "rvt-p-lr-md" : "rvt-container-" + headerWidth;
   return (
     <header {...attrs} className={classNames(componentClass, className)}>
       <a
@@ -40,7 +42,7 @@ const Header = ({
       </a>
       <div className="rvt-header-global">
         <div
-          className={"rvt-container-" + headerWidth}
+          className={widthClass}
           data-testid={TestUtils.Header.headerWidthDivTestId}
         >
           <div className="rvt-header-global__inner">
@@ -98,6 +100,7 @@ Header.propTypes = {
     "xxl",
     "3-xl",
     "4-xl",
+    "fluid",
   ]),
   /** The primary navigation component */
   navigation: PropTypes.element,

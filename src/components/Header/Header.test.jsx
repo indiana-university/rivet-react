@@ -48,11 +48,20 @@ describe("<Header />", () => {
       );
     });
 
-    it("should apply to the container div a rivet class specifying the width, if width is provided", () => {
-      render(<Header title={testTitle} headerWidth={testWidth} />);
-      expect(
-        screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
-      ).toHaveClass("rvt-container-" + testWidth);
+    describe("Header width", () => {
+      it("should apply to the container div a rivet class specifying the width, if width is provided", () => {
+        render(<Header title={testTitle} headerWidth={testWidth} />);
+        expect(
+          screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
+        ).toHaveClass("rvt-container-" + testWidth);
+      });
+
+      it("should apply to the fluid div a rivet class specifying if the fluid width is provided", () => {
+        render(<Header title={testTitle} headerWidth="fluid" />);
+        expect(
+          screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
+        ).toHaveClass("rvt-p-lr-md");
+      });
     });
 
     it("should render all provided children", () => {
@@ -130,11 +139,11 @@ describe("<Header />", () => {
       );
     });
 
-    it("should apply to the container div a rivet class that defaults the width to xl, if width is not provided", () => {
+    it("should apply the rivet class that defaults the width to fluid, if width is not provided", () => {
       render(<Header title={testTitle} />);
       expect(
         screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
-      ).toHaveClass("rvt-container-xl");
+      ).toHaveClass("rvt-p-lr-md");
     });
   });
 });
