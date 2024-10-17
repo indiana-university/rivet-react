@@ -16,11 +16,18 @@ const testWidth = "md";
 
 describe("<Header />", () => {
   describe("Rendering and styling", () => {
+    beforeAll(() => {
+      Object.defineProperty(window, "location", {
+        value: new URL("https://yourtesturl.com/some-path"),
+        writable: true,
+      });
+    });
+
     it("should render a skip link", () => {
       render(<Header title={testTitle} />);
       expect(
         screen.getByTestId(TestUtils.Header.skipLinkTestId)
-      ).toHaveAttribute("href", "#main-content");
+      ).toHaveAttribute("href", `${document.url}#main-content`);
       expect(
         screen.getByTestId(TestUtils.Header.skipLinkTestId)
       ).toHaveTextContent("Skip to main content");

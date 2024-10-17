@@ -35,7 +35,7 @@ const Header = ({
     <header {...attrs} className={classNames(componentClass, className)}>
       <a
         className="rvt-header-wrapper__skip-link"
-        href="#main-content"
+        href={`${document.url}#main-content`}
         data-testid={TestUtils.Header.skipLinkTestId}
       >
         Skip to main content
