@@ -13,6 +13,7 @@ import { TestUtils } from "../util/TestUtils";
 const BaseHeader = ({
   children,
   className,
+  contentHref,
   title,
   subtitle,
   headerWidth = "fluid",
@@ -38,7 +39,7 @@ const BaseHeader = ({
     <header {...attrs} className={classNames("rvt-header-wrapper", className)}>
       <a
         className="rvt-header-wrapper__skip-link"
-        href={`${document.url}#main-content`}
+        href={contentHref}
         {...(testMode && { "data-testid": TestUtils.Header.skipLinkTestId })}
       >
         Skip to main content
@@ -89,6 +90,8 @@ BaseHeader.displayName = "BaseHeader";
 BaseHeader.propTypes = {
   /** The application name or title that appears in the header */
   title: PropTypes.string.isRequired,
+  /** The href to use for the skip to content link */
+  contentHref: PropTypes.string.isRequired,
   /** Optional subTitle that will be displayed below the title */
   subtitle: PropTypes.string,
   /** The navigation url for the application titles */

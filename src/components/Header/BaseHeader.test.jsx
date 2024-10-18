@@ -14,24 +14,20 @@ import BaseHeaderNavigationSecondary from "./BaseHeaderNavigationSecondary";
 import { TestUtils } from "../util/TestUtils";
 
 const testTitle = "Test title";
+const testContentHref = "#main-content";
 const testHref = "/testHref";
 const testSubTitle = "Test Sub title";
 const testWidth = "md";
 
 describe("<BaseHeader />", () => {
   describe("Rendering and styling", () => {
-    beforeAll(() => {
-      Object.defineProperty(window, "location", {
-        value: new URL("https://yourtesturl.com/some-path"),
-        writable: true,
-      });
-    });
-
     it("should render a skip link", () => {
-      render(<BaseHeader testMode title={testTitle} />);
+      render(
+        <BaseHeader testMode title={testTitle} contentHref={testContentHref} />
+      );
       expect(
         screen.getByTestId(TestUtils.Header.skipLinkTestId)
-      ).toHaveAttribute("href", `${document.url}#main-content`);
+      ).toHaveAttribute("href", testContentHref);
       expect(
         screen.getByTestId(TestUtils.Header.skipLinkTestId)
       ).toHaveTextContent("Skip to main content");
