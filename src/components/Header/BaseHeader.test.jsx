@@ -14,6 +14,7 @@ import BaseHeaderNavigationSecondary from "./BaseHeaderNavigationSecondary";
 import { TestUtils } from "../util/TestUtils";
 
 const testTitle = "Test title";
+const testContentHref = "#main-content";
 const testHref = "/testHref";
 const testSubTitle = "Test Sub title";
 const testWidth = "md";
@@ -21,10 +22,12 @@ const testWidth = "md";
 describe("<BaseHeader />", () => {
   describe("Rendering and styling", () => {
     it("should render a skip link", () => {
-      render(<BaseHeader testMode title={testTitle} />);
+      render(
+        <BaseHeader testMode title={testTitle} contentHref={testContentHref} />
+      );
       expect(
         screen.getByTestId(TestUtils.Header.skipLinkTestId)
-      ).toHaveAttribute("href", "#main-content");
+      ).toHaveAttribute("href", testContentHref);
       expect(
         screen.getByTestId(TestUtils.Header.skipLinkTestId)
       ).toHaveTextContent("Skip to main content");

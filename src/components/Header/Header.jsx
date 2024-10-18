@@ -20,6 +20,7 @@ const componentClass = "rvt-header-wrapper";
 const Header = ({
   children,
   className,
+  contentHref,
   title,
   subtitle,
   headerWidth = "fluid",
@@ -35,7 +36,7 @@ const Header = ({
     <header {...attrs} className={classNames(componentClass, className)}>
       <a
         className="rvt-header-wrapper__skip-link"
-        href="#main-content"
+        href={contentHref}
         data-testid={TestUtils.Header.skipLinkTestId}
       >
         Skip to main content
@@ -85,6 +86,8 @@ Header.displayName = "Header";
 Header.propTypes = {
   /** The application name or title that appears in the header */
   title: PropTypes.string.isRequired,
+  /** The href to use for the skip to content link */
+  contentHref: PropTypes.string.isRequired,
   /** Optional subTitle that will be displayed below the title */
   subtitle: PropTypes.string,
   /** The URL that the anchor towards the left of the header will point to */

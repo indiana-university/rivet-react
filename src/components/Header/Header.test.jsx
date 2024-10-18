@@ -10,6 +10,7 @@ import Header from "./Header";
 import { TestUtils } from "../util/TestUtils";
 
 const testTitle = "Test title";
+const testContentHref = "#main-content";
 const testHref = "/testHref";
 const testSubTitle = "Test Sub title";
 const testWidth = "md";
@@ -17,10 +18,10 @@ const testWidth = "md";
 describe("<Header />", () => {
   describe("Rendering and styling", () => {
     it("should render a skip link", () => {
-      render(<Header title={testTitle} />);
+      render(<Header title={testTitle} contentHref={testContentHref} />);
       expect(
         screen.getByTestId(TestUtils.Header.skipLinkTestId)
-      ).toHaveAttribute("href", "#main-content");
+      ).toHaveAttribute("href", testContentHref);
       expect(
         screen.getByTestId(TestUtils.Header.skipLinkTestId)
       ).toHaveTextContent("Skip to main content");
