@@ -14,6 +14,7 @@ const BaseHeader = ({
   children,
   className,
   contentHref,
+  onClick,
   title,
   subtitle,
   headerWidth = "fluid",
@@ -57,6 +58,7 @@ const BaseHeader = ({
                 <a
                   className="rvt-lockup"
                   href={homeUrl}
+                  onClick={onClick}
                   {...(testMode && {
                     "data-testid": TestUtils.Header.anchorTestId,
                   })}
@@ -92,6 +94,8 @@ BaseHeader.propTypes = {
   title: PropTypes.string.isRequired,
   /** The href to use for the skip to content link */
   contentHref: PropTypes.string.isRequired,
+  /** Optional onClick handler that will be applied to the homeUrl anchor tag */
+  onClick: PropTypes.func,
   /** Optional subTitle that will be displayed below the title */
   subtitle: PropTypes.string,
   /** The navigation url for the application titles */

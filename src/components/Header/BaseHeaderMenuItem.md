@@ -10,6 +10,9 @@ Header with various menu items:
         <BaseHeaderMenuItem itemUrl="#">
             Link Item
         </BaseHeaderMenuItem>
+        <BaseHeaderMenuItem itemUrl="/example" onClick={e => { e.preventDefault(); alert(`You could navigate to ${e.currentTarget.attributes.href.nodeValue}`) }}>
+            Link Item with onClick Handler
+        </BaseHeaderMenuItem>        
         <BaseHeaderMenuItem current itemUrl="#">
             Current Item
         </BaseHeaderMenuItem>
