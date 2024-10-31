@@ -25,6 +25,12 @@ const BaseHeaderMenuItem = ({
     subMenu ? "rvt-header-menu__submenu-item" : "rvt-header-menu__item",
     current ? "rvt-header-menu__item--current" : "",
   ];
+  const itemUrlOnClick = onClick
+    ? (e) => {
+        e.preventDefault();
+        onClick(e);
+      }
+    : null;
   return (
     <li
       className={classNames(classNameArr)}
@@ -40,7 +46,7 @@ const BaseHeaderMenuItem = ({
           }
           {...(current && { "aria-current": "page" })}
           href={itemUrl}
-          onClick={onClick}
+          onClick={itemUrlOnClick}
           {...(testMode && {
             "data-testid": TestUtils.Header.headerMenuItemAnchor,
           })}
@@ -59,7 +65,7 @@ BaseHeaderMenuItem.propTypes = {
   current: PropTypes.bool,
   /** The navigation url for the item */
   itemUrl: PropTypes.string,
-  /** Optional onClick handler for itemUrl anchor tag */
+  /** Optional onClick handler for itemUrl anchor tag, it will prevent the anchor tag's default behavior */
   onClick: PropTypes.func,
   /** Menu item is part of a sub menu */
   subMenu: PropTypes.bool,

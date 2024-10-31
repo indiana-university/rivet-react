@@ -36,6 +36,12 @@ const BaseHeader = ({
       </div>
     </>
   );
+  const homeUrlOnClick = onClick
+    ? (e) => {
+        e.preventDefault();
+        onClick(e);
+      }
+    : null;
   return (
     <header {...attrs} className={classNames("rvt-header-wrapper", className)}>
       <a
@@ -58,7 +64,7 @@ const BaseHeader = ({
                 <a
                   className="rvt-lockup"
                   href={homeUrl}
-                  onClick={onClick}
+                  onClick={homeUrlOnClick}
                   {...(testMode && {
                     "data-testid": TestUtils.Header.anchorTestId,
                   })}
@@ -94,7 +100,7 @@ BaseHeader.propTypes = {
   title: PropTypes.string.isRequired,
   /** The href to use for the skip to content link */
   contentHref: PropTypes.string.isRequired,
-  /** Optional onClick handler that will be applied to the homeUrl anchor tag */
+  /** Optional onClick handler that will be applied to the homeUrl anchor tag, it will prevent the anchor tag's default behavior */
   onClick: PropTypes.func,
   /** Optional subTitle that will be displayed below the title */
   subtitle: PropTypes.string,

@@ -18,7 +18,7 @@ Base component for constructing a header. Can contain multiple subcomponents as 
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseHeader homeUrl="/example" onClick={e => { e.preventDefault(); alert(`You could navigate to ${e.currentTarget.attributes.href.nodeValue}`) }} title="Application Title" headerWidth="md"/>
+<BaseHeader homeUrl="/example" onClick={e => alert(`You could navigate to ${e.currentTarget.attributes.href.nodeValue}`) } title="Application Title" headerWidth="md"/>
 ```
 <!-- prettier-ignore-end -->
 
