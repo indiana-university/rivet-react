@@ -4,6 +4,7 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import React from "react";
 import { prettyDOM, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
 import BaseHeader from "./BaseHeader";
@@ -53,6 +54,24 @@ describe("<BaseHeader />", () => {
         "href",
         testHref
       );
+    });
+
+    it("should attach an onClick handler to the anchor tag, if provided", async () => {
+      const user = userEvent.setup();
+      const onClick = jest.fn();
+      render(
+        <BaseHeader
+          testMode
+          title={testTitle}
+          homeUrl={testHref}
+          onClick={onClick}
+        />
+      );
+
+      const title = await screen.findByText(testTitle);
+      await user.click(title);
+
+      expect(onClick.mock.calls.length).toBe(1);
     });
 
     describe("Header Width", () => {

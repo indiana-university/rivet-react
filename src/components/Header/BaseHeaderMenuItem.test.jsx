@@ -14,17 +14,15 @@ import userEvent from "@testing-library/user-event";
 const user = userEvent.setup();
 
 describe("<BaseHeaderMenuItem/>", () => {
-  describe("Rendering and styling",  () => {
+  describe("Rendering and styling", () => {
     it("should render default with provided children", () => {
-      render(
-        <BaseHeaderMenuItem testMode>
-          Test text
-        </BaseHeaderMenuItem>
+      render(<BaseHeaderMenuItem testMode>Test text</BaseHeaderMenuItem>);
+      const container = screen.getByTestId(
+        TestUtils.Header.headerMenuItemContainer
       );
-      const container = screen.getByTestId(TestUtils.Header.headerMenuItemContainer)
       expect(container).toHaveClass("rvt-header-menu__item");
-      expect(container.nodeName).toBe("LI")
-      expect(container.innerHTML).toBe("Test text")
+      expect(container.nodeName).toBe("LI");
+      expect(container.innerHTML).toBe("Test text");
     });
 
     it("should render as link with provided children", () => {
@@ -33,16 +31,33 @@ describe("<BaseHeaderMenuItem/>", () => {
           Test text
         </BaseHeaderMenuItem>
       );
-      const container = screen.getByTestId(TestUtils.Header.headerMenuItemContainer)
-      const anchor = screen.getByTestId(TestUtils.Header.headerMenuItemAnchor)
+      const container = screen.getByTestId(
+        TestUtils.Header.headerMenuItemContainer
+      );
+      const anchor = screen.getByTestId(TestUtils.Header.headerMenuItemAnchor);
       expect(container).toHaveClass("rvt-header-menu__item");
-      expect(container.nodeName).toBe("LI")
+      expect(container.nodeName).toBe("LI");
 
       expect(anchor).toHaveClass("rvt-header-menu__link");
-      expect(anchor.nodeName).toBe("A")
+      expect(anchor.nodeName).toBe("A");
       expect(anchor).toHaveAttribute("href", "/testHref");
       expect(anchor).not.toHaveAttribute("aria-current");
-      expect(anchor.innerHTML).toBe("Test text")
+      expect(anchor.innerHTML).toBe("Test text");
+    });
+
+    it("should attach onClick handler to itemUrl anchor tag if provided", async () => {
+      const testLabel = "Test label";
+      const onClick = jest.fn();
+      render(
+        <BaseHeaderMenuItem testMode itemUrl="/testHref" onClick={onClick}>
+          {testLabel}
+        </BaseHeaderMenuItem>
+      );
+
+      const label = await screen.findByText(testLabel);
+      await user.click(label);
+
+      expect(onClick.mock.calls.length).toBe(1);
     });
 
     it("should render as link with current page indicators", () => {
@@ -51,47 +66,53 @@ describe("<BaseHeaderMenuItem/>", () => {
           Test text
         </BaseHeaderMenuItem>
       );
-      const container = screen.getByTestId(TestUtils.Header.headerMenuItemContainer)
-      const anchor = screen.getByTestId(TestUtils.Header.headerMenuItemAnchor)
+      const container = screen.getByTestId(
+        TestUtils.Header.headerMenuItemContainer
+      );
+      const anchor = screen.getByTestId(TestUtils.Header.headerMenuItemAnchor);
       expect(container).toHaveClass("rvt-header-menu__item");
-      expect(container.nodeName).toBe("LI")
+      expect(container.nodeName).toBe("LI");
 
       expect(anchor).toHaveClass("rvt-header-menu__link");
-      expect(anchor.nodeName).toBe("A")
+      expect(anchor.nodeName).toBe("A");
       expect(anchor).toHaveAttribute("href", "/testHref");
       expect(anchor).toHaveAttribute("aria-current", "page");
-      expect(anchor.innerHTML).toBe("Test text")
+      expect(anchor.innerHTML).toBe("Test text");
     });
   });
 
-  describe("Rendering and styling as submenu ",  () => {
+  describe("Rendering and styling as submenu ", () => {
     it("should render with provided children", () => {
       render(
         <BaseHeaderMenuItem testMode subMenu>
           Test text
         </BaseHeaderMenuItem>
       );
-      const container = screen.getByTestId(TestUtils.Header.headerMenuItemContainer)
+      const container = screen.getByTestId(
+        TestUtils.Header.headerMenuItemContainer
+      );
       expect(container).toHaveClass("rvt-header-menu__submenu-item");
-      expect(container.nodeName).toBe("LI")
-      expect(container.innerHTML).toBe("Test text")
+      expect(container.nodeName).toBe("LI");
+      expect(container.innerHTML).toBe("Test text");
     });
-  
+
     it("should render as link with provided children", () => {
       render(
         <BaseHeaderMenuItem testMode subMenu itemUrl="/testHref">
           Test text
         </BaseHeaderMenuItem>
       );
-      const container = screen.getByTestId(TestUtils.Header.headerMenuItemContainer)
-      const anchor = screen.getByTestId(TestUtils.Header.headerMenuItemAnchor)
+      const container = screen.getByTestId(
+        TestUtils.Header.headerMenuItemContainer
+      );
+      const anchor = screen.getByTestId(TestUtils.Header.headerMenuItemAnchor);
       expect(container).toHaveClass("rvt-header-menu__submenu-item");
-      expect(container.nodeName).toBe("LI")
-  
+      expect(container.nodeName).toBe("LI");
+
       expect(anchor).toHaveClass("rvt-header-menu__submenu-link");
-      expect(anchor.nodeName).toBe("A")
+      expect(anchor.nodeName).toBe("A");
       expect(anchor).toHaveAttribute("href", "/testHref");
-      expect(anchor.innerHTML).toBe("Test text")
+      expect(anchor.innerHTML).toBe("Test text");
     });
 
     it("should render as link with current page indicators", () => {
@@ -100,16 +121,18 @@ describe("<BaseHeaderMenuItem/>", () => {
           Test text
         </BaseHeaderMenuItem>
       );
-      const container = screen.getByTestId(TestUtils.Header.headerMenuItemContainer)
-      const anchor = screen.getByTestId(TestUtils.Header.headerMenuItemAnchor)
+      const container = screen.getByTestId(
+        TestUtils.Header.headerMenuItemContainer
+      );
+      const anchor = screen.getByTestId(TestUtils.Header.headerMenuItemAnchor);
       expect(container).toHaveClass("rvt-header-menu__submenu-item");
-      expect(container.nodeName).toBe("LI")
+      expect(container.nodeName).toBe("LI");
 
       expect(anchor).toHaveClass("rvt-header-menu__submenu-link");
-      expect(anchor.nodeName).toBe("A")
+      expect(anchor.nodeName).toBe("A");
       expect(anchor).toHaveAttribute("href", "/testHref");
       expect(anchor).toHaveAttribute("aria-current", "page");
-      expect(anchor.innerHTML).toBe("Test text")
+      expect(anchor.innerHTML).toBe("Test text");
     });
   });
 });

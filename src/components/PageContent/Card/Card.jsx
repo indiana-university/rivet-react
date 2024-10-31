@@ -32,12 +32,17 @@ const Card = ({
     raised ? "rvt-card--raised " : "",
     className,
   ];
-
+  const cardOnClick = onClick
+    ? (e) => {
+        e.preventDefault();
+        onClick(e);
+      }
+    : null;
   return (
     <Component
       className={classNames(classNameArr)}
-      onClick={clickable && onClick ? onClick : null}
-      style={clickable && onClick ? { cursor: "pointer" } : null}
+      onClick={clickable && cardOnClick ? cardOnClick : null}
+      style={clickable && cardOnClick ? { cursor: "pointer" } : null}
       {...(testMode && { "data-testid": TestUtils.Card.container })}
       {...attrs}
     >
@@ -49,11 +54,11 @@ const Card = ({
           {...(testMode && { "data-testid": TestUtils.Card.title })}
         >
           {titleUrl ? (
-            <a href={titleUrl} onClick={onClick}>
+            <a href={titleUrl} onClick={cardOnClick}>
               {title}
             </a>
-          ) : onClick ? (
-            <Button onClick={onClick} variant="plain">
+          ) : cardOnClick ? (
+            <Button onClick={cardOnClick} variant="plain">
               {title}
             </Button>
           ) : (

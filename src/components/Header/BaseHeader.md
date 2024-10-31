@@ -14,6 +14,14 @@ Base component for constructing a header. Can contain multiple subcomponents as 
 ```
 <!-- prettier-ignore-end -->
 
+### Header with homeUrl and onClick handler
+
+<!-- prettier-ignore-start -->
+```jsx
+<BaseHeader homeUrl="/example" onClick={e => alert(`You could navigate to ${e.currentTarget.attributes.href.nodeValue}`) } title="Application Title" headerWidth="md"/>
+```
+<!-- prettier-ignore-end -->
+
 ### Header with Primary Navigation and Secondary Navigation
 
 <!-- prettier-ignore-start -->

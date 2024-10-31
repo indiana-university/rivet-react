@@ -88,7 +88,7 @@ View the [Rivet documentation for Card](https://rivet.uits.iu.edu/components/car
     <Card
         image={image}
         title="Card with onClick handler"
-        onClick={e => {e.preventDefault(); alert('clicked');}}
+        onClick={e => alert('clicked')}
         meta={meta}
     >
         <p>Using an onClick handler. This can be used with things such as react-router's navigate function.</p>
