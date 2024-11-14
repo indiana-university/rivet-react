@@ -15,14 +15,18 @@ const SidenavItem = ({
   className,
   children,
   current = false,
-  testMode =  false,
+  onClick,
+  testMode = false,
   url,
   ...attrs
 }) => {
-  const classNameArr = [
-    "rvt-sidenav__item",
-    className
-  ]
+  const classNameArr = ["rvt-sidenav__item", className];
+  const urlOnClick = onClick
+    ? (e) => {
+        e.preventDefault();
+        onClick(e);
+      }
+    : null;
 
   return (
     <li
@@ -30,30 +34,32 @@ const SidenavItem = ({
       {...(testMode && { "data-testid": TestUtils.Sidenav.item })}
       {...(!url && { ...attrs })}
     >
-      {
-        url &&
-          <a
-            className="rvt-sidenav__link"
-            href={url}
-            {...(current && { "aria-current": "page" })}
-            {...attrs}
-          >
-            {children}
-          </a>
-      }
+      {url && (
+        <a
+          className="rvt-sidenav__link"
+          onClick={urlOnClick}
+          href={url}
+          {...(current && { "aria-current": "page" })}
+          {...attrs}
+        >
+          {children}
+        </a>
+      )}
       {!url && <>{children}</>}
     </li>
-  )
+  );
 };
 
 SidenavItem.displayName = "SidenavItem";
 SidenavItem.propTypes = {
   /** Indicates item is current page if link with url */
   current: PropTypes.bool,
+  /** Optional onClick handler for url anchor tag, it will prevent the anchor tag's default behavior */
+  onClick: PropTypes.func,
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
   /** The url for the nav item, makes item a link */
-  url: PropTypes.string
+  url: PropTypes.string,
 };
 
 export default Rivet.rivetize(SidenavItem);

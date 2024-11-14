@@ -15,6 +15,7 @@ View the [Rivet documentation for Side Nav](https://rivet.iu.edu/components/side
     <Sidenav.Item url="#">Link 1</Sidenav.Item>
     <Sidenav.Item current url="#">Link 2</Sidenav.Item>
     <Sidenav.Item url="#">Link 3</Sidenav.Item>
+    <Sidenav.Item url="#" onClick={e => alert('clicked')}>Link 4 with onClick</Sidenav.Item>
 </Sidenav>
 ```
 <!-- prettier-ignore-end -->
@@ -68,4 +69,3 @@ View the [Rivet documentation for Side Nav](https://rivet.iu.edu/components/side
 </Sidenav>
 ```
 <!-- prettier-ignore-end -->
-
