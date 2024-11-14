@@ -7,6 +7,7 @@ import "@testing-library/jest-dom";
 import React from "react";
 import Sidenav from "./Sidenav";
 import { TestUtils } from "../util/TestUtils";
+import SidenavItem from "./SidenavItem";
 const testIds = TestUtils.Sidenav;
 
 const customClassName = "custom-style";
@@ -398,6 +399,23 @@ describe("<SidenavMenu />", () => {
       const element = screen.queryByTestId(testIds.menu);
       expect(element).not.toBeInTheDocument();
     });
+  });
+  it("should respect a SidenavItems onClick handler", async () => {
+    const onClick = jest.fn();
+    const linkText = "Link Text";
+    render(
+      <Sidenav>
+        <Sidenav.Item url="#" onClick={onClick}>
+          {linkText}
+        </Sidenav.Item>
+      </Sidenav>
+    );
+
+    const link = await screen.findByText(linkText);
+
+    fireEvent.click(link);
+
+    expect(onClick.mock.calls.length).toBe(1);
   });
 });
 
