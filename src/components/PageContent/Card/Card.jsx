@@ -98,7 +98,7 @@ Card.propTypes = {
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
   /** The title of the Card */
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
   /** Url for the title */
   titleUrl: PropTypes.string,
 };
