@@ -30,7 +30,7 @@ const Badge = ({
   children,
   className,
   id = Rivet.shortuid(),
-  type: modifier,
+  modifier,
   variant,
   ...attrs
 }) => (
