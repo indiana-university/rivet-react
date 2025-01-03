@@ -135,7 +135,7 @@ const DialogExample = () => {
               <ul className="rvt-list-inline">
                 <li>
                   <div className="rvt-checkbox">
-                    <input type="checkbox" name="checkbox-demo" id="checkbox-1" checked />
+                    <input type="checkbox" name="checkbox-demo" id="checkbox-1" defaultChecked />
                     <label htmlFor="checkbox-1">Option one</label>
                   </div>
                 </li>
