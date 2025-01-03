@@ -5,7 +5,7 @@ module.exports = {
       {
         modules: "auto",
         useBuiltIns: "usage",
-        corejs: "3.25.5",
+        corejs: "3.39.0",
       },
     ],
     "@babel/react",
