@@ -35,21 +35,35 @@ describe("<BaseHeader />", () => {
     });
 
     it("should render with the title, if title is provided", () => {
-      render(<BaseHeader testMode title={testTitle} />);
+      render(<BaseHeader testMode contentHref="#" title={testTitle} />);
       expect(
         screen.getByTestId(TestUtils.Header.anchorTestId)
       ).toHaveTextContent(testTitle);
     });
 
     it("should render with the subtitle, if subtitle is provided", () => {
-      render(<BaseHeader testMode title={testTitle} subtitle={testSubTitle} />);
+      render(
+        <BaseHeader
+          testMode
+          contentHref="#"
+          title={testTitle}
+          subtitle={testSubTitle}
+        />
+      );
       expect(
         screen.getByTestId(TestUtils.Header.anchorTestId)
       ).toHaveTextContent(testSubTitle);
     });
 
     it("should render an anchor with the provided href, if href is provided", () => {
-      render(<BaseHeader testMode title={testTitle} homeUrl={testHref} />);
+      render(
+        <BaseHeader
+          testMode
+          contentHref="#"
+          title={testTitle}
+          homeUrl={testHref}
+        />
+      );
       expect(screen.getByTestId(TestUtils.Header.anchorTestId)).toHaveAttribute(
         "href",
         testHref
@@ -63,6 +77,7 @@ describe("<BaseHeader />", () => {
         <BaseHeader
           testMode
           title={testTitle}
+          contentHref="#"
           homeUrl={testHref}
           onClick={onClick}
         />
@@ -77,7 +92,12 @@ describe("<BaseHeader />", () => {
     describe("Header Width", () => {
       it("should apply to the container div a rivet class specifying the width, if width is provided", () => {
         render(
-          <BaseHeader testMode title={testTitle} headerWidth={testWidth} />
+          <BaseHeader
+            testMode
+            title={testTitle}
+            contentHref="#"
+            headerWidth={testWidth}
+          />
         );
         expect(
           screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
@@ -85,7 +105,14 @@ describe("<BaseHeader />", () => {
       });
 
       it("should support the fluid width", () => {
-        render(<BaseHeader testMode title={testTitle} headerWidth="fluid" />);
+        render(
+          <BaseHeader
+            testMode
+            title={testTitle}
+            contentHref="#"
+            headerWidth="fluid"
+          />
+        );
         expect(
           screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
         ).toHaveClass("rvt-p-lr-md");
@@ -105,7 +132,11 @@ describe("<BaseHeader />", () => {
       );
 
       render(
-        <BaseHeader title={testTitle} secondaryNavigation={secondaryNavigation}>
+        <BaseHeader
+          title={testTitle}
+          contentHref="#"
+          secondaryNavigation={secondaryNavigation}
+        >
           <BaseHeaderNavigation>
             <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
             <BaseHeaderMenuItem itemUrl="#">Nav item two</BaseHeaderMenuItem>
@@ -141,7 +172,7 @@ describe("<BaseHeader />", () => {
 
   describe("Defaulting props", () => {
     it("should apply to the container div a rivet class that defaults the width to fluid, if width is not provided", () => {
-      render(<BaseHeader testMode title={testTitle} />);
+      render(<BaseHeader testMode title={testTitle} contentHref="#" />);
       expect(
         screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
       ).toHaveClass("rvt-p-lr-md");
