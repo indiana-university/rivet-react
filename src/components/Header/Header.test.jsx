@@ -28,21 +28,23 @@ describe("<Header />", () => {
     });
 
     it("should render an anchor with the title, if title is provided", () => {
-      render(<Header title={testTitle} />);
+      render(<Header title={testTitle} contentHref="#" />);
       expect(
         screen.getByTestId(TestUtils.Header.anchorTestId)
       ).toHaveTextContent(testTitle);
     });
 
     it("should render an anchor with the subtitle, if subtitle is provided", () => {
-      render(<Header title={testTitle} subtitle={testSubTitle} />);
+      render(
+        <Header title={testTitle} contentHref="#" subtitle={testSubTitle} />
+      );
       expect(
         screen.getByTestId(TestUtils.Header.anchorTestId)
       ).toHaveTextContent(testSubTitle);
     });
 
     it("should render an anchor with the provided href, if href is provided", () => {
-      render(<Header title={testTitle} href={testHref} />);
+      render(<Header title={testTitle} contentHref="#" href={testHref} />);
       expect(screen.getByTestId(TestUtils.Header.anchorTestId)).toHaveAttribute(
         "href",
         testHref
@@ -51,14 +53,18 @@ describe("<Header />", () => {
 
     describe("Header width", () => {
       it("should apply to the container div a rivet class specifying the width, if width is provided", () => {
-        render(<Header title={testTitle} headerWidth={testWidth} />);
+        render(
+          <Header title={testTitle} contentHref="#" headerWidth={testWidth} />
+        );
         expect(
           screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
         ).toHaveClass("rvt-container-" + testWidth);
       });
 
       it("should apply to the fluid div a rivet class specifying if the fluid width is provided", () => {
-        render(<Header title={testTitle} headerWidth="fluid" />);
+        render(
+          <Header title={testTitle} contentHref="#" headerWidth="fluid" />
+        );
         expect(
           screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
         ).toHaveClass("rvt-p-lr-md");
@@ -106,6 +112,7 @@ describe("<Header />", () => {
       render(
         <Header
           title={testTitle}
+          contentHref="#"
           navigation={navigation}
           search={search}
           secondaryNavigation={secondaryNavigation}
@@ -133,7 +140,7 @@ describe("<Header />", () => {
 
   describe("Defaulting props", () => {
     it("should render an anchor with the default href, if href is not provided", () => {
-      render(<Header title={testTitle} />);
+      render(<Header title={testTitle} contentHref="#" />);
       expect(screen.getByTestId(TestUtils.Header.anchorTestId)).toHaveAttribute(
         "href",
         "#"
@@ -141,7 +148,7 @@ describe("<Header />", () => {
     });
 
     it("should apply the rivet class that defaults the width to fluid, if width is not provided", () => {
-      render(<Header title={testTitle} />);
+      render(<Header title={testTitle} contentHref="#" />);
       expect(
         screen.getByTestId(TestUtils.Header.headerWidthDivTestId)
       ).toHaveClass("rvt-p-lr-md");

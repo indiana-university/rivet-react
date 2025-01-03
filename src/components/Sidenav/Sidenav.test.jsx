@@ -404,7 +404,7 @@ describe("<SidenavMenu />", () => {
     const onClick = jest.fn();
     const linkText = "Link Text";
     render(
-      <Sidenav>
+      <Sidenav label={sideNavLabel}>
         <Sidenav.Item url="#" onClick={onClick}>
           {linkText}
         </Sidenav.Item>
