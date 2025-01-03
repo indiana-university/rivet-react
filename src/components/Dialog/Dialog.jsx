@@ -144,6 +144,7 @@ const Dialog = ({
         <div
           style={{
             position: "fixed",
+            role: "dialog",
             zIndex: 100,
             top: 0,
             left: 0,
