@@ -6,7 +6,6 @@ const path = require("path");
 
 module.exports = {
   title: "Rivet React Style Guide",
-  resolver: require("react-docgen").resolver.findAllComponentDefinitions,
   propsParser: (filePath, source, resolver, handlers) => {
     return require("react-docgen").parse(source, resolver, handlers);
   },
@@ -77,7 +76,7 @@ module.exports = {
         "src/components/Sidenav/[A-Z]*.jsx",
         "src/components/SeriesNav/[A-Z]*.jsx",
         "src/components/Subnav/[A-Z]*.jsx",
-        "src/components/Tabs/[A-Z]*.jsx"
+        "src/components/Tabs/[A-Z]*.jsx",
       ],
     },
     {
@@ -94,7 +93,7 @@ module.exports = {
     {
       name: "Tables",
       components: "src/components/Table/[A-Z]*.jsx",
-    }
+    },
   ],
   webpackConfig: {
     module: {

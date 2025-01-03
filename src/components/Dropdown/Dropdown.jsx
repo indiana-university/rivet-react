@@ -18,7 +18,7 @@ import * as PropTypes from "prop-types";
 import { TestUtils } from "../util/TestUtils";
 import Icon, { IconNames } from "../util/RivetIcons";
 
-export const Dropdown = ({
+const Dropdown = ({
   toggleDropdownOnClickInside = false,
   alignRight = false,
   children,
@@ -60,7 +60,7 @@ export const Dropdown = ({
       "rvt-dropdown__menu": true,
       [`rvt-dropdown__menu--${align}`]: !!align,
     },
-    menuClass
+    menuClass,
   );
 
   const toggleDropdown = (event) => {
