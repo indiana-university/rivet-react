@@ -122,7 +122,7 @@ const checkRenderSeriesControlNext = () => {
   const text = within(element).getByTestId(testIds.controlText);
   expect(text.innerHTML).toBe(nextLabel);
 
-  const icon = within(element).getByTestId(TestUtils.RivetIcons.testId);
+  const icon = within(element).getByTestId(testIds.controlIcon);
   expect(icon).toBeInTheDocument;
 
   fireEvent.click(element);
@@ -141,7 +141,7 @@ const checkRenderSeriesControlPrevious = () => {
   const text = within(element).getByTestId(testIds.controlText);
   expect(text.innerHTML).toBe(previousLabel);
 
-  const icon = within(element).getByTestId(TestUtils.RivetIcons.testId);
+  const icon = within(element).getByTestId(testIds.controlIcon);
   expect(icon).toBeInTheDocument;
 
   fireEvent.click(element);

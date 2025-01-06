@@ -93,7 +93,7 @@ const SeriesControl = ({
       <span className="rvt-seriesnav__icon">
         <rvt-icon
           name={previous ? "arrow-left" : "arrow-right"}
-          {...(testMode && { "data-testid": TestUtils.RivetIcons.testId })}
+          {...(testMode && { "data-testid": TestUtils.SeriesNav.controlIcon })}
         />
       </span>
     </a>
