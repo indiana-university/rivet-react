@@ -6,7 +6,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
-import Icon, { IconNames } from "../util/RivetIcons";
+import "rivet-icons/dist/chevron-down.js";
 import { useEffect, useRef, useState } from "react";
 import { getFocusableElements, stillFocused } from "../util/EventUtils.js";
 import { TestUtils } from "../util/TestUtils";
@@ -139,10 +139,7 @@ const BaseHeaderMenu = ({
           })}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
-          <Icon
-            name={IconNames.CARET_DOWN}
-            className={"rvt-global-toggle__open"}
-          />
+          <rvt-icon name="chevron-down" className={"rvt-global-toggle__open"} />
         </button>
       </div>
       <div

@@ -20,8 +20,6 @@ const testIds = TestUtils.Accordion;
 const Accordion = ({
   children,
   className,
-  iconClosed,
-  iconOpened,
   id,
   initial,
   testMode = false,
@@ -31,7 +29,7 @@ const Accordion = ({
 
   const [accordianId] = useState(id);
   const [panelsOpen, setPanelsOpen] = useState(
-    getInitialOpen(initial, accordianId, numPanels)
+    getInitialOpen(initial, accordianId, numPanels),
   );
 
   const accordianPanels = !children
@@ -59,8 +57,6 @@ const Accordion = ({
         return {
           onClick,
           controlId,
-          iconClosed,
-          iconOpened,
           isOpen,
           label: title,
           panel,
@@ -90,10 +86,6 @@ const Accordion = ({
 
 Accordion.displayName = "Accordion";
 Accordion.propTypes = {
-  /** Icon/Indicator for a closed panel */
-  iconClosed: PropTypes.element,
-  /** Icon/Indicator for an open panel */
-  iconOpened: PropTypes.element,
   /** A unique identifier for the accordian */
   id: PropTypes.string.isRequired,
   /** Index of initially opened tab */

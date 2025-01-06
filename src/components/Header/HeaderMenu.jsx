@@ -6,7 +6,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
-import Icon, { IconNames } from "../util/RivetIcons";
+import "rivet-icons/dist/chevron-down.js";
 import { useEffect, useRef, useState } from "react";
 import { handler } from "../Header/HeaderEventUtils.js";
 import {
@@ -109,12 +109,12 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
     }
     if (isArrowDownKeyPress(event)) {
       focusMenuItem(
-        focusedItemIndex === children.length - 1 ? 0 : focusedItemIndex + 1
+        focusedItemIndex === children.length - 1 ? 0 : focusedItemIndex + 1,
       );
     }
     if (isArrowUpKeyPress(event)) {
       focusMenuItem(
-        focusedItemIndex === 0 ? children.length - 1 : focusedItemIndex - 1
+        focusedItemIndex === 0 ? children.length - 1 : focusedItemIndex - 1,
       );
     }
   };
@@ -167,10 +167,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
           data-testid={TestUtils.Header.menuButtonToggleTestId}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
-          <Icon
-            name={IconNames.CARET_DOWN}
-            className={"rvt-global-toggle__open"}
-          />
+          <rvt-icon name="chevron-down" className={"rvt-global-toggle__open"} />
         </button>
       </div>
       <div

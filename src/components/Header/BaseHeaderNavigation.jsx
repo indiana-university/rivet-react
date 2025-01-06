@@ -6,7 +6,8 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
-import Icon, { IconNames } from "../util/RivetIcons";
+import "rivet-icons/dist/chevron-up.js";
+import "rivet-icons/dist/chevron-down.js";
 import { useEffect, useRef } from "react";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import Header from "./Header";
@@ -90,8 +91,8 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
         })}
       >
         <span className="rvt-sr-only">Menu</span>
-        <Icon name={IconNames.TOGGLE_OPEN} />
-        <Icon name={IconNames.TOGGLE_CLOSE} />
+        <rvt-icon name="chevron-up" />
+        <rvt-icon name="chevron-down" />
       </button>
       <nav
         aria-label="Main"
@@ -119,7 +120,7 @@ BaseHeaderNavigation.propTypes = {
     propValue.forEach((value) => {
       if (!validChildren.includes(value.type)) {
         throw new Error(
-          `children must only contain ${validChildren} components`
+          `children must only contain ${validChildren} components`,
         );
       }
     });
