@@ -43,7 +43,7 @@ const AccordionPanelHeader = (props) => {
       >
         <span className="rvt-accordion__toggle-text">{label}</span>
         <div className="rvt-accordion__toggle-icon">
-          {isOpen ? <rvt-icon name="minus" /> : <rvt-icon name="plus" />}
+          <rvt-icon name={isOpen ? "minus" : "plus"} />
         </div>
       </button>
     </h3>

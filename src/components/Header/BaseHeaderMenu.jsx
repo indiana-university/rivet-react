@@ -139,7 +139,7 @@ const BaseHeaderMenu = ({
           })}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
-          <rvt-icon name="chevron-down" className={"rvt-global-toggle__open"} />
+          <rvt-icon name="chevron-down" className="rvt-global-toggle__open" />
         </button>
       </div>
       <div

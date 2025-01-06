@@ -167,7 +167,7 @@ const HeaderMenu = ({ children, label, href = "#", current, ...attrs }) => {
           data-testid={TestUtils.Header.menuButtonToggleTestId}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
-          <rvt-icon name="chevron-down" className={"rvt-global-toggle__open"} />
+          <rvt-icon name="chevron-down" className="rvt-global-toggle__open" />
         </button>
       </div>
       <div

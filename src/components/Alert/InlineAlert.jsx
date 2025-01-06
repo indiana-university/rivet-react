@@ -12,10 +12,10 @@ import "rivet-icons/dist/close-circle.js";
 import * as Rivet from "../util/Rivet";
 
 const alertIcons = {
-  info: <rvt-icon name="info-circle" />,
-  success: <rvt-icon name="check-circle" />,
-  warning: <rvt-icon name="minus-circle" />,
-  danger: <rvt-icon name="close-circle" />,
+  info: "info-circle",
+  success: "check-circle",
+  warning: "minus-circle",
+  danger: "close-circle",
 };
 
 /**
@@ -38,7 +38,9 @@ const InlineAlert = ({
 
   return (
     <div className={classes} id={id} {...attrs}>
-      <span className="rvt-inline-alert__icon">{alertIcons[variant]}</span>
+      <span className="rvt-inline-alert__icon">
+        <rvt-icon name={alertIcons[variant]} />
+      </span>
       <span className="rvt-inline-alert__message" id={`${id}--message`}>
         {children}
       </span>
