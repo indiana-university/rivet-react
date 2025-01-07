@@ -26,7 +26,7 @@ const BaseFooter = ({
   const classes = classNames(
     "rvt-footer-base",
     variant ? `rvt-footer-base--${variant}` : "",
-    className
+    className,
   );
   const year = !copyrightYear ? new Date().getFullYear() : copyrightYear;
   return (

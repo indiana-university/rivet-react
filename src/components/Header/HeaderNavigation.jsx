@@ -5,7 +5,8 @@ SPDX-License-Identifier: BSD-3-Clause
 import * as React from "react";
 
 import * as Rivet from "../util/Rivet";
-import Icon, { IconNames } from "../util/RivetIcons";
+import "rivet-icons/dist/chevron-up.js";
+import "rivet-icons/dist/chevron-down.js";
 import { useEffect, useRef } from "react";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import {
@@ -76,8 +77,8 @@ const HeaderNavigation = ({ avatar, children, ...attrs }) => {
         ref={toggleButtonRef}
       >
         <span className="rvt-sr-only">Menu</span>
-        <Icon name={IconNames.TOGGLE_OPEN} />
-        <Icon name={IconNames.TOGGLE_CLOSE} />
+        <rvt-icon name="chevron-up" />
+        <rvt-icon name="chevron-down" />
       </button>
       <nav
         aria-label="Main"

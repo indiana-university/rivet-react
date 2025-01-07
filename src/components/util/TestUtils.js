@@ -108,6 +108,7 @@ export const TestUtils = {
     container: "seriesNav-container",
     controlLabel: "seriesNav-label",
     controlText: "seriesNav-text",
+    controlIcon: "seriesNav-icon",
     previous: "seriesNav-previous",
     next: "seriesNav-next",
   },

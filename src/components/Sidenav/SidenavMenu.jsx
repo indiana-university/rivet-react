@@ -7,7 +7,8 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as Rivet from "../util/Rivet";
 import { TestUtils } from "../util/TestUtils";
-import Icon, { IconNames } from "../util/RivetIcons";
+import "rivet-icons/dist/chevron-down.js";
+
 /**
  * Create a collapsable submenu in the Side navigation menu
  */
@@ -23,10 +24,7 @@ const SidenavMenu = ({
 }) => {
   const [isOpen, setIsOpen] = useState(startOpen);
 
-  const classNameArr = [
-    "rvt-sidenav__item",
-    className
-  ]
+  const classNameArr = ["rvt-sidenav__item", className];
 
   return (
     <li
@@ -35,39 +33,39 @@ const SidenavMenu = ({
       {...attrs}
     >
       <div className="rvt-sidenav__item-wrapper">
-        {
-          url &&
-            <a
-              className="rvt-sidenav__link"
-              href={url}
-              {...(current && { "aria-current": "page" })}
-              {...(testMode && { "data-testid": TestUtils.Sidenav.menuLabel })}
-            >
-              {label}
-            </a>
-        }
-        {
-          !url &&
-            <span
-              className="rvt-sidenav__link"
-              {...(testMode && { "data-testid": TestUtils.Sidenav.menuLabel })}
-            >
-              {label}
-            </span>
-        }
+        {url && (
+          <a
+            className="rvt-sidenav__link"
+            href={url}
+            {...(current && { "aria-current": "page" })}
+            {...(testMode && { "data-testid": TestUtils.Sidenav.menuLabel })}
+          >
+            {label}
+          </a>
+        )}
+        {!url && (
+          <span
+            className="rvt-sidenav__link"
+            {...(testMode && { "data-testid": TestUtils.Sidenav.menuLabel })}
+          >
+            {label}
+          </span>
+        )}
         <button
           aria-expanded={isOpen}
           aria-haspopup={isOpen}
           className="rvt-sidenav__toggle"
           onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            setIsOpen(!isOpen)
+            e.preventDefault();
+            e.stopPropagation();
+            setIsOpen(!isOpen);
           }}
           {...(testMode && { "data-testid": TestUtils.Sidenav.menuButton })}
         >
-          <span className="rvt-sr-only">{isOpen ? 'Hide' : 'Show'} links nested under {label}</span>
-          <Icon name={IconNames.CARET_DOWN} />
+          <span className="rvt-sr-only">
+            {isOpen ? "Hide" : "Show"} links nested under {label}
+          </span>
+          <rvt-icon name="chevron-down" />
         </button>
       </div>
       <ul
@@ -78,7 +76,7 @@ const SidenavMenu = ({
         {children}
       </ul>
     </li>
-  )
+  );
 };
 
 SidenavMenu.displayName = "SidenavMenu";
@@ -87,8 +85,8 @@ SidenavMenu.propTypes = {
   startOpen: PropTypes.bool,
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
-   /** The url for the menu label, makes the label a link */
-   url: PropTypes.string
+  /** The url for the menu label, makes the label a link */
+  url: PropTypes.string,
 };
 
 export default Rivet.rivetize(SidenavMenu);

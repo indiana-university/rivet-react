@@ -40,7 +40,7 @@ describe("<File />", () => {
       expect(label.children.length).toBe(2);
       expect(label.children[0].nodeName).toBe("SPAN");
       expect(label.children[0].innerHTML).toBe("Upload a file");
-      expect(label.children[1].nodeName).toBe("svg");
+      expect(label.children[1].nodeName).toBe("RVT-ICON");
 
       const description = children[2];
       expect(description.nodeName).toBe("DIV");
@@ -78,7 +78,7 @@ describe("<File />", () => {
         ],
       };
       render(
-        <MyFile data-testid={TestUtils.File.testId} innerRef={ref} multiple />
+        <MyFile data-testid={TestUtils.File.testId} innerRef={ref} multiple />,
       );
 
       const file = await screen.findByTestId(TestUtils.File.testId);
@@ -101,7 +101,7 @@ describe("<File />", () => {
             data-testid={TestUtils.File.testId}
           />
           <input type="reset" data-testid={resetId} value="Reset" />
-        </form>
+        </form>,
       );
 
       let file = await screen.findByTestId(TestUtils.File.testId);
@@ -128,7 +128,7 @@ describe("<File />", () => {
     it("calls the user defined onchange function if one is defined", async () => {
       const onchange = jest.fn();
       render(
-        <MyFile onChange={onchange} data-testid={TestUtils.File.testId} />
+        <MyFile onChange={onchange} data-testid={TestUtils.File.testId} />,
       );
 
       const file = await screen.findByTestId(TestUtils.File.testId);
@@ -173,7 +173,7 @@ describe("<File />", () => {
           data-testid={TestUtils.File.testId}
           label={testLabel}
           multiple
-        />
+        />,
       );
 
       const file = await screen.findByTestId(TestUtils.File.testId);

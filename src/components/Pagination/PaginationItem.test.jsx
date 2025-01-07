@@ -4,7 +4,6 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import user from "@testing-library/user-event";
 import React from "react";
 import PaginationItem from "./PaginationItem";
 
@@ -27,7 +26,7 @@ describe("<PaginationItem />", () => {
     render(
       <PaginationItem data-testid={testId} disabled>
         One
-      </PaginationItem>
+      </PaginationItem>,
     );
     const item = await screen.findByTestId(testId);
 
@@ -39,7 +38,7 @@ describe("<PaginationItem />", () => {
     render(
       <PaginationItem data-testid={testId} current>
         One
-      </PaginationItem>
+      </PaginationItem>,
     );
     const item = await screen.findByTestId(testId);
     expect(item.nodeName).toBe("LI");
@@ -53,12 +52,9 @@ describe("<PaginationItem />", () => {
 
   it("should set url if provided", async () => {
     render(
-      <PaginationItem
-        data-testid={testId}
-        url="http://www.iu.edu"
-      >
+      <PaginationItem data-testid={testId} url="http://www.iu.edu">
         One
-      </PaginationItem>
+      </PaginationItem>,
     );
     const item = await screen.findByTestId(testId);
     const a = item.children[0];
@@ -69,12 +65,9 @@ describe("<PaginationItem />", () => {
 
   it("should use set control element", async () => {
     render(
-      <PaginationItem
-        component="button"
-        data-testid={testId}
-      >
+      <PaginationItem component="button" data-testid={testId}>
         One
-      </PaginationItem>
+      </PaginationItem>,
     );
     const item = await screen.findByTestId(testId);
 
@@ -91,7 +84,7 @@ describe("<PaginationItem />", () => {
     it("should render an item", async () => {
       render(<PaginationItem.First data-testid={testId} />);
       const item = await screen.findByTestId(testId);
-  
+
       expect(item.nodeName).toBe("LI");
       expect(item).toHaveClass("rvt-pagination__item");
       expect(item.children.length).toBe(1);
@@ -101,13 +94,11 @@ describe("<PaginationItem />", () => {
       expect(a.href).toBe("http://localhost/#");
       expect(a).toHaveAttribute("aria-label", "Go to first page");
       const icon = a.children[0];
-      expect(icon.nodeName).toBe("svg");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
 
     it("should not render a link when disabled", async () => {
-      render(
-        <PaginationItem.First data-testid={testId} disabled/>
-      );
+      render(<PaginationItem.First data-testid={testId} disabled />);
       const item = await screen.findByTestId(testId);
 
       expect(item.nodeName).toBe("LI");
@@ -115,7 +106,7 @@ describe("<PaginationItem />", () => {
       expect(item.children.length).toBe(1);
       expect(item).toHaveAttribute("aria-label", "No previous pages");
       const icon = item.children[0];
-      expect(icon.nodeName).toBe("svg");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
   });
 
@@ -123,7 +114,7 @@ describe("<PaginationItem />", () => {
     it("should render an item", async () => {
       render(<PaginationItem.Previous data-testid={testId} />);
       const item = await screen.findByTestId(testId);
-  
+
       expect(item.nodeName).toBe("LI");
       expect(item).toHaveClass("rvt-pagination__item");
       expect(item.children.length).toBe(1);
@@ -133,13 +124,11 @@ describe("<PaginationItem />", () => {
       expect(a.href).toBe("http://localhost/#");
       expect(a).toHaveAttribute("aria-label", "Go to previous page");
       const icon = a.children[0];
-      expect(icon.nodeName).toBe("svg");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
 
     it("should not render a link when disabled", async () => {
-      render(
-        <PaginationItem.Previous data-testid={testId} disabled/>
-      );
+      render(<PaginationItem.Previous data-testid={testId} disabled />);
       const item = await screen.findByTestId(testId);
 
       expect(item.nodeName).toBe("LI");
@@ -147,7 +136,7 @@ describe("<PaginationItem />", () => {
       expect(item.children.length).toBe(1);
       expect(item).toHaveAttribute("aria-label", "No previous pages");
       const icon = item.children[0];
-      expect(icon.nodeName).toBe("svg");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
   });
 
@@ -155,7 +144,7 @@ describe("<PaginationItem />", () => {
     it("should render an item", async () => {
       render(<PaginationItem.Last data-testid={testId} />);
       const item = await screen.findByTestId(testId);
-  
+
       expect(item.nodeName).toBe("LI");
       expect(item).toHaveClass("rvt-pagination__item");
       expect(item.children.length).toBe(1);
@@ -165,13 +154,11 @@ describe("<PaginationItem />", () => {
       expect(a.href).toBe("http://localhost/#");
       expect(a).toHaveAttribute("aria-label", "Go to last page");
       const icon = a.children[0];
-      expect(icon.nodeName).toBe("svg");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
 
     it("should not render a link when disabled", async () => {
-      render(
-        <PaginationItem.Last data-testid={testId} disabled/>
-      );
+      render(<PaginationItem.Last data-testid={testId} disabled />);
       const item = await screen.findByTestId(testId);
 
       expect(item.nodeName).toBe("LI");
@@ -179,7 +166,7 @@ describe("<PaginationItem />", () => {
       expect(item.children.length).toBe(1);
       expect(item).toHaveAttribute("aria-label", "No next pages");
       const icon = item.children[0];
-      expect(icon.nodeName).toBe("svg");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
   });
 
@@ -187,7 +174,7 @@ describe("<PaginationItem />", () => {
     it("should render an item", async () => {
       render(<PaginationItem.Next data-testid={testId} />);
       const item = await screen.findByTestId(testId);
-  
+
       expect(item.nodeName).toBe("LI");
       expect(item).toHaveClass("rvt-pagination__item");
       expect(item.children.length).toBe(1);
@@ -197,13 +184,11 @@ describe("<PaginationItem />", () => {
       expect(a.href).toBe("http://localhost/#");
       expect(a).toHaveAttribute("aria-label", "Go to next page");
       const icon = a.children[0];
-      expect(icon.nodeName).toBe("svg");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
 
     it("should not render a link when disabled", async () => {
-      render(
-        <PaginationItem.Next data-testid={testId} disabled/>
-      );
+      render(<PaginationItem.Next data-testid={testId} disabled />);
       const item = await screen.findByTestId(testId);
 
       expect(item.nodeName).toBe("LI");
@@ -211,7 +196,7 @@ describe("<PaginationItem />", () => {
       expect(item.children.length).toBe(1);
       expect(item).toHaveAttribute("aria-label", "No next pages");
       const icon = item.children[0];
-      expect(icon.nodeName).toBe("svg");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
   });
 });

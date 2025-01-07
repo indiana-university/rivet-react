@@ -6,7 +6,7 @@ import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
-import Icon, { IconNames } from "../util/RivetIcons";
+import "rivet-icons/dist/chevron-down.js";
 import {
   isEscapeKeyPress,
   isMouseEvent,
@@ -88,7 +88,7 @@ const HeaderNavigationSecondary = ({
             data-testid={TestUtils.Header.secondaryNavToggleTestId}
           >
             <span className="rvt-sr-only">Toggle local menu</span>
-            <Icon name={IconNames.CARET_DOWN} />
+            <rvt-icon name="chevron-down" />
           </button>
           <nav
             aria-label="Secondary"

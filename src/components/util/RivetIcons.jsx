@@ -7,24 +7,10 @@ import PropTypes from "prop-types";
 import { TestUtils } from "./TestUtils.js";
 
 export const IconNames = {
-  ACCORDIAN_IND: "accordian-indicator",
-  ARROW_LEFT: "arrow-left",
-  ARROW_RIGHT: "arrow-right",
-  BELL: "bell",
-  CARET_DOWN: "caret-down",
-  CLOSE: "close",
   FACEBOOK: "facebook",
-  FILE: "file",
-  FIRST: "first",
   INSTAGRAM: "instagram",
-  LAST: "last",
   LINKEDIN: "linkedin",
   LOGO: "logo",
-  NEXT: "next",
-  PREVIOUS: "previous",
-  TOGGLE_OPEN: "toggle-open",
-  TOGGLE_CLOSE: "toggle-close",
-  TOGGLE_SEARCH: "toggle-search",
   TRIDENT_HEADER: "trident-header",
   TWITTER: "twitter",
   YOUTUBE: "youtube",
@@ -37,33 +23,6 @@ const IconCore = ({ children, ...attrs }) => {
     </svg>
   );
 };
-
-const icoBell = (attrs) => (
-  <IconCore data-testid={TestUtils.RivetIcons.testId} {...attrs}>
-    <path
-      fill="currentColor"
-      d="M14.57,12.06,13,9.7V6A5,5,0,0,0,3,6V9.7L1.43,12.06a1.25,1.25,0,0,0,1,1.94H6a2,2,0,0,0,4,0h3.53a1.25,1.25,0,0,0,1-1.94ZM8,12H3.87L5,10.3V6a3,3,0,0,1,6,0v4.3L12.13,12Z"
-    />
-  </IconCore>
-);
-
-const icoCaretDown = (attrs) => (
-  <IconCore data-testid={TestUtils.RivetIcons.testId} {...attrs}>
-    <path
-      fill="currentColor"
-      d="M8,12.46a2,2,0,0,1-1.52-.7L1.24,5.65a1,1,0,1,1,1.52-1.3L8,10.46l5.24-6.11a1,1,0,0,1,1.52,1.3L9.52,11.76A2,2,0,0,1,8,12.46Z"
-    />
-  </IconCore>
-);
-
-const icoFile = (attrs) => (
-  <IconCore {...attrs}>
-    <path
-      fill="currentColor"
-      d="M10.41,1H3.5A1.3,1.3,0,0,0,2.2,2.3V13.7A1.3,1.3,0,0,0,3.5,15h9a1.3,1.3,0,0,0,1.3-1.3V4.39ZM11.8,5.21V6H9.25V3h.34ZM4.2,13V3h3V6.75A1.25,1.25,0,0,0,8.5,8h3.3v5Z"
-    />
-  </IconCore>
-);
 
 const icoLogo = (attrs) => (
   <IconCore {...attrs}>
@@ -148,119 +107,12 @@ const icoYoutube = (attrs) => (
   </IconCore>
 );
 
-const icoToggleClose = (attrs) => (
-  <IconCore {...attrs} className="rvt-global-toggle__close" fill="currentColor">
-    <path
-      d="M8.46954 7.00409L13.7595 1.71409C13.9234 1.52279 14.009 1.27671 13.9993 1.02504C13.9895 0.773362 13.8852 0.534623 13.7071 0.356528C13.529 0.178434 13.2903 0.0741014 13.0386 0.0643803C12.7869 0.0546591 12.5408 0.140265 12.3495 0.304092L7.05954 5.59409L1.76954 0.294092C1.58124 0.105788 1.32585 -3.72428e-09 1.05954 -1.74018e-09C0.793242 2.43924e-10 0.537847 0.105788 0.349544 0.294092C0.16124 0.482395 0.055452 0.73779 0.055452 1.00409C0.055452 1.27039 0.16124 1.52579 0.349544 1.71409L5.64954 7.00409L0.349544 12.2941C0.244862 12.3837 0.159841 12.4941 0.0998179 12.6181C0.0397946 12.7422 0.00606467 12.8773 0.000745174 13.015C-0.00457432 13.1528 0.0186315 13.2901 0.0689061 13.4184C0.119181 13.5467 0.195439 13.6633 0.292893 13.7607C0.390348 13.8582 0.506896 13.9345 0.635221 13.9847C0.763546 14.035 0.900878 14.0582 1.0386 14.0529C1.17632 14.0476 1.31145 14.0138 1.43551 13.9538C1.55958 13.8938 1.6699 13.8088 1.75954 13.7041L7.05954 8.41409L12.3495 13.7041C12.5408 13.8679 12.7869 13.9535 13.0386 13.9438C13.2903 13.9341 13.529 13.8297 13.7071 13.6517C13.8852 13.4736 13.9895 13.2348 13.9993 12.9831C14.009 12.7315 13.9234 12.4854 13.7595 12.2941L8.46954 7.00409Z"
-      fill="currentColor"
-    ></path>
-  </IconCore>
-);
-
-const icoClose = (attrs) => (
-  <IconCore {...attrs}>
-    <path
-      d="M9.41,8l5.29-5.29a1,1,0,0,0-1.41-1.41L8,6.59,2.71,1.29A1,1,0,0,0,1.29,2.71L6.59,8,1.29,13.29a1,1,0,1,0,1.41,1.41L8,9.41l5.29,5.29a1,1,0,0,0,1.41-1.41Z"
-      fill="currentColor"
-    ></path>
-  </IconCore>
-);
-
 const icoTrident = (attrs) => (
   <IconCore {...attrs} className="rvt-lockup__trident" viewBox="0 0 28 34">
     <path
       d="M-3.34344e-05 4.70897H8.83308V7.174H7.1897V21.1426H10.6134V2.72321H8.83308V0.121224H18.214V2.65476H16.2283V21.1426H19.7889V7.174H18.214V4.64047H27.0471V7.174H25.0614V23.6761L21.7746 26.8944H16.2967V30.455H18.214V33.8787H8.76463V30.592H10.6819V26.8259H5.20403L1.91726 23.6077V7.174H-3.34344e-05V4.70897Z"
       fill="currentColor"
     ></path>
-  </IconCore>
-);
-
-const icoToggleOpen = (attrs) => (
-  <IconCore {...attrs} className="rvt-global-toggle__open">
-    <g fill="currentColor">
-      <path d="M15,3H1A1,1,0,0,1,1,1H15a1,1,0,0,1,0,2Z"></path>
-      <path d="M15,9H1A1,1,0,0,1,1,7H15a1,1,0,0,1,0,2Z"></path>
-      <path d="M15,15H1a1,1,0,0,1,0-2H15a1,1,0,0,1,0,2Z"></path>
-    </g>
-  </IconCore>
-);
-
-const icoToggleSearch = (attrs) => (
-  <IconCore
-    {...attrs}
-    className="rvt-global-toggle__search"
-    fill="currentColor"
-  >
-    <path
-      d="M15.71,14.29,10.89,9.47a6,6,0,1,0-1.42,1.42l4.82,4.82a1,1,0,0,0,1.42,0A1,1,0,0,0,15.71,14.29ZM6,10a4,4,0,1,1,4-4A4,4,0,0,1,6,10Z"
-      fill="currentColor"
-    ></path>
-  </IconCore>
-);
-
-const icoFirst = (attrs) => (
-  <IconCore {...attrs}>
-    <g fill="currentColor">
-      <path d="M13,13.8a1,1,0,0,1-.77-.36L8.37,8.8a1.25,1.25,0,0,1,0-1.61l3.86-4.64a1,1,0,0,1,1.54,1.28L10.3,8l3.47,4.16A1,1,0,0,1,13,13.8ZM9.91,8.47h0Zm0-1h0Z" />
-      <path d="M7,13.8a1,1,0,0,1-.77-.36L2.37,8.8a1.25,1.25,0,0,1,0-1.61L6.23,2.56A1,1,0,0,1,7.77,3.84L4.3,8l3.47,4.16A1,1,0,0,1,7,13.8ZM3.91,8.47h0Zm0-1h0Z" />
-    </g>
-  </IconCore>
-);
-
-const icoPrevious = (attrs) => (
-  <IconCore {...attrs}>
-    <path
-      fill="currentColor"
-      d="M10.5,15a1,1,0,0,1-.77-.36L4.87,8.8a1.25,1.25,0,0,1,0-1.61L9.73,1.36a1,1,0,0,1,1.54,1.28L6.8,8l4.47,5.36A1,1,0,0,1,10.5,15ZM6.41,8.47h0Zm0-1h0Z"
-    />
-  </IconCore>
-);
-
-const icoNext = (attrs) => (
-  <IconCore {...attrs}>
-    <path
-      fill="currentColor"
-      d="M5.5,15a1,1,0,0,1-.77-1.64L9.2,8,4.73,2.64A1,1,0,0,1,6.27,1.36L11.13,7.2a1.25,1.25,0,0,1,0,1.61L6.27,14.64A1,1,0,0,1,5.5,15ZM9.6,8.48h0Zm0-1h0Z"
-    />
-  </IconCore>
-);
-
-const icoLast = (attrs) => (
-  <IconCore {...attrs}>
-    <g fill="currentColor">
-      <path d="M3,13.8a1,1,0,0,1-.77-1.64L5.7,8,2.23,3.84A1,1,0,0,1,3.77,2.56L7.63,7.2a1.25,1.25,0,0,1,0,1.61L3.77,13.44A1,1,0,0,1,3,13.8ZM6.1,8.48h0Zm0-1h0Z" />
-      <path d="M9,13.8a1,1,0,0,1-.77-1.64L11.7,8,8.23,3.84A1,1,0,0,1,9.77,2.56L13.63,7.2a1.25,1.25,0,0,1,0,1.61L9.77,13.44A1,1,0,0,1,9,13.8Zm3.1-5.32h0Zm0-1h0Z" />
-    </g>
-  </IconCore>
-);
-
-const icoArrowRight = (attrs) => (
-  <IconCore {...attrs}>
-    <path
-      fill="currentColor"
-      d="M1 7h10.844L7.737 2.146 9.263.854 15.31 8l-6.047 7.146-1.526-1.292L11.844 9H1V7Z"
-    ></path>
-  </IconCore>
-);
-
-const icoArrowLeft = (attrs) => (
-  <IconCore {...attrs}>
-    <path
-      fill="currentColor"
-      d="M15 7H4.156l4.107-4.854L6.737.854.69 8l6.047 7.146 1.526-1.292L4.156 9H15V7Z"
-    ></path>
-  </IconCore>
-);
-
-const icoAccordianIndicator = (attrs) => (
-  <IconCore {...attrs}>
-    <g fill="currentColor">
-      <path
-        className="rvt-accordion__icon-bar"
-        d="M8,15a1,1,0,0,1-1-1V2A1,1,0,0,1,9,2V14A1,1,0,0,1,8,15Z"
-      ></path>
-      <path d="M14,9H2A1,1,0,0,1,2,7H14a1,1,0,0,1,0,2Z"></path>
-    </g>
   </IconCore>
 );
 
@@ -284,42 +136,14 @@ const Icon = ({
     ...attrs,
   };
   switch (name) {
-    case IconNames.ACCORDIAN_IND:
-      return icoAccordianIndicator(props);
-    case IconNames.ARROW_LEFT:
-      return icoArrowLeft(props);
-    case IconNames.ARROW_RIGHT:
-      return icoArrowRight(props);
-    case IconNames.BELL:
-      return icoBell(props);
-    case IconNames.CARET_DOWN:
-      return icoCaretDown(props);
-    case IconNames.CLOSE:
-      return icoClose(props);
     case IconNames.FACEBOOK:
       return icoFacebook(props);
-    case IconNames.FILE:
-      return icoFile(props);
-    case IconNames.FIRST:
-      return icoFirst(props);
     case IconNames.INSTAGRAM:
       return icoInstagram(props);
-    case IconNames.LAST:
-      return icoLast(props);
     case IconNames.LINKEDIN:
       return icoLinkedin(props);
     case IconNames.LOGO:
       return icoLogo(props);
-    case IconNames.NEXT:
-      return icoNext(props);
-    case IconNames.PREVIOUS:
-      return icoPrevious(props);
-    case IconNames.TOGGLE_OPEN:
-      return icoToggleOpen(props);
-    case IconNames.TOGGLE_CLOSE:
-      return icoToggleClose(props);
-    case IconNames.TOGGLE_SEARCH:
-      return icoToggleSearch(props);
     case IconNames.TRIDENT_HEADER:
       return icoTrident(props);
     case IconNames.TWITTER:
@@ -332,24 +156,10 @@ const Icon = ({
 Icon.displayName = "Icon";
 Icon.propTypes = {
   name: PropTypes.oneOf([
-    IconNames.ACCORDIAN_IND,
-    IconNames.ARROW_LEFT,
-    IconNames.ARROW_RIGHT,
-    IconNames.BELL,
-    IconNames.CARET_DOWN,
-    IconNames.CLOSE,
     IconNames.FACEBOOK,
-    IconNames.FILE,
-    IconNames.FIRST,
     IconNames.INSTAGRAM,
-    IconNames.LAST,
     IconNames.LINKEDIN,
     IconNames.LOGO,
-    IconNames.NEXT,
-    IconNames.PREVIOUS,
-    IconNames.TOGGLE_CLOSE,
-    IconNames.TOGGLE_OPEN,
-    IconNames.TOGGLE_SEARCH,
     IconNames.TRIDENT_HEADER,
     IconNames.TWITTER,
     IconNames.YOUTUBE,

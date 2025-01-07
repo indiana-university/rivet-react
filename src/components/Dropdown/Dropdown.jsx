@@ -16,7 +16,7 @@ import { Button } from "../Button";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import { TestUtils } from "../util/TestUtils";
-import Icon, { IconNames } from "../util/RivetIcons";
+import "rivet-icons/dist/chevron-down.js";
 
 const Dropdown = ({
   toggleDropdownOnClickInside = false,
@@ -115,7 +115,7 @@ const Dropdown = ({
             {label}
           </span>
         )}
-        <Icon name={IconNames.CARET_DOWN} />
+        <rvt-icon name="chevron-down" />
       </Button>
       {isOpen && (
         <div className={menuClasses} aria-hidden={!isOpen} role="menu">

@@ -7,8 +7,8 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import { useEffect } from "react";
 import * as Rivet from "../util/Rivet";
+import "rivet-icons/dist/close.js";
 import Button from "../Button/Button.jsx";
-import Icon from "../util/RivetIcons.jsx";
 import {
   handler,
   isRightMouseClick,
@@ -48,7 +48,7 @@ const Dialog = ({
     // The props provided to useDialog are specified by this type:
     // https://github.com/adobe/react-spectrum/blob/98cad3f064c5302c04a1140d12a2cacc3ee921a2/packages/%40react-types/dialog/src/index.d.ts#L57
     { id, ["aria-labelledby"]: `${id}-title`, role: "dialog", ...attrs },
-    ref
+    ref,
   );
 
   const { modalProps, underlayProps } = useModalOverlay(
@@ -64,7 +64,7 @@ const Dialog = ({
       isOpen: isOpen,
       disablePageInteraction: disablePageInteraction,
     },
-    ref
+    ref,
   );
 
   const handleClickOutsideOrEscape = (event) => {
@@ -170,7 +170,7 @@ const Dialog = ({
 const DialogCloseButton = ({ onDismiss }) => (
   <Button className="rvt-button--plain rvt-dialog__close" onClick={onDismiss}>
     <span className="rvt-sr-only">Close</span>
-    <Icon name="close" />
+    <rvt-icon name="close" />
   </Button>
 );
 

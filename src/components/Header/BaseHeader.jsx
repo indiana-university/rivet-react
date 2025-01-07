@@ -26,7 +26,7 @@ const BaseHeader = ({
   const widthClass =
     headerWidth === "fluid" ? "rvt-p-lr-md" : "rvt-container-" + headerWidth;
   const titleBlock = (
-    <>
+    <React.Fragment>
       <div className="rvt-lockup__tab">
         <Icon name={IconNames.TRIDENT_HEADER} />
       </div>
@@ -34,7 +34,7 @@ const BaseHeader = ({
         <span className="rvt-lockup__title">{title}</span>
         <span className="rvt-lockup__subtitle">{subtitle}</span>
       </div>
-    </>
+    </React.Fragment>
   );
   const homeUrlOnClick = onClick
     ? (e) => {

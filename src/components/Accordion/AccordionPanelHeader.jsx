@@ -5,8 +5,9 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
-import Icon, { IconNames } from "../util/RivetIcons.jsx";
 import * as Rivet from "../util/Rivet";
+import "rivet-icons/dist/plus.js";
+import "rivet-icons/dist/minus.js";
 import { TestUtils } from "../util/TestUtils";
 
 const testIds = TestUtils.Accordion;
@@ -16,8 +17,6 @@ const AccordionPanelHeader = (props) => {
     children,
     className,
     controlId,
-    iconOpened = <Icon name={IconNames.ACCORDIAN_IND} />,
-    iconClosed = <Icon name={IconNames.ACCORDIAN_IND} />,
     isOpen = false,
     label,
     onClick,
@@ -44,7 +43,7 @@ const AccordionPanelHeader = (props) => {
       >
         <span className="rvt-accordion__toggle-text">{label}</span>
         <div className="rvt-accordion__toggle-icon">
-          {isOpen ? iconOpened : iconClosed}
+          <rvt-icon name={isOpen ? "minus" : "plus"} />
         </div>
       </button>
     </h3>
@@ -55,10 +54,6 @@ AccordionPanelHeader.displayName = "AccordionPanelHeader";
 AccordionPanelHeader.propTypes = {
   /** Unique Identifer for the header */
   controlId: PropTypes.string.isRequired,
-  /** Icon/Indicator for a closed panel */
-  iconClosed: PropTypes.element,
-  /** Icon/Indicator for an open panel */
-  iconOpened: PropTypes.element,
   /** Header label for the corresponding panel */
   label: PropTypes.node.isRequired,
   /** Handler for onClick event of the header */

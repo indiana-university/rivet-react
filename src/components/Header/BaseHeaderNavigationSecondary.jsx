@@ -6,7 +6,7 @@ import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
-import Icon, { IconNames } from "../util/RivetIcons";
+import "rivet-icons/dist/chevron-down.js";
 import {
   isEscapeKeyPress,
   isMouseEvent,
@@ -29,7 +29,7 @@ const shouldToggleNavigation = (event, wrapperDivRef) => {
 };
 
 /**
- * 
+ *
  */
 const BaseHeaderNavigationSecondary = ({
   navWidth = "xl",
@@ -78,39 +78,39 @@ const BaseHeaderNavigationSecondary = ({
     >
       <div
         className={"rvt-container-" + navWidth}
-        {...(testMode && { "data-testid": TestUtils.Header.secondaryNavContainerTestId })}
+        {...(testMode && {
+          "data-testid": TestUtils.Header.secondaryNavContainerTestId,
+        })}
       >
         <div className="rvt-header-local__inner">
-          {
-            titleUrl && 
-              <a href={titleUrl} className="rvt-header-local__title">
-                {title}
-              </a>
-          }
-          {
-            !titleUrl && 
-              <span className="rvt-header-local__title">
-                {title}
-              </span>
-          }
+          {titleUrl && (
+            <a href={titleUrl} className="rvt-header-local__title">
+              {title}
+            </a>
+          )}
+          {!titleUrl && (
+            <span className="rvt-header-local__title">{title}</span>
+          )}
           <button
             aria-expanded={isExpanded}
             className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
             onClick={toggleNavigation}
-            {...(testMode && { "data-testid": TestUtils.Header.secondaryNavToggleTestId })}
+            {...(testMode && {
+              "data-testid": TestUtils.Header.secondaryNavToggleTestId,
+            })}
           >
             <span className="rvt-sr-only">Toggle local menu</span>
-            <Icon name={IconNames.CARET_DOWN} />
+            <rvt-icon name="chevron-down" />
           </button>
           <nav
             aria-label="Secondary"
             className="rvt-header-menu"
             hidden={!isExpanded}
-            {...(testMode && { "data-testid": TestUtils.Header.secondaryNavTestId })}
+            {...(testMode && {
+              "data-testid": TestUtils.Header.secondaryNavTestId,
+            })}
           >
-            <ul className={"rvt-header-menu__list"}>
-              {children}
-            </ul>
+            <ul className={"rvt-header-menu__list"}>{children}</ul>
           </nav>
         </div>
       </div>
@@ -137,7 +137,7 @@ BaseHeaderNavigationSecondary.propTypes = {
   /** The title for the navigation */
   title: PropTypes.string.isRequired,
   /** Url for the navigation title */
-  titleUrl: PropTypes.string
+  titleUrl: PropTypes.string,
 };
 
 export default Rivet.rivetize(BaseHeaderNavigationSecondary);
