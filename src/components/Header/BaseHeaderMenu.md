@@ -2,7 +2,7 @@ Base component for adding a dropdown menu to primary or secondary navigation in 
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseHeader title="Application Title">
+<BaseHeader title="Application Title" contentHref="#">
     <BaseHeaderNavigation>
         <BaseHeaderMenuItem>
             <BaseHeaderMenu label="Nav item one">
@@ -20,7 +20,7 @@ Base component for adding a dropdown menu to primary or secondary navigation in 
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseHeader title="Application Title">
+<BaseHeader title="Application Title" contentHref="#">
     <BaseHeaderNavigation>
         <BaseHeaderMenuItem>
             <BaseHeaderMenu label="Nav item one" menuUrl="#">
