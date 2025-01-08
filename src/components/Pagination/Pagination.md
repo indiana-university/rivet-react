@@ -84,7 +84,7 @@ View the [Rivet documentation for Pagination](https://rivet.iu.edu/components/pa
         ariaLabel="Go to previous page"
         className="rvt-m-lr-sm"
     >
-        <rvt-icon className="rvt-m-right-xs" name="previous" />
+        <rvt-icon className="rvt-m-right-xs" name="chevron-left" />
         Back
     </PaginationItem>
     <PaginationItem
@@ -116,7 +116,7 @@ View the [Rivet documentation for Pagination](https://rivet.iu.edu/components/pa
         className="rvt-m-lr-sm"
     >
         Next
-        <rvt-icon className="rvt-m-left-xs" name="next" />
+        <rvt-icon className="rvt-m-left-xs" name="chevron-right" />
     </PaginationItem>
     <PaginationItem
         ariaLabel="Go to last page"
