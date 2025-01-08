@@ -9,7 +9,7 @@ import "rivet-icons/dist/chevron-up.js";
 import "rivet-icons/dist/chevron-down.js";
 import { useEffect, useMemo, useRef } from "react";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
-import { renderHeaderNavUnorderedList, simplify } from "./childUtils";
+import { renderHeaderNavUnorderedList } from "./childUtils";
 import {
   isEscapeKeyPress,
   isMouseEvent,
