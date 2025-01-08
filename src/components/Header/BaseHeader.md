@@ -2,7 +2,7 @@ Base component for constructing a header. Can contain multiple subcomponents as 
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseHeader title="Application Title" />
+<BaseHeader title="Application Title" contentHref="#" />
 ```
 <!-- prettier-ignore-end -->
 
@@ -10,7 +10,7 @@ Base component for constructing a header. Can contain multiple subcomponents as 
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseHeader title="Application Title" subtitle="Optional subtitle" headerWidth="md"/>
+<BaseHeader title="Application Title" contentHref="#" subtitle="Optional subtitle" headerWidth="md"/>
 ```
 <!-- prettier-ignore-end -->
 
@@ -18,7 +18,7 @@ Base component for constructing a header. Can contain multiple subcomponents as 
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseHeader homeUrl="/example" onClick={e => alert(`You could navigate to ${e.currentTarget.attributes.href.nodeValue}`) } title="Application Title" headerWidth="md"/>
+<BaseHeader homeUrl="/example" onClick={e => alert(`You could navigate to ${e.currentTarget.attributes.href.nodeValue}`) } title="Application Title" contentHref="#" headerWidth="md"/>
 ```
 <!-- prettier-ignore-end -->
 
@@ -31,7 +31,7 @@ const secondaryNav = <BaseHeaderNavigationSecondary title="Components">
     <BaseHeaderMenuItem itemUrl="#">Sub item two</BaseHeaderMenuItem>
 </BaseHeaderNavigationSecondary>;
 
-<BaseHeader title="Application Title" secondaryNavigation={secondaryNav}>
+<BaseHeader title="Application Title" contentHref="#" secondaryNavigation={secondaryNav}>
     <BaseHeaderNavigation>
         <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
         <BaseHeaderMenuItem itemUrl="#">Nav item two</BaseHeaderMenuItem>
@@ -57,6 +57,7 @@ const secondaryNavigation = <BaseHeaderNavigationSecondary title="Component Libr
 
 <BaseHeader
     homeUrl="/foo"
+    contentHref="#"
     secondaryNavigation={secondaryNavigation}
     title="Application Title"
 >

@@ -2,7 +2,7 @@ Header with various menu items:
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseHeader title="Header Menu Items">
+<BaseHeader title="Header Menu Items" contentHref="#">
     <BaseHeaderNavigation>
         <BaseHeaderMenuItem>
             <Button variant="plain">Standard Item</Button>

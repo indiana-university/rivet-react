@@ -6,7 +6,7 @@ View the [Rivet documentation for Header](https://rivet.iu.edu/components/header
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title" />
+<Header title="Application Title" contentHref="#" />
 ```
 <!-- prettier-ignore-end -->
 
@@ -14,7 +14,7 @@ An optional subtitle can also be provided.
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title" subtitle="Optional subtitle" />
+<Header title="Application Title" contentHref="#" subtitle="Optional subtitle" />
 ```
 <!-- prettier-ignore-end -->
 
@@ -22,7 +22,7 @@ You can also override the default "/" URL for the link:
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Header title="Application Title" href="/foo" />
+<Header title="Application Title" contentHref="#" href="/foo" />
 ```
 <!-- prettier-ignore-end -->
 
@@ -31,7 +31,7 @@ The width prop can be used to constrain the width of the header.
 <!-- prettier-ignore-start -->
 
 ```jsx
-<Header title="Application Title" headerWidth="md"/>
+<Header title="Application Title" contentHref="#" headerWidth="md"/>
 ```
 <!-- prettier-ignore-end -->
 
@@ -55,7 +55,7 @@ const navigation = <Header.Navigation>
   </ul>
 </Header.Navigation>;
 
-<Header title="Application Title" navigation={navigation} />
+<Header title="Application Title" contentHref="#" navigation={navigation} />
 ```
 <!-- prettier-ignore-end -->
 
@@ -78,7 +78,7 @@ const navigation = <Header.Navigation avatar={avatar}>
   </ul>
 </Header.Navigation>;
 
-<Header title="Application Title" navigation={navigation}/>
+<Header title="Application Title" contentHref="#" navigation={navigation}/>
 ```
 <!-- prettier-ignore-end -->
 
@@ -87,7 +87,7 @@ Header with Search:
 <!-- prettier-ignore-start -->
 ```jsx
 const search = <Header.Search action={"/mySearchURL"} method={"post"}/>;
-<Header title="Application Title" search={search} />
+<Header title="Application Title" contentHref="#" search={search} />
 ```
 <!-- prettier-ignore-end -->
 
@@ -110,7 +110,7 @@ const navigation = <Header.Navigation>
 </Header.Navigation>;
 const search = <Header.Search action={"/mySearchURL"} method={"post"}/>;
 
-<Header title="Application Title" navigation={navigation} search={search} />
+<Header title="Application Title" contentHref="#" navigation={navigation} search={search} />
 ```
 <!-- prettier-ignore-end -->
 
@@ -146,7 +146,7 @@ const secondaryNavigation = <Header.NavigationSecondary title={"Component Librar
   </ul>
 </Header.NavigationSecondary>;
 
-<Header title="Application Title" navigation={navigation} search={search} secondaryNavigation={secondaryNavigation}/>
+<Header title="Application Title" contentHref="#" navigation={navigation} search={search} secondaryNavigation={secondaryNavigation}/>
 
 ```
 <!-- prettier-ignore-end -->

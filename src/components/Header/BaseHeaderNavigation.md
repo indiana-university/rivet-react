@@ -2,7 +2,7 @@ Base component for constructing a primary navigation in the header.
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseHeader title="Application Title">
+<BaseHeader title="Application Title" contentHref="#">
     <BaseHeaderNavigation>
         <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
         <BaseHeaderMenuItem itemUrl="#">Nav item two</BaseHeaderMenuItem>
@@ -16,7 +16,7 @@ Base component for constructing a primary navigation in the header.
 
 <!-- prettier-ignore-start -->
 ```jsx
-<BaseHeader title="Application Title">
+<BaseHeader title="Application Title" contentHref="#">
     <BaseHeaderNavigation>
         <BaseHeaderMenuItem>
             <BaseHeaderMenu label="Nav item one">
