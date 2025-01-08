@@ -64,8 +64,8 @@ const Header = ({
             </div>
             {(navigation || search) && (
               <div className="rvt-header-global__controls">
-                <>{navigation}</>
-                <>{search}</>
+                {navigation}
+                {search}
               </div>
             )}
           </div>

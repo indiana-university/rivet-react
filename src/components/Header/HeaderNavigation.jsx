@@ -45,7 +45,7 @@ const HeaderNavigation = ({ avatar, children, ...attrs }) => {
   });
 
   const wrappedChildren = useMemo(() => {
-    return React.Children.map(renderHeaderNavUnorderedList);
+    return React.Children.map(children, renderHeaderNavUnorderedList);
   }, [children]);
 
   const toggleNavigation = () => {
