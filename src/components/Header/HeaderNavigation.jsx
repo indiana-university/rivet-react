@@ -7,8 +7,9 @@ import * as React from "react";
 import * as Rivet from "../util/Rivet";
 import "rivet-icons/dist/chevron-up.js";
 import "rivet-icons/dist/chevron-down.js";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
+import { renderHeaderNavUnorderedList } from "./childUtils";
 import {
   isEscapeKeyPress,
   isMouseEvent,
@@ -16,7 +17,6 @@ import {
   targets,
 } from "../util/EventUtils";
 import { TestUtils } from "../util/TestUtils";
-import { renderHeaderNavUnorderedList } from "./childUtils";
 import PropTypes from "prop-types";
 
 const shouldToggleNavigation = (event, wrapperDivRef) => {
@@ -43,6 +43,10 @@ const HeaderNavigation = ({ avatar, children, ...attrs }) => {
       eventHandler.deregister();
     };
   });
+
+  const wrappedChildren = useMemo(() => {
+    return React.Children.map(children, renderHeaderNavUnorderedList);
+  }, [children]);
 
   const toggleNavigation = () => {
     setIsNavMenuOpen(!isNavMenuOpen);
@@ -86,7 +90,7 @@ const HeaderNavigation = ({ avatar, children, ...attrs }) => {
         hidden={!isNavMenuOpen}
         data-testid={TestUtils.Header.headerNavTestId}
       >
-        {React.Children.map(children, renderHeaderNavUnorderedList)}
+        {wrappedChildren}
         {avatar}
       </nav>
     </div>

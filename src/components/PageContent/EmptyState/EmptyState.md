@@ -39,7 +39,7 @@ View the [Rivet documentation for EmptyState](https://rivet.iu.edu/components/em
 <EmptyState>
     <EmptyState.Content>
         <div className="rvt-p-all-md rvt-m-bottom-md rvt-bg-black-100 rvt-inline-flex rvt-border-radius-circle">
-            <Icon name="bell" />       
+            <rvt-icon name="bell" />       
         </div>
         <p>There's nothing here yet.</p>
     </EmptyState.Content>
