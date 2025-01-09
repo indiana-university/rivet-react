@@ -9,13 +9,17 @@ import { HeaderMenu } from "./index";
 import classNames from "classnames";
 import { TestUtils } from "../util/TestUtils";
 import HeaderAvatar from "./HeaderAvatar";
+import BaseHeaderMenu from "./BaseHeaderMenu.jsx";
 
 const renderHeaderNavListItem = (child) => {
   const isListItemCurrent = child.props["data-rvt-c-header-nav-item__current"];
 
   let childrenWithProps = React.Children.map(child.props.children, (child) => {
     const childType = child && child["type"];
-    const isHeaderMenu = getDisplayName(childType) === HeaderMenu.displayName;
+    const isHeaderMenu = [
+      HeaderMenu.displayName,
+      BaseHeaderMenu.displayName,
+    ].includes(getDisplayName(childType));
     const isAnchor = childType === "a";
 
     const headerMenuProps = { ...(isListItemCurrent && { current: true }) };
@@ -53,10 +57,5 @@ export const renderHeaderNavUnorderedList = (child) => {
     child.props.children,
     renderHeaderNavListItem,
   );
-
-  return (
-    <ul key={uuidv4()} className={"rvt-header-menu__list"}>
-      {listItems}
-    </ul>
-  );
+  return listItems;
 };
