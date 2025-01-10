@@ -13,7 +13,6 @@ export * from "./Footer/index.jsx";
 export * from "./Grid/index.jsx";
 export * from "./Input/index.jsx";
 export * from "./Layouts/PageNotFound/index.jsx";
-export * from "./Layouts/stickers/index.jsx";
 export * from "./List/index.jsx";
 export * from "./Header/index.jsx";
 export * from "./LoadingIndicator/index.jsx";
