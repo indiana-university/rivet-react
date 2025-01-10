@@ -32,9 +32,9 @@ const HeaderMenu = ({ children, href = "#", ...attrs }) => {
 
 HeaderMenu.displayName = "Header.Menu";
 HeaderMenu.propTypes = {
-  /** Indicates item is current page if link with url */
+  /** Indicates if the paged linked (if href provided) by the label is current page */
   current: PropTypes.bool,
-  /** The link that the corresponding anchor redirects to */
+  /** The href that the menu's label links to, wraps label in anchor if provided*/
   href: PropTypes.string,
   /** The label of the menu */
   label: PropTypes.string.isRequired,
