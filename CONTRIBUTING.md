@@ -53,7 +53,7 @@ You will also need to add an export to the top level component index in `src/com
 export * from "./path/to/component/index.jsx";
 ```
 
-To add a new section to the documentation, edit `styleguide.config.cjs` and add a new `sections` entry. They will typically follow the this pattern.
+To add a new section to the documentation, edit `styleguide.config.cjs` and add a new `sections` entry. They will typically follow this pattern.
 
 ```js
 {
