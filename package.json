@@ -68,6 +68,10 @@
       "import": "./dist/rivet-react-input.js",
       "require": "./dist/rivet-react-input.cjs"
     },
+    "./Layouts/PageNotFoundLayout": {
+      "import": "./dist/rivet-react-pagenotfoundlayout.js",
+      "require": "./dist/rivet-react-pagenotfoundlayout.cjs"
+    },
     "./List": {
       "import": "./dist/rivet-react-list.js",
       "require": "./dist/rivet-react-list.cjs"
