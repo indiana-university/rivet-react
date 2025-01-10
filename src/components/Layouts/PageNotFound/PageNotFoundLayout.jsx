@@ -43,7 +43,9 @@ const PageNotFoundLayout = ({ errorMessage, children }) => {
 };
 
 PageNotFoundLayout.propTypes = {
+  /** An error message for Page not found */
   errorMessage: PropTypes.string.isRequired,
+  /** Content to display below the page not found layout */
   children: PropTypes.node,
 };
 
