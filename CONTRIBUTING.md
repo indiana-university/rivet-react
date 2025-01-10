@@ -6,7 +6,7 @@ To get started, fork the [rivet-react repo](https://github.com/indiana-universit
 
 To compile the components:
 
-- Requires Node v22.12.0
+- Requires Node v22.12.0 (The "Jod" LTS)
 
 ```shell
 npm run build
