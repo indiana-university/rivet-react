@@ -1,6 +1,7 @@
 import PageNotFoundLayout from "./PageNotFoundLayout.jsx";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import React from "react";
 
 describe("<PageNotFoundLayout />", () => {
   it("should display page not found error message", async () => {
