@@ -38,4 +38,15 @@ function stickerListTests() {
       screen.queryByTestId(TestUtils.RivetStickers.testId, {}),
     ).toBeVisible();
   });
+  it("should render access denied sticker without crashing", () => {
+    render(
+      <Sticker
+        data-testid={TestUtils.RivetStickers.testId}
+        name={StickerNames.ACCESS_DENIED}
+      />,
+    );
+    expect(
+      screen.queryByTestId(TestUtils.RivetStickers.testId, {}),
+    ).toBeVisible();
+  });
 }

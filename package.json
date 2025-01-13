@@ -68,6 +68,10 @@
       "import": "./dist/rivet-react-input.js",
       "require": "./dist/rivet-react-input.cjs"
     },
+    "./Layouts/AccessDeniedLayout": {
+      "import": "./dist/rivet-react-accessdeniedlayout.js",
+      "require": "./dist/rivet-react-accessdeniedlayout.cjs"
+    },
     "./Layouts/PageNotFoundLayout": {
       "import": "./dist/rivet-react-pagenotfoundlayout.js",
       "require": "./dist/rivet-react-pagenotfoundlayout.cjs"
