@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -17,7 +21,7 @@ describe("<Disclosure />", () => {
       render(
         <Disclosure data-testid={disclosureTestId} title={title}>
           {child}
-        </Disclosure>
+        </Disclosure>,
       );
       const disclosure = screen.getByTestId(disclosureTestId, {});
       expect(disclosure).toBeVisible();
@@ -28,7 +32,7 @@ describe("<Disclosure />", () => {
       expect(button).toHaveClass("rvt-disclosure__toggle");
 
       expect(
-        screen.queryByTestId(TestUtils.Disclosure.testId, {})
+        screen.queryByTestId(TestUtils.Disclosure.testId, {}),
       ).not.toBeInTheDocument();
     });
   });
@@ -38,7 +42,7 @@ describe("<Disclosure />", () => {
       render(
         <Disclosure title={title} isOpen={true}>
           {child}
-        </Disclosure>
+        </Disclosure>,
       );
 
       const children = screen.queryByTestId(TestUtils.Disclosure.testId, {});
@@ -62,7 +66,7 @@ describe("<Disclosure />", () => {
       await user.click(screen.getByRole("button", {}));
       expect(button).toHaveAttribute("aria-expanded", "false");
       expect(
-        screen.queryByTestId(TestUtils.Disclosure.testId, {})
+        screen.queryByTestId(TestUtils.Disclosure.testId, {}),
       ).not.toBeInTheDocument();
       expect(screen.queryByText(child, {})).not.toBeInTheDocument();
     });
@@ -76,7 +80,7 @@ describe("<Disclosure />", () => {
           <Disclosure title={title} isOpen={true}>
             {child}
           </Disclosure>
-        </React.Fragment>
+        </React.Fragment>,
       );
 
       expect(screen.queryByText(child, {})).toBeVisible();
@@ -91,7 +95,7 @@ describe("<Disclosure />", () => {
           <Disclosure title={title} isOpen={true} closeClickOutside={true}>
             {child}
           </Disclosure>
-        </React.Fragment>
+        </React.Fragment>,
       );
 
       expect(screen.queryByText(child, {})).toBeVisible();
@@ -106,7 +110,7 @@ describe("<Disclosure />", () => {
           <Disclosure title={title} isOpen={true} closeClickOutside={true}>
             {child}
           </Disclosure>
-        </React.Fragment>
+        </React.Fragment>,
       );
 
       expect(screen.queryByText(child, {})).toBeVisible();

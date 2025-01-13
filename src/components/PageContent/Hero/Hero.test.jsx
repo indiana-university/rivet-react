@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -40,7 +44,7 @@ describe("<Hero />", () => {
           title={title}
         >
           {content}
-        </Hero>
+        </Hero>,
       );
       checkRenderEyebrow();
       checkRenderContainer();
@@ -63,7 +67,7 @@ describe("<Hero />", () => {
           title={title}
         >
           {content}
-        </Hero>
+        </Hero>,
       );
       checkRenderEyebrow();
       checkRenderContainer();
@@ -89,7 +93,7 @@ describe("<Hero />", () => {
           title={title}
         >
           {content}
-        </Hero>
+        </Hero>,
       );
       checkRenderEyebrow();
       checkRenderContainer();
@@ -116,7 +120,7 @@ describe("<Hero />", () => {
           title={title}
         >
           {content}
-        </Hero>
+        </Hero>,
       );
       checkRenderEyebrow();
       checkRenderContainer();
@@ -141,7 +145,7 @@ describe("<Hero />", () => {
           title={title}
         >
           {content}
-        </Hero>
+        </Hero>,
       );
       checkRenderEyebrow();
       checkRenderContainer();
@@ -170,7 +174,7 @@ describe("<Hero />", () => {
           varient="dark"
         >
           {content}
-        </Hero>
+        </Hero>,
       );
       const element = screen.getByTestId(testIds.container);
       expect(element).toHaveClass("rvt-hero--bg-dark");
@@ -203,7 +207,7 @@ describe("<Hero />", () => {
           title={title}
         >
           {content}
-        </Hero>
+        </Hero>,
       );
       checkRenderActions(actionsStr);
     });
@@ -220,7 +224,7 @@ describe("<Hero />", () => {
           title={title}
         >
           {content}
-        </Hero>
+        </Hero>,
       );
       checkRenderInnerContainer("sm");
     });
@@ -235,7 +239,7 @@ describe("<Hero />", () => {
           title={title}
         >
           {content}
-        </Hero>
+        </Hero>,
       );
       const element = screen.queryByTestId(testIds.container);
       expect(element).not.toBeInTheDocument();

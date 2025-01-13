@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -17,7 +21,7 @@ const checkMonthScenario = (month, value, abbr) => {
         month={month}
         testMode
         year={2023}
-      />
+      />,
     );
     checkRenderMonth(value);
   });
@@ -27,7 +31,7 @@ const checkMonthScenario = (month, value, abbr) => {
   });
   it(`Month ${month} should display abbreviation ${abbr}`, () => {
     render(
-      <CalendarTile abbreviate day={1} month={month} testMode year={2023} />
+      <CalendarTile abbreviate day={1} month={month} testMode year={2023} />,
     );
     checkRenderMonth(abbr);
   });
@@ -39,7 +43,7 @@ const checkMonthScenario = (month, value, abbr) => {
         month={`${month}`}
         testMode
         year={2023}
-      />
+      />,
     );
     checkRenderMonth(abbr);
   });
@@ -55,7 +59,7 @@ describe("<CalendarTile />", () => {
           month="1"
           testMode
           year={2023}
-        />
+        />,
       );
       checkRenderContainer();
       checkRenderMonth("January");
@@ -64,7 +68,7 @@ describe("<CalendarTile />", () => {
     });
     it("without year, should render without throwing an error", () => {
       render(
-        <CalendarTile className={customClassName} day={1} month="1" testMode />
+        <CalendarTile className={customClassName} day={1} month="1" testMode />,
       );
       checkRenderContainer();
       checkRenderMonth("January");
@@ -92,7 +96,7 @@ describe("<CalendarTile />", () => {
     });
     it(`Custom month abbreviated should display custom input`, () => {
       render(
-        <CalendarTile abbreviate day={1} month="custom" testMode year={2023} />
+        <CalendarTile abbreviate day={1} month="custom" testMode year={2023} />,
       );
       checkRenderMonth("custom");
     });

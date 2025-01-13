@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -20,7 +24,7 @@ describe("<Badge />", () => {
       render(
         <Badge variant="info" data-testid={badgeTestId}>
           Info
-        </Badge>
+        </Badge>,
       );
       const badge = screen.getByTestId(badgeTestId);
       expect(badge).toBeVisible();
@@ -31,7 +35,7 @@ describe("<Badge />", () => {
       render(
         <Badge modifier="secondary" data-testid={badgeTestId}>
           Secondary
-        </Badge>
+        </Badge>,
       );
       const badge = screen.getByTestId(badgeTestId);
       expect(badge).toBeVisible();
@@ -42,7 +46,7 @@ describe("<Badge />", () => {
       render(
         <Badge variant="success" modifier="secondary" data-testid={badgeTestId}>
           Success secondary
-        </Badge>
+        </Badge>,
       );
       const badge = screen.getByTestId(badgeTestId);
       expect(badge).toBeVisible();
