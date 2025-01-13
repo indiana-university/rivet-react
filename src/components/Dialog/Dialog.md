@@ -45,10 +45,15 @@ const DialogExample = () => {
   const handleDismiss = () => {
     setDialogOpen(false);
   };
+  const openModal = (event, modalKey) => {
+    setDialogOpen(modalKey);
+    event.preventDefault();
+    event.stopPropagation();
+  };
 
   return (
     <>
-      <Button onClick={() => setDialogOpen("default-dialog")}>Default dialog</Button>
+      <Button onClick={event => openModal(event, "default-dialog")}>Default dialog</Button>
       <Dialog
         isOpen={dialogOpen === "default-dialog"}
         onDismiss={handleDismiss}
@@ -65,7 +70,7 @@ const DialogExample = () => {
         </DialogControls>
       </Dialog>
 
-      <Button onClick={() => setDialogOpen("modal-dialog")}>Modal dialog</Button>
+      <Button onClick={event => openModal(event, "modal-dialog")}>Modal dialog</Button>
       <Dialog
         isOpen={dialogOpen === "modal-dialog"}
         darkenPage={true}
@@ -84,7 +89,7 @@ const DialogExample = () => {
         </DialogControls>
       </Dialog>
 
-      <Button onClick={() => setDialogOpen("confirmation-dialog")}>Confirmation dialog</Button>
+      <Button onClick={event => openModal(event, "confirmation-dialog")}>Confirmation dialog</Button>
       <Dialog
         isOpen={dialogOpen === "confirmation-dialog"}
         disablePageInteraction={true}
@@ -103,7 +108,7 @@ const DialogExample = () => {
         </DialogControls>
       </Dialog>
 
-      <Button onClick={() => setDialogOpen("dialog-with-form")}>Dialog with form</Button>
+      <Button onClick={event => openModal(event, "dialog-with-form")}>Dialog with form</Button>
       <Dialog
         isOpen={dialogOpen === "dialog-with-form"}
         darkenPage={true}
@@ -161,7 +166,7 @@ const DialogExample = () => {
         </form>
       </Dialog>
 
-      <Button onClick={() => setDialogOpen("notification")}>Notification</Button>
+      <Button onClick={event => openModal(event, "notification")}>Notification</Button>
       <Dialog
         isOpen={dialogOpen === "notification"}
         align="top-right"
@@ -174,7 +179,7 @@ const DialogExample = () => {
         </DialogBody>
       </Dialog>
 
-      <Button onClick={() => setDialogOpen("help-widget")}>Help widget</Button>
+      <Button onClick={event => openModal(event, "help-widget")}>Help widget</Button>
       <Dialog
         isOpen={dialogOpen === "help-widget"}
         align="bottom-right"

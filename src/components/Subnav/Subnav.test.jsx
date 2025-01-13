@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -20,7 +24,7 @@ describe("<Subnav />", () => {
           <Subnav.Item url="#">Link 1</Subnav.Item>
           <Subnav.Item url="#">Link 1</Subnav.Item>
           <Subnav.Item url="#">Link 3</Subnav.Item>
-        </Subnav>
+        </Subnav>,
       );
       checkRenderSubnavContainer();
     });
@@ -33,7 +37,7 @@ describe("<Subnav />", () => {
           <Subnav.Item url="#">Link 1</Subnav.Item>
           <Subnav.Item url="#">Link 1</Subnav.Item>
           <Subnav.Item url="#">Link 3</Subnav.Item>
-        </Subnav>
+        </Subnav>,
       );
       const element = screen.queryByTestId(testIds.container);
       expect(element).not.toBeInTheDocument();
@@ -47,7 +51,7 @@ describe("<SubnavItem />", () => {
       render(
         <Subnav.Item className={customItemClassName} url={linkUrl} testMode>
           {linkLabel}
-        </Subnav.Item>
+        </Subnav.Item>,
       );
       checkRenderSubnavItemContainer();
       checkRenderSubnavItemLink();
@@ -57,7 +61,7 @@ describe("<SubnavItem />", () => {
       render(
         <Subnav.Item className={customItemClassName} testMode>
           {linkLabel}
-        </Subnav.Item>
+        </Subnav.Item>,
       );
       checkRenderSubnavItemContainer();
       const element = screen.getByTestId(testIds.itemContainer);
@@ -74,7 +78,7 @@ describe("<SubnavItem />", () => {
           testMode
         >
           {linkLabel}
-        </Subnav.Item>
+        </Subnav.Item>,
       );
       checkRenderSubnavItemContainer();
       checkRenderSubnavItemLink();
@@ -91,7 +95,7 @@ describe("<SubnavItem />", () => {
           testMode
         >
           {linkLabel}
-        </Subnav.Item>
+        </Subnav.Item>,
       );
       checkRenderSubnavItemContainer();
       checkRenderSubnavItemLink();
@@ -106,7 +110,7 @@ describe("<SubnavItem />", () => {
       render(
         <Subnav.Item className={customItemClassName} testattr="test" testMode>
           {linkLabel}
-        </Subnav.Item>
+        </Subnav.Item>,
       );
       checkRenderSubnavItemContainer();
       const element = screen.getByTestId(testIds.itemContainer);

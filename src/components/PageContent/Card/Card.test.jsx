@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
@@ -37,7 +41,7 @@ describe("<Card />", () => {
           titleUrl={titleUrl}
         >
           {content}
-        </Card>
+        </Card>,
       );
       checkRenderContainer();
       checkRenderTitle(titleUrl);
@@ -57,7 +61,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
       checkRenderContainer();
       checkRenderTitle();
@@ -76,7 +80,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
       checkRenderContainer();
       checkRenderTitle();
@@ -94,7 +98,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
       checkRenderContainer();
       checkRenderTitle();
@@ -112,7 +116,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
       checkRenderContainer();
       checkRenderTitle();
@@ -134,7 +138,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
 
       const element = screen.queryByTestId(testIds.container);
@@ -162,7 +166,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
 
       const element = screen.queryByTestId(testIds.container);
@@ -190,7 +194,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
 
       const element = screen.queryByTestId(testIds.container);
@@ -212,7 +216,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
       const element = screen.queryByTestId(testIds.container);
       expect(element).toHaveClass("rvt-card--clickable");
@@ -229,7 +233,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
       const element = screen.queryByTestId(testIds.container);
       expect(element).toHaveClass("rvt-card--horizontal");
@@ -246,7 +250,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
       const element = screen.queryByTestId(testIds.container);
       expect(element).toHaveClass("rvt-card--raised");
@@ -263,7 +267,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
       const element = screen.queryByTestId(testIds.container);
       expect(element.nodeName).toBe("LI");
@@ -278,7 +282,7 @@ describe("<Card />", () => {
           title={title}
         >
           {content}
-        </Card>
+        </Card>,
       );
       const element = screen.queryByTestId(testIds.container);
       expect(element).not.toBeInTheDocument();

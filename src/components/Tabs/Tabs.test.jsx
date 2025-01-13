@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -31,7 +35,7 @@ describe("<Tabs />", () => {
           <TabPanel className={customPanelClassName} testMode title="tab 3">
             <p>test content 3</p>
           </TabPanel>
-        </Tabs>
+        </Tabs>,
       );
       checkRenderTabsContainer(4);
       checkRenderControls();
@@ -41,17 +45,17 @@ describe("<Tabs />", () => {
       checkRenderTabPanel(
         `tab_${tabsId}_control_0`,
         true,
-        "<p>test content 1</p>"
+        "<p>test content 1</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_1`,
         false,
-        "<p>test content 2</p>"
+        "<p>test content 2</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_2`,
         false,
-        "<p>test content 3</p>"
+        "<p>test content 3</p>",
       );
     });
     it("if no children, should render without throwing an error", () => {
@@ -61,7 +65,7 @@ describe("<Tabs />", () => {
           className={customClassName}
           label={ariaLabel}
           testMode
-        />
+        />,
       );
       checkRenderTabsContainer(1);
     });
@@ -85,7 +89,7 @@ describe("<Tabs />", () => {
           <TabPanel className={customPanelClassName} testMode title="tab 3">
             <p>test content 3</p>
           </TabPanel>
-        </Tabs>
+        </Tabs>,
       );
       checkRenderTabsContainer(4);
       checkRenderControls();
@@ -95,27 +99,27 @@ describe("<Tabs />", () => {
       checkRenderTabPanel(
         `tab_${tabsId}_control_0`,
         true,
-        "<p>test content 1</p>"
+        "<p>test content 1</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_1`,
         false,
-        "<p>test content 2</p>"
+        "<p>test content 2</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_2`,
         false,
-        "<p>test content 3</p>"
+        "<p>test content 3</p>",
       );
 
       const tab1 = screen.getByTestId(
-        `${testIds.controls}-tab_${tabsId}_control_0`
+        `${testIds.controls}-tab_${tabsId}_control_0`,
       );
       const tab2 = screen.getByTestId(
-        `${testIds.controls}-tab_${tabsId}_control_1`
+        `${testIds.controls}-tab_${tabsId}_control_1`,
       );
       const tab3 = screen.getByTestId(
-        `${testIds.controls}-tab_${tabsId}_control_2`
+        `${testIds.controls}-tab_${tabsId}_control_2`,
       );
       fireEvent.click(tab2);
       checkRenderControl(`tab_${tabsId}_control_0`, false, "tab 1");
@@ -124,17 +128,17 @@ describe("<Tabs />", () => {
       checkRenderTabPanel(
         `tab_${tabsId}_control_0`,
         false,
-        "<p>test content 1</p>"
+        "<p>test content 1</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_1`,
         true,
-        "<p>test content 2</p>"
+        "<p>test content 2</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_2`,
         false,
-        "<p>test content 3</p>"
+        "<p>test content 3</p>",
       );
       fireEvent.click(tab3);
       checkRenderControl(`tab_${tabsId}_control_0`, false, "tab 1");
@@ -143,17 +147,17 @@ describe("<Tabs />", () => {
       checkRenderTabPanel(
         `tab_${tabsId}_control_0`,
         false,
-        "<p>test content 1</p>"
+        "<p>test content 1</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_1`,
         false,
-        "<p>test content 2</p>"
+        "<p>test content 2</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_2`,
         true,
-        "<p>test content 3</p>"
+        "<p>test content 3</p>",
       );
       fireEvent.click(tab1);
       checkRenderControl(`tab_${tabsId}_control_0`, true, "tab 1");
@@ -162,17 +166,17 @@ describe("<Tabs />", () => {
       checkRenderTabPanel(
         `tab_${tabsId}_control_0`,
         true,
-        "<p>test content 1</p>"
+        "<p>test content 1</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_1`,
         false,
-        "<p>test content 2</p>"
+        "<p>test content 2</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_2`,
         false,
-        "<p>test content 3</p>"
+        "<p>test content 3</p>",
       );
     });
   });
@@ -196,7 +200,7 @@ describe("<Tabs />", () => {
           <TabPanel className={customPanelClassName} testMode title="tab 3">
             <p>test content 3</p>
           </TabPanel>
-        </Tabs>
+        </Tabs>,
       );
       checkRenderTabsContainer(4);
       checkRenderControls();
@@ -206,17 +210,17 @@ describe("<Tabs />", () => {
       checkRenderTabPanel(
         `tab_${tabsId}_control_0`,
         false,
-        "<p>test content 1</p>"
+        "<p>test content 1</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_1`,
         true,
-        "<p>test content 2</p>"
+        "<p>test content 2</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_2`,
         false,
-        "<p>test content 3</p>"
+        "<p>test content 3</p>",
       );
     });
     it("if initial tab not set, 1st panel displays", () => {
@@ -236,7 +240,7 @@ describe("<Tabs />", () => {
           <TabPanel className={customPanelClassName} testMode title="tab 3">
             <p>test content 3</p>
           </TabPanel>
-        </Tabs>
+        </Tabs>,
       );
       checkRenderTabsContainer(4);
       checkRenderControls();
@@ -246,17 +250,17 @@ describe("<Tabs />", () => {
       checkRenderTabPanel(
         `tab_${tabsId}_control_0`,
         true,
-        "<p>test content 1</p>"
+        "<p>test content 1</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_1`,
         false,
-        "<p>test content 2</p>"
+        "<p>test content 2</p>",
       );
       checkRenderTabPanel(
         `tab_${tabsId}_control_2`,
         false,
-        "<p>test content 3</p>"
+        "<p>test content 3</p>",
       );
     });
     it("if id not set, value is generated", () => {
@@ -276,7 +280,7 @@ describe("<Tabs />", () => {
           <TabPanel className={customPanelClassName} testMode title="tab 3">
             <p>test content 3</p>
           </TabPanel>
-        </Tabs>
+        </Tabs>,
       );
       const element = screen.getByTestId(testIds.controls);
       const firstControlId = element.children[0].getAttribute("id");
@@ -300,7 +304,7 @@ describe("<Tabs />", () => {
           <TabPanel className={customPanelClassName} testMode title="tab 3">
             <p>test content 3</p>
           </TabPanel>
-        </Tabs>
+        </Tabs>,
       );
       const element = screen.getByTestId(testIds.controls);
       const firstControlId = element.children[0].getAttribute("id");
@@ -318,7 +322,7 @@ describe("<Tabs />", () => {
           <TabPanel className={customPanelClassName} testMode title="tab 3">
             <p>test content 3</p>
           </TabPanel>
-        </Tabs>
+        </Tabs>,
       );
       const element = screen.queryByTestId(testIds.container);
       expect(element).not.toBeInTheDocument();
@@ -338,7 +342,7 @@ describe("<TabPanel />", () => {
           title="tab 1"
         >
           <p>test content</p>
-        </TabPanel>
+        </TabPanel>,
       );
       checkRenderTabPanel(id, true, "<p>test content</p>");
     });
@@ -357,7 +361,7 @@ describe("<TabPanel />", () => {
           testMode
         >
           <p>test content</p>
-        </TabPanel>
+        </TabPanel>,
       );
       const element = screen.getByTestId(`${testIds.panel}-${id}`);
       expect(element).not.toBeVisible();
@@ -372,7 +376,7 @@ describe("<TabPanel />", () => {
           testMode
         >
           <p>test content</p>
-        </TabPanel>
+        </TabPanel>,
       );
       const element = screen.getByTestId(`${testIds.panel}-${id}`);
       expect(element).toBeVisible();
@@ -383,7 +387,7 @@ describe("<TabPanel />", () => {
       render(
         <TabPanel title={title} className={customPanelClassName} controlId={id}>
           <p>test content</p>
-        </TabPanel>
+        </TabPanel>,
       );
       const element = screen.queryByTestId(`${testIds.panel}-${id}`);
       expect(element).not.toBeInTheDocument();
