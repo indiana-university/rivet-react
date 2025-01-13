@@ -20,6 +20,7 @@ import { useDialog } from "@react-aria/dialog";
 import { useModalOverlay } from "../../hooks/UseModalOverlay.js";
 import { removeProperty } from "../util/RemoveProperty.js";
 import { TestUtils } from "../util/TestUtils.js";
+import { FocusTrap } from "focus-trap-react";
 
 const Dialog = ({
   children,
@@ -106,34 +107,45 @@ const Dialog = ({
 
   // helper that takes either the react-spectrum modal or dialog props as defined per useDialog and useModalOverlay above
   const dialogContent = (overlayProps) => (
-    <div
-      className={classNames("rvt-dialog", className)}
-      aria-hidden={!isOpen}
-      hidden={!isOpen}
-      ref={ref}
-      {...dataRvt}
-      {...overlayProps}
+    // adobe react-aria supports focus trapping
+    // (https://github.com/adobe/react-spectrum/blob/d969d7312cc2cbe7bcb3d27242e95d1311fcecba/packages/%40react-aria/dialog/src/useDialog.ts#L39)
+    // but it seems the ref we pass to it does not allow its code to restrict the focus to the dialog, hence we use the
+    // FocusTrap library
+    <FocusTrap
+      focusTrapOptions={{
+        fallbackFocus: () => document.querySelector('[role="dialog"]'),
+        allowOutsideClick: true,
+      }}
     >
-      {title && (
-        <header
-          className="rvt-dialog__header"
-          data-testid={TestUtils.Dialog.dialogHeaderTestId}
-        >
-          <h1
-            className="rvt-dialog__title"
-            id={`${id}-title`}
-            // don't want the id from react-spectrum Dialog, use rivet format
-            {...removeProperty(titleProps, "id")}
+      <div
+        className={classNames("rvt-dialog", className)}
+        aria-hidden={!isOpen}
+        hidden={!isOpen}
+        ref={ref}
+        {...dataRvt}
+        {...overlayProps}
+      >
+        {title && (
+          <header
+            className="rvt-dialog__header"
+            data-testid={TestUtils.Dialog.dialogHeaderTestId}
           >
-            {title}
-          </h1>
-        </header>
-      )}
-      {children}
-      {onDismiss && showCloseButton && (
-        <DialogCloseButton onDismiss={handleDismiss} />
-      )}
-    </div>
+            <h1
+              className="rvt-dialog__title"
+              id={`${id}-title`}
+              // don't want the id from react-spectrum Dialog, use rivet format
+              {...removeProperty(titleProps, "id")}
+            >
+              {title}
+            </h1>
+          </header>
+        )}
+        {children}
+        {onDismiss && showCloseButton && (
+          <DialogCloseButton onDismiss={handleDismiss} />
+        )}
+      </div>
+    </FocusTrap>
   );
 
   if (isOpen) {
@@ -142,9 +154,9 @@ const Dialog = ({
     if (disablePageInteraction) {
       return (
         <div
+          role="dialog"
           style={{
             position: "fixed",
-            role: "dialog",
             zIndex: 100,
             top: 0,
             left: 0,

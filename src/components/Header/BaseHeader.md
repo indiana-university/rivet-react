@@ -1,4 +1,7 @@
-Base component for constructing a header. Can contain multiple subcomponents as children and a set secondary navigation.
+Base header components focus on letting users directly build the html element. They are less restrictive on allowed properties and components but also do not modify/process them.
+Other versions of header components utilizes the base components while adding a specific structure.
+
+The BaseHeader allows for setting a secondary navigation while children components are set directly under the global controls.
 
 <!-- prettier-ignore-start -->
 ```jsx

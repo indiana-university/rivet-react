@@ -1,4 +1,7 @@
-Base component for adding a dropdown menu to primary or secondary navigation in the header.
+Base header components focus on letting users directly build the html element. They are less restrictive on allowed properties and components but also do not modify/process them.
+Other versions of header components utilizes the base components while adding a specific structure.
+
+This BaseHeaderMenu directly sets children within the menu list component.
 
 <!-- prettier-ignore-start -->
 ```jsx

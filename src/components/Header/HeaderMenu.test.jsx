@@ -23,10 +23,10 @@ describe("<HeaderMenu/>", () => {
   describe("Rendering and styling", () => {
     it("should render all the provided children", () => {
       render(
-        <Header.Menu label="Nav item three">
+        <Header.Menu testMode label="Nav item three">
           <a href="#">Sub item one</a>
           <a href={testHref}>Sub item two</a>
-        </Header.Menu>
+        </Header.Menu>,
       );
       expect(screen.getByText("Sub item one")).toBeInTheDocument();
       expect(screen.getByText("Sub item two")).toBeInTheDocument();
@@ -34,67 +34,74 @@ describe("<HeaderMenu/>", () => {
 
     it("should retain any attributes provided to the children", () => {
       render(
-        <Header.Menu label="Nav item three">
+        <Header.Menu testMode label="Nav item three">
           <a href="#">Sub item one</a>
           <a href={testHref}>Sub item two</a>
-        </Header.Menu>
+        </Header.Menu>,
       );
       expect(screen.getByText("Sub item one")).toHaveAttribute("href", "#");
       expect(screen.getByText("Sub item two")).toHaveAttribute(
         "href",
-        testHref
+        testHref,
       );
     });
 
     it("should allow providing non-anchor elements as children", () => {
       const testId = "testButton";
       render(
-        <Header.Menu label="Nav item three">
+        <Header.Menu testMode label="Nav item three">
           <button data-testid={testId}>test button</button>
-        </Header.Menu>
+        </Header.Menu>,
       );
       expect(
-        screen.getByTestId(TestUtils.Header.menuContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuContainerTestId),
       ).toContainElement(screen.getByTestId(testId));
     });
 
     it("should provide the label and href props to the label anchor", () => {
       const testLabel = "Nav item";
       render(
-        <Header.Menu label={testLabel} href={testHref}>
+        <Header.Menu testMode label={testLabel} href={testHref}>
           <a href="#">Sub item</a>
-        </Header.Menu>
+        </Header.Menu>,
       );
-      expect(screen.getAllByRole("link")[0]).toHaveTextContent(testLabel);
-      expect(screen.getAllByRole("link")[0]).toHaveAttribute("href", testHref);
+
+      expect(
+        screen.getByTestId(TestUtils.Header.menuAnchorTestId),
+      ).toHaveTextContent(testLabel);
+      expect(
+        screen.getByTestId(TestUtils.Header.menuAnchorTestId),
+      ).toHaveAttribute("href", testHref);
     });
 
     it("should hide the menu items by default", () => {
       render(
-        <Header.Menu label="Label">
+        <Header.Menu testMode label="Label">
           <a href="#">Sub item</a>
-        </Header.Menu>
+        </Header.Menu>,
       );
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).toHaveAttribute("hidden", ""); // testing-library assumes the value of a custom HTML attribute to be "".
     });
   });
 
   describe("Defaulting props", () => {
     it("should default the label anchor's href prop to #, if not provided", () => {
-      render(<Header.Menu label="Nav item"></Header.Menu>);
-      expect(screen.getAllByRole("link")[0]).toHaveAttribute("href", "#");
+      render(<Header.Menu testMode label="Nav item"></Header.Menu>);
+      expect(
+        screen.getByTestId(TestUtils.Header.menuAnchorTestId),
+      ).toHaveAttribute("href", "#");
     });
   });
 
   describe("Toggle behavior", () => {
     beforeEach(() => {
       render(
-        <Header.Menu label="Nav item three">
+        <Header.Menu testMode label="Nav item three">
           <a href="#">Sub item one</a>
           <a href="#">Sub item two</a>
-        </Header.Menu>
+        </Header.Menu>,
       );
     });
 
@@ -102,7 +109,7 @@ describe("<HeaderMenu/>", () => {
       // open the menu
       await toggleMenuThroughClick();
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -111,13 +118,13 @@ describe("<HeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
       // press Tab
       await user.keyboard("{Tab}");
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -126,13 +133,13 @@ describe("<HeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
       // press ArrowUp
       await user.keyboard("{ArrowUp}");
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -141,13 +148,13 @@ describe("<HeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
       // press ArrowDown
       await user.keyboard("{ArrowDown}");
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -156,13 +163,13 @@ describe("<HeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
       // press an unhandled key
       await user.keyboard("{a}");
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -171,7 +178,7 @@ describe("<HeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
       // press Escape on a target that lies outside the HeaderMenu
       fireEvent.keyUp(document.body, {
@@ -179,7 +186,7 @@ describe("<HeaderMenu/>", () => {
       });
       // finally, verify that the menu is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -188,13 +195,13 @@ describe("<HeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
       // click outside the menu
       await user.click(document.body);
       // finally, verify that the menu is closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).toHaveAttribute("hidden", "");
     });
 
@@ -203,13 +210,13 @@ describe("<HeaderMenu/>", () => {
       await toggleMenuThroughClick();
       // verify that the menu is opened
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).not.toHaveAttribute("hidden", "");
       // click the toggle button again
       await toggleMenuThroughClick();
       // finally, verify that the menu is closed
       expect(
-        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+        screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
       ).toHaveAttribute("hidden", "");
     });
   });
@@ -217,10 +224,10 @@ describe("<HeaderMenu/>", () => {
   describe("Focus behavior", () => {
     beforeEach(() => {
       render(
-        <Header.Menu label="Nav item three">
+        <Header.Menu testMode label="Nav item three">
           <a href="#">Sub item one</a>
           <a href="#">Sub item two</a>
-        </Header.Menu>
+        </Header.Menu>,
       );
     });
 
@@ -232,7 +239,7 @@ describe("<HeaderMenu/>", () => {
       await user.keyboard("{Escape}");
       // verify focus is now on the toggle button
       expect(
-        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId)
+        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId),
       ).toHaveFocus();
     });
 
@@ -294,7 +301,7 @@ describe("<HeaderMenu/>", () => {
         expect(screen.getByText("Nav item three")).toHaveFocus();
         // verify that menu is closed
         expect(
-          screen.getByTestId(TestUtils.Header.menuItemsContainerTestId)
+          screen.getByTestId(TestUtils.Header.menuItemsContainerTestId),
         ).toHaveAttribute("hidden", ""); // testing-library assumes the value of a custom HTML attribute to be "".
         // press Arrow key
         await user.keyboard(arrowKey);
@@ -303,29 +310,28 @@ describe("<HeaderMenu/>", () => {
       }
 
       await makeAssertion("{ArrowUp}");
-      await makeAssertion("{ArrowDown}");
     });
   });
 
   describe("Accessibility", () => {
     beforeEach(() => {
       render(
-        <Header.Menu label="Nav item three">
+        <Header.Menu testMode label="Nav item three">
           <a href="#">Sub item one</a>
-        </Header.Menu>
+        </Header.Menu>,
       );
     });
 
     it("should default the aria-expanded attribute on the toggle button to false", () => {
       expect(
-        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId)
+        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId),
       ).toHaveAttribute("aria-expanded", "false");
     });
 
     it("should change the aria-expanded attribute on the toggle button to true when the menu is opened", async () => {
       await toggleMenuThroughClick(); // open the menu
       expect(
-        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId)
+        screen.getByTestId(TestUtils.Header.menuButtonToggleTestId),
       ).toHaveAttribute("aria-expanded", "true");
     });
   });

@@ -72,7 +72,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
   const listItems = [];
   const otherHeaderMenuItems = [];
   React.Children.forEach(children, (child) => {
-    if ([BaseHeaderMenuItem].includes(child.type)) {
+    if (child && [BaseHeaderMenuItem, "li"].includes(child.type)) {
       listItems.push(child);
     } else {
       otherHeaderMenuItems.push(child);
@@ -110,15 +110,17 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
 BaseHeaderNavigation.displayName = "BaseHeaderNavigation";
 
 BaseHeaderNavigation.propTypes = {
-  /** All children must be BaseHeaderMenuItem, Header.Avatar, or Header.Search */
+  /** All children must be 'li', BaseHeaderMenuItem, Header.Avatar, or Header.Search */
   children: (props, propName) => {
     let propValue = props[propName];
-    if (!Array.isArray(propValue)) {
-      propValue = [propValue];
-    }
-    const validChildren = [BaseHeaderMenuItem, Header.Avatar, Header.Search];
-    propValue.forEach((value) => {
-      if (!validChildren.includes(value.type)) {
+    const validChildren = [
+      "li",
+      BaseHeaderMenuItem,
+      Header.Avatar,
+      Header.Search,
+    ];
+    React.Children.forEach(propValue, (child) => {
+      if (child && !validChildren.includes(child.type)) {
         throw new Error(
           `children must only contain ${validChildren} components`,
         );

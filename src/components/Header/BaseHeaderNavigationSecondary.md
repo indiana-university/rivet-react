@@ -1,5 +1,55 @@
-Header.NavigationSecondary adds a second level of navigation links beneath the header. This option is useful for section-specific navigation or subsites within a larger website. Navigation is supported as individual links, or as dropdowns via the use of [Header.Menu](#/Navigation?id=headermenu)
+Base header components focus on letting users directly build the html element. They are less restrictive on allowed properties and components but also do not modify/process them.
+Other versions of header components utilizes the base components while adding a specific structure.
 
-To see an example site that uses secondary navigation, visit the [COVID-19 subsite](https://www.iu.edu/covid/index.html) on iu.edu.
+This BaseHeaderNavigationSecondary directly sets children within the menu list component.
 
-See the [Header](#/Navigation?id=header) component for usage examples.
+<!-- prettier-ignore-start -->
+```jsx
+const secondaryNav = <BaseHeaderNavigationSecondary title="Components">
+    <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
+    <BaseHeaderMenuItem itemUrl="#">Nav item two</BaseHeaderMenuItem>
+    <BaseHeaderMenuItem itemUrl="#">Nav item three</BaseHeaderMenuItem>
+</BaseHeaderNavigationSecondary>;
+<BaseHeader title="Application Title" contentHref="#" secondaryNavigation={secondaryNav} />
+```
+<!-- prettier-ignore-end -->
+
+### Navigation smaller
+
+<!-- prettier-ignore-start -->
+```jsx
+const secondaryNav = <BaseHeaderNavigationSecondary title="Components" navWidth="sm">
+    <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
+    <BaseHeaderMenuItem itemUrl="#">Nav item two</BaseHeaderMenuItem>
+    <BaseHeaderMenuItem itemUrl="#">Nav item three</BaseHeaderMenuItem>
+</BaseHeaderNavigationSecondary>;
+<BaseHeader title="Application Title" contentHref="#" secondaryNavigation={secondaryNav} />
+```
+<!-- prettier-ignore-end -->
+
+### Navigation with a variety of options
+
+<!-- prettier-ignore-start -->
+```jsx
+const secondaryNav = <BaseHeaderNavigationSecondary title="Components">
+    <li className="rvt-header-menu__item">
+        <BaseHeaderMenu label="Nav item one">
+            <BaseHeaderMenuItem itemUrl="#" subMenu>Sub item one</BaseHeaderMenuItem>
+            <BaseHeaderMenuItem itemUrl="#" subMenu>Sub item two</BaseHeaderMenuItem>
+        </BaseHeaderMenu>
+    </li>
+    <BaseHeaderMenuItem itemUrl="#">Nav item two</BaseHeaderMenuItem>
+    <BaseHeaderMenuItem>
+        <BaseHeaderMenu label="Nav item three">
+            <BaseHeaderMenuItem itemUrl="#" subMenu>Sub item one</BaseHeaderMenuItem>
+            <BaseHeaderMenuItem itemUrl="#" subMenu>Sub item two</BaseHeaderMenuItem>
+            <BaseHeaderMenuItem itemUrl="#" subMenu>Sub item three</BaseHeaderMenuItem>
+        </BaseHeaderMenu>
+    </BaseHeaderMenuItem>
+    <li className="rvt-header-menu__item">
+        <Button variant="plain">Nav item three</Button>
+    </li>
+</BaseHeaderNavigationSecondary>;
+<BaseHeader title="Application Title" contentHref="#" secondaryNavigation={secondaryNav} />
+```
+<!-- prettier-ignore-end -->
