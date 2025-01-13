@@ -113,17 +113,14 @@ BaseHeaderNavigation.propTypes = {
   /** All children must be 'li', BaseHeaderMenuItem, Header.Avatar, or Header.Search */
   children: (props, propName) => {
     let propValue = props[propName];
-    if (!Array.isArray(propValue)) {
-      propValue = [propValue];
-    }
     const validChildren = [
       "li",
       BaseHeaderMenuItem,
       Header.Avatar,
       Header.Search,
     ];
-    propValue.forEach((value) => {
-      if (!validChildren.includes(value.type)) {
+    React.Children.forEach(propValue, (child) => {
+      if (child && !validChildren.includes(child.type)) {
         throw new Error(
           `children must only contain ${validChildren} components`,
         );

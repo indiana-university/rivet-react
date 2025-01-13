@@ -16,10 +16,11 @@ const renderHeaderNavListItem = (child) => {
 
   let childrenWithProps = React.Children.map(child.props.children, (child) => {
     const childType = child && child["type"];
-    const isHeaderMenu = [
-      HeaderMenu.displayName,
-      BaseHeaderMenu.displayName,
-    ].includes(getDisplayName(childType));
+    const isHeaderMenu =
+      childType &&
+      [HeaderMenu.displayName, BaseHeaderMenu.displayName].includes(
+        getDisplayName(childType),
+      );
     const isAnchor = childType === "a";
 
     const headerMenuProps = { ...(isListItemCurrent && { current: true }) };
