@@ -91,7 +91,10 @@ const Sticker = ({
 
 Sticker.displayName = "Sticker";
 Sticker.propTypes = {
-  name: PropTypes.oneOf([StickerNames.PAGE_NOT_FOUND]).isRequired,
+  name: PropTypes.oneOf([
+    StickerNames.PAGE_NOT_FOUND,
+    StickerNames.ACCESS_DENIED,
+  ]).isRequired,
 };
 
 export default Sticker;
