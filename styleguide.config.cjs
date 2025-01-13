@@ -47,6 +47,10 @@ module.exports = {
       ],
     },
     {
+      name: "Layouts",
+      components: () => ["src/components/Layouts/PageNotFound/[A-Z]*.jsx"],
+    },
+    {
       name: "Lists",
       components: "src/components/List/[A-Z]*.jsx",
     },
