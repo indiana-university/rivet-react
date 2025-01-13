@@ -121,7 +121,7 @@
     "test-win": "jest",
     "build": "vite build",
     "preview": "vite preview",
-    "prepare": "husky install",
+    "prepare": "husky",
     "pretty-quick": "pretty-quick",
     "publish-guide": "npx styleguidist build --config styleguide.config.cjs && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles"
   },
@@ -165,7 +165,7 @@
     "prop-types": "15.8.1",
     "react-display-name": "0.2.5",
     "react-docgen": "7.1.0",
-    "react-styleguidist": "13.1.3",
+    "react-styleguidist": "13.1.4",
     "semantic-release": "24.2.1",
     "style-loader": "4.0.0",
     "vite": "5.4.11",
