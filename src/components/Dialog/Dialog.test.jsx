@@ -61,10 +61,10 @@ describe("<Dialog />", () => {
       render(component());
       expect(screen.getByRole("dialog", {})).toHaveClass("rvt-dialog");
       expect(
-        screen.getByTestId(TestUtils.Dialog.dialogHeaderTestId, {})
+        screen.getByTestId(TestUtils.Dialog.dialogHeaderTestId, {}),
       ).toHaveClass("rvt-dialog__header");
       expect(await screen.findByText(defaultTitle, {})).toHaveClass(
-        "rvt-dialog__title"
+        "rvt-dialog__title",
       );
     });
 
@@ -77,6 +77,23 @@ describe("<Dialog />", () => {
     it("should display the title", async () => {
       render(component());
       expect(await screen.findByText(defaultTitle, {})).toBeVisible();
+    });
+
+    it("should have dialog role if disable page interaction is true", () => {
+      render(component({ disablePageInteraction: true }));
+      expect(screen.getByRole("dialog", {})).toBeVisible();
+    });
+
+    it("should focus on dialog", () => {
+      render(component());
+      expect(screen.getByRole("dialog", {})).toHaveFocus();
+    });
+
+    it("should focus on dialog if disable page interaction is true", () => {
+      render(component({ disablePageInteraction: true }));
+      expect(
+        screen.getByRole("dialog", {}).parentNode.parentNode,
+      ).toHaveFocus();
     });
 
     it("should update if a prop changes", async () => {
@@ -99,7 +116,7 @@ describe("<Dialog />", () => {
         .getAttribute("aria-labelledby");
       expect(await screen.findByText(defaultTitle, {})).toHaveProperty(
         "id",
-        ariaLabelledby
+        ariaLabelledby,
       );
     });
 
@@ -108,7 +125,7 @@ describe("<Dialog />", () => {
       expect(screen.queryByText(defaultTitle, {})).not.toBeNull();
       expect(screen.getByRole("dialog", {})).toHaveAttribute(
         "aria-hidden",
-        "false"
+        "false",
       );
       expect(screen.getByRole("dialog", {})).not.toHaveAttribute("hidden");
     });
@@ -161,7 +178,7 @@ describe("<Dialog />", () => {
     it("should not align the dialog if property not present", () => {
       render(component());
       expect(screen.getByRole("dialog", {})).not.toHaveAttribute(
-        "data-rvt-dialog"
+        "data-rvt-dialog",
       );
     });
 
@@ -169,7 +186,7 @@ describe("<Dialog />", () => {
       it(`should align ${align} the dialog if property present`, () => {
         render(component({ align: align }));
         expect(screen.getByRole("dialog", {})).toHaveAttribute(
-          `data-rvt-dialog-${align}`
+          `data-rvt-dialog-${align}`,
         );
       });
     };
@@ -183,14 +200,14 @@ describe("<Dialog />", () => {
     it("should not darken the page if property not true", () => {
       render(component());
       expect(screen.getByRole("dialog", {})).not.toHaveAttribute(
-        "data-rvt-dialog-darken-page"
+        "data-rvt-dialog-darken-page",
       );
     });
 
     it("should darken the page if property true", () => {
       render(component({ darkenPage: true }));
       expect(screen.getByRole("dialog", {})).toHaveAttribute(
-        "data-rvt-dialog-darken-page"
+        "data-rvt-dialog-darken-page",
       );
     });
   });
@@ -199,14 +216,14 @@ describe("<Dialog />", () => {
     it("should not disable page interaction if property not true", () => {
       render(component());
       expect(
-        screen.queryByTestId(TestUtils.Dialog.underlayDivTestId, {})
+        screen.queryByTestId(TestUtils.Dialog.underlayDivTestId, {}),
       ).toBeNull();
     });
 
     it("should disable page interaction if property true", () => {
       render(component({ disablePageInteraction: true }));
       expect(
-        screen.getByTestId(TestUtils.Dialog.underlayDivTestId, {})
+        screen.getByTestId(TestUtils.Dialog.underlayDivTestId, {}),
       ).toBeDefined();
     });
   });
@@ -241,7 +258,7 @@ describe("<Dialog />", () => {
           onDismiss,
           closeOnOutsideClickOrEscape: true,
           isOpen: false,
-        })
+        }),
       );
       pressEscapeKey();
       expect(onDismiss).toHaveBeenCalledTimes(0);
