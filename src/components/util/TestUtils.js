@@ -18,6 +18,7 @@ export const TestUtils = {
   ButtonGroup: { testId: "buttonGroup_testId" },
   SegmentedButton: { testId: "segmentedButton_testId" },
   RivetIcons: { testId: "rivetIcon_testId" },
+  RivetStickers: { testId: "rivetStickers_testId" },
   Dialog: {
     dialogHeaderTestId: "dialogHeader__testId",
     underlayDivTestId: "underlayDiv__testId",

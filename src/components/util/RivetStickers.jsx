@@ -5,21 +5,14 @@ SPDX-License-Identifier: BSD-3-Clause
 import * as React from "react";
 import PropTypes from "prop-types";
 import { TestUtils } from "./TestUtils.js";
+import SvgCore from "./SvgCore.jsx";
 
 export const StickerNames = {
-  NOT_FOUND_PAGE: "not-found-page",
+  PAGE_NOT_FOUND: "page-not-found",
 };
 
-const StickerCore = ({ children, ...attrs }) => {
-  return (
-    <svg aria-hidden="true" {...attrs}>
-      {children}
-    </svg>
-  );
-};
-
-const stickerNotFoundPage = (attrs) => (
-  <StickerCore {...attrs}>
+const stickerPageNotFound = (attrs) => (
+  <SvgCore {...attrs}>
     <path
       d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z"
       fill="#C9D2D6"
@@ -40,7 +33,7 @@ const stickerNotFoundPage = (attrs) => (
       d="M18.74 21.5701L17.72 22.5901C17.63 22.6801 17.63 22.8401 17.72 22.9301L22.47 27.6801C22.56 27.7701 22.56 27.9301 22.47 28.0201L17.72 32.7701C17.63 32.8601 17.63 33.0201 17.72 33.1101L18.74 34.1301C18.83 34.2201 18.99 34.2201 19.08 34.1301L23.83 29.3801C23.92 29.2901 24.08 29.2901 24.17 29.3801L28.92 34.1301C29.01 34.2201 29.17 34.2201 29.26 34.1301L30.28 33.1101C30.37 33.0201 30.37 32.8601 30.28 32.7701L25.53 28.0201C25.44 27.9301 25.44 27.7701 25.53 27.6801L30.28 22.9301C30.37 22.8401 30.37 22.6801 30.28 22.5901L29.26 21.5701C29.17 21.4801 29.01 21.4801 28.92 21.5701L24.17 26.3201C24.08 26.4101 23.92 26.4101 23.83 26.3201L19.08 21.5701C18.99 21.4701 18.83 21.4701 18.74 21.5701Z"
       fill="#243142"
     ></path>
-  </StickerCore>
+  </SvgCore>
 );
 
 const Sticker = ({
@@ -50,7 +43,7 @@ const Sticker = ({
   width = "100%",
   height = "100%",
   viewBox = "0 0 48 48",
-  "data-testid": dataTestid = TestUtils.RivetIcons.testId,
+  "data-testid": dataTestid = TestUtils.RivetStickers.testId,
   ...attrs
 }) => {
   const props = {
@@ -63,14 +56,14 @@ const Sticker = ({
     ...attrs,
   };
   switch (name) {
-    case StickerNames.NOT_FOUND_PAGE:
-      return stickerNotFoundPage(props);
+    case StickerNames.PAGE_NOT_FOUND:
+      return stickerPageNotFound(props);
   }
 };
 
 Sticker.displayName = "Sticker";
 Sticker.propTypes = {
-  name: PropTypes.oneOf([StickerNames.NOT_FOUND_PAGE]),
+  name: PropTypes.oneOf([StickerNames.PAGE_NOT_FOUND]),
 };
 
 export default Sticker;

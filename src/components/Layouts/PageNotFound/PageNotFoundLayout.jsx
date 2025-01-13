@@ -22,11 +22,11 @@ const PageNotFoundLayout = ({ errorMessage, children }) => {
               columnWidth={3}
             >
               {/*
-                              Once https://github.com/indiana-university/rivet-stickers/issues/8 is resolved, please replace img tag with rvt-sticker :
-                              <rvt-sticker name="page-not-found" size="xl"></rvt-sticker>
-                             */}
+                Once https://github.com/indiana-university/rivet-stickers/issues/8 is resolved, please replace below tag with rvt-sticker :
+                <rvt-sticker name="page-not-found" size="xl"></rvt-sticker>
+             */}
               <Sticker
-                name={StickerNames.NOT_FOUND_PAGE}
+                name={StickerNames.PAGE_NOT_FOUND}
                 width="100%"
                 viewBox="0 0 48 48"
                 fill="none"
@@ -47,10 +47,6 @@ PageNotFoundLayout.propTypes = {
   errorMessage: PropTypes.string.isRequired,
   /** Content to display below the page not found layout */
   children: PropTypes.node,
-};
-
-PageNotFoundLayout.defaultProps = {
-  children: null,
 };
 
 PageNotFoundLayout.displayName = "PageNotFoundLayout";
