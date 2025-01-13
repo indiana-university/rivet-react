@@ -63,7 +63,7 @@ const Sticker = ({
 
 Sticker.displayName = "Sticker";
 Sticker.propTypes = {
-  name: PropTypes.oneOf([StickerNames.PAGE_NOT_FOUND]),
+  name: PropTypes.oneOf([StickerNames.PAGE_NOT_FOUND]).isRequired,
 };
 
 export default Sticker;
