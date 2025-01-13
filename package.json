@@ -6,7 +6,10 @@
   "author": "",
   "license": "BSD-3-Clause",
   "homepage": "http://indiana-university.github.io/rivet-react",
-  "repository": "https://github.com/indiana-university/rivet-react",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indiana-university/rivet-react.git"
+  },
   "keywords": [
     "react-component"
   ],
