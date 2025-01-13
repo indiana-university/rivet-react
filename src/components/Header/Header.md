@@ -42,7 +42,6 @@ Header with Primary Navigation:
 <!-- prettier-ignore-start -->
 ```jsx
 const navigation = <Header.Navigation>
-  <ul>
     <li><a href={"#"}>Nav item one</a></li>
     <li data-rvt-c-header-nav-item__current><a href={"#"}>Nav item two</a></li>
     <li>
@@ -52,7 +51,6 @@ const navigation = <Header.Navigation>
         <a href={"#"}>Sub item three</a>
       </Header.Menu>
     </li>
-  </ul>
 </Header.Navigation>;
 
 <Header title="Application Title" contentHref="#" navigation={navigation} />
@@ -65,7 +63,6 @@ Header with Primary Navigation and Avatar:
 ```jsx
 const avatar = <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"}/>
 const navigation = <Header.Navigation avatar={avatar}>
-  <ul>
     <li><a href="#">Nav item one</a></li>
     <li><a href="#">Nav item two</a></li>
     <li data-rvt-c-header-nav-item__current>
@@ -75,7 +72,6 @@ const navigation = <Header.Navigation avatar={avatar}>
         <a href="#">Sub item three</a>
       </Header.Menu>
     </li>
-  </ul>
 </Header.Navigation>;
 
 <Header title="Application Title" contentHref="#" navigation={navigation}/>
@@ -96,7 +92,6 @@ Header with Primary Navigation and Search:
 <!-- prettier-ignore-start -->
 ```jsx
 const navigation = <Header.Navigation>
-  <ul>
     <li><a href="#">Nav item one</a></li>
     <li><a href="#">Nav item two</a></li>
     <li data-rvt-c-header-nav-item__current>
@@ -106,7 +101,6 @@ const navigation = <Header.Navigation>
         <a href="#">Sub item three</a>
       </Header.Menu>
     </li>
-  </ul>
 </Header.Navigation>;
 const search = <Header.Search action={"/mySearchURL"} method={"post"}/>;
 
@@ -120,7 +114,6 @@ Header with Primary Navigation, Search, Avatar and Secondary Navigation:
 ```jsx
 const avatar = <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"}/>;
 const navigation = <Header.Navigation avatar={avatar}>
-  <ul>
     <li><a href="#">Nav item one</a></li>
     <li><a href="#">Nav item two</a></li>
     <li data-rvt-c-header-nav-item__current>
@@ -130,11 +123,9 @@ const navigation = <Header.Navigation avatar={avatar}>
         <a href="#">Sub item three</a>
       </Header.Menu>
     </li>
-  </ul>
 </Header.Navigation>;
 const search = <Header.Search action={"/mySearchURL"} method={"post"}/>;
 const secondaryNavigation = <Header.NavigationSecondary title={"Component Library"}>
-  <ul>
     <li><a href="#">Section item one</a></li>
     <li data-rvt-c-header-nav-item__current>
       <Header.Menu label="Section item two">
@@ -143,7 +134,6 @@ const secondaryNavigation = <Header.NavigationSecondary title={"Component Librar
         <a href="#">Sub item three</a>
       </Header.Menu>
     </li>
-  </ul>
 </Header.NavigationSecondary>;
 
 <Header title="Application Title" contentHref="#" navigation={navigation} search={search} secondaryNavigation={secondaryNavigation}/>

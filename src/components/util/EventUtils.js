@@ -17,18 +17,18 @@ export const handler = (callback) => {
   return {
     register: () => {
       ["click"].forEach((event) =>
-        document.addEventListener(event, eventHandler, false)
+        document.addEventListener(event, eventHandler, false),
       );
       ["touchstart", "keyup"].forEach((event) =>
-        document.addEventListener(event, eventHandler, true)
+        document.addEventListener(event, eventHandler, true),
       );
     },
     deregister: () => {
       ["click"].forEach((event) =>
-        document.removeEventListener(event, eventHandler, false)
+        document.removeEventListener(event, eventHandler, false),
       );
       ["touchstart", "keyup"].forEach((event) =>
-        document.removeEventListener(event, eventHandler, true)
+        document.removeEventListener(event, eventHandler, true),
       );
     },
   };
@@ -42,15 +42,6 @@ export const isTabKeyPress = (event) =>
 
 export const isEscapeKeyPress = (event) =>
   isKeyEvent(event) && event.key === keys.escape;
-
-export const isArrowKeyPress = (event) =>
-  isArrowUpKeyPress(event) || isArrowDownKeyPress(event);
-
-export const isArrowUpKeyPress = (event) =>
-  isKeyEvent(event) && event.key === keys.arrowUp;
-
-export const isArrowDownKeyPress = (event) =>
-  isKeyEvent(event) && event.key === keys.arrowDown;
 
 export const isUnhandledKeyPress = (event) =>
   isKeyEvent(event) && !isTabKeyPress(event) && !isEscapeKeyPress(event);

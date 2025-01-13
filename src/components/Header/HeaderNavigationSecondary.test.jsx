@@ -15,7 +15,7 @@ const user = userEvent.setup();
 
 const toggleSecondaryNavThroughClick = async () => {
   await user.click(
-    screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
+    screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId),
   );
 };
 
@@ -28,6 +28,7 @@ describe("<HeaderNavigationSecondary/>", () => {
     beforeEach(() => {
       render(
         <Header.NavigationSecondary
+          testMode
           title={testTitle}
           href={testHref}
           navWidth={"md"}
@@ -42,7 +43,7 @@ describe("<HeaderNavigationSecondary/>", () => {
               </Header.Menu>
             </li>
           </ul>
-        </Header.NavigationSecondary>
+        </Header.NavigationSecondary>,
       );
     });
 
@@ -54,7 +55,7 @@ describe("<HeaderNavigationSecondary/>", () => {
 
     it("should apply to the container div a rivet class specifying the navWidth, if navWidth is provided", () => {
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavContainerTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavContainerTestId),
       ).toHaveClass("rvt-container-" + testWidth);
     });
 
@@ -67,7 +68,7 @@ describe("<HeaderNavigationSecondary/>", () => {
   describe("Defaulting props", () => {
     beforeEach(() => {
       render(
-        <Header.NavigationSecondary title={"Title"}>
+        <Header.NavigationSecondary testMode title={"Title"}>
           <ul>
             <li>
               <a href="#">Section item one</a>
@@ -78,7 +79,7 @@ describe("<HeaderNavigationSecondary/>", () => {
               </Header.Menu>
             </li>
           </ul>
-        </Header.NavigationSecondary>
+        </Header.NavigationSecondary>,
       );
     });
 
@@ -88,7 +89,7 @@ describe("<HeaderNavigationSecondary/>", () => {
 
     it("should default the width on the containing DOM element to xl, if navWidth is not provided", () => {
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavContainerTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavContainerTestId),
       ).toHaveClass("rvt-container-xl");
     });
 
@@ -100,7 +101,7 @@ describe("<HeaderNavigationSecondary/>", () => {
   describe("Toggle behavior", () => {
     beforeEach(() => {
       render(
-        <Header.NavigationSecondary title={"Title"}>
+        <Header.NavigationSecondary testMode title={"Title"}>
           <ul>
             <li>
               <a href="#">Section item one</a>
@@ -111,14 +112,14 @@ describe("<HeaderNavigationSecondary/>", () => {
               </Header.Menu>
             </li>
           </ul>
-        </Header.NavigationSecondary>
+        </Header.NavigationSecondary>,
       );
     });
 
     it("should show the secondary nav when the toggle button is clicked", async () => {
       await toggleSecondaryNavThroughClick(); // open secondary nav
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -127,13 +128,13 @@ describe("<HeaderNavigationSecondary/>", () => {
       await toggleSecondaryNavThroughClick();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
       // press Tab
       await user.keyboard("{Tab}");
       // finally, verify that the secondary nav is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -142,13 +143,13 @@ describe("<HeaderNavigationSecondary/>", () => {
       await toggleSecondaryNavThroughClick();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
       // press an unhandled key
       await user.keyboard("{a}");
       // finally, verify that the secondary nav is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -157,7 +158,7 @@ describe("<HeaderNavigationSecondary/>", () => {
       await toggleSecondaryNavThroughClick();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
       // move focus to document body
       document.activeElement.blur();
@@ -165,7 +166,7 @@ describe("<HeaderNavigationSecondary/>", () => {
       await user.keyboard("{Escape}");
       // finally, verify that the secondary nav is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -174,13 +175,13 @@ describe("<HeaderNavigationSecondary/>", () => {
       await toggleSecondaryNavThroughClick();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
       // click outside the secondary nav
       await user.click(document.body);
       // finally, verify that the secondary nav is closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).toHaveAttribute("hidden", "");
     });
 
@@ -189,13 +190,13 @@ describe("<HeaderNavigationSecondary/>", () => {
       await toggleSecondaryNavThroughClick();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
       // click inside the secondary nav
       await user.click(screen.getByTestId(TestUtils.Header.secondaryNavTestId));
       // finally, verify that the secondary nav is not closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
     });
 
@@ -204,13 +205,13 @@ describe("<HeaderNavigationSecondary/>", () => {
       await toggleSecondaryNavThroughClick();
       // verify that the secondary nav is opened
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).not.toHaveAttribute("hidden", "");
       // click the toggle button again
       await toggleSecondaryNavThroughClick();
       // finally, verify that the secondary nav is closed
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavTestId),
       ).toHaveAttribute("hidden", "");
     });
   });
@@ -218,7 +219,7 @@ describe("<HeaderNavigationSecondary/>", () => {
   describe("Accessibility", () => {
     beforeEach(() => {
       render(
-        <Header.NavigationSecondary title={"Title"}>
+        <Header.NavigationSecondary testMode title={"Title"}>
           <ul>
             <li>
               <a href="#">Section item one</a>
@@ -229,20 +230,20 @@ describe("<HeaderNavigationSecondary/>", () => {
               </Header.Menu>
             </li>
           </ul>
-        </Header.NavigationSecondary>
+        </Header.NavigationSecondary>,
       );
     });
 
     it("should default the aria-expanded attribute to false", () => {
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId),
       ).toHaveAttribute("aria-expanded", "false");
     });
 
     it("should change the aria-expanded attribute to true when the secondary nav is opened", async () => {
       await toggleSecondaryNavThroughClick(); // open the secondary nav
       expect(
-        screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId)
+        screen.getByTestId(TestUtils.Header.secondaryNavToggleTestId),
       ).toHaveAttribute("aria-expanded", "true");
     });
   });

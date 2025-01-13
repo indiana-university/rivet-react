@@ -1,3 +1,5 @@
+The BaseHeaderMenuItem wraps children in an item container for a header menu list. If an url is provided it will add a menu link around them in the container.
+
 Header with various menu items:
 
 <!-- prettier-ignore-start -->
