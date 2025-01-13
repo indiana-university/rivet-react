@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -29,7 +33,7 @@ describe("<Timeline />", () => {
               only pay one application fee based on where you apply.
             </p>
           </TimelineItem>
-        </Timeline>
+        </Timeline>,
       );
       const timeline = screen.queryByTestId(TestUtils.Timeline.testId, {});
       expect(timeline).toBeVisible();
@@ -79,7 +83,7 @@ describe("<Timeline />", () => {
               only pay one application fee based on where you apply.
             </p>
           </TimelineItem>
-        </Timeline>
+        </Timeline>,
       );
       const timeline = screen.queryByTestId(TestUtils.Timeline.testId, {});
       expect(timeline).toHaveClass("rvt-timeline--center");
@@ -101,7 +105,7 @@ describe("<Timeline />", () => {
               application.
             </p>
           </TimelineItem>
-        </Timeline>
+        </Timeline>,
       );
       const timeline = screen.queryByTestId(TestUtils.Timeline.testId, {});
       expect(timeline).toHaveClass("rvt-timeline--right");
@@ -119,7 +123,7 @@ describe("<Timeline />", () => {
               application.
             </p>
           </TimelineItem>
-        </Timeline>
+        </Timeline>,
       );
       const timeline = screen.queryByTestId(TestUtils.Timeline.testId, {});
       const timelineItem = timeline.children[0];

@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import SvgCore from "./SvgCore.jsx";
 import { render } from "@testing-library/react";
 import React from "react";

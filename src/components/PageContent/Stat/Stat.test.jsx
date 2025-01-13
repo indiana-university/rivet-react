@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -27,7 +31,7 @@ describe("<Stat />", () => {
       render(
         <Stat className={customClassName} image={image} testMode value={value}>
           {content}
-        </Stat>
+        </Stat>,
       );
       checkRenderContainer();
       checkRenderImage();
@@ -38,7 +42,7 @@ describe("<Stat />", () => {
       render(
         <Stat className={customClassName} testMode value={value}>
           {content}
-        </Stat>
+        </Stat>,
       );
       checkRenderContainer();
       checkRenderDescription();
@@ -52,7 +56,7 @@ describe("<Stat />", () => {
       render(
         <Stat className={customClassName} image={image} value={value}>
           {content}
-        </Stat>
+        </Stat>,
       );
       const element = screen.queryByTestId(testIds.container);
       expect(element).not.toBeInTheDocument();
@@ -69,7 +73,7 @@ describe("<StatGroup />", () => {
           <Stat value="75">Sample 2</Stat>
           <Stat value="50">Sample 3</Stat>
           <Stat value="0">Sample 4</Stat>
-        </StatGroup>
+        </StatGroup>,
       );
       checkRenderGroup();
       const container = screen.getByTestId(testIds.group);
@@ -84,7 +88,7 @@ describe("<StatGroup />", () => {
           <Stat value="75">Sample 2</Stat>
           <Stat value="50">Sample 3</Stat>
           <Stat value="0">Sample 4</Stat>
-        </StatGroup>
+        </StatGroup>,
       );
       const element = screen.queryByTestId(testIds.group);
       expect(element).not.toBeInTheDocument();
