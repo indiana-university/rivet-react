@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 The Trustees of Indiana University
+SPDX-License-Identifier: BSD-3-Clause
+*/
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -25,7 +29,7 @@ describe("<Quote />", () => {
       render(
         <Quote className={customClassName} testMode>
           {content}
-        </Quote>
+        </Quote>,
       );
       checkRenderContainer();
       checkRenderContent();
@@ -38,7 +42,7 @@ describe("<Quote />", () => {
       render(
         <Quote avatar={avatar} className={customClassName} testMode>
           {content}
-        </Quote>
+        </Quote>,
       );
       checkRenderContainer();
       checkRenderContent();
@@ -55,7 +59,7 @@ describe("<Quote />", () => {
           testMode
         >
           {content}
-        </Quote>
+        </Quote>,
       );
       checkRenderContainer();
       checkRenderContent();
@@ -81,7 +85,7 @@ describe("<Quote />", () => {
       render(
         <Quote citation={citation} className={customClassName} testMode>
           {content}
-        </Quote>
+        </Quote>,
       );
       checkRenderContainer();
       checkRenderContent();
@@ -102,7 +106,7 @@ describe("<Quote />", () => {
       render(
         <Quote className={customClassName} subCitation={subCitation} testMode>
           {content}
-        </Quote>
+        </Quote>,
       );
       checkRenderContainer();
       checkRenderContent();
