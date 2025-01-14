@@ -51,6 +51,7 @@ module.exports = {
       components: () => [
         "src/components/Layouts/AccessDenied/[A-Z]*.jsx",
         "src/components/Layouts/PageNotFound/[A-Z]*.jsx",
+        "src/components/Layouts/ServerError/[A-Z]*.jsx",
       ],
     },
     {
