@@ -26,6 +26,18 @@ View the [Rivet documentation for Buttons](https://rivet.uits.iu.edu/components/
 ```
 <!-- prettier-ignore-end -->
 
+### Full Buttons
+
+<!-- prettier-ignore-start -->
+```jsx
+<Button onClick={() => { console.log('Full Primary') }} size="full">Primary</Button>
+<Button onClick={() => { console.log('Full Success') }} variant="success" size="full">Success</Button>
+<Button onClick={() => { console.log('Full Danger') }} variant="danger" size="full">Danger</Button>
+<Button onClick={() => { console.log('Full Plain') }} variant="plain" size="full">Plain</Button>
+<Button onClick={() => { console.log('Full Disabled') }} disabled size="full">Disabled</Button>
+```
+<!-- prettier-ignore-end -->
+
 ### Small Buttons
 
 <!-- prettier-ignore-start -->

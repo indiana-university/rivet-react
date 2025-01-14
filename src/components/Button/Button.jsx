@@ -34,7 +34,18 @@ const buttonStyle = (variant, loading, modifier) => {
  * Generate the size class for this button, if applicable.
  * @see https://rivet.uits.iu.edu/components/forms/buttons/#small-buttons
  */
-const buttonSize = (size) => (size ? `${buttonClass}--${size}` : undefined);
+const buttonSize = (size) => {
+  if (!size) {
+    return undefined;
+  }
+
+  switch (size) {
+    case "full":
+      return `${buttonClass}--full-width`;
+    default:
+      return `${buttonClass}--${size}`;
+  }
+};
 
 const Button = ({
   className,
@@ -53,7 +64,7 @@ const Button = ({
     className={classNames(
       buttonStyle(variant, loading, modifier),
       buttonSize(size),
-      className
+      className,
     )}
     onClick={onClick}
     ref={innerRef}
@@ -78,8 +89,8 @@ Button.displayName = "Button";
 Button.propTypes = {
   /* The variant determines the style of the button */
   variant: PropTypes.oneOf(["success", "danger", "plain", "navigation"]),
-  /* Buttons can be either default or small, which affects their styling */
-  size: PropTypes.oneOf(["small"]),
+  /* Buttons can be either default, full or small, which affects their styling */
+  size: PropTypes.oneOf(["full", "small"]),
   /* Buttons can be either default or secondary, which affects their styling */
   modifier: PropTypes.oneOf(["secondary"]),
   innerRef: PropTypes.any,
