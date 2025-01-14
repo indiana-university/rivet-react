@@ -14,6 +14,7 @@ export * from "./Grid/index.jsx";
 export * from "./Input/index.jsx";
 export * from "./Layouts/AccessDenied/index.jsx";
 export * from "./Layouts/PageNotFound/index.jsx";
+export * from "./Layouts/ServerError/index.jsx";
 export * from "./List/index.jsx";
 export * from "./Header/index.jsx";
 export * from "./LoadingIndicator/index.jsx";

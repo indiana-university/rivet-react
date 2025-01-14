@@ -53,4 +53,15 @@ function stickerListTests() {
       screen.queryByTestId(TestUtils.RivetStickers.testId, {}),
     ).toBeVisible();
   });
+  it("should render server error sticker without crashing", () => {
+    render(
+      <Sticker
+        data-testid={TestUtils.RivetStickers.testId}
+        name={StickerNames.SERVER_ERROR}
+      />,
+    );
+    expect(
+      screen.queryByTestId(TestUtils.RivetStickers.testId, {}),
+    ).toBeVisible();
+  });
 }
