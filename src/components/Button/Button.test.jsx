@@ -48,29 +48,35 @@ describe("<Button />", () => {
     it("should have secondary role", () => {
       render(<Button modifier="secondary" />);
       expect(screen.getByRole("button", {})).toHaveClass(
-        "rvt-button--secondary"
+        "rvt-button--secondary",
       );
     });
     it("should have secondary success style", () => {
       render(<Button modifier="secondary" variant="success" />);
       expect(screen.getByRole("button", {})).toHaveClass(
-        "rvt-button--success-secondary"
+        "rvt-button--success-secondary",
       );
     });
     it("should have secondary danger style", () => {
       render(<Button modifier="secondary" variant="danger" />);
       expect(screen.getByRole("button", {})).toHaveClass(
-        "rvt-button--danger-secondary"
+        "rvt-button--danger-secondary",
       );
     });
     it("should have secondary plain style", () => {
       render(<Button modifier="secondary" variant="plain" />);
       expect(screen.getByRole("button", {})).toHaveClass(
-        "rvt-button--plain-secondary"
+        "rvt-button--plain-secondary",
       );
     });
 
     // Size variations
+    it("should have full size", () => {
+      render(<Button size="full" />);
+      expect(screen.getByRole("button", {})).toHaveClass(
+        "rvt-button--full-width",
+      );
+    });
     it("should have small size", () => {
       render(<Button size="small" />);
       expect(screen.getByRole("button", {})).toHaveClass("rvt-button--small");
@@ -84,7 +90,7 @@ describe("<Button />", () => {
     it("should have a secondary small size", () => {
       render(<Button size="small" modifier="secondary" variant="plain" />);
       expect(screen.getByRole("button", {})).toHaveClass(
-        "rvt-button--plain-secondary"
+        "rvt-button--plain-secondary",
       );
       expect(screen.getByRole("button", {})).toHaveClass("rvt-button--small");
     });
@@ -105,7 +111,7 @@ describe("<Button />", () => {
       expect(button).toHaveClass("rvt-button");
       expect(button).toHaveClass("rvt-button--loading");
       expect(screen.getByRole("buttonContent", {})).toHaveClass(
-        "rvt-button__content"
+        "rvt-button__content",
       );
       expect(screen.getByRole("loadingIndicator", {})).toBeVisible();
     });
@@ -113,7 +119,7 @@ describe("<Button />", () => {
     it("should not apply loading styling when loading not true", () => {
       render(<Button>Update settings</Button>);
       expect(
-        screen.getByRole("button", { name: /Update settings/ }).innerHTML
+        screen.getByRole("button", { name: /Update settings/ }).innerHTML,
       ).not.toContain("span");
     });
   });
