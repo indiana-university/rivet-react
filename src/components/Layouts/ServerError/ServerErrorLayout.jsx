@@ -26,9 +26,9 @@ const ServerErrorLayout = ({ errorMessage, children }) => {
               columnWidth={3}
             >
               {/*
-                            Once https://github.com/indiana-university/rivet-stickers/issues/10 is resolved, please replace below tag with rvt-sticker :
-                            <rvt-sticker name="server-error" size="xl"></rvt-sticker>
-                            */}
+              Once https://github.com/indiana-university/rivet-stickers/issues/10 is resolved, please replace below tag with rvt-sticker :
+              <rvt-sticker name="server-error" size="xl"></rvt-sticker>
+              */}
               <Sticker
                 name={StickerNames.SERVER_ERROR}
                 width="100%"
