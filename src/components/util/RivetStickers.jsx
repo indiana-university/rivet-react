@@ -9,6 +9,7 @@ import SvgCore from "./SvgCore.jsx";
 
 export const StickerNames = {
   PAGE_NOT_FOUND: "page-not-found",
+  ACCESS_DENIED: "access-denied",
 };
 
 const stickerPageNotFound = (attrs) => (
@@ -36,6 +37,31 @@ const stickerPageNotFound = (attrs) => (
   </SvgCore>
 );
 
+const stickerAccessDenied = (attrs) => (
+  <SvgCore {...attrs}>
+    <path
+      d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z"
+      fill="#C9D2D6"
+    ></path>
+    <path
+      d="M24 22C22.35 22 21 23.35 21 25C21 26.07 21.56 27.03 22.5 27.58C22.88 27.8 23.07 28.23 22.97 28.66L22.24 32H25.75L25.02 28.66C24.93 28.24 25.12 27.8 25.49 27.58C26.44 27.03 27 26.07 27 25C27 23.35 25.65 22 24 22Z"
+      fill="white"
+    ></path>
+    <path
+      d="M16 17H13V28.57C13 34.12 16.6 37.53 24 38.98C31.4 37.52 35 34.12 35 28.57V17H32H16ZM27.98 32.79C28.05 33.09 27.97 33.4 27.78 33.63C27.59 33.86 27.3 34 27 34H21C20.7 34 20.41 33.86 20.22 33.63C20.03 33.39 19.96 33.08 20.02 32.79L20.88 28.89C19.71 27.94 19 26.51 19 25C19 22.24 21.24 20 24 20C26.76 20 29 22.24 29 25C29 26.51 28.29 27.94 27.12 28.89L27.98 32.79Z"
+      fill="white"
+    ></path>
+    <path
+      d="M36 15H32.94C32.44 10.51 28.62 7 24 7C19.38 7 15.56 10.51 15.06 15H12C11.45 15 11 15.45 11 16V28.57C11 33.12 13.22 38.96 23.81 40.98C23.88 40.99 23.94 41 24 41C24.06 41 24.12 40.99 24.19 40.98C34.78 38.96 37 33.12 37 28.57V16C37 15.45 36.55 15 36 15ZM24 9C27.52 9 30.44 11.61 30.93 15H17.07C17.56 11.61 20.48 9 24 9ZM35 28.57C35 34.12 31.4 37.53 24 38.98C16.6 37.52 13 34.12 13 28.57V17H16H32H35V28.57Z"
+      fill="#243142"
+    ></path>
+    <path
+      d="M29 25C29 22.24 26.76 20 24 20C21.24 20 19 22.24 19 25C19 26.51 19.71 27.94 20.88 28.89L20.02 32.79C19.95 33.09 20.03 33.4 20.22 33.63C20.41 33.86 20.7 34 21 34H27C27.3 34 27.59 33.86 27.78 33.63C27.97 33.39 28.04 33.08 27.98 32.79L27.12 28.89C28.29 27.94 29 26.51 29 25ZM25.5 27.58C25.12 27.8 24.93 28.23 25.03 28.66L25.76 32H22.25L22.98 28.66C23.07 28.24 22.88 27.8 22.51 27.58C21.56 27.03 21 26.07 21 25C21 23.35 22.35 22 24 22C25.65 22 27 23.35 27 25C27 26.07 26.44 27.03 25.5 27.58Z"
+      fill="#243142"
+    ></path>
+  </SvgCore>
+);
+
 const Sticker = ({
   name,
   role = "img",
@@ -58,12 +84,17 @@ const Sticker = ({
   switch (name) {
     case StickerNames.PAGE_NOT_FOUND:
       return stickerPageNotFound(props);
+    case StickerNames.ACCESS_DENIED:
+      return stickerAccessDenied(props);
   }
 };
 
 Sticker.displayName = "Sticker";
 Sticker.propTypes = {
-  name: PropTypes.oneOf([StickerNames.PAGE_NOT_FOUND]).isRequired,
+  name: PropTypes.oneOf([
+    StickerNames.PAGE_NOT_FOUND,
+    StickerNames.ACCESS_DENIED,
+  ]).isRequired,
 };
 
 export default Sticker;
