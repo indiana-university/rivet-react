@@ -6,11 +6,11 @@ import React from "react";
 import { Col, Container, Row } from "../../Grid/index.jsx";
 import * as Rivet from "../../util/Rivet.jsx";
 import PropTypes from "prop-types";
-import Sticker, { StickerNames } from "../../util/RivetStickers.jsx";
+import "rivet-stickers/dist/badge-lock.js";
 
 const AccessDeniedLayout = ({ errorMessage, children }) => {
   return (
-    <>
+    <React.Fragment>
       <div className="rvt-bg-black-000">
         <Container size="sm" className="rvt-p-all-xxl">
           <Row>
@@ -25,24 +25,13 @@ const AccessDeniedLayout = ({ errorMessage, children }) => {
               className="rvt-content-center rvt-hide-md-down"
               columnWidth={3}
             >
-              {/*
-                Once https://github.com/indiana-university/rivet-stickers/issues/9 is resolved, please replace below tag with rvt-sticker :
-                <rvt-sticker name="acess-denied" size="xl"></rvt-sticker>
-             */}
-              <Sticker
-                name={StickerNames.ACCESS_DENIED}
-                width="100%"
-                viewBox="0 0 48 48"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ "background-size": "96px 96px" }}
-              />
+              <rvt-sticker name="badge-lock" size="xl" />
             </Col>
           </Row>
         </Container>
       </div>
       {children}
-    </>
+    </React.Fragment>
   );
 };
 

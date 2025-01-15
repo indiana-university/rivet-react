@@ -5,12 +5,12 @@ SPDX-License-Identifier: BSD-3-Clause
 import React from "react";
 import { Col, Container, Row } from "../../Grid/index.jsx";
 import * as Rivet from "../../util/Rivet.jsx";
+import "rivet-stickers/dist/browser-exclamation.js";
 import PropTypes from "prop-types";
-import Sticker, { StickerNames } from "../../util/RivetStickers.jsx";
 
 const PageNotFoundLayout = ({ errorMessage, children }) => {
   return (
-    <>
+    <React.Fragment>
       <div className="rvt-bg-black-000">
         <Container size="sm" className="rvt-p-all-xxl">
           <Row>
@@ -25,24 +25,13 @@ const PageNotFoundLayout = ({ errorMessage, children }) => {
               className="rvt-content-center rvt-hide-md-down"
               columnWidth={3}
             >
-              {/*
-                Once https://github.com/indiana-university/rivet-stickers/issues/8 is resolved, please replace below tag with rvt-sticker :
-                <rvt-sticker name="page-not-found" size="xl"></rvt-sticker>
-             */}
-              <Sticker
-                name={StickerNames.PAGE_NOT_FOUND}
-                width="100%"
-                viewBox="0 0 48 48"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ "background-size": "96px 96px" }}
-              />
+              <rvt-Sticker name="browser-exclamation" size="xl" />
             </Col>
           </Row>
         </Container>
       </div>
       {children}
-    </>
+    </React.Fragment>
   );
 };
 
