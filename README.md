@@ -5,7 +5,6 @@
 ## Rivet-react resources
 
 - [Component Documentation and Style Guide](https://indiana-university.github.io/rivet-react/)
-- [Beta Component Documentation](https://indiana-university.github.io/rivet-react/beta)
 - [Contribution Guidelines](https://github.com/indiana-university/rivet-react/blob/master/CONTRIBUTING.md)
 - [GitHub repo](https://github.com/indiana-university/rivet-react)
 - [NPM package](https://www.npmjs.com/package/rivet-react)
@@ -14,7 +13,6 @@
 | Branch  | Build                                                                                                                                                                 | Code Coverage                                                                                                                                                          |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | master  | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/master.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/master)   | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/master/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/master)   |
-| develop | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/develop.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/develop) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/develop/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/develop) |
 | beta    | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/beta.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/beta)       | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/beta/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/beta)       |
 
 ## Installation
