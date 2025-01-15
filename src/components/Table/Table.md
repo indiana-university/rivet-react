@@ -1,56 +1,89 @@
-Tables are used to display tabular data in rows and columns.
+Use the table component to present tabular data in rows and columns.
 
-View the [Rivet Documentation for Tables](https://rivet.uits.iu.edu/components/page-content/tables/)
+View the [Rivet documentation for Tables](https://rivet.uits.iu.edu/components/table/).
 
-### Default Table
+### Example Table
 
-Default tables in Rivet come with styled headers and bottom borders on row to help with readability. This can be used along with the `compact` and `cells` booleans.
-
+<!-- prettier-ignore-start -->
 ```jsx
 <Table>
-    <caption className="rvt-sr-only">Table example one</caption>
-    <thead>
-        <tr>
-            <th scope="col">Service</th>
-            <th scope="col">Description</th>
-            <th scope="col">URL</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">One.IU</th>
-            <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you search for what you want to do, and click to launch it.</td>
-            <td><a href="#">one.iu.edu</a></td>
-        </tr>
-        <tr>
-            <th scope="row">Box</th>
-            <td>Box is a no-cost cloud storage and collaboration environment available to students, faculty, and staff.</td>
-            <td><a href="#">box.iu.edu</a></td>
-        </tr>
-        <tr>
-            <th scope="row">Zoom</th>
-            <td>Zoom is a web collaboration tool available to all Indiana University students, faculty, and staff.</td>
-            <td><a href="#">zoom.iu.edu</a></td>
-        </tr>
-        <tr>
-            <th scope="row">Canvas</th>
-            <td>Canvas is a learning management system developed by Instructure, Inc.</td>
-            <td><a href="#">canvas.iu.edu</a></td>
-        </tr>
-    </tbody>
+  <caption class="rvt-sr-only">Default table</caption>
+  <thead>
+    <tr>
+      <th scope="col">Services</th>
+      <th scope="col">Description</th>
+      <th scope="col">URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">One.IU</th>
+      <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you search for what you want to do, and click to launch it.</td>
+      <td><a href="#">one.iu.edu</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Zoom</th>
+      <td>Zoom is a web collaboration tool available to all Indiana University students, faculty, and staff.</td>
+      <td><a href="#">zoom.iu.edu</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Canvas</th>
+      <td>Canvas is a learning management system developed by Instructure, Inc.</td>
+      <td><a href="#">canvas.iu.edu</a></td>
+    </tr>
+  </tbody>
 </Table>
 ```
+<!-- prettier-ignore-end -->
+
+### Responsive Table
+
+Responsive tables are not "baked in" to `rivet-react`. In order to create a resposive table that scrolls horizontally on small screens, use the `Table` tag along with the [instructions for responsive tables](https://github.com/indiana-university/rivet-source/tree/2.0.0-master/src/components/table#responsive-table-wrapper).
+
+<!-- prettier-ignore-start -->
+```jsx
+<div role="region" tabindex="0" class="rvt-table-responsive" aria-labelledyby="responsive-table">
+  <Table>
+    <caption id="responsive-table" class="rvt-sr-only">Responsive table examples</caption>
+    <thead>
+      <tr>
+        <th scope="col">Services</th>
+        <th scope="col">Description</th>
+        <th scope="col">URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">One.IU</th>
+        <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you
+          search for what you want to do, and click to launch it.</td>
+        <td><a href="#">one.iu.edu</a></td>
+      </tr>
+      <tr>
+        <th scope="row">Zoom</th>
+        <td>Zoom is a web collaboration tool available to all Indiana University students, faculty, and staff.</td>
+        <td><a href="#">zoom.iu.edu</a></td>
+      </tr>
+      <tr>
+        <th scope="row">Canvas</th>
+        <td>Canvas is a learning management system developed by Instructure, Inc.</td>
+        <td><a href="#">canvas.iu.edu</a></td>
+      </tr>
+    </tbody>
+  </Table>
+</div>
+```
+<!-- prettier-ignore-end -->
 
 ### Striped Table
 
-The *stripes* `variant` to alternate light gray backgrounds on table rows for improved scannability. This can be used along with the `compact` and `cells` booleans.
-
+<!-- prettier-ignore-start -->
 ```jsx
 <Table variant="stripes">
-    <caption className="rvt-sr-only">Table example one</caption>
+    <caption class="rvt-sr-only">Striped table</caption>
     <thead>
         <tr>
-            <th scope="col">Service</th>
+            <th scope="col">Services</th>
             <th scope="col">Description</th>
             <th scope="col">URL</th>
         </tr>
@@ -58,13 +91,9 @@ The *stripes* `variant` to alternate light gray backgrounds on table rows for im
     <tbody>
         <tr>
             <th scope="row">One.IU</th>
-            <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you search for what you want to do, and click to launch it.</td>
+            <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you
+                search for what you want to do, and click to launch it.</td>
             <td><a href="#">one.iu.edu</a></td>
-        </tr>
-        <tr>
-            <th scope="row">Box</th>
-            <td>Box is a no-cost cloud storage and collaboration environment available to students, faculty, and staff.</td>
-            <td><a href="#">box.iu.edu</a></td>
         </tr>
         <tr>
             <th scope="row">Zoom</th>
@@ -79,17 +108,17 @@ The *stripes* `variant` to alternate light gray backgrounds on table rows for im
     </tbody>
 </Table>
 ```
+<!-- prettier-ignore-end -->
 
 ### Plain Table
 
-The *plain* `variant` will remove all borders and formatting from the table. This can be used along with the `compact` boolean.
-
+<!-- prettier-ignore-start -->
 ```jsx
 <Table variant="plain">
-    <caption className="rvt-sr-only">Table example one</caption>
+    <caption class="rvt-sr-only">Plain table</caption>
     <thead>
         <tr>
-            <th scope="col">Service</th>
+            <th scope="col">Services</th>
             <th scope="col">Description</th>
             <th scope="col">URL</th>
         </tr>
@@ -97,13 +126,9 @@ The *plain* `variant` will remove all borders and formatting from the table. Thi
     <tbody>
         <tr>
             <th scope="row">One.IU</th>
-            <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you search for what you want to do, and click to launch it.</td>
-            <td><a href="#">one.iu.edu</a></td>
-        </tr>
-        <tr>
-            <th scope="row">Box</th>
-            <td>Box is a no-cost cloud storage and collaboration environment available to students, faculty, and staff.</td>
-            <td><a href="#">box.iu.edu</a></td>
+            <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you
+                search for what you want to do, and click to launch it.</td>
+            <td><a href='#'>one.iu.edu</a></td>
         </tr>
         <tr>
             <th scope="row">Zoom</th>
@@ -118,17 +143,52 @@ The *plain* `variant` will remove all borders and formatting from the table. Thi
     </tbody>
 </Table>
 ```
+<!-- prettier-ignore-end -->
+
+### Table with Cell Borders
+
+<!-- prettier-ignore-start -->
+```jsx
+<Table cells>
+    <caption id="responsive-table" class="rvt-sr-only">Table with cell borders</caption>
+    <thead>
+        <tr>
+            <th scope="col">Services</th>
+            <th scope="col">Description</th>
+            <th scope="col">URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">One.IU</th>
+            <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you
+                search for what you want to do, and click to launch it.</td>
+            <td><a href="#">one.iu.edu</a></td>
+        </tr>
+        <tr>
+            <th scope="row">Zoom</th>
+            <td>Zoom is a web collaboration tool available to all Indiana University students, faculty, and staff.</td>
+            <td><a href="#">zoom.iu.edu</a></td>
+        </tr>
+        <tr>
+            <th scope="row">Canvas</th>
+            <td>Canvas is a learning management system developed by Instructure, Inc.</td>
+            <td><a href="#">canvas.iu.edu</a></td>
+        </tr>
+    </tbody>
+</Table>
+```
+<!-- prettier-ignore-end -->
 
 ### Compact Table
 
-The *compact* `boolean` decreases the amount of padding applied to each table cell.
-
+<!-- prettier-ignore-start -->
 ```jsx
 <Table compact>
-    <caption className="rvt-sr-only">Table example one</caption>
+    <caption id="responsive-table" class="rvt-sr-only">Compact table</caption>
     <thead>
         <tr>
-            <th scope="col">Service</th>
+            <th scope="col">Services</th>
             <th scope="col">Description</th>
             <th scope="col">URL</th>
         </tr>
@@ -136,13 +196,9 @@ The *compact* `boolean` decreases the amount of padding applied to each table ce
     <tbody>
         <tr>
             <th scope="row">One.IU</th>
-            <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you search for what you want to do, and click to launch it.</td>
+            <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you
+                search for what you want to do, and click to launch it.</td>
             <td><a href="#">one.iu.edu</a></td>
-        </tr>
-        <tr>
-            <th scope="row">Box</th>
-            <td>Box is a no-cost cloud storage and collaboration environment available to students, faculty, and staff.</td>
-            <td><a href="#">box.iu.edu</a></td>
         </tr>
         <tr>
             <th scope="row">Zoom</th>
@@ -157,42 +213,4 @@ The *compact* `boolean` decreases the amount of padding applied to each table ce
     </tbody>
 </Table>
 ```
-
-### Cells Table
-
-The *cells* `boolean` adds borders to all table cells.
-
-```jsx
-<Table cells>
-    <caption className="rvt-sr-only">Table example one</caption>
-    <thead>
-        <tr>
-            <th scope="col">Service</th>
-            <th scope="col">Description</th>
-            <th scope="col">URL</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">One.IU</th>
-            <td>One.IU was created to bring a modern app store experience to finding what you need at IU. With One.IU, you search for what you want to do, and click to launch it.</td>
-            <td><a href="#">one.iu.edu</a></td>
-        </tr>
-        <tr>
-            <th scope="row">Box</th>
-            <td>Box is a no-cost cloud storage and collaboration environment available to students, faculty, and staff.</td>
-            <td><a href="#">box.iu.edu</a></td>
-        </tr>
-        <tr>
-            <th scope="row">Zoom</th>
-            <td>Zoom is a web collaboration tool available to all Indiana University students, faculty, and staff.</td>
-            <td><a href="#">zoom.iu.edu</a></td>
-        </tr>
-        <tr>
-            <th scope="row">Canvas</th>
-            <td>Canvas is a learning management system developed by Instructure, Inc.</td>
-            <td><a href="#">canvas.iu.edu</a></td>
-        </tr>
-    </tbody>
-</Table>
-```
+<!-- prettier-ignore-end -->

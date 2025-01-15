@@ -1,33 +1,49 @@
-Radio buttons allow users to select a single value out of a set number of choices.
+Use the radio input component to allow users to choose a single option among many.
 
-View the (Rivet Documentation for Radio Buttons)[https://rivet.uits.iu.edu/components/forms/radio-buttons/].
+View the [Rivet documentation for RadioButtons](https://rivet.iu.edu/components/radio-input/).
 
-### Inline Radio Button Example
+### RadioButton Examples
 
-Radio buttons are arranged within a `List`. Use the `List` *inline* `orientation` to display the radio buttons horizontally (inline). 
-
+<!-- prettier-ignore-start -->
 ```jsx
-<fieldset>
-    <legend className="rvt-sr-only">Inline Checkboxes</legend>
-    <List orientation="inline">
-        <RadioButton name="radio-inline-demo" label="Option One" />
-        <RadioButton name="radio-inline-demo" label="Option Two" />
-    </List>
+<fieldset className="rvt-fieldset">
+  <legend className="rvt-sr-only">Radio input (default)</legend>
+  <ul className="rvt-list-plain rvt-width-xl">
+    <li>
+        <RadioButton name="radio-demo" label="Option one" />
+    </li>
+    <li>
+        <RadioButton name="radio-demo" label="Option two" />
+    </li>
+    <li>
+        <RadioButton name="radio-demo" label="Option three" disabled checked />
+    </li>
+    <li>
+        <RadioButton 
+            name="radio-demo" 
+            label="Just a quick note" 
+            description="This is a description for the radio button."
+         />
+    </li>
+  </ul>
 </fieldset>
 ```
+<!-- prettier-ignore-end -->
 
-### Radio Button List
+### Inline RadioButtons
 
-Use the `List` *plain* `variant` to display the radio buttons in a vertical list without decoration. 
-
+<!-- prettier-ignore-start -->
 ```jsx
-<fieldset>
-    <legend className="rvt-sr-only">Checkbox List</legend>
-    <List variant="plain">
-        <RadioButton name="radio-list-demo" label="Option One" />
-        <RadioButton name="radio-list-demo" label="Option Two" defaultChecked />
-        <RadioButton name="radio-list-demo-2" label="Option Three (Disabled)" disabled />
-        <RadioButton name="radio-list-demo-2" label="Option Four (Checked, Disabled)" checked disabled />
-    </List>
+<fieldset className="rvt-fieldset">
+  <legend className="rvt-text-bold">Radio input (inline list)</legend>
+  <ul className="rvt-list-inline">
+    <li>
+        <RadioButton name="radio-demo" label="Option one" />
+    </li>
+    <li>
+        <RadioButton name="radio-demo" label="Option two" />
+    </li>
+  </ul>
 </fieldset>
 ```
+<!-- prettier-ignore-end -->

@@ -1,36 +1,55 @@
-Checkboxes allow users to select one or more options from a list of choices.
+Use the checkbox component to allow users to pick zero, one, or many options from a list of choices.
 
-View the [Rivet documentation for Checkboxes](https://rivet.uits.iu.edu/components/forms/checkboxes/).
+View the [Rivet documentation for Checkboxes](https://rivet.iu.edu/components/checkbox/).
+
+### Checkbox Examples
+
+<!-- prettier-ignore-start -->
+```jsx
+<fieldset className="rvt-fieldset">
+  <legend className="rvt-sr-only">Checkbox list</legend>
+  <ul className="rvt-list-plain rvt-width-xl">
+    <li>
+        <Checkbox name="checkbox-demo" label="Option one" />
+    </li>
+    <li>
+        <Checkbox name="checkbox-demo" label="Option two" disabled />
+    </li>
+    <li>
+        <Checkbox name="checkbox-demo" label="Option three" disabled checked />
+    </li>
+    <li>
+        <Checkbox 
+            name="checkbox-demo" 
+            label="Just a quick note" 
+            description="This checkbox has a really long label that can wrap on to two lines and still have nice left alignment."
+         />
+    </li>
+    <li>
+        <Checkbox name="checkbox-demo" label="This label text is visually hidden" labelVisibility={false} />
+    </li>
+  </ul>
+</fieldset>
+```
+<!-- prettier-ignore-end -->
 
 ### Inline Checkboxes
 
-A `List` with an `inline` orientation will display the checkboxes horizontally.
-
+<!-- prettier-ignore-start -->
 ```jsx
-<fieldset>
-    <legend className="rvt-sr-only">Inline Checkboxes</legend>
-    <List orientation="inline">
-        <Checkbox name="checkbox-demo" label="Option One" />
-        <Checkbox name="checkbox-demo" label="Option Two" />
-    </List>
+<fieldset className="rvt-fieldset">
+  <legend className="rvt-sr-only">Checkbox list</legend>
+  <ul className="rvt-list-inline">
+    <li>
+        <Checkbox name="checkbox-demo" label="Option one" />
+    </li>
+    <li>
+        <Checkbox name="checkbox-demo" label="Option two" />
+    </li>
+    <li>
+        <Checkbox name="checkbox-demo" label="Option three" />
+    </li>
+  </ul>
 </fieldset>
 ```
-
-### Checkbox List
-
-A `List` with the `plain` variant will display the checkboxes vertically.
-
-```jsx
-<fieldset>
-    <legend className="rvt-sr-only">Checkbox List</legend>
-    <List variant="plain">
-        <Checkbox name="checkbox-demo" label="Option One" />
-        <Checkbox name="checkbox-demo" label="Option Two" defaultChecked />
-        <Checkbox name="checkbox-demo" label="Option Three (Disabled)" disabled />
-        <Checkbox name="checkbox-demo" label="Option Four (Checked, Disabled)" checked disabled />
-    </List>
-</fieldset>
-```
-
-### Indeterminate State
-The current pre-release version of _rivet-react_ does not support checkboxes with indeterminate state. However, we plan to add support by version 1.0.0. Follow this [Github issue](https://github.com/indiana-university/rivet-react/issues/15) for details.
+<!-- prettier-ignore-end -->

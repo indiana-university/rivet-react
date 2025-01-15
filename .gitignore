@@ -1,41 +1,29 @@
-/coverage
-/demo/dist
-/es
-/lib
-/node_modules
-/umd
-npm-debug.log*
-/.idea
-.npmrc
-.vscode
-
-# See https://help.github.com/ignore-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-
-# testing
-/coverage
-/ts_conversion
-
-# production
-/build
-/package
-/styleguide
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# This project uses Yarn mostly so ignore the regular NPM lock file
-package-lock.json
+node_modules
+dist
+dist-ssr
+*.local
 
-# Ignore Visual Studio Code config files
-*.code-workspace
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Testing and Code coverage
+coverage
+junit.xml
+styleguide

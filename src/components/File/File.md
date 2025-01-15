@@ -1,38 +1,39 @@
-A custom HTML file input that is styled to look like Rivet buttons
+Use the file input component to allow the user to select a file to be uploaded as part of a form submission.
 
-View the [Rivet documentation for File Input](https://rivet.uits.iu.edu/components/forms/file-input/).
+View the [Rivet documentation for File Input](https://rivet.iu.edu/components/file-input/).
 
-### Custom file input example
+### File Examples
 
+<!-- prettier-ignore-start -->
 ```jsx
-<File name="demo" />
+<File />
 ```
+<!-- prettier-ignore-end -->
 
-### Clearing a file input programattically
+### Secondary File Input
 
+<!-- prettier-ignore-start -->
 ```jsx
-class FileProps extends React.Component {
-  constructor(props) {
-    super(props);
-    this.formRef = React.createRef();
-    this.clearFile = this.clearFile.bind(this);
-  }
-
-  clearFile(e) {
-    e.preventDefault();
-    this.formRef.current.reset();
-  }
-
-  render() {
-    return (
-      <form ref={this.formRef}>
-        <File name='file-upload-demo-2' />
-        <br />
-        <Button type="button" onClick={this.clearFile}>Clear file</Button>
-      </form>
-    );
-  }
-}
-
-<FileProps />
+<File secondary />
 ```
+<!-- prettier-ignore-end -->
+
+### Multiple File Input
+
+<!-- prettier-ignore-start -->
+```jsx
+<File multiple />
+```
+<!-- prettier-ignore-end -->
+
+### Reset value
+
+<!-- prettier-ignore-start -->
+```jsx
+<form>
+<File />
+<br />
+<input type="reset" value="Clear" className="rvt-button" />
+</form>
+```
+<!-- prettier-ignore-end -->

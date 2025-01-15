@@ -1,71 +1,69 @@
-Lists are used to group and organize collections of content.
+Use the list component to group and organize lists of content.
 
-View the [Rivet documentation for List](https://rivet.uits.iu.edu/components/page-content/lists/).
+View the [Rivet documentation for Lists](https://rivet.uits.iu.edu/components/list/).
 
-### Unordered List
+### List Example
 
-Lists are unordered by default.
-
+<!-- prettier-ignore-start -->
 ```jsx
 <List>
-    <li>List Item One</li>
-    <li>List Item Two</li>
-    <li>List Item Three</li>
-    <li>List Item Four</li>
+    <li>Item 1</li>
+    <li>
+        Item 2
+        <List>
+            <li>Item 2.1</li>
+            <li>Item 2.2</li>
+        </List>
+    </li>
+    <li>Item 3</li>
 </List>
 ```
+<!-- prettier-ignore-end -->
 
 ### Ordered List
 
-Use the *ordered* `variant` to create an ordered list.
-
+<!-- prettier-ignore-start -->
 ```jsx
 <List variant="ordered">
-    <li>List Item One</li>
-    <li>List Item Two</li>
-    <li>List Item Three</li>
-    <li>List Item Four</li>
+    <li>Item 1</li>
+    <li>
+        Item 2
+        <List variant="ordered">
+            <li>Item 2.1</li>
+            <li>Item 2.2</li>
+        </List>
+    </li>
+    <li>Item 3</li>
 </List>
 ```
+<!-- prettier-ignore-end -->
 
 ### Plain List
 
-Use the *plain* `variant` to create a plain list with no decoration.
-
+<!-- prettier-ignore-start -->
 ```jsx
 <List variant="plain">
-    <li>List Item One</li>
-    <li>List Item Two</li>
-    <li>List Item Three</li>
-    <li>List Item Four</li>
+    <li>Item 1</li>
+    <li>
+        Item 2
+        <List variant="plain">
+            <li>Item 2.1</li>
+            <li>Item 2.2</li>
+        </List>
+    </li>
+    <li>Item 3</li>
 </List>
 ```
+<!-- prettier-ignore-end -->
 
 ### Inline List
 
-Use the *inline* `variant` to to arrange list items horizontally (inline).
-
+<!-- prettier-ignore-start -->
 ```jsx
-<List orientation="inline">
-    <li>List Item One</li>
-    <li>List Item Two</li>
-    <li>List Item Three</li>
-    <li>List Item Four</li>
+<List inline>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
 </List>
 ```
-
-### Definition List
-
-Definition lists do not require a component and are included here for completeness.
-
-```jsx
-<dl>
-    <dt>Definition list item one</dt>
-    <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</dd>
-    <dd>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
-    <dt>Definition list item two</dt>
-    <dd>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
-    <dt>Definition list item three</dt>
-    <dd>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</dd>
-</dl>
-```
+<!-- prettier-ignore-end -->

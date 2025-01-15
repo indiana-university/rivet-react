@@ -1,11 +1,21 @@
 {
-    "ignore": [".git/**", ".circleci/**", "**/.*", "**/*.md", "build/**", "./coverage/**", "yarn.lock"],
-    "license": "license-header.txt",
-    "licenseFormats": {
-        "js|jsx|ts|tsx": {
-            "prepend": "/*",
-            "append": "*/"
-        }
-    },
-    "trailingWhitespace": "TRIM"
+  "ignore": [
+    ".git/**",
+    ".circleci/**",
+    "./coverage/**",
+    ".husky/**",
+    "**/.*",
+    "**/*.md",
+    "build/**",
+    "*.config.cjs",
+    "*.config.js"
+  ],
+  "license": "license-header.txt",
+  "licenseFormats": {
+    "js|jsx|ts|tsx": {
+      "prepend": "/*",
+      "append": "*/"
+    }
+  },
+  "trailingWhitespace": "TRIM"
 }

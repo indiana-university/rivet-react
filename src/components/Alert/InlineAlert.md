@@ -1,29 +1,21 @@
-An `InlineAlert` should be used for form validation situations where [the standard inline form input validation](#/Forms?id=input) error would not make sense. For instance, marking a group of radio buttons or checkboxes may generate an input error. 
+View the [Rivet documentation for Alerts](https://rivet.iu.edu/components/alert/?example=inline-form-field-validation-alerts)
 
-When using inline alerts with a group of inputs, make sure to add the `aria-describedby` attribute to each invalid input element. The `aria-describedy` value should correspond to a matching `id` property on the `InlineAlert` element.
-
-View the [Rivet documentation for Standalone Inline Alerts](https://rivet.uits.iu.edu/components/overlays/alerts/#standalone-inline-alerts).
-
+<!-- prettier-ignore-start -->
 ```jsx
-<fieldset>
-    <legend className="rvt-sr-only">Radio Button List</legend>
-    <List variant="plain">
-        <RadioButton name="radio-list-demo" label="Option One" aria-describedby="alert" />
-        <RadioButton name="radio-list-demo" label="Option Two" aria-describedby="alert" />
-    </List>
-    <InlineAlert id="alert" variant="danger">You must choose an option to continue.</InlineAlert>
-</fieldset>
-```
+<InlineAlert variant="info" standalone>The Description tells users more about this stuff.</InlineAlert>
 
-You can use the `standalone` property to give the alert a subtle background color and left border to add some visual contrast.
+<InlineAlert variant="success" standalone margin={{ tb: 'sm' }}>First name is valid!</InlineAlert>
 
-```jsx
-<fieldset>
-    <legend className="rvt-sr-only">Radio Button List</legend>
-    <List variant="plain">
-        <RadioButton name="radio-list-demo" label="Option One" aria-describedby="alert" />
-        <RadioButton name="radio-list-demo" label="Option Two" aria-describedby="alert" />
-    </List>
-    <InlineAlert id="alert-standalone" variant="danger" standalone>You must choose an option to continue.</InlineAlert>
-</fieldset>
+<InlineAlert variant="warning" standalone margin={{ bottom: 'sm' }}>Your Password is weak.</InlineAlert>
+
+<InlineAlert variant="danger" standalone margin={{ bottom: 'sm'  }}>The Username you entered is taken.</InlineAlert>
+
+<InlineAlert variant="info" margin={{ bottom: 'sm' }} >The Description tells users more about this stuff.</InlineAlert>
+
+<InlineAlert variant="success" margin={{ bottom: 'sm' }}>First name is valid!</InlineAlert>
+
+<InlineAlert variant="warning" margin={{ bottom: 'sm' }}>Your Password is weak.</InlineAlert>
+
+<InlineAlert variant="danger" margin={{ bottom: 'sm'  }}>The Username you entered is taken.</InlineAlert>
 ```
+<!-- prettier-ignore-end -->

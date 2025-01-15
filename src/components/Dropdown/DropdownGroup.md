@@ -1,5 +1,6 @@
 Use the `label` property to provide a helpful heading for a group of related menu items.
 
+<!-- prettier-ignore-start -->
 ```jsx
 <Dropdown label="Application menu">
     <a href="#">Notify All</a>
@@ -11,3 +12,4 @@ Use the `label` property to provide a helpful heading for a group of related men
     </DropdownGroup>
 </Dropdown>
 ```
+<!-- prettier-ignore-end -->

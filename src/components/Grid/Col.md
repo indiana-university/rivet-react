@@ -1,146 +1,125 @@
-### Automatic Columns
+Cols are used to represent columns in a grid. They must be wrapped in a Row component.
 
-By default, columns will be equally spaced.
+View the [Rivet documentation for Cols](https://rivet.uits.iu.edu/components/grid).
 
-```jsx
-<Container>
-    <Row>
-        <Col>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
-        </Col>
-        <Col>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
-        </Col>
-        <Col>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
-        </Col>
-        <Col>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
-        </Col>
-    </Row>
+### Col Examples
+
+<!-- prettier-ignore-start -->
+```jsx  
+<Container size="xl">  
+  <Row>
+    <Col breakpoint="lg" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-blue-100">Column</div>
+    </Col>
+    <Col breakpoint="lg" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-orange-100">Column</div>
+    </Col>
+    <Col breakpoint="lg" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-green-100">Column</div>
+    </Col>
+  </Row>
 </Container>
 ```
+<!-- prettier-ignore-end -->
 
-### Responsive Automatic Columns
+### Explicit Column Widths
 
-Using the `sm`|`md`|`lg`|`xl`|`xxl` attributes to specify the screen size at which you would like your grid to become responsive automatic grid.  At smaller screen sizes, the columns will appear stacked.
-
-```jsx
-<Container>
-    <Row>
-        <Col lg>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
-        </Col>
-        <Col lg>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
-        </Col>
-        <Col lg>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
-        </Col>
-        <Col lg>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
-        </Col>
-    </Row>
+<!-- prettier-ignore-start -->
+```jsx  
+<Container size="xl">  
+  <Row>
+    <Col breakpoint="lg" columnWidth="2" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-blue-100">Column</div>
+    </Col>
+    <Col breakpoint="lg" columnWidth="6" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-orange-100">Column</div>
+    </Col>
+    <Col breakpoint="lg" columnWidth="4" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-green-100">Column</div>
+    </Col>
+  </Row>
 </Container>
 ```
+<!-- prettier-ignore-end -->
 
-### Setting Column Widths
+### Mixed Automatic and Explicit Column Widths
 
-Apply a column span to the `sm`|`md`|`lg`|`xl`|`xxl` attributes to specify the span of the responsive column. *The sum of the spans in each row should not exceed 12.*
-
-```jsx
-<Container width="junior" center>
-    <Row>
-        <Col md={4}>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">4 columns medium and up</div>
-        </Col>
-        <Col md={4}>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">4 columns medium and up</div>
-        </Col>
-        <Col md={4}>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">4 columns medium and up</div>
-        </Col>
-    </Row>
+<!-- prettier-ignore-start -->
+```jsx  
+<Container size="xl">  
+  <Row>
+    <Col className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-blue-100">Column</div>
+    </Col>
+    <Col breakpoint="lg" columnWidth="6" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-orange-100">Column</div>
+    </Col>
+    <Col className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-green-100">Column</div>
+    </Col>
+  </Row>
 </Container>
 ```
+<!-- prettier-ignore-end -->
 
-### Mixing Column Widths with Auto Columns
+### Nested Grids
 
-You can apply a span to some columns, leaving the rest to be automatically sized. 
+Row components can be nested in Col components to create a nested grid. Do not nest grids more than two levels deep.
 
-```jsx
-<Container>
-    <Row>
-        <Col>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
+<!-- prettier-ignore-start -->
+```jsx  
+<Container size="xl">  
+  <Row>
+    <Col breakpoint="md" columnWidth="6" border="all" borderColor="green">
+      <p class="rvt-bg-blue-100">One-half</p>
+      <Row>
+        <Col breakpoint="md" columnWidth="6">
+          <p class="rvt-bg-green-100">One-quarter</p>
         </Col>
-        <Col md={6}>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">6 columns medium and up</div>
+        <Col breakpoint="md" columnWidth="6">
+          <p class="rvt-bg-green-100">One-quarter</p>
         </Col>
-        <Col>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Grid Item</div>
-        </Col>
-    </Row>
+      </Row>
+    </Col>
+  </Row>
 </Container>
 ```
+<!-- prettier-ignore-end -->
 
-### Push and Pull
+### Push and Pull Columns
 
-Use the `push*` and `pull*` properties to adjust the visual order of columns at specific breakpoints.
+The `shiftType`, `shiftBreakpoint`, and `shiftWidth` properties can be used to pull or push columns to the left or right, respectively.
 
-```jsx
-<Container>
-    <Row>
-        <Col md={4} pushMd={8}>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">I'm first in the source order</div>
-        </Col>
-        <Col md={8} pullMd={4}>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">I'm second in the source order</div>
-        </Col>
-    </Row>
+<!-- prettier-ignore-start -->
+```jsx  
+<Container size="xl">  
+  <Row>
+    <Col breakpoint="md" columnWidth="4" shiftType="push" shiftBreakpoint="md" shiftWidth="8">
+      <div class="rvt-bg-blue-100">First column</div>
+    </Col>
+    <Col breakpoint="md" columnWidth="8" shiftType="pull" shiftBreakpoint="md" shiftWidth="4">
+      <div class="rvt-bg-green-100">Second column</div>
+    </Col>
+  </Row>
 </Container>
 ```
+<!-- prettier-ignore-end -->
 
-### Right-align Last Item
+### Right Align Last Column
 
-Use the `last` attribute to right-align the final column in the row. This is useful when the sum of spans is less than 12.
+The `last` property can pull a column to the right
 
-```jsx
-<Container>
-    <Row>
-        <Col sm={4}>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Four</div>
-        </Col>
-        <Col sm={7} last>
-            <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Seven with one left over</div>
-        </Col>
-    </Row>
+<!-- prettier-ignore-start -->
+```jsx  
+<Container size="xl">  
+  <Row>
+    <Col breakpoint="md" columnWidth="4">
+      <div class="rvt-bg-blue-100">First column</div>
+    </Col>
+    <Col breakpoint="md" columnWidth="3" last>
+      <div class="rvt-bg-green-100">Second column</div>
+    </Col>
+  </Row>
 </Container>
 ```
-
-### Nesting
-
-Rows and columns can be nested to create complex grid arrangements.
-
-```jsx
-<Container>
-    <Row>
-        <Col md={7} lg={9}>
-            <div className="rvt-bg-blue rvt-text-center rvt-p-all-xs">
-                <p>Level One</p>
-                <Row>
-                    <Col md={7} lg={9}>
-                        <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Level Two</div>
-                    </Col>
-                    <Col md={5} lg={3}>
-                        <div className="rvt-bg-midnight rvt-text-center rvt-p-all-xxs">Level Two</div>
-                    </Col>
-                </Row>
-            </div>
-        </Col>
-        <Col md={5} lg={3}>
-            <div className="rvt-bg-blue rvt-text-center rvt-p-all-xxs">Level One</div>
-        </Col>
-    </Row>
-</Container>
-```
+<!-- prettier-ignore-end -->

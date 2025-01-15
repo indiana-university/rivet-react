@@ -1,40 +1,128 @@
-### Basic example
+Use the pagination component to allow users to move between multiple pages of content.
 
+Pagination is often used when showing search results, archived content like news stories, or database records.
+
+View the [Rivet documentation for Pagination](https://rivet.iu.edu/components/pagination/).
+
+### Pagination Examples
+
+<!-- prettier-ignore-start -->
 ```jsx
 <Pagination>
-  <a href="#0" aria-label="Previous set of pages">Previous</a>
-  <a href="#0" aria-label="Page 4">4</a>
-  <a href="#0" aria-label="Page 5, current page" aria-current="page">5</a>
-  <a href="#0" aria-label="Page 6">6</a>
-  <a href="#0" aria-label="Next set of pages">Next</a>
+    <PaginationItem
+        ariaLabel="Page 1"
+        onClick={(e)=>alert("Clicked Page 1")}
+    >
+        1
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Page 2"
+        disabled
+    >
+        2
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Page 3"
+        current
+    >
+        3
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Page 4"
+        url="#page4"
+    >
+        4
+    </PaginationItem>
 </Pagination>
 ```
+<!-- prettier-ignore-end -->
 
-### Positioning
-
-The pagination component is left-aligned by default, but you can easily center or right-align it using the align property.
-
+<!-- prettier-ignore-start -->
 ```jsx
-<Pagination align="right">
-  <a href="#0" aria-label="Previous set of pages" aria-disabled="true">Previous</a>
-  <a href="#0" aria-label="Page 1">1</a>
-  <a href="#0" aria-label="Page 2">2</a>
-  <a href="#0" aria-label="Page 3">3</a>
-  <a href="#0" aria-label="Page 4, current page" aria-current="page">4</a>
-  <a href="#0" aria-label="Next set of pages">Next</a>
+<Pagination>
+    <PaginationItem.First/>
+    <PaginationItem.Previous />
+    <PaginationItem
+        ariaLabel="Page 1"
+        onClick={(e)=>alert("Clicked Page 1")}
+    >
+        1
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Page 2"
+        disabled
+    >
+        2
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Page 3"
+        current
+    >
+        3
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Page 4"
+        url="#page4"
+    >
+        4
+    </PaginationItem>
+    <PaginationItem.Next />
+    <PaginationItem.Last />
 </Pagination>
 ```
+<!-- prettier-ignore-end -->
 
-### Small pagination
-
-Use the size property if you need to display the pagination component at a smaller size.
-
+<!-- prettier-ignore-start -->
 ```jsx
-<Pagination size="small">
-  <a href="#0" aria-label="Previous set of pages">Previous</a>
-  <a href="#0" aria-label="Page 4">4</a>
-  <a href="#0" aria-label="Page 5, current page" aria-current="page">5</a>
-  <a href="#0" aria-label="Page 6">6</a>
-  <a href="#0" aria-label="Next set of pages">Next</a>
+<Pagination>
+    <PaginationItem
+        ariaLabel="Go to first page"
+    >
+        First
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Go to previous page"
+        className="rvt-m-lr-sm"
+    >
+        <rvt-icon className="rvt-m-right-xs" name="chevron-left" />
+        Back
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Page 1"
+        onClick={(e)=>alert("Clicked Page 1")}
+    >
+        1
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Page 2"
+        disabled
+    >
+        2
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Page 3"
+        current
+    >
+        3
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Page 4"
+        url="#page4"
+    >
+        4
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Go to next page"
+        className="rvt-m-lr-sm"
+    >
+        Next
+        <rvt-icon className="rvt-m-left-xs" name="chevron-right" />
+    </PaginationItem>
+    <PaginationItem
+        ariaLabel="Go to last page"
+    >
+        Last
+    </PaginationItem>
 </Pagination>
 ```
+<!-- prettier-ignore-end -->

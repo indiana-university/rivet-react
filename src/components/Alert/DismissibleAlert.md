@@ -1,7 +1,8 @@
-The `DismissibleAlert` allows the user to remove the alert from view. This component provides a close button and implements visibility state management for a standard `Alert`.
+View the [Rivet documentation for Alerts](https://rivet.iu.edu/components/alert/).
 
 ```jsx
-<DismissibleAlert variant="danger" title="Error" onDismiss={() => window.alert('Dismissed!')}>
-  A friendly error for you that can be dismissed!
-</DismissibleAlert>
+<DismissableAlert variant="info" title="Scheduled System Maintenance">
+  This system will be unavailable on August 1st due to scheduled system
+  maintenance. Please check back on August 2nd.
+</DismissableAlert>
 ```

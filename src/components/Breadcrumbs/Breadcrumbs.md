@@ -1,25 +1,27 @@
-A navigation component that indicates the user's current location in the nav hierarchy.
+Use the breadcrumbs component to show the user’s current location in a hierarchy of pages. Pages further up the hierarchy from the current page are linked.
 
-View the [Rivet documentation for Breadcrumbs](https://rivet.uits.iu.edu/components/navigation/breadcrumb/).
+View the [Rivet documentation for Breadcrumbs](https://rivet.iu.edu/components/breadcrumbs/).
 
-### Default breadcrumb
+### Breadcrumbs Example
 
+<!-- prettier-ignore-start -->
+```jsx
+<Breadcrumbs>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Tier two</a></li>
+    <li aria-label="Current page">Tier three</li>
+</Breadcrumbs>
+```
+<!-- prettier-ignore-end -->
+
+### Breadcrumbs Auto-wrapping
+
+<!-- prettier-ignore-start -->
 ```jsx
 <Breadcrumbs>
     <a href="#">Home</a>
-    <a href="#">Files</a>
-    my-file.txt
+    <a href="#">Tier two</a>
+    <span>Tier three</span>
 </Breadcrumbs>
 ```
-
-### Callout example
-
-There is also a call-out modifier class that adds a small amount of padding and a light gray background. This is useful for when you need to draw more attention to the breadcrumb.
-
-```jsx
-<Breadcrumbs variant="call-out">
-    <a href="#">Home</a>
-    <a href="#">Files</a>
-    my-file.txt
-</Breadcrumbs>
-```
+<!-- prettier-ignore-end -->
