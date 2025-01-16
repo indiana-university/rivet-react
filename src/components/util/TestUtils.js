@@ -31,6 +31,7 @@ export const TestUtils = {
     anchorTestId: "header-anchor__testid",
     searchWrapperTestId: "search-wrapper__testid",
     navButtonToggleTestId: "nav-button-toggle__testid",
+    navButtonToggleIcon: "nav-button-toggle__icon",
     menuButtonToggleTestId: "menu-button-toggle__testid",
     menuAnchorTestId: "menu-anchor-toggle__testid",
     menuContainerTestId: "menu-container__testid",

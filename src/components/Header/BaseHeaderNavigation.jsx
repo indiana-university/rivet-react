@@ -92,10 +92,22 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
       >
         <span className="rvt-sr-only">Menu</span>
         {!isNavMenuOpen && (
-          <rvt-icon className="rvt-global-toggle__open" name="menu" />
+          <rvt-icon
+            className="rvt-global-toggle__open"
+            name="menu"
+            {...(testMode && {
+              "data-testid": TestUtils.Header.navButtonToggleIcon,
+            })}
+          />
         )}
         {isNavMenuOpen && (
-          <rvt-icon className="rvt-global-toggle__close" name="close" />
+          <rvt-icon
+            className="rvt-global-toggle__close"
+            name="close"
+            {...(testMode && {
+              "data-testid": TestUtils.Header.navButtonToggleIcon,
+            })}
+          />
         )}
       </button>
       <nav
