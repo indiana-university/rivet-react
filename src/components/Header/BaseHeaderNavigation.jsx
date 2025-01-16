@@ -6,8 +6,8 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
-import "rivet-icons/dist/chevron-up.js";
-import "rivet-icons/dist/chevron-down.js";
+import "rivet-icons/dist/close.js";
+import "rivet-icons/dist/menu.js";
 import { useEffect, useRef } from "react";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import Header from "./Header";
@@ -91,8 +91,12 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
         })}
       >
         <span className="rvt-sr-only">Menu</span>
-        <rvt-icon name="chevron-up" />
-        <rvt-icon name="chevron-down" />
+        {!isNavMenuOpen && (
+          <rvt-icon className="rvt-global-toggle__open" name="menu" />
+        )}
+        {isNavMenuOpen && (
+          <rvt-icon className="rvt-global-toggle__close" name="close" />
+        )}
       </button>
       <nav
         aria-label="Main"
