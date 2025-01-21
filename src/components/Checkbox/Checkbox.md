@@ -10,7 +10,7 @@ View the [Rivet documentation for Checkboxes](https://rivet.iu.edu/components/ch
   <legend className="rvt-sr-only">Checkbox list</legend>
   <ul className="rvt-list-plain rvt-width-xl">
     <li>
-        <Checkbox name="checkbox-demo" label="Option one" />
+        <Checkbox name="checkbox-demo" label="Option one"/>
     </li>
     <li>
         <Checkbox name="checkbox-demo" label="Option two" disabled />
