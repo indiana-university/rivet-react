@@ -5,11 +5,12 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import "rivet-icons/dist/chevrons-left.js";
-import "rivet-icons/dist/chevron-left.js";
-import "rivet-icons/dist/chevron-right.js";
-import "rivet-icons/dist/chevrons-right.js";
 import * as Rivet from "../util/Rivet";
+
+import "../../util/icons/chevrons-left.js";
+import "../../util/icons/chevron-left.js";
+import "../../util/icons/chevron-right.js";
+import "../../util/icons/chevrons-right.js";
 
 /**
  * Use the pagination item component to define individual page controls.
@@ -83,7 +84,7 @@ const First = ({ ...attrs }) => (
     {...attrs}
     ariaLabel={attrs.disabled ? "No previous pages" : "Go to first page"}
   >
-    <rvt-icon name="chevrons-left" />
+    <rvt-react-icon name="chevrons-left" />
   </PaginationItem>
 );
 
@@ -95,7 +96,7 @@ const Previous = ({ ...attrs }) => (
     {...attrs}
     ariaLabel={attrs.disabled ? "No previous pages" : "Go to previous page"}
   >
-    <rvt-icon name="chevron-left" />
+    <rvt-react-icon name="chevron-left" />
   </PaginationItem>
 );
 Previous.displayName = "Pagination.Previous";
@@ -106,7 +107,7 @@ const Next = ({ ...attrs }) => (
     {...attrs}
     ariaLabel={attrs.disabled ? "No next pages" : "Go to next page"}
   >
-    <rvt-icon name="chevron-right" />
+    <rvt-react-icon name="chevron-right" />
   </PaginationItem>
 );
 Next.displayName = "Pagination.Next";
@@ -117,7 +118,7 @@ const Last = ({ ...attrs }) => (
     {...attrs}
     ariaLabel={attrs.disabled ? "No next pages" : "Go to last page"}
   >
-    <rvt-icon name="chevrons-right" />
+    <rvt-react-icon name="chevrons-right" />
   </PaginationItem>
 );
 Last.displayName = "Pagination.Last";

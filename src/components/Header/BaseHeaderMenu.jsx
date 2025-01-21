@@ -6,10 +6,11 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
-import "rivet-icons/dist/chevron-down.js";
 import { useEffect, useRef, useState } from "react";
 import { getFocusableElements, stillFocused } from "../util/EventUtils.js";
 import { TestUtils } from "../util/TestUtils";
+
+import "../../util/icons/chevron-down.js";
 
 /**
  * Dropdown menu component for use primary/secondary header navigations.
@@ -139,7 +140,10 @@ const BaseHeaderMenu = ({
           })}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
-          <rvt-icon name="chevron-down" className="rvt-global-toggle__open" />
+          <rvt-react-icon
+            name="chevron-down"
+            className="rvt-global-toggle__open"
+          />
         </button>
       </div>
       <div

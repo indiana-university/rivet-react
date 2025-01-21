@@ -6,7 +6,6 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
-import "rivet-icons/dist/chevron-down.js";
 import BaseHeaderMenu from "./BaseHeaderMenu.jsx";
 import BaseHeaderMenuItem from "./BaseHeaderMenuItem.jsx";
 

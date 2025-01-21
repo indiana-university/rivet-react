@@ -7,7 +7,8 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as Rivet from "../util/Rivet";
 import { TestUtils } from "../util/TestUtils";
-import "rivet-icons/dist/chevron-down.js";
+
+import "../../util/icons/chevron-down.js";
 
 /**
  * Create a collapsable submenu in the Side navigation menu
@@ -65,7 +66,7 @@ const SidenavMenu = ({
           <span className="rvt-sr-only">
             {isOpen ? "Hide" : "Show"} links nested under {label}
           </span>
-          <rvt-icon name="chevron-down" />
+          <rvt-react-icon name="chevron-down" />
         </button>
       </div>
       <ul

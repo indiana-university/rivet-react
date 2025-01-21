@@ -6,8 +6,6 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
-import "rivet-icons/dist/close.js";
-import "rivet-icons/dist/menu.js";
 import { useEffect, useRef } from "react";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import Header from "./Header";
@@ -19,6 +17,9 @@ import {
   targets,
 } from "../util/EventUtils";
 import { TestUtils } from "../util/TestUtils";
+
+import "../../util/icons/close.js";
+import "../../util/icons/menu.js";
 
 const shouldToggleNavigation = (event, wrapperDivRef) => {
   if (
@@ -92,7 +93,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
       >
         <span className="rvt-sr-only">Menu</span>
         {!isNavMenuOpen && (
-          <rvt-icon
+          <rvt-react-icon
             className="rvt-global-toggle__open"
             name="menu"
             {...(testMode && {
@@ -101,7 +102,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
           />
         )}
         {isNavMenuOpen && (
-          <rvt-icon
+          <rvt-react-icon
             className="rvt-global-toggle__close"
             name="close"
             {...(testMode && {

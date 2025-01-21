@@ -7,7 +7,6 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import { useEffect } from "react";
 import * as Rivet from "../util/Rivet";
-import "rivet-icons/dist/close.js";
 import Button from "../Button/Button.jsx";
 import {
   handler,
@@ -21,6 +20,7 @@ import { useModalOverlay } from "../../hooks/UseModalOverlay.js";
 import { removeProperty } from "../util/RemoveProperty.js";
 import { TestUtils } from "../util/TestUtils.js";
 import { FocusTrap } from "focus-trap-react";
+import "../../util/icons/close.js";
 
 const Dialog = ({
   children,
@@ -182,7 +182,7 @@ const Dialog = ({
 const DialogCloseButton = ({ onDismiss }) => (
   <Button className="rvt-button--plain rvt-dialog__close" onClick={onDismiss}>
     <span className="rvt-sr-only">Close</span>
-    <rvt-icon name="close" />
+    <rvt-react-icon name="close" />
   </Button>
 );
 
