@@ -40,7 +40,7 @@ describe("<File />", () => {
       expect(label.children.length).toBe(2);
       expect(label.children[0].nodeName).toBe("SPAN");
       expect(label.children[0].innerHTML).toBe("Upload a file");
-      expect(label.children[1].nodeName).toBe("RVT-ICON");
+      expect(label.children[1].nodeName).toBe("RVT-REACT-ICON");
 
       const description = children[2];
       expect(description.nodeName).toBe("DIV");
