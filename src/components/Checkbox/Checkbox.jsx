@@ -26,7 +26,8 @@ const Checkbox = ({
       aria-describedby={description && descriptionId}
       className={classNames(
         "rvt-checkbox",
-        !labelVisibility && "rvt-checkbox--sr-only-label"
+        !labelVisibility && "rvt-checkbox--sr-only-label",
+        className,
       )}
     >
       <input id={id} type="checkbox" {...attrs} />
@@ -51,4 +52,4 @@ Checkbox.propTypes = {
   labelVisibility: PropTypes.bool,
 };
 
-export default Checkbox;
+export default Rivet.rivetize(Checkbox);
