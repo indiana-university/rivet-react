@@ -6,11 +6,12 @@ import * as React from "react";
 import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
-import "rivet-icons/dist/magnifying-glass.js";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import { isEscapeKeyPress, isTabKeyPress, targets } from "../util/EventUtils";
 import { useEffect, useRef, useState } from "react";
 import { TestUtils } from "../util/TestUtils";
+
+import "../../util/icons/magnifying-glass.js";
 
 const shouldToggleSearch = (event, wrapperDivRef) => {
   if (
@@ -69,7 +70,7 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
         data-testid={TestUtils.Header.searchToggleButtonTestId}
       >
         <span className="rvt-sr-only">Search</span>
-        <rvt-icon name="magnifying-glass" />
+        <rvt-react-icon name="magnifying-glass" />
       </button>
       <form
         action={action}

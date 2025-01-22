@@ -6,9 +6,9 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
-import "rivet-icons/dist/plus.js";
-import "rivet-icons/dist/minus.js";
 import { TestUtils } from "../util/TestUtils";
+import "../../util/icons/plus.js";
+import "../../util/icons/minus.js";
 
 const testIds = TestUtils.Accordion;
 
@@ -43,7 +43,7 @@ const AccordionPanelHeader = (props) => {
       >
         <span className="rvt-accordion__toggle-text">{label}</span>
         <div className="rvt-accordion__toggle-icon">
-          <rvt-icon name={isOpen ? "minus" : "plus"} />
+          <rvt-react-icon name={isOpen ? "minus" : "plus"} />
         </div>
       </button>
     </h3>

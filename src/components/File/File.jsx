@@ -7,7 +7,8 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
 import { useReducer } from "react";
-import "rivet-icons/dist/file.js";
+
+import "../../util/icons/file.js";
 
 const classPrefix = "rvt-file";
 
@@ -79,7 +80,7 @@ const File = ({
         )}
       >
         <span>{finalLabel}</span>
-        <rvt-icon name="file" />
+        <rvt-react-icon name="file" />
       </label>
       <div className={`${classPrefix}__preview`} id={id + "-file-description"}>
         {description}

@@ -23,7 +23,10 @@ export default defineConfig({
         "rivet-react-header": resolve(__dirname, "lib/Header.js"),
         "rivet-react-input": resolve(__dirname, "lib/Input.js"),
         "rivet-react-list": resolve(__dirname, "lib/List.js"),
-        "rivet-react-loadingindicator": resolve(__dirname, "lib/LoadingIndicator.js"),
+        "rivet-react-loadingindicator": resolve(
+          __dirname,
+          "lib/LoadingIndicator.js",
+        ),
         "rivet-react-pagecontent": resolve(__dirname, "lib/PageContent.js"),
         "rivet-react-pagination": resolve(__dirname, "lib/Pagination.js"),
         "rivet-react-radiobutton": resolve(__dirname, "lib/RadioButton.js"),
@@ -31,9 +34,9 @@ export default defineConfig({
         "rivet-react-sidenav": resolve(__dirname, "lib/Sidenav.js"),
         "rivet-react-subnav": resolve(__dirname, "lib/Subnav.js"),
         "rivet-react-table": resolve(__dirname, "lib/Table.js"),
-        "rivet-react-tabs": resolve(__dirname, "lib/Tabs.js")
+        "rivet-react-tabs": resolve(__dirname, "lib/Tabs.js"),
       },
-      formats: ['es', 'cjs']
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
       external: ["react", "react-dom", "classNames"],
