@@ -123,3 +123,25 @@ The `last` property can pull a column to the right
 </Container>
 ```
 <!-- prettier-ignore-end -->
+
+### Set elements of containers
+
+The `last` property can pull a column to the right
+
+<!-- prettier-ignore-start -->
+```jsx  
+<Container size="xl" component='main'>  
+  <Row component='section'>
+    <Col component='article' breakpoint="lg" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-blue-100">Column</div>
+    </Col>
+    <Col component='article' breakpoint="lg" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-orange-100">Column</div>
+    </Col>
+    <Col component='article' breakpoint="lg" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-green-100">Column</div>
+    </Col>
+  </Row>
+</Container>
+```
+<!-- prettier-ignore-end -->

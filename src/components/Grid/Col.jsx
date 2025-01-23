@@ -16,7 +16,7 @@ const columnClassPrefix = "rvt-cols";
 const columnClass = (
   breakpoint,
   columnWidth,
-  classPrefix = columnClassPrefix
+  classPrefix = columnClassPrefix,
 ) => {
   let className = classPrefix;
   if (columnWidth) {
@@ -34,6 +34,7 @@ const columnClass = (
 const Col = ({
   className,
   children,
+  component = "div",
   id = Rivet.shortuid(),
   columnWidth,
   breakpoint,
@@ -42,25 +43,28 @@ const Col = ({
   shiftWidth,
   last = false,
   ...attrs
-}) => (
-  <div
-    id={id}
-    className={classNames(
-      `${columnClass(breakpoint, columnWidth)}`,
-      shiftType &&
-        columnClass(
-          shiftBreakpoint,
-          shiftWidth,
-          `${columnClassPrefix}-${shiftType}`
-        ),
-      last && `${columnClassPrefix}--last`,
-      className
-    )}
-    {...attrs}
-  >
-    {children}
-  </div>
-);
+}) => {
+  const Component = component;
+  return (
+    <Component
+      id={id}
+      className={classNames(
+        `${columnClass(breakpoint, columnWidth)}`,
+        shiftType &&
+          columnClass(
+            shiftBreakpoint,
+            shiftWidth,
+            `${columnClassPrefix}-${shiftType}`,
+          ),
+        last && `${columnClassPrefix}--last`,
+        className,
+      )}
+      {...attrs}
+    >
+      {children}
+    </Component>
+  );
+};
 
 Col.displayName = "Col";
 const validInts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];

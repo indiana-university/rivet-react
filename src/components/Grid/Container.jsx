@@ -21,18 +21,22 @@ const containerStyle = (size) => `${containerClass}-${size}`;
 const Container = ({
   className,
   children,
+  component = "div",
   id = Rivet.shortuid(),
   size = "md",
   ...attrs
-}) => (
-  <div
-    id={id}
-    className={classNames(containerStyle(size), className)}
-    {...attrs}
-  >
-    {children}
-  </div>
-);
+}) => {
+  const Component = component;
+  return (
+    <Component
+      id={id}
+      className={classNames(containerStyle(size), className)}
+      {...attrs}
+    >
+      {children}
+    </Component>
+  );
+};
 
 Container.displayName = "Container";
 Container.propTypes = {

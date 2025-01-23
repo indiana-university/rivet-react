@@ -21,18 +21,22 @@ const rowSpacing = (spacing) => (spacing ? `${rowClass}--${spacing}` : "");
 const Row = ({
   className,
   children,
+  component = "div",
   id = Rivet.shortuid(),
   spacing,
   ...attrs
-}) => (
-  <div
-    id={id}
-    className={classNames(rowClass, rowSpacing(spacing), className)}
-    {...attrs}
-  >
-    {children}
-  </div>
-);
+}) => {
+  const Component = component;
+  return (
+    <Component
+      id={id}
+      className={classNames(rowClass, rowSpacing(spacing), className)}
+      {...attrs}
+    >
+      {children}
+    </Component>
+  );
+};
 
 Row.displayName = "Row";
 Row.propTypes = {
