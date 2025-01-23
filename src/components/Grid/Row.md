@@ -70,3 +70,23 @@ View the [Rivet documentation for Rows](https://rivet.uits.iu.edu/components/gri
 </Container>
 ```
 <!-- prettier-ignore-end -->
+
+### Set elements of containers
+
+<!-- prettier-ignore-start -->
+```jsx  
+<Container size="xl">  
+  <Row component='section'>
+    <Col breakpoint="lg" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-blue-100">Column</div>
+    </Col>
+    <Col breakpoint="lg" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-orange-100">Column</div>
+    </Col>
+    <Col breakpoint="lg" className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-green-100">Column</div>
+    </Col>
+  </Row>
+</Container>
+```
+<!-- prettier-ignore-end -->
