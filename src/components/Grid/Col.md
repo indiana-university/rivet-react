@@ -126,7 +126,7 @@ The `last` property can pull a column to the right
 
 ### Set elements of containers
 
-The `component` property overrides the element of the container allowing for the user of semantic elements when needed
+The `component` property overrides the element of the container allowing for the use of semantic elements when needed. The default component is a `div`.
 
 <!-- prettier-ignore-start -->
 ```jsx  
