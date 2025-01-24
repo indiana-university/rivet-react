@@ -47,7 +47,7 @@ describe("<List />", () => {
       expect(list.nodeName).toBe("OL");
     });
 
-    it("should render a description list if variant is ordered", async () => {
+    it("should render a description list if variant is description", async () => {
       render(
         <List data-testid={testId} variant="description">
           <dt>term 1</dt>
