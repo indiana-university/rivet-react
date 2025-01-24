@@ -73,6 +73,8 @@ View the [Rivet documentation for Rows](https://rivet.uits.iu.edu/components/gri
 
 ### Set elements of containers
 
+The `component` property overrides the element of the container allowing for the user of semantic elements when needed
+
 <!-- prettier-ignore-start -->
 ```jsx  
 <Container size="xl">  

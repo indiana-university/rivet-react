@@ -77,6 +77,8 @@ Col.propTypes = {
   /** Width of the column (1-12) */
   // prettier-ignore
   columnWidth: PropTypes.oneOf(validWidths),
+  /** Sets the containing element. Defaults is 'div' */
+  component: PropTypes.string,
   /** Indicates the breakpoint at which to pull or push the column. Requires shiftBreakpoint to be set. */
   shiftBreakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
   /** Indicates the number of columns to push or pull the column. Requires shiftBreakpoint to be set. */

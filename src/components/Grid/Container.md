@@ -26,6 +26,8 @@ View the [Rivet documentation for Containers](https://rivet.uits.iu.edu/componen
 
 ### Set elements of containers
 
+The `component` property overrides the element of the container allowing for the user of semantic elements when needed
+
 <!-- prettier-ignore-start -->
 ```jsx  
 <Container size="xl" component='main'>  

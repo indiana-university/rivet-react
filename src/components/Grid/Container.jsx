@@ -40,6 +40,8 @@ const Container = ({
 
 Container.displayName = "Container";
 Container.propTypes = {
+  /** Sets the containing element. Defaults is 'div' */
+  component: PropTypes.string,
   /** A unique identifier for the container */
   id: PropTypes.string,
   /** The size (width) of the container https://github.com/indiana-university/rivet-source/blob/2.0.0-master/src/sass/grid/_base.scss#L30 */

@@ -126,6 +126,8 @@ The `last` property can pull a column to the right
 
 ### Set elements of containers
 
+The `component` property overrides the element of the container allowing for the user of semantic elements when needed
+
 <!-- prettier-ignore-start -->
 ```jsx  
 <Container size="xl">  

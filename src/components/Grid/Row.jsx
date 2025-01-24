@@ -40,6 +40,8 @@ const Row = ({
 
 Row.displayName = "Row";
 Row.propTypes = {
+  /** Sets the containing element. Defaults is 'div' */
+  component: PropTypes.string,
   /** A unique identifier for the row */
   id: PropTypes.string,
   /** Spacing modifier for the Row. Loose for extra spacing between rows, tight for less spacing between rows */
