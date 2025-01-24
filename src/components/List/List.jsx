@@ -25,6 +25,7 @@ const List = ({
   const classes = classNames(
     inline ? `${classPrefix}-inline` : classPrefix,
     plain ? `${classPrefix}-plain` : "",
+    variant === "plain" && `${classPrefix}-plain`,
     variant === "description" && `${classPrefix}-description`,
     className,
   );
