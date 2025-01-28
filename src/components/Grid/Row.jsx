@@ -21,21 +21,27 @@ const rowSpacing = (spacing) => (spacing ? `${rowClass}--${spacing}` : "");
 const Row = ({
   className,
   children,
+  component = "div",
   id = Rivet.shortuid(),
   spacing,
   ...attrs
-}) => (
-  <div
-    id={id}
-    className={classNames(rowClass, rowSpacing(spacing), className)}
-    {...attrs}
-  >
-    {children}
-  </div>
-);
+}) => {
+  const Component = component;
+  return (
+    <Component
+      id={id}
+      className={classNames(rowClass, rowSpacing(spacing), className)}
+      {...attrs}
+    >
+      {children}
+    </Component>
+  );
+};
 
 Row.displayName = "Row";
 Row.propTypes = {
+  /** Sets the containing element. Defaults is 'div' */
+  component: PropTypes.string,
   /** A unique identifier for the row */
   id: PropTypes.string,
   /** Spacing modifier for the Row. Loose for extra spacing between rows, tight for less spacing between rows */
