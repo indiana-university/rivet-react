@@ -124,6 +124,7 @@ const Dialog = ({
         ref={ref}
         {...dataRvt}
         {...overlayProps}
+        id={id}
       >
         {title && (
           <header
@@ -142,7 +143,10 @@ const Dialog = ({
         )}
         {children}
         {onDismiss && showCloseButton && (
-          <DialogCloseButton onDismiss={handleDismiss} />
+          <DialogCloseButton
+            id={`${id}-close__button`}
+            onDismiss={handleDismiss}
+          />
         )}
       </div>
     </FocusTrap>
@@ -179,8 +183,12 @@ const Dialog = ({
   }
 };
 
-const DialogCloseButton = ({ onDismiss }) => (
-  <Button className="rvt-button--plain rvt-dialog__close" onClick={onDismiss}>
+const DialogCloseButton = ({ id, onDismiss }) => (
+  <Button
+    className="rvt-button--plain rvt-dialog__close"
+    id={id}
+    onClick={onDismiss}
+  >
     <span className="rvt-sr-only">Close</span>
     <rvt-react-icon name="close" />
   </Button>

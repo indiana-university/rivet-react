@@ -16,6 +16,7 @@ const DialogExample = () => {
     <>
       <Button onClick={() => setDialogOpen(true)}>Open Dialog</Button>
       <Dialog
+        id="Example-Dialog"
         isOpen={isDialogOpen}
       >
         <DialogBody>
@@ -55,6 +56,7 @@ const DialogExample = () => {
     <>
       <Button onClick={event => openModal(event, "default-dialog")}>Default dialog</Button>
       <Dialog
+        id="Default-Dialog"
         isOpen={dialogOpen === "default-dialog"}
         onDismiss={handleDismiss}
         title="Dialog title"
