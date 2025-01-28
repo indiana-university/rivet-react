@@ -7,6 +7,8 @@ import "@testing-library/jest-dom";
 import React from "react";
 import Col from "./Col";
 
+const testId = "Col-container";
+const content = "content";
 describe("<Col />", () => {
   describe("Rendering and text", () => {
     const content = "content";
@@ -47,7 +49,7 @@ describe("<Col />", () => {
           shiftWidth={width}
         >
           {content}
-        </Col>
+        </Col>,
       );
 
       const col = await screen.findByText(content);
@@ -68,7 +70,7 @@ describe("<Col />", () => {
           shiftWidth={width}
         >
           {content}
-        </Col>
+        </Col>,
       );
 
       const col = await screen.findByText(content);
@@ -82,12 +84,30 @@ describe("<Col />", () => {
       render(
         <Col breakpoint={breakpoint} columnWidth={width} last>
           {content}
-        </Col>
+        </Col>,
       );
 
       const col = await screen.findByText(content);
       expect(col).toHaveClass(`rvt-cols-${width}-${breakpoint}`);
       expect(col).toHaveClass(`rvt-cols--last`);
+    });
+  });
+
+  describe("Options", () => {
+    it("default element is div", () => {
+      render(<Col data-testid={testId}>{content}</Col>);
+      const element = screen.queryByTestId(testId);
+      expect(element.nodeName).toBe("DIV");
+    });
+
+    it("can customize element", () => {
+      render(
+        <Col data-testid={testId} component="section">
+          {content}
+        </Col>,
+      );
+      const element = screen.queryByTestId(testId);
+      expect(element.nodeName).toBe("SECTION");
     });
   });
 });
