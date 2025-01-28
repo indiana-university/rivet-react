@@ -7,10 +7,10 @@ import "@testing-library/jest-dom";
 import React from "react";
 import Row from "./Row";
 
+const testId = "Row-container";
+const content = "content";
 describe("<Row />", () => {
   describe("Rendering and text", () => {
-    const content = "content";
-
     it("should render without throwing an error", async () => {
       render(<Row>{content}</Row>);
 
@@ -30,6 +30,24 @@ describe("<Row />", () => {
 
       const row = await screen.findByText(content);
       expect(row).toHaveClass(`rvt-row--tight`);
+    });
+  });
+
+  describe("Options", () => {
+    it("default element is div", () => {
+      render(<Row data-testid={testId}>{content}</Row>);
+      const element = screen.queryByTestId(testId);
+      expect(element.nodeName).toBe("DIV");
+    });
+
+    it("can customize element", () => {
+      render(
+        <Row data-testid={testId} component="section">
+          {content}
+        </Row>,
+      );
+      const element = screen.queryByTestId(testId);
+      expect(element.nodeName).toBe("SECTION");
     });
   });
 });

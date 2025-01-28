@@ -21,21 +21,27 @@ const containerStyle = (size) => `${containerClass}-${size}`;
 const Container = ({
   className,
   children,
+  component = "div",
   id = Rivet.shortuid(),
   size = "md",
   ...attrs
-}) => (
-  <div
-    id={id}
-    className={classNames(containerStyle(size), className)}
-    {...attrs}
-  >
-    {children}
-  </div>
-);
+}) => {
+  const Component = component;
+  return (
+    <Component
+      id={id}
+      className={classNames(containerStyle(size), className)}
+      {...attrs}
+    >
+      {children}
+    </Component>
+  );
+};
 
 Container.displayName = "Container";
 Container.propTypes = {
+  /** Sets the containing element. Defaults is 'div' */
+  component: PropTypes.string,
   /** A unique identifier for the container */
   id: PropTypes.string,
   /** The size (width) of the container https://github.com/indiana-university/rivet-source/blob/2.0.0-master/src/sass/grid/_base.scss#L30 */
