@@ -3,6 +3,7 @@ Use the tabs component to allow users to switch between related groups of conten
 View the [Rivet documentation for Tabs](https://rivet.uits.iu.edu/components/tabs/).
 
 ### Tabs Examples
+
 <!-- prettier-ignore-start -->
 ```jsx
 <Tabs label="Basic Tab Example">
@@ -41,3 +42,21 @@ View the [Rivet documentation for Tabs](https://rivet.uits.iu.edu/components/tab
 ```
 <!-- prettier-ignore-end -->
 
+<!-- prettier-ignore-start -->
+```jsx
+<Tabs label="Example of Complex titles" initialTab={1}>
+    <Tabs.Panel title={<><div>Tab One</div><div>Sub 1</div></>}>
+        <span class="rvt-ts-23 rvt-text-bold">Title of the Tab One Content</span>
+        <p>Some content text</p>
+    </Tabs.Panel>
+    <Tabs.Panel title={<><div>Tab Two</div></>}>
+        <span class="rvt-ts-23 rvt-text-bold">Title of the Tab Two Content</span>
+        <p>If initialTab is set the initial tab displayed based on the index provided to initialTab</p>
+    </Tabs.Panel>
+    <Tabs.Panel title={<><div>Tab Three</div><div>Sub 3</div></>}>
+        <span class="rvt-ts-23 rvt-text-bold">Title of the Tab Three Content</span>
+        <p>Some content text</p>
+    </Tabs.Panel>
+</Tabs>
+```
+<!-- prettier-ignore-end -->
