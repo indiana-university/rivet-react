@@ -14,6 +14,7 @@ const testIds = TestUtils.Tabs;
 const customClassName = "custom-style";
 const customPanelClassName = "custom-style-item";
 const ariaLabel = "Test Label";
+const testCallback = jest.fn();
 
 describe("<Tabs />", () => {
   const tabsId = "tablist";
@@ -178,6 +179,44 @@ describe("<Tabs />", () => {
         false,
         "<p>test content 3</p>",
       );
+    });
+    it("Clicking a tab will trigger callback", () => {
+      render(
+        <Tabs
+          id={tabsId}
+          className={customClassName}
+          label={ariaLabel}
+          onChange={testCallback}
+          testMode
+        >
+          <TabPanel className={customPanelClassName} testMode title="tab 1">
+            <p>test content 1</p>
+          </TabPanel>
+          <TabPanel className={customPanelClassName} testMode title="tab 2">
+            <p>test content 2</p>
+          </TabPanel>
+          <TabPanel className={customPanelClassName} testMode title="tab 3">
+            <p>test content 3</p>
+          </TabPanel>
+        </Tabs>,
+      );
+      const tab1 = screen.getByTestId(
+        `${testIds.controls}-tab_${tabsId}_control_0`,
+      );
+      const tab2 = screen.getByTestId(
+        `${testIds.controls}-tab_${tabsId}_control_1`,
+      );
+      const tab3 = screen.getByTestId(
+        `${testIds.controls}-tab_${tabsId}_control_2`,
+      );
+      fireEvent.click(tab2);
+      expect(testCallback).toHaveBeenCalled();
+
+      fireEvent.click(tab3);
+      expect(testCallback).toHaveBeenCalled();
+
+      fireEvent.click(tab1);
+      expect(testCallback).toHaveBeenCalled();
     });
   });
 
