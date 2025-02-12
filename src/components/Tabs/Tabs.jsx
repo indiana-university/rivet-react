@@ -20,6 +20,7 @@ const Tabs = ({
   id,
   label,
   initialTab,
+  onChange = () => {},
   testMode = false,
   ...attrs
 }) => {
@@ -29,7 +30,9 @@ const Tabs = ({
     initialTab < React.Children.count(children);
   const [tabsId] = useState(id);
   const [tabOpen, setOpen] = useState(
-    validInit ? createControlId(tabsId, initialTab) : createControlId(tabsId, 0)
+    validInit
+      ? createControlId(tabsId, initialTab)
+      : createControlId(tabsId, 0),
   );
 
   const tabs = !children
@@ -37,7 +40,8 @@ const Tabs = ({
     : React.Children.map(children, (child, index) => {
         const { title } = child.props;
         const controlId = `tab_${tabsId}_control_${index}`;
-        const onClick = () => {
+        const onClick = (e) => {
+          onChange(e, index, tabsId);
           setOpen(controlId);
         };
 
@@ -85,6 +89,8 @@ Tabs.propTypes = {
   label: PropTypes.string.isRequired,
   /** Index of initially opened tab starting at index 0 */
   initialTab: PropTypes.number,
+  /** Callback function triggered when tabs change, Params: event, index of new tab panel, id of tabs changed */
+  onChange: PropTypes.func,
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
 };
