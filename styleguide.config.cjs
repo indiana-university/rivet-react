@@ -107,6 +107,10 @@ module.exports = {
       content: "src/docs/RivetizedProperties.md",
       sections: [
         {
+          name: "RivetizeComponent",
+          components: "src/components/util/RivetizeComponent.jsx",
+        },
+        {
           name: "alignContent",
           content: "src/docs/alignContent.md",
         },

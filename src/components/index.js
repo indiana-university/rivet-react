@@ -18,6 +18,7 @@ export * from "./Layouts/ServerError/index.jsx";
 export * from "./List/index.jsx";
 export * from "./Header/index.jsx";
 export * from "./LoadingIndicator/index.jsx";
+export { default as RivetizeComponent } from "./util/RivetizeComponent.jsx";
 export { default as Icon } from "./util/RivetIcons.jsx";
 export * from "./Dialog/index.jsx";
 export * from "./PageContent/index.jsx";
