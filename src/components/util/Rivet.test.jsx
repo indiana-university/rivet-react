@@ -142,8 +142,16 @@ function bgTests() {
       values: "crimson",
       expected: "rvt-bg-crimson",
     },
+    {
+      values: "black-000",
+      expected: "rvt-bg-black-000",
+    },
+    {
+      values: "white",
+      expected: "rvt-bg-white",
+    },
   ];
-  const invalid = ["BAD", null, ""];
+  const invalid = ["BAD", null, "", "white-700"];
   describe("bg", () => {
     testPresent("bg", valid);
     testNotPresent("bg", invalid);
@@ -179,6 +187,10 @@ function borderTests() {
     {
       values: ["top", "Bad", "bottom"],
       expected: "rvt-border-top rvt-border-bottom",
+    },
+    {
+      values: "radius-sm",
+      expected: "rvt-border-all rvt-border-radius-sm",
     },
   ];
   const invalid = ["BAD", null, ""];
@@ -228,8 +240,16 @@ function colorTests() {
       values: "crimson",
       expected: "rvt-color-crimson",
     },
+    {
+      values: "black-000",
+      expected: "rvt-color-black-000",
+    },
+    {
+      values: "white",
+      expected: "rvt-color-white",
+    },
   ];
-  const invalid = ["BAD", null, ""];
+  const invalid = ["BAD", null, "", "white-700"];
   describe("color", () => {
     testPresent("color", valid);
     testNotPresent("color", invalid);
