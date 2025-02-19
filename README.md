@@ -46,8 +46,8 @@ Rivet-react relies on several icons and stickers from the Rivet Icons and Rivet 
 ```typescript static
 import "~/rivet-icons/dist/rivet-icon-element.js";
 import "~/rivet-icons/dist/rivet-icon-element.css";
-import "rivet-stickers/dist/rivet-sticker-element.js";
-import "rivet-stickers/dist/rivet-sticker-element.css";
+import "~/rivet-stickers/dist/rivet-sticker-element.js";
+import "~/rivet-stickers/dist/rivet-sticker-element.css";
 ```
 
 ## Documentation
