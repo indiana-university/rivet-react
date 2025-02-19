@@ -45,6 +45,8 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
           "react/jsx-runtime": "jsxRuntime",
+          "rivet-icons": "rivet-icons",
+          "rivet-stickers": "rivet-stickers",
           classnames: "classNames",
         },
       },
