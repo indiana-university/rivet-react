@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import { getFocusableElements, stillFocused } from "../util/EventUtils.js";
 import { TestUtils } from "../util/TestUtils";
 
-import "../../util/icons/chevron-down.js";
+import "rivet-icons/dist/chevron-down.js";
 
 /**
  * Dropdown menu component for use primary/secondary header navigations.
@@ -24,7 +24,7 @@ const BaseHeaderMenu = ({
   testMode = false,
   ...attrs
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleButtonRef = useRef(null);
   const menuAnchorRef = useRef(null);
@@ -140,10 +140,7 @@ const BaseHeaderMenu = ({
           })}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
-          <rvt-react-icon
-            name="chevron-down"
-            className="rvt-global-toggle__open"
-          />
+          <rvt-icon name="chevron-down" className="rvt-global-toggle__open" />
         </button>
       </div>
       <div

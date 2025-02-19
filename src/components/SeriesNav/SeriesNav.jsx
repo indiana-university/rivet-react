@@ -8,8 +8,8 @@ import * as React from "react";
 import * as Rivet from "../util/Rivet";
 import { TestUtils } from "../util/TestUtils";
 
-import "../../util/icons/arrow-left.js";
-import "../../util/icons/arrow-right.js";
+import "rivet-icons/dist/arrow-left.js";
+import "rivet-icons/dist/arrow-right.js";
 
 /**
  * Allow users to step forward or backward through a series of content pages
@@ -92,7 +92,7 @@ const SeriesControl = ({
         </span>
       </div>
       <span className="rvt-seriesnav__icon">
-        <rvt-react-icon
+        <rvt-icon
           name={previous ? "arrow-left" : "arrow-right"}
           {...(testMode && { "data-testid": TestUtils.SeriesNav.controlIcon })}
         />

@@ -16,7 +16,7 @@ import { Button } from "../Button";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import { TestUtils } from "../util/TestUtils";
-import "../../util/icons/plus.js";
+import "rivet-icons/dist/plus.js";
 
 const Dropdown = ({
   toggleDropdownOnClickInside = false,
@@ -115,7 +115,7 @@ const Dropdown = ({
             {label}
           </span>
         )}
-        <rvt-react-icon name="chevron-down" />
+        <rvt-icon name="chevron-down" />
       </Button>
       {isOpen && (
         <div className={menuClasses} aria-hidden={!isOpen} role="menu">

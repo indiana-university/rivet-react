@@ -94,7 +94,7 @@ describe("<PaginationItem />", () => {
       expect(a.href).toBe("http://localhost/#");
       expect(a).toHaveAttribute("aria-label", "Go to first page");
       const icon = a.children[0];
-      expect(icon.nodeName).toBe("RVT-REACT-ICON");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
 
     it("should not render a link when disabled", async () => {
@@ -106,7 +106,7 @@ describe("<PaginationItem />", () => {
       expect(item.children.length).toBe(1);
       expect(item).toHaveAttribute("aria-label", "No previous pages");
       const icon = item.children[0];
-      expect(icon.nodeName).toBe("RVT-REACT-ICON");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
   });
 
@@ -124,7 +124,7 @@ describe("<PaginationItem />", () => {
       expect(a.href).toBe("http://localhost/#");
       expect(a).toHaveAttribute("aria-label", "Go to previous page");
       const icon = a.children[0];
-      expect(icon.nodeName).toBe("RVT-REACT-ICON");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
 
     it("should not render a link when disabled", async () => {
@@ -136,7 +136,7 @@ describe("<PaginationItem />", () => {
       expect(item.children.length).toBe(1);
       expect(item).toHaveAttribute("aria-label", "No previous pages");
       const icon = item.children[0];
-      expect(icon.nodeName).toBe("RVT-REACT-ICON");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
   });
 
@@ -154,7 +154,7 @@ describe("<PaginationItem />", () => {
       expect(a.href).toBe("http://localhost/#");
       expect(a).toHaveAttribute("aria-label", "Go to last page");
       const icon = a.children[0];
-      expect(icon.nodeName).toBe("RVT-REACT-ICON");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
 
     it("should not render a link when disabled", async () => {
@@ -166,7 +166,7 @@ describe("<PaginationItem />", () => {
       expect(item.children.length).toBe(1);
       expect(item).toHaveAttribute("aria-label", "No next pages");
       const icon = item.children[0];
-      expect(icon.nodeName).toBe("RVT-REACT-ICON");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
   });
 
@@ -184,7 +184,7 @@ describe("<PaginationItem />", () => {
       expect(a.href).toBe("http://localhost/#");
       expect(a).toHaveAttribute("aria-label", "Go to next page");
       const icon = a.children[0];
-      expect(icon.nodeName).toBe("RVT-REACT-ICON");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
 
     it("should not render a link when disabled", async () => {
@@ -196,7 +196,7 @@ describe("<PaginationItem />", () => {
       expect(item.children.length).toBe(1);
       expect(item).toHaveAttribute("aria-label", "No next pages");
       const icon = item.children[0];
-      expect(icon.nodeName).toBe("RVT-REACT-ICON");
+      expect(icon.nodeName).toBe("RVT-ICON");
     });
   });
 });

@@ -15,7 +15,7 @@ import {
 import { TestUtils } from "../util/TestUtils";
 import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 
-import "../../util/icons/chevron-down.js";
+import "rivet-icons/dist/chevron-down.js";
 
 const shouldToggleNavigation = (event, wrapperDivRef) => {
   if (
@@ -101,7 +101,7 @@ const BaseHeaderNavigationSecondary = ({
             })}
           >
             <span className="rvt-sr-only">Toggle local menu</span>
-            <rvt-react-icon name="chevron-down" />
+            <rvt-icon name="chevron-down" />
           </button>
           <nav
             aria-label="Secondary"

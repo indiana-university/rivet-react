@@ -18,8 +18,8 @@ import {
 } from "../util/EventUtils";
 import { TestUtils } from "../util/TestUtils";
 
-import "../../util/icons/close.js";
-import "../../util/icons/menu.js";
+import "rivet-icons/dist/close.js";
+import "rivet-icons/dist/menu.js";
 
 const shouldToggleNavigation = (event, wrapperDivRef) => {
   if (
@@ -93,7 +93,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
       >
         <span className="rvt-sr-only">Menu</span>
         {!isNavMenuOpen && (
-          <rvt-react-icon
+          <rvt-icon
             className="rvt-global-toggle__open"
             name="menu"
             {...(testMode && {
@@ -102,7 +102,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
           />
         )}
         {isNavMenuOpen && (
-          <rvt-react-icon
+          <rvt-icon
             className="rvt-global-toggle__close"
             name="close"
             {...(testMode && {
