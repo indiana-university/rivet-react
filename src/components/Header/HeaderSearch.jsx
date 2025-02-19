@@ -11,7 +11,7 @@ import { isEscapeKeyPress, isTabKeyPress, targets } from "../util/EventUtils";
 import { useEffect, useRef, useState } from "react";
 import { TestUtils } from "../util/TestUtils";
 
-import "../../util/icons/magnifying-glass.js";
+import "rivet-icons/dist/magnifying-glass.js";
 
 const shouldToggleSearch = (event, wrapperDivRef) => {
   if (
@@ -70,7 +70,7 @@ const HeaderSearch = ({ action = "/search", method = "get", ...attrs }) => {
         data-testid={TestUtils.Header.searchToggleButtonTestId}
       >
         <span className="rvt-sr-only">Search</span>
-        <rvt-react-icon name="magnifying-glass" />
+        <rvt-icon name="magnifying-glass" />
       </button>
       <form
         action={action}

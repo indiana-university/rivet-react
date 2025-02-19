@@ -249,7 +249,10 @@ module.exports = {
   require: [
     path.join(__dirname, "node_modules/rivet-core/css/rivet.min.css"),
     "./src/docs/documentation.css",
-    "./src/util/rivet-icon-element.css",
+    path.join(
+      __dirname,
+      "node_modules/rivet-icons/dist/rivet-icon-element.css",
+    ),
     path.resolve(__dirname, "styleguide.setup.js"),
   ],
   theme: {

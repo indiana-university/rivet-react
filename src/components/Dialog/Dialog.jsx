@@ -20,7 +20,7 @@ import { useModalOverlay } from "../../hooks/UseModalOverlay.js";
 import { removeProperty } from "../util/RemoveProperty.js";
 import { TestUtils } from "../util/TestUtils.js";
 import { FocusTrap } from "focus-trap-react";
-import "../../util/icons/close.js";
+import "rivet-icons/dist/close.js";
 
 const Dialog = ({
   children,
@@ -190,7 +190,7 @@ const DialogCloseButton = ({ id, onDismiss }) => (
     onClick={onDismiss}
   >
     <span className="rvt-sr-only">Close</span>
-    <rvt-react-icon name="close" />
+    <rvt-icon name="close" />
   </Button>
 );
 

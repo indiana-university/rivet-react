@@ -6,10 +6,10 @@ import classNames from "classnames";
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import * as Rivet from "../util/Rivet";
-import "../../util/icons/info-circle.js";
-import "../../util/icons/check-circle.js";
-import "../../util/icons/minus-circle.js";
-import "../../util/icons/close-circle.js";
+import "rivet-icons/dist/info-circle.js";
+import "rivet-icons/dist/check-circle.js";
+import "rivet-icons/dist/minus-circle.js";
+import "rivet-icons/dist/close-circle.js";
 
 const alertIcons = {
   info: "info-circle",
@@ -39,7 +39,7 @@ const InlineAlert = ({
   return (
     <div className={classes} id={id} {...attrs}>
       <span className="rvt-inline-alert__icon">
-        <rvt-react-icon name={alertIcons[variant]} />
+        <rvt-icon name={alertIcons[variant]} />
       </span>
       <span className="rvt-inline-alert__message" id={`${id}--message`}>
         {children}

@@ -10,10 +10,10 @@
 - [NPM package](https://www.npmjs.com/package/rivet-react)
 - [Circle CI](https://circleci.com/gh/indiana-university/rivet-react)
 
-| Branch  | Build                                                                                                                                                                 | Code Coverage                                                                                                                                                          |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| master  | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/master.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/master)   | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/master/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/master)   |
-| beta    | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/beta.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/beta)       | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/beta/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/beta)       |
+| Branch | Build                                                                                                                                                               | Code Coverage                                                                                                                                                        |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| master | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/master.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/master) | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/master/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/master) |
+| beta   | [![CircleCI](https://circleci.com/gh/indiana-university/rivet-react/tree/beta.svg?style=svg)](https://circleci.com/gh/indiana-university/rivet-react/tree/beta)     | [![codecov](https://codecov.io/gh/indiana-university/rivet-react/branch/beta/graph/badge.svg)](https://codecov.io/gh/indiana-university/rivet-react/branch/beta)     |
 
 ## Installation
 
@@ -37,6 +37,17 @@ import "rivet-core/css/rivet.min.css";
 import { Alert } from "rivet-react";
 
 <Alert variant="info">A very important message for you!</Alert>;
+```
+
+## Using [rivet-icons](https://github.com/indiana-university/rivet-icons) and [rivet-stickers](https://github.com/indiana-university/rivet-stickers)
+
+Rivet-react relies on several icons and stickers from the Rivet Icons and Rivet Stickers packages. In order to load the CSS and custom JavaScript necessary to display these elements, client applications will need to include the following in their `index.jsx` file similarly to how the Rivet core CSS is imported.
+
+```typescript static
+import "~/rivet-icons/dist/rivet-icon-element.js";
+import "~/rivet-icons/dist/rivet-icon-element.css";
+import "~/rivet-stickers/dist/rivet-sticker-element.js";
+import "~/rivet-stickers/dist/rivet-sticker-element.css";
 ```
 
 ## Documentation
