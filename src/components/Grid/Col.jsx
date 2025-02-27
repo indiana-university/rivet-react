@@ -79,6 +79,8 @@ Col.propTypes = {
   columnWidth: PropTypes.oneOf(validWidths),
   /** Sets the containing element. The default container element is a 'div' */
   component: PropTypes.string,
+  /** Place the column at the end of the row. Should only be used on last column in the row */
+  last: PropTypes.bool,
   /** Indicates the breakpoint at which to pull or push the column. Requires shiftBreakpoint to be set. */
   shiftBreakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
   /** Indicates the number of columns to push or pull the column. Requires shiftBreakpoint to be set. */
