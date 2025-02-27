@@ -17,7 +17,7 @@ describe("<List />", () => {
           <li>One</li>
           <li>Two</li>
           <li>Three</li>
-        </List>
+        </List>,
       );
       const list = await screen.findByTestId(testId);
       expect(list.nodeName).toBe("UL");
@@ -29,7 +29,7 @@ describe("<List />", () => {
           <li>One</li>
           <li>Two</li>
           <li>Three</li>
-        </List>
+        </List>,
       );
       const list = await screen.findByTestId(testId);
       expect(list.nodeName).toBe("UL");
@@ -41,22 +41,72 @@ describe("<List />", () => {
           <li>One</li>
           <li>Two</li>
           <li>Three</li>
-        </List>
+        </List>,
       );
       const list = await screen.findByTestId(testId);
       expect(list.nodeName).toBe("OL");
     });
 
-    it("should render a plain list if variant is plain", async () => {
+    it("should render a description list if variant is description", async () => {
       render(
-        <List data-testid={testId} variant="plain">
+        <List data-testid={testId} variant="description">
+          <dt>term 1</dt>
+          <dd>description 1</dd>
+          <dt>term 2</dt>
+          <dd>description 2</dd>
+        </List>,
+      );
+      const list = await screen.findByTestId(testId);
+      expect(list.nodeName).toBe("DL");
+      expect(list).toHaveClass("rvt-list-description");
+    });
+
+    it("should not render a plain list by default", async () => {
+      render(
+        <List data-testid={testId}>
           <li>One</li>
           <li>Two</li>
           <li>Three</li>
-        </List>
+        </List>,
+      );
+      const list = await screen.findByTestId(testId);
+      expect(list).not.toHaveClass("rvt-list-plain");
+    });
+
+    it("should render a plain list if plain is true", async () => {
+      render(
+        <List data-testid={testId} plain>
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+        </List>,
       );
       const list = await screen.findByTestId(testId);
       expect(list).toHaveClass("rvt-list-plain");
+    });
+
+    it("should not render a plain list if plain is false", async () => {
+      render(
+        <List data-testid={testId} plain={false}>
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+        </List>,
+      );
+      const list = await screen.findByTestId(testId);
+      expect(list).not.toHaveClass("rvt-list-plain");
+    });
+
+    it("should not render an inline list by default", async () => {
+      render(
+        <List data-testid={testId}>
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+        </List>,
+      );
+      const list = await screen.findByTestId(testId);
+      expect(list).not.toHaveClass("rvt-list-inline");
     });
 
     it("should render an inline list if inline is true", async () => {
@@ -65,10 +115,22 @@ describe("<List />", () => {
           <li>One</li>
           <li>Two</li>
           <li>Three</li>
-        </List>
+        </List>,
       );
       const list = await screen.findByTestId(testId);
       expect(list).toHaveClass("rvt-list-inline");
+    });
+
+    it("should not render an inline list if inline is false", async () => {
+      render(
+        <List data-testid={testId} inline={false}>
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+        </List>,
+      );
+      const list = await screen.findByTestId(testId);
+      expect(list).not.toHaveClass("rvt-list-inline");
     });
   });
 });
