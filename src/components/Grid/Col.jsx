@@ -79,6 +79,8 @@ Col.propTypes = {
   columnWidth: PropTypes.oneOf(validWidths),
   /** Sets the containing element. The default container element is a 'div' */
   component: PropTypes.string,
+  /** If last should the column be right aligned.*/
+  last: PropTypes.bool,
   /** Indicates the breakpoint at which to pull or push the column. Requires shiftBreakpoint to be set. */
   shiftBreakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
   /** Indicates the number of columns to push or pull the column. Requires shiftBreakpoint to be set. */
