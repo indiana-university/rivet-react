@@ -8,24 +8,51 @@ import * as React from "react";
 import * as Rivet from "../util/Rivet";
 
 const columnClassPrefix = "rvt-cols";
+const validInts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const validStrs = validInts.map((i) => i + "");
+const validWidths = [...validInts, ...validStrs];
+const validBreaks = ["sm", "md", "lg", "xl"];
 
 /**
  * Generate the a spacing class for this row
  * @see https://rivet.uits.iu.edu/components/grid?example=columns
  */
-const columnClass = (
-  breakpoint,
-  columnWidth,
-  classPrefix = columnClassPrefix,
-) => {
+const shiftClass = (breakpoint, columnWidth, classPrefix) => {
   let className = classPrefix;
-  if (columnWidth) {
-    className += `-${columnWidth}`;
-  }
+  className += `-${columnWidth}`;
   if (breakpoint) {
     className += `-${breakpoint}`;
   }
   return className;
+};
+const getColumnClass = (columnWidth, breakpoint) => {
+  if (!(columnWidth || breakpoint)) {
+    return columnClassPrefix;
+  }
+  if (typeof columnWidth === "string") {
+    const b = validBreaks.includes(breakpoint) ? breakpoint : "";
+    return columnClass(b, columnWidth);
+  }
+  if (breakpoint) {
+    return columnClass(breakpoint, "");
+  }
+  return processColumns(columnWidth);
+};
+const processColumns = (columnWidth) => {
+  return (
+    validBreaks
+      .filter((e) => columnWidth.hasOwnProperty(e))
+      // breakpoints can only have one specified size
+      .map((e) => columnClass(e, columnWidth[e]))
+      .join(" ")
+  );
+};
+
+const columnClass = (breakpoint, width) => {
+  const b = validBreaks.includes(breakpoint) ? `-${breakpoint}` : "";
+  const c = validWidths.includes(width) ? `-${width}` : "";
+  const cb = c + b;
+  return columnClassPrefix + cb;
 };
 
 /**
@@ -49,9 +76,9 @@ const Col = ({
     <Component
       id={id}
       className={classNames(
-        `${columnClass(breakpoint, columnWidth)}`,
+        `${getColumnClass(columnWidth, breakpoint)}`,
         shiftType &&
-          columnClass(
+          shiftClass(
             shiftBreakpoint,
             shiftWidth,
             `${columnClassPrefix}-${shiftType}`,
@@ -67,23 +94,21 @@ const Col = ({
 };
 
 Col.displayName = "Col";
-const validInts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-const validStrs = validInts.map((i) => i + "");
-const validWidths = [...validInts, ...validStrs];
+
 Col.propTypes = {
   /** A unique identifier for the column */
   id: PropTypes.string,
-  breakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
+  breakpoint: PropTypes.oneOf(validBreaks),
   /** Width of the column (1-12) */
   // prettier-ignore
-  columnWidth: PropTypes.oneOf(validWidths),
+  columnWidth: PropTypes.oneOfType([PropTypes.oneOf(validWidths), PropTypes.object]),
   /** Sets the containing element. The default container element is a 'div' */
   component: PropTypes.string,
   /** Place the column at the end of the row. Should only be used on last column in the row */
   last: PropTypes.bool,
   /** Indicates the breakpoint at which to pull or push the column. Requires shiftBreakpoint to be set. */
   shiftBreakpoint: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
-  /** Indicates the number of columns to push or pull the column. Requires shiftBreakpoint to be set. */
+  /** Indicates the number of columns to push or pull the column. Requires shiftType to be set. */
   // prettier-ignore
   shiftWidth: PropTypes.oneOf(validWidths),
   /** Can be set to pull or push the column to the left or right, respectively */

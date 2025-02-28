@@ -62,6 +62,23 @@ View the [Rivet documentation for Cols](https://rivet.uits.iu.edu/components/gri
 ```
 <!-- prettier-ignore-end -->
 
+### Multiple Responsive Explicit Column Widths
+
+<!-- prettier-ignore-start -->
+```jsx  
+<Container size="xl">  
+  <Row>
+    <Col columnWidth={{sm: 12, md: 6, lg: 3}} className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-blue-100">Column</div>
+    </Col>
+    <Col columnWidth={{sm: 12, md: 6, lg: 3}} className="[ rvt-m-bottom-md ]">
+      <div class="rvt-bg-orange-100">Column</div>
+    </Col>
+  </Row>
+</Container>
+```
+<!-- prettier-ignore-end -->
+
 ### Nested Grids
 
 Row components can be nested in Col components to create a nested grid. Do not nest grids more than two levels deep.

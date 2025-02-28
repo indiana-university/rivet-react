@@ -57,6 +57,26 @@ describe("<Col />", () => {
       expect(col).toHaveClass(`rvt-cols-${shiftType}-${width}-${breakpoint}`);
     });
 
+    it("should allow pulling a column to the left without shift breakpoint", async () => {
+      const width = "6",
+        breakpoint = "md",
+        shiftType = "pull";
+      render(
+        <Col
+          breakpoint={breakpoint}
+          columnWidth={width}
+          shiftType={shiftType}
+          shiftWidth={width}
+        >
+          {content}
+        </Col>,
+      );
+
+      const col = await screen.findByText(content);
+      expect(col).toHaveClass(`rvt-cols-${width}-${breakpoint}`);
+      expect(col).toHaveClass(`rvt-cols-${shiftType}-${width}`);
+    });
+
     it("should allow pushing a column to the right", async () => {
       const width = "6",
         breakpoint = "md",
@@ -78,6 +98,26 @@ describe("<Col />", () => {
       expect(col).toHaveClass(`rvt-cols-${shiftType}-${width}-${breakpoint}`);
     });
 
+    it("should allow pushing a column to the right without shift breakpoint", async () => {
+      const width = "6",
+        breakpoint = "md",
+        shiftType = "push";
+      render(
+        <Col
+          breakpoint={breakpoint}
+          columnWidth={width}
+          shiftType={shiftType}
+          shiftWidth={width}
+        >
+          {content}
+        </Col>,
+      );
+
+      const col = await screen.findByText(content);
+      expect(col).toHaveClass(`rvt-cols-${width}-${breakpoint}`);
+      expect(col).toHaveClass(`rvt-cols-${shiftType}-${width}`);
+    });
+
     it("should pulling column to the far right", async () => {
       const width = "6",
         breakpoint = "md";
@@ -90,6 +130,32 @@ describe("<Col />", () => {
       const col = await screen.findByText(content);
       expect(col).toHaveClass(`rvt-cols-${width}-${breakpoint}`);
       expect(col).toHaveClass(`rvt-cols--last`);
+    });
+
+    it("should allow specifying a column breakpoint width", async () => {
+      const columnWidth = {
+        md: "12",
+      };
+      render(<Col columnWidth={columnWidth}>{content}</Col>);
+
+      const col = await screen.findByText(content);
+      Object.keys(columnWidth).map((b) => {
+        expect(col).toHaveClass(`rvt-cols-${columnWidth[b]}-${b}`);
+      });
+    });
+    it("should allow specifying multiple column breakpoints widths", async () => {
+      const columnWidth = {
+        sm: "12",
+        md: "6",
+        lg: "3",
+        xl: "2",
+      };
+      render(<Col columnWidth={columnWidth}>{content}</Col>);
+
+      const col = await screen.findByText(content);
+      Object.keys(columnWidth).map((b) => {
+        expect(col).toHaveClass(`rvt-cols-${columnWidth[b]}-${b}`);
+      });
     });
   });
 
