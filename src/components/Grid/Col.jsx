@@ -6,7 +6,6 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
-import { Edges, Sizes } from "../util/RivetizeConstants.js";
 
 const columnClassPrefix = "rvt-cols";
 const validInts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
