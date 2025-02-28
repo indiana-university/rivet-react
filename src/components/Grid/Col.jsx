@@ -29,7 +29,7 @@ const getColumnClass = (columnWidth, breakpoint) => {
   if (!(columnWidth || breakpoint)) {
     return columnClassPrefix;
   }
-  if (typeof columnWidth === "string") {
+  if (typeof columnWidth === "string" || typeof columnWidth === "number") {
     const b = validBreaks.includes(breakpoint) ? breakpoint : "";
     return columnClass(b, columnWidth);
   }

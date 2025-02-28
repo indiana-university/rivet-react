@@ -28,8 +28,16 @@ describe("<Col />", () => {
       expect(col).toHaveClass(`rvt-cols-${breakpoint}`);
     });
 
-    it("should allow specifying the width of the column", async () => {
+    it("should allow specifying the width of the column as a string", async () => {
       const width = "12";
+      render(<Col columnWidth={width}>{content}</Col>);
+
+      const col = await screen.findByText(content);
+      expect(col).toHaveClass(`rvt-cols-${width}`);
+    });
+
+    it("should allow specifying the width of the column as a number", async () => {
+      const width = 12;
       render(<Col columnWidth={width}>{content}</Col>);
 
       const col = await screen.findByText(content);
