@@ -598,6 +598,27 @@ describe("<AccordionPanel />", () => {
     });
   });
 
+  it("should allow an element for its title prop", () => {
+    const title = <p>accordion panel title</p>;
+    const { container } = render(
+      <Accordion>
+        <AccordionPanel
+          className={customPanelClassName}
+          controlId={controlId}
+          testMode
+          title={title}
+        >
+          content 1
+        </AccordionPanel>
+      </Accordion>,
+    );
+    const header = container
+      .getElementsByClassName("rvt-accordion__toggle-text")
+      .item(0);
+    const headerElement = header.getElementsByTagName("p").item(0);
+    expect(headerElement.innerHTML).toBe("accordion panel title");
+  });
+
   describe("Options", () => {
     it("default is test mode off", () => {
       render(
