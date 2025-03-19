@@ -36,7 +36,7 @@ AccordionPanel.propTypes = {
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
   /** The panel's title */
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
 };
 
 export default Rivet.rivetize(AccordionPanel);
