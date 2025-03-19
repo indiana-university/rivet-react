@@ -8,7 +8,7 @@ import * as React from "react";
 import * as Rivet from "../util/Rivet";
 import { TestUtils } from "../util/TestUtils";
 
-const testIds = TestUtils.Accordion
+const testIds = TestUtils.Accordion;
 
 const AccordionPanel = ({
   children,
@@ -18,20 +18,17 @@ const AccordionPanel = ({
   title,
   ...attrs
 }) => {
-  const classNameArr = [
-    "rvt-accordion__panel",
-    className
-  ]
+  const classNameArr = ["rvt-accordion__panel", className];
   return (
     <div
       aria-labelledby={controlId}
       className={classNames(classNameArr)}
       {...(testMode && { "data-testid": `${testIds.panel}-${controlId}` })}
-      { ...attrs }
-      >
+      {...attrs}
+    >
       {children}
     </div>
-  )
+  );
 };
 
 AccordionPanel.displayName = "AccordionPanel";
@@ -39,7 +36,7 @@ AccordionPanel.propTypes = {
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
   /** The panel's title */
-  title: PropTypes.string.isRequired
+  title: PropTypes.node.isRequired,
 };
 
 export default Rivet.rivetize(AccordionPanel);
