@@ -40,13 +40,13 @@ The `label` prop can also be a React Node.
 ```
 <!-- prettier-ignore-end -->
 
-### Right-align Modifier
+### Right-align Property
 
 By default the dropdown menu is vertically aligned with the left edge of the dropdown button. Use the `alignRight` option to vertically align the dropdown menu with the right edge of the dropdown button.
 
 <!-- prettier-ignore-start -->
 ```jsx
-<Dropdown label="Right menu" modifier="secondary">
+<Dropdown label="Right menu" alignRight>
     <a href="#">Item one</a>
     <a href="#">Item two</a>
     <a href="#" aria-current="page">Item three</a>
@@ -55,7 +55,7 @@ By default the dropdown menu is vertically aligned with the left edge of the dro
 ```
 <!-- prettier-ignore-end -->
 
-### Toggle On Click Inside Modifier
+### Toggle On Click Inside Property
 
 By default the dropdown menu will not close when an item within the dropdown is clicked. Set the `toggleDropdownOnClickInside` option to true to specify the dropdown should be closed in this case.
 
