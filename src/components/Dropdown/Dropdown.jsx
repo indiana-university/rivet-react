@@ -25,8 +25,8 @@ const Dropdown = ({
   className,
   label,
   menuClass,
-  modifier = "secondary",
-  size = "small",
+  modifier,
+  size,
   ...attrs
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -95,12 +95,13 @@ const Dropdown = ({
       eventHandler.deregister();
     }
   };
-
   return (
     <div className="rvt-dropdown" ref={dropdownWrapDiv}>
       <Button
         type="button"
         {...attrs}
+        size={size}
+        modifier={modifier}
         innerRef={toggleButton}
         className={className}
         aria-haspopup="true"
