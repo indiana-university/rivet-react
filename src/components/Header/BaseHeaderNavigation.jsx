@@ -73,7 +73,11 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
   const listItems = [];
   const otherHeaderMenuItems = [];
   React.Children.forEach(children, (child) => {
-    if (child && [BaseHeaderMenuItem, "li"].includes(child.type)) {
+    if (
+      child &&
+      ([BaseHeaderMenuItem, "li"].includes(child.type) ||
+        child.props.navListItem)
+    ) {
       listItems.push(child);
     } else {
       otherHeaderMenuItems.push(child);
@@ -137,9 +141,12 @@ BaseHeaderNavigation.propTypes = {
       Header.Search,
     ];
     React.Children.forEach(propValue, (child) => {
-      if (child && !validChildren.includes(child.type)) {
+      if (
+        child &&
+        (!validChildren.includes(child.type) || child.props.navListItem)
+      ) {
         throw new Error(
-          `children must only contain ${validChildren} components`,
+          `children must only contain ${validChildren} components or marked list item with navListItem property`,
         );
       }
     });

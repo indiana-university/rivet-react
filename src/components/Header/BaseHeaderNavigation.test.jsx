@@ -14,9 +14,10 @@ import BaseHeaderMenuItem from "./BaseHeaderMenuItem";
 import Header from "./Header";
 
 const user = userEvent.setup();
+const testIds = TestUtils.Header;
 
 const toggleNavThroughClick = async () => {
-  await user.click(screen.getByTestId(TestUtils.Header.navButtonToggleTestId));
+  await user.click(screen.getByTestId(testIds.navButtonToggleTestId));
 };
 
 describe("<BaseHeaderNavigation />", () => {
@@ -293,6 +294,42 @@ describe("<BaseHeaderNavigation />", () => {
       expect(
         screen.getByTestId(TestUtils.Header.navButtonToggleTestId),
       ).toHaveAttribute("aria-expanded", "true");
+    });
+  });
+
+  describe("Options", () => {
+    it("by default, non list items should render outside list", () => {
+      render(
+        <BaseHeaderNavigation testMode>
+          <BaseHeaderMenuItem>Nav item one</BaseHeaderMenuItem>
+          <li>Nav item two</li>
+          <div>Nav item three</div>
+        </BaseHeaderNavigation>,
+      );
+      const element = screen.queryByTestId(testIds.headerNavTestId);
+      expect(element.children.length).toBe(2);
+      const list = element.children[0];
+      const component = element.children[1];
+      expect(list.nodeName).toBe("UL");
+      expect(component.nodeName).toBe("DIV");
+      expect(component.innerHTML).toBe("Nav item three");
+    });
+    it("if marked with navListItem item should render inside list", () => {
+      render(
+        <BaseHeaderNavigation testMode>
+          <BaseHeaderMenuItem>Nav item one</BaseHeaderMenuItem>
+          <li>Nav item two</li>
+          <div navListItem>Nav item three</div>
+        </BaseHeaderNavigation>,
+      );
+      const element = screen.queryByTestId(testIds.headerNavTestId);
+      expect(element.children.length).toBe(1);
+      const list = element.children[0];
+      expect(list.nodeName).toBe("UL");
+      expect(list.children.length).toBe(3);
+      const component = list.children[2];
+      expect(component.nodeName).toBe("DIV");
+      expect(component.innerHTML).toBe("Nav item three");
     });
   });
 });
