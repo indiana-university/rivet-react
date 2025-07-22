@@ -146,7 +146,7 @@ BaseHeaderNavigation.propTypes = {
         (!validChildren.includes(child.type) || child.props.navListItem)
       ) {
         throw new Error(
-          `children must only contain ${validChildren} components or marked list item with navListItem property`,
+          `each child should be of type ${validChildren} or have navListItem property set as true`,
         );
       }
     });
