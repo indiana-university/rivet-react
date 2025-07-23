@@ -76,7 +76,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
     if (
       child &&
       ([BaseHeaderMenuItem, "li"].includes(child.type) ||
-        child.props.navListItem)
+        child.props.navlistitem)
     ) {
       listItems.push(child);
     } else {
@@ -143,10 +143,10 @@ BaseHeaderNavigation.propTypes = {
     React.Children.forEach(propValue, (child) => {
       if (
         child &&
-        (!validChildren.includes(child.type) || child.props.navListItem)
+        !(validChildren.includes(child.type) || child.props.navlistitem)
       ) {
         throw new Error(
-          `each child should be of type ${validChildren} or have navListItem property set as true`,
+          `each child should be of type ${validChildren} or have navlistitem property set as true`,
         );
       }
     });
