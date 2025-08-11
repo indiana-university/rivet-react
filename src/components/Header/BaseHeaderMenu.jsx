@@ -162,7 +162,7 @@ BaseHeaderMenu.propTypes = {
   /** Indicates item is current page if link with url */
   current: PropTypes.bool,
   /** The label of the menu */
-  label: PropTypes.node.isRequired,
+  label: PropTypes.node,
   /** Attributes added to the menu's toggle button  */
   menuButtonAttrs: PropTypes.object,
   /** The navigation url for the menu label */
