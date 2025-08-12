@@ -42,15 +42,17 @@ Header with Primary Navigation:
 <!-- prettier-ignore-start -->
 ```jsx
 const navigation = <Header.Navigation>
-    <li><a href={"#"}>Nav item one</a></li>
-    <li data-rvt-c-header-nav-item__current><a href={"#"}>Nav item two</a></li>
-    <li>
-      <Header.Menu label="Nav item three">
-        <a href={"#"}>Sub item one</a>
-        <a href={"#"}>Sub item two</a>
-        <a href={"#"}>Sub item three</a>
-      </Header.Menu>
-    </li>
+    <Header.Menu>
+      <li><a href={"#"}>Nav item one</a></li>
+      <li data-rvt-c-header-nav-item__current><a href={"#"}>Nav item two</a></li>
+      <li>
+        <Header.Menu label="Nav item three">
+          <a href={"#"}>Sub item one</a>
+          <a href={"#"}>Sub item two</a>
+          <a href={"#"}>Sub item three</a>
+        </Header.Menu>
+      </li>
+    </Header.Menu>
 </Header.Navigation>;
 
 <Header title="Application Title" contentHref="#" navigation={navigation} />
@@ -63,6 +65,7 @@ Header with Primary Navigation and Avatar:
 ```jsx
 const avatar = <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"}/>
 const navigation = <Header.Navigation avatar={avatar}>
+  <Header.Menu>
     <li><a href="#">Nav item one</a></li>
     <li><a href="#">Nav item two</a></li>
     <li data-rvt-c-header-nav-item__current>
@@ -72,6 +75,7 @@ const navigation = <Header.Navigation avatar={avatar}>
         <a href="#">Sub item three</a>
       </Header.Menu>
     </li>
+  </Header.Menu>
 </Header.Navigation>;
 
 <Header title="Application Title" contentHref="#" navigation={navigation}/>
@@ -92,6 +96,7 @@ Header with Primary Navigation and Search:
 <!-- prettier-ignore-start -->
 ```jsx
 const navigation = <Header.Navigation>
+  <Header.Menu>
     <li><a href="#">Nav item one</a></li>
     <li><a href="#">Nav item two</a></li>
     <li data-rvt-c-header-nav-item__current>
@@ -101,6 +106,7 @@ const navigation = <Header.Navigation>
         <a href="#">Sub item three</a>
       </Header.Menu>
     </li>
+  </Header.Menu>
 </Header.Navigation>;
 const search = <Header.Search action={"/mySearchURL"} method={"post"}/>;
 
@@ -114,6 +120,7 @@ Header with Primary Navigation, Search, Avatar and Secondary Navigation:
 ```jsx
 const avatar = <Header.Avatar username={"johndoe"} shortName={"jd"} logoutURL={"/logout"}/>;
 const navigation = <Header.Navigation avatar={avatar}>
+  <Header.Menu>
     <li><a href="#">Nav item one</a></li>
     <li><a href="#">Nav item two</a></li>
     <li data-rvt-c-header-nav-item__current>
@@ -123,6 +130,7 @@ const navigation = <Header.Navigation avatar={avatar}>
         <a href="#">Sub item three</a>
       </Header.Menu>
     </li>
+  </Header.Menu>
 </Header.Navigation>;
 const search = <Header.Search action={"/mySearchURL"} method={"post"}/>;
 const secondaryNavigation = <Header.NavigationSecondary title={"Component Library"}>

@@ -36,7 +36,7 @@ HeaderMenu.propTypes = {
   /** The href that the menu's label links to, wraps label in anchor if provided*/
   href: PropTypes.string,
   /** The label of the menu */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   /** Attributes added to the menu's toggle button  */
   menuButtonAttrs: PropTypes.object,
   /** [Developer] Adds data-testId attributes for component testing */
