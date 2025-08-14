@@ -107,28 +107,6 @@ describe("<BaseHeaderNavigation />", () => {
       ).toHaveAttribute("name", "close");
     });
 
-    it("should not hide the nav if the Tab key is pressed while the nav is open", async () => {
-      expect(
-        screen.getByTestId(TestUtils.Header.navButtonToggleIcon),
-      ).toHaveAttribute("name", "menu");
-
-      // open the nav
-      await toggleNavThroughClick();
-      // verify that the nav is opened
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId),
-      ).not.toHaveAttribute("hidden", "");
-      // press Tab
-      await user.keyboard("{Tab}");
-      // finally, verify that the menu is not closed
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId),
-      ).not.toHaveAttribute("hidden", "");
-      expect(
-        screen.getByTestId(TestUtils.Header.navButtonToggleIcon),
-      ).toHaveAttribute("name", "close");
-    });
-
     it("should not hide the nav if an unhandled key is pressed while the menu is open", async () => {
       expect(
         screen.getByTestId(TestUtils.Header.navButtonToggleIcon),
@@ -246,11 +224,18 @@ describe("<BaseHeaderNavigation />", () => {
   });
 
   describe("Focus behavior", () => {
+    const outsideId = "outsideId";
     beforeEach(() => {
       render(
-        <BaseHeaderNavigation testMode>
-          <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
-        </BaseHeaderNavigation>,
+        <>
+          <button data-testid={outsideId}>Outside</button>
+          <BaseHeaderNavigation testMode>
+            <BaseHeaderMenuItem itemUrl="#">Nav item one</BaseHeaderMenuItem>
+            <BaseHeaderMenuItem itemUrl="#">Nav item two</BaseHeaderMenuItem>
+            <BaseHeaderMenuItem itemUrl="#">Nav item three</BaseHeaderMenuItem>
+          </BaseHeaderNavigation>
+          ,
+        </>,
       );
     });
 
@@ -258,7 +243,7 @@ describe("<BaseHeaderNavigation />", () => {
       // open the nav
       await toggleNavThroughClick();
       // move focus to an item inside nav
-      screen.getByRole("link").focus();
+      screen.getByText("Nav item one").focus();
       // assert that focus is not on the toggle button
       expect(
         screen.getByTestId(TestUtils.Header.navButtonToggleTestId),
@@ -269,6 +254,99 @@ describe("<BaseHeaderNavigation />", () => {
       expect(
         screen.getByTestId(TestUtils.Header.navButtonToggleTestId),
       ).toHaveFocus();
+    });
+
+    it("should move focus to the first menu item, if ArrowDown is pressed while the menu is open and the toggle button has focus", async () => {
+      await toggleNavThroughClick(); // open the menu
+      // move focus to toggle button
+      screen.getByTestId(testIds.navButtonToggleTestId).focus();
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      expect(screen.getByText("Nav item one")).toHaveFocus();
+    });
+
+    it("should open and move focus to the first menu item, if ArrowDown is pressed while the menu is close and the toggle button has focus", async () => {
+      // move focus to toggle button
+      screen.getByTestId(testIds.navButtonToggleTestId).focus();
+
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      expect(screen.getByTestId(testIds.headerNavTestId)).not.toHaveAttribute(
+        "hidden",
+        "",
+      );
+      expect(screen.getByText("Nav item one")).toHaveFocus();
+    });
+
+    it("should move focus to the first menu item, if ArrowDown is pressed while the menu is open and the menu anchor has focus", async () => {
+      await toggleNavThroughClick(); // open the menu
+      // move focus to menu anchor
+      screen.getByTestId(testIds.navButtonToggleTestId).focus();
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      expect(screen.getByText("Nav item one")).toHaveFocus();
+    });
+
+    it("should open and move focus to the first menu item, if ArrowDown is pressed while the menu is closed and the menu anchor has focus", async () => {
+      // move focus to menu anchor
+      screen.getByTestId(testIds.navButtonToggleTestId).focus();
+
+      // press ArrowDown
+      await user.keyboard("{ArrowDown}");
+      expect(screen.getByTestId(testIds.headerNavTestId)).not.toHaveAttribute(
+        "hidden",
+        "",
+      );
+      expect(screen.getByText("Nav item one")).toHaveFocus();
+    });
+
+    it("should move focus to the next menu item when Arrow Up is pressed, and to the previous menu item when Arrow Down is pressed", async () => {
+      await toggleNavThroughClick(); // open the menu
+      await user.keyboard("{ArrowDown}");
+      expect(screen.getByText("Nav item two")).toHaveFocus();
+      await user.keyboard("{ArrowUp}");
+      expect(screen.getByText("Nav item one")).toHaveFocus();
+    });
+
+    it("should move focus to the first menu item when the last menu item has focus, and Arrow Down is pressed", async () => {
+      await toggleNavThroughClick(); // open the menu
+      await user.keyboard("{ArrowDown}");
+      await user.keyboard("{ArrowDown}");
+      // assert that last menu item has focus
+      expect(screen.getByText("Nav item three")).toHaveFocus();
+      // press Arrow Down
+      await user.keyboard("{ArrowDown}");
+      expect(screen.getByText("Nav item one")).toHaveFocus();
+    });
+
+    it("should move focus to the last menu item when the first menu item has focus, and Arrow Up is pressed", async () => {
+      await toggleNavThroughClick(); // open the menu
+      // assert that first menu item has focus
+      expect(screen.getByText("Nav item one")).toHaveFocus();
+      // press Arrow Up
+      await user.keyboard("{ArrowUp}");
+      expect(screen.getByText("Nav item three")).toHaveFocus();
+    });
+
+    it("should not move focus, if Arrow Up or Arrow Down are pressed while the menu is closed", async () => {
+      async function makeAssertion(arrowKey) {
+        // move focus off menu
+        screen.getByTestId(outsideId).focus();
+        // verify that focus is on outer button
+        expect(screen.getByTestId(outsideId)).toHaveFocus();
+        // verify that menu is closed
+        expect(screen.getByTestId(testIds.headerNavTestId)).toHaveAttribute(
+          "hidden",
+          "",
+        ); // testing-library assumes the value of a custom HTML attribute to be "".
+        // press Arrow key
+        await user.keyboard(arrowKey);
+        // verify that focus is still on anchor
+        expect(screen.getByTestId(outsideId)).toHaveFocus();
+      }
+
+      await makeAssertion("{ArrowUp}");
+      await makeAssertion("{ArrowDown}");
     });
   });
 
