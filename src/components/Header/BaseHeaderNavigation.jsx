@@ -7,65 +7,87 @@ import PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
 import { useEffect, useRef } from "react";
-import { handler, isUnhandledKeyPress } from "./HeaderEventUtils";
 import Header from "./Header";
 import BaseHeaderMenuItem from "./BaseHeaderMenuItem";
-import {
-  isEscapeKeyPress,
-  isMouseEvent,
-  isTabKeyPress,
-  targets,
-} from "../util/EventUtils";
+import { getFocusableElements, stillFocused } from "../util/EventUtils";
 import { TestUtils } from "../util/TestUtils";
 
 import "rivet-icons/dist/close.js";
 import "rivet-icons/dist/menu.js";
-
-const shouldToggleNavigation = (event, wrapperDivRef) => {
-  if (
-    isUnhandledKeyPress(event) ||
-    isTabKeyPress(event) ||
-    (isEscapeKeyPress(event) && !targets(wrapperDivRef.current, event)) ||
-    (isMouseEvent(event) && targets(wrapperDivRef.current, event))
-  ) {
-    return false;
-  }
-  return true;
-};
+import button from "../Button/Button.jsx";
 
 const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
 
-  const wrapperDivRef = useRef(null);
   const toggleButtonRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
-    handleEventRegistration();
-    return () => {
-      eventHandler.deregister();
-    };
-  });
+    // put focus on the first menu item when the menu opens
+    if (isNavMenuOpen) {
+      focusMenuItem(0);
+    }
+  }, [isNavMenuOpen]);
 
   const toggleNavigation = () => {
     setIsNavMenuOpen(!isNavMenuOpen);
   };
 
-  const handleEvent = (event) => {
-    if (event && shouldToggleNavigation(event, wrapperDivRef)) {
-      toggleNavigation(event);
-      if (isEscapeKeyPress(event)) {
-        toggleButtonRef.current.focus();
-      }
+  const focusMenuItem = (index) => {
+    const children = getFocusableElements(dropdownRef.current, "[tabindex]");
+    children[index].focus();
+  };
+
+  const handleBlur = (event) => {
+    if (!stillFocused(event)) {
+      setIsNavMenuOpen(false);
     }
   };
 
-  const eventHandler = handler(handleEvent);
-
-  const handleEventRegistration = () => {
-    if (isNavMenuOpen) {
-      eventHandler.register();
-    } else {
-      eventHandler.deregister();
+  const handleKeyDown = (event) => {
+    if (
+      window.getComputedStyle(toggleButtonRef.current, null).display == "none"
+    ) {
+      // Untested due to limitations with jest and computed styles
+      return;
+    }
+    const children = getFocusableElements(dropdownRef.current);
+    switch (event.key) {
+      case "Escape":
+        event.preventDefault();
+        event.stopPropagation();
+        setIsNavMenuOpen(false);
+        toggleButtonRef.current.focus();
+        break;
+      case "ArrowDown":
+        event.preventDefault();
+        event.stopPropagation();
+        if (event.target === toggleButtonRef.current) {
+          if (!isNavMenuOpen) {
+            setIsNavMenuOpen(true);
+          }
+          focusMenuItem(0);
+        } else {
+          for (let i = 0; i < children.length; i++) {
+            if (children[i] === document.activeElement) {
+              const next = i === children.length - 1 ? 0 : i + 1;
+              focusMenuItem(next);
+              break;
+            }
+          }
+        }
+        break;
+      case "ArrowUp":
+        event.preventDefault();
+        event.stopPropagation();
+        for (let i = 0; i < children.length; i++) {
+          if (children[i] === document.activeElement) {
+            const next = i === 0 ? children.length - 1 : i - 1;
+            focusMenuItem(next);
+            break;
+          }
+        }
+        break;
     }
   };
 
@@ -85,7 +107,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
   });
 
   return (
-    <div ref={wrapperDivRef} onKeyDown={handleEvent}>
+    <div onBlur={handleBlur} onKeyDown={handleKeyDown} tabIndex={-1}>
       <button
         aria-expanded={isNavMenuOpen}
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
@@ -119,6 +141,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
         aria-label="Main"
         className="rvt-header-menu"
         hidden={!isNavMenuOpen}
+        ref={dropdownRef}
         {...(testMode && { "data-testid": TestUtils.Header.headerNavTestId })}
       >
         <ul className="rvt-header-menu__list">{listItems}</ul>

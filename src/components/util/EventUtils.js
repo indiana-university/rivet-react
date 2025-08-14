@@ -3,6 +3,8 @@ Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
 
+import { isEmpty } from "lodash";
+
 export const keys = {
   tab: "Tab",
   escape: "Escape",
@@ -57,8 +59,11 @@ export const targets = (container, event) =>
 const focusableElementList =
   'button, a[href], input[type="radio"]:checked, input:not([type="radio"]), select, textarea, [tabindex]:not([tabindex="-1"])';
 
-export function getFocusableElements(element) {
-  const focusable = element.querySelectorAll(focusableElementList);
+export function getFocusableElements(element, additionalFocusable = "") {
+  const focusEleList = isEmpty(additionalFocusable)
+    ? focusableElementList
+    : `${focusableElementList}, ${additionalFocusable}`;
+  const focusable = element.querySelectorAll(focusEleList);
   const focusableArray = Array.prototype.slice.call(focusable);
   const enabledFocusable = focusableArray.filter((el) => {
     return !el.disabled;

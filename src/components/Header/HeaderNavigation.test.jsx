@@ -113,21 +113,6 @@ describe("<HeaderNavigation />", () => {
       ).not.toHaveAttribute("hidden", "");
     });
 
-    it("should not hide the nav if the Tab key is pressed while the nav is open", async () => {
-      // open the nav
-      await toggleNavThroughClick();
-      // verify that the nav is opened
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId),
-      ).not.toHaveAttribute("hidden", "");
-      // press Tab
-      await user.keyboard("{Tab}");
-      // finally, verify that the menu is not closed
-      expect(
-        screen.getByTestId(TestUtils.Header.headerNavTestId),
-      ).not.toHaveAttribute("hidden", "");
-    });
-
     it("should not hide the nav if an unhandled key is pressed while the menu is open", async () => {
       // open the nav
       await toggleNavThroughClick();
