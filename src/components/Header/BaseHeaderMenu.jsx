@@ -103,7 +103,7 @@ const BaseHeaderMenu = ({
       className="rvt-header-menu__dropdown rvt-dropdown"
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
-      {...(testMode && { "data-testid": TestUtils.Header.menuContainerTestId })}
+      {...(testMode ? { "data-testid": TestUtils.Header.menuContainerTestId } : {})}
       {...attrs}
     >
       <div className="rvt-header-menu__group">
@@ -113,18 +113,14 @@ const BaseHeaderMenu = ({
             href={menuUrl}
             ref={menuAnchorRef}
             {...(current && { "aria-current": "page" })}
-            {...(testMode && {
-              "data-testid": TestUtils.Header.menuAnchorTestId,
-            })}
+            {...(testMode ? { "data-testid": TestUtils.Header.menuAnchorTestId } : {})}
           >
             {label}
           </a>
         )}
         {!menuUrl && (
           <span
-            {...(testMode && {
-              "data-testid": TestUtils.Header.menuAnchorTestId,
-            })}
+            {...(testMode ? { "data-testid": TestUtils.Header.menuAnchorTestId } : {})}
           >
             {label}
           </span>
@@ -135,9 +131,7 @@ const BaseHeaderMenu = ({
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
           onClick={toggleMenu}
           {...menuButtonAttrs}
-          {...(testMode && {
-            "data-testid": TestUtils.Header.menuButtonToggleTestId,
-          })}
+          {...(testMode ? { "data-testid": TestUtils.Header.menuButtonToggleTestId } : {})}
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
           <rvt-icon name="chevron-down" className="rvt-global-toggle__open" />
@@ -147,9 +141,7 @@ const BaseHeaderMenu = ({
         className="rvt-header-menu__submenu rvt-dropdown__menu rvt-dropdown__menu--right"
         hidden={!isMenuOpen}
         ref={dropdownRef}
-        {...(testMode && {
-          "data-testid": TestUtils.Header.menuItemsContainerTestId,
-        })}
+        {...(testMode ? { "data-testid": TestUtils.Header.menuItemsContainerTestId } : {})}
       >
         <ul className="rvt-header-menu__submenu-list">{children}</ul>
       </div>
