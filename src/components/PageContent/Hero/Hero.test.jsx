@@ -24,7 +24,7 @@ const media = (
   />
 );
 const mediaStr =
-  '<img src="https://rivet.iu.edu/img/placeholder/hero-2.webp" alt="Person at desk coding a website">';
+  '<img alt="Person at desk coding a website" src="https://rivet.iu.edu/img/placeholder/hero-2.webp">';
 const mediaCaption = "An optional image caption";
 const content = "Sample Hero text";
 const customClassName = "custom-style";

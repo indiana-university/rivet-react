@@ -17,7 +17,7 @@ const avatar = (
   />
 );
 const avatarStr =
-  '<img class="rvt-avatar__image" src="https://rivet.iu.edu/img/placeholder/avatar-1.webp" alt="">';
+  '<img class="rvt-avatar__image" alt="" src="https://rivet.iu.edu/img/placeholder/avatar-1.webp">';
 const citation = "Some Author";
 const subCitation = "Quotes RS";
 const content = "Same content";
