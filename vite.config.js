@@ -1,12 +1,11 @@
 import { defineConfig } from "vite";
-import { externalizeDeps } from "vite-plugin-externalize-deps";
 import { resolve } from "path";
 import react from "@vitejs/plugin-react";
-import classNames from "classnames";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
+    sourcemap: true,
     lib: {
       entry: {
         "rivet-react": resolve(__dirname, "lib/main.js"),
@@ -39,7 +38,20 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["react", "react-dom", "classNames"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "rivet-icons",
+        "rivet-stickers",
+        "rivet-core",
+        "classnames",
+        "uuid",
+        "focus-trap-react",
+        "@react-aria/dialog",
+        "@react-aria/overlays",
+        "@react-aria/utils",
+      ],
       output: {
         globals: {
           react: "React",
@@ -52,5 +64,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [react(), externalizeDeps()],
+  plugins: [react()],
 });
