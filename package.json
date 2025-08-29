@@ -79,7 +79,7 @@
       "import": "./dist/rivet-react-pagenotfoundlayout.js",
       "require": "./dist/rivet-react-pagenotfoundlayout.cjs"
     },
-    "./Layouts/ServerErrorLayoput": {
+    "./Layouts/ServerErrorLayout": {
       "import": "./dist/rivet-react-servererrorlayout.js",
       "require": "./dist/rivet-react-servererrorlayout.cjs"
     },
