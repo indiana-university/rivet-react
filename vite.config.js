@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import { externalizeDeps } from "vite-plugin-externalize-deps";
 import { resolve } from "path";
 import react from "@vitejs/plugin-react";
 import classNames from "classnames";
@@ -52,5 +51,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [react(), externalizeDeps()],
+  plugins: [react()],
 });
