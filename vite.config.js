@@ -38,7 +38,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["react", "react-dom", "classNames"],
+      external: ["react", "react-dom", "classNames", "react/jsx-runtime"],
       output: {
         globals: {
           react: "React",
