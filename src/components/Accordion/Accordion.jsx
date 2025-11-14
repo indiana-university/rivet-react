@@ -11,7 +11,7 @@ import { TestUtils } from "../util/TestUtils";
 import AccordionPanel from "./AccordionPanel";
 import AccordionPanelHeader from "./AccordionPanelHeader";
 
-const createControlId = (id, index) => `accordian_${id}_control_${index}`;
+const createControlId = (id, index) => `accordion_${id}_control_${index}`;
 const testIds = TestUtils.Accordion;
 
 /**
@@ -27,16 +27,16 @@ const Accordion = ({
 }) => {
   const numPanels = React.Children.count(children);
 
-  const [accordianId] = useState(id);
+  const [accordionId] = useState(id);
   const [panelsOpen, setPanelsOpen] = useState(
-    getInitialOpen(initial, accordianId, numPanels),
+    getInitialOpen(initial, accordionId, numPanels),
   );
 
-  const accordianPanels = !children
+  const accordionPanels = !children
     ? []
     : React.Children.map(children, (child, index) => {
         const { title } = child.props;
-        const controlId = createControlId(accordianId, index);
+        const controlId = createControlId(accordionId, index);
         const onClick = () => {
           const newPanelsOpen = panelsOpen.includes(controlId)
             ? panelsOpen.filter((v) => v !== controlId)
@@ -67,12 +67,13 @@ const Accordion = ({
   const classNameArr = ["rvt-accordion", className];
   return (
     <div
+      id={accordionId}
       className={classNames(classNameArr)}
       {...(testMode && { "data-testid": testIds.container })}
       {...attrs}
     >
-      {accordianPanels.map((accordianPanel, panelIndex) => {
-        const { panel, ...otherProps } = accordianPanel;
+      {accordionPanels.map((accordionPanel, panelIndex) => {
+        const { panel, ...otherProps } = accordionPanel;
         return (
           <React.Fragment key={panelIndex}>
             <AccordionPanelHeader {...otherProps} />
@@ -86,7 +87,7 @@ const Accordion = ({
 
 Accordion.displayName = "Accordion";
 Accordion.propTypes = {
-  /** A unique identifier for the accordian */
+  /** A unique identifier for the accordion */
   id: PropTypes.string.isRequired,
   /** Index of initially opened tab */
   initialTab: PropTypes.oneOfType([PropTypes.oneOf(["all"]), PropTypes.number]),
