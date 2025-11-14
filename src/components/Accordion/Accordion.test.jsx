@@ -46,22 +46,26 @@ describe("<Accordion />", () => {
           </Accordion.Panel>
         </Accordion>,
       );
+      expect(screen.getByTestId(testIds.container)).toHaveProperty(
+        "id",
+        accordionId,
+      );
       checkRenderAccordionContainer(3);
-      checkRenderHeader(`accordian_${accordionId}_control_0`, false, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, false, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, false, "panel 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, false, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, false, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, false, "panel 3");
       checkRenderPanel(
-        `accordian_${accordionId}_control_0`,
+        `accordion_${accordionId}_control_0`,
         false,
         "content 1",
       );
       checkRenderPanel(
-        `accordian_${accordionId}_control_1`,
+        `accordion_${accordionId}_control_1`,
         false,
         "content 2",
       );
       checkRenderPanel(
-        `accordian_${accordionId}_control_2`,
+        `accordion_${accordionId}_control_2`,
         false,
         "content 3",
       );
@@ -101,70 +105,70 @@ describe("<Accordion />", () => {
         </Accordion>,
       );
       checkRenderAccordionContainer(3);
-      checkRenderHeader(`accordian_${accordionId}_control_0`, false, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, false, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, false, "panel 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, false, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, false, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, false, "panel 3");
       checkRenderPanel(
-        `accordian_${accordionId}_control_0`,
+        `accordion_${accordionId}_control_0`,
         false,
         "content 1",
       );
       checkRenderPanel(
-        `accordian_${accordionId}_control_1`,
+        `accordion_${accordionId}_control_1`,
         false,
         "content 2",
       );
       checkRenderPanel(
-        `accordian_${accordionId}_control_2`,
+        `accordion_${accordionId}_control_2`,
         false,
         "content 3",
       );
 
       const control1 = screen.getByTestId(
-        `${testIds.header}-accordian_${accordionId}_control_0`,
+        `${testIds.header}-accordion_${accordionId}_control_0`,
       ).children[0];
       const control2 = screen.getByTestId(
-        `${testIds.header}-accordian_${accordionId}_control_1`,
+        `${testIds.header}-accordion_${accordionId}_control_1`,
       ).children[0];
       const control3 = screen.getByTestId(
-        `${testIds.header}-accordian_${accordionId}_control_2`,
+        `${testIds.header}-accordion_${accordionId}_control_2`,
       ).children[0];
 
       fireEvent.click(control1);
-      checkRenderHeader(`accordian_${accordionId}_control_0`, true, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, false, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, false, "panel 3");
-      checkRenderPanel(`accordian_${accordionId}_control_0`, true, "content 1");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, true, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, false, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, false, "panel 3");
+      checkRenderPanel(`accordion_${accordionId}_control_0`, true, "content 1");
       checkRenderPanel(
-        `accordian_${accordionId}_control_1`,
+        `accordion_${accordionId}_control_1`,
         false,
         "content 2",
       );
       checkRenderPanel(
-        `accordian_${accordionId}_control_2`,
+        `accordion_${accordionId}_control_2`,
         false,
         "content 3",
       );
 
       fireEvent.click(control2);
-      checkRenderHeader(`accordian_${accordionId}_control_0`, true, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, true, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, false, "panel 3");
-      checkRenderPanel(`accordian_${accordionId}_control_0`, true, "content 1");
-      checkRenderPanel(`accordian_${accordionId}_control_1`, true, "content 2");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, true, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, true, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, false, "panel 3");
+      checkRenderPanel(`accordion_${accordionId}_control_0`, true, "content 1");
+      checkRenderPanel(`accordion_${accordionId}_control_1`, true, "content 2");
       checkRenderPanel(
-        `accordian_${accordionId}_control_2`,
+        `accordion_${accordionId}_control_2`,
         false,
         "content 3",
       );
 
       fireEvent.click(control3);
-      checkRenderHeader(`accordian_${accordionId}_control_0`, true, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, true, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, true, "panel 3");
-      checkRenderPanel(`accordian_${accordionId}_control_0`, true, "content 1");
-      checkRenderPanel(`accordian_${accordionId}_control_1`, true, "content 2");
-      checkRenderPanel(`accordian_${accordionId}_control_2`, true, "content 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, true, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, true, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, true, "panel 3");
+      checkRenderPanel(`accordion_${accordionId}_control_0`, true, "content 1");
+      checkRenderPanel(`accordion_${accordionId}_control_1`, true, "content 2");
+      checkRenderPanel(`accordion_${accordionId}_control_2`, true, "content 3");
     });
     it("Clicking an open panel should close it", () => {
       render(
@@ -198,67 +202,67 @@ describe("<Accordion />", () => {
         </Accordion>,
       );
       checkRenderAccordionContainer(3);
-      checkRenderHeader(`accordian_${accordionId}_control_0`, true, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, true, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, true, "panel 3");
-      checkRenderPanel(`accordian_${accordionId}_control_0`, true, "content 1");
-      checkRenderPanel(`accordian_${accordionId}_control_1`, true, "content 2");
-      checkRenderPanel(`accordian_${accordionId}_control_2`, true, "content 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, true, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, true, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, true, "panel 3");
+      checkRenderPanel(`accordion_${accordionId}_control_0`, true, "content 1");
+      checkRenderPanel(`accordion_${accordionId}_control_1`, true, "content 2");
+      checkRenderPanel(`accordion_${accordionId}_control_2`, true, "content 3");
 
       const control1 = screen.getByTestId(
-        `${testIds.header}-accordian_${accordionId}_control_0`,
+        `${testIds.header}-accordion_${accordionId}_control_0`,
       ).children[0];
       const control2 = screen.getByTestId(
-        `${testIds.header}-accordian_${accordionId}_control_1`,
+        `${testIds.header}-accordion_${accordionId}_control_1`,
       ).children[0];
       const control3 = screen.getByTestId(
-        `${testIds.header}-accordian_${accordionId}_control_2`,
+        `${testIds.header}-accordion_${accordionId}_control_2`,
       ).children[0];
 
       fireEvent.click(control1);
-      checkRenderHeader(`accordian_${accordionId}_control_0`, false, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, true, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, true, "panel 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, false, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, true, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, true, "panel 3");
       checkRenderPanel(
-        `accordian_${accordionId}_control_0`,
+        `accordion_${accordionId}_control_0`,
         false,
         "content 1",
       );
-      checkRenderPanel(`accordian_${accordionId}_control_1`, true, "content 2");
-      checkRenderPanel(`accordian_${accordionId}_control_2`, true, "content 3");
+      checkRenderPanel(`accordion_${accordionId}_control_1`, true, "content 2");
+      checkRenderPanel(`accordion_${accordionId}_control_2`, true, "content 3");
 
       fireEvent.click(control2);
-      checkRenderHeader(`accordian_${accordionId}_control_0`, false, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, false, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, true, "panel 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, false, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, false, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, true, "panel 3");
       checkRenderPanel(
-        `accordian_${accordionId}_control_0`,
+        `accordion_${accordionId}_control_0`,
         false,
         "content 1",
       );
       checkRenderPanel(
-        `accordian_${accordionId}_control_1`,
+        `accordion_${accordionId}_control_1`,
         false,
         "content 2",
       );
-      checkRenderPanel(`accordian_${accordionId}_control_2`, true, "content 3");
+      checkRenderPanel(`accordion_${accordionId}_control_2`, true, "content 3");
 
       fireEvent.click(control3);
-      checkRenderHeader(`accordian_${accordionId}_control_0`, false, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, false, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, false, "panel 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, false, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, false, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, false, "panel 3");
       checkRenderPanel(
-        `accordian_${accordionId}_control_0`,
+        `accordion_${accordionId}_control_0`,
         false,
         "content 1",
       );
       checkRenderPanel(
-        `accordian_${accordionId}_control_1`,
+        `accordion_${accordionId}_control_1`,
         false,
         "content 2",
       );
       checkRenderPanel(
-        `accordian_${accordionId}_control_2`,
+        `accordion_${accordionId}_control_2`,
         false,
         "content 3",
       );
@@ -291,21 +295,21 @@ describe("<Accordion />", () => {
           </Accordion.Panel>
         </Accordion>,
       );
-      checkRenderHeader(`accordian_${accordionId}_control_0`, false, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, false, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, false, "panel 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, false, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, false, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, false, "panel 3");
       checkRenderPanel(
-        `accordian_${accordionId}_control_0`,
+        `accordion_${accordionId}_control_0`,
         false,
         "content 1",
       );
       checkRenderPanel(
-        `accordian_${accordionId}_control_1`,
+        `accordion_${accordionId}_control_1`,
         false,
         "content 2",
       );
       checkRenderPanel(
-        `accordian_${accordionId}_control_2`,
+        `accordion_${accordionId}_control_2`,
         false,
         "content 3",
       );
@@ -341,17 +345,17 @@ describe("<Accordion />", () => {
           </Accordion.Panel>
         </Accordion>,
       );
-      checkRenderHeader(`accordian_${accordionId}_control_0`, false, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, true, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, false, "panel 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, false, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, true, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, false, "panel 3");
       checkRenderPanel(
-        `accordian_${accordionId}_control_0`,
+        `accordion_${accordionId}_control_0`,
         false,
         "content 1",
       );
-      checkRenderPanel(`accordian_${accordionId}_control_1`, true, "content 2");
+      checkRenderPanel(`accordion_${accordionId}_control_1`, true, "content 2");
       checkRenderPanel(
-        `accordian_${accordionId}_control_2`,
+        `accordion_${accordionId}_control_2`,
         false,
         "content 3",
       );
@@ -387,17 +391,17 @@ describe("<Accordion />", () => {
           </Accordion.Panel>
         </Accordion>,
       );
-      checkRenderHeader(`accordian_${accordionId}_control_0`, false, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, true, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, false, "panel 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, false, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, true, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, false, "panel 3");
       checkRenderPanel(
-        `accordian_${accordionId}_control_0`,
+        `accordion_${accordionId}_control_0`,
         false,
         "content 1",
       );
-      checkRenderPanel(`accordian_${accordionId}_control_1`, true, "content 2");
+      checkRenderPanel(`accordion_${accordionId}_control_1`, true, "content 2");
       checkRenderPanel(
-        `accordian_${accordionId}_control_2`,
+        `accordion_${accordionId}_control_2`,
         false,
         "content 3",
       );
@@ -433,12 +437,12 @@ describe("<Accordion />", () => {
           </Accordion.Panel>
         </Accordion>,
       );
-      checkRenderHeader(`accordian_${accordionId}_control_0`, true, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, true, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, true, "panel 3");
-      checkRenderPanel(`accordian_${accordionId}_control_0`, true, "content 1");
-      checkRenderPanel(`accordian_${accordionId}_control_1`, true, "content 2");
-      checkRenderPanel(`accordian_${accordionId}_control_2`, true, "content 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, true, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, true, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, true, "panel 3");
+      checkRenderPanel(`accordion_${accordionId}_control_0`, true, "content 1");
+      checkRenderPanel(`accordion_${accordionId}_control_1`, true, "content 2");
+      checkRenderPanel(`accordion_${accordionId}_control_2`, true, "content 3");
     });
     it("setting single initial should start only corresponding panel open", () => {
       render(
@@ -471,17 +475,17 @@ describe("<Accordion />", () => {
           </Accordion.Panel>
         </Accordion>,
       );
-      checkRenderHeader(`accordian_${accordionId}_control_0`, false, "panel 1");
-      checkRenderHeader(`accordian_${accordionId}_control_1`, true, "panel 2");
-      checkRenderHeader(`accordian_${accordionId}_control_2`, false, "panel 3");
+      checkRenderHeader(`accordion_${accordionId}_control_0`, false, "panel 1");
+      checkRenderHeader(`accordion_${accordionId}_control_1`, true, "panel 2");
+      checkRenderHeader(`accordion_${accordionId}_control_2`, false, "panel 3");
       checkRenderPanel(
-        `accordian_${accordionId}_control_0`,
+        `accordion_${accordionId}_control_0`,
         false,
         "content 1",
       );
-      checkRenderPanel(`accordian_${accordionId}_control_1`, true, "content 2");
+      checkRenderPanel(`accordion_${accordionId}_control_1`, true, "content 2");
       checkRenderPanel(
-        `accordian_${accordionId}_control_2`,
+        `accordion_${accordionId}_control_2`,
         false,
         "content 3",
       );
@@ -519,7 +523,7 @@ describe("<Accordion />", () => {
 });
 
 describe("<AccordionPanelHeader />", () => {
-  const controlId = `accordian_1_control_0`;
+  const controlId = `accordion_1_control_0`;
   describe("Rendering", () => {
     it("should render without throwing an error", () => {
       render(
@@ -581,7 +585,7 @@ describe("<AccordionPanelHeader />", () => {
 });
 
 describe("<AccordionPanel />", () => {
-  const controlId = `accordian_1_control_0`;
+  const controlId = `accordion_1_control_0`;
   describe("Rendering", () => {
     it("should render without throwing an error", () => {
       render(
