@@ -67,6 +67,7 @@ const Accordion = ({
   const classNameArr = ["rvt-accordion", className];
   return (
     <div
+      id={accordianId}
       className={classNames(classNameArr)}
       {...(testMode && { "data-testid": testIds.container })}
       {...attrs}

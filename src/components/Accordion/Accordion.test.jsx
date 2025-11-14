@@ -46,6 +46,10 @@ describe("<Accordion />", () => {
           </Accordion.Panel>
         </Accordion>,
       );
+      expect(screen.getByTestId(testIds.container)).toHaveProperty(
+        "id",
+        accordionId,
+      );
       checkRenderAccordionContainer(3);
       checkRenderHeader(`accordian_${accordionId}_control_0`, false, "panel 1");
       checkRenderHeader(`accordian_${accordionId}_control_1`, false, "panel 2");
