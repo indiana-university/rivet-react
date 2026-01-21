@@ -18,15 +18,18 @@ const List = ({
   id = Rivet.shortuid(),
   className,
   children,
+  plain = false,
   variant = "unordered",
   ...attrs
 }) => {
   const classes = classNames(
     inline ? `${classPrefix}-inline` : classPrefix,
+    plain ? `${classPrefix}-plain` : "",
     variant === "plain" && `${classPrefix}-plain`,
-    className
+    variant === "description" && `${classPrefix}-description`,
+    className,
   );
-  const ListTag = variant === "ordered" ? "ol" : "ul";
+  const ListTag = getElement(variant);
   return (
     <ListTag id={id} className={classes} {...attrs}>
       {children}
@@ -40,8 +43,22 @@ List.propTypes = {
   id: PropTypes.string,
   /** Whether to render the list inline */
   inline: PropTypes.bool,
-  /** The variant type which determines how the list is styled */
-  variant: PropTypes.oneOf(["plain", "ordered", "unordered"]),
+  /**
+   * The variant type which determines how the list is styled.
+   * 'plain' is deprecated, use property `plain`
+   * */
+  variant: PropTypes.oneOf(["description", "plain", "ordered", "unordered"]),
 };
+
+function getElement(value) {
+  switch (value) {
+    case "ordered":
+      return "ol";
+    case "description":
+      return "dl";
+    default:
+      return "ul";
+  }
+}
 
 export default Rivet.rivetize(List);
