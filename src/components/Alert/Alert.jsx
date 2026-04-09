@@ -71,7 +71,7 @@ const Alert = ({
       {...attrs}
     >
       {headerFragment()}
-      <p className="rvt-alert__message">{children}</p>
+      <div className="rvt-alert__message">{children}</div>
       {dismissFragment()}
     </div>
   ) : null;
