@@ -75,7 +75,9 @@ jobs:
           command: npm run build
       - run:
           name: Publish package
-          command: npx semantic-release@25.0.3
+          command: |
+            export NPM_ID_TOKEN=$(circleci run oidc get --claims '{"aud": "npm:registry.npmjs.org"}')
+            npx semantic-release@25.0.3
 
 # Job orchestration
 workflows:
