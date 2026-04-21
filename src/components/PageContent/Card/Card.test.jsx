@@ -17,7 +17,7 @@ const image = (
   />
 );
 const imageStr =
-  '<img src="https://rivet.iu.edu/img/placeholder/billboard-2.webp" alt="Student in vintage-style Indiana University t-shirt">';
+  '<img alt="Student in vintage-style Indiana University t-shirt" src="https://rivet.iu.edu/img/placeholder/billboard-2.webp">';
 const title = "test title";
 const titleUrl = "https://www.iu.edu/";
 const content = <p>Test content</p>;
