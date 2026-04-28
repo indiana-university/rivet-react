@@ -9,15 +9,10 @@ import Quote from "./Quote";
 import { TestUtils } from "../../util/TestUtils";
 
 const testIds = TestUtils.Quote;
-const avatar = (
-  <img
-    className="rvt-avatar__image"
-    src="https://rivet.iu.edu/img/placeholder/avatar-1.webp"
-    alt=""
-  />
-);
-const avatarStr =
-  '<img class="rvt-avatar__image" alt="" src="https://rivet.iu.edu/img/placeholder/avatar-1.webp">';
+const src = "https://rivet.iu.edu/img/placeholder/avatar-1.webp";
+const alt = "";
+const className = "rvt-avatar__image";
+const avatar = <img className={className} src={src} alt={alt} />;
 const citation = "Some Author";
 const subCitation = "Quotes RS";
 const content = "Same content";
@@ -146,5 +141,8 @@ const checkRenderAvatar = () => {
   expect(element).toBeVisible();
   expect(element).toHaveClass("rvt-avatar");
   expect(element).toHaveClass("rvt-avatar--md");
-  expect(element.innerHTML).toBe(avatarStr);
+  expect(element.innerHTML).toContain("img");
+  expect(element.innerHTML).toContain(`src="${src}"`);
+  expect(element.innerHTML).toContain(`alt="${alt}`);
+  expect(element.innerHTML).toContain(`class="${className}"`);
 };

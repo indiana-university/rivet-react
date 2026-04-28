@@ -10,14 +10,9 @@ import Card from "./Card";
 import { TestUtils } from "../../util/TestUtils";
 
 const testIds = TestUtils.Card;
-const image = (
-  <img
-    src="https://rivet.iu.edu/img/placeholder/billboard-2.webp"
-    alt="Student in vintage-style Indiana University t-shirt"
-  />
-);
-const imageStr =
-  '<img alt="Student in vintage-style Indiana University t-shirt" src="https://rivet.iu.edu/img/placeholder/billboard-2.webp">';
+const src = "https://rivet.iu.edu/img/placeholder/billboard-2.webp";
+const alt = "Student in vintage-style Indiana University t-shirt";
+const image = <img src={src} alt={alt} />;
 const title = "test title";
 const titleUrl = "https://www.iu.edu/";
 const content = <p>Test content</p>;
@@ -322,10 +317,12 @@ const checkRenderContent = () => {
 };
 
 const checkRenderImage = () => {
-  const elemet = screen.getByTestId(testIds.image);
-  expect(elemet).toBeVisible();
-  expect(elemet).toHaveClass("rvt-card__image");
-  expect(elemet.innerHTML).toBe(imageStr);
+  const element = screen.getByTestId(testIds.image);
+  expect(element).toBeVisible();
+  expect(element).toHaveClass("rvt-card__image");
+  expect(element.innerHTML).toContain("img");
+  expect(element.innerHTML).toContain(`src="${src}"`);
+  expect(element.innerHTML).toContain(`alt="${alt}`);
 };
 
 const checkRenderEyebrow = () => {

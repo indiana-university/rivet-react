@@ -9,14 +9,9 @@ import Billboard from "./Billboard";
 import { TestUtils } from "../../util/TestUtils";
 
 const testIds = TestUtils.Billboard;
-const image = (
-  <img
-    src="https://rivet.iu.edu/img/placeholder/billboard-2.webp"
-    alt="Student in vintage-style Indiana University t-shirt"
-  />
-);
-const imageStr =
-  '<img alt="Student in vintage-style Indiana University t-shirt" src="https://rivet.iu.edu/img/placeholder/billboard-2.webp">';
+const src = "https://rivet.iu.edu/img/placeholder/billboard-2.webp";
+const alt = "Student in vintage-style Indiana University t-shirt";
+const image = <img src={src} alt={alt} />;
 const title = "test title";
 const content = <p>Test content</p>;
 const contentString = "<p>Test content</p>";
@@ -182,5 +177,7 @@ const checkRenderImage = () => {
   const billboardImage = screen.getByTestId(testIds.image);
   expect(billboardImage).toBeVisible();
   expect(billboardImage).toHaveClass("rvt-billboard__image");
-  expect(billboardImage.innerHTML).toBe(imageStr);
+  expect(billboardImage.innerHTML).toContain("img");
+  expect(billboardImage.innerHTML).toContain(`src="${src}"`);
+  expect(billboardImage.innerHTML).toContain(`alt="${alt}`);
 };

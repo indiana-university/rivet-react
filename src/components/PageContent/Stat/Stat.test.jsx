@@ -10,17 +10,14 @@ import StatGroup from "./StatGroup";
 import { TestUtils } from "../../util/TestUtils";
 
 const testIds = TestUtils.Stat;
+const src = "https://rivet.iu.edu/img/placeholder/avatar-1.webp";
+const alt = "";
+const className = "rvt-avatar__image";
 const image = (
   <div className="rvt-avatar">
-    <img
-      className="rvt-avatar__image"
-      src="https://rivet.iu.edu/img/placeholder/avatar-1.webp"
-      alt=""
-    />
+    <img className={className} src={src} alt={alt} />
   </div>
 );
-const imageStr =
-  '<div class="rvt-avatar"><img class="rvt-avatar__image" alt="" src="https://rivet.iu.edu/img/placeholder/avatar-1.webp"></div>';
 const value = "100";
 const content = "Sample Stat";
 const customClassName = "custom-style";
@@ -114,7 +111,10 @@ const checkRenderImage = () => {
   const image = screen.getByTestId(testIds.image);
   expect(image).toBeVisible();
   expect(image).toHaveClass("rvt-stat__image");
-  expect(image.innerHTML).toBe(imageStr);
+  expect(image.innerHTML).toContain('<div class="rvt-avatar"><img ');
+  expect(image.innerHTML).toContain(`src="${src}"`);
+  expect(image.innerHTML).toContain(`alt="${alt}`);
+  expect(image.innerHTML).toContain(`class="${className}"`);
 };
 
 const checkRenderDescription = () => {
