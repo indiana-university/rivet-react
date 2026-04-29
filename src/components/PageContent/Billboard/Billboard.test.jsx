@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import Billboard from "./Billboard";
@@ -177,7 +177,7 @@ const checkRenderImage = () => {
   const billboardImage = screen.getByTestId(testIds.image);
   expect(billboardImage).toBeVisible();
   expect(billboardImage).toHaveClass("rvt-billboard__image");
-  expect(billboardImage.innerHTML).toContain("img");
-  expect(billboardImage.innerHTML).toContain(`src="${src}"`);
-  expect(billboardImage.innerHTML).toContain(`alt="${alt}`);
+  const image = within(billboardImage).getByRole("img");
+  expect(image).toHaveAttribute("src", src);
+  expect(image).toHaveAttribute("alt", alt);
 };

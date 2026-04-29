@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -320,9 +320,9 @@ const checkRenderImage = () => {
   const element = screen.getByTestId(testIds.image);
   expect(element).toBeVisible();
   expect(element).toHaveClass("rvt-card__image");
-  expect(element.innerHTML).toContain("img");
-  expect(element.innerHTML).toContain(`src="${src}"`);
-  expect(element.innerHTML).toContain(`alt="${alt}`);
+  const image = within(element).getByRole("img");
+  expect(image).toHaveAttribute("src", src);
+  expect(image).toHaveAttribute("alt", alt);
 };
 
 const checkRenderEyebrow = () => {

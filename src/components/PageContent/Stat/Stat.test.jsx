@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import Stat from "./Stat";
@@ -111,10 +111,12 @@ const checkRenderImage = () => {
   const image = screen.getByTestId(testIds.image);
   expect(image).toBeVisible();
   expect(image).toHaveClass("rvt-stat__image");
-  expect(image.innerHTML).toContain('<div class="rvt-avatar"><img ');
-  expect(image.innerHTML).toContain(`src="${src}"`);
-  expect(image.innerHTML).toContain(`alt="${alt}`);
-  expect(image.innerHTML).toContain(`class="${className}"`);
+  // const container = within(image).getByRole('div')
+  // expect(container).toHaveClass("rvt-avatar");
+  const avatar = within(image).getByRole("presentation");
+  expect(avatar).toHaveAttribute("src", src);
+  expect(avatar).toHaveAttribute("alt", alt);
+  expect(avatar).toHaveClass(className);
 };
 
 const checkRenderDescription = () => {
