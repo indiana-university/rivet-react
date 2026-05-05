@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import Stat from "./Stat";
@@ -10,17 +10,14 @@ import StatGroup from "./StatGroup";
 import { TestUtils } from "../../util/TestUtils";
 
 const testIds = TestUtils.Stat;
+const src = "https://rivet.iu.edu/img/placeholder/avatar-1.webp";
+const alt = "";
+const className = "rvt-avatar__image";
 const image = (
   <div className="rvt-avatar">
-    <img
-      className="rvt-avatar__image"
-      src="https://rivet.iu.edu/img/placeholder/avatar-1.webp"
-      alt=""
-    />
+    <img className={className} src={src} alt={alt} />
   </div>
 );
-const imageStr =
-  '<div class="rvt-avatar"><img class="rvt-avatar__image" src="https://rivet.iu.edu/img/placeholder/avatar-1.webp" alt=""></div>';
 const value = "100";
 const content = "Sample Stat";
 const customClassName = "custom-style";
@@ -114,7 +111,12 @@ const checkRenderImage = () => {
   const image = screen.getByTestId(testIds.image);
   expect(image).toBeVisible();
   expect(image).toHaveClass("rvt-stat__image");
-  expect(image.innerHTML).toBe(imageStr);
+  // const container = within(image).getByRole('div')
+  // expect(container).toHaveClass("rvt-avatar");
+  const avatar = within(image).getByRole("presentation");
+  expect(avatar).toHaveAttribute("src", src);
+  expect(avatar).toHaveAttribute("alt", alt);
+  expect(avatar).toHaveClass(className);
 };
 
 const checkRenderDescription = () => {

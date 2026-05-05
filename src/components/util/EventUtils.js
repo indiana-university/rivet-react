@@ -79,7 +79,7 @@ export function stillFocused(event) {
 
   let node = relatedTarget;
 
-  while (node !== null) {
+  while (!isEmpty(node)) {
     if (node === currentTarget) {
       return true;
     }

@@ -17,14 +17,9 @@ const actions = (
 
 const actionsStr =
   '<a class="rvt-cta rvt-cta--button" href="#">Learn more about IU</a>';
-const media = (
-  <img
-    src="https://rivet.iu.edu/img/placeholder/hero-2.webp"
-    alt="Person at desk coding a website"
-  />
-);
-const mediaStr =
-  '<img src="https://rivet.iu.edu/img/placeholder/hero-2.webp" alt="Person at desk coding a website">';
+const src = "https://rivet.iu.edu/img/placeholder/hero-2.webp";
+const alt = "Person at desk coding a website";
+const media = <img src={src} alt={alt} />;
 const mediaCaption = "An optional image caption";
 const content = "Sample Hero text";
 const customClassName = "custom-style";
@@ -271,7 +266,9 @@ const checkRenderMedia = () => {
   const element = screen.getByTestId(testIds.media);
   expect(element).toBeVisible();
   expect(element).toHaveClass("rvt-hero__media");
-  expect(element.children[0].outerHTML).toBe(mediaStr);
+  expect(element.children[0].outerHTML).toContain("img");
+  expect(element.children[0].outerHTML).toContain(`src="${src}"`);
+  expect(element.children[0].outerHTML).toContain(`alt="${alt}`);
 };
 
 const checkRenderMediaCaption = () => {

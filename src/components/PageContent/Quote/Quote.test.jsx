@@ -2,22 +2,17 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import Quote from "./Quote";
 import { TestUtils } from "../../util/TestUtils";
 
 const testIds = TestUtils.Quote;
-const avatar = (
-  <img
-    className="rvt-avatar__image"
-    src="https://rivet.iu.edu/img/placeholder/avatar-1.webp"
-    alt=""
-  />
-);
-const avatarStr =
-  '<img class="rvt-avatar__image" src="https://rivet.iu.edu/img/placeholder/avatar-1.webp" alt="">';
+const src = "https://rivet.iu.edu/img/placeholder/avatar-1.webp";
+const alt = "";
+const className = "rvt-avatar__image";
+const avatar = <img className={className} src={src} alt={alt} />;
 const citation = "Some Author";
 const subCitation = "Quotes RS";
 const content = "Same content";
@@ -146,5 +141,8 @@ const checkRenderAvatar = () => {
   expect(element).toBeVisible();
   expect(element).toHaveClass("rvt-avatar");
   expect(element).toHaveClass("rvt-avatar--md");
-  expect(element.innerHTML).toBe(avatarStr);
+  const image = within(element).getByRole("presentation");
+  expect(image).toHaveAttribute("src", src);
+  expect(image).toHaveAttribute("alt", alt);
+  expect(image).toHaveClass(className);
 };

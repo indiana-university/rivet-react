@@ -2,7 +2,7 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import React from "react";
@@ -10,14 +10,9 @@ import Card from "./Card";
 import { TestUtils } from "../../util/TestUtils";
 
 const testIds = TestUtils.Card;
-const image = (
-  <img
-    src="https://rivet.iu.edu/img/placeholder/billboard-2.webp"
-    alt="Student in vintage-style Indiana University t-shirt"
-  />
-);
-const imageStr =
-  '<img src="https://rivet.iu.edu/img/placeholder/billboard-2.webp" alt="Student in vintage-style Indiana University t-shirt">';
+const src = "https://rivet.iu.edu/img/placeholder/billboard-2.webp";
+const alt = "Student in vintage-style Indiana University t-shirt";
+const image = <img src={src} alt={alt} />;
 const title = "test title";
 const titleUrl = "https://www.iu.edu/";
 const content = <p>Test content</p>;
@@ -322,10 +317,12 @@ const checkRenderContent = () => {
 };
 
 const checkRenderImage = () => {
-  const elemet = screen.getByTestId(testIds.image);
-  expect(elemet).toBeVisible();
-  expect(elemet).toHaveClass("rvt-card__image");
-  expect(elemet.innerHTML).toBe(imageStr);
+  const element = screen.getByTestId(testIds.image);
+  expect(element).toBeVisible();
+  expect(element).toHaveClass("rvt-card__image");
+  const image = within(element).getByRole("img");
+  expect(image).toHaveAttribute("src", src);
+  expect(image).toHaveAttribute("alt", alt);
 };
 
 const checkRenderEyebrow = () => {

@@ -2,21 +2,16 @@
 Copyright (C) 2018 The Trustees of Indiana University
 SPDX-License-Identifier: BSD-3-Clause
 */
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import Billboard from "./Billboard";
 import { TestUtils } from "../../util/TestUtils";
 
 const testIds = TestUtils.Billboard;
-const image = (
-  <img
-    src="https://rivet.iu.edu/img/placeholder/billboard-2.webp"
-    alt="Student in vintage-style Indiana University t-shirt"
-  />
-);
-const imageStr =
-  '<img src="https://rivet.iu.edu/img/placeholder/billboard-2.webp" alt="Student in vintage-style Indiana University t-shirt">';
+const src = "https://rivet.iu.edu/img/placeholder/billboard-2.webp";
+const alt = "Student in vintage-style Indiana University t-shirt";
+const image = <img src={src} alt={alt} />;
 const title = "test title";
 const content = <p>Test content</p>;
 const contentString = "<p>Test content</p>";
@@ -182,5 +177,7 @@ const checkRenderImage = () => {
   const billboardImage = screen.getByTestId(testIds.image);
   expect(billboardImage).toBeVisible();
   expect(billboardImage).toHaveClass("rvt-billboard__image");
-  expect(billboardImage.innerHTML).toBe(imageStr);
+  const image = within(billboardImage).getByRole("img");
+  expect(image).toHaveAttribute("src", src);
+  expect(image).toHaveAttribute("alt", alt);
 };
