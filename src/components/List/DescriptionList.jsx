@@ -12,6 +12,7 @@ const classPrefix = "rvt-list-description";
 
 /**
  * Use the description list show a set of terms and descriptions.
+ * @deprecated Use List with variant 'description'
  */
 const DescriptionList = ({
   id = Rivet.shortuid(),
