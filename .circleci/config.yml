@@ -56,6 +56,9 @@ jobs:
   publish_guide:
     <<: *defaults
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:l04L5vc80Rdf3pXJ3un1pNrzSsHcgj7ja9b+pvLdzcg iubot@iu.edu"
       - checkout
       - restore_cache: *restore-node-modules
       - run:
@@ -68,6 +71,9 @@ jobs:
   publish_package:
     <<: *defaults
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:l04L5vc80Rdf3pXJ3un1pNrzSsHcgj7ja9b+pvLdzcg iubot@iu.edu"
       - checkout
       - restore_cache: *restore-node-modules
       - run:
