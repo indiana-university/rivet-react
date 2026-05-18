@@ -16,6 +16,7 @@ on:
 #   - id-token: write     -> mint OIDC tokens for npm Trusted Publishing
 permissions:
   contents: write
+  pages: write
   issues: write
   pull-requests: write
   id-token: write

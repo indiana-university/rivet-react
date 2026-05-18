@@ -10,12 +10,15 @@ on:
 # peaceiris/actions-gh-pages pushes with GITHUB_TOKEN, which needs write access
 # to repository contents.
 permissions:
+  pages: write
   contents: write
+  id-token: write
 
 jobs:
   publish_guide:
     name: Build and deploy style guide
     runs-on: [Linux]
+    environment: github-pages
 
     steps:
       - name: Checkout
@@ -33,11 +36,10 @@ jobs:
       - name: Build style guide
         run: npx styleguidist build --config styleguide.config.cjs
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload pages
+        uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./styleguide
-          publish_branch: gh-pages
-          user_name: iubot
-          user_email: iubot@iu.edu
+          path: "./styleguide"
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v5
