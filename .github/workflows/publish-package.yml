@@ -9,6 +9,11 @@ on:
       - alpha
       - beta
 
+env:
+  HTTPS_PROXY: ${{ secrets.HTTPS_PROXY }}
+  HTTP_PROXY: ${{ secrets.HTTP_PROXY }}
+  NO_PROXY: localhost|127.0.0.1
+
 # Permissions required by semantic-release:
 #   - contents: write     -> create git tags and GitHub releases
 #   - issues: write       -> comment on referenced issues
