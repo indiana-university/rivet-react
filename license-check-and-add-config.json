@@ -15,6 +15,9 @@
     "js|jsx|ts|tsx": {
       "prepend": "/*",
       "append": "*/"
+    },
+    "yml|yaml": {
+      "prepend": "#"
     }
   },
   "trailingWhitespace": "TRIM"
