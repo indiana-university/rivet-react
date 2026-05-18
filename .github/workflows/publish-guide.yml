@@ -1,0 +1,43 @@
+name: Publish style guide
+
+# Build the style guide and deploy it to the gh-pages branch.
+# Runs only on pushes to master, after the CI workflow has validated the commit.
+on:
+  push:
+    branches:
+      - master
+
+# peaceiris/actions-gh-pages pushes with GITHUB_TOKEN, which needs write access
+# to repository contents.
+permissions:
+  contents: write
+
+jobs:
+  publish_guide:
+    name: Build and deploy style guide
+    runs-on: [Linux]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.14.0"
+          cache: "npm"
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Build style guide
+        run: npx styleguidist build --config styleguide.config.cjs
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./styleguide
+          publish_branch: gh-pages
+          user_name: iubot
+          user_email: iubot@iu.edu

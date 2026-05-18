@@ -1,0 +1,72 @@
+name: Publish package
+
+# Publish the package to npm and tag GitHub releases via semantic-release.
+# Runs on master, alpha, and beta after CI passes.
+on:
+  push:
+    branches:
+      - master
+      - alpha
+      - beta
+
+# Permissions required by semantic-release:
+#   - contents: write     -> create git tags and GitHub releases
+#   - issues: write       -> comment on referenced issues
+#   - pull-requests: write -> comment on referenced PRs
+#   - id-token: write     -> mint OIDC tokens for npm Trusted Publishing
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  publish_package:
+    name: Publish to npm
+    runs-on: [Linux]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # semantic-release needs full history to analyze commits and tags
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.14.0"
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Build components
+        run: npm run build
+
+      - name: Test components
+        run: npm test -- -w 1 --coverage --reporters=jest-junit
+
+      - name: Upload JUnit test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-results
+          path: ./junit.xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage/cobertura-coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
+      - name: Publish package
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # No NPM_TOKEN: authentication uses npm Trusted Publishing (OIDC).
+          # The id-token: write permission above lets semantic-release/npm
+          # exchange the workflow's OIDC token for an npm publish credential.
+        run: npx semantic-release@25.0.3
