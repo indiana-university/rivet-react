@@ -130,7 +130,7 @@
     "preview": "vite preview",
     "prepare": "husky",
     "pretty-quick": "pretty-quick",
-    "publish-guide": "npx styleguidist build --config styleguide.config.cjs && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles"
+    "publish-guide": "npx styleguidist build --config styleguide.config.cjs && gh-pages --dist styleguide --dotfiles"
   },
   "dependencies": {
     "@react-aria/dialog": "3.5.21",
