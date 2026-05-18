@@ -7,8 +7,11 @@ on:
     branches:
       - master
 
-# peaceiris/actions-gh-pages pushes with GITHUB_TOKEN, which needs write access
-# to repository contents.
+env:
+  HTTPS_PROXY: ${{ secrets.HTTPS_PROXY }}
+  HTTP_PROXY: ${{ secrets.HTTP_PROXY }}
+  NO_PROXY: localhost|127.0.0.1
+
 permissions:
   pages: write
   contents: write
