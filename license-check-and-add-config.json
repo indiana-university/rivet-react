@@ -17,7 +17,9 @@
       "append": "*/"
     },
     "yml|yaml": {
-      "prepend": "#"
+      "eachLine": {
+        "prepend": "# "
+      }
     }
   },
   "trailingWhitespace": "TRIM"
