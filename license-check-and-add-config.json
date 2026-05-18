@@ -1,7 +1,7 @@
 {
   "ignore": [
+    ".github/**",
     ".git/**",
-    ".circleci/**",
     "./coverage/**",
     ".husky/**",
     "**/.*",
