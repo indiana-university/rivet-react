@@ -4,9 +4,9 @@ name: CI
 # except for the gh-pages branch (which only holds the published styleguide).
 on:
   push:
-    branches-ignore:
-      - gh-pages
-  pull_request:
+    branches:
+      - "feature/**"
+      - "support/**"
 
 jobs:
   build_test:
