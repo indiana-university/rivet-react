@@ -75,4 +75,4 @@ jobs:
           # No NPM_TOKEN: authentication uses npm Trusted Publishing (OIDC).
           # The id-token: write permission above lets semantic-release/npm
           # exchange the workflow's OIDC token for an npm publish credential.
-        run: DEBUG=semantic-release:npm* npm exec semantic-release
+        run: npm exec semantic-release
