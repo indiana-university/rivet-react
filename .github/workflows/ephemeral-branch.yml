@@ -12,34 +12,28 @@ on:
 jobs:
   build_test:
     name: Build and test
-    runs-on: [Linux]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6.0.2
-
+        uses: actions/checkout@v4
       - name: Set up Node.js
-        uses: actions/setup-node@v6.4.0
+        uses: actions/setup-node@v4
         with:
-          node-version: "24.15.0"
+          node-version: "lts/*"
           cache: "npm"
-
       - name: Install packages
         run: npm ci
-
       - name: Build components
         run: npm run build
-
       - name: Test components
         run: npm test -- -w 1 --coverage --reporters=jest-junit
-
       - name: Upload JUnit test results
         if: always()
         uses: actions/upload-artifact@v7.0.1
         with:
           name: junit-results
           path: ./junit.xml
-
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v6.0.1
         with:
