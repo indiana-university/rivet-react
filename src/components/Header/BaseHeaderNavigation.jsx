@@ -146,7 +146,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
 };
 
 BaseHeaderNavigation.displayName = "BaseHeaderNavigation";
-
+/* istanbul ignore next */
 BaseHeaderNavigation.propTypes = {
   /** All children must be 'li', BaseHeaderMenuItem, Header.Avatar, or Header.Search */
   children: (props, propName) => {

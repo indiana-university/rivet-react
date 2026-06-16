@@ -27,7 +27,7 @@ jobs:
       - name: Build components
         run: npm run build
       - name: Test components
-        run: npm test --config=jest.config.cjs
+        run: npm test -- -w 1 --config=jest.config.cjs
       - name: Upload JUnit test results
         if: always()
         uses: actions/upload-artifact@v7.0.1
