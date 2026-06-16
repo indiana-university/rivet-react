@@ -113,27 +113,21 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
         className="rvt-global-toggle rvt-global-toggle--menu rvt-hide-lg-up"
         onClick={toggleNavigation}
         ref={toggleButtonRef}
-        {...(testMode && {
-          "data-testid": TestUtils.Header.navButtonToggleTestId,
-        })}
+        data-testid={testMode ? TestUtils.Header.navButtonToggleTestId : null}
       >
         <span className="rvt-sr-only">Menu</span>
         {!isNavMenuOpen && (
           <rvt-icon
             className="rvt-global-toggle__open"
             name="menu"
-            {...(testMode && {
-              "data-testid": TestUtils.Header.navButtonToggleIcon,
-            })}
+            data-testid={testMode ? TestUtils.Header.navButtonToggleIcon : null}
           />
         )}
         {isNavMenuOpen && (
           <rvt-icon
             className="rvt-global-toggle__close"
             name="close"
-            {...(testMode && {
-              "data-testid": TestUtils.Header.navButtonToggleIcon,
-            })}
+            data-testid={testMode ? TestUtils.Header.navButtonToggleIcon : null}
           />
         )}
       </button>
@@ -142,7 +136,7 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
         className="rvt-header-menu"
         hidden={!isNavMenuOpen}
         ref={dropdownRef}
-        {...(testMode && { "data-testid": TestUtils.Header.headerNavTestId })}
+        data-testid={testMode ? TestUtils.Header.headerNavTestId : null}
       >
         <ul className="rvt-header-menu__list">{listItems}</ul>
         {otherHeaderMenuItems}

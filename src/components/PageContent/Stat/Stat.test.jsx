@@ -20,7 +20,7 @@ const image = (
   </div>
 );
 const imageStr =
-  '<div class="rvt-avatar"><img class="rvt-avatar__image" src="https://rivet.iu.edu/img/placeholder/avatar-1.webp" alt=""></div>';
+  '<div class="rvt-avatar"><img class="rvt-avatar__image" alt="" src="https://rivet.iu.edu/img/placeholder/avatar-1.webp"></div>';
 const value = "100";
 const content = "Sample Stat";
 const customClassName = "custom-style";
