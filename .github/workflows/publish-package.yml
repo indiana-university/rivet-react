@@ -9,10 +9,6 @@ on:
       - alpha
       - beta
 
-env:
-  HTTPS_PROXY: ${{ secrets.HTTPS_PROXY }}
-  HTTP_PROXY: ${{ secrets.HTTP_PROXY }}
-  NO_PROXY: "localhost,127.0.0.1"
 permissions:
   contents: read
 
