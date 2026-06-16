@@ -13,52 +13,33 @@ env:
   HTTPS_PROXY: ${{ secrets.HTTPS_PROXY }}
   HTTP_PROXY: ${{ secrets.HTTP_PROXY }}
   NO_PROXY: "localhost,127.0.0.1"
-
-# Permissions required by semantic-release:
-#   - contents: write     -> create git tags and GitHub releases
-#   - issues: write       -> comment on referenced issues
-#   - pull-requests: write -> comment on referenced PRs
-#   - id-token: write     -> mint OIDC tokens for npm Trusted Publishing
 permissions:
-  contents: write
-  issues: write
-  pull-requests: write
-  id-token: write
+  contents: read
 
 jobs:
-  publish_package:
-    name: Publish to npm
-    runs-on: [Linux]
-
+  verify:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v4
         with:
-          # semantic-release needs full history to analyze commits and tags
           fetch-depth: 0
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v6.4.0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: "24.15.0"
-          cache: "npm"
-
-      - name: Install packages
+          node-version-file: .nvmrc
+      - name: Install dependencies
         run: npm ci
-
       - name: Build components
         run: npm run build
-
-      - name: Test components
+      - name: Run tests
         run: npm test -- -w 1 --coverage --reporters=jest-junit
-
       - name: Upload JUnit test results
         if: always()
         uses: actions/upload-artifact@v7.0.1
         with:
           name: junit-results
           path: ./junit.xml
-
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v6.0.1
         with:
@@ -66,9 +47,33 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: false
 
+  publish_package:
+    name: Publish to npm
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create git tags and GitHub releases
+      issues: write # comment on referenced issues
+      pull-requests: write # comment on referenced PRs
+      id-token: write # mint OIDC tokens for npm Trusted Publishing
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # semantic-release needs full history to analyze commits and tags
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+      - name: Install packages
+        run: npm ci
+      - name: Build components
+        run: npm run build
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
-
       - name: Publish package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
