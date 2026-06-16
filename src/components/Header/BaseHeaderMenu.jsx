@@ -103,7 +103,7 @@ const BaseHeaderMenu = ({
       className="rvt-header-menu__dropdown rvt-dropdown"
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
-      {...(testMode && { "data-testid": TestUtils.Header.menuContainerTestId })}
+      data-testid={testMode ? TestUtils.Header.menuContainerTestId : null}
       {...attrs}
     >
       <div className="rvt-header-menu__group">
@@ -113,9 +113,7 @@ const BaseHeaderMenu = ({
             href={menuUrl}
             ref={menuAnchorRef}
             {...(current && { "aria-current": "page" })}
-            {...(testMode && {
-              "data-testid": TestUtils.Header.menuAnchorTestId,
-            })}
+            data-testid={testMode ? TestUtils.Header.menuAnchorTestId : null}
           >
             {label}
           </a>
@@ -137,9 +135,9 @@ const BaseHeaderMenu = ({
           className="rvt-dropdown__toggle rvt-header-menu__toggle"
           onClick={toggleMenu}
           {...menuButtonAttrs}
-          {...(testMode && {
-            "data-testid": TestUtils.Header.menuButtonToggleTestId,
-          })}
+          data-testid={
+            testMode ? TestUtils.Header.menuButtonToggleTestId : null
+          }
         >
           <span className="rvt-sr-only">Toggle Sub-navigation</span>
           <rvt-icon name="chevron-down" className="rvt-global-toggle__open" />
@@ -149,9 +147,9 @@ const BaseHeaderMenu = ({
         className="rvt-header-menu__submenu rvt-dropdown__menu rvt-dropdown__menu--right"
         hidden={!isMenuOpen}
         ref={dropdownRef}
-        {...(testMode && {
-          "data-testid": TestUtils.Header.menuItemsContainerTestId,
-        })}
+        data-testid={
+          testMode ? TestUtils.Header.menuItemsContainerTestId : null
+        }
       >
         <ul className="rvt-header-menu__submenu-list">{children}</ul>
       </div>

@@ -1,0 +1,79 @@
+name: Publish package
+
+# Publish the package to npm and tag GitHub releases via semantic-release.
+# Runs on master, alpha, and beta after CI passes.
+on:
+  push:
+    branches:
+      - master
+      - alpha
+      - beta
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+      - name: Install dependencies
+        run: npm ci
+      - name: Build components
+        run: npm run build
+      - name: Run tests
+        run: npm test -- -w 1 --coverage --reporters=jest-junit
+      - name: Upload JUnit test results
+        if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: junit-results
+          path: ./junit.xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v6.0.1
+        with:
+          files: ./coverage/cobertura-coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
+  publish_package:
+    name: Publish to npm
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create git tags and GitHub releases
+      issues: write # comment on referenced issues
+      pull-requests: write # comment on referenced PRs
+      id-token: write # mint OIDC tokens for npm Trusted Publishing
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # semantic-release needs full history to analyze commits and tags
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+      - name: Install packages
+        run: npm ci
+      - name: Build components
+        run: npm run build
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+      - name: Publish package
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # No NPM_TOKEN: authentication uses npm Trusted Publishing (OIDC).
+          # The id-token: write permission above lets semantic-release/npm
+          # exchange the workflow's OIDC token for an npm publish credential.
+        run: npx semantic-release@25

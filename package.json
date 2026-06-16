@@ -130,7 +130,7 @@
     "preview": "vite preview",
     "prepare": "husky",
     "pretty-quick": "pretty-quick",
-    "publish-guide": "npx styleguidist build --config styleguide.config.cjs && cp -r .circleci styleguide && gh-pages --dist styleguide --dotfiles"
+    "publish-guide": "npx styleguidist build --config styleguide.config.cjs"
   },
   "dependencies": {
     "@react-aria/dialog": "3.6.0",
@@ -181,6 +181,12 @@
     "vite-plugin-externalize-deps": "0.10.0"
   },
   "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ],
     "branches": [
       {
         "name": "master"
