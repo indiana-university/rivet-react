@@ -120,7 +120,11 @@ const BaseHeaderMenu = ({
         )}
         {!menuUrl && (
           <span
-            data-testid={testMode ? TestUtils.Header.menuAnchorTestId : null}
+            {...(testMode
+              ? {
+                  "data-testid": TestUtils.Header.menuAnchorTestId,
+                }
+              : {})}
           >
             {label}
           </span>

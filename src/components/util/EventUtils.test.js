@@ -41,7 +41,7 @@ describe("Event", () => {
       expect(isEscapeKeyPress(createKeyboardEvent(keys.escape))).toBe(true);
       expect(isEscapeKeyPress(createKeyboardEvent(keys.tab))).toBe(false);
       expect(isEscapeKeyPress(createKeyboardEvent("a".charCodeAt(0)))).toBe(
-        false
+        false,
       );
       expect(isEscapeKeyPress(createMouseEvent())).toBe(false);
       expect(isEscapeKeyPress(createTouchEvent())).toBe(false);
@@ -56,7 +56,7 @@ describe("Event", () => {
     describe("Keyboard Events", () => {
       it("detects if the event is an unhandled key press", () => {
         expect(isUnhandledKeyPress(createKeyboardEvent(keys.escape))).toBe(
-          false
+          false,
         );
         expect(isUnhandledKeyPress(createKeyboardEvent(keys.tab))).toBe(false);
         expect(isUnhandledKeyPress(createKeyboardEvent("a"))).toBe(true);
@@ -79,7 +79,7 @@ describe("Event", () => {
       expect(isRightMouseClick(createKeyboardEvent(keys.escape))).toBe(false);
       expect(isRightMouseClick(createKeyboardEvent(keys.tab))).toBe(false);
       expect(isRightMouseClick(createKeyboardEvent("a".charCodeAt(0)))).toBe(
-        false
+        false,
       );
       expect(isRightMouseClick(createMouseEvent(1))).toBe(false);
       expect(isRightMouseClick(createMouseEvent(2))).toBe(true);
@@ -88,10 +88,17 @@ describe("Event", () => {
   });
 
   describe("Focus Check", () => {
-    it("Still focus shoudl return false if if relative target is null", () => {
+    it("Still focus should return false if relative target is null", () => {
       const event = {
         currentTarget: <div class="">test</div>,
         relatedTarget: null,
+      };
+      expect(stillFocused(event)).toBe(false);
+    });
+    it("Still focus should return false if relative target doesn't match current target ", () => {
+      const event = {
+        currentTarget: <div className="">test</div>,
+        relatedTarget: <span>test</span>,
       };
       expect(stillFocused(event)).toBe(false);
     });
