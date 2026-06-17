@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import { externalizeDeps } from "vite-plugin-externalize-deps";
 import { resolve } from "path";
 import react from "@vitejs/plugin-react";
 import classNames from "classnames";
@@ -39,7 +38,13 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["react", "react-dom", "classNames"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "react/jsx-dev-runtime",
+        "classNames",
+      ],
       output: {
         globals: {
           react: "React",
@@ -52,5 +57,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [react(), externalizeDeps()],
+  plugins: [react({ jsxRuntime: "automatic" })],
 });
