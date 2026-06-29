@@ -20,6 +20,7 @@ export default mergeConfig(
       coverage: {
         provider: "v8",
         reporter: ["text", "cobertura"],
+        exclude: ["**/index.js", "**/index.jsx", "src/setupTests.js"],
       },
       reporters: ["default", "junit"],
       outputFile: {
