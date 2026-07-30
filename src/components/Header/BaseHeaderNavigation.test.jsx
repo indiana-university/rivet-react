@@ -397,7 +397,7 @@ describe("<BaseHeaderNavigation />", () => {
         <BaseHeaderNavigation testMode>
           <BaseHeaderMenuItem>Nav item one</BaseHeaderMenuItem>
           <li>Nav item two</li>
-          <div navlistitem>Nav item three</div>
+          <div navlistitem="true">Nav item three</div>
         </BaseHeaderNavigation>,
       );
       const element = screen.queryByTestId(testIds.headerNavTestId);
