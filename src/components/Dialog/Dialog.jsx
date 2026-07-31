@@ -158,6 +158,7 @@ const Dialog = ({
       return (
         <div
           role="dialog"
+          aria-labelledby={`${id}-title`}
           style={{
             position: "fixed",
             zIndex: 1000,
