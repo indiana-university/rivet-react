@@ -392,12 +392,12 @@ describe("<BaseHeaderNavigation />", () => {
       expect(component.nodeName).toBe("DIV");
       expect(component.innerHTML).toBe("Nav item three");
     });
-    it("if marked with navlistitem item should render inside list", () => {
+    it("if marked with 'data-navlistitem' item should render inside list", () => {
       render(
         <BaseHeaderNavigation testMode>
           <BaseHeaderMenuItem>Nav item one</BaseHeaderMenuItem>
           <li>Nav item two</li>
-          <div navlistitem="true">Nav item three</div>
+          <div data-navlistitem="true">Nav item three</div>
         </BaseHeaderNavigation>,
       );
       const element = screen.queryByTestId(testIds.headerNavTestId);

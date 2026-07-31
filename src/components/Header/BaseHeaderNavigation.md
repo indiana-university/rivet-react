@@ -1,8 +1,8 @@
 Base header components focus on letting users directly build the html element. They are less restrictive on allowed properties and components but also do not modify/process them.
 Other versions of header components utilizes the base components while adding a specific structure.
 
-This BaseHeaderNavigation sets any list item children elements in the menu list while other elements are placed 
-after the list. Components can be manually added to the list using the `navListItem` property on them. This should only
+This BaseHeaderNavigation sets any list item children elements in the menu list while other elements are placed
+after the list. Components can be manually added to the list using the `data-navListItem` property on them. This should only
 be done for custom components whose outer element is `li` to maintain well-formed html.
 
 <!-- prettier-ignore-start -->
