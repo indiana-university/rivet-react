@@ -217,7 +217,7 @@ Dialog.propTypes = {
   /** Whether or not to render a close button. Setting this value to true requires onDismiss to be passed */
   showCloseButton: PropTypes.bool,
   /** The content of the dialog's header */
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 export default Rivet.rivetize(Dialog);
