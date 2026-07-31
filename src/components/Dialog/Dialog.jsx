@@ -33,7 +33,7 @@ const Dialog = ({
   isOpen,
   onDismiss,
   showCloseButton = true,
-  title,
+  title = "Dialog",
   ...attrs
 }) => {
   const ref = React.useRef(null);
@@ -137,7 +137,7 @@ const Dialog = ({
             // don't want the id from react-spectrum Dialog, use rivet format
             {...removeProperty(titleProps, "id")}
           >
-            {title || "Dialog"}
+            {title}
           </h1>
         </header>
         {children}
