@@ -4,17 +4,23 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 import * as React from "react";
 import PropTypes from "prop-types";
+import { v5 as uuidv5 } from "uuid";
 
 import * as Rivet from "../util/Rivet";
 import { useEffect, useRef } from "react";
 import Header from "./Header";
 import BaseHeaderMenuItem from "./BaseHeaderMenuItem";
+import HeaderAvatar from "./HeaderAvatar";
+import HeaderSearch from "./HeaderSearch";
 import { getFocusableElements, stillFocused } from "../util/EventUtils";
 import { TestUtils } from "../util/TestUtils";
 
 import "rivet-icons/dist/close.js";
 import "rivet-icons/dist/menu.js";
 import button from "../Button/Button.jsx";
+
+// This is a randomly generated UUID namespace so that we can create consistent keys for list item children
+const UUID_NAMESPACE = "f9e6c1d0-3b8a-4f5e-9c7a-2f3b1c6d7e8f";
 
 const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
@@ -94,15 +100,28 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
   // Avatar and Search components need to be rendered inside the nav tag, but outside of the list
   const listItems = [];
   const otherHeaderMenuItems = [];
-  React.Children.forEach(children, (child) => {
-    if (
-      child &&
-      ([BaseHeaderMenuItem, "li"].includes(child.type) ||
-        child.props.navlistitem)
-    ) {
-      listItems.push(child);
-    } else {
-      otherHeaderMenuItems.push(child);
+  React.Children.map(children, (child) => {
+    if (child) {
+      if (
+        [BaseHeaderMenuItem, "li"].includes(child.type) ||
+        (child.props["data-navlistitem"] ?? false) !== false
+      ) {
+        // We want to strip the invalid HTML attribute "data-navlistitem" from the list item, but we still want to use it to determine if the item should be rendered inside the list or not. So we destructure it out of the props and then spread the rest of the props into the cloned element.
+        const { "data-navlistItem": dataNavlistItem, ...rest } = child.props;
+        listItems.push(
+          React.cloneElement(child, {
+            key: uuidv5(JSON.stringify(rest), UUID_NAMESPACE),
+            ...rest,
+          }),
+        );
+      } else {
+        otherHeaderMenuItems.push(
+          React.cloneElement(child, {
+            key: uuidv5(JSON.stringify(child.props), UUID_NAMESPACE),
+            ...child.props,
+          }),
+        );
+      }
     }
   });
 
@@ -138,8 +157,10 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
         ref={dropdownRef}
         data-testid={testMode ? TestUtils.Header.headerNavTestId : null}
       >
-        <ul className="rvt-header-menu__list">{listItems}</ul>
-        {otherHeaderMenuItems}
+        <ul className="rvt-header-menu__list">
+          {React.Children.toArray(listItems)}
+        </ul>
+        {React.Children.toArray(otherHeaderMenuItems)}
       </nav>
     </div>
   );
@@ -149,25 +170,15 @@ BaseHeaderNavigation.displayName = "BaseHeaderNavigation";
 /* istanbul ignore next */
 BaseHeaderNavigation.propTypes = {
   /** All children must be 'li', BaseHeaderMenuItem, Header.Avatar, or Header.Search */
-  children: (props, propName) => {
-    let propValue = props[propName];
-    const validChildren = [
+  children: PropTypes.shape({
+    type: PropTypes.oneOf([
       "li",
       BaseHeaderMenuItem,
-      Header.Avatar,
-      Header.Search,
-    ];
-    React.Children.forEach(propValue, (child) => {
-      if (
-        child &&
-        !(validChildren.includes(child.type) || child.props.navlistitem)
-      ) {
-        throw new Error(
-          `each child should be of type ${validChildren} or have navlistitem property set as true`,
-        );
-      }
-    });
-  },
+      HeaderAvatar,
+      HeaderSearch,
+    ]),
+    "data-navlistitem": PropTypes.bool,
+  }),
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
 };

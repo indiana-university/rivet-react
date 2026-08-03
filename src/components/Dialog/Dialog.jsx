@@ -33,7 +33,7 @@ const Dialog = ({
   isOpen,
   onDismiss,
   showCloseButton = true,
-  title,
+  title = "Dialog",
   ...attrs
 }) => {
   const ref = React.useRef(null);
@@ -119,6 +119,7 @@ const Dialog = ({
     >
       <div
         className={classNames("rvt-dialog", className)}
+        aria-labelledby={`${id}-title`}
         aria-hidden={!isOpen}
         hidden={!isOpen}
         ref={ref}
@@ -126,21 +127,19 @@ const Dialog = ({
         {...overlayProps}
         id={id}
       >
-        {title && (
-          <header
-            className="rvt-dialog__header"
-            data-testid={TestUtils.Dialog.dialogHeaderTestId}
+        <header
+          className="rvt-dialog__header"
+          data-testid={TestUtils.Dialog.dialogHeaderTestId}
+        >
+          <h1
+            className="rvt-dialog__title"
+            id={`${id}-title`}
+            // don't want the id from react-spectrum Dialog, use rivet format
+            {...removeProperty(titleProps, "id")}
           >
-            <h1
-              className="rvt-dialog__title"
-              id={`${id}-title`}
-              // don't want the id from react-spectrum Dialog, use rivet format
-              {...removeProperty(titleProps, "id")}
-            >
-              {title}
-            </h1>
-          </header>
-        )}
+            {title}
+          </h1>
+        </header>
         {children}
         {onDismiss && showCloseButton && (
           <DialogCloseButton
@@ -159,6 +158,7 @@ const Dialog = ({
       return (
         <div
           role="dialog"
+          aria-labelledby={`${id}-title`}
           style={{
             position: "fixed",
             zIndex: 1000,
