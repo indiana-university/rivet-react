@@ -7,17 +7,13 @@ import * as React from "react";
 import * as Rivet from "../../util/Rivet";
 import { TestUtils } from "../../util/TestUtils";
 
-
-const StatGroup = ({
-  children,
-  className,
-  testMode = false,
-  ...attrs
-}) => {
-  const classNameArr = [
-    "rvt-stat-group",
-    className
-  ]
+const StatGroup = ({ children, className, testMode = false, ...attrs }) => {
+  React.useEffect(() => {
+    console.warn(
+      "StatGroup is deprecated and will be removed in a future release.",
+    );
+  }, []);
+  const classNameArr = ["rvt-stat-group", className];
   return (
     <div
       className={classNames(classNameArr)}
@@ -26,11 +22,10 @@ const StatGroup = ({
     >
       {children}
     </div>
-  )
+  );
 };
 
 StatGroup.displayName = "StatGroup";
-StatGroup.propTypes = {
-};
+StatGroup.propTypes = {};
 
 export default Rivet.rivetize(StatGroup);

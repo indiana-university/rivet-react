@@ -1,4 +1,4 @@
-### Resource Footer Link Block
+(Deprecated) ### Resource Footer Link Block
 
 <!-- prettier-ignore-start -->
 ```jsx

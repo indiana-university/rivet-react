@@ -8,7 +8,15 @@ import * as Rivet from "../../util/Rivet.jsx";
 import "rivet-stickers/dist/browser-exclamation.js";
 import PropTypes from "prop-types";
 
+/**
+ * @deprecated PageNotFoundLayout is deprecated and will be removed in a future release.
+ */
 const PageNotFoundLayout = ({ errorMessage, children }) => {
+  React.useEffect(() => {
+    console.warn(
+      "PageNotFoundLayout is deprecated and will be removed in a future release.",
+    );
+  }, []);
   return (
     <React.Fragment>
       <div className="rvt-bg-black-000">

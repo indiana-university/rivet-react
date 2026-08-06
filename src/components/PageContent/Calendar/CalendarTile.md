@@ -1,4 +1,4 @@
-Use the calendar tile component to highlight an important date.
+(Deprecated) Use the calendar tile component to highlight an important date.
 
 View the [Rivet documentation for Calendar tile](https://rivet.uits.iu.edu/components/calendar-tile/).
 

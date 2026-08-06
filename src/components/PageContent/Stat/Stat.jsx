@@ -16,10 +16,10 @@ const Stat = ({
   value,
   ...attrs
 }) => {
-  const classNameArr = [
-    "rvt-stat",
-    className
-  ]
+  React.useEffect(() => {
+    console.warn("Stat is deprecated and will be removed in a future release.");
+  }, []);
+  const classNameArr = ["rvt-stat", className];
   return (
     <a
       className={classNames(classNameArr)}
@@ -42,7 +42,7 @@ const Stat = ({
         </div>
       </div>
     </a>
-  )
+  );
 };
 
 Stat.displayName = "Stat";
@@ -52,10 +52,10 @@ Stat.propTypes = {
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
   /** The stat value */
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };
 
-const StatImage = ({ children, testMode}) => {
+const StatImage = ({ children, testMode }) => {
   return (
     <div
       className="rvt-stat__image"
@@ -63,7 +63,7 @@ const StatImage = ({ children, testMode}) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 export default Rivet.rivetize(Stat);

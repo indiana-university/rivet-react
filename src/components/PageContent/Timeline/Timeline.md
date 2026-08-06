@@ -1,4 +1,4 @@
-Use the timeline component to show a chronological series of events and highlight milestones.
+(Deprecated) Use the timeline component to show a chronological series of events and highlight milestones.
 
 View the [Rivet documentation for Timeline](https://rivet.iu.edu/components/timeline/).
 

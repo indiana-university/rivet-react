@@ -1,4 +1,4 @@
-Use the empty state component as a placeholder when there is no content to show the user. You can also suggest first steps the user might take, such as creating their first piece of content or reading your application’s documentation.
+(Deprecated) Use the empty state component as a placeholder when there is no content to show the user. You can also suggest first steps the user might take, such as creating their first piece of content or reading your application’s documentation.
 
 Users often encounter empty states when they are using a web application for the first time and have not yet saved any data or received any submissions.
 

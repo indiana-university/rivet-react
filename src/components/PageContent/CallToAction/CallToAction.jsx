@@ -15,11 +15,16 @@ const CallToAction = ({
   variant = "link",
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn(
+      "CallToAction is deprecated and will be removed in a future release.",
+    );
+  }, []);
   const classNameArr = [
     "rvt-cta",
     variant === "button" ? "rvt-cta--button" : "",
-    className
-  ]
+    className,
+  ];
   return (
     <a
       className={classNames(classNameArr)}
@@ -28,7 +33,7 @@ const CallToAction = ({
     >
       {children}
     </a>
-  )
+  );
 };
 
 CallToAction.displayName = "CallToAction";

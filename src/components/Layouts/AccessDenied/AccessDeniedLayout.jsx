@@ -8,7 +8,15 @@ import * as Rivet from "../../util/Rivet.jsx";
 import PropTypes from "prop-types";
 import "rivet-stickers/dist/badge-lock.js";
 
+/**
+ * @deprecated AccessDeniedLayout is deprecated and will be removed in a future release.
+ */
 const AccessDeniedLayout = ({ errorMessage, children }) => {
+  React.useEffect(() => {
+    console.warn(
+      "AccessDeniedLayout is deprecated and will be removed in a future release.",
+    );
+  }, []);
   return (
     <React.Fragment>
       <div className="rvt-bg-black-000">

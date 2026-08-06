@@ -1,4 +1,4 @@
-Use the `StatGroup` to group multiple `Stat` components together.
+(Deprecated) Use the `StatGroup` to group multiple `Stat` components together.
 
 ### Stat Group Examples
 

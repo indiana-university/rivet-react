@@ -1,4 +1,4 @@
-Use the link hub component to show a list of links with optional descriptions.
+(Deprecated) Use the link hub component to show a list of links with optional descriptions.
 
 Link hubs are often used on website home pages, section index pages, and landing pages to guide the user toward resources related to a single topic.
 

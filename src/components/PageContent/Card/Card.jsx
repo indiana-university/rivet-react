@@ -25,6 +25,9 @@ const Card = ({
   titleUrl,
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn("Card is deprecated and will be removed in a future release.");
+  }, []);
   const classNameArr = [
     "rvt-card",
     clickable ? "rvt-card--clickable" : "",

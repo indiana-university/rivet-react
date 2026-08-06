@@ -10,9 +10,14 @@ import { TestUtils } from "../util/TestUtils";
 import SubnavItem from "./SubnavItem";
 
 /**
- * Provide additional navigation outside the main header or sidenav
+ * @deprecated Subnav is deprecated and will be removed in a future release.
  */
 const Subnav = ({ children, className, label, testMode = false, ...attrs }) => {
+  React.useEffect(() => {
+    console.warn(
+      "Subnav is deprecated and will be removed in a future release.",
+    );
+  }, []);
   const classNameArr = ["rvt-subnav", className];
   return (
     <nav

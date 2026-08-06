@@ -7,7 +7,7 @@ import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
 import { TestUtils } from "../../util/TestUtils";
-import LinkHubItem from "./LinkHubItem"
+import LinkHubItem from "./LinkHubItem";
 
 const LinkHub = ({
   children,
@@ -16,11 +16,16 @@ const LinkHub = ({
   variant = "normal",
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn(
+      "LinkHub is deprecated and will be removed in a future release.",
+    );
+  }, []);
   const classNameArr = [
     "rvt-link-hub",
     variant === "stacked" ? "rvt-link-hub--stacked" : "",
-    className
-  ]
+    className,
+  ];
   return (
     <ul
       className={classNames(classNameArr)}
@@ -29,7 +34,7 @@ const LinkHub = ({
     >
       {children}
     </ul>
-  )
+  );
 };
 
 LinkHub.displayName = "LinkHub";

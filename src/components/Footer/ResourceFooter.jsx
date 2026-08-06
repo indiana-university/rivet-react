@@ -20,6 +20,11 @@ const ResourceFooter = ({
   size = "sm",
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn(
+      "ResourceFooter is deprecated and will be removed in a future release.",
+    );
+  }, []);
   const classes = classNames("rvt-footer-resources", className);
   const containerClasses = classNames(`rvt-container-${size}`, containerClass);
   const headerId = `${id}-header`;

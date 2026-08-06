@@ -10,11 +10,18 @@ import Content from "./Content";
 
 import * as Rivet from "../../util/Rivet";
 
-const EmptyState = ({ children, className, ...attrs }) => (
-  <div {...attrs} className={classNames("rvt-empty-state", className)}>
-    {children}
-  </div>
-);
+const EmptyState = ({ children, className, ...attrs }) => {
+  React.useEffect(() => {
+    console.warn(
+      "EmptyState is deprecated and will be removed in a future release.",
+    );
+  }, []);
+  return (
+    <div {...attrs} className={classNames("rvt-empty-state", className)}>
+      {children}
+    </div>
+  );
+};
 EmptyState.displayName = "EmptyState";
 
 EmptyState.Content = Content;

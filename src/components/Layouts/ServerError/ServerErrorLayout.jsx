@@ -8,7 +8,15 @@ import * as Rivet from "../../util/Rivet.jsx";
 import PropTypes from "prop-types";
 import "rivet-stickers/dist/browser-magnifying-glass.js";
 
+/**
+ * @deprecated ServerErrorLayout is deprecated and will be removed in a future release.
+ */
 const ServerErrorLayout = ({ errorMessage, children }) => {
+  React.useEffect(() => {
+    console.warn(
+      "ServerErrorLayout is deprecated and will be removed in a future release.",
+    );
+  }, []);
   return (
     <React.Fragment>
       <div className="rvt-bg-black-000">

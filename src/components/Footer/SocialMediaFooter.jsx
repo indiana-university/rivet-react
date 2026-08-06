@@ -20,6 +20,11 @@ const SocialMediaFooter = ({
   size = "sm",
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn(
+      "SocialMediaFooter is deprecated and will be removed in a future release.",
+    );
+  }, []);
   const classes = classNames("rvt-footer-social", className);
   const containerClasses = classNames(`rvt-container-${size}`, containerClass);
   const headerId = `${id}-header`;

@@ -1,4 +1,4 @@
-Use the billboard component to highlight news articles, student or alumni stories, or other important content on your website.
+(Deprecated) Use the billboard component to highlight news articles, student or alumni stories, or other important content on your website.
 
 A billboard contains an image, title, summary text, and optional call to action link.
 

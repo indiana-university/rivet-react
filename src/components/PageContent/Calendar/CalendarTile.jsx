@@ -61,6 +61,11 @@ const CalendarTile = ({
   year,
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn(
+      "CalendarTile is deprecated and will be removed in a future release.",
+    );
+  }, []);
   const classNameArr = ["rvt-cal", className];
   return (
     <div

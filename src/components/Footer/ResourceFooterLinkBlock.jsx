@@ -12,6 +12,11 @@ import * as Rivet from "../util/Rivet";
  * Use the Resource Footer Link Block component to create a section of links for Resource Footer
  */
 const ResourceFooterLinkBlock = ({ children, label, ...attrs }) => {
+  React.useEffect(() => {
+    console.warn(
+      "ResourceFooterLinkBlock is deprecated and will be removed in a future release.",
+    );
+  }, []);
   return (
     <div {...attrs}>
       <h3 className="rvt-footer-resources__heading">{label}</h3>

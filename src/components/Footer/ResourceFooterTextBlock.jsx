@@ -12,6 +12,11 @@ import * as Rivet from "../util/Rivet";
  * Use the Resource Footer Text Block component to create a section of text for the Resource Footer
  */
 const ResourceFooterTextBlock = ({ children, label, ...attrs }) => {
+  React.useEffect(() => {
+    console.warn(
+      "ResourceFooterTextBlock is deprecated and will be removed in a future release.",
+    );
+  }, []);
   return (
     <div {...attrs}>
       <h3 className="rvt-footer-resources__heading">{label}</h3>

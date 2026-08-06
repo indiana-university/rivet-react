@@ -28,6 +28,11 @@ const SeriesNav = ({
   testMode = false,
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn(
+      "SeriesNav is deprecated and will be removed in a future release.",
+    );
+  }, []);
   const classNameArr = ["rvt-seriesnav", className];
   return (
     <nav

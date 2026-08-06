@@ -17,6 +17,11 @@ const Billboard = ({
   variant = "standard",
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn(
+      "Billboard is deprecated and will be removed in a future release.",
+    );
+  }, []);
   const classNameArr = [
     "rvt-billboard",
     variant === "center" ? "rvt-billboard--center" : "",

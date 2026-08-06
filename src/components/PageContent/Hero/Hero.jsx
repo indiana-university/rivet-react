@@ -15,24 +15,27 @@ const Hero = ({
   eyebrow,
   media,
   mediaCaption,
-  size = 'lg',
+  size = "lg",
   testMode = false,
   title,
   varient = "normal",
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn("Hero is deprecated and will be removed in a future release.");
+  }, []);
   const classNameArr = [
     "rvt-hero ",
     varient === "dark" && "rvt-hero--bg-dark",
-    className
-  ]
+    className,
+  ];
   return (
     <div
       className={classNames(classNameArr)}
       {...(testMode && { "data-testid": TestUtils.Hero.container })}
       {...attrs}
     >
-      <div 
+      <div
         className={`rvt-container-${size}`}
         {...(testMode && { "data-testid": TestUtils.Hero.innerContainer })}
       >
@@ -56,38 +59,37 @@ const Hero = ({
             >
               {children}
             </div>
-            {
-              actions &&
-                <div 
-                  className="rvt-hero__actions"
-                  {...(testMode && { "data-testid": TestUtils.Hero.actions })}
-                >
-                  {actions}
-                </div>
-            }
-          </div>
-          {
-            media &&
-              <div 
-                className="rvt-hero__media"
-                {...(testMode && { "data-testid": TestUtils.Hero.media })}
+            {actions && (
+              <div
+                className="rvt-hero__actions"
+                {...(testMode && { "data-testid": TestUtils.Hero.actions })}
               >
-                {media}
-                {
-                  mediaCaption && 
-                    <div
-                      className="rvt-hero__media-caption"
-                      {...(testMode && { "data-testid": TestUtils.Hero.mediaCaption })}
-                    >
-                      {mediaCaption}
-                    </div>
-                }
+                {actions}
               </div>
-          }
+            )}
+          </div>
+          {media && (
+            <div
+              className="rvt-hero__media"
+              {...(testMode && { "data-testid": TestUtils.Hero.media })}
+            >
+              {media}
+              {mediaCaption && (
+                <div
+                  className="rvt-hero__media-caption"
+                  {...(testMode && {
+                    "data-testid": TestUtils.Hero.mediaCaption,
+                  })}
+                >
+                  {mediaCaption}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 Hero.displayName = "Hero";

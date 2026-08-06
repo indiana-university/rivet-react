@@ -1,4 +1,4 @@
-Use the quote component to highlight compelling quotations from people like students, alumni, faculty, and administrators.
+(Deprecated) Use the quote component to highlight compelling quotations from people like students, alumni, faculty, and administrators.
 
 [Rivet documentation for Quote](https://rivet.uits.iu.edu/components/Quote/).
 

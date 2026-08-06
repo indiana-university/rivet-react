@@ -17,6 +17,11 @@ const TimelineItem = ({
   id = Rivet.shortuid(),
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn(
+      "TimelineItem is deprecated and will be removed in a future release.",
+    );
+  }, []);
   const classNameAlign = align === "left" ? "" : "rvt-timeline__item--right";
   const classNameDate = dateStyleAsLabel ? "rvt-timeline__date--label" : "";
 

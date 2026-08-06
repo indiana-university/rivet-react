@@ -15,6 +15,11 @@ const Timeline = ({
   id = Rivet.shortuid(),
   ...attrs
 }) => {
+  React.useEffect(() => {
+    console.warn(
+      "Timeline is deprecated and will be removed in a future release.",
+    );
+  }, []);
   const classNameAlign = align === "left" ? "" : `rvt-timeline--${align}`;
   const renderChildren =
     align === "center" && Array.isArray(children)

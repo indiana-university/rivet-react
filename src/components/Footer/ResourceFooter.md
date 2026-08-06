@@ -1,4 +1,4 @@
-Use the grid layout to create columns of resource links and handle spacing
+(Deprecated) Use the grid layout to create columns of resource links and handle spacing
 
 ### Resource Footer
 

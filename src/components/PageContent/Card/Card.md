@@ -1,4 +1,4 @@
-Use the card component to group related content, including an image, headline, summary text, and link.
+(Deprecated) Use the card component to group related content, including an image, headline, summary text, and link.
 
 Cards are often used to present lists or grids of content such as featured news articles or resources related to a specific topic.
 

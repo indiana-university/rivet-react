@@ -11,6 +11,11 @@ import * as Rivet from "../util/Rivet";
  * Use the Social Media Footer Link component to create a link for the social media footer.
  */
 const SocialMediaFooterLink = ({ children, label, url, ...attrs }) => {
+  React.useEffect(() => {
+    console.warn(
+      "SocialMediaFooterLink is deprecated and will be removed in a future release.",
+    );
+  }, []);
   if (!url) {
     return null;
   }
