@@ -7,16 +7,14 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
+import { useDeprecation } from "../util/DeprecationUtils";
 
 /**
+ * @deprecated ResourceFooterLinkBlock is deprecated and will be removed in a future release.
  * Use the Resource Footer Link Block component to create a section of links for Resource Footer
  */
 const ResourceFooterLinkBlock = ({ children, label, ...attrs }) => {
-  React.useEffect(() => {
-    console.warn(
-      "ResourceFooterLinkBlock is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("ResourceFooterLinkBlock");
   return (
     <div {...attrs}>
       <h3 className="rvt-footer-resources__heading">{label}</h3>

@@ -5,6 +5,7 @@ SPDX-License-Identifier: BSD-3-Clause
 import React from "react";
 import { Col, Container, Row } from "../../Grid/index.jsx";
 import * as Rivet from "../../util/Rivet.jsx";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import "rivet-stickers/dist/browser-exclamation.js";
 import PropTypes from "prop-types";
 
@@ -12,11 +13,7 @@ import PropTypes from "prop-types";
  * @deprecated PageNotFoundLayout is deprecated and will be removed in a future release.
  */
 const PageNotFoundLayout = ({ errorMessage, children }) => {
-  React.useEffect(() => {
-    console.warn(
-      "PageNotFoundLayout is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("PageNotFoundLayout");
   return (
     <React.Fragment>
       <div className="rvt-bg-black-000">

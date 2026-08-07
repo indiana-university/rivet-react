@@ -1,4 +1,4 @@
-(Deprecated) Use the stat component to highlight one or more compelling statistics.
+Use the stat component to highlight one or more compelling statistics.
 
 Stats are often used on website home pages or section index pages, especially those that relate to career placement and campus culture.
 View the [Rivet documentation for Stat](https://rivet.uits.iu.edu/components/stat/).

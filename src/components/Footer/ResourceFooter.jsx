@@ -7,8 +7,10 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
+import { useDeprecation } from "../util/DeprecationUtils";
 
 /**
+ * @deprecated ResourceFooter is deprecated and will be removed in a future release.
  * Use the Resource Footer component to provide additional resources at the bottom of the page.
  */
 const ResourceFooter = ({
@@ -20,11 +22,7 @@ const ResourceFooter = ({
   size = "sm",
   ...attrs
 }) => {
-  React.useEffect(() => {
-    console.warn(
-      "ResourceFooter is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("ResourceFooter");
   const classes = classNames("rvt-footer-resources", className);
   const containerClasses = classNames(`rvt-container-${size}`, containerClass);
   const headerId = `${id}-header`;

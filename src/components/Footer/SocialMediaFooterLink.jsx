@@ -6,16 +6,14 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
+import { useDeprecation } from "../util/DeprecationUtils";
 
 /**
+ * @deprecated SocialMediaFooterLink is deprecated and will be removed in a future release.
  * Use the Social Media Footer Link component to create a link for the social media footer.
  */
 const SocialMediaFooterLink = ({ children, label, url, ...attrs }) => {
-  React.useEffect(() => {
-    console.warn(
-      "SocialMediaFooterLink is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("SocialMediaFooterLink");
   if (!url) {
     return null;
   }

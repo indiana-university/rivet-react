@@ -1,4 +1,4 @@
-(Deprecated) Use the series nav to allow the user to step forward or backward through a series of content pages.
+Use the series nav to allow the user to step forward or backward through a series of content pages.
 
 A series nav is often used at the bottom of a news article, blog post, event page, or profile.
 

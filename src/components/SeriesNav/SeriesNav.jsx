@@ -6,12 +6,14 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
+import { useDeprecation } from "../util/DeprecationUtils";
 import { TestUtils } from "../util/TestUtils";
 
 import "rivet-icons/dist/arrow-left.js";
 import "rivet-icons/dist/arrow-right.js";
 
 /**
+ * @deprecated SeriesNav is deprecated and will be removed in a future release.
  * Allow users to step forward or backward through a series of content pages
  */
 const SeriesNav = ({
@@ -28,11 +30,7 @@ const SeriesNav = ({
   testMode = false,
   ...attrs
 }) => {
-  React.useEffect(() => {
-    console.warn(
-      "SeriesNav is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("SeriesNav");
   const classNameArr = ["rvt-seriesnav", className];
   return (
     <nav

@@ -1,4 +1,4 @@
-(Deprecated) Use the hero component to prominently show a title, summary, image, and call to action at the top of a page.
+Use the hero component to prominently show a title, summary, image, and call to action at the top of a page.
 
 Hero areas are often used on website home pages to help orient the visitor to the site’s latest news or most important call to action. They are also useful for section index and marketing campaign landing pages.
 View the [Rivet documentation for Hero](https://rivet.uits.iu.edu/components/hero/).

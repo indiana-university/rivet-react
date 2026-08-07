@@ -9,13 +9,13 @@ import Actions from "./Actions";
 import Content from "./Content";
 
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 
+/**
+ * @deprecated EmptyState is deprecated and will be removed in a future release.
+ */
 const EmptyState = ({ children, className, ...attrs }) => {
-  React.useEffect(() => {
-    console.warn(
-      "EmptyState is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("EmptyState");
   return (
     <div {...attrs} className={classNames("rvt-empty-state", className)}>
       {children}

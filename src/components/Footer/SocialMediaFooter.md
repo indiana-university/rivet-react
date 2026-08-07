@@ -1,4 +1,4 @@
-(Deprecated) ### Social Media Footer
+### Social Media Footer
 
 <!-- prettier-ignore-start -->
 ```jsx

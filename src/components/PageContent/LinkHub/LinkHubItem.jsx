@@ -6,8 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated LinkHubItem is deprecated and will be removed in a future release.
+ */
 const LinkHubItem = ({
   className,
   children,
@@ -16,11 +20,7 @@ const LinkHubItem = ({
   url,
   ...attrs
 }) => {
-  React.useEffect(() => {
-    console.warn(
-      "LinkHubItem is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("LinkHubItem");
   const classNameArr = ["rvt-link-hub__item", className];
   return (
     <li

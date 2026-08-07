@@ -6,6 +6,7 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
+import { useDeprecation } from "../util/DeprecationUtils";
 import { TestUtils } from "../util/TestUtils";
 import SidenavItem from "./SidenavItem";
 import SidenavMenu from "./SidenavMenu";
@@ -20,11 +21,7 @@ const Sidenav = ({
   testMode = false,
   ...attrs
 }) => {
-  React.useEffect(() => {
-    console.warn(
-      "Sidenav is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("Sidenav");
   const classNameArr = ["rvt-sidenav", className];
   const labelId = `${id}-sidenav-label`;
   return (

@@ -6,8 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated Hero is deprecated and will be removed in a future release.
+ */
 const Hero = ({
   actions,
   children,
@@ -21,9 +25,7 @@ const Hero = ({
   varient = "normal",
   ...attrs
 }) => {
-  React.useEffect(() => {
-    console.warn("Hero is deprecated and will be removed in a future release.");
-  }, []);
+  useDeprecation("Hero");
   const classNameArr = [
     "rvt-hero ",
     varient === "dark" && "rvt-hero--bg-dark",

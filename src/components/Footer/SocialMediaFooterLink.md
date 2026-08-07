@@ -1,4 +1,4 @@
-(Deprecated) Display of components is passed in as children. If using icons for display its recommended to use SVG elements
+Display of components is passed in as children. If using icons for display its recommended to use SVG elements
 
 ### Social Media Footer Link
 

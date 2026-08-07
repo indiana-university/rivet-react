@@ -6,8 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils.js";
 
+/**
+ * @deprecated Timeline is deprecated and will be removed in a future release.
+ */
 const Timeline = ({
   children,
   className,
@@ -15,11 +19,7 @@ const Timeline = ({
   id = Rivet.shortuid(),
   ...attrs
 }) => {
-  React.useEffect(() => {
-    console.warn(
-      "Timeline is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("Timeline");
   const classNameAlign = align === "left" ? "" : `rvt-timeline--${align}`;
   const renderChildren =
     align === "center" && Array.isArray(children)

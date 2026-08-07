@@ -6,8 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated Stat is deprecated and will be removed in a future release.
+ */
 const Stat = ({
   children,
   className,
@@ -16,9 +20,7 @@ const Stat = ({
   value,
   ...attrs
 }) => {
-  React.useEffect(() => {
-    console.warn("Stat is deprecated and will be removed in a future release.");
-  }, []);
+  useDeprecation("Stat");
   const classNameArr = ["rvt-stat", className];
   return (
     <a

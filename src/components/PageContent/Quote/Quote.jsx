@@ -6,8 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated Quote is deprecated and will be removed in a future release.
+ */
 const Quote = ({
   avatar,
   children,
@@ -17,11 +21,7 @@ const Quote = ({
   testMode = false,
   ...attrs
 }) => {
-  React.useEffect(() => {
-    console.warn(
-      "Quote is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("Quote");
   const classNameArr = [
     "rvt-quote",
     avatar ? "rvt-quote--image" : "",

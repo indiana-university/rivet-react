@@ -5,14 +5,14 @@ SPDX-License-Identifier: BSD-3-Clause
 import classNames from "classnames";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated StatGroup is deprecated and will be removed in a future release.
+ */
 const StatGroup = ({ children, className, testMode = false, ...attrs }) => {
-  React.useEffect(() => {
-    console.warn(
-      "StatGroup is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("StatGroup");
   const classNameArr = ["rvt-stat-group", className];
   return (
     <div

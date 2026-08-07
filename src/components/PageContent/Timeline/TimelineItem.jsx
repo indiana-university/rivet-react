@@ -6,7 +6,11 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 
+/**
+ * @deprecated TimelineItem is deprecated and will be removed in a future release.
+ */
 const TimelineItem = ({
   children,
   className,
@@ -17,11 +21,7 @@ const TimelineItem = ({
   id = Rivet.shortuid(),
   ...attrs
 }) => {
-  React.useEffect(() => {
-    console.warn(
-      "TimelineItem is deprecated and will be removed in a future release.",
-    );
-  }, []);
+  useDeprecation("TimelineItem");
   const classNameAlign = align === "left" ? "" : "rvt-timeline__item--right";
   const classNameDate = dateStyleAsLabel ? "rvt-timeline__date--label" : "";
 
