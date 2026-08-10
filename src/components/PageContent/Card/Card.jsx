@@ -7,8 +7,12 @@ import { Button } from "../../Button";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated Card is deprecated and will be removed in a future release.
+ */
 const Card = ({
   children,
   className,
@@ -25,6 +29,7 @@ const Card = ({
   titleUrl,
   ...attrs
 }) => {
+  useDeprecation("Card");
   const classNameArr = [
     "rvt-card",
     clickable ? "rvt-card--clickable" : "",

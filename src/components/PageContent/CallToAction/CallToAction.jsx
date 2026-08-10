@@ -6,8 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated CallToAction is deprecated and will be removed in a future release.
+ */
 const CallToAction = ({
   children,
   className,
@@ -15,11 +19,12 @@ const CallToAction = ({
   variant = "link",
   ...attrs
 }) => {
+  useDeprecation("CallToAction");
   const classNameArr = [
     "rvt-cta",
     variant === "button" ? "rvt-cta--button" : "",
-    className
-  ]
+    className,
+  ];
   return (
     <a
       className={classNames(classNameArr)}
@@ -28,7 +33,7 @@ const CallToAction = ({
     >
       {children}
     </a>
-  )
+  );
 };
 
 CallToAction.displayName = "CallToAction";

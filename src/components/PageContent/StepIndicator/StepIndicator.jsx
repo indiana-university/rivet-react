@@ -6,12 +6,13 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
-import Step from "./Step"
+import Step from "./Step";
 
-const testIds = TestUtils.StepIndicator
+const testIds = TestUtils.StepIndicator;
 /**
- * Show the user's position in and progress through a multi-step process
+ * @deprecated StepIndicator is deprecated and will be removed in a future release.
  */
 const StepIndicator = ({
   children,
@@ -20,11 +21,12 @@ const StepIndicator = ({
   variant,
   ...attrs
 }) => {
+  useDeprecation("StepIndicator");
   const classNameArr = [
     "rvt-steps",
     variant === "vertical" ? "rvt-steps--vertical" : "",
-    className
-  ]
+    className,
+  ];
   return (
     <ol
       className={classNames(classNameArr)}
@@ -33,7 +35,7 @@ const StepIndicator = ({
     >
       {children}
     </ol>
-  )
+  );
 };
 
 StepIndicator.displayName = "StepIndicator";
@@ -41,7 +43,7 @@ StepIndicator.propTypes = {
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
   /** The variant type which determines how the step indicator is styled */
-  variant: PropTypes.oneOf(["horizontal", "vertical"])
+  variant: PropTypes.oneOf(["horizontal", "vertical"]),
 };
 
 StepIndicator.Step = Step;

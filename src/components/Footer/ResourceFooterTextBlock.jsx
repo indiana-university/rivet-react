@@ -7,11 +7,14 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
+import { useDeprecation } from "../util/DeprecationUtils";
 
 /**
+ * @deprecated ResourceFooterTextBlock is deprecated and will be removed in a future release.
  * Use the Resource Footer Text Block component to create a section of text for the Resource Footer
  */
 const ResourceFooterTextBlock = ({ children, label, ...attrs }) => {
+  useDeprecation("ResourceFooterTextBlock");
   return (
     <div {...attrs}>
       <h3 className="rvt-footer-resources__heading">{label}</h3>

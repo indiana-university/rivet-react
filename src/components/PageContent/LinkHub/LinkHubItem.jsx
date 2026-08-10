@@ -6,8 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated LinkHubItem is deprecated and will be removed in a future release.
+ */
 const LinkHubItem = ({
   className,
   children,
@@ -16,10 +20,8 @@ const LinkHubItem = ({
   url,
   ...attrs
 }) => {
-  const classNameArr = [
-    "rvt-link-hub__item",
-    className
-  ]
+  useDeprecation("LinkHubItem");
+  const classNameArr = ["rvt-link-hub__item", className];
   return (
     <li
       className={classNames(classNameArr)}
@@ -27,15 +29,17 @@ const LinkHubItem = ({
       {...attrs}
     >
       <a
-        className="rvt-link-hub__link" 
+        className="rvt-link-hub__link"
         href={url}
         {...(testMode && { "data-testid": TestUtils.LinkHub.itemLink })}
       >
         <span className="rvt-link-hub__text">{label}</span>
-        {children && <span className="rvt-link-hub__description">{children}</span>}
+        {children && (
+          <span className="rvt-link-hub__description">{children}</span>
+        )}
       </a>
     </li>
-  )
+  );
 };
 
 LinkHubItem.displayName = "LinkHubItem";
@@ -44,8 +48,7 @@ LinkHubItem.propTypes = {
   label: PropTypes.string.isRequired,
   testMode: PropTypes.bool,
   /** The url for the item link */
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
 };
-
 
 export default Rivet.rivetize(LinkHubItem);

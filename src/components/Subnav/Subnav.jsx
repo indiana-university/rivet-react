@@ -6,13 +6,15 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
+import { useDeprecation } from "../util/DeprecationUtils";
 import { TestUtils } from "../util/TestUtils";
 import SubnavItem from "./SubnavItem";
 
 /**
- * Provide additional navigation outside the main header or sidenav
+ * @deprecated Subnav is deprecated and will be removed in a future release.
  */
 const Subnav = ({ children, className, label, testMode = false, ...attrs }) => {
+  useDeprecation("Subnav");
   const classNameArr = ["rvt-subnav", className];
   return (
     <nav

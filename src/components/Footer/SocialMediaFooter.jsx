@@ -7,8 +7,10 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 import * as Rivet from "../util/Rivet";
+import { useDeprecation } from "../util/DeprecationUtils";
 
 /**
+ * @deprecated SocialMediaFooter is deprecated and will be removed in a future release.
  * Use the Social Media Footer component to display social media links above the footer
  */
 const SocialMediaFooter = ({
@@ -20,6 +22,7 @@ const SocialMediaFooter = ({
   size = "sm",
   ...attrs
 }) => {
+  useDeprecation("SocialMediaFooter");
   const classes = classNames("rvt-footer-social", className);
   const containerClasses = classNames(`rvt-container-${size}`, containerClass);
   const headerId = `${id}-header`;

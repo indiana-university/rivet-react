@@ -6,8 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated Billboard is deprecated and will be removed in a future release.
+ */
 const Billboard = ({
   children,
   className,
@@ -17,6 +21,7 @@ const Billboard = ({
   variant = "standard",
   ...attrs
 }) => {
+  useDeprecation("Billboard");
   const classNameArr = [
     "rvt-billboard",
     variant === "center" ? "rvt-billboard--center" : "",
