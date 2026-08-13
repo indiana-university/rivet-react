@@ -5,6 +5,7 @@ SPDX-License-Identifier: BSD-3-Clause
 import * as React from "react";
 import PropTypes from "prop-types";
 import { v5 as uuidv5 } from "uuid";
+import { stringify } from "flatted";
 
 import * as Rivet from "../util/Rivet";
 import { useEffect, useRef } from "react";
@@ -110,14 +111,14 @@ const BaseHeaderNavigation = ({ children, testMode = false, ...attrs }) => {
         const { "data-navlistItem": dataNavlistItem, ...rest } = child.props;
         listItems.push(
           React.cloneElement(child, {
-            key: uuidv5(JSON.stringify(rest), UUID_NAMESPACE),
+            key: uuidv5(stringify(rest), UUID_NAMESPACE),
             ...rest,
           }),
         );
       } else {
         otherHeaderMenuItems.push(
           React.cloneElement(child, {
-            key: uuidv5(JSON.stringify(child.props), UUID_NAMESPACE),
+            key: uuidv5(stringify(child.props), UUID_NAMESPACE),
             ...child.props,
           }),
         );
