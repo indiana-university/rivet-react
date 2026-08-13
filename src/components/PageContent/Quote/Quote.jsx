@@ -6,8 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated Quote is deprecated and will be removed in a future release.
+ */
 const Quote = ({
   avatar,
   children,
@@ -17,47 +21,45 @@ const Quote = ({
   testMode = false,
   ...attrs
 }) => {
+  useDeprecation("Quote");
   const classNameArr = [
     "rvt-quote",
     avatar ? "rvt-quote--image" : "",
-    className
-  ]
+    className,
+  ];
   return (
     <div
       className={classNames(classNameArr)}
       {...(testMode && { "data-testid": TestUtils.Quote.container })}
       {...attrs}
     >
-      {
-        avatar &&
-          <div
-            className="rvt-avatar rvt-avatar--md"
-            {...(testMode && { "data-testid": TestUtils.Quote.avatar })}
-          >
-            {avatar}
-          </div>
-      }
+      {avatar && (
+        <div
+          className="rvt-avatar rvt-avatar--md"
+          {...(testMode && { "data-testid": TestUtils.Quote.avatar })}
+        >
+          {avatar}
+        </div>
+      )}
       <blockquote
         className="rvt-quote__text"
         {...(testMode && { "data-testid": TestUtils.Quote.content })}
       >
         <p>{children}</p>
       </blockquote>
-      {
-        citation &&
-          <p
-            className="rvt-quote__citation"
-            {...(testMode && { "data-testid": TestUtils.Quote.citation })}
-          >
-            <span className="rvt-quote__title">{citation}</span>
-            {
-              subCitation &&
-                <span className="rvt-quote__subtitle">{subCitation}</span>
-            }
-          </p>
-      }
+      {citation && (
+        <p
+          className="rvt-quote__citation"
+          {...(testMode && { "data-testid": TestUtils.Quote.citation })}
+        >
+          <span className="rvt-quote__title">{citation}</span>
+          {subCitation && (
+            <span className="rvt-quote__subtitle">{subCitation}</span>
+          )}
+        </p>
+      )}
     </div>
-  )
+  );
 };
 
 Quote.displayName = "Quote";

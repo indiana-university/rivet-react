@@ -6,11 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../util/Rivet";
+import { useDeprecation } from "../util/DeprecationUtils";
 import { TestUtils } from "../util/TestUtils";
 import SidenavItem from "./SidenavItem";
 import SidenavMenu from "./SidenavMenu";
 /**
- * Create a vertical list of navigation links for use in a sidebar
+ * @deprecated Sidenav is deprecated and will be removed in a future release.
  */
 const Sidenav = ({
   className,
@@ -20,6 +21,7 @@ const Sidenav = ({
   testMode = false,
   ...attrs
 }) => {
+  useDeprecation("Sidenav");
   const classNameArr = ["rvt-sidenav", className];
   const labelId = `${id}-sidenav-label`;
   return (

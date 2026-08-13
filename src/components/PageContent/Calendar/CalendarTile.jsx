@@ -6,6 +6,7 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
 function getMonth(month, abbr) {
@@ -51,6 +52,9 @@ function getMonth(month, abbr) {
   }
 }
 
+/**
+ * @deprecated CalendarTile is deprecated and will be removed in a future release.
+ */
 const CalendarTile = ({
   abbreviate,
   children,
@@ -61,6 +65,7 @@ const CalendarTile = ({
   year,
   ...attrs
 }) => {
+  useDeprecation("CalendarTile");
   const classNameArr = ["rvt-cal", className];
   return (
     <div

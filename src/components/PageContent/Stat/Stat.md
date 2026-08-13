@@ -19,5 +19,3 @@ const image = (
 </div>
 ```
 <!-- prettier-ignore-end -->
-
-

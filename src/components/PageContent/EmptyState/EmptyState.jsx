@@ -9,12 +9,19 @@ import Actions from "./Actions";
 import Content from "./Content";
 
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 
-const EmptyState = ({ children, className, ...attrs }) => (
-  <div {...attrs} className={classNames("rvt-empty-state", className)}>
-    {children}
-  </div>
-);
+/**
+ * @deprecated EmptyState is deprecated and will be removed in a future release.
+ */
+const EmptyState = ({ children, className, ...attrs }) => {
+  useDeprecation("EmptyState");
+  return (
+    <div {...attrs} className={classNames("rvt-empty-state", className)}>
+      {children}
+    </div>
+  );
+};
 EmptyState.displayName = "EmptyState";
 
 EmptyState.Content = Content;

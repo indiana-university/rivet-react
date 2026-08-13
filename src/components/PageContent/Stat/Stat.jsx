@@ -6,8 +6,12 @@ import classNames from "classnames";
 import * as PropTypes from "prop-types";
 import * as React from "react";
 import * as Rivet from "../../util/Rivet";
+import { useDeprecation } from "../../util/DeprecationUtils";
 import { TestUtils } from "../../util/TestUtils";
 
+/**
+ * @deprecated Stat is deprecated and will be removed in a future release.
+ */
 const Stat = ({
   children,
   className,
@@ -16,10 +20,8 @@ const Stat = ({
   value,
   ...attrs
 }) => {
-  const classNameArr = [
-    "rvt-stat",
-    className
-  ]
+  useDeprecation("Stat");
+  const classNameArr = ["rvt-stat", className];
   return (
     <a
       className={classNames(classNameArr)}
@@ -42,7 +44,7 @@ const Stat = ({
         </div>
       </div>
     </a>
-  )
+  );
 };
 
 Stat.displayName = "Stat";
@@ -52,10 +54,10 @@ Stat.propTypes = {
   /** [Developer] Adds data-testId attributes for component testing */
   testMode: PropTypes.bool,
   /** The stat value */
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };
 
-const StatImage = ({ children, testMode}) => {
+const StatImage = ({ children, testMode }) => {
   return (
     <div
       className="rvt-stat__image"
@@ -63,7 +65,7 @@ const StatImage = ({ children, testMode}) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
 export default Rivet.rivetize(Stat);
