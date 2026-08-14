@@ -16,9 +16,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: "lts/*"
           cache: "npm"
@@ -30,12 +30,12 @@ jobs:
         run: npm test -- -w 1 --config=jest.config.cjs
       - name: Upload JUnit test results
         if: always()
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v7
         with:
           name: junit-results
           path: ./junit.xml
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v6.0.1
+        uses: codecov/codecov-action@v7
         with:
           files: ./coverage/cobertura-coverage.xml
           token: ${{ secrets.CODECOV_TOKEN }}
