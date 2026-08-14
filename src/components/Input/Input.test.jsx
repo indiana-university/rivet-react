@@ -29,7 +29,7 @@ describe("<Input />", () => {
     it("should apply custom class", () => {
       render(<Input className="my-class" label="Label" />);
       expect(screen.getByRole("textbox", {}).closest("div")).toHaveClass(
-        "my-class"
+        "my-class",
       );
     });
     it("should apply sr-only class to label", () => {
@@ -47,14 +47,14 @@ describe("<Input />", () => {
       render(<Input id="the_id" note="Note" label="Label" />);
       expect(screen.getByRole("textbox", {})).toHaveAttribute(
         "aria-describedby",
-        "the_id_note"
+        "the_id_note",
       );
     });
     it("should not apply the aria-describedby attribute when no note is present", () => {
       render(<Input id="the_id" label="Label" />);
       expect(screen.getByRole("textbox", {})).toHaveAttribute(
         "aria-describedby",
-        ""
+        "",
       );
     });
   });
@@ -62,99 +62,106 @@ describe("<Input />", () => {
     it("info style", () => {
       render(<Input variant="info" label="Label" note="🤔" />);
       expect(screen.getByRole("textbox", {})).toHaveClass(
-        "rvt-validation-info"
+        "rvt-validation-info",
       );
       expect(screen.getByRole("textbox", {})).toHaveAttribute(
         "aria-invalid",
-        "false"
+        "false",
       );
       expect(screen.getByText("🤔", {}).closest("div")).toHaveClass(
-        "rvt-inline-alert"
+        "rvt-inline-alert",
       );
       expect(screen.getByText("🤔", {}).closest("div")).toHaveClass(
-        "rvt-inline-alert--info"
+        "rvt-inline-alert--info",
       );
     });
     it("valid style", () => {
       render(<Input variant="success" label="Label" note="😎" />);
       expect(screen.getByRole("textbox", {})).toHaveClass(
-        "rvt-validation-success"
+        "rvt-validation-success",
       );
       expect(screen.getByRole("textbox", {})).toHaveAttribute(
         "aria-invalid",
-        "false"
+        "false",
       );
       expect(screen.getByText("😎", {}).closest("div")).toHaveClass(
-        "rvt-inline-alert"
+        "rvt-inline-alert",
       );
       expect(screen.getByText("😎", {}).closest("div")).toHaveClass(
-        "rvt-inline-alert--success"
+        "rvt-inline-alert--success",
       );
     });
     it("warning style", () => {
       render(<Input variant="warning" label="Label" note="🤨" />);
       expect(screen.getByRole("textbox", {})).toHaveClass(
-        "rvt-validation-warning"
+        "rvt-validation-warning",
       );
       expect(screen.getByRole("textbox", {})).toHaveAttribute(
         "aria-invalid",
-        "false"
+        "false",
       );
       expect(screen.getByText("🤨", {}).closest("div")).toHaveClass(
-        "rvt-inline-alert"
+        "rvt-inline-alert",
       );
       expect(screen.getByText("🤨", {}).closest("div")).toHaveClass(
-        "rvt-inline-alert--warning"
+        "rvt-inline-alert--warning",
       );
     });
     it("invalid style", () => {
       render(<Input variant="danger" label="Label" note="😬" />);
       expect(screen.getByRole("textbox", {})).toHaveClass(
-        "rvt-validation-danger"
+        "rvt-validation-danger",
       );
       expect(screen.getByRole("textbox", {})).toHaveAttribute(
         "aria-invalid",
-        "true"
+        "true",
       );
       expect(screen.getByText("😬", {}).closest("div")).toHaveClass(
-        "rvt-inline-alert"
+        "rvt-inline-alert",
       );
       expect(screen.getByText("😬", {}).closest("div")).toHaveClass(
-        "rvt-inline-alert--danger"
+        "rvt-inline-alert--danger",
       );
     });
   });
   describe("Input Group", () => {
     it("should not group", () => {
-      render(
-        <Input
-          label="Label"
-          data-testid="test"
-        />
+      render(<Input label="Label" data-testid="test" />);
+      expect(screen.getByTestId("test", {}).parentElement).not.toHaveClass(
+        "rvt-input-group",
       );
-      expect(screen.getByTestId("test", {}).parentElement).not.toHaveClass("rvt-input-group");
     });
     it("should group with a prepended element", () => {
       render(
-        <Input
-          prependment={"Prependment"}
-          label="Label"
-          data-testid="test"
-        />
+        <Input prependment={"Prependment"} label="Label" data-testid="test" />,
       );
-      expect(screen.getByTestId("test", {}).parentElement).toHaveClass("rvt-input-group");
-      expect(screen.getByText("Prependment", {})).toHaveClass("rvt-input-group__prepend");
+      expect(screen.getByTestId("test", {}).parentElement).toHaveClass(
+        "rvt-input-group",
+      );
+      expect(screen.getByText("Prependment", {})).toHaveClass(
+        "rvt-input-group__prepend",
+      );
     });
     it("should group with an appended element", () => {
       render(
+        <Input appendment={"Appendment"} label="Label" data-testid="test" />,
+      );
+      expect(screen.getByTestId("test", {}).parentElement).toHaveClass(
+        "rvt-input-group",
+      );
+      expect(screen.getByText("Appendment", {})).toHaveClass(
+        "rvt-input-group__append",
+      );
+    });
+    it("should apply custom class to the input element", () => {
+      render(
         <Input
-          appendment={"Appendment"}
+          inputClassName="my-input-class"
           label="Label"
           data-testid="test"
-        />
+        />,
       );
-      expect(screen.getByTestId("test", {}).parentElement).toHaveClass("rvt-input-group");
-      expect(screen.getByText("Appendment", {})).toHaveClass("rvt-input-group__append");
+      expect(screen.getByTestId("test", {})).toHaveClass("my-input-class");
     });
   });
 });

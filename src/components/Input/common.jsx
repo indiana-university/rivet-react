@@ -9,7 +9,7 @@ import * as Rivet from "../util/Rivet";
 import classNames from "classnames";
 import * as PropTypes from "prop-types";
 
-const inputClassName = (elementName, variant, grouped) => {
+const generateElementClasses = (elementName, variant, grouped) => {
   const validationVariant = variant ? `rvt-validation-${variant}` : "";
   const groupedClassName = grouped ? "rvt-input-group__input" : "";
 
@@ -38,6 +38,8 @@ const noteFragment = (id, variant, note) =>
 export const propTypes = {
   /** Element to group at the end of the input */
   appendment: PropTypes.node,
+  /** Custom class name for the input element */
+  inputClassName: PropTypes.string,
   /** The label for the input */
   label: PropTypes.node.isRequired,
   /** Visibility modifier for the input's label */
@@ -61,18 +63,23 @@ export const renderInput = (
     prependment,
     variant,
     className,
+    inputClassName,
     ...attrs
-  }
+  },
 ) => {
   const noteId = `${id}_note`;
   const grouped = appendment || prependment;
 
   const inputProps = {
     id,
-    className: inputClassName(elementName, variant, grouped),
     "aria-describedby": note ? noteId : "",
     "aria-invalid": variant === "danger",
     ...attrs,
+    // We want to apply the inputClassName last so that it can override any other classes in attrs
+    className: classNames(
+      generateElementClasses(elementName, variant, grouped),
+      inputClassName,
+    ),
   };
 
   const inputElement = React.createElement(elementName, inputProps);
@@ -83,7 +90,7 @@ export const renderInput = (
         htmlFor={id}
         className={classNames(
           "rvt-label",
-          Rivet.labelVisiblityClass(labelVisibility)
+          Rivet.labelVisiblityClass(labelVisibility),
         )}
       >
         {label}
