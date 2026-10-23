@@ -178,7 +178,7 @@
     "rivet-icons": "3.0.1",
     "rivet-stickers": "0.3.1",
     "style-loader": "4.0.0",
-    "vite": "7.3.5"
+    "vite": "7.3.7"
   },
   "release": {
     "plugins": [
